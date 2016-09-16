@@ -1,0 +1,37 @@
+---
+layout: page
+title: API Reference - Kitura
+menu: api
+lang: en
+---
+
+# API reference documentation
+
+Kitura is a modular web framework, comprised of a core plus additional pluggable modules. Click below to view the API reference documentation for each module.
+
+## Core
+
+* [Kitura](http://ibm-swift.github.io/Kitura/)
+* [Kitura-net](http://ibm-swift.github.io/Kitura-net/)
+* [HeliumLogger](http://ibm-swift.github.io/HeliumLogger/)
+
+## Credentials
+
+* [Kitura-Credentials](http://ibm-swift.github.io/Kitura-Credentials)
+* [Kitura-CredentialsHTTP](http://ibm-swift.github.io/Kitura-CredentialsHTTP)
+* [Kitura-CredentialsFacebook](http://ibm-swift.github.io/Kitura-CredentialsFacebook)
+* [Kitura-CredentialsGoogle](http://ibm-swift.github.io/Kitura-CredentialsGoogle)
+* [Kitura-CredentialsGitHub](http://ibm-swift.github.io/Kitura-CredentialsGitHub)
+
+## Sessions
+
+* [Kitura-Session](http://ibm-swift.github.io/Kitura-Session)
+* [Kitura-Session-Redis](http://ibm-swift.github.io/Kitura-Session-Redis)
+
+## Middlewares
+
+* [Kitura-CORS](http://ibm-swift.github.io/Kitura-CORS)
+* [Kitura-CSRF](http://ibm-swift.github.io/Kitura-CSRF)
+* [Kitura-ResponseTime](http://ibm-swift.github.io/Kitura-ResponseTime)
+* [Kitura-Cache](http://ibm-swift.github.io/Kitura-Cache)
+* [Kitura-Compression](http://ibm-swift.github.io/Kitura-Compression)

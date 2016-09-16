@@ -1,0 +1,59 @@
+<header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/en/" class="kitura">Kitura</a>
+  </section>
+  <div id="navbar">
+  <div id="navdiv">
+      <ul id="navmenu">
+           <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/{{ page.lang }}/starter/installing.html"{% if page.menu == 'starter' %} class="active"{% endif %}>Getting started</a>
+                      <ul>
+                          <li>
+                            <a href="/{{ page.lang }}/starter/installing.html">
+                              Installing
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/{{ page.lang }}/starter/gettingstarted.html">
+                              Getting Started
+                            </a>
+                          </li>
+						  <li>
+                            <a href="/{{ page.lang }}/starter/xcode.html">
+                              Building within Xcode
+                            </a>
+                          </li>
+						  <li>
+                            <a href="/{{ page.lang }}/starter/testing.html">
+                              Testing your apps
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/api/"{% if page.menu == 'api' %} class="active"{% endif %}>API reference</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/{{ page.lang }}/resources/tutorials.html"{% if page.menu == 'resources' %} class="active"{% endif %}>Resources</a>
+                      <ul>
+						  <li><a href="/{{ page.lang }}/resources/tutorials.html">Tutorials</a>
+                          </li>
+                          <li><a href="/{{ page.lang }}/resources/community.html">Community</a>
+						  </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+	  </div>
+  </div>
+</header>
