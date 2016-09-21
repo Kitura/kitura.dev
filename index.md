@@ -26,7 +26,7 @@ redirect_from: "/en/index.html"
         <section class="integrate">
           <h2>Build end-to-end applications in Swift</h2>
           <p class="text">Kitura is a new, modular, package-based web framework written in the Swift language.</p>
-          <p><a href="/en/starter/installing.html">Install, create and deploy in under 3 minutes</a>.</p>
+          <p><a href="/en/starter/settingup.html">Install, create and deploy in under 3 minutes</a>.</p>
           <div class="image"></div>
         </section>
 
