@@ -33,10 +33,9 @@ myFirstProject
 ├── Sources
 │   └── main.swift
 └── Tests
-    └── <i>empty</i>
 </pre>
 
-Note: For more information on the Swift Package Manager, go [here](https://swift.org/package-manager).
+> Note: For more information on the Swift Package Manager, visit [swift.org](https://swift.org/package-manager).
 
 In `Package.swift`, add Kitura as a dependency for your project.
 
@@ -46,49 +45,29 @@ import PackageDescription
 let package = Package(
     name: "myFirstProject",
     dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 0, minor: 28)
+        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 0, minor: 32)
     ])
 ```
 
-In `Sources/main.swift`, import the Kitura module.
-
-```swift
-import Kitura
-```
-
-Add a router and a path:
-
-```swift
-let router = Router()
-
-router.get("/") {
-    request, response, next in
-    response.send("Hello, World!")
-    next()
-}
-```
-
-Add an HTTP server and start the Kitura framework.
-
-```swift
-Kitura.addHTTPServer(onPort: 8090, with: router)
-Kitura.run()
-```
-
-Your `Sources/main.swift` file should now look like this.
+In `Sources/main.swift`, add the following code.
 
 ```swift
 import Kitura
 
+// Create a new router
 let router = Router()
 
+// Handle HTTP GET requests to /
 router.get("/") {
     request, response, next in
     response.send("Hello, World!")
     next()
 }
 
+// Add an HTTP server and connect it to the router
 Kitura.addHTTPServer(onPort: 8090, with: router)
+
+// Start the Kitura runloop (this call never returns)
 Kitura.run()
 ```
 
@@ -104,36 +83,34 @@ import PackageDescription
 let package = Package(
     name: "myFirstProject",
     dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 0, minor: 28),
-        .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 0, minor: 15)
+        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 0, minor: 32),
+        .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 0, minor: 17)
     ])
 ```
 
 Enable HeliumLogger in `Sources/main.swift`.
 
 ```swift
-import HeliumLogger
-
-HeliumLogger.use()
-```
-
-Here is the finished `Sources/main.swift` file.
-
-```swift
 import Kitura
 import HeliumLogger
 
+// Initialize HeliumLogger
 HeliumLogger.use()
 
+// Create a new router
 let router = Router()
 
+// Handle HTTP GET requests to /
 router.get("/") {
     request, response, next in
     response.send("Hello, World!")
     next()
 }
 
+// Add an HTTP server and connect it to the router
 Kitura.addHTTPServer(onPort: 8090, with: router)
+
+// Start the Kitura runloop (this call never returns)
 Kitura.run()
 ```
 
@@ -152,4 +129,8 @@ $ .build/debug/myFirstProject
 ```
 
 Open your browser at [http://localhost:8090](http://localhost:8090)
+
+# Next Steps
+
+Learn how to [deploy your application to the cloud](/en/starter/deploying.html).
 

@@ -21,12 +21,17 @@
                               Getting Started
                             </a>
                           </li>
-						  <li>
+                          <li>
+                            <a href="/{{ page.lang }}/starter/deploying.html">
+                              Deploying to the Cloud
+                            </a>
+                          </li>
+			  <li>
                             <a href="/{{ page.lang }}/starter/xcode.html">
                               Building within Xcode
                             </a>
                           </li>
-						  <li>
+			  <li>
                             <a href="/{{ page.lang }}/starter/testing.html">
                               Testing your apps
                             </a>
@@ -42,10 +47,16 @@
               </ul>
           </li>
           <li>
+              <ul id="support-menu" class="menu">
+                  <li><a href="/{{ page.lang }}/support/support.html"{% if page.menu == 'support' %} class="active"{% endif %}>Support</a>
+                  </li>
+              </ul>
+	</li>
+	<li>
               <ul id="resources-menu" class="menu">
                   <li><a href="/{{ page.lang }}/resources/tutorials.html"{% if page.menu == 'resources' %} class="active"{% endif %}>Resources</a>
                       <ul>
-						  <li><a href="/{{ page.lang }}/resources/tutorials.html">Tutorials</a>
+			  <li><a href="/{{ page.lang }}/resources/tutorials.html">Tutorials</a>
                           </li>
                           <li><a href="/{{ page.lang }}/resources/community.html">Community</a>
 						  </li>

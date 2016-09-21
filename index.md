@@ -19,21 +19,21 @@ redirect_from: "/en/index.html"
         <section class="splash">
           <img class="icon" src="../assets/appIcon@2x.png" height="125" width="125"/>
           <h1>Kitura</h1>
-          <p class="text">A lightweight web framework and HTTP server for building server-side Swift applications on Linux or macOS.</p>
-          <a href="https://github.com/IBM-Swift/Kitura"><div class="button"><span class="store-button">View on GitHub</span></div></a>
-          <a href="https://developer.ibm.com/swift/"><div class="button"><span class="store-button">Explore Swift@IBM</span></div></a>
+          <p class="text">A high performance and simple to use web framework for building modern Swift applications.</p>
+          <a href="https://github.com/IBM-Swift/Kitura"><div class="button"><span class="store-button">Get involved on GitHub</span></div></a>
         </section>
 
         <section class="integrate">
           <h2>Build end-to-end applications in Swift</h2>
           <p class="text">Kitura is a new, modular, package-based web framework written in the Swift language.</p>
+          <p><a href="/en/starter/installing.html">Install, create and deploy in under 3 minutes</a>.</p>
           <div class="image"></div>
         </section>
 
         <section id="manage" name="manage" class="code">
           <div class="text-container">
             <h2>Built on core Swift technologies</h2>
-            <p class="text">Kitura scales out of the box, thanks to Grand Central Dispatch. Use the Foundation APIs you know, on macOS and Linux. Manage dependencies and versioning with Swift Package Manager.</p>
+            <p class="text">Kitura scales out of the box, thanks to Grand Central Dispatch. Create your app using Foundation APIs you already know, on macOS and Linux. Manage dependencies and versioning with Swift Package Manager.</p>
             <img class="illustration" src="../assets/kitura@2x.png" height="318" width="534"/>
           </div>
           <div class="image-container">
@@ -54,8 +54,7 @@ redirect_from: "/en/index.html"
  
         <section class="download">
           <img class="icon" src="../assets/appIcon@2x.png" height="125" width="125"/>
-          <h1>Kitura</h1>
-          <p class="text">Explore server-side Swift with Kitura, a lightweight web framework and HTTP server that's built for web services and the cloud.</p>
-          <a href="https://github.com/IBM-Swift/Kitura"><div class="button"><span class="store-button">View on GitHub</span></div></a>
-          <a href="https://developer.ibm.com/swift/"><div class="button"><span class="store-button">Explore Swift@IBM</span></div></a>
+          <h1>Swift@IBM</h1>
+          <p class="text">For more information on how IBM Engineering is optimising Swift for end-to-end development, visit our Developer Center.</p>
+          <a href="https://developer.ibm.com/swift/"><div class="button"><span class="store-button">Swift@IBM DevCenter</span></div></a>
         </section>
