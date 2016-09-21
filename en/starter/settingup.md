@@ -3,16 +3,16 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE. 
 ### DO NOT CHANGE ANY OTHER TEXT. 
 layout: page
-title: Installing Kitura
+title: Setting Up
 menu: starter
 lang: en
-redirect_from: "/starter/installing.html"
+redirect_from: "/starter/setting up.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
-# Installing
+# Setting Up
 
-Kitura can run on macOS and Linux.
+Kitura can run on macOS and Linux. To start, you'll need to install a few prerequisites.
 
 * [macOS](#macos)
 * [Ubuntu Linux](#ubuntu-linux)
