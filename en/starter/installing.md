@@ -19,15 +19,9 @@ Kitura can run on macOS and Linux.
 
 ## macOS
 
-1. Install [Homebrew](http://brew.sh/) (if you don't already have it installed):
+1. Download and install [Xcode 8](https://developer.apple.com/download/).
 
-    `$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-
-2. Install the necessary dependencies:
-
-    `$ brew install curl`
-
-3. Download and install [Xcode 8](https://developer.apple.com/download/).
+2. There is no step 2.
 
 > Note: if you have been using the Xcode 8 betas, you may also need to run `sudo xcode-select -r` to reset your selected developer directory.
 
