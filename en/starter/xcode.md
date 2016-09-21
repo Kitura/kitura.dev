@@ -15,7 +15,7 @@ You can develop, test and run your Kitura app in Xcode. This gives you productiv
 
 Swift Package Manager can generate an Xcode project for you by reading your project's `Package.swift` file. It will automatically set up several targets that will be built using Xcode &mdash; note that when Xcode builds the project it is not using `swift build`, rather it uses its internal build process. 
 
-> Before starting this, make sure you can successfully build and run your Kitura app from the command-line using `swift build`. Also, install the xcodeproj gem using `gem install xcodeproj`.
+> Before starting this, make sure you can successfully build and run your Kitura app from the command-line using `swift build`.
 
 1. Go to your project directory where you have your `Package.swift` file 
 2. Run `swift package generate-xcodeproj`

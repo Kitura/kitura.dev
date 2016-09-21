@@ -71,9 +71,25 @@ Kitura.addHTTPServer(onPort: 8090, with: router)
 Kitura.run()
 ```
 
-Optionally, add logging.
+Compile your application:
 
- In the code example above, no messages from Kitura will logged. You may want to add a logger to help diagnose any problems that occur.
+```
+$ swift build
+```
+
+Or copy our [Makefile and build scripts](https://github.com/IBM-Swift/Package-Builder/blob/master/build) to your project directory and run `make build`. You may want to customize this Makefile and use it for building, testing and running your application. For example, you can clean your build directory, refetch all the dependencies, build, test and run your application by running `make clean refetch test run`.
+
+Now run your new web application:
+
+```
+$ .build/debug/myFirstProject
+```
+
+Open your browser at [http://localhost:8090](http://localhost:8090)
+
+## Add logging (optional)
+
+ In the code example above no messages from Kitura will be logged to the console. You may want to add a logger to help diagnose any problems that occur.
 
  Add a HeliumLogger dependency to `Package.swift`.
 
@@ -113,22 +129,6 @@ Kitura.addHTTPServer(onPort: 8090, with: router)
 // Start the Kitura runloop (this call never returns)
 Kitura.run()
 ```
-
-Compile your application:
-
-```
-$ swift build
-```
-
-Or copy our [Makefile and build scripts](https://github.com/IBM-Swift/Package-Builder/blob/master/build) to your project directory and run `make build`. You may want to customize this Makefile and use it for building, testing and running your application. For example, you can clean your build directory, refetch all the dependencies, build, test and run your application by running `make clean refetch test run`.
-
-Now run your new web application:
-
-```
-$ .build/debug/myFirstProject
-```
-
-Open your browser at [http://localhost:8090](http://localhost:8090)
 
 # Next Steps
 

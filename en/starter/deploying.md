@@ -14,7 +14,7 @@ redirect_from: "/starter/deploy.html"
 
 Kitura is built to be Cloud-ready.
 
-We provide a simple starter project that demonstrates deployment to Cloud Foundry platforms like [Bluemix](https://www.bluemix.net), plus a macOS desktop application to aid integration with Xcode.
+We provide a simple starter project that demonstrates deployment to [Bluemix](https://www.bluemix.net), plus a macOS desktop application to aid integration with Xcode.
 
 Additionally, you can use our pre-built Docker image to guide you on how to deploy a container-based Kitura application.
 
