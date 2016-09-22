@@ -36,7 +36,7 @@ Learn how to enable SSL/TLS on Kitura to enhance the security of your applicatio
 
 ### [Using FastCGI with Kitura](/en/resources/tutorials/fastcgi.html)
 
-Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.  Learn how to configure this deployment mode.
+Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
 ### [Special Types of Response Handlers](/en/resources/tutorials/responsehandlers.html)
 
