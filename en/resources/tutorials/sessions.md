@@ -43,11 +43,10 @@ let session = Session(secret: "kitura_session")
 router.all(middleware: session)
 ```
 
-We will be adding two routes: `/` and `/login`
 
 # Creating session data
 
-Starting with the `/login` router, which is where we will be getting the `POST` data from the login: 
+We will be adding two routes: `/` and `/login`. Starting with the `/login` router, which is where we will be getting the `POST` data from the login: 
 
 ```swift
 router.post("/login") {
