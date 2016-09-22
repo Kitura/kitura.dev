@@ -6,3 +6,4 @@ markdown: kramdown
 gems:
   - jekyll-redirect-from
 
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
