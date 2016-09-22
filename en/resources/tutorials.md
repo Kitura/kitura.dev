@@ -30,6 +30,10 @@ Learn how to save user data with a session plugin.
 
 This tutorial shows how to use popular templating engines like Mustache and Stencil in Kitura.
 
+### [Enabling SSL/TLS on Kitura](/en/resources/tutorials/ssl.html)
+
+Learn how to enable SSL/TLS on Kitura to enhance the security of your application.
+
 ### [Using FastCGI with Kitura](/en/resources/tutorials/fastcgi.html)
 
 Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.  Learn how to configure this deployment mode.
