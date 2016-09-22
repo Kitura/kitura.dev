@@ -13,7 +13,7 @@ redirect_from: "/resources/tutorial-todo.html"
 A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows _rendering_ of documents using static templates, by substituting template variables with actual values at runtime. This page explains how you can use template engines integrated with Kitura in your Kitura apps.
 
 # Supported template engines
-Currently, [Mustache](https://mustache.github.io) and [Stencil](https://github.com/kylef/Stencil) template engines are integrated with Kitura. However, Mustache is only supported on macOS and Stencil is only supported with snapshot `DEVELOPMENT-SNAPSHOT-2016-05-03-a`.
+Currently, [Mustache](https://mustache.github.io) and [Stencil](https://github.com/kylef/Stencil) template engines are integrated with Kitura. However, Mustache is only supported on macOS.
 
 # Kitura template engines
 Kitura template engines are classes that implement _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, two Kitura template engines exist:
