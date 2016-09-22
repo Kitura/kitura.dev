@@ -110,7 +110,7 @@ router.get("/") {
 }
 ```
 
-The above snippet checks whether or not the user has already "logged in" and routes straight to `index.html` if they have otherwise requests the user to "log in" to gain access.
+The above snippet checks whether or not the user has already "logged in" and if they have routes straight to `index.html`, otherwise it requests the user to "log in" to gain access.
 
 Once we have set that up we can create some basic HTML and jQuery to use what we have made. For this example we will be creating two HTML files, `login.html` and `index.html`. 
 
