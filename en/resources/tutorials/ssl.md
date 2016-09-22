@@ -27,14 +27,14 @@ To enable TLS, a server needs a certificate and a corresponding secret key. Cert
 
 ## BlueSSLService Framework
 
-[BlueSSLService](https://github.com/IBM-Swift/BlueSSLService) is the underlying framework that integrates with Kitura to provide SSL/TLS on MacOS and Linux. 
+[BlueSSLService](https://github.com/IBM-Swift/BlueSSLService) is the underlying framework that integrates with Kitura to provide SSL/TLS on macOS and Linux. 
 
-BlueSSLService is the _first_ Swift-only framework that integrates with the _native_ security libraries on MacOS and Linux. Specifically, BlueSSLService integrates with OpenSSL library on Linux and Apple Secure Transport on MacOS. This is important, because  the developer does not need to install any additional packages on their platform of choice. Additionally and more importantly, pre-installed OpenSSL on MacOS has been deprecated since OS X v10.7 and later, for binary compatibility reasons. This means that if you require OpenSSL on MacOS, you must install your own version of this library and statically link it into your program. Finally, since BlueSSLService presents a consistent and unified Swift interface for both MacOS and Linux, the developer can simply import BlueSSLService (via Kitura) in their application and know that their application will behave correctly on both MacOS and Linux.
+BlueSSLService is the _first_ Swift-only framework that integrates with the _native_ security libraries on macOS and Linux. Specifically, BlueSSLService integrates with OpenSSL library on Linux and Apple Secure Transport on macOS. This is important, because  the developer does not need to install any additional packages on their platform of choice. Additionally and more importantly, pre-installed OpenSSL on macOS has been deprecated since OS X v10.7 and later, for binary compatibility reasons. This means that if you require OpenSSL on macOS, you must install your own version of this library and statically link it into your program. Finally, since BlueSSLService presents a consistent and unified Swift interface for both macOS and Linux, the developer can simply import BlueSSLService (via Kitura) in their application and know that their application will behave correctly on both macOS and Linux.
 
 ## Generate Certificates
 
 
-To enable TLS in Kitura, we must first setup our server's certificate and key pair. The certificate can be either a self-signed certificate or a certificate chain whereby the server certificate is signed by a CA. Kitura currently supports PEM certificate format on Linux, and PKCS#12 on MacOS. 
+To enable TLS in Kitura, we must first setup our server's certificate and key pair. The certificate can be either a self-signed certificate or a certificate chain whereby the server certificate is signed by a CA. Kitura currently supports PEM certificate format on Linux, and PKCS#12 on macOS. 
 
 In this example, we have created a self-signed PEM certificate using the following OpenSSL commands:
 
@@ -61,7 +61,7 @@ Place your certificate and key in `/tmp/Creds` folder.
 
 We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter _usingSelfSignedCerts_ to true. 
 
-On Linux, we also set the cipherSuite to _All_ to indicate that our server supports all the cipher suits. This is currently not needed on MacOS.
+On Linux, we also set the cipherSuite to _All_ to indicate that our server supports all the cipher suits. This is currently not needed on macOS.
 
 
 ```swift
