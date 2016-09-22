@@ -51,9 +51,11 @@ $ openssl req -x509 -sha256 -days 365 -key key.pem -in csr.csr -out certificate.
 
 You can convert your certificate to PKCS#12 format using 
 
-```openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem```
+```
+$ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem
+```
 
-Place your certificate and key in ```/tmp/Creds``` folder.
+Place your certificate and key in `/tmp/Creds` folder.
 
 ## Configuring Kitura for SSL/TLS
 
