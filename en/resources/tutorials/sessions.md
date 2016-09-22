@@ -6,7 +6,7 @@ layout: page
 title: Sessions
 menu: resources
 lang: en
-redirect_from: "/resources/tutorial-todo.html"
+redirect_from: "/resources/sessions.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
@@ -17,7 +17,9 @@ How to setup Kitura-Session
 
 Before being abe to create sessions, you must have the `Kitura-Session` dependency added in your `Package.swift` file: 
 
-`.Package(url: "https://github.com/IBM-Swift/Kitura-Session.git", majorVersion: 0, minor: 26),`
+```swift
+.Package(url: "https://github.com/IBM-Swift/Kitura-Session.git"),
+```
 
 >Hint: If you have already built your app you will need to generate a new xcodeproj in order to use `import KituraSession`
 
