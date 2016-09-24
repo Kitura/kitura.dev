@@ -14,10 +14,6 @@ redirect_from: "/resources/tutorial-todo.html"
 
 Learn how to use different features of Kitura with walk-through tutorials.
 
-### [Creating a Todo-List Backend](/en/resources/tutorials/tutorial_todo.html)
-
-This tutorial shows how to create a backend application for a todo-list app.
-
 ### [Adding Authentication with Kitura-Credentials](/en/resources/tutorials/credentials.html)
 
 Learn how to add integration with Facebook OAuth authentication.
