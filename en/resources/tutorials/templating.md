@@ -26,7 +26,7 @@ You can provide your own Kitura template engine by implementing _TemplateEngine_
 # Add a template engine to your Kitura app 
 Kitura is a modular framework &mdash; it means that by default you get only basic HTTP functionality, like routing, handling parameters, parsing request body, etc. Apart from the basics, you only get the functionality you need by specifying additional packages in your `Package.swift`. So to use a template engine, you have to specify dependencies on the template engine(s) you want to use in your `Package.swift`, e.g:
 ```swift
-.Package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", majorVersion: 0, minor: 28)
+.Package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", majorVersion: 1, minor: 0)
 ```
 
 >Tip: If you generated your Xcode project previously, you have to regenerate it once you add a new dependency so Xcode will be aware of the added dependency.
