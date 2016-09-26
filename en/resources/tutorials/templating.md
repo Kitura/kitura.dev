@@ -22,7 +22,7 @@ Kitura template engines are classes that implement the _TemplateEngine_ protocol
 
 You can provide your own Kitura template engine by implementing the _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
  
-# Add a template engine to your Kitura app 
+# Adding a template engine to your Kitura app 
 To use a template engine you need to specify a dependency in `Package.swift` for the engine you want to use. 
 
 >Tip: You can specify multiple dependencies if you wish to support more than one template engine (e.g. both Mustache and Stencil).
@@ -33,13 +33,13 @@ To use a template engine you need to specify a dependency in `Package.swift` for
 
 >Tip: If you generated your Xcode project previously, you have to regenerate it once you add a new dependency so Xcode will be aware of the added dependency.
 
-# Add your template files to your Kitura app
+# Adding your template files to your Kitura app
 Template files are text files that follow the syntax of a template engine. Here is an example of a Mustache template, taken from [GRMustache.swift](https://github.com/groue/GRMustache.swift).
 
 `document.mustache`:
 
-```swift
-Hello {{name}}
+```
+Hello /{/{name/}/}
 Your beard trimmer will arrive on {{format(date)}}.
 {{#late}}
 Well, on {{format(realDate)}} because of a Martian attack.
