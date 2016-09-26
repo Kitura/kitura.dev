@@ -17,8 +17,10 @@ A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows _re
 # Kitura template engines
 Kitura template engines are classes that implement the _TemplateEngine_ protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, two Kitura template engines are supported:
 
-1. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine), supported on macOS only and with limited Swift 3.0 support (as of Sept 2016)
+1. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine)
 2. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
+
+Note! As of September 2016 GRMustache is available on macOS only and has not been fully ported to Swift 3.0. Please follow the [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) for more information.
 
 You can provide your own Kitura template engine by implementing the _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
  
@@ -39,7 +41,7 @@ Template files are text files that follow the syntax of a template engine. Here 
 `document.mustache`:
 
 ```
-Hello /{/{name/}/}
+Hello {{name}}
 Your beard trimmer will arrive on {{format(date)}}.
 {{#late}}
 Well, on {{format(realDate)}} because of a Martian attack.
