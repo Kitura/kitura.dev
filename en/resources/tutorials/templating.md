@@ -10,21 +10,22 @@ redirect_from: "/resources/tutorial-todo.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
-A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows _rendering_ of documents using static templates, by substituting template variables with actual values at runtime. This page explains how you can use template engines integrated with Kitura in your Kitura apps.
+Kitura is a lightweight, modular framework &mdash; this means that by default you get only basic HTTP functionality, like routing, parameter handling, parsing request body, etc. You can augment Kitura's out-of-the-box functionality by adding additional packages to your `Package.swift` file. 
 
-# Supported template engines
-Currently, [Mustache](https://mustache.github.io) and [Stencil](https://github.com/kylef/Stencil) template engines are integrated with Kitura. However, Mustache is only supported on macOS.
+A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows _rendering_ of documents using static templates by substituting template variables with actual values at runtime. This page explains how you can use template engines integrated with Kitura in your Kitura apps.
 
 # Kitura template engines
-Kitura template engines are classes that implement _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, two Kitura template engines exist:
+Kitura template engines are classes that implement the _TemplateEngine_ protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, two Kitura template engines are supported:
 
-1. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine), supported on OS X only.
+1. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine), supported on macOS only and with limited Swift 3.0 support (as of Sept 2016)
 2. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
 
-You can provide your own Kitura template engine by implementing _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
+You can provide your own Kitura template engine by implementing the _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
  
 # Add a template engine to your Kitura app 
-Kitura is a modular framework &mdash; it means that by default you get only basic HTTP functionality, like routing, handling parameters, parsing request body, etc. Apart from the basics, you only get the functionality you need by specifying additional packages in your `Package.swift`. So to use a template engine, you have to specify dependencies on the template engine(s) you want to use in your `Package.swift`, e.g:
+To use a template engine you need to specify a dependency in `Package.swift` for the engine you want to use. 
+
+>Tip: You can specify multiple dependencies if you wish to support more than one template engine (e.g. both Mustache and Stencil).
 
 ```swift
 .Package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", majorVersion: 1, minor: 0)
@@ -37,7 +38,7 @@ Template files are text files that follow the syntax of a template engine. Here 
 
 `document.mustache`:
 
-```
+```swift
 Hello {{name}}
 Your beard trimmer will arrive on {{format(date)}}.
 {{#late}}
@@ -45,35 +46,43 @@ Well, on {{format(realDate)}} because of a Martian attack.
 {{/late}}
 ```
 
-[GRMustache.swift](https://github.com/groue/GRMustache.swift) uses [an extended Mustache syntax](https://github.com/groue/GRMustache.swift#features), in particular _Filters_ as `format` filter in the example above.
+Template files should be placed in a _Views directory_ which should be known to _Kitura Router_. By default, _Kitura Router_ gets the template files from the `./Views/` directory in the directory where `Kitura` runs. You can change the _Views directory_ per [Router](https://github.com/IBM-Swift/Kitura/blob/master/Sources/Kitura/Router.swift) instance by setting `Router.viewsPath` variable.
 
-You should put your template files in a _views directory_ which should be known to _Kitura Router_. By default, _Kitura Router_ gets the template files from `Views` directory in the directory where `Kitura` runs. You can change the _views directory_ per [Router](https://github.com/IBM-Swift/Kitura/blob/master/Sources/Kitura/Router.swift) instance by setting `Router.viewsPath` variable.
-
-# Register a template engine with a Router instance
-To use a template engine, you must register it with a Router instance. You do it by calling `Router.add(templateEngine:)` function, e.g.:
-
-```swift
-router.add(templateEngine: MustacheTemplateEngine())
+```
+/myTemplateApp
+|
+|--/Sources
+  |-- main.swift
+|--/Views
+  |-- document.mustache
 ```
 
+# Register a template engine with a Router instance
 You should import the package of the template engine:
 ```swift
 import KituraMustache
 ```
 
+To use the template engine, you must register it with a Router instance. This is done by calling the  `Router.add(templateEngine:)` function, e.g.:
+
+```swift
+let router = Router()
+router.add(templateEngine: MustacheTemplateEngine())
+```
+
 # Render a template
-You can render a template by calling `RouterResponse.render(_:context)` function. Example code for the template above:
+You can render a template by calling the `response.render(_:context)` function. Example code for the `document.mustache` template shown above:
 
 ```swift
 router.get("/trimmer") { _, response, next in
     defer {
         next()
     }
-    // the example from https://github.com/groue/GRMustache.swift/blob/master/README.md
+    // example from https://github.com/groue/GRMustache.swift/blob/master/README.md
     var context: [String: Any] = [
         "name": "Arthur",
-        "date": NSDate(),
-        "realDate": NSDate().addingTimeInterval(60*60*24*3),
+        "date": Date(),
+        "realDate": Date().addingTimeInterval(60*60*24*3),
         "late": true
     ]
 
@@ -82,7 +91,7 @@ router.get("/trimmer") { _, response, next in
     dateFormatter.dateStyle = .medium
     context["format"] = dateFormatter
 
-    try response.render("document", context: context).end()
+    try response.render("document.mustache", context: context).end()
 }
 ```
 
