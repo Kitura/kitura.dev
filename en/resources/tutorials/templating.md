@@ -23,6 +23,7 @@ Kitura template engines are classes that implement the _TemplateEngine_ protocol
 ##### Note! As of September 2016 GRMustache is available on macOS only and has not been fully ported to Swift 3.0. Please follow the [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) community for more information.
 
 You can provide your own Kitura template engine by implementing the _TemplateEngine_ protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
+
  
 # Adding a template engine to your Kitura app 
 To use a template engine you need to specify a dependency in `Package.swift` for the engine you want to use. You can specify multiple dependencies if you wish to support more than one template engine (e.g. both Mustache and Stencil).
@@ -32,6 +33,7 @@ To use a template engine you need to specify a dependency in `Package.swift` for
 ```
 
 >Tip: If you generated your Xcode project previously, you have to regenerate it once you add a new dependency so Xcode will be aware of the added dependency.
+
 
 # Adding your template files to your Kitura app
 Template files are text files that follow the syntax of a template engine. Here is an example of a Mustache template, taken from [GRMustache.swift](https://github.com/groue/GRMustache.swift).
@@ -57,8 +59,9 @@ Template files should be placed in a _Views directory_ which should be known to 
   |-- document.mustache
 ```
 
-# Register a template engine with a Router instance
+# Registering a template engine with a Router instance
 You should import the package of the template engine:
+
 ```swift
 import KituraMustache
 ```
@@ -70,7 +73,7 @@ let router = Router()
 router.add(templateEngine: MustacheTemplateEngine())
 ```
 
-# Render a template
+# Rendering a template
 You can render a template by calling the `response.render(_:context)` function. Example code for the `document.mustache` template shown above:
 
 ```swift
@@ -96,26 +99,33 @@ router.get("/trimmer") { _, response, next in
 ```
 
 The following response is sent as a result:
+
+```
 > Hello Arthur
 > 
 Your beard trimmer will arrive on Sep 8, 2016.
 >
-Well, on Sep 11, 2016 because of a Martian attack.
+Well, on Sep 19, 2016 because of a Martian attack.
+```
 
 Note how the `context` of the template is defined. The context contains values for [Mustache](https://mustache.github.io) _tags_ `name`, `date`, `realDate`, `late` and for [GRMustache.swift](https://github.com/groue/GRMustache.swift) _filter_ `format`.
 
-# Work with multiple template engines
+
+# Working with multiple template engines
 You can use templates from multiple template engines in your Kitura app. Kitura Router will know which template engine to use with a particular template file by the extension of the file. E.g., the extension for [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) is `.mustache` and for [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) is `.stencil`. (The extension of a template engine is defined by `fileExtension` property of [TemplateEngine protocol](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift))
 
-# Set the default template engine
+
+# Setting the default template engine
 You can set the default template engine for a Router instance in order to save specifying template file extensions of that template engine.
 
 For example, after you set [GRMustache.swift](https://github.com/groue/GRMustache.swift) as the default template engine:
+
 ```swift
 router.setDefault(templateEngine: MustacheTemplateEngine())
 ```
 
 You can render `document.mustache` by specifying the name of the file without extension:
+
 ```swift
 response.render("document", context: context).
 ```
