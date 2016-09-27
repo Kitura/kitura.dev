@@ -169,9 +169,11 @@ Note how the `context` of the template is defined. The first context contains va
 
 
 # Working with multiple template engines
-As you can see from our example above you can use templates from multiple template engines in your Kitura app. Kitura Router will know which template engine to use with a particular template file by the extension of the file. For example, the extension for [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) is `.mustache` and for [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) is `.stencil`. 
+As you can see from our example above you can use templates from multiple template engines in your Kitura app. The Router will know which template engine to use with a particular template file by the extension of the file. 
 
-The extension of a template engine is defined by `fileExtension` property of the [TemplateEngine protocol](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift)
+For example, the extension for [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) is `.mustache` and for [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) is `.stencil`. 
+
+The file extension of a template engine is defined by `fileExtension` property of the [TemplateEngine protocol](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift)
 
 
 # Setting the default template engine
