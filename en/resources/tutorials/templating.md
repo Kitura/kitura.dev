@@ -95,7 +95,7 @@ router.add(templateEngine: StencilTemplateEngine())
 ```
 
 # Rendering a template
-You can render a template by calling the `response.render(_:context)` function. Example code for the `document.mustache` and `document.stencil` template files:
+You can render a template by calling the `response.render(_:context)` function. Here's the the code for the `document.mustache` and `document.stencil` template files we referenced earlier:
 
 ```swift
 // Handle HTTP GET requests to GRMustache/
