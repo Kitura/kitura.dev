@@ -48,6 +48,7 @@ Template files are text files that follow the syntax of a template engine. Here 
 
 `document.mustache`:
 
+{% raw %}
 ```
 Hello {{name}}
 Your beard trimmer will arrive on {{format(date)}}.
@@ -55,9 +56,11 @@ Your beard trimmer will arrive on {{format(date)}}.
 Well, on {{format(realDate)}} because of a Martian attack.
 {{/late}}
 ```
+{% endraw %}
 
 `document.stencil`
 
+{% raw %}
 ```
 There are {{ articles.count }} articles.
 
@@ -65,6 +68,7 @@ There are {{ articles.count }} articles.
   - {{ article.title }} by {{ article.author }}.
 {% endfor %}
 ```
+{% endraw %}
 
 Template files should be placed in a _Views directory_ which should be known to _Kitura Router_. By default, _Kitura Router_ gets the template files from the `./Views/` directory in the directory where `Kitura` runs. You can change the _Views directory_ per [Router](https://github.com/IBM-Swift/Kitura/blob/master/Sources/Kitura/Router.swift) instance by setting `Router.viewsPath` variable.
 
