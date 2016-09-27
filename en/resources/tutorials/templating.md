@@ -10,6 +10,8 @@ redirect_from: "/resources/tutorial-todo.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+# Using Templating Engines with Kitura
+
 Kitura is a lightweight, modular framework &mdash; this means that by default you get only basic HTTP functionality, like routing, parameter handling, parsing request body, etc. You can augment Kitura's out-of-the-box functionality by adding additional packages to your `Package.swift` file. 
 
 A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows _rendering_ of documents using static templates by substituting template variables with actual values at runtime. This page explains how you can use template engines integrated with Kitura in your Kitura apps.
