@@ -12,7 +12,11 @@ redirect_from: "/resources/tutorial-todo.html"
 
 # Tutorials
 
-Learn how to use different features of Kitura with walk-through tutorials.
+Learn how to use Kitura with these walk-through tutorials:
+
+### [Parsing Requests](/en/resources/tutorials/parsingrequests.html)
+
+Learn how to parse query and URL parameters also handle JSON requests.
 
 ### [Adding Authentication with Kitura-Credentials](/en/resources/tutorials/credentials.html)
 
@@ -38,7 +42,5 @@ Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
 Learn how to define response handlers for complex routes.
 
-### [Parsing Requests](/en/resources/tutorials/parsingrequests.html)
 
-Learn how to parse query parameters.
 
