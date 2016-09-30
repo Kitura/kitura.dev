@@ -59,6 +59,7 @@ The built in body parsing middleware can parse a variety of body types including
   ```swift
   router.all("/name", middleware: BodyParser())
   ```
+  
 3. Specify your path, retrieving the parsed body from the body property.
 
 ```swift
