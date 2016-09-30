@@ -14,7 +14,7 @@ redirect_from: "/resources/tutorial-todo.html"
 
 Learn how to use Kitura with these walk-through tutorials:
 
-## Routing and Responses
+## Routing and Requests
 
 ### [Parsing Requests](/en/resources/tutorials/parsingrequests.html)
 
