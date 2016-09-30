@@ -14,7 +14,7 @@ redirect_from: "/resources/tutorial-todo.html"
 
 Learn how to use Kitura with these walk-through tutorials:
 
-## The Basics
+## Routing and Responses
 
   ### [Parsing Requests](/en/resources/tutorials/parsingrequests.html)
 
@@ -24,29 +24,29 @@ Learn how to use Kitura with these walk-through tutorials:
 
   Learn how to define response handlers for complex routes.
 
-  ### [Using Templating Engines with Kitura](/en/resources/tutorials/templating.html)
-
-  This tutorial shows how to use popular templating engines like Mustache and Stencil in Kitura.
-
 ## Security 
 
-### [Adding Authentication with Kitura-Credentials](/en/resources/tutorials/credentials.html)
+  ### [Adding Authentication with Kitura-Credentials](/en/resources/tutorials/credentials.html)
 
-Learn how to add integration with Facebook OAuth authentication.
+  Learn how to add integration with Facebook OAuth authentication.
 
-### [Adding Sessions with Kitura-Session](/en/resources/tutorials/sessions.html)
+  ### [Adding Sessions with Kitura-Session](/en/resources/tutorials/sessions.html)
 
-Learn how to save user data with a session plugin.
+  Learn how to save user data with a session plugin.
 
-### [Enabling SSL/TLS on Kitura](/en/resources/tutorials/ssl.html)
+  ### [Enabling SSL/TLS on Kitura](/en/resources/tutorials/ssl.html)
 
-Learn how to enable SSL/TLS on Kitura to enhance the security of your application.
+  Learn how to enable SSL/TLS on Kitura to enhance the security of your application.
 
 ## Other Topics
 
-### [Using FastCGI with Kitura](/en/resources/tutorials/fastcgi.html)
+  ### [Using Templating Engines with Kitura](/en/resources/tutorials/templating.html)
 
-Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
+  This tutorial shows how to use popular templating engines like Mustache and Stencil in Kitura.
+  
+  ### [Using FastCGI with Kitura](/en/resources/tutorials/fastcgi.html)
+
+  Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
 
 
