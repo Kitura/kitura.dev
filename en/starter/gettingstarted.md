@@ -13,7 +13,7 @@ redirect_from: "/starter/helloworld.html"
 
 Let's develop your first Kitura web application!
 
-First, create a new project directory.
+First, create a new project directory:
 
 ```
 $ mkdir myFirstProject
@@ -77,7 +77,7 @@ Compile your application:
 $ swift build
 ```
 
-Or copy our [Makefile and build scripts](https://github.com/IBM-Swift/Package-Builder/blob/master/build) to your project directory and run `make build`. You may want to customize this Makefile and use it for building, testing and running your application. For example, you can clean your build directory, refetch all the dependencies, build, test and run your application by running `make clean refetch test run`.
+Instead, you can also copy our [Makefile and build scripts](https://github.com/IBM-Swift/Package-Builder/blob/master/build) to your project directory and run `make build`. You may want to customize this Makefile and use it for building, testing and running your application. For example, you can clean your build directory, refetch all the dependencies, build, test and run your application by running `make clean refetch test run`.
 
 Now run your new web application:
 
@@ -132,5 +132,5 @@ Kitura.run()
 
 # Next Steps
 
-Learn how to [deploy your application to the cloud](/en/starter/deploying.html).
+Learn how to [Deploy your Application to the Cloud](/en/starter/deploying.html).
 
