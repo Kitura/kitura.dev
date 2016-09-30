@@ -16,17 +16,17 @@ Learn how to use Kitura with these walk-through tutorials:
 
 ## The Basics
 
-### [Parsing Requests](/en/resources/tutorials/parsingrequests.html)
+  ### [Parsing Requests](/en/resources/tutorials/parsingrequests.html)
 
-Learn how to parse query and URL parameters also handle JSON requests.
+  Learn how to parse query and URL parameters also handle JSON requests. 
 
-### [Special Types of Response Handlers](/en/resources/tutorials/responsehandlers.html)
+  ### [Special Types of Response Handlers](/en/resources/tutorials/responsehandlers.html)
 
-Learn how to define response handlers for complex routes.
+  Learn how to define response handlers for complex routes.
 
-### [Using Templating Engines with Kitura](/en/resources/tutorials/templating.html)
+  ### [Using Templating Engines with Kitura](/en/resources/tutorials/templating.html)
 
-This tutorial shows how to use popular templating engines like Mustache and Stencil in Kitura.
+  This tutorial shows how to use popular templating engines like Mustache and Stencil in Kitura.
 
 ## Security 
 
