@@ -44,7 +44,7 @@ Learn how to enable SSL/TLS on Kitura to enhance the security of your applicatio
 
 This tutorial shows how to use popular templating engines like Mustache and Stencil in Kitura.
   
-### [Using FastCGI with Kitura](/en/resources/tutorials/fastcgi.html)
+### [Using FastCGI with Kitura](/en/resources/tutorials/fastcgi.html) (Linux only)
 
 Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
