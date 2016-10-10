@@ -26,7 +26,7 @@ Kitura is a modular web framework, comprised of a core plus additional pluggable
 
 ## Persistence
 
-* [Kitura-Redis](https://github.com/IBM-Swift/Kitura-redis)
+* [Kitura-Redis](http://ibm-swift.github.io/Kitura-redis/)
 
 ## Sessions
 
