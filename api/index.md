@@ -24,6 +24,10 @@ Kitura is a modular web framework, comprised of a core plus additional pluggable
 * [Kitura-CredentialsGoogle](http://ibm-swift.github.io/Kitura-CredentialsGoogle)
 * [Kitura-CredentialsHTTP](http://ibm-swift.github.io/Kitura-CredentialsHTTP)
 
+## Persistence
+
+* [Kitura-Redis](https://github.com/IBM-Swift/Kitura-redis)
+
 ## Sessions
 
 * [Kitura-Session](http://ibm-swift.github.io/Kitura-Session)
