@@ -66,3 +66,5 @@ We provide a pre-built Docker image containing the latest release of Kitura.  Fo
 
 You should see an output message that contains the string `Listening on port 8090`.
 
+6. Visit `http://localhost:8090/` in your web browser.
+
