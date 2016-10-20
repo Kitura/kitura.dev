@@ -27,10 +27,10 @@ Kitura is tested on Ubuntu 14.04 LTS, Ubuntu 15.10, and Ubuntu 16.04 LTS.
 
 1. Install the following Linux system packages:
 
-    ```
-    $ sudo apt-get update
-    $ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
-    ```
+```
+$ sudo apt-get update
+$ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
+```
 
 2. Download a Swift 3.0 toolchain from [swift.org](https://swift.org/download/).
 
