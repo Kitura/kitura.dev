@@ -20,13 +20,13 @@ redirect_from: "/en/index.html"
           <img class="icon" src="../assets/appIcon@2x.png" height="125" width="125"/>
           <h1>Kitura</h1>
           <p class="text">A high performance and simple to use web framework for building modern Swift applications.</p>
-          <a href="https://github.com/IBM-Swift/Kitura"><div class="button"><span class="store-button">Get involved on GitHub</span></div></a>
+          <a href="/en/starter/settingup.html"><div class="button"><span class="store-button">Get started with Kitura</span></div></a>
         </section>
 
         <section class="integrate">
           <h2>Build end-to-end applications in Swift</h2>
-          <p class="text">Kitura is a new, modular, package-based web framework written in the Swift language.</p>
-          <p><a href="/en/starter/settingup.html">Install, create and deploy in under 3 minutes</a>.</p>
+          <p class="text">Kitura is a new, modular, package-based web framework written in the Swift language. Install, create and deploy in under 3 minutes.</p>
+          <p><a href="https://github.com/IBM-Swift/Kitura">Get involved on GitHub</a>.</p>
           <div class="image"></div>
         </section>
 
