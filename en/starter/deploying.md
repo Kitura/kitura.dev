@@ -18,9 +18,9 @@ We provide a simple starter project that demonstrates deployment to [Bluemix](ht
 
 Additionally, you can use our pre-built Docker image to guide you on how to deploy a container-based Kitura application.
 
-# Kitura-Starter-Bluemix
+# Kitura-Starter
 
-[Kitura-Starter-Bluemix](https://github.com/IBM-Swift/Kitura-Starter-Bluemix) is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on Bluemix. After cloning this GitHub repo to your local system, you can deploy this application to Bluemix right away.
+[Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on Bluemix. After cloning this GitHub repo to your local system, you can deploy this application to Bluemix right away.
 
 Once you have the Cloud Foundry command line tool installed, deploying to the cloud is as simple as `cf push`.
 
@@ -46,15 +46,15 @@ We provide a pre-built Docker image containing the latest release of Kitura.  Fo
 
     `$ docker run -i -p 8090:8090 -t ibmcom/kitura-ubuntu:latest /bin/bash`
 
-4. From within the Docker container, execute the `clone_build_kitura.sh` script to build the [Kitura-Starter-Bluemix](https://github.com/IBM-Swift/Kitura-Starter-Bluemix) sample project:
+4. From within the Docker container, execute the `clone_build_kitura.sh` script to build the [Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) sample project:
 
     `# /root/clone_build_kitura.sh`
 
     The last line should be:
 
-    `>> Build for Kitura-Starter-Bluemix completed (see above for results).`
+    `>> Build for Kitura-Starter completed (see above for results).`
 
-5. You can now run the Kitura-Starter-Bluemix executable inside the Docker container:
+5. You can now run the Kitura-Starter executable inside the Docker container:
 
     `# /root/start_kitura_sample.sh`
 
