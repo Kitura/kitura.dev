@@ -9,7 +9,12 @@ lang: en
 redirect_from: "/starter/xcode.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
-# Setting up an Xcode project for your Kitura application 
+
+<div class="titleBlock">
+	<h1>Building within Xcode</h1>
+</div>
+
+## Setting up an Xcode project for your Kitura application 
 
 You can develop, test and run your Kitura app in Xcode. This gives you productivity features such as debugging, autocompletion, and syntax checking.
 
@@ -23,7 +28,8 @@ Swift Package Manager can generate an Xcode project for you by reading your proj
 4. *Change the build scheme to your executable*. Xcode defaults to the module of the same name, which won't run.
 5. Run.
 
-# Develop iOS application and Kitura on the same workspace
+<hr>
+## Develop iOS application and Kitura on the same workspace
 
 1. Follow the above instructions for creating an Xcode project for your Kitura app. For example, `./MyApp-server.xcodeproj`
 2. Create a new iOS project and sources in a new subdirectory e.g. `client/MyApp-ios.xcodeproj`

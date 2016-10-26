@@ -10,15 +10,17 @@ redirect_from: "/starter/testing.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
-# Testing your Kitura Apps
+<div class="titleBlock">
+	<h1>Testing your Kitura apps</h1>
+	<p>This article will walk you through setting up tests in accordance of the XCTest framework, which is bundled with the Swift binary.</p>
+</div>
 
-This article will walk you through setting up tests in accordance of the XCTest framework which is bundled with the Swift binary.
-
-# Setting up the Tests directory
+## Setting up the Tests directory
 1. In the root level of your project, create a folder called `Tests`.
 2. Inside the `Tests` directory you'll need to create a folder for holding your test suite module. It is recommended that it is the same name as your App module.
 
-# Creating Test Cases
+<hr>
+## Creating Test Cases
 1. Create a new Swift file in the test suite folder.
 2. When setting up this file you'll want to add `@testable import <module-name>` for each of the modules you want to test. (Note the `@testable` keyword allows you to call internal methods in your tests)
 3. Create your testing class as a subclass of `XCTestCase`
@@ -29,7 +31,8 @@ static var allTests : [(String, (MyModuleTests) -> () throws -> Void)]
 ```
 This should hold an array of tuples matching a string name to the function name for each test case.
 
-# Creating Test Main (Linux only)
+<hr>
+## Creating Test Main (Linux only)
 1. Inside your `Tests` directory, create a new file called `LinuxMain.swift`.
 2. In this file import all your test modules. The names of the test modules are `<folder-name>test`.
 3. Import `XCTest` as well
@@ -41,10 +44,12 @@ XCTMain([
         ])
 ```
 
-# Run Tests
-1. In your projects root directory run the command `swift test` after having built them using `swift build`.
+<hr>
+## Run Tests
+In your projects root directory run the command `swift test` after having built them using `swift build`.
 
-# Example Test File
+<hr>
+## Example Test File
 
 ```swift
 @testable import MyModule
