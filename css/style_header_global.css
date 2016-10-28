@@ -165,7 +165,7 @@ footer .links a {
   }
   .sticky-header nav ul {
   flex-direction: column;
-  
+
 }
 .sticky-header nav ul li {
   padding-top : 10px;
@@ -386,7 +386,7 @@ header {
     letter-spacing: 0.5px;
     font-weight: 100;
 }
-  
+
 #logo .kitura {
   font-weight: 100;
   display: block;
@@ -444,7 +444,7 @@ header {
   #navmenu {
     left: 0;
     padding: 0;
-    top: 2px;
+    transform: translateY(-2px);
     background: #fff;
     width: 100%;
     display: none;
@@ -517,7 +517,7 @@ header {
 
 }
 
-.drop { 
+.drop {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 100%;
   color: #90b2bf;
