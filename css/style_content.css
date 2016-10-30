@@ -9,7 +9,7 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: 15px;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -21,18 +21,19 @@ body {
 })*/
 
 h1, h2, h3 {
-  margin: 50px 0px 5px 0px;
+  margin: 40px 0 0;
   color: #353535;
 }
 
 h1 {
-  font-size: 3.1em;
+  font-size: 2.6em;
   font-weight: 100;
   line-height: 60px;
+  color: #152333;
 }
 
 h2 {
-	font-size: 2em;
+	font-size: 1.8em;
 	font-weight: 400;
 }
 
@@ -56,6 +57,15 @@ p {
 
 strong, th {
   color: #353535;
+}
+
+blockquote {
+  background-color: rgba(0, 187, 230, 0.13);
+  padding: 0.1px 30px;
+  color: #152333;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
 }
 
 #announcements {
@@ -104,8 +114,8 @@ strong, th {
 }
 
 .content {
-    margin: 90px auto 7%;
-    max-width: 1000px;
+    margin: 80px auto 7%;
+    max-width: 900px;
     padding: 0px 5% 0px;
 }
 
@@ -163,7 +173,7 @@ li code {
 hr {
 	height: 1px;
 	padding: 0;
-	margin: 60px 0 5px 0;
+	margin: 30px 0 5px 0;
 	background-color: rgb(240,240,240);
 	border: 0;
 }
@@ -178,24 +188,23 @@ hr {
 
 .titleBlock {
 	border-bottom: 1px solid rgb(240,240,240);
-	padding-bottom: 30px;
-	margin-bottom: 30px;
+	padding-bottom: 27px;
+  margin-bottom: 15px;
 }
 
 .titleBlock h1 {
 	text-align: center;
 	font-weight: 100 !important;
+  margin-bottom: 0px;
 }
 
 .titleBlock p {
 	text-align: center;
 	font-weight: 100 !important;
-	font-size: 1.5em;
+	font-size: 1.2em;
+  margin-bottom: 0px;
 }
 
-/*ul:not(#navmenu) > li {
-		list-style-image: url('../assets/blueDotSmall.png');
-}*/
 
 /* links */
 
@@ -270,10 +279,13 @@ a {
 }
 
 /* code */
-code {
+
+pre code {
+  overflow: auto;
+  white-space: pre !important;
 }
 
-p code, td code {
+p code, td code, li code {
   color: rgb(52, 57, 63);
   font-weight: 600;
   padding-left: 2px;
@@ -291,6 +303,7 @@ pre {
   -webkit-box-shadow: 0px 2.5px 0px 0px rgba(195, 195, 195, 1);
   -moz-box-shadow: 0px 2.5px 0px 0px rgba(195, 195, 195, 1);
   box-shadow: 0px 2.5px 0px 0px rgba(195, 195, 195, 1);
+  margin-top: 14px !important;
 }
 
 /* top button */
@@ -514,15 +527,6 @@ html[xmlns] .clearfix {
   width: 200px;
 }
 
-.button {
-  display: block;
-  padding: 3px 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-  color: #555;
-}
-
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
 
   #sponsor {
@@ -557,9 +561,9 @@ h2 a {
 
 @media all and (max-width: 899px) {
 
-body {
-  font: 400 12.5px "Open Sans", sans-serif;
-}
+  body {
+    font: 400 12.5px "Open Sans", sans-serif;
+  }
 
   #conference a img {
     width: 150px;
@@ -577,19 +581,19 @@ body {
 
   #logo {
 	margin-left: 11px !important;
-}
+  }
 
   ul {
     padding-left: 5%;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 28px;
     line-height: 26px;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 1.8em;
     line-height: 25px;
   }
 
@@ -627,10 +631,41 @@ body {
     width: 90%;
   }
 
-  /*.content p img {
-    width: 98%;
-    height: 98%;
-  }*/
+  h2 {
+    margin: 35px 0px 5px 0px;
+  }
+
+  hr {
+    margin: 30px 0 5px 0;
+  }
+
+  .titleBlock {
+    margin-bottom: 25px;
+  }
+
+  .content {
+    margin: 80px auto 7%;
+    max-width: 700px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  h2 {
+    margin: 25px 0px 5px 0px;
+  }
+
+  hr {
+    margin: 15px 0 5px 0;
+  }
+  .titleBlock {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+
+  .content {
+    margin: 80px auto 7%;
+  }
+}
 
 @media all and (max-width: 420px) {
 

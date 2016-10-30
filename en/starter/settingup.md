@@ -12,11 +12,11 @@ redirect_from: "/starter/setting up.html"
 
 <div class="titleBlock">
 	<h1>Setting Up</h1>
+	<p>Kitura can run on both macOS and Linux.
+	<br>
+	To start, you’ll need to install a few prerequisites.</p>
 </div>
 
-Kitura can run on both macOS and Linux. To start, you'll need to install a few prerequisites.
-
-<hr>
 ## macOS
 
 <span class="arrow">&#8227;</span> Download and install [Xcode 8.1](https://developer.apple.com/download/).

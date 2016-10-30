@@ -1,7 +1,7 @@
 ---
 ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
-### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE. 
-### DO NOT CHANGE ANY OTHER TEXT. 
+### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
+### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
 title: Response Handlers
 menu: resources
@@ -9,7 +9,11 @@ lang: en
 redirect_from: "/resources/tutorial-todo.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
-Kitura allows a variety of ways to specify handlers in order to express complex behavior.
+
+<div class="titleBlock">
+	<h1>Response handlers</h1>
+	<p>Kitura allows a variety of ways to specify handlers in order to express complex behavior</p>
+</div>
 
 ## Multi-handlers
 
@@ -26,19 +30,23 @@ router.get("foo", handler: { request, response, next in
 })
 ```
 
+---
+
 ## Multi-HTTP Verbs
 
 Multiple HTTP verbs can be specified for one path using the `route` method.
 
 ```swift
 router.route("foo")
-.get() { request, response, next in 
+.get() { request, response, next in
     // Get logic here
 }
-.post() { request, response, next in 
+.post() { request, response, next in
     // Post logic here
 }
 ```
+
+---
 
 ## Sub-routers
 

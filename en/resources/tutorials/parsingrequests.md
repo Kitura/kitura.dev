@@ -1,7 +1,7 @@
 ---
 ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
-### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE. 
-### DO NOT CHANGE ANY OTHER TEXT. 
+### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
+### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
 title: Parsing Requests
 menu: resources
@@ -10,11 +10,14 @@ redirect_from: "/resources/tutorial-todo.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
-Below are examples showing the different ways that data can be parsed in Kitura.
+<div class="titleBlock">
+  <h1>Parsing requests</h1>
+  <p>Examples showing the different ways that data can be parsed in Kitura</p>
+</div>
 
-### Parsing URL Encoded Parameters
+## Parsing URL Encoded Parameters
 
-You can specify matching to a URL parameter by starting the path name with a ":". The name afterwards is the key to the parameter dictionary
+You can specify matching to a URL parameter by starting the path name with a "`:`". The name afterwards is the key to the parameter dictionary
 
 ```swift
 router.get("/name/:name") { request, response, _ in
@@ -24,7 +27,9 @@ router.get("/name/:name") { request, response, _ in
 ```
 This will match to `/name/Bob`, `/name/Joe` but not `/name`
 
-### Parsing Query Parameters
+---
+
+## Parsing Query Parameters
 
 You can access query parameters through the `queryParameters` dictionary in `RouterRequest`
 
@@ -37,7 +42,9 @@ router.get("/name") { request, response, _ in
 
 In this example, if the incoming URL `/name?name=Dan`, then the output will be "Hello Dan".
 
-### Parsing String Posts
+---
+
+## Parsing String Posts
 
 For post requests, the post body can be read as a string with the `readString` method.
 
@@ -48,19 +55,21 @@ router.post("/name") { request, response, _ in
 }
 ```
 
-### Parsing JSON Posts
+---
+
+## Parsing JSON Posts
 
 The built in body parsing middleware can parse a variety of body types including JSON.
 
-1. Import SwiftyJSON by adding it to your `Package.swift` file and by adding `import SwiftyJSON` to the top of your file.
+<span class="arrow">&#8227;</span> Import SwiftyJSON by adding it to your `Package.swift` file and by adding `import SwiftyJSON` to the top of your file.
 
-2. Specify that the body parser should be run on all paths starting with `/name`
+<span class="arrow">&#8227;</span> Specify that the body parser should be run on all paths starting with `/name`
 
 ```swift
 router.all("/name", middleware: BodyParser())
 ```
-  
-3. Specify your path, retrieving the parsed body from the body property.
+
+<span class="arrow">&#8227;</span> Specify your path, retrieving the parsed body from the body property.
 
 ```swift
 router.post("/name") { request, response, next in
@@ -68,7 +77,7 @@ router.post("/name") { request, response, next in
         next()
         return
     }
-    
+
     switch(parsedBody) {
     case .json(let jsonBody):
             let name = jsonBody["name"].string ?? ""
@@ -79,4 +88,3 @@ router.post("/name") { request, response, next in
     next()
 }
 ```
-

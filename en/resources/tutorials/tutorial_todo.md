@@ -1,7 +1,7 @@
 ---
 ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
-### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE. 
-### DO NOT CHANGE ANY OTHER TEXT. 
+### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
+### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
 title: To-do List Tutorial
 menu: resources
@@ -10,7 +10,9 @@ redirect_from: "/resources/tutorial-todo.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
-# Creating a to-do list app
+<div class="titleBlock">
+	<h1>Creating a to-do list app</h1>
+</div>
 
 For this tutorial, we follow the API created for web-based to-do lists [TodoMVC](http://todomvc.com). You can view many framework and language implementations of this same API on [TodoBackend](http://www.todobackend.com). We will implement our own in Swift. If you want to grab the source of the finished project:
 
@@ -61,7 +63,7 @@ let package = Package(
 
 4) Create a `main.swift` file:
 
-In order to use Kitura in your application, you must add the Kitura module to your application: 
+In order to use Kitura in your application, you must add the Kitura module to your application:
 
 ```swift
 import Kitura
@@ -230,7 +232,7 @@ func add(title: String, order: Int, completed: Bool) -> TodoItem {
 
         var original: String
         original = String(self.idCounter)
-        
+
         let newItem = TodoItem(id: original,
             order: order,
             title: title,

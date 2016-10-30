@@ -1,7 +1,7 @@
 ---
 ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
-### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE. 
-### DO NOT CHANGE ANY OTHER TEXT. 
+### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
+### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
 title: Sessions
 menu: resources
@@ -10,12 +10,17 @@ redirect_from: "/resources/sessions.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+<div class="titleBlock">
+	<h1>Adding sessions with Kitura-Session</h1>
+</div>
+
 You can save user session data in your Kitura app by using the `Kitura-Session` middleware. In this tutorial, we will be storing an email address in our session and destroying our session data to emulate logging in and out of a website.
 
-How to setup Kitura-Session
--
+---
 
-Before being abe to create sessions, you must have the `Kitura-Session` dependency added in your `Package.swift` file: 
+## How to set up Kitura-Session
+
+<span class="arrow">&#8227;</span> Before being abe to create sessions, you must have the `Kitura-Session` dependency added in your `Package.swift` file:
 
 ```swift
 .Package(url: "https://github.com/IBM-Swift/Kitura-Session.git"),
@@ -23,7 +28,7 @@ Before being abe to create sessions, you must have the `Kitura-Session` dependen
 
 >Hint: If you have already built your app you will need to generate a new xcodeproj in order to use `import KituraSession`
 
-To integrate sessions in your Kitura app, you will need the following imports:
+<span class="arrow">&#8227;</span> To integrate sessions in your Kitura app, you will need the following imports:
 
 ```swift
 import Foundation
@@ -31,7 +36,7 @@ import KituraSession
 import SwiftyJSON
 ```
 
-Next, you want your Kitura router to use the session middleware and have the ability to store the current session in a variable:
+<span class="arrow">&#8227;</span> Next, you want your Kitura router to use the session middleware and have the ability to store the current session in a variable:
 
 ```swift
 // Where we will store the current session data
@@ -43,20 +48,23 @@ let session = Session(secret: "kitura_session")
 router.all(middleware: session)
 ```
 
+---
 
-# Creating session data
+## Creating session data
 
-We will be adding two routes: `/` and `/login`. Starting with the `/login` router, which is where we will be getting the `POST` data from the login: 
+We will be adding two routes: `/` and `/login`.
+
+<span class="arrow">&#8227;</span> Start with the `/login` router, which is where we will be getting the `POST` data from the login:
 
 ```swift
 router.post("/login") {
     request, response, next in
-    
-    //Get current session 
+
+    //Get current session
     sess = request.session
 ```
 
-In order to get the data from the request we must add another middleware:
+<span class="arrow">&#8227;</span> To get the data from the request, we must add another middleware:
 
 ```swift
 router.all(middleware: session)
@@ -64,11 +72,11 @@ router.all(middleware: session)
 router.all(middleware: BodyParser())
 ```
 
-Kitura can get both urlEncoded and JSON data using the `BodyParser()` middleware:
+<span class="arrow">&#8227;</span> Kitura can get both urlEncoded and JSON data using the `BodyParser()` middleware:
 
 ```swift
     var maybeEmail: String?
-    
+
     switch request.body {
     case .urlEncoded(let params)?:
         maybeEmail = params["email"]
@@ -78,11 +86,11 @@ Kitura can get both urlEncoded and JSON data using the `BodyParser()` middleware
     }
 ```
 
-Next we will:
+<span class="arrow">&#8227;</span> Next we will:
 
-- add the email value to our session
-    - In order to add the value we must convert to JSON format 
-- respond back to the client:
+- Add the email value to our session
+    - To add the value we must convert to JSON format
+- Respond back to the client:
 
 ```swift
     if let email = maybeEmail, let sess = sess {
@@ -91,16 +99,16 @@ Next we will:
     }
 }
 ```
--
-Now we can add our route for `"/"` :
+
+<span class="arrow">&#8227;</span> Now we can add our route for `"/"` :
 
 ```swift
 router.get("/") {
     request, response, next in
-    
+
     //Again get the current session
     sess = request.session
-    
+
     //Check if we have a session and it has a value for email
     if let sess = sess, let email = sess["email"].string {
         try response.send(fileName: pathToFile).end()
@@ -112,7 +120,11 @@ router.get("/") {
 
 The above snippet checks whether or not the user has already "logged in" and if they have routes straight to `index.html`, otherwise it requests the user to "log in" to gain access.
 
-Once we have set that up we can create some basic HTML and jQuery to use what we have made. For this example we will be creating two HTML files, `login.html` and `index.html`. 
+---
+
+## HTML and jQuery
+
+Once we have set that up we can create some basic HTML and jQuery to use what we have made. For this example we will be creating two HTML files, `login.html` and `index.html`.
 
 Our `login.html` will look something like this:
 
@@ -136,7 +148,7 @@ Our `login.html` will look something like this:
             });
         });
      </script>
-        
+
 
         <h1>Please login</h1>
         <input type="text" size="40" placeholder="Type your email" id="email"><br />
@@ -144,10 +156,11 @@ Our `login.html` will look something like this:
         <input type="button" value="Submit" id="submit">
 ```
 
-Our `index.html` can look like anything for now.
+<span class="arrow">&#8227;</span> Our `index.html` can look like anything for now.
 
--
-So far we have:
+---
+
+## So far, we have:
 
 - Created a session
 - Used the session data to determine what to respond with
@@ -158,11 +171,11 @@ All of this allows a "user" to "login" to the website and have the ability to re
 Next:
 
 - We will destroy session data
-- Customize our session e.g How long a session will last etc.
+- Customize our session, e.g. how long a session will last.
 
--
+---
 
-# Destroying session data
+## Destroying session data
 
 We are going to add another route for `/logout` now, so we can destroy all our session data.
 
@@ -171,7 +184,7 @@ Destroying session data is very simple:
 ```swift
 router.post("/logout") {
     request, response, next in
-    
+
     //Destroy all data in our session
     sess?.destroy() {
         (error: NSError?) in
@@ -212,8 +225,9 @@ And the html:
 ```
 Clicking on the button will destroy the session data and take us back to the login page.
 
--
-#Customizing your session
+---
+
+## Customizing your session
 
 To customize your session you will have to add some extra values when you create your session:
 
@@ -231,7 +245,8 @@ public init(secret: String, cookie: [CookieParameter]?=nil, store: Store?=nil)
     - maxAge: defaults to *no expiration*
 - store: is an instance of a plugin for session backing store that implements Store protocol. If not set, InMemoryStore is used (all data will be lost on server restart).  
 
+---
 
-Notes
--
+## Notes
+
 To stop all data being lost on server restart, you can use [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) along with a redis server
