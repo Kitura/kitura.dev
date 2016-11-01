@@ -6,7 +6,7 @@ layout: page
 title: Writing Custom Paths
 menu: resources
 lang: en
-redirect_from: "/resources/pathsyntax.html"
+redirect_from: "/resources/tutorials/pathsyntax.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
