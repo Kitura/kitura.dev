@@ -24,6 +24,10 @@ Learn how to parse query and URL parameters also handle JSON requests.
 
 Learn how to define response handlers for complex routes.
 
+### [Writing Custom Paths](/en/resources/tutorials/pathsyntax.html)
+
+Learn how to define routes using custom paths, including parameters and custom matching with regular expressions.
+
 ## Security 
 
 ### [Adding Authentication with Kitura-Credentials](/en/resources/tutorials/credentials.html)
