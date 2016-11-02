@@ -132,5 +132,5 @@ Kitura.run()
 
 # Next Steps
 
-Learn how to [Deploy your Application to the Cloud](/en/starter/deploying.html).
+Learn how to [Deploy your Application to the Cloud](/{{ page.lang }}/starter/deploying.html).
 

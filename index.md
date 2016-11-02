@@ -20,7 +20,7 @@ redirect_from: "/en/index.html"
           <img class="icon" src="../assets/appIcon@2x.png" height="125" width="125"/>
           <h1>Kitura</h1>
           <p class="text">A high performance and simple to use web framework for building modern Swift applications.</p>
-          <a href="/en/starter/settingup.html"><div class="button"><span class="store-button">Get started with Kitura</span></div></a>
+          <a href="/{{ page.lang }}/starter/settingup.html"><div class="button"><span class="store-button">Get started with Kitura</span></div></a>
         </section>
 
         <section class="integrate">

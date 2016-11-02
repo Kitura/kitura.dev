@@ -42,7 +42,7 @@ let package = Package(
  ])
 ```
 
->Tip: If you generated your Xcode project previously, you have to [regenerate](http://www.kitura.io/en/starter/xcode.html) it once you add a new dependency so Xcode will be aware of the added dependency.
+>Tip: If you generated your Xcode project previously, you have to [regenerate](/{{ page.lang }}/starter/xcode.html) it once you add a new dependency so Xcode will be aware of the added dependency.
 
 
 # Adding your template files to your Kitura app
