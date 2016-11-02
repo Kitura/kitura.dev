@@ -38,4 +38,4 @@ $ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
 
 # Next Steps
 
-Now you are now ready to develop your first Kitura app. Learn how to [Get Started](/en/starter/gettingstarted.html).
+Now you are now ready to develop your first Kitura app. Learn how to [Get Started](/{{ page.lang }}/starter/gettingstarted.html).
