@@ -55,33 +55,34 @@ You can convert your certificate to PKCS#12 format using
 $ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem
 ```
 
-Place your certificate and key in `/tmp/Creds` folder.
+Place your certificate and key in `/tmp/Creds/Self-Signed` folder.
 
 ## Configuring Kitura for SSL/TLS
 
-We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter _usingSelfSignedCerts_ to true. 
-
-On Linux, we also set the cipherSuite to _All_ to indicate that our server supports all the cipher suits. This is currently not needed on macOS.
+We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter `usingSelfSignedCerts` to true. 
 
 
 ```swift
+import Kitura
+
+let router = Router()
+
 let myCertPath = "/tmp/Creds/Self-Signed/cert.pem"
 let myKeyPath = "/tmp/Creds/Self-Signed/key.pem"
 
 let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil, usingCertificateFile: myCertPath, withKeyFile: myKeyPath, usingSelfSignedCerts: true)
 
-mySSLConfig.cipherSuite = "ALL"
-
 router.get("/") {
-request, response, next in
-response.send("Hello, World!")
-next()
+    request, response, next in
+    response.send("Hello, World!")
+    next()
 }
 
 Kitura.addHTTPServer(onPort: 8090, with: router, withSSL: mySSLConfig)
+Kitura.run()
 ```
 
-Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on ```localhost:8090```, you can test out the application by opening a browser on:
+Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on `localhost:8090`, you can test out the application by opening a browser on:
 
 ```
 https://localhost:8090
