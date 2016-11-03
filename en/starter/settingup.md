@@ -19,7 +19,7 @@ Kitura can run on both macOS and Linux. To start, you'll need to install a few p
 
 ## macOS
 
-1. Download and install [Xcode 8](https://developer.apple.com/download/).
+1. Download and install [Xcode 8.1](https://developer.apple.com/download/).
 
 ## Ubuntu Linux
 
@@ -32,7 +32,7 @@ $ sudo apt-get update
 $ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
 ```
 
-2. Download a Swift 3.0 toolchain from [swift.org](https://swift.org/download/).
+2. Download Swift 3.0.1 toolchain from [swift.org](https://swift.org/download/).
 
 3. After extracting the `.tar.gz` file, update your `PATH` environment variable so that it includes the extracted tools: `export PATH=<path to uncompressed tar contents>/usr/bin:$PATH`.
 
