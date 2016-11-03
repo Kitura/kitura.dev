@@ -21,7 +21,7 @@ You might also like to make contributions in other languages, by translating the
 Follow these steps:
 
 1. Clone the kitura.io repository
-2. Find the 2-digit ISO 639-1 code for the language you wish to translate into.
+2. Find the 2-digit ISO 639-1 code for the language you wish to translate into. See [Language codes - ISO 639](http://www.iso.org/iso/language_codes)
 3. Create a directory that has the ISO 639-1 code.
 4. Copy the following files to the language directory:
 	- `index.md`
