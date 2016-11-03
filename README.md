@@ -2,7 +2,7 @@
 This is the GitHub repository for [http://www.kitura.io](http://www.kitura.io), which is hosted as a GitHub pages website
 
 ## Contributing
-We welcome all improvements to this website.  Please open Issues or Pull Requests.
+We welcome all improvements to this website.  Please see our [Contributing guidelines](CONTRIBUTING.md).
 
 
 ## Local setup
