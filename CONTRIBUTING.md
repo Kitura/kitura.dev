@@ -3,7 +3,7 @@
 Content on this site is licensed under the Apache Licence, Version 2.0.
 
 **Important**: If you clone this site to a Windows system you must configure git to handle the correct line ending characters by running the following command:
-'git config --global core.autocrlf true`
+`git config --global core.autocrlf true`
 
 Topics in the English language can be found in the `en/` folder. Within this folder, topics for the website are contained in folders that represent the website menu: 
 
