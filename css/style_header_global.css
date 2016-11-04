@@ -376,7 +376,7 @@ header {
     width: auto;
     border-left: none;
     background-image: url(../assets/smallApp@2x.png);
-    background-position: calc(50% - 45px) calc(50% + 5px);
+    background-position: calc(50% - 48px) calc(50% + 0px);
     background-size: 30px;
     background-repeat: no-repeat;
 }
@@ -416,6 +416,7 @@ header {
     width: 100%;
     margin-left: -23px;
     padding-bottom: 0;
+    background-position: calc(50% - 50px) calc(50% + 5px);
   }
 
   #logo a {
