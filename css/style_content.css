@@ -295,7 +295,7 @@ a {
 /* code */
 
 code {
-  font-family: "Courier New", Courier, monospace;
+  font-family: Consolas, monospace;
 }
 
 pre code {
@@ -305,12 +305,14 @@ pre code {
 
 p code, td code, li code {
   color: rgb(52, 57, 63);
+  font-family: Courier, monospace;
   font-weight: 600;
   padding-left: 2px;
 }
 
 pre {
   color: #666;
+  font-family: Consolas, monospace;
   font-size: 14px;
   line-height: 1.4;
   padding: 16px;
