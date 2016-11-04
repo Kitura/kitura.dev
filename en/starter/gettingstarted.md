@@ -40,7 +40,7 @@ myFirstProject
 └── Tests
 </pre>
 
-> Note: For more information on the Swift Package Manager, visit [swift.org](https://swift.org/package-manager).
+> ![lightbulb] For more information on the Swift Package Manager, visit [swift.org](https://swift.org/package-manager).
 
 ---
 <span class="arrow">&#8227;</span> In `Package.swift`, add Kitura as a dependency for your project.
@@ -84,7 +84,6 @@ Kitura.run()
 ```
 $ swift build
 ```
-Instead, you can also copy our [Makefile and build scripts](https://github.com/IBM-Swift/Package-Builder/blob/master/build) to your project directory and run `make build`. You may want to customize this Makefile and use it for building, testing and running your application. For example, you can clean your build directory, refetch all the dependencies, build, test and run your application by running `make clean refetch test run`.
 
 ---
 <span class="arrow">&#8227;</span> Now run your new web application:
@@ -145,3 +144,6 @@ Kitura.run()
 ## Next Steps
 
 Learn how to [Deploy your Application to the Cloud](/{{ page.lang }}/starter/deploying.html).
+
+
+[lightbulb]: ../../assets/lightbulb-yellow.png

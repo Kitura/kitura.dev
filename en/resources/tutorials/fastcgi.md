@@ -112,7 +112,7 @@ location / {
 }
 ```
 
-> Note: Please ensure that `include fastcgi_params;` is included along with your `fastcgi_pass` directive (as in the above examples). This ensures that Nginx transmits additional, mandatory header information to Kitura.
+> ![lightbulb] Please ensure that `include fastcgi_params;` is included along with your `fastcgi_pass` directive (as in the above examples). This ensures that Nginx transmits additional, mandatory header information to Kitura.
 
 ### Apache 2.4
 
@@ -158,3 +158,6 @@ As in the Nginx examples shown earlier in this document, you may want to configu
   ProxyPass / "fcgi://127.0.0.1:9000/"
 </VirtualHost>
 ```
+
+
+[lightbulb]: ../../../assets/lightbulb-yellow.png

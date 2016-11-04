@@ -37,6 +37,11 @@ h2 {
 	font-weight: 400;
 }
 
+h3 {
+  font-weight: 400;
+  margin: 1.5em 0 -0.5em;  /* Reduces the space between links and paragraphs on Tutorials page. Avoid H3 in other contexts. */
+}
+
 .content {
   line-height: 1.8em;
 }
@@ -60,12 +65,21 @@ strong, th {
 }
 
 blockquote {
-  background-color: rgba(0, 187, 230, 0.13);
+  background-color: rgba(255, 192, 1, 0.14);
   padding: 0.1px 30px;
+  margin-left: 50px;
   color: #152333;
-  -webkit-border-radius: 1em;
-  -moz-border-radius: 1em;
-  border-radius: 1em;
+  border-left: 4.8px solid #ffc001;
+}
+
+blockquote p {
+  margin: 6px 0;
+}
+
+blockquote img {
+  transform: translate(-78px, -0.35em);
+  position: absolute;
+  width: 35px;
 }
 
 #announcements {
@@ -180,7 +194,7 @@ hr {
 
 .arrow {
 	font-size: 2.5em;
-	color: #00bbe6;
+	color: #555;
 	margin-right: 5px;
 	transform: translateY(8px);
 	display: inline-block;
@@ -279,6 +293,10 @@ a {
 }
 
 /* code */
+
+code {
+  font-family: "Courier New", Courier, monospace;
+}
 
 pre code {
   overflow: auto;

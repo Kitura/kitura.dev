@@ -80,6 +80,9 @@ router.get(“/login/facebook/callback”, handler: credentials.authenticate(cre
 
 With these endpoints, you can redirect users to `/login/facebook` to begin the login process.
 
-> Note: Make sure to whitelist `<your-app-domain>/login/facebook/callback` in your Facebook app’s developer settings in order to allow Facebook to redirect users back to your callback.
+> ![lightbulb] Make sure to whitelist `<your-app-domain>/login/facebook/callback` in your Facebook app’s developer settings in order to allow Facebook to redirect users back to your callback.
 
 That’s the basic setup for web-based Facebook login. Please refer to Kitura-CredentialsFacebook for more usage and configurations.
+
+
+[lightbulb]: ../../../assets/lightbulb-yellow.png
