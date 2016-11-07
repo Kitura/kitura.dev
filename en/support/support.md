@@ -1,7 +1,7 @@
 ---
 ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
-### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE. 
-### DO NOT CHANGE ANY OTHER TEXT. 
+### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
+### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
 title: Support
 menu: resources
@@ -10,9 +10,10 @@ redirect_from: "/support/support.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
-# Support
-
-We're excited to play a part in the growing server-side Swift community.  Click below to discover ways to get involved.
+<div class="titleBlock">
+  <h1>Support</h1>
+  <p>We're excited to play a part in the growing server-side Swift community.<br>Click below to discover ways to get involved.</p>
+</div>
 
 ## Found a bug? Want a new feature?
 
@@ -28,8 +29,7 @@ Use the `kitura` tag to search for questions and answers on [Stack Overflow](htt
 
 ## dW Answers
 
-Ask questions on IBM [dW Answers](https://developer.ibm.com/answers/). Search with the `swift` tag, or with `swift-kitura` to narrow the scope. 
+Ask questions on IBM [dW Answers](https://developer.ibm.com/answers/). Search with the `swift` tag, or with `swift-kitura` to narrow the scope.
 
 ## Swift@IBM Developer Center
-Learn more at the [IBM Developer Center for Swift](https://developer.ibm.com/swift/). 
-
+Learn more at the [IBM Developer Center for Swift](https://developer.ibm.com/swift/).

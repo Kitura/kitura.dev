@@ -9,25 +9,37 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: 15px;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
   color: #555;
 }
 
-h1 {
-  font-size: 30px;
-  line-height: 36px;
-}
-
-#intro h3 {
+/*#intro h3 {
   font-weight: normal;
-}
+})*/
 
 h1, h2, h3 {
-  margin: 50px 0px 5px 0px;
+  margin: 40px 0 0;
   color: #353535;
+}
+
+h1 {
+  font-size: 2.6em;
+  font-weight: 100;
+  line-height: 60px;
+  color: #152333;
+}
+
+h2 {
+	font-size: 1.8em;
+	font-weight: 400;
+}
+
+h3 {
+  font-weight: 400;
+  margin: 1.5em 0 -0.5em;  /* Reduces the space between links and paragraphs on Tutorials page. Avoid H3 in other contexts. */
 }
 
 .content {
@@ -35,7 +47,7 @@ h1, h2, h3 {
 }
 
 .content h1 {
-  font-weight: normal;
+  /*font-weight: normal;*/
   margin-bottom: 20px;
 }
 
@@ -52,26 +64,24 @@ strong, th {
   color: #353535;
 }
 
-
-
-/*#overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: #fff;
-  opacity: 0.8;
-  width: 100%;
-  height: 100%;
-  display: none;
-  z-index: 1;
-}*/
-/*
-#home-content {
-  margin: 120px 0 2% 5%;
-  max-width: 900px;
-  padding-right: 9%;
+blockquote {
+  background-color: rgba(255, 192, 1, 0.14);
+  padding: 0.1px 30px;
+  margin-left: 50px;
+  color: #152333;
+  border-left: 4.8px solid #ffc001;
 }
-*/
+
+blockquote p {
+  margin: 6px 0;
+}
+
+blockquote img {
+  transform: translate(-78px, -0.35em);
+  position: absolute;
+  width: 35px;
+}
+
 #announcements {
   margin: 3px 5%;
   max-width: 1005px;
@@ -118,8 +128,8 @@ strong, th {
 }
 
 .content {
-    margin: 90px auto 7%;
-    max-width: 1000px;
+    margin: 80px auto 7%;
+    max-width: 900px;
     padding: 0px 5% 0px;
 }
 
@@ -172,6 +182,44 @@ li code {
   color: #666;
 }
 
+/* Documentation content CSS - version 2 additions */
+
+hr {
+	height: 1px;
+	padding: 0;
+	margin: 30px 0 5px 0;
+	background-color: rgb(240,240,240);
+	border: 0;
+}
+
+.arrow {
+	font-size: 2.5em;
+	color: #555;
+	margin-right: 5px;
+	transform: translateY(8px);
+	display: inline-block;
+}
+
+.titleBlock {
+	border-bottom: 1px solid rgb(240,240,240);
+	padding-bottom: 27px;
+  margin-bottom: 15px;
+}
+
+.titleBlock h1 {
+	text-align: center;
+	font-weight: 100 !important;
+  margin-bottom: 0px;
+}
+
+.titleBlock p {
+	text-align: center;
+	font-weight: 100 !important;
+	font-size: 1.2em;
+  margin-bottom: 0px;
+}
+
+
 /* links */
 
 a {
@@ -193,25 +241,6 @@ a {
   width: 90%;
 }
 
-/*
-
-#logo {
-  position: fixed;
-  top: 2px;
-  margin: 0;
-  padding: 10px 25px;
-  width: auto;
-  border-left: none;
-}
-
-#logo .kitura {
-  display: block;
-  font: 25px "Helvetica Neue", "Open Sans", sans-serif;
-  font-weight: 100;
-  color: #444;
-}
-
-*/
 #description .kitura {
   display: block;
   font: 4.5em "Helvetica Neue", "Open Sans", sans-serif;
@@ -262,41 +291,39 @@ a {
 #sponsorship h3 {
   color: #08592B;
 }
-/*
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #eee;
-  width: 100%;
-  height: 55px;
-  z-index: 100;
-  border-bottom: 1px solid #ddd;
-}
-
-.scroll header {
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 0 4px #eee;
-}
-*/
 
 /* code */
+
 code {
+  font-family: Consolas, monospace;
 }
 
-p code, td code {
+pre code {
+  overflow: auto;
+  white-space: pre !important;
+}
+
+p code, td code, li code {
   color: rgb(52, 57, 63);
+  font-family: Courier, monospace;
+  font-weight: 600;
+  padding-left: 2px;
 }
 
 pre {
   color: #666;
+  font-family: Consolas, monospace;
   font-size: 14px;
   line-height: 1.4;
   padding: 16px;
-  border-radius: 5px;
-  background-color: rgb(235, 235, 235);
+  border-radius: 8px;
+  background-color: rgb(240, 240, 240) !important;
   overflow: auto;
   white-space: pre-wrap;
+  -webkit-box-shadow: 0px 2.5px 0px 0px rgba(195, 195, 195, 1);
+  -moz-box-shadow: 0px 2.5px 0px 0px rgba(195, 195, 195, 1);
+  box-shadow: 0px 2.5px 0px 0px rgba(195, 195, 195, 1);
+  margin-top: 14px !important;
 }
 
 /* top button */
@@ -520,77 +547,6 @@ html[xmlns] .clearfix {
   width: 200px;
 }
 
-.button {
-  display: block;
-  padding: 3px 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-  color: #555;
-}
-
-/*
-#mobile-menu {
-  display: none;
-  position: relative;
-  top: 9px;
-  left: 0;
-}
-
-#nav-button {
-  position: absolute;
-  left: 16px;
-}
-*/
-/*
-pre, code {
-  white-space: pre-wrap !important;
-}*/
-/*
-#strongloop-header {
-  font-size: 0.6em;
-  display: block;
-  position: absolute;
-  right: 2%;
-  top: 11px;
-  width: 120px;
-  border-radius: 3px;
-  color: #08592B;
-  padding: 3px;
-}
-
-footer {
-  font-size: 11px;
-  margin: 30px 10px 30px 10px;
-}
-
-#footer-content {
-  display: table;
-  margin: 0 auto;
-}
-
-#footer-content div {
-  float: left;
-  margin-right: 20px;
-  background-repeat: no-repeat;
-  background-position: 0 1px;
-  padding-bottom: 4px;
-}
-
-#sponsor {
-  background-image: url(/images/strongloop-logo.png);
-  background-size: 20px 16px;
-  padding-left: 25px;
-}
-
-#fork {
-  background-image: url(/images/fork-icon.png);
-  background-size: 11px 16px;
-  padding-left: 15px;
-}
-
-*/
-
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
 
   #sponsor {
@@ -606,122 +562,6 @@ footer {
   }
 
 }
-
-/*
-
-#navbar {
-  padding-left: 10%;
-  max-width: 1193px;
-  position: relative;
-}
-
-#navbar a {
-  color: #666;
-  margin: 0 5px;
-  padding-right: 15px;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-#navbar a.active {
-  font-weight: bold;
-  color: #353535;
-}
-
-*/
-/* dropdown menu */
-/*
-#navmenu {
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  right: 183px;
-  top: 15px;
-  padding-left: 5%;
-  z-index: 1000;
-}
-
-#navmenu > li {
-  list-style: none;
-  padding: 0;
-  float: left;
-}
-
-#navmenu a:hover {
-  text-decoration: none;
-}
-
-.menu ul {
-  display: none;
-}
-
-.menu ul.dropit-submenu {
-  background-color: #fcfcfa;
-  border: 1px solid #b2b2b2;
-  padding: 6px 0;
-  margin: 0 0 0 1px;
-  border-radius: 3px;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
-}
-
-.menu ul.dropit-submenu a {
-  display: block;
-  color: #777;
-  padding: 0 8px 2px 8px;
-}
-
-.menu ul.dropit-submenu a:hover {
-  background: #259dff;
-  color: #fff !important;
-  text-decoration: none;
-}
-*/
-/* secondary menu */
-/*
-#menu {
-  position: fixed;
-  margin: 0;
-  padding: 0 10px 0 0;
-  top: 90px;
-  right: 30px;
-  height: 500px;
-  text-align: right;
-  font-size: 13px;
-  overflow-y: auto;
-}
-
-#menu em {
-  font-weight: bold;
-  color: #888;
-}
-
-#menu li {
-  list-style: none;
-}
-
-#menu ul {
-  height: 0;
-  overflow: hidden;
-}
-
-#menu ul.active {
-  height: auto;
-}
-
-#menu > li > a {
-  color: #353535;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-#menu ul a {
-  color: #555;
-  padding-right: 7px;
-}
-
-#menu ul a.active {
-  color: #259dff;
-}
-*/
 
 /* hash link scroll buffer */
 h2 a:before {
@@ -741,9 +581,9 @@ h2 a {
 
 @media all and (max-width: 899px) {
 
-body {
-  font: 400 12.5px "Open Sans", sans-serif;
-}
+  body {
+    font: 400 12.5px "Open Sans", sans-serif;
+  }
 
   #conference a img {
     width: 150px;
@@ -758,30 +598,22 @@ body {
   #api-doc section {
     padding-left: 0;
   }
-  
+
   #logo {
 	margin-left: 11px !important;
-}
-/*
-  code {
-    word-break: break-all;
-  }*/
-/*
-  .menu ul.dropit-submenu a {
-    font-size: 16px !important;
   }
-*/
+
   ul {
     padding-left: 5%;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 28px;
     line-height: 26px;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 1.8em;
     line-height: 25px;
   }
 
@@ -795,17 +627,7 @@ body {
     line-height: 18px;
     font-weight: normal;
   }
-/*
-  #menu {
-    display: none;
-  }
-*/
-/*
-  #home-content {
-    margin: 100px 0 0 5%;
-    padding-right: 5%;
-  }
-*/
+
   #description {
     margin-top: 35px;
 	margin-bottom: 35px;
@@ -824,142 +646,46 @@ body {
     width: 100%;
     margin-right: 5%;
   }
-/*
-  #logo {
-    position: static;
-    width: 100%;
-  }
 
-  #logo a {
-    display: table !important;
-    margin: 0 auto;
-  }
-
-  #logo .kitura {
-    font-weight: bold;
-  }
-
-  .github-fork-ribbon-wrapper {
-    display: none;
-  }
-
-  #mobile-menu {
-    display: block;
-  }
-*/
   #boxes div {
     width: 90%;
   }
 
-  .content p img {
-    width: 98%;
-    height: 98%;
-  }
-/*
-  #home-menu {
-    display: block;
-    position: absolute;
-    top: 7px;
+  h2 {
+    margin: 35px 0px 5px 0px;
   }
 
-  #navbar {
-    padding: 0;
+  hr {
+    margin: 30px 0 5px 0;
   }
 
-  #navbar a {
-    font-size: 19px;
-    margin: 0;
-    padding-left: 5%;
+  .titleBlock {
+    margin-bottom: 25px;
   }
 
-  #navmenu {
-    left: 0;
-    padding: 0;
-    top: 2px;
-    background: #fff;
-    width: 100%;
-    display: none;
+  .content {
+    margin: 80px auto 7%;
+    max-width: 700px;
   }
-
-  #navmenu > li {
-    float: none;
-    border-bottom: 1px solid #ccc;
-    margin: 0;
-    min-height: 47px;
-    position: relative;
-    background: #eee;
-    cursor: pointer;
-  }
-
-  #navmenu > li:first-child {
-    display: none;
-  }
-
-  #navmenu > li:hover {
-    background: #e9e9e9;
-  }
-
-  #navmenu > li > ul {
-    position: static;
-  }
-
-  .dropit .dropit-submenu {
-    position: static !important;
-  }
-
-  .dropit .dropit-trigger {
-    padding-top: 7px;
-  }
-
-  .menu ul.dropit-submenu {
-    margin-top: 7px;
-    background: #ddd;
-    padding: 0;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    max-height: 190px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-
-  .dropit-trigger > a {
-    display: block;
-    margin-bottom: 8px !important;
-  }
-
-  .menu ul.dropit-submenu a {
-    padding: 5px 5px 5px 5%;
-  }
-
-  .dropit-submenu li {
-    border-bottom: 1px solid #cdcdcd;
-  }
-
-  .dropit-submenu a {
-    padding-left: 10% !important;
-  }
-
-  .menu ul {
-    display: block;
-  }
-
-  .active-mobile-menu {
-    border-bottom: none !important;
-  }
-
-  .active-mobile-menu .dropit-trigger {
-    margin-bottom: 0 !important;
-  }
-
-  .menu ul.dropit-submenu a:hover {
-    background: #cccccc;
-    color: #666 !important;
-  }
-
 }
-*/
+
+@media all and (max-width: 500px) {
+  h2 {
+    margin: 25px 0px 5px 0px;
+  }
+
+  hr {
+    margin: 15px 0 5px 0;
+  }
+  .titleBlock {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+
+  .content {
+    margin: 80px auto 7%;
+  }
+}
 
 @media all and (max-width: 420px) {
 
@@ -970,41 +696,10 @@ body {
   #app-settings-property {
     width: auto;
   }
-/*
-  #strongloop-header {
-    display: none;
-  }
-*/
+
   #description .kitura {
     display: none;
   }
-/*
-  footer {
-    margin: 0;
-  }
-
-  #footer-content {
-    display: block;
-    margin-left: 5%;
-  }
-
-  #footer-content div {
-    clear: both;
-  }
-
-  #sponsor {
-    margin-top: 30px;
-  }
-
-  #fork {
-    margin-left: 7px;
-    margin-top: 2px;
-    margin-bottom: 30px;
-    padding-left: 18px;
-  }
-
-}
-*/
 
 @media all and (max-width: 320px) {
 

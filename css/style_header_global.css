@@ -165,7 +165,7 @@ footer .links a {
   }
   .sticky-header nav ul {
   flex-direction: column;
-  
+
 }
 .sticky-header nav ul li {
   padding-top : 10px;
@@ -238,6 +238,11 @@ footer .links li {
 
 #navmenu a:hover {
   text-decoration: none;
+  color: #a0a0a0 !important;
+}
+
+#navmenu .dropit-submenu li a:hover {
+  color: rgb(52, 57, 63) !important;
 }
 
 .menu ul {
@@ -246,10 +251,9 @@ footer .links li {
 
 .menu ul.dropit-submenu {
   background-color: white;
-  border: 1px solid #b2b2b2;
+  border: 1px solid #dddddd;
   padding: 6px 0;
   margin: 0 0 0 1px;
-  border-radius: 3px;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
 }
 
@@ -260,7 +264,7 @@ footer .links li {
 }
 
 .menu ul.dropit-submenu a:hover {
-  background: #259dff;
+  background: #00bbe6;
   color: #fff !important;
   text-decoration: none;
 }
@@ -309,7 +313,7 @@ footer .links li {
 }
 
 #menu ul a.active {
-  color: #259dff;
+  color: #00bbe6;
 }
 
 /* other missing CSS */
@@ -372,7 +376,7 @@ header {
     width: auto;
     border-left: none;
     background-image: url(../assets/smallApp@2x.png);
-    background-position: calc(50% - 45px) calc(50% + 5px);
+    background-position: calc(50% - 48px) calc(50% + 0px);
     background-size: 30px;
     background-repeat: no-repeat;
 }
@@ -386,7 +390,7 @@ header {
     letter-spacing: 0.5px;
     font-weight: 100;
 }
-  
+
 #logo .kitura {
   font-weight: 100;
   display: block;
@@ -412,6 +416,7 @@ header {
     width: 100%;
     margin-left: -23px;
     padding-bottom: 0;
+    background-position: calc(50% - 50px) calc(50% + 5px);
   }
 
   #logo a {
@@ -444,7 +449,7 @@ header {
   #navmenu {
     left: 0;
     padding: 0;
-    top: 2px;
+    transform: translateY(-2px);
     background: #fff;
     width: 100%;
     display: none;
@@ -517,7 +522,7 @@ header {
 
 }
 
-.drop { 
+.drop {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 100%;
   color: #90b2bf;

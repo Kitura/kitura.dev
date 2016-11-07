@@ -5,9 +5,10 @@ menu: api
 lang: en
 ---
 
-# API reference
-
-Kitura is a modular web framework, comprised of a core plus additional pluggable modules. Click below to view the API reference documentation for each module.
+<div class="titleBlock">
+  <h1>API reference</h1>
+  <p>Kitura is a modular web framework.<br>It is based on a core module with additional pluggable modules.<br>Click below to view the API reference documentation for each module.</p>
+</div>
 
 ## Core
 
