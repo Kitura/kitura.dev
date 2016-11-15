@@ -685,6 +685,10 @@ h2 a {
   .content {
     margin: 80px auto 7%;
   }
+
+  blockquote {
+    margin-right: 0px;
+  }
 }
 
 @media all and (max-width: 420px) {
