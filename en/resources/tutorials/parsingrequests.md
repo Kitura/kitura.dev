@@ -88,3 +88,6 @@ router.post("/name") { request, response, next in
     next()
 }
 ```
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png

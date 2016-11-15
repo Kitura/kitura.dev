@@ -26,7 +26,7 @@ You can save user session data in your Kitura app by using the `Kitura-Session` 
 .Package(url: "https://github.com/IBM-Swift/Kitura-Session.git"),
 ```
 
-> ![lightbulb] If you have already built your app, you will need to generate a new xcodeproj in order to use `import KituraSession`
+> ![tip] If you have already built your app, you will need to generate a new xcodeproj in order to use `import KituraSession`
 
 <span class="arrow">&#8227;</span> To integrate sessions in your Kitura app, you will need the following imports:
 
@@ -252,4 +252,5 @@ public init(secret: String, cookie: [CookieParameter]?=nil, store: Store?=nil)
 To stop all data being lost on server restart, you can use [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) along with a redis server
 
 
-[lightbulb]: ../../../assets/lightbulb-yellow.png
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png

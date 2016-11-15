@@ -80,3 +80,6 @@ class MyModuleTests: XCTestCase {
     }
 }
 ```
+
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png

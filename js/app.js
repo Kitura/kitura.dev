@@ -1,4 +1,3 @@
-
 $(function(){
 
   var doc = $(document);
@@ -21,6 +20,10 @@ $(function(){
       added = false;
     }
   })
+
+  // set bar colour for tips and info blockquotes
+  $('img[alt="info"]').parent().parent().addClass('blue');
+  $('img[alt="tip"]').parent().parent().addClass('yellow');
 
   // code highlight
   $('code.language-js').each(function(){

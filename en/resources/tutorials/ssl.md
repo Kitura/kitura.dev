@@ -97,3 +97,6 @@ https://localhost:8090
 ```
 
 <span class="arrow">&#8227;</span> Notice the `https` in your URL!  You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png

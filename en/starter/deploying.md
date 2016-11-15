@@ -76,3 +76,6 @@ The last line should be:
 You should see an output message that contains the string `Listening on port 8090`.
 
 <span class="arrow">&#8227;</span> Visit `http://localhost:8090/` in your web browser.
+
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
