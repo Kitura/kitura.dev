@@ -78,3 +78,4 @@ A GET request to localhost:8090 will return "Welcome" and a request to localhost
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

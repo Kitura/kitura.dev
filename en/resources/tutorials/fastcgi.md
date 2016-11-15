@@ -161,3 +161,4 @@ As in the Nginx examples shown earlier in this document, you may want to configu
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

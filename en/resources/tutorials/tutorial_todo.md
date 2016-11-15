@@ -330,3 +330,4 @@ This concludes this tutorial. Keep in mind that Kitura is under active developme
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

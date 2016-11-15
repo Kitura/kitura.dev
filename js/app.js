@@ -21,9 +21,10 @@ $(function(){
     }
   })
 
-  // set bar colour for tips and info blockquotes
+  // set bar colour for tip, info, and warning blockquotes
   $('img[alt="info"]').parent().parent().addClass('blue');
   $('img[alt="tip"]').parent().parent().addClass('yellow');
+  $('img[alt="warning"]').parent().parent().addClass('red');
 
   // code highlight
   $('code.language-js').each(function(){

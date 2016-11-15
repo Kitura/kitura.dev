@@ -36,3 +36,4 @@ Learn more at the [IBM Developer Center for Swift](https://developer.ibm.com/swi
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png

@@ -79,3 +79,4 @@ You should see an output message that contains the string `Listening on port 809
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png

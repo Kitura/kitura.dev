@@ -91,3 +91,4 @@ router.post("/name") { request, response, next in
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

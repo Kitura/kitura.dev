@@ -86,3 +86,4 @@ That’s the basic setup for web-based Facebook login. Please refer to Kitura-Cr
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

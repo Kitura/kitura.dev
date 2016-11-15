@@ -254,3 +254,4 @@ To stop all data being lost on server restart, you can use [Kitura-Session-Redis
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

@@ -90,6 +90,16 @@ blockquote img {
   border-left: 4.8px solid #ffc001;
 }
 
+.red {
+  background-color: rgba(216, 30, 0, 0.14);
+  border-left: 4.8px solid #d81e00;
+}
+
+.red img, .blue img {
+  width: 30px;
+  transform: translate(-75px, -0.2em);
+}
+
 #announcements {
   margin: 3px 5%;
   max-width: 1005px;

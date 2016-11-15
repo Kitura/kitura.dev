@@ -147,3 +147,4 @@ Learn how to [Deploy your Application to the Cloud](/{{ page.lang }}/starter/dep
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png

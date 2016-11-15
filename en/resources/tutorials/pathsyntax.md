@@ -110,3 +110,4 @@ In this case, the path `/(\\d+)` will be matched for `/123`, but not `/` or `/ab
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

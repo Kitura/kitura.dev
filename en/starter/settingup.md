@@ -48,3 +48,4 @@ Now you are now ready to develop your first Kitura app. Learn how to [Get Starte
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png
