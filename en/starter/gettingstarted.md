@@ -40,7 +40,7 @@ myFirstProject
 └── Tests
 </pre>
 
-> ![lightbulb] For more information on the Swift Package Manager, visit [swift.org](https://swift.org/package-manager).
+> ![info] For more information on the Swift Package Manager, visit [swift.org](https://swift.org/package-manager).
 
 ---
 <span class="arrow">&#8227;</span> In `Package.swift`, add Kitura as a dependency for your project.
@@ -94,8 +94,8 @@ $ .build/debug/myFirstProject
 ---
 <span class="arrow">&#8227;</span> Open your browser at [http://localhost:8090](http://localhost:8090)
 
+---
 
-<hr>
 ## Add logging (optional)
 
  In the code example above no messages from Kitura will be logged to the console. You may want to add a logger to help diagnose any problems that occur.
@@ -145,5 +145,6 @@ Kitura.run()
 
 Learn how to [Deploy your Application to the Cloud](/{{ page.lang }}/starter/deploying.html).
 
-
-[lightbulb]: ../../assets/lightbulb-yellow.png
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png

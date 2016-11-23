@@ -65,11 +65,9 @@ strong, th {
 }
 
 blockquote {
-  background-color: rgba(255, 192, 1, 0.14);
   padding: 0.1px 30px;
   margin-left: 50px;
   color: #152333;
-  border-left: 4.8px solid #ffc001;
 }
 
 blockquote p {
@@ -80,6 +78,26 @@ blockquote img {
   transform: translate(-78px, -0.35em);
   position: absolute;
   width: 35px;
+}
+
+.blue {
+  background-color: rgba(85, 160, 249, 0.14);
+  border-left: 4.8px solid #55a0f9;
+}
+
+.yellow {
+  background-color: rgba(255, 192, 1, 0.14);
+  border-left: 4.8px solid #ffc001;
+}
+
+.red {
+  background-color: rgba(216, 30, 0, 0.14);
+  border-left: 4.8px solid #d81e00;
+}
+
+.red img, .blue img {
+  width: 30px;
+  transform: translate(-75px, -0.2em);
 }
 
 #announcements {
@@ -684,6 +702,10 @@ h2 a {
 
   .content {
     margin: 80px auto 7%;
+  }
+
+  blockquote {
+    margin-right: 0px;
   }
 }
 

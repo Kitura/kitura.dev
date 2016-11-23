@@ -107,3 +107,7 @@ app.get("/(\\d+)") { req, res, next in
 ```
 
 In this case, the path `/(\\d+)` will be matched for `/123`, but not `/` or `/abc`. The matched parameter can then be referenced via its index; in this case, since this is the first unnamed parameter, its index is `0`.
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

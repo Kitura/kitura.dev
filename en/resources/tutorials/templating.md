@@ -26,7 +26,7 @@ Kitura template engines are classes that implement the `TemplateEngine` protocol
 1. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine)
 2. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
 
-> ![lightbulb] As of September 2016 GRMustache is available on macOS only and has not been fully ported to Swift 3.0. Please follow the [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) community for more information.
+> ![info] As of September 2016 GRMustache is available on macOS only and has not been fully ported to Swift 3.0. Please follow the [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) community for more information.
 
 You can provide your own Kitura template engine by implementing the `TemplateEngine` protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
 
@@ -48,7 +48,7 @@ let package = Package(
  ])
 ```
 
-> ![lightbulb] Tip: if you generated your Xcode project previously, you have to [regenerate](/{{ page.lang }}/starter/xcode.html) it once you add a new dependency so Xcode will be aware of the added dependency.
+> ![tip] If you generated your Xcode project previously, you have to [regenerate](/{{ page.lang }}/starter/xcode.html) it once you add a new dependency so Xcode will be aware of the added dependency.
 
 ---
 
@@ -182,7 +182,7 @@ There are 2 articles.
   - Memory Management with ARC by Kyle Fuller.
 ```
 
-> ![lightbulb] Note how the `context` of the template is defined. The first context contains values for Mustache's tags `name`, `date`, `realDate`, `late` and for GRMustache.swift's filter `format`, while the second context (`context2`) contains a dictionary of arrays that define Stencil's tags for `title` and `author`.
+> ![tip] Note how the `context` of the template is defined. The first context contains values for Mustache's tags `name`, `date`, `realDate`, `late` and for GRMustache.swift's filter `format`, while the second context (`context2`) contains a dictionary of arrays that define Stencil's tags for `title` and `author`.
 
 ---
 
@@ -210,4 +210,6 @@ router.setDefault(templateEngine: MustacheTemplateEngine())
 response.render("document", context: context).
 ```
 
-[lightbulb]: ../../../assets/lightbulb-yellow.png
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

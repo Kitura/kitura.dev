@@ -75,3 +75,7 @@ Kitura.addHTTPServer(onPort: 8090, with: mainRouter)
 Kitura.run()
 ```
 A GET request to localhost:8090 will return "Welcome" and a request to localhost:8090/sub will return "Hello from subsection"
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

@@ -33,3 +33,7 @@ Ask questions on IBM [dW Answers](https://developer.ibm.com/answers/). Search wi
 
 ## Swift@IBM Developer Center
 Learn more at the [IBM Developer Center for Swift](https://developer.ibm.com/swift/).
+
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png

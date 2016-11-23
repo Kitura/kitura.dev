@@ -326,3 +326,8 @@ This concludes this tutorial. Keep in mind that Kitura is under active developme
 1. Add support for editing existing items
 2. Add support for deleting items
 3. Deploy to Bluemix
+
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
