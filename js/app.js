@@ -120,77 +120,8 @@ $(function(){
     $('#overlay').toggle()
   })
 
-  // Force show desktop menu bar on resize to >899px
-/*  var rtime;
-  var timeout = false;
-  var delta = 200;
-  $(window).resize(function() {
-      rtime = new Date();
-      if (timeout === false) {
-          timeout = true;
-          setTimeout(resizeend, delta);
-      }
-  });
-
-  function resizeend() {
-      if (new Date() - rtime < delta) {
-          setTimeout(resizeend, delta);
-      } else {
-          timeout = false;
-          if ($(window).width() > 899) {
-              $('#navmenu').show()
-              $('#overlay').hide()
-          }
-      }
-  }*/
-
-  // dropdown menu
-
-  /*if ('ontouchstart' in document.documentElement) {
-    $('#application-menu').dropit({ action: 'click' })
-    $('#getting-started-menu').dropit({ action: 'click' })
-    $('#guide-menu').dropit({ action: 'click' })
-    $('#advanced-topics-menu').dropit({ action: 'click' })
-    $('#resources-menu').dropit({ action: 'click' })
-    $('#support-menu').dropit({ action: 'click' })
-    $('#lb-menu').dropit({ action: 'click' })
-  }
-  else {
-    $('#application-menu').dropit({ action: 'mouseenter' })
-    $('#getting-started-menu').dropit({ action: 'mouseenter' })
-    $('#guide-menu').dropit({ action: 'mouseenter' })
-    $('#advanced-topics-menu').dropit({ action: 'mouseenter' })
-    $('#resources-menu').dropit({ action: 'mouseenter' })
-    $('#support-menu').dropit({ action: 'mouseenter' })
-    $('#lb-menu').dropit({ action: 'mouseenter' })
-  }*/
 
   // mobile
-
-  // main menu
-  /*$('#navmenu > li').click(function () {
-
-    // applicable only if it has a menu
-    if ($(this).find('ul').length) {
-
-      if ($(this).hasClass('active-mobile-menu')) {
-        $(this).removeClass('active-mobile-menu')
-        $(this).find('.dropit .dropit-submenu').hide()
-      }
-      else {
-        $('.dropit .dropit-submenu').hide()
-        $(this).find('.dropit .dropit-submenu').show()
-        $('#navmenu li.active-mobile-menu').removeClass('active-mobile-menu')
-        $(this).addClass('active-mobile-menu')
-      }
-    }
-    else {
-      var path = $(this).find('a').attr('href')
-      document.location = path
-    }
-
-  })*/
-
 
   // when in mobile mode, menu names should expand the submenu (and not go to the link)
   $('.dropit-trigger a').click(function (e) {
