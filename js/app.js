@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('.menu').dropit();
+});
+
 $(function(){
 
   var doc = $(document);
@@ -69,9 +73,9 @@ $(function(){
 
   });
 
-  $(document).scroll(function() {
+    $(document).scroll(function() {
 
-    var h = closest();
+  var h = closest();
     if (!h) return;
 
 
@@ -116,9 +120,33 @@ $(function(){
     $('#overlay').toggle()
   })
 
+  // Force show desktop menu bar on resize to >899px
+/*  var rtime;
+  var timeout = false;
+  var delta = 200;
+  $(window).resize(function() {
+      rtime = new Date();
+      if (timeout === false) {
+          timeout = true;
+          setTimeout(resizeend, delta);
+      }
+  });
+
+  function resizeend() {
+      if (new Date() - rtime < delta) {
+          setTimeout(resizeend, delta);
+      } else {
+          timeout = false;
+          if ($(window).width() > 899) {
+              $('#navmenu').show()
+              $('#overlay').hide()
+          }
+      }
+  }*/
+
   // dropdown menu
 
-  if ('ontouchstart' in document.documentElement) {
+  /*if ('ontouchstart' in document.documentElement) {
     $('#application-menu').dropit({ action: 'click' })
     $('#getting-started-menu').dropit({ action: 'click' })
     $('#guide-menu').dropit({ action: 'click' })
@@ -135,12 +163,12 @@ $(function(){
     $('#resources-menu').dropit({ action: 'mouseenter' })
     $('#support-menu').dropit({ action: 'mouseenter' })
     $('#lb-menu').dropit({ action: 'mouseenter' })
-  }
+  }*/
 
   // mobile
 
   // main menu
-  $('#navmenu > li').click(function () {
+  /*$('#navmenu > li').click(function () {
 
     // applicable only if it has a menu
     if ($(this).find('ul').length) {
@@ -161,9 +189,10 @@ $(function(){
       document.location = path
     }
 
-  })
+  })*/
 
-  // when in mobile mode, menu names should open the submenu
+
+  // when in mobile mode, menu names should expand the submenu (and not go to the link)
   $('.dropit-trigger a').click(function (e) {
 
     if (window.matchMedia('(max-width: 899px)').matches) {
@@ -171,6 +200,11 @@ $(function(){
     }
 
   })
+
+  // when in mobile mode, menu li elements should also expand the submenu
+  $( ".dropit-trigger" ).click(function() {
+    $('.dropit-submenu').toggle();
+  });
 
   // sub menu navigation
   $('.dropit-submenu li').click(function () {
