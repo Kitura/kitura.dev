@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('.menu').dropit();
+});
+
 $(function(){
 
   var doc = $(document);
@@ -69,9 +73,9 @@ $(function(){
 
   });
 
-  $(document).scroll(function() {
+    $(document).scroll(function() {
 
-    var h = closest();
+  var h = closest();
     if (!h) return;
 
 
@@ -116,54 +120,10 @@ $(function(){
     $('#overlay').toggle()
   })
 
-  // dropdown menu
-
-  if ('ontouchstart' in document.documentElement) {
-    $('#application-menu').dropit({ action: 'click' })
-    $('#getting-started-menu').dropit({ action: 'click' })
-    $('#guide-menu').dropit({ action: 'click' })
-    $('#advanced-topics-menu').dropit({ action: 'click' })
-    $('#resources-menu').dropit({ action: 'click' })
-    $('#support-menu').dropit({ action: 'click' })
-    $('#lb-menu').dropit({ action: 'click' })
-  }
-  else {
-    $('#application-menu').dropit({ action: 'mouseenter' })
-    $('#getting-started-menu').dropit({ action: 'mouseenter' })
-    $('#guide-menu').dropit({ action: 'mouseenter' })
-    $('#advanced-topics-menu').dropit({ action: 'mouseenter' })
-    $('#resources-menu').dropit({ action: 'mouseenter' })
-    $('#support-menu').dropit({ action: 'mouseenter' })
-    $('#lb-menu').dropit({ action: 'mouseenter' })
-  }
 
   // mobile
 
-  // main menu
-  $('#navmenu > li').click(function () {
-
-    // applicable only if it has a menu
-    if ($(this).find('ul').length) {
-
-      if ($(this).hasClass('active-mobile-menu')) {
-        $(this).removeClass('active-mobile-menu')
-        $(this).find('.dropit .dropit-submenu').hide()
-      }
-      else {
-        $('.dropit .dropit-submenu').hide()
-        $(this).find('.dropit .dropit-submenu').show()
-        $('#navmenu li.active-mobile-menu').removeClass('active-mobile-menu')
-        $(this).addClass('active-mobile-menu')
-      }
-    }
-    else {
-      var path = $(this).find('a').attr('href')
-      document.location = path
-    }
-
-  })
-
-  // when in mobile mode, menu names should open the submenu
+  // when in mobile mode, menu names should expand the submenu (and not go to the link)
   $('.dropit-trigger a').click(function (e) {
 
     if (window.matchMedia('(max-width: 899px)').matches) {
@@ -171,6 +131,11 @@ $(function(){
     }
 
   })
+
+  // when in mobile mode, menu li elements should also expand the submenu
+  $( ".dropit-trigger" ).click(function() {
+    $('.dropit-submenu').toggle();
+  });
 
   // sub menu navigation
   $('.dropit-submenu li').click(function () {
