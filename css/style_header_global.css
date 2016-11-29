@@ -5,7 +5,7 @@
 }
 
 .menu ul li {
-  border-top: solid 1px #e4e4e4;
+  border-top: solid 1px #e6e6e6;
 }
 
 .menu ul li, .menu li {
@@ -467,7 +467,7 @@ header {
   #navmenu {
     left: 0;
     padding: 0;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     background: #fff;
     width: 100%;
     display: none;
@@ -475,8 +475,8 @@ header {
 
   #navmenu > li {
     float: none;
-    border-bottom: 1px solid #ccc !important;
-    margin: 0;
+    /*border-bottom: 1px solid #ccc !important;*/
+    margin: 1px;
     /*min-height: 47px;*/
     position: relative;
     background: #eee;
