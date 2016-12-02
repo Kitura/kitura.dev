@@ -61,9 +61,8 @@ router.post("/name") { request, response, _ in
 
 The built in body parsing middleware can parse a variety of body types including JSON.
 
-<span class="arrow">&#8227;</span> Import SwiftyJSON by adding it to your `Package.swift` file and by adding `import SwiftyJSON` to the top of your file.
+<span class="arrow">&#8227;</span> To use JSON objects in your app, simply add `import SwiftyJSON` to the top of your files. `SwiftyJSON` is included in the `Kitura` package so you don't need to add it to your app's `Package.swift` file.
 
-> ![tip] Tip: Make sure you import the same version of SwiftyJSON as your Kitura depends on. You can find out which version of SwiftyJSON you are using by looking in `Packages/Kitura*/Package.swift`
 
 <span class="arrow">&#8227;</span> Specify that the body parser should be run on all paths starting with `/name`
 
