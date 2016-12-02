@@ -63,6 +63,9 @@ The built in body parsing middleware can parse a variety of body types including
 
 <span class="arrow">&#8227;</span> To use JSON objects in your app, simply add `import SwiftyJSON` to the top of your files. `SwiftyJSON` is included in the `Kitura` package so you don't need to add it to your app's `Package.swift` file.
 
+> ![warning]
+> 
+> Warning: If you have another version of `SwiftyJSON` in your app, either from a different repository or a different version from the one specified in your app's `Packages/Kitura-x.x.x/Package.swift` file, remove it and use the version of `SwiftyJSON` as specified in `Packages/Kitura-x.x.x/Package.swift`. Otherwise, Swift Package Manager will give errors when you try install your package dependencies.
 
 <span class="arrow">&#8227;</span> Specify that the body parser should be run on all paths starting with `/name`
 
