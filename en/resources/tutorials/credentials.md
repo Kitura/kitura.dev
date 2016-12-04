@@ -72,7 +72,7 @@ credentials.register(plugin: fbCredentials)
 
 ```swift
 // Endpoint for starting the OAuth login flow
-router.get(“/login/facebook”, handler: credentials.authenticate(credentialsType: fbCredentials.name)
+router.get(“/login/facebook”, handler: credentials.authenticate(credentialsType: fbCredentials.name))
 
 // Endpoint for Facebook callback; handles exchange of temporary code for access token
 router.get(“/login/facebook/callback”, handler: credentials.authenticate(credentialsType: fbCredentials.name))
