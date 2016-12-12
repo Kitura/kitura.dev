@@ -21,10 +21,11 @@ A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows ren
 ---
 
 ## Kitura template engines
-Kitura template engines are classes that implement the `TemplateEngine` protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, two Kitura template engines are supported:
+Kitura template engines are classes that implement the `TemplateEngine` protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, three Kitura template engines are supported:
 
-1. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine)
-2. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
+1. [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown).
+2. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine).
+3. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
 
 > ![info] As of September 2016 GRMustache is available on macOS only and has not been fully ported to Swift 3.0. Please follow the [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) community for more information.
 
