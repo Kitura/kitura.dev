@@ -237,7 +237,10 @@ public init(secret: String, cookie: [CookieParameter]?=nil, store: Store?=nil)
 
 **Where**:
 
-- *secret*: is a String to be used for session encoding.
+- *secret*: is a String to be used for session encoding.This should be a large unguessable string. 
+    - Recommended minimum length is 14 characters.
+    - The secret parameter is used to derive a pair of encryption and signature keys via PBKDF2 and a fixed IV to make the session id cookie be authenticated encrypted. The secret isn't used directly to encrypt or compute the MAC of the cookie.
+
 - *cookie*: is a list of options for session cookies
     - name: defaults to "kitura-session-id"
     - path: defaults to "/"
