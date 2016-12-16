@@ -21,7 +21,7 @@ Transport Layer Security (TLS) is a protocol for encrypting data that is sent ov
 - **data integrity**: The data that is exchanged between a server and client cannot be modified by anyone else;
 - **server authenticity**: The server can prove its identity to the client and so prove the origin of sent data.
 
-TLS evolved out of Netscape's Secure Sockets Layer (SSL) protocol in order to fix most of its security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.
+TLS evolved out of Netscape's Secure Sockets Layer (SSL) protocol in order to fix most of its security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with `https://` rather than `http://` is using TLS/SSL for communication between your browser and their server.
 
 To enable TLS, a server needs a certificate and a corresponding secret key. Certificates are files that bind together information about the identity of the owner of a site and the public half of an asymmetric key pair (usually RSA). Certificates are usually digitally signed by a certificate authority (CA) who verifies that the information in the certificate is correct. This creates a chain of certificates between the site owner certificate and a CA certificate and transitive trust. Assuming that we trust the CA, we can trust the validity of the server certificate.
 
@@ -41,7 +41,17 @@ Finally, since BlueSSLService presents a consistent and unified Swift interface 
 
 ## Generating certificates
 
-To enable TLS in Kitura, we must first setup our server's certificate and key pair. The certificate can be either a self-signed certificate or a certificate chain whereby the server certificate is signed by a CA. Kitura currently supports PEM certificate format on Linux, and PKCS#12 on macOS.
+To enable TLS in Kitura, we must first setup our server's certificate and key pair. The certificate can be either a self-signed certificate or a certificate chain whereby the server certificate is signed by a CA. 
+
+Kitura currently only supports PKCS#12 on macOS, while it supports the following formats on Linux:
+
+- PEM: a Base64-encoded ASCII format of public and private data;
+- DER: a binary blob of the public and private data;
+- PKCS#7: a Base64-encoded ASCII of public data;
+- PKCS#12: a binary blob of both public and private data that can be password encrypted. This is generally one blob that contains both the certificate and the key data
+
+This difference is because Kitura uses OpenSSL on Linux and Secure Transport on macOS. Unfortunately macOS does not expose any APIs that convert between PKCS#12 and other certificate formats. We need to use OpenSSL or other existing tools to convert between the formats.
+
 
 <span class="arrow">&#8227;</span> In this example, we have created a self-signed PEM certificate using the following OpenSSL commands:
 
@@ -50,10 +60,10 @@ To enable TLS in Kitura, we must first setup our server's certificate and key pa
 $ openssl genrsa -out key.pem 2048
 
 // create a certificate signing request used to generate the cert
-$ openssl req -new -sha256 -key key.pem -out csr.csr
+$ openssl req -new -sha256 -key key.pem -out cert.csr
 
 // create the certificate
-$ openssl req -x509 -sha256 -days 365 -key key.pem -in csr.csr -out certificate.pem
+$ openssl req -x509 -sha256 -days 365 -key key.pem -in cert.csr -out certificate.pem
 ```
 
 <span class="arrow">&#8227;</span> You can convert your certificate to PKCS#12 format using
