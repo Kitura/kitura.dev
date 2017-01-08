@@ -45,6 +45,7 @@ lang: en
 * [Kitura-CORS](http://ibm-swift.github.io/Kitura-CORS)
 * [Kitura-CSRF](http://ibm-swift.github.io/Kitura-CSRF)
 * [Kitura-ResponseTime](http://ibm-swift.github.io/Kitura-ResponseTime)
+* [Kitura-Limiter](https://github.com/teechap/kitura-limiter)
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
