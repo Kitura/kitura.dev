@@ -85,7 +85,7 @@ import Kitura
 
 let router = Router()
 
-let myCertPath = "/tmp/Creds/Self-Signed/cert.pem"
+let myCertPath = "/tmp/Creds/Self-Signed/certificate.pem"
 let myKeyPath = "/tmp/Creds/Self-Signed/key.pem"
 
 let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil, usingCertificateFile: myCertPath, withKeyFile: myKeyPath, usingSelfSignedCerts: true)
