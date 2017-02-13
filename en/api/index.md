@@ -24,7 +24,7 @@ lang: en
 * [Kitura-CredentialsGitHub](http://ibm-swift.github.io/Kitura-CredentialsGitHub)
 * [Kitura-CredentialsGoogle](http://ibm-swift.github.io/Kitura-CredentialsGoogle)
 * [Kitura-CredentialsHTTP](http://ibm-swift.github.io/Kitura-CredentialsHTTP)
-* [Kitura-CredentialsTwitter]https://github.com/jacobvanorder/Kitura-CredentialsTwitter) (Third-party implemented)
+* [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter) (Third-party implemented)
 
 ## Persistence
 
