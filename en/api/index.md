@@ -24,15 +24,20 @@ lang: en
 * [Kitura-CredentialsGitHub](http://ibm-swift.github.io/Kitura-CredentialsGitHub)
 * [Kitura-CredentialsGoogle](http://ibm-swift.github.io/Kitura-CredentialsGoogle)
 * [Kitura-CredentialsHTTP](http://ibm-swift.github.io/Kitura-CredentialsHTTP)
+* [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter) (Third-party implemented)
 
 ## Persistence
 
 * [Kitura-Redis](http://ibm-swift.github.io/Kitura-redis/)
+* [Swift-Kuery](http://ibm-swift.github.io/Swift-Kuery/)
 
 ## Sessions
 
 * [Kitura-Session](http://ibm-swift.github.io/Kitura-Session)
 * [Kitura-Session-Redis](http://ibm-swift.github.io/Kitura-Session-Redis)
+
+## Communications
+* [Kitura-WebSocket](http://ibm-swift.github.io/Kitura-WebSocket)
 
 ## Templating
 
@@ -45,7 +50,7 @@ lang: en
 * [Kitura-CORS](http://ibm-swift.github.io/Kitura-CORS)
 * [Kitura-CSRF](http://ibm-swift.github.io/Kitura-CSRF)
 * [Kitura-ResponseTime](http://ibm-swift.github.io/Kitura-ResponseTime)
-* [Kitura-Limiter](https://github.com/teechap/kitura-limiter)
+* [Kitura-Limiter](https://github.com/teechap/kitura-limiter) (Third-party implemented)
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
