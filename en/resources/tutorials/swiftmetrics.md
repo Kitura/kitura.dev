@@ -6,7 +6,7 @@ layout: page
 title: Monitoring with Swift Application Metrics
 menu: resources
 lang: en
-redirect_from: "/resources/tutorial-todo.html"
+redirect_from: "/resources/swiftmetrics.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
