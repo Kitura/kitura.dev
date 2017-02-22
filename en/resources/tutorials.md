@@ -47,6 +47,14 @@ Learn how to enable SSL/TLS on Kitura to enhance the security of your applicatio
 
 ---
 
+## Monitoring and Diagnostics
+
+### [Adding Monitoring with Swift Application Metrics](/{{ page.lang }}/resources/tutorials/swiftmetrics.html)
+
+Learn how to add monitoring with Swift Application Metrics (SwiftMetrics) to visualise throughput and performance.
+
+---
+
 ## Other Topics
 
 ### [Using Templating Engines with Kitura](/{{ page.lang }}/resources/tutorials/templating.html)
