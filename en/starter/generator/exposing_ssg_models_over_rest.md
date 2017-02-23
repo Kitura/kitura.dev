@@ -20,7 +20,7 @@ Swift Server Generator models automatically have a standard set of HTTP endpoint
 
 ## REST paths
 
-The REST APIs are mounted to the `plural` model name in the [Model definition JSON file](model_definition_json_file.md). For example, a model named `location` with plural `locations` has its REST API mounted on `/api/locations`.
+The REST APIs are mounted to the `plural` model name in the [Model definition JSON file](model_definition_json_file.html). For example, a model named `location` with plural `locations` has its REST API mounted on `/api/locations`.
 
 The REST API is as follows:
 
@@ -80,6 +80,7 @@ For example:
     }
 
 
-    [info]: ../../../assets/info-blue.png
-    [tip]: ../../../assets/lightbulb-yellow.png
-    [warning]: ../../../assets/warning-red.png
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png

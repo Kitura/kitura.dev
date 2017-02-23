@@ -16,7 +16,7 @@ redirect_from: "/starter/generator/getting_started.html"
 
 **Summary:** Use the application generator tool to quickly create a Swift Server Generator application, models and data sources.
 
-**Prerequisite:** Install command-line tools as described in [Installation](installation.md).
+**Prerequisite:** Install command-line tools as described in [Installation](installation.html).
 
 **Recommended:** Read Swift Server Generator core concepts.
 
@@ -24,7 +24,7 @@ redirect_from: "/starter/generator/getting_started.html"
 
 ## Create new application
 
-To create a new application, run the Swift Server application generator (see [Command line tools](command_line_tools.md) ):
+To create a new application, run the Swift Server application generator (see [Command line tools](command_line_tools.html) ):
 
     $ yo swiftserver
 
@@ -41,7 +41,7 @@ Enter `swiftserver-getting-started`. The generator will prompt you for the name 
 The tool prompts you to select the data store to use for the project:
 
     [?] Select the data store (Use arrow keys)
-    &gt; memory (for development purposes)
+    > memory (for development purposes)
     cloudant
 
 Press **Enter** to accept the default selection, the `memory` data source. This memory data source, suitable for development and testing, is built into the Swift Server Generator.
@@ -50,7 +50,7 @@ Press **Enter** to accept the default selection, the `memory` data source. This 
 
 The generator then displays messages as it scaffolds the application including:
 
-1.  Initializing the project folder structure; see [Project layout reference](project_layout_reference.md).
+1.  Initializing the project folder structure; see [Project layout reference](project_layout_reference.html).
 
 2.  Creating default JSON files.
 
@@ -74,7 +74,7 @@ The generator will prompt for a model name.  Enter `CoffeeShop`:
 
     [?] Enter the model name: CoffeeShop
 
-Swift Server Generator automatically creates a REST route associated with your model using the *plural* of the model name.  By default, it pluralizes the name for you (by adding "s"), but you can specify a custom plural form if you wish.  See [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.md) for details.  
+Swift Server Generator automatically creates a REST route associated with your model using the *plural* of the model name.  By default, it pluralizes the name for you (by adding "s"), but you can specify a custom plural form if you wish.  See [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html) for details.  
 
 Press **Enter** to accept the default plural form (`CoffeeShops`):
 
@@ -102,14 +102,14 @@ Each property can be optional or required. Enter `y` to make name required:
 
 Then you'll be prompted to enter a default value for the property; press **Enter** for no default value:
 
-    [?] Default? \[y/N\]:
+    [?] Default? (y/N)
 
 Then, you'll be prompted to add another property. Follow the prompts to add a required property named `city` which does not have a default value.
 
     ? Enter the property name: city
     ? Property type: string
     ? Required? Yes
-    ? Default? \[y/N\]:
+    ? Default? (y/N)
 
 End the model creation process by pressing **Enter** when prompted for the name of the next property.
 
@@ -119,7 +119,7 @@ The model generator creates a file in the application’s `models` directory tha
 
 ## Check out the project structure
 
-For all the details of the Swift Server Generator application structure, see [Project layout reference](project_layout_reference.md).
+For all the details of the Swift Server Generator application structure, see [Project layout reference](project_layout_reference.html).
 
 ---
 
@@ -137,14 +137,9 @@ To confirm that the project is running locally, open the URL
 
 Through a set of simple steps using the Swift Server Generator tool, you’ve created a CoffeeShop model, specified its properties and then exposed it through REST.
 
-Models that are created by following this tutorial have a standard set of create, read, update and delete operations defined. See [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.md) for details. You can test any of the API endpoints by using **`curl`** commands. For example, to display all the model instances in the `swiftserver-getting-started` project, enter the following command (the `-k` option avoids certificate errors):
+Models that are created by following this tutorial have a standard set of create, read, update and delete operations defined. See [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html) for details. You can test any of the API endpoints by using **`curl`** commands. For example, to display all the model instances in the `swiftserver-getting-started` project, enter the following command (the `-k` option avoids certificate errors):
 
-    curl --request GET \\
-    --url 'https://localhost:8090/api/CoffeeShops' \\
-    --header 'accept: application/json' \\
-    --header 'content-type: application/json' \\
-    --header 'x-ibm-client-id: default' \\
-    --header 'x-ibm-client-secret: SECRET' -k
+    curl http://localhost:8090/api/CoffeeShops
 
 If the project has some model instances, the console displays the JSON data, otherwise, the console displays an empty array `[]`.
 

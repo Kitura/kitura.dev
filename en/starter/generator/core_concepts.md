@@ -24,9 +24,9 @@ Swift Server Generator creates a Kitura Swift application based on data models t
 
 After you have generated an application and defined your models you will have a Kitura Swift application built by using the Swift Package Manager. [*Kitura*](http://www.kitura.io/) is an open source web framework for building Swift applications inspired by [*Express®*](http://expressjs.com/), a Node.js web framework. When you run your Kitura Swift application, it creates a Kitura server that handles REST/HTTP requests for each of the defined resources and their operations.
 
-A key powerful feature of Swift Server Generator is that when you define a model it automatically comes with a predefined REST API with a full set of create, read, update, and delete operations. This REST API is described in more detail in [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.md).
+A key powerful feature of Swift Server Generator is that when you define a model it automatically comes with a predefined REST API with a full set of create, read, update, and delete operations. This REST API is described in more detail in [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html).
 
-You can create models by using the model generator, which creates a [Model definition JSON file](model_definition_json_file.md) that defines your model. By convention, this file is located in the project's `models` directory; for example, `models/customer.json`.
+You can create models by using the model generator, which creates a [Model definition JSON file](model_definition_json_file.html) that defines your model. By convention, this file is located in the project's `models` directory; for example, `models/customer.json`.
 
 ---
 

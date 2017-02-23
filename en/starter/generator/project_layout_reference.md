@@ -23,7 +23,7 @@ The standard project structure contains the following sub-directories within the
        - The `/<application_name>` subdirectory contains the `main.swift` file for the application.
        - The `/Generated` subdirectory contains all generated Swift files, including those for models.
 -   `models`: All model JSON files.
--   `definitions`: API and product definition YAML files.
+-   `definitions`: API definition YAML files.
 
 The following table describes the project structure in more detail:
 
@@ -33,15 +33,15 @@ The following table describes the project structure in more detail:
 |-------------------------------------|-------------|
 | Top-level application directory     |             |
 | **`/Packages` directory**           | Contains Swift packages as specified as dependencies in the Package.swift manifest file. These packages are downloaded during the Swift Package Manager build. |
-| [`Package.swift`](package_swift.md) | Standard Swift package manifest file. |
-| [`config.json`](config_json.md)     | Contains configuration information specific to this application. |
+| [`Package.swift`](package_swift.html) | Standard Swift package manifest file. |
+| [`config.json`](config_json.html)     | Contains configuration information specific to this application. |
 | **`/Sources` directory**            | Contains Swift application files. |
 | `/<application_name>` directory     | Contains the `main.swift` file for the application. |
 | `/Generated` directory              | Contains the generated Swift files for the application, including model Swift files. By convention, these files are called `<Model_name>.swift`; for example, a model called `customer` results in a Swift class file named `Customer.swift`. **Note:** Model names starting with a lower case alphabetic letter (as in the example above) are capitalized when they are converted to Swift classnames.                                                                                    |
-| **/models directory**               | Contains [model definition JSON files](model_definition_json_file.md), by convention named `<model_name>.json`; for example, `customer.json`. |
-| **/definitions directory**          | Contains API and product definition YAML files, by convention named `<application>.yaml` and `<application>-product.yaml`; for example `acmebank.yaml` and `acmebank-product.yaml`. |
+| **/models directory**               | Contains [model definition JSON files](model_definition_json_file.html), by convention named `<model_name>.json`; for example, `customer.json`. |
+| **/definitions directory**          | Contains API definition YAML file, by convention named after your application (e.g. `acmebank.yaml`). |
 
-> ![info] Note: Model names are as you enter them in the model generator and are used in the application endpoints in this way. Model names are converted to Swift class names according to the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (_).
+> ![info] Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the `.json` model files, and as endpoint paths in the the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (`_`).
 
 
 

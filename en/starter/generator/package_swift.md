@@ -27,7 +27,7 @@ For more information, see the [Package.swift documentation](https://swift.org/pa
     import PackageDescription
 
     let package = Package(
-      name: "GenKitExampleApplication",
+      name: "ExampleApplication",
       targets: [
         Target(name: "ExampleApplication", dependencies: [ .Target(name: "Generated") ]),
       ],
@@ -39,6 +39,7 @@ For more information, see the [Package.swift documentation](https://swift.org/pa
       ]
     )
 
-    [info]: ../../../assets/info-blue.png
-    [tip]: ../../../assets/lightbulb-yellow.png
-    [warning]: ../../../assets/warning-red.png
+
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
