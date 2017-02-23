@@ -64,7 +64,7 @@ The generator then displays messages as it scaffolds the application including:
 
 Now that you’ve created the initial project, you’re going to create a *CoffeeShop* model that will automatically have REST API endpoints.
 
-Go into your new application directory, then run the Swift Server [model generator](http://loopback.io/doc/en/lb2/Model-generator):
+Go into your new application directory, then run the Swift Server [model generator](command_line_tools.html#model-generator):
 
     $ cd swiftserver-getting-started
 

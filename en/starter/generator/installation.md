@@ -36,7 +36,6 @@ Complete the following steps to install Swift Server Generator
 
 -   macOS capable of running Xcode 8.1
 -   Ubuntu Linux 14.04 LTS
--   Ubuntu Linux 15.10
 -   Ubuntu Linux 16.04 LTS
 
 [info]: ../../../assets/info-blue.png

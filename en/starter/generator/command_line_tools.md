@@ -50,15 +50,11 @@ Creates a new Swift Server Generator application.
 
 Print the generator’s options and usage.
 
-    -n, --name
-
-Provide the application name.
-
 **Interactive prompts**
 
 The generator prompts you for the following information:
 
--   The name of the application to create, if you have not provided the application name as an option, as in the following example:
+-   The name of the application to create, if you have not provided the application name as an argument, as in the following example:
 
         yo swiftserver bookshop
 
@@ -88,23 +84,19 @@ Adds a new model to a Swift Server Generator application:
 
 **Options**
 
-Print the generator’s options and usage:
-
     -h, --help
 
-Provide the model name:
-
-    -n, --name
+Print the generator’s options and usage.
 
 **Interactive prompts**
 
 The tool will prompt you for the following information:
 
--   The name of the model, if you have not provided the model name as an option
+-   The name of the model, if you have not provided the model name as an argument
 
 -   The custom plural form of the model name. By default, the tool pluralizes the model name by adding *s*.
 
-    > ![info] Note: All Swift Server Generator models are exposed over REST. A set of create, read, update, and delete (CRUD) operations are therefore available via REST endpoints; for details, see [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html). Operations on all models use the model’s plural name in the URL; for example, `http://localhost:3000/api/bookshops`.
+    > ![info] All Swift Server Generator models are exposed over REST. A set of create, read, update, and delete (CRUD) operations are therefore available via REST endpoints; for details, see [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html). Operations on all models use the model’s plural name in the URL; for example, `http://localhost:3000/api/bookshops`.
 
 The tool then invokes the [Property generator](#property-generator) and prompts you to enter model properties.
 
