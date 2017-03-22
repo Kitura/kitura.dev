@@ -28,15 +28,15 @@ Complete the following steps to install Swift Server Generator
 
         $ npm install -g yo
 
-3.  To install this generator, run the following command:
+3.  To install [Swift Server Generator](https://github.com/IBM-Swift/generator-swiftserver), run the following command:
 
-        $ npm install -g git+https://github.com/IBM-Swift/generator-swiftserver
+        $ npm install -g generator-swiftserver
 
 > ![info] Note: Swift Server Generator is supported only on the following operating systems:
-
--   macOS capable of running Xcode 8.1
--   Ubuntu Linux 14.04 LTS
--   Ubuntu Linux 16.04 LTS
+>
+> -   macOS capable of running Xcode 8.1
+> -   Ubuntu Linux 14.04 LTS
+> -   Ubuntu Linux 16.04 LTS
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
