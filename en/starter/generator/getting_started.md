@@ -12,136 +12,122 @@ redirect_from: "/starter/generator/getting_started.html"
 
 <div class="titleBlock">
 	<h1>Getting started with Swift Server Generator</h1>
+	<p>Use the generator to create scaffolding for a simple Kitura web application.	</p>
 </div>
 
-**Summary:** Use the application generator tool to quickly create a Swift Server Generator application, models and data sources.
-
-**Prerequisite:** Install command-line tools as described in [Installation](installation.html).
-
-**Recommended:** Read Swift Server Generator core concepts.
+> ![warning] Make sure you have installed the command-line tools as described in
+> [Installation](installation.html) before you begin.
 
 ---
-
-## Create new application
-
-To create a new application, run the Swift Server application generator (see [Command line tools](command_line_tools.html) ):
+<span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
 
     $ yo swiftserver
 
-The Swift Server generator prompts you for the name of the application.
+---
+<span class="arrow">&#8227;</span> Enter `swiftserver-getting-started` as the application name.
 
-Enter `swiftserver-getting-started`. The generator will prompt you for the name of the directory to contain the project. Press **Enter** to accept the default (the same as the application name). For example:
+    ? What's the name of your application? swiftserver-getting-started
 
-    [?] What's the name of your application? swiftserver-getting-started
-
-    [?] Enter the name of the directory to contain the project: swiftserver-getting-started
-
-  > ![info] Note: You can use a different name for the application, but if you do, be sure to substitute your name for `swiftserver-getting-started` throughout the rest of this tutorial.
-
-The tool prompts you to select the data store to use for the project:
-
-    [?] Select the data store (Use arrow keys)
-    > memory (for development purposes)
-    cloudant
-
-Press **Enter** to accept the default selection, the `memory` data source. This memory data source, suitable for development and testing, is built into the Swift Server Generator.
-
-  The tool displays several messages as it creates the project directory and adds a number of directories and files to it. 
-
-The generator then displays messages as it scaffolds the application including:
-
-1.  Initializing the project folder structure; see [Project layout reference](project_layout_reference.html).
-
-2.  Creating default JSON files.
-
-3.  Creating and compiling default Swift files.
-
-4.  Downloading and installing dependent Swift modules (as if you had manually run `swift build`).
+> ![info] Note: You can use a different name for the application, but if you do, be sure to substitute your name for `swiftserver-getting-started` throughout the rest of this tutorial.
 
 ---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default directory for the project (the same as the application name).
 
-## Create models
+    ? Enter the name of the directory to contain the project: (swiftserver-getting-started)
 
-Now that you’ve created the initial project, you’re going to create a *CoffeeShop* model that will automatically have REST API endpoints.
+---
+<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](core_concepts.html#scaffold) for the [type of project](core_concepts.html#project	_type) and press **Enter**.
 
-Go into your new application directory, then run the Swift Server [model generator](command_line_tools.html#model-generator):
+    ? Select type of project: (Use arrow keys)
+    ❯ Scaffold a starter
+      Generate a CRUD application
+
+---
+<span class="arrow">&#8227;</span> Select [`Web`](core_concepts.html#web_pattern) for the [application pattern](core_concepts.html#app_pattern) (this determines the default set of capabilities) and press **Enter**.
+
+    ? Select capability presets for application pattern: (Use arrow keys)
+      Basic
+    ❯ Web
+      Backend for frontend
+
+---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the `Web` application pattern.
+
+    ? Select capabilities: (Press <space> to select)
+    ❯ ◉ Static web file serving
+      ◯ OpenAPI / Swagger endpoint
+      ◯ Example endpoints
+      ◉ Embedded metrics dashboard
+      ◉ Docker files
+      ◉ Bluemix cloud deployment
+
+---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](core_concepts.html#services) in the scaffolding.
+
+    ? Generate boilerplate for Bluemix services: (Press <space> to select)
+    ❯ ◯ Cloudant
+      ◯ Redis
+      ◯ Object Storage
+      ◯ AppID
+      ◯ Auto-scaling
+
+The generator will display messages as it scaffolds and builds the application including:
+
+1.  Initializing the project folder structure.
+
+1.  Creating and compiling default Swift files.
+
+1.  Downloading and installing dependent Swift modules (as if you had manually run `swift build`).
+
+---
+<span class="arrow">&#8227;</span> Now you should have a generated application directory similar to this:
+<pre>
+swiftserver-getting-started/
+├── public/
+├── Sources/
+│   ├── Application
+│   │   ├── Application.swift
+│   │   └── Routes/
+│   └── swiftserver-getting-started
+│       └── main.swift
+├── Package.swift
+├── README.md
+├── config.json
+└── ...
+</pre>
+
+> ![info] For a description of the generated files, take a look at the structure of a generated project in the [Project layout reference](project_layout_reference.html).
+
+---
+<span class="arrow">&#8227;</span> Change to the application directory:
 
     $ cd swiftserver-getting-started
 
-    $ yo swiftserver:model
-
-The generator will prompt for a model name.  Enter `CoffeeShop`:
-
-    [?] Enter the model name: CoffeeShop
-
-Swift Server Generator automatically creates a REST route associated with your model using the *plural* of the model name.  By default, it pluralizes the name for you (by adding "s"), but you can specify a custom plural form if you wish.  See [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html) for details.  
-
-Press **Enter** to accept the default plural form (`CoffeeShops`):
-
-    [?] Custom plural form (used to build REST URL): (CoffeeShops)
-
-Every model has properties.  Right now, you’re going to define one property, `name`, for the CoffeeShop model:
-
-    Let's add some CoffeeShop properties now.
-
-    Enter an empty property name when done.
-    [?] Enter the property name: name
-
-Select `string` as the property type (press **Enter**, as `string` is the default choice):
-
-    [?] Property type: (Use arrow keys)
-    > string
-    number
-    boolean
-    object
-    array
-
-Each property can be optional or required. Enter `y` to make name required:
-
-    [?] Required? (y/N)
-
-Then you'll be prompted to enter a default value for the property; press **Enter** for no default value:
-
-    [?] Default? (y/N)
-
-Then, you'll be prompted to add another property. Follow the prompts to add a required property named `city` which does not have a default value.
-
-    ? Enter the property name: city
-    ? Property type: string
-    ? Required? Yes
-    ? Default? (y/N)
-
-End the model creation process by pressing **Enter** when prompted for the name of the next property.
-
-The model generator creates a file in the application’s `models` directory that defines the model: `CoffeeShop.json`
-
 ---
-
-## Check out the project structure
-
-For all the details of the Swift Server Generator application structure, see [Project layout reference](project_layout_reference.html).
-
----
-
-## Run the application
-
-Start the application:
+<span class="arrow">&#8227;</span> Start the application:
 
     $ .build/debug/swiftserver-getting-started
 
-To confirm that the project is running locally, open the URL
-`http://localhost:8090` in your browser. You'll see something like this:
+---
+<span class="arrow">&#8227;</span> Confirm the application is running locally by opening the URL
+[http://localhost:8080](http://localhost:8080) in your browser. You'll see something like this:
 
     Welcome to Kitura
     Your Kitura based server is up and running!
 
-Through a set of simple steps using the Swift Server Generator tool, you’ve created a CoffeeShop model, specified its properties and then exposed it through REST.
+Congratulations, you now have a simple Kitura web application ready for extension with your own application logic.
 
-Models that are created by following this tutorial have a standard set of create, read, update and delete operations defined. See [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html) for details. You can test any of the API endpoints by using **`curl`** commands. For example, to display all the model instances in the `swiftserver-getting-started` project, enter the following command (the `-k` option avoids certificate errors):
+## Next Steps
 
-    curl http://localhost:8090/api/CoffeeShops
+> TODO
 
-If the project has some model instances, the console displays the JSON data, otherwise, the console displays an empty array `[]`.
+* Review and modify the generated code.
+* Create web content in the `public` directory.
+* View the embedded metrics dashboard.
+* Run the application inside a Docker container.
+* Deploy the application to Bluemix or CloudFoundry.
+* Try generating an application with a local CouchDB service.
+* Try generating an application with Bluemix Cloudant service.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
