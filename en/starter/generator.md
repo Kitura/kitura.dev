@@ -12,14 +12,14 @@ redirect_from: "/starter/generator.html"
 
 <div class="titleBlock">
 	<h1>Swift Server Generator</h1>
-	<p>By using Swift Server Generator you can easily create REST web services in the Swift programming language.</p>
+	<p>Jump-start development with application scaffolding.</p>
 </div>
 
-Swift Server Generator uses the [Kitura web framework](http://www.kitura.io) and [Swift 3.0.x](https://swift.org)
+Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/generator/core_concepts.html#scaffold) on which you build your application---it writes the boilerplate so you don't have to.
+
+> ![info] Swift Server Generator uses the [Kitura web framework](http://www.kitura.io) and [Swift 3.0.x](https://swift.org)
 
 ---
-
-## Introduction
 
 ### [Getting started](/{{ page.lang }}/starter/generator/getting_started.html)
 
@@ -42,3 +42,5 @@ Swift Server Generator uses the [Kitura web framework](http://www.kitura.io) and
 ### [Package.swift](/{{ page.lang }}/starter/generator/package_swift.html)
 
 ### [Model definition JSON file](/{{ page.lang }}/starter/generator/model_definition_json_file.html)
+
+[info]: ../../../assets/info-blue.png
