@@ -19,19 +19,22 @@ Two command-line tools are available for Swift Server Generator:
 
 -   [Yeoman](http://yeoman.io/) command-line tools: `yo swiftserver`.
 
--   IBM API Connect developer toolkit CLI: `apic swiftserver`.
+-   IBM API Connect developer toolkit CLI: `apic swiftserver`  
+    Note, this is specific to version 1.0.4 of Swift Server Generator.
 
-You use these command line tools to create and configure Swift Server Generator applications. The table below describes using the Yeoman command-line options. If you are familiar with the IBM API Connect developer toolkit and prefer to use that you can refer to the Swift [Server Generator installation and command line options](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/capic_swift_overview.html).
+You can also invoke Swift Server Generator indirectly using the [Bluemix CLI Developer Plug-in](https://console.ng.bluemix.net/docs/cloudnative/tutorial_web.html#tutorial/). You can only scaffold starter application types through the Bluemix CLI Developer Plug-in command line: `bx dev create`, you cannot generate CRUD application types.
 
-The command-line tools provide an [Application generator](#application-generator) to create a new Swift Server Generator application and a number of sub-generators to define models and properties within the application, as described in the following table:
+You use these command line tools to create and configure Swift Server Generator applications. The table below describes using the Yeoman command-line options.
+
+The command-line tools provide an [Application generator](#application-generator) to create a new Swift Server Generator application. There are also a number of sub-generators to define models and properties, these only apply to CRUD application types, as described in the following table:
 
 *Table 1. Available commands*
 
 | Command                           | Command type                                   | Description                                                                                                                                                                                                                                                            |
 |---------------------------------  |------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **`yo swiftserver`**              | [Application generator](#application-generator) | Create a new Swift Server Generator application.                                                                                                                                                                                                                       |
-| **`yo swiftserver:model`** | [Model generator](#model-generator)             | Add a new model to a Swift Server Generator application.                                                                                                                                                                                                               |
-| **`yo swiftserver:property`**     | [Property generator](#property-generator)       | Add a new property to an existing model.                                                                                                                                                                                                                               |
+| **`yo swiftserver:model`** | [Model generator](#model-generator)             | Add a new model to a Swift Server Generator CRUD application.                                                                                                                                                                                                               |
+| **`yo swiftserver:property`**     | [Property generator](#property-generator)       | Add a new property to an existing model (within a Swift Server Generator CRUD application).                                                                                                                                                                                                                              |
 | **`yo swiftserver:refresh`**      | Refresh generator                              | Generate OpenAPI (Swagger 2.0) definition YAML file, by convention named after your application (e.g. `appname.yaml`). This file is regenerated each time the refresh generator runs. |
 
 ---
@@ -60,7 +63,15 @@ The generator prompts you for the following information:
 
 -   The name of the directory to create the application in; this defaults to the application name you previously entered.
 
--   Data store to use; this defaults to memory which is an in-memory data source that is built into Swift Server Generator and is suitable only for development and initial testing. If you want to connect your models to a real data source such as the Cloudant® database server, choose `cloudant` for your back-end data store. The tool prompts you for additional settings and automatically installs the appropriate Cloudant connector package by using the Swift Package Manager. If you want to switch between data stores see the [`config.json file`](config_json.html).
+-   The type of project to create; this is a choice between scaffolding a starter project or generating a CRUD application.
+
+-   The pattern type which you would like your application to use; this defaults to Basic, you can also choose Web or Backend for Frontend (BFF).
+
+-   The capabilities which you would like to add to your application; these vary according to your project type. If you select a CRUD application type you can choose any/all or none of the Embedded metrics dashboard, Docker files or Bluemix cloud deployment capabilities. If you select scaffold a starter application you can choose additional capabilities of Static web file serving, OpenAPI/Swagger endpoint and Example endpoints.
+
+-   Select a Data store to use (for a CRUD application); this defaults to memory which is an in-memory data source that is built into Swift Server Generator and is suitable only for development and initial testing. If you want to connect your models to a real data source such as the Cloudant® database server, choose `cloudant` for your back-end data store. The tool prompts you for additional settings and automatically installs the appropriate Cloudant connector package by using the Swift Package Manager. If you want to switch between data stores see the [`config.json file`](config_json.html).
+
+-   Select services (for scaffold a starter application) to generate boilerplate for; these will be Bluemix services if you selected the Bluemix cloud deployment capability, otherwise they will be local services. The available Bluemix services are Cloudant®, Redis, Object Storage, AppID and Auto-scaling; the local services are CouchDB and Redis. The tool prompts you for additional settings and automatically installs the appropriate Swift packages using the Swift Package Manager.
 
 The tool creates the standard Swift Server Generator application structure; for details, see [Swift Server Generator project layout reference](project_layout_reference.html).
 
@@ -74,7 +85,7 @@ After you create an application, you can run additional generators from the appl
 
 ## Model generator
 
-**Important:** Before running this generator, you must create an application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
+**Important:** Before running this generator, you must create a CRUD type application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
 
 **Synopsis**
 
@@ -102,13 +113,13 @@ The tool then invokes the [Property generator](#property-generator) and prompts 
 
 **Output**
 
-The tool creates a new file that defines the model, /models/model-name.json; for details, see [Model definition JSON file](model_definition_json_file.html). It also generates an [*OpenAPI (Swagger 2.0) specification*](http://swagger.io/specification/) YAML file that describes and documents the REST APIs. By convention this file is located in the project’s definitions directory; for example, `definitions/appname.yaml`.
+The tool creates a new file that defines the model, /models/model-name.json; for details, see [Model definition JSON file](model_definition_json_file.html). It also modifies the [*OpenAPI (Swagger 2.0) specification*](http://swagger.io/specification/) YAML file that describes and documents the REST APIs. By convention this file is located in the project’s definitions directory; for example, `definitions/appname.yaml`.
 
 ---
 
 ## Property generator
 
-**Important:** Before running this generator, you must create an application by using the [Application generator](#application-generator). Then you must create a model using the [Model generator](#model-generator). Then you must run the command from the root directory of the application.
+**Important:** Before running this generator, you must create a CRUD type application by using the [Application generator](#application-generator). Then you must create a model using the [Model generator](#model-generator). Then you must run the command from the root directory of the application.
 
 **Synopsis**
 
