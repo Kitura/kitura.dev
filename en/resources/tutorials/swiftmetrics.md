@@ -3,7 +3,7 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
-title: Monitoring with Swift Application Metrics
+title: Monitoring with Application Metrics for Swift
 menu: resources
 lang: en
 redirect_from: "/resources/swiftmetrics.html"
@@ -11,13 +11,13 @@ redirect_from: "/resources/swiftmetrics.html"
 ---
 
 <div class="titleBlock">
-  <h1>Swift Application Metrics (SwiftMetrics)</h1>
+  <h1>Application Metrics for Swift (SwiftMetrics)</h1>
   <p>Example showing how to add SwiftMetrics monitoring to your Kitura application and visualise the data in your browser</p>
 </div>
 
 ## What is SwiftMetrics
 
-SwiftMetrics instruments the Swift runtime for performance monitoring.  The monitoring data is provided back to the user either
+[SwiftMetrics](https://developer.ibm.com/swift/monitoring-diagnostics/application-metrics-for-swift/) instruments the Swift runtime for performance monitoring.  The monitoring data is provided back to the user either
  programatically via an API or visually with the included embedded dashboard.
 
 SwiftMetrics provides the following built-in data collection sources:
@@ -47,7 +47,7 @@ let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)
 ```
 
 and amend Package.swift to include the SwiftMetrics dependency
- 
+
 
 ```swift
    dependencies: [
