@@ -14,36 +14,166 @@ redirect_from: "/starter/generator/project_layout_reference.html"
 	<h1>Swift Server Generator project layout reference</h1>
 </div>
 
-Swift Server Generator project files and directories are stored in a predefined structure within the application root directory.
+Swift Server Generator generates applications in a layout compatible with [Swift Package Manager](LINK).
+The files that populate the application directory depend on the [project type](core_concepts.html#project_type),
+[capabilities](core_concepts.html#capabilities) and [services](core_concepts.html#services) selected during creation.
 
-The standard project structure contains the following sub-directories within the application root directory:
+## Common files
 
--   `Packages`: Swift packages that are defined as application dependencies.
--   `Sources`: Swift source files.
-       - The `/<application_name>` subdirectory contains the `main.swift` file for the application.
-       - The `/Generated` subdirectory contains all generated Swift files, including those for models.
--   `models`: All model JSON files.
--   `definitions`: API definition YAML files.
+The following structure is common to all generated applications:
 
-The following table describes the project structure in more detail:
+```
+├── LICENSE                         - MIT license for the generated code
+├── Sources/                        - Swift source code for the project
+│   ├── Application/                - Swift module for application logic
+│   │   └── Application.swift       - Swift code for application logic
+│   └── <application_name>/         - Swift module for executable
+│       └── main.swift              - Swift code for executable
+├── Package.swift                   - Swift Package Manager configuration file
+├── config.json                     - Application configuration file
+├── spec.json                       - Generator specification file for the project
+```
 
-*Table 1. Swift Server Generator project structure*
+There are also a number of hidden files included in all generated applications:
 
-| File or directory                   | Description |
-|-------------------------------------|-------------|
-| Top-level application directory     |             |
-| **`/Packages` directory**           | Contains Swift packages as specified as dependencies in the Package.swift manifest file. These packages are downloaded during the Swift Package Manager build. |
-| [`Package.swift`](package_swift.html) | Standard Swift package manifest file. |
-| [`config.json`](config_json.html)     | Contains configuration information specific to this application. |
-| **`/Sources` directory**            | Contains Swift application files. |
-| `/<application_name>` directory     | Contains the `main.swift` file for the application. |
-| `/Generated` directory              | Contains the generated Swift files for the application, including model Swift files. By convention, these files are called `<Model_name>.swift`; for example, a model called `customer` results in a Swift class file named `Customer.swift`. **Note:** Model names starting with a lower case alphabetic letter (as in the example above) are capitalized when they are converted to Swift classnames.                                                                                    |
-| **/models directory**               | Contains [model definition JSON files](model_definition_json_file.html), by convention named `<model_name>.json`; for example, `customer.json`. |
-| **/definitions directory**          | Contains API definition YAML file, by convention named after your application (e.g. `acmebank.yaml`). |
+```
+├── .gitignore                      - Defines files that should not be added to Git
+├── .swift-version                  - Defines the Swift version for this project
+├── .swiftservergenerator-project   - Marks this as a Swift Server Generator project
+├── .yo-rc.json                     - Yeoman generator configuration file
+```
+
+## Build files
+
+The following are created when the application is built (by `swift build`):
+
+```
+├── Packages/                       - Swift source code for resolved dependencies
+├── .build/                         - Build metadata, libraries and executables
+```
+
+## Scaffolded project
+
+The following subsections apply to the [scaffold project type](core_concepts.html#scaffold).
+All scaffolded projects will have the following files included:
+
+```
+├── README.md                       - Default documentation for the generated project
+├── Sources/
+│   └── Application/
+│       └── Routes/                 - Directory for organising route handler code
+```
+
+### Web capability
+
+If you select the [web capability](core_concepts.html#web_capability) then the following
+files will be included in the scaffolded project:
+
+```
+├── public/                         - Directory whose contents is served on /
+```
+
+### OpenAPI / Swagger endpoint capability
+
+If you select the [Swagger endpoint capability](core_concepts.html#swagger_endpoint_capability) then the following
+files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Routes/
+│           └── SwaggerRoute.swift  - Swift code for OpenAPI definition endpoint
+```
+
+### Example endpoints capability
+
+If you select the [example endpoints capability](core_concepts.html#example_endpoints_capability) then the following
+files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Routes/
+│           └── ProductRoutes.swift - Swift code for example endpoints
+├── definitions/
+│   └── <application_name>.yaml     - Swagger definition for example API
+```
+
+### Both Web capability and Example endpoints capability
+
+If both [web capability](core_concepts.html#web_capability) and
+[example endpoints capability](core_concepts.html#example_endpoints_capability) are
+selected then [SwaggerUI](LINK) will be added to the project in the following location:
+
+```
+├── public/
+│   └── explorer/                   - SwaggerUI
+```
+
+### Docker capability
+
+If you select the [docker capability](core_concepts.html#docker_capability) then the following
+files will be included in the scaffolded project:
+
+```
+├── Dockerfile                      - Docker spec for an image to run the application
+├── Dockerfile-tools                - Docker spec for an image to build the application
+├── .dockerignore                   - Defined files to ignore for building images
+```
+
+### Bluemix capability
+
+If you select the [bluemix capability](core_concepts.html#bluemix_capability) then the following
+files will be included in the scaffolded project:
+
+```
+├── manifest.yml                    - CloudFoundry deployment manifest file
+├── cli-config.yml                  - Bluemix CLI Dev plugin configuration file
+├── .cfignore                       - Defines files to be ignored for deployment
+├── .bluemix/                       - Bluemix pipeline and toolchain files
+│   ├── toolchain.yml               - Bluemix toolchain configuration file
+│   ├── pipeline.yml                - Bluemix pipeline configuration file
+│   └── deploy.json                 - Bluemix toolchain UI configuration file
+```
+
+## CRUD project
+
+The following section applies to the [CRUD project type](core_concepts.html#scaffold).
+CRUD projects will have the following files included:
+
+```
+├── Sources/
+│   ├── Application/
+│   │   └── Routes/
+│   │       └── SwaggerRoute.swift  - Swift code for OpenAPI definition endpoint
+│   └── Generated/                  - Generated Swift code for CRUD API logic
+│       ├── AdapterFactory.swift    - Swift code to select CRUD data store adapter
+│       └── CRUDResources.swift     - Swift code to organise CRUD model logic
+├── definitions/
+│   └── <application_name>.yaml     - Swagger definition for CRUD API
+├── models/                         - Data model metadata files
+```
+
+> ![warning] Files inside the `Sources/Generated` directory should not be modified as
+they are regenerated regularly and any modifications will be lost.
+
+### Models
+
+For each model created using the [model generator](command_line_tools.html#model-generator)
+the following files will be included:
+
+```
+├── Sources/
+│   └── Generated/
+│       ├── <Model_name>.swift                   - Swift code for defining the model
+│       ├── <Model_name>Resource.swift           - Swift code for model endpoints
+│       ├── <Model_name>Adapter.swift            - Swift protocol for model storage
+│       └── <Model_name><StoreType>Adapter.swift - Swift code for model storage
+├── models/
+│   └── <model_name>.json                        - Model metadata file
+```
 
 > ![info] Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the `.json` model files, and as endpoint paths in the the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (`_`).
-
-
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
