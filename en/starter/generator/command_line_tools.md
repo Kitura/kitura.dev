@@ -34,8 +34,9 @@ The command-line tools provide an [Application generator](#application-generator
 |---------------------------------  |------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **`yo swiftserver`**              | [Application generator](#application-generator) | Create a new Swift Server Generator application.                                                                                                                                                                                                                       |
 | **`yo swiftserver:model`** | [Model generator](#model-generator)             | Add a new model to a Swift Server Generator CRUD application.                                                                                                                                                                                                               |
-| **`yo swiftserver:property`**     | [Property generator](#property-generator)       | Add a new property to an existing model (within a Swift Server Generator CRUD application).                                                                                                                                                                                                                              |
-| **`yo swiftserver:refresh`**      | Refresh generator                              | Generate OpenAPI (Swagger 2.0) definition YAML file, by convention named after your application (e.g. `appname.yaml`). This file is regenerated each time the refresh generator runs. |
+| **`yo swiftserver:property`**     | [Property generator](#property-generator)       | Add a new property to an existing model (within a Swift Server Generator CRUD application).                                                                                                                                                                                                                               |
+| **`yo swiftserver:refresh`**      | [Refresh generator](#refresh-generator)         | Regenerate your Swift Server Generator application.                                                                                                                                                                                                                |
+| **`yo swiftserver:build`**        | [Build generator](#build-generator)              | Rebuild your Swift Server Generator application. |
 
 ---
 
@@ -80,6 +81,10 @@ After you create an application, you can run additional generators from the appl
 -   [Model generator](#model-generator)
 
 -   [Property generator](#property-generator)
+
+-   [Refresh generator](#refresh-generator)
+
+-   [Build generator](#build-generator)
 
 ---
 
@@ -151,6 +156,53 @@ The tool will prompt you for the following information:
 
 The tool modifies the [Model definition JSON file](model_definition_json_file.html) to add the specified property to the specified model. It also modifies the [*OpenAPI (Swagger 2.0) specification*](http://swagger.io/specification/) YAML file that describes and documents the REST APIs; for example, `definitions/appname.yaml`.
 
+---
+
+## Refresh generator
+
+**Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
+
+**Synopsis**
+
+Regenerates your Swift Server Generator application.
+
+    yo swiftserver:refresh
+
+**Options**
+
+    -h, --help
+
+Print the generator's options and usage.
+
+**Output**
+
+The tool regenerates your Swift Server Generator application; the files which are updated vary according to the capabilities of your application.  The following application files will not be updated:
+
+-		config.json
+-		main.swift
+-		Package.swift
+
+---
+
+## Build generator
+
+**Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
+
+**Synopsis**
+
+Builds the Swift Server Generator application.
+
+    yo swiftserver:build
+
+**Options**
+
+    -h, --help
+
+Print the generator's options and usage.
+
+**Output**
+
+The tool uses `swift build` to rebuild your Swift Server Generator application.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
