@@ -72,13 +72,14 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
       ◯ Auto-scaling
 
 ---
-<span class="arrow">&#8227;</span> To configure `Cloudant` press **Space** to select and **Enter** to configure. If you want to keep the defaults then leave it unselected and just press **Enter**.
+<span class="arrow">&#8227;</span> To configure `Cloudant` press **Space** to select and **Enter** to configure.
 
-    ? Configure service credentials (leave unchecked for defaults): (Press <space> to select, <a> to toggle all, <i> to inverse selection)
-    ❯◯ Cloudant / CouchDB
+    ? Configure service credentials (leave unchecked for defaults): (Press <space> to select)
+    ❯ ◉ Cloudant / CouchDB
 
+> ![info] Note: If you want to keep the defaults then leave it unselected and just press **Enter**.
 
-If you selected to configure `Cloudant` you will get a series of questions:
+Then configure `Cloudant`:
 
 ```
 Configure Cloudant / CouchDB
