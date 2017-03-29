@@ -27,13 +27,13 @@ Install couchdb locally:
 Instructions for installing CouchDB can be found in the [CouchDB documentation](http://docs.couchdb.org).
 For this tutorial, the Ubuntu packaged version (CouchDB 1.6.0) was installed on Ubuntu 16.04:
 
-```bash
+```
 $ sudo apt-get install couchdb
 ```
 
 Full installation documentation for Linux, Mac and Windows can be found [here](http://docs.couchdb.org/en/1.6.0/install/index.html).  Once installed, you can verify the installation with a curl command:
 
-```bash
+```
 $ curl http://127.0.0.1:5984/
 {"couchdb":"Welcome","uuid":"c8693df0aa80678d55a2dc2084c32f9b","version":"1.6.0","vendor":{"name":"Ubuntu","version":"15.10"}}
 ```
@@ -128,19 +128,67 @@ couchdb-getting-started/
 
 <span class="arrow">&#8227;</span> Change to the application directory:
 
-    $ cd couchdb-getting-started
+```
+$ cd couchdb-getting-started
+```
+
+<span class="arrow">&#8227;</span> Now modify your application to create a CouchDB database. This can be done by adding a line of swift code to create a database: Modify Sources/Application/Application.swift as shown below.
+
+```swift
+public func initialize() throws {
+
+    manager.load(file: "config.json", relativeFrom: .project)
+           .load(.environmentVariables)
+
+    port = manager["port"] as? Int ?? port
+
+    let cloudantConfig = CloudantConfig(manager: manager)
+
+    let couchDBConnProps = ConnectionProperties(host:     cloudantConfig.host,
+                                                port:     cloudantConfig.port,
+                                                secured:  cloudantConfig.secured,
+                                                username: cloudantConfig.username,
+                                                password: cloudantConfig.password )
+
+    couchDBClient = CouchDBClient(connectionProperties: couchDBConnProps)
+
+    /* Add the line below. */
+    couchDBClient?.createDB("couchdb-tutorial"){_,_ in}
+
+    router.all("/*", middleware: BodyParser())
+}
+
+```
+
+<span class="arrow">&#8227;</span> Now go back to the application directory and recompile the application:
+
+```
+$ cd couchdb-getting-started
+$ swift build
+```
 
 <span class="arrow">&#8227;</span> Start the application:
 
-    $ .build/debug/couchdb-getting-started
+```
+$ .build/debug/couchdb-getting-started
+```
 
 <span class="arrow">&#8227;</span> Confirm the application is running locally by opening the URL
 [http://localhost:8080](http://localhost:8080) in your browser. You'll see something like this:
 
-    Welcome to Kitura
-    Your Kitura based server is up and running!
+```
+Welcome to Kitura
+Your Kitura based server is up and running!
+```
 
-Congratulations, you now have a simple Kitura web application ready for extension with your own application logic.
+<span class="arrow">&#8227;</span> Use curl to query the databases managed by CouchDB. You should see **couchdb-tutorial** listed as one of the databases:
+
+```
+$ curl -X GET http://localhost:5984/couchdb-tutorial
+["_replicator","_users","couchdb-tutorial"]
+```
+
+Congratulations, you now have a simple Kitura application that can communicate with CouchDB.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png

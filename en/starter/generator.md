@@ -35,6 +35,7 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ### [Cloudant with Bluemix](/{{ page.lang }}/starter/generator/cloudant_tutorial_bluemix.html)
 
+### [Docker container](/{{ page.lang }}/starter/generator/docker_container_tutorial.html)
 ---
 
 ## Reference
