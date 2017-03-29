@@ -31,6 +31,8 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ## Tutorials
 
+### [local CouchDB](/{{ page.lang }}/starter/generator/local_couchdb_tutorial.html)
+
 ### [Cloudant with Bluemix](/{{ page.lang }}/starter/generator/cloudant_tutorial_bluemix.html)
 
 ---

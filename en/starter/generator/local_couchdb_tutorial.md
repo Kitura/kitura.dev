@@ -17,13 +17,18 @@ redirect_from: "/starter/generator/getting_started.html"
 
 **Prerequisities:**
 
+> ![warning] Make sure you have installed the command-line tools as described in
+> [Installation](installation.html) before you begin.
+
+---
+
 Install couchdb locally:
 
 Instructions for installing CouchDB can be found in the [CouchDB documentation](http://docs.couchdb.org).
 For this tutorial, the Ubuntu packaged version (CouchDB 1.6.0) was installed on Ubuntu 16.04:
 
 ```bash
-$ apt-get install couchdb
+$ sudo apt-get install couchdb
 ```
 
 Full installation documentation for Linux, Mac and Windows can be found [here](http://docs.couchdb.org/en/1.6.0/install/index.html).  Once installed, you can verify the installation with a curl command:
@@ -35,7 +40,9 @@ $ curl http://127.0.0.1:5984/
 
 # Generating the scaffolded application
 
-<span class="arrow">&#8227;</span> Enter `yo swiftserver` to start the generator.
+<span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
+
+    $ yo swiftserver
 
 <span class="arrow">&#8227;</span> Enter `couchdb-getting-started` as the application name.
 
@@ -78,7 +85,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
   ◉ Bluemix cloud deployment
 ```
 
-<span class="arrow">&#8227;</span> Press **space** to select the CouchDB boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding.
+<span class="arrow">&#8227;</span> Press **Space** to select the CouchDB boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding.
 
 ```
 ? Generate boilerplate for local services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
@@ -86,7 +93,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
   ◯ Redis
 ```
 
-<span class="arrow">&#8227;</span> Press **space** to select the Cloudant / CouchDB configuration. If you let the generator provide the defaults, there is nothing more to do. The generator will now complete its code generation with defaults that allow CouchDB to be accessed on port **5984** on **localhost**. If you opt for setting the configuration options, then you will get further questions about the specifics of the CouchDB service. 
+<span class="arrow">&#8227;</span> Press **Space** to select the Cloudant / CouchDB configuration. If you let the generator provide the defaults, there is nothing more to do. The generator will now complete its code generation with defaults that allow CouchDB to be accessed on port **5984** on **localhost**. If you opt for setting the configuration options, then you will get further questions about the specifics of the CouchDB service. 
 
 ```
 ? Configure service credentials (leave unchecked for defaults): (Press <space> to select, <a> to toggle all, <i> to inverse selection)
