@@ -1,4 +1,4 @@
-prompts---
+---
 ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
@@ -12,11 +12,24 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
 
 <div class="titleBlock">
 	<h1>Creating a project with Cloudant for Bluemix</h1>
-	<p>Use the generator to create scaffolding for a simple Kitura web application and using a Cloudant service on Bluemix.	</p>
+	<p>Use the generator to scaffold a Kitura web application with a Cloudant service.</p>
 </div>
 
 > ![warning] Make sure you have installed the command-line tools as described in
 > [Installation](installation.html) before you begin.
+
+---
+
+#### In this tutorial you will:
+
+- Create a Cloudant service on Bluemix
+- Create a scaffolded Kitura application
+- Add a Cloudant service to the application
+- Connect to the Cloudant service, running on Bluemix, locally
+
+---
+
+<span class="arrow">&#8227;</span> Create a [Cloudant service](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db?taxonomyNavigation=services) on Bluemix.
 
 ---
 <span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
@@ -91,7 +104,7 @@ Configure Cloudant / CouchDB
 ? Enter password: ***********
 ```
 
-> ![info] Note: You will need to get the information/credentials from `Bluemix` or `CloudFoundry` and copy the values into the respective places
+> ![info] Note: You will need to get the information/credentials from `Bluemix`.
 
 The generator will display messages as it scaffolds and builds the application including:
 
