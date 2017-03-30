@@ -16,7 +16,7 @@ redirect_from: "/starter/generator/prompts.html"
 
 The following sections describe the prompts provided by the [application generator](command_line_tools.html#application-generator).
 
-## Project type
+## Project type prompt
 
 The [application generator](command_line_tools.html#application-generator) will ask which type of project
 you would like to create, offering two options:
@@ -37,7 +37,7 @@ defined which will automatically be mapped to REST endpoints for create, read an
 update operations. At present the code for this type of application is not very
 customizable aside from modifying the data model.
 
-## Application pattern
+## Application pattern prompt
 For scaffolded applications, the [application generator](command_line_tools.html#application-generator) will
 ask which application pattern you want to select, offering three options:
 
@@ -49,15 +49,12 @@ ask which application pattern you want to select, offering three options:
 ```
 
 The application pattern defines the capabilities that are selected by default in the subsequent
-capabilities prompt. They are presets and the capabilities they suggest can be modified as required.
+[capabilities prompt](#capabilities-prompt). They are presets and the capabilities they suggest
+can be modified as required.
 
-The following sections describe these options in more detail.
-
-### Basic pattern
-
-The Basic pattern is intended for any type of application, making the fewest assumptions
-about the application logic. Selecting this pattern will result in the following default
-[capabilities](#capabilities):
+The `Basic` pattern is intended for any type of application, making the fewest assumptions
+about the application logic. Selecting this pattern will result in the following defaults
+for the [capabilities prompt](#capabilities-prompt):
 
 ```
  ◯ Static web file serving
@@ -68,11 +65,9 @@ about the application logic. Selecting this pattern will result in the following
  ◉ Bluemix cloud deployment
 ```
 
-### Web pattern
-
-The Web pattern is intended for an application that needs to provide a web server
-hosting static files. Selecting this pattern will result in the following default
-[capabilities](#capabilities):
+The `Web` pattern is intended for an application that needs to provide a web server
+hosting static files. Selecting this pattern will result in the following defaults
+for the [capabilities prompt](#capabilities-prompt):
 
 ```
  ◉ Static web file serving
@@ -83,12 +78,10 @@ hosting static files. Selecting this pattern will result in the following defaul
  ◉ Bluemix cloud deployment
 ```
 
-### BFF pattern
-
-The Backend-for-frontend (BFF) pattern is intended for an application that provides
+The `Backend-for-frontend` (BFF) pattern is intended for an application that provides
 a microservice intended for consumption by a client application (for example, a
-web or mobile application). Selecting this pattern will result in the following default
-[capabilities](#capabilities):
+web or mobile application). Selecting this pattern will result in the following defaults
+for the [capabilities prompt](#capabilities-prompt):
 
 ```
  ◉ Static web file serving
@@ -99,11 +92,21 @@ web or mobile application). Selecting this pattern will result in the following 
  ◉ Bluemix cloud deployment
 ```
 
-## Capabilities
+## Capabilities prompt
 
-Capabilities define chunks of functionality that will be implemented by the generated
-application. The application generator will ask you to select the capabilities you would
-like included.
+[Capabilities](core_concepts.html#capabilities) define chunks of functionality that
+will be implemented by the generated application. The [application generator](command_line_tools.html#application-generator)
+will ask you to select the capabilities you would like included. For example:
+
+```
+? Select capabilities: (Press <space> to select)
+❯ ◯ Static web file serving
+  ◯ OpenAPI / Swagger endpoint
+  ◯ Example endpoints
+  ◉ Embedded metrics dashboard
+  ◉ Docker files
+  ◉ Bluemix cloud deployment
+```
 
 For the [scaffold project type](#scaffold), you can select from the following list:
 
