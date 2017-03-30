@@ -3,31 +3,20 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
-title: Core concepts
+title: Prompt reference
 menu: starter
 lang: en
-redirect_from: "/starter/generator/core_concepts.html"
+redirect_from: "/starter/generator/prompts.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
 <div class="titleBlock">
-	<h1>Core concepts</h1>
+	<h1>Prompt reference</h1>
 </div>
 
 Swift Server Generator creates a Kitura Swift application based on the [project type](#project-type), [capabilities](#capabilities) and [services](#services) you select. To do this, use the [command-line tools](command_line_tools.html) provided by [installing the generator](installation.html).
 
-## How the generator works
 
-The generator is a Node.js application using the Yeoman library. It consists of a
-number of sub-generators, as described in the [command-line tools](command_line_tools.html)
-page.
-
-The main entry point is the [application generator](command_line_tools.html#application-generator)
-which is responsible for asking the questions that define what application will be generated.
-
-Once all questions have been answered, the application generator will run the refresh generator
-which will create the project directory and files on disk. Then it will build the application using
-`swift build`.
 
 ## Project type
 
@@ -200,7 +189,7 @@ The `cli-config.yml` is used by the Bluemix CLI [Dev plugin](LINK) to build and 
 the Docker files (`bx dev build` and `bx dev run`).
 
 The files in the `.bluemix` directory provide support for creating a default toolchain
-using the [Create Toolchain button](core_concepts.html#create-toolchain).
+using the [Create Toolchain button](#create-toolchain).
 :: END ::
 
 ## Services

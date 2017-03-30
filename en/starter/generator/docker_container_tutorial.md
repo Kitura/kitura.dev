@@ -3,10 +3,10 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
-title: Setting up a local couchdb application
+title: Running inside a Docker container
 menu: starter
 lang: en
-redirect_from: "/starter/generator/getting_started.html"
+redirect_from: "/starter/generator/docker_container_tutorial.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
@@ -40,7 +40,7 @@ redirect_from: "/starter/generator/getting_started.html"
 
     ? Enter the name of the directory to contain the project: (docker-getting-started)
 
-<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](core_concepts.html#scaffold) for the [type of project](core_concepts.html#project-type) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](prompts.html#scaffold) for the [type of project](prompts.html#project-type) and press **Enter**.
 
 ```
 ? Select type of project: (Use arrow keys)
@@ -48,7 +48,7 @@ redirect_from: "/starter/generator/getting_started.html"
   Generate a CRUD application
 ```
 
-<span class="arrow">&#8227;</span> Select [`Basic`](core_concepts.html#web-pattern) for the [application pattern](core_concepts.html#application-pattern) (this determines the default set of capabilities) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Basic`](prompts.html#web-pattern) for the [application pattern](prompts.html#application-pattern) (this determines the default set of capabilities) and press **Enter**.
 
 ```
 ? Select capability presets for application pattern: (Use arrow keys)
@@ -57,7 +57,7 @@ redirect_from: "/starter/generator/getting_started.html"
   Backend for frontend
 ```
 
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the `Basic` application pattern.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](prompts.html#capabilities) for the `Basic` application pattern.
 
 Use the spacebar to select or deselect any capabilities. For this tutorial you must select **Docker files**.
 
@@ -71,7 +71,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you m
   ◯ Bluemix cloud deployment
 ```
 
-<span class="arrow">&#8227;</span> Press **Space** to select a boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding. For this tutorial a boilerplate is not selected.
+<span class="arrow">&#8227;</span> Press **Space** to select a boilerplate for inclusion as a [service](prompts.html#services) in the scaffolding. For this tutorial a boilerplate is not selected.
 
 ```
 ? Generate boilerplate for local services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)

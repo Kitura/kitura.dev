@@ -21,9 +21,9 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ---
 
-### [Getting started](/{{ page.lang }}/starter/generator/getting_started.html)
+### [Overview](/{{ page.lang }}/starter/generator/overview.html)
 
-### [Core concepts](/{{ page.lang }}/starter/generator/core_concepts.html)
+### [Getting started](/{{ page.lang }}/starter/generator/getting_started.html)
 
 ### [Installing](/{{ page.lang }}/starter/generator/installation.html)
 
@@ -44,6 +44,8 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 ---
 
 ## Reference
+
+### [Prompt reference](/{{ page.lang }}/starter/generator/prompts.html)
 
 ### [Command-line Tools](/{{ page.lang }}/starter/generator/command_line_tools.html)
 

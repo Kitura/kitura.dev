@@ -3,7 +3,7 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
-title: Setting up a local couchdb application
+title: Setting up a local CouchDB application
 menu: starter
 lang: en
 redirect_from: "/starter/generator/getting_started.html"
@@ -11,8 +11,8 @@ redirect_from: "/starter/generator/getting_started.html"
 ---
 
 <div class="titleBlock">
-	<h1>Setting up a local couchdb application</h1>
-	<p>How to setup a Kitura application that can access a local couchdb database.</p>
+	<h1>Setting up a local CouchDB application</h1>
+	<p>How to setup a Kitura application that can access a local CouchDB database.</p>
 </div>
 
 **Prerequisities:**
@@ -22,9 +22,9 @@ redirect_from: "/starter/generator/getting_started.html"
 
 ---
 
-Install couchdb locally:
+Install CouchDB locally:
 
-Instructions for installing CouchDB can be found in the [CouchDB documentation](http://docs.couchdb.org).
+Instructions for installing CouchDB can be found in the [CouchDB documentation](http://docs.CouchDB.org).
 For this tutorial, the Ubuntu packaged version (CouchDB 1.6.0) was installed on Ubuntu 16.04:
 
 ```
@@ -54,7 +54,7 @@ $ curl http://127.0.0.1:5984/
 
     ? Enter the name of the directory to contain the project: (couchdb-getting-started)
 
-<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](core_concepts.html#scaffold) for the [type of project](core_concepts.html#project-type) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](prompts.html#scaffold) for the [type of project](prompts.html#project-type) and press **Enter**.
 
 ```
 ? Select type of project: (Use arrow keys)
@@ -62,7 +62,7 @@ $ curl http://127.0.0.1:5984/
   Generate a CRUD application
 ```
 
-<span class="arrow">&#8227;</span> Select [`Basic`](core_concepts.html#web-pattern) for the [application pattern](core_concepts.html#application-pattern) (this determines the default set of capabilities) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Basic`](prompts.html#web-pattern) for the [application pattern](prompts.html#application-pattern) (this determines the default set of capabilities) and press **Enter**.
 
 ```
 ? Select capability presets for application pattern: (Use arrow keys)
@@ -71,7 +71,7 @@ $ curl http://127.0.0.1:5984/
   Backend for frontend
 ```
 
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the `Basic` application pattern.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](prompts.html#capabilities) for the `Basic` application pattern.
 
 Use the spacebar to select or deselect any capabilities. For this tutorial you do not need any capabilities, you are free to deselect all of them.
 
@@ -85,7 +85,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
   ◉ Bluemix cloud deployment
 ```
 
-<span class="arrow">&#8227;</span> Press **Space** to select the CouchDB boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding.
+<span class="arrow">&#8227;</span> Press **Space** to select the CouchDB boilerplate for inclusion as a [service](prompts.html#services) in the scaffolding.
 
 ```
 ? Generate boilerplate for local services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
@@ -93,7 +93,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
   ◯ Redis
 ```
 
-<span class="arrow">&#8227;</span> Press **Space** to select the Cloudant / CouchDB configuration. If you let the generator provide the defaults, there is nothing more to do. The generator will now complete its code generation with defaults that allow CouchDB to be accessed on port **5984** on **localhost**. If you opt for setting the configuration options, then you will get further questions about the specifics of the CouchDB service. 
+<span class="arrow">&#8227;</span> Press **Space** to select the Cloudant / CouchDB configuration. If you let the generator provide the defaults, there is nothing more to do. The generator will now complete its code generation with defaults that allow CouchDB to be accessed on port **5984** on **localhost**. If you opt for setting the configuration options, then you will get further questions about the specifics of the CouchDB service.
 
 ```
 ? Configure service credentials (leave unchecked for defaults): (Press <space> to select, <a> to toggle all, <i> to inverse selection)

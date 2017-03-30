@@ -15,8 +15,8 @@ redirect_from: "/starter/generator/project_layout_reference.html"
 </div>
 
 Swift Server Generator generates applications in a layout compatible with [Swift Package Manager](https://swift.org/package-manager/).
-The files that populate the application directory depend on the [project type](core_concepts.html#project-type),
-[capabilities](core_concepts.html#capabilities) and [services](core_concepts.html#services) selected during creation.
+The files that populate the application directory depend on the [project type](prompts.html#project-type),
+[capabilities](prompts.html#capabilities) and [services](prompts.html#services) selected during creation.
 
 ## Common files
 
@@ -54,7 +54,7 @@ The following are created when the application is built (by `swift build`):
 
 ## Scaffolded project
 
-The following subsections apply to the [scaffold project type](core_concepts.html#scaffold).
+The following subsections apply to the [scaffold project type](prompts.html#scaffold).
 All scaffolded projects will have the following files included:
 
 ```
@@ -66,7 +66,7 @@ All scaffolded projects will have the following files included:
 
 ### Web capability
 
-If you select the [web capability](core_concepts.html#web-capability) then the following
+If you select the [web capability](prompts.html#web-capability) then the following
 files will be included in the scaffolded project:
 
 ```
@@ -75,7 +75,7 @@ files will be included in the scaffolded project:
 
 ### OpenAPI / Swagger endpoint capability
 
-If you select the [Swagger endpoint capability](core_concepts.html#swagger-endpoint-capability) then the following
+If you select the [Swagger endpoint capability](prompts.html#swagger-endpoint-capability) then the following
 files will be included in the scaffolded project:
 
 ```
@@ -87,7 +87,7 @@ files will be included in the scaffolded project:
 
 ### Example endpoints capability
 
-If you select the [example endpoints capability](core_concepts.html#example-endpoints-capability) then the following
+If you select the [example endpoints capability](prompts.html#example-endpoints-capability) then the following
 files will be included in the scaffolded project:
 
 ```
@@ -101,8 +101,8 @@ files will be included in the scaffolded project:
 
 ### Both Web capability and Example endpoints capability
 
-If both [web capability](core_concepts.html#web_capability) and
-[example endpoints capability](core_concepts.html#example-endpoints-capability) are
+If both [web capability](prompts.html#web_capability) and
+[example endpoints capability](prompts.html#example-endpoints-capability) are
 selected then [SwaggerUI](LINK) will be added to the project in the following location:
 
 ```
@@ -112,7 +112,7 @@ selected then [SwaggerUI](LINK) will be added to the project in the following lo
 
 ### Docker capability
 
-If you select the [docker capability](core_concepts.html#docker-capability) then the following
+If you select the [docker capability](prompts.html#docker-capability) then the following
 files will be included in the scaffolded project:
 
 ```
@@ -123,7 +123,7 @@ files will be included in the scaffolded project:
 
 ### Bluemix capability
 
-If you select the [bluemix capability](core_concepts.html#bluemix-capability) then the following
+If you select the [bluemix capability](prompts.html#bluemix-capability) then the following
 files will be included in the scaffolded project:
 
 ```
@@ -138,7 +138,7 @@ files will be included in the scaffolded project:
 
 ## CRUD project
 
-The following section applies to the [CRUD project type](core_concepts.html#scaffold).
+The following section applies to the [CRUD project type](prompts.html#scaffold).
 CRUD projects will have the following files included:
 
 ```

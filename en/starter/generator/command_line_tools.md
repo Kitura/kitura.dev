@@ -15,18 +15,28 @@ redirect_from: "/starter/generator/command_line_tools.html"
 	<p>This article summarizes Swift Server Generator CLI tool commands.</p>
 </div>
 
-Two command-line tools are available for Swift Server Generator:
+The generator is an [npm](https://www.npmjs.com) module using the [Yeoman](http://yeoman.io/)
+library. This means that the generator is a plugin that is executed using the `yo` command-line
+front-end to Yeoman. Use the [installation instructions](installation.html) to ensure the
+generator and its prerequisites are installed correctly.
 
--   [Yeoman](http://yeoman.io/) command-line tools: `yo swiftserver`.
+> ![info] Note: The generator is also available indirectly using:
+>
+> * [IBM API Connect toolkit CLI](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/capic_swift_overview.html) via `apic swiftserver`  
+> (uses v1.0.4 of the generator).
+> * [Bluemix CLI Developer Plug-in](https://console.ng.bluemix.net/docs/cloudnative/tutorial_web.html#tutorial/) via `bx dev create`  
+> (only supports scaffolded applications).
 
--   IBM API Connect developer toolkit CLI: `apic swiftserver`  
-    Note, this is specific to version 1.0.4 of Swift Server Generator.
+You can run the generator use the following command:
 
-You can also invoke Swift Server Generator indirectly using the [Bluemix CLI Developer Plug-in](https://console.ng.bluemix.net/docs/cloudnative/tutorial_web.html#tutorial/). You can only scaffold starter application types through the Bluemix CLI Developer Plug-in command line: `bx dev create`, you cannot generate CRUD application types.
+```bash
+yo swiftserver
+```
 
-You use these command line tools to create and configure Swift Server Generator applications. The table below describes using the Yeoman command-line options.
-
-The command-line tools provide an [Application generator](#application-generator) to create a new Swift Server Generator application. There are also a number of sub-generators to define models and properties, these only apply to CRUD application types, as described in the following table:
+The generator will display a series of prompts asking questions that define what
+application will be generated. Once all questions have been answered, the project
+directory and files will be written to the filesystem. Then the application will
+be built using `swift build`.
 
 *Table 1. Available commands*
 
