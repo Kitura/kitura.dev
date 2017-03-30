@@ -112,6 +112,9 @@ OK
 
 > ![info] Note: Ensure you are logged in to the correct API endpoint. To check type `cf target` and to login type `cf login`, more information on `cf` commands can be found  [here](https://console.ng.bluemix.net/docs/cli/reference/cfcommands/index.html)
 
+## Next Steps
+Take a look at the [other tutorials](../generator.html#tutorials).
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

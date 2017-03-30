@@ -109,6 +109,9 @@ To deploy your application to `Bluemix` and set up [Continuous Delivery](https:/
 
 <span class="arrow">&#8227;</span> When you are on `Bluemix` click on the  `Create` button to finish and create your toolchain.
 
+## Next Steps
+Take a look at the [other tutorials](../generator.html#tutorials).
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

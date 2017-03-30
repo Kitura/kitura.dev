@@ -140,6 +140,9 @@ $ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run s
 
 Congratulations, you now have a simple Kitura web application in a Docker image which can be distributed and deployed to other Docker servers.
 
+## Next Steps
+Take a look at the [other tutorials](../generator.html#tutorials).
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png
