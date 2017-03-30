@@ -12,11 +12,18 @@ redirect_from: "/starter/generator/deploy_cloud_foundry.html"
 
 <div class="titleBlock">
 	<h1>Deploying to the Cloud with Cloud Foundry</h1>
-	<p>Use the generator to create scaffolding for a simple Kitura web application and deploy to the cloud using `Cloud Foundry` cli.	</p>
+	<p>Use the generator to create scaffolding for a simple Kitura web application and deploy to the cloud using Cloud Foundry CLI.	</p>
 </div>
 
 > ![warning] Make sure you have installed the command-line tools as described in
 > [Installation](installation.html) before you begin.
+
+---
+
+#### In this tutorial you will:
+
+- Create a scaffolded Kitura application
+- Use CloudFoundry CLI to deploy to Bluemix
 
 ---
 <span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
