@@ -12,7 +12,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 
 <div class="titleBlock">
 	<h1>Running inside a Docker container</h1>
-	<p>How to run your Kitura application instde a docker container.</p>
+	<p>How to run your Kitura application inside a docker container.</p>
 </div>
 
 **Prerequisities:**
@@ -24,7 +24,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 
 <span class="arrow">&#8227;</span> Install [Docker](http://www.docker.com/products/docker) on your development system.
 
-# Generate an application for docker
+# Generating the scaffolded application
 
 <span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
 
@@ -40,7 +40,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 
     ? Enter the name of the directory to contain the project: (docker-getting-started)
 
-<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](prompts.html#scaffold) for the [type of project](prompts.html#project-type) and press **Enter**.
+<span class="arrow">&#8227;</span> Select `Scaffold a starter` at the [type of project prompt](prompts.html#project-type-prompt) and press **Enter**.
 
 ```
 ? Select type of project: (Use arrow keys)
@@ -48,7 +48,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
   Generate a CRUD application
 ```
 
-<span class="arrow">&#8227;</span> Select [`Basic`](prompts.html#web-pattern) for the [application pattern](prompts.html#application-pattern) (this determines the default set of capabilities) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Basic`](prompts.html#basic-pattern) at the [application pattern prompt](prompts.html#application-pattern-prompt) (this determines the default set of capabilities) and press **Enter**.
 
 ```
 ? Select capability presets for application pattern: (Use arrow keys)
@@ -57,7 +57,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
   Backend for frontend
 ```
 
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](prompts.html#capabilities) for the `Basic` application pattern.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
 
 Use the spacebar to select or deselect any capabilities. For this tutorial you must select **Docker files**.
 
@@ -66,12 +66,12 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you m
   ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
  ❯◯ Example endpoints
-  ◯ Embedded metrics dashboard
+  ◉ Embedded metrics dashboard
   ◉ Docker files
-  ◯ Bluemix cloud deployment
+  ◉ Bluemix cloud deployment
 ```
 
-<span class="arrow">&#8227;</span> Press **Space** to select a boilerplate for inclusion as a [service](prompts.html#services) in the scaffolding. For this tutorial a boilerplate is not selected.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](prompts.html#services) in the scaffolding.
 
 ```
 ? Generate boilerplate for local services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
@@ -111,7 +111,7 @@ docker-getting-started/
 
     $ cd docker-getting-started
 
-<span class="arrow">&#8227;</span> build the Docker run and Docker build tools images:
+<span class="arrow">&#8227;</span> Build the Docker run and Docker build tools images:
 
 ```
 $ docker build -t myapp-run .
@@ -120,7 +120,7 @@ $ docker build -t myapp-build -f Dockerfile-tools .
 
 You may customize the names of these images by specifying a different value after the `-t` option.
 
-<span class="arrow">&#8227;</span> To compile the application using the build tools docker image, run:
+<span class="arrow">&#8227;</span> To compile the application using the build tools Docker image, run:
 
 ```
 $ docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-utils.sh build release
@@ -129,7 +129,7 @@ $ docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tool
 <span class="arrow">&#8227;</span> To run the application in the Docker container:
 
 ```
-$ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build/release/docker-getting-started
+$ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-docker/release/docker-getting-started
 ```
 
 <span class="arrow">&#8227;</span> Confirm the application is running locally by opening the URL
