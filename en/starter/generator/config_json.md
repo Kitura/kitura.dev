@@ -23,7 +23,7 @@ Your Swift Server Generator application uses the [CloudConfiguration package](ht
 
 ## Local configuration without bluemix
 
-The following example `config.json` file shows the default settings without the [bluemix capability](prompts.html#bluemix-capability) selected:
+The following example `config.json` file shows the default settings without the [bluemix capability](core_concepts.html#bluemix-capability) selected:
 
 ```json
 {
@@ -75,7 +75,7 @@ When you run your application, if it is a CRUD type application and the database
 
 ## Local configuration with Cloudant store as bluemix service
 
-The following example shows Cloudant store configuration settings in the `config.json` file when running with the [bluemix capability](prompts.html#bluemix-capability) selected:
+The following example shows Cloudant store configuration settings in the `config.json` file when running with the [bluemix capability](core_concepts.html#bluemix-capability) selected:
 
 ```json
 {

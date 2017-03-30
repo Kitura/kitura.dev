@@ -108,10 +108,10 @@ This capability is only optional for [scaffold projects](#scaffold) and is alway
 This capability includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located at `definitions/<app_name>.yaml`.
 
 If the [Web capability](#web-capability) and [Swagger endpoint capability](#swagger-endpoint-capability)
-are enabled then specification of this interface is made available through an embedded Swagger UI hosted
-on `/explorer`. For example, if the application is hosted at https://localhost:8080, go to
-https://localhost:8080/explorer. The Swagger UI will document the paths and http methods that are
-supported by the application.
+are enabled then specification of this interface is made available through an embedded
+[Swagger UI](http://swagger.io/swagger-ui/) hosted on `/explorer`. For example, if the application
+is hosted at https://localhost:8080, go to https://localhost:8080/explorer. The Swagger UI will document
+the paths and http methods that are supported by the application.
 
 This capability is only available for [scaffold projects](#scaffold).
 
