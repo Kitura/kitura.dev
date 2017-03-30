@@ -14,7 +14,7 @@ redirect_from: "/starter/generator/overview.html"
 	<h1>Overview</h1>
 </div>
 
-Swift Server Generator is a set [command-line tools](command_line_tools.html) that
+Swift Server Generator is a set of [command-line tools](command_line_tools.html) that
 provide a [guided question-and-answer](prompts.html) way to create Kitura Swift
 applications.
 
