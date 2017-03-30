@@ -16,6 +16,46 @@ redirect_from: "/starter/generator/prompts.html"
 
 The following sections describe the prompts provided by the [application generator](command_line_tools.html#application-generator).
 
+## Application name prompt
+If you did not supply an application name as an argument, the
+[application generator](command_line_tools.html#application-generator) will ask the name
+you would like to use for your application:
+
+```
+? What's the name of your application? (currentDirectory)
+```
+
+The default value is the name of the current working directory.
+
+The application name you enter must satisfy the following constraints:
+
+* Must not start with a `.`
+* Must not contain whitespace characters
+* Must not contain any of the following characters: `/@+%:`
+* Must not contain characters reserved in URIs
+* Must not be `node_modules`
+* Must not be `favicon.ico`
+
+## Application directory prompt
+The [application generator](command_line_tools.html#application-generator) will ask the name
+of the directory you would like to use for your application:
+
+```
+? Enter the name of the directory to contain the project: (applicationName)
+```
+
+The default value is the name of the application.
+
+If the directory name is the same as the current directory, then the generator will assume you
+want to create the project in direcly in the current directory rather than creating a subdirectory
+of the same name.
+
+The application directory you enter must satisfy the following constraints:
+
+* Must not contain whitespace characters
+* Must not contain any of the following characters: `/@+%:`
+* Must not contain characters reserved in URIs
+
 ## Project type prompt
 
 The [application generator](command_line_tools.html#application-generator) will ask which type of project
@@ -38,7 +78,8 @@ update operations. At present the code for this type of application is not very
 customizable aside from modifying the data model.
 
 ## Application pattern prompt
-For scaffolded applications, the [application generator](command_line_tools.html#application-generator) will
+For [scaffolded applications](core_concepts.html#scaffold), the
+[application generator](command_line_tools.html#application-generator) will
 ask which application pattern you want to select, offering three options:
 
 ```
@@ -96,10 +137,11 @@ for the [capabilities prompt](#capabilities-prompt):
 ```
 
 ## Capabilities prompt
+The [application generator](command_line_tools.html#application-generator) will
+ask which [capabilities](core_concepts.html#capabilities) you want to select.
 
-[Capabilities](core_concepts.html#capabilities) define chunks of functionality that
-will be implemented by the generated application. The [application generator](command_line_tools.html#application-generator)
-will ask you to select the capabilities you would like included. For example:
+For [Scaffold project type](core_concepts.html#scaffold), the following capabilities
+are available:
 
 ```
 ? Select capabilities: (Press <space> to select)
@@ -111,28 +153,87 @@ will ask you to select the capabilities you would like included. For example:
   ◉ Bluemix cloud deployment
 ```
 
-For the [scaffold project type](core_concepts.html#scaffold), you can select from the following list:
+For [CRUD project type](core_concepts.html#crud), the following capabilities
+are available:
 
-* [Static web file serving](core_concepts.html#web-capability)
-* [OpenAPI / Swagger endpoint](core_concepts.html#swagger-endpoint-capability)
-* [Example endpoints](core_concepts.html#example-endpoints-capability)
-* [Embedded metrics dashboard](core_concepts.html#metrics-dashboard-capability)
-* [Docker files](core_concepts.html#docker-capability)
-* [Bluemix cloud deployment](core_concepts.html#bluemix-capability)
-
-For the [CRUD project type](#crud), you can select from the following list:
-
-* [Embedded metrics dashboard](core_concepts.html#metrics-dashboard-capability)
-* [Docker files](core_concepts.html#docker-capability)
-* [Bluemix cloud deployment](core_concepts.html#bluemix-capability)
+```
+? Select capabilities: (Press <space> to select)
+❯ ◉ Embedded metrics dashboard
+  ◉ Docker files
+  ◉ Bluemix cloud deployment
+```
 
 The list allows for toggling of any combination of the available capabilities which
 will start with a default set selected.
 
-The default set will depend on the [project type](#core_concepts.html#project-type):
+> ![info] Note: CRUD project type always enables the
+> [OpenAPI / Swagger endpoint](#core_concepts.html#swagger-endpoint-capability)
+
+The capabilities selected by default when this prompt is shown depend on the [project type](#core_concepts.html#project-type):
 
 * [CRUD project type](core_concepts.html#crud): all 3 available capabilities are selected by default
-* [Scaffold project type](core_concepts.html#scaffold): defaults depend on [application pattern](#application-pattern)
+* [Scaffold project type](core_concepts.html#scaffold): defaults depend on [application pattern](#application-pattern-prompt)
+
+## Services prompt
+For [scaffolded applications](core_concepts.html#scaffold), the
+[application generator](command_line_tools.html#application-generator) will
+ask which [services](core_concepts.html#services) you want to select.
+
+If the [Bluemix capability](core_concepts.html#bluemix-capability) is enabled, the following
+[Bluemix services](core_concepts.html#bluemix-services) are available:
+
+```
+? Generate boilerplate for Bluemix services: (Press <space> to select)
+❯ ◯ Cloudant
+  ◯ Redis
+  ◯ Object Storage
+  ◯ AppID
+  ◯ Auto-scaling
+```
+
+If the [Bluemix capability](core_concepts.html#bluemix-capability) is disabled, the following
+[Non-Bluemix services](core_concepts.html#non-bluemix-services) are available:
+
+```
+? Generate boilerplate for local services: (Press <space> to select)
+❯ ◯ CouchDB
+  ◯ Redis
+```
+
+## CRUD store prompt
+For [CRUD applications](core_concepts.html#crud), the
+[application generator](command_line_tools.html#application-generator) will
+ask how you want to store entities:
+
+```
+? Select data store: (Use arrow keys)
+❯ Memory (for development purposes)
+  Cloudant / CouchDB
+```
+
+Selecting `Memory (for development purposes)` will mean entities are stored in a simple
+memory-based database.
+
+> ![warning] The memory data store is volatile and any data added will be lost when
+> the application is stopped. As such, it is only suitable for development purposes.
+
+Selecting `Cloudant / CouchDB` will add a local CouchDB service for entity storage.
+
+## Service configuration prompt
+The [application generator](command_line_tools.html#application-generator) will
+ask you which of the services you selected need to be configured, for example:
+
+```
+? Configure service credentials (leave unchecked for defaults): (Press <space> to select)
+❯ ◯ Cloudant / CouchDB
+  ◯ Redis
+  ◯ Object Storage
+```
+
+Any services you do not select in this prompt will use default values.
+
+For each service you select, a set of custom prompts will ask for the relevant connection
+details to be supplied.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
