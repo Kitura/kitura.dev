@@ -15,15 +15,19 @@ redirect_from: "/starter/generator/config_json.html"
 	<p>Define Swift Server Generator application settings in the <code>config.json</code> file.</p>
 </div>
 
-## Introduction
-
 The configuration information for your application is stored in the `config.json` file in the project root directory. This file is listed in `.gitignore` to prevent sensitive information from being stored in git. The connection and configuration information for any configured services, such as username, password and hostname, is stored in this file.
 
-Your Swift Server Generator application uses the [CloudConfiguration package](https://github.com/IBM-Swift/CloudConfiguration) to configure connections to your hosting services, such as Cloudant.  The configuration information will be read from the environment and the `config.json` file, which is used depends whether your application is running locally or remotely.
+Your Swift Server Generator application uses the [Configuration package](https://github.com/IBM-Swift/Configuration) to configure your application, including any [services](core_concepts.html#services) when it was generated.
 
-## Local configuration without bluemix
+If the [Bluemix capability](core_concepts.html#bluemix-capability) is enabled, then
+[CloudConfiguration package](https://github.com/IBM-Swift/CloudConfiguration) is also
+used to manage the configuration of [Bluemix services](core_concepts.html#bluemix-services).
+In this case, the configuration information will be read from the environment when the
+application is deployed on Bluemix and from the `config.json` file when running locally.
 
-The following example `config.json` file shows the default settings without the [bluemix capability](core_concepts.html#bluemix-capability) selected:
+## Bluemix capability disabled
+
+The following example `config.json` file shows the default settings with the [Bluemix capability](core_concepts.html#bluemix-capability) **disabled** and no services:
 
 ```json
 {
@@ -33,22 +37,10 @@ The following example `config.json` file shows the default settings without the 
 }
 ```
 
-The following table describes the properties that you can configure:
+You can configure the `port` used by the application.
 
-*Table 1. `config.json` properties*
-
-| Property name | Description                                                                                                                            | Default value |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `services`       | Define the services to use.  | `{}`      |
-| `logger`      | Swift logger to use. Currently only `helium` is supported.                                                                             | `helium`      |
-| `port`        | TCP port to use.                                                                                                                       | `8080`        |
-
-
-## Local configuration with Cloudant store without bluemix
-
-The [*Cloudant® store*](https://github.com/IBM-Swift/GeneratedSwiftServer-CloudantStore) supports CouchDB and Cloudant.
-
-The following example shows Cloudant store configuration settings in the `config.json` file:
+Any services you select will necessarily be [Non-Bluemix services](core_concepts.html#non-bluemix-services)
+and their configuration will be added within the `services` object. For example:
 
 ```json
 {
@@ -64,18 +56,37 @@ The following example shows Cloudant store configuration settings in the `config
         "username": "user",
         "password": "password"
       }
+    ],
+    "redis": [
+      {
+        "name": "redis",
+        "type": "redis",
+        "host": "localhost",
+        "port": 6397
+      }
     ]
   },
   ...
 }
 ```
-If you omit properties, they take their default values. If you omit `username` and `password` then no authentication is used.
 
-When you run your application, if it is a CRUD type application and the database does not exist, it is created by using the model name (one database per model name). If a database with the same name as the model already exists then that database is used.
+You may alter the configuration of these services to match any required connection details.
+If you omit properties, they take their default values.
 
-## Local configuration with Cloudant store as bluemix service
+## Bluemix capability enabled
 
-The following example shows Cloudant store configuration settings in the `config.json` file when running with the [bluemix capability](core_concepts.html#bluemix-capability) selected:
+The following example `config.json` file shows the default settings with the [Bluemix capability](core_concepts.html#bluemix-capability) **enabled** and no services:
+
+```json
+{
+  "vcap": {
+    "services": {}
+  }
+}
+```
+
+Any services you select will necessarily be [Bluemix services](core_concepts.html#bluemix-services)
+and their configuration will be added within the `services` object. For example:
 
 ```json
 {
@@ -101,7 +112,14 @@ The following example shows Cloudant store configuration settings in the `config
 }
 ```
 
-If your application is running locally, for example for testing, it can connect to Bluemix services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the Bluemix web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](http://cli.cloudfoundry.org/en-US/cf/create-service-key.html). If you use the CloudFoundry CLI you need to create the service instance first with the [`cf create-service` command](http://cli.cloudfoundry.org/en-US/cf/create-service.html). The key information is retrieved with the [`cf service-key` command](http://cli.cloudfoundry.org/en-US/cf/service-key.html). Note, the service names and types will need to match the settings within your `config.json` file.
+If your application is running locally, for example for testing, it can connect to Bluemix services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the Bluemix web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](http://cli.cloudfoundry.org/en-US/cf/create-service-key.html). If you use the CloudFoundry CLI you need to create the service instance first with the [`cf create-service` command](http://cli.cloudfoundry.org/en-US/cf/create-service.html). The key information is retrieved with the [`cf service-key` command](http://cli.cloudfoundry.org/en-US/cf/service-key.html).
+
+> ![info] Note: the service names and types will need to match the settings within your
+> `config.json` file and in the generated boilerplate code in `Sources/Application/Application.swift`.
+
+> ![tip] Tip: Create your Bluemix services before generating your application so you can enter
+> the connection information in the [service configuration prompts](prompts.html#service-configuration-prompt)
+> so you don't have to edit them later.
 
 The following example is a `config.json` which has been updated with credentials information for a service instance called `myapp-Cloudant-z2s2`.
 
@@ -129,10 +147,11 @@ The following example is a `config.json` which has been updated with credentials
 }
 ```
 
-## Remote configuration
+When deployed to Bluemix, the connection information used for a given named service is
+taken from a matching named service bound to the deployed application in preference to
+what is defined in your `config.json` file.
 
-When you push your application to Bluemix the values in your `config.json` file are no longer used, instead Bluemix automatically connects to bound services using environment variables.
-
+This allows you to run the application locally and on Bluemix without modification.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
