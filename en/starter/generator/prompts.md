@@ -52,6 +52,7 @@ The application pattern defines the capabilities that are selected by default in
 [capabilities prompt](#capabilities-prompt). They are presets and the capabilities they suggest
 can be modified as required.
 
+### Basic pattern
 The `Basic` pattern is intended for any type of application, making the fewest assumptions
 about the application logic. Selecting this pattern will result in the following defaults
 for the [capabilities prompt](#capabilities-prompt):
@@ -65,6 +66,7 @@ for the [capabilities prompt](#capabilities-prompt):
  ◉ Bluemix cloud deployment
 ```
 
+### Web pattern
 The `Web` pattern is intended for an application that needs to provide a web server
 hosting static files. Selecting this pattern will result in the following defaults
 for the [capabilities prompt](#capabilities-prompt):
@@ -78,6 +80,7 @@ for the [capabilities prompt](#capabilities-prompt):
  ◉ Bluemix cloud deployment
 ```
 
+### BFF pattern
 The `Backend-for-frontend` (BFF) pattern is intended for an application that provides
 a microservice intended for consumption by a client application (for example, a
 web or mobile application). Selecting this pattern will result in the following defaults
@@ -108,7 +111,7 @@ will ask you to select the capabilities you would like included. For example:
   ◉ Bluemix cloud deployment
 ```
 
-For the [scaffold project type](#scaffold), you can select from the following list:
+For the [scaffold project type](core_concepts.html#scaffold), you can select from the following list:
 
 * [Static web file serving](core_concepts.html#web-capability)
 * [OpenAPI / Swagger endpoint](core_concepts.html#swagger-endpoint-capability)
@@ -126,7 +129,7 @@ For the [CRUD project type](#crud), you can select from the following list:
 The list allows for toggling of any combination of the available capabilities which
 will start with a default set selected.
 
-The default set will depend on the [project type](#project-type):
+The default set will depend on the [project type](#core_concepts.html#project-type):
 
 * [CRUD project type](core_concepts.html#crud): all 3 available capabilities are selected by default
 * [Scaffold project type](core_concepts.html#scaffold): defaults depend on [application pattern](#application-pattern)
