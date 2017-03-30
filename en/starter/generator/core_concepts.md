@@ -189,7 +189,7 @@ section will be available if the [Bluemix capability](#bluemix-capability) is en
 the services in the [Non-Bluemix services](#non-bluemix-services) section will be available.
 
 For [CRUD project type](#crud) no services are available except those that are implied by
-the [CRUD store](#crud-store) prompt.
+the [CRUD store prompt](prompts.html#crud-store-prompt).
 
 ### Bluemix services
 
