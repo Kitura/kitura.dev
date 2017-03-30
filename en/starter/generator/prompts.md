@@ -14,9 +14,7 @@ redirect_from: "/starter/generator/prompts.html"
 	<h1>Prompt reference</h1>
 </div>
 
-Swift Server Generator creates a Kitura Swift application based on the [project type](#project-type), [capabilities](#capabilities) and [services](#services) you select. To do this, use the [command-line tools](command_line_tools.html) provided by [installing the generator](installation.html).
-
-
+The following sections describe the prompts provided by the [application generator](command_line_tools.html#application-generator).
 
 ## Project type
 
@@ -29,41 +27,15 @@ you would like to create, offering two options:
   Generate a CRUD application
 ```
 
-The following sections describe these options in more detail.
+The `Scaffold a starter` option will direct the generator to create a
+[scaffolded application](core_concepts.html#scaffold) providing boilerplate code
+and application structure to which your application logic can be added.
 
-### Scaffold
-
-This project type is for creating a starter application where you define all of the
-application logic yourself. The generator will create the directory structure and boilerplate
-code based on the [capabilities](#capabilities) and [services](#services) you select.
-
-> ![info] You may modify any of the generated code and will not be expected to run the generator
-again on the generated project.
-
-### CRUD
-
-This project type is for creating a CRUD (Create-Read-Update-Delete) application where
-you provide a description of a data model and the generator creates application
-code for a REST webservice that will provide endpoints to perform create,
-read, update and delete operations for data matching that data model.
-
-The data model is specified by using the [model generator](command_line_tools.html#model-generator)
-on the generated project to create each piece of the data model, or by using the [property generator](command_line_tools.html#property-generator) on the generated project to modify existing
-pieces.
-
-Throughout the documentation we will use the following terminology:
-
-* "data model" --- the data model as a whole (eg: the bookstore data model)
-* "model" --- a piece of the data model (eg: the book model)
-* "property" --- a property of a model (eg: the title of a book)
-* "entity" --- a particular set of data matching a model (eg: a book with title "War and Peace")
-
-Each time the data model is modified, parts of the project are regenerated to
-match the updated definition and the application will be rebuilt with `swift build`.
-
-> ![warning] You should not modify the code in the `Sources/Generated` directory, or the OpenAPI Swagger
-definition file in the `definitions` directory as any modifications will be lost when these
-files are regenerated.
+The `Generate a CRUD application` option will direct the generator to create a
+[CRUD application](core_concepts.html#crud) on top of which a data model can be
+defined which will automatically be mapped to REST endpoints for create, read and
+update operations. At present the code for this type of application is not very
+customizable aside from modifying the data model.
 
 ## Application pattern
 For scaffolded applications, the [application generator](command_line_tools.html#application-generator) will
@@ -93,7 +65,7 @@ about the application logic. Selecting this pattern will result in the following
  ◯ Example endpoints
  ◉ Embedded metrics dashboard
  ◉ Docker files
- ◉ Bluemix cloud deployme
+ ◉ Bluemix cloud deployment
 ```
 
 ### Web pattern
@@ -135,137 +107,26 @@ like included.
 
 For the [scaffold project type](#scaffold), you can select from the following list:
 
-* [Static web file serving](#web-capability)
-* [OpenAPI / Swagger endpoint](#swagger-endpoint-capability)
-* [Example endpoints](#example-endpoints-capability)
-* [Embedded metrics dashboard](#metrics-dashboard-capability)
-* [Docker files](#docker-capability)
-* [Bluemix cloud deployment](#bluemix-capability)
+* [Static web file serving](core_concepts.html#web-capability)
+* [OpenAPI / Swagger endpoint](core_concepts.html#swagger-endpoint-capability)
+* [Example endpoints](core_concepts.html#example-endpoints-capability)
+* [Embedded metrics dashboard](core_concepts.html#metrics-dashboard-capability)
+* [Docker files](core_concepts.html#docker-capability)
+* [Bluemix cloud deployment](core_concepts.html#bluemix-capability)
 
 For the [CRUD project type](#crud), you can select from the following list:
 
-* [Embedded metrics dashboard](#metrics-dashboard-capability)
-* [Docker files](#docker-capability)
-* [Bluemix cloud deployment](#bluemix-capability)
+* [Embedded metrics dashboard](core_concepts.html#metrics-dashboard-capability)
+* [Docker files](core_concepts.html#docker-capability)
+* [Bluemix cloud deployment](core_concepts.html#bluemix-capability)
 
 The list allows for toggling of any combination of the available capabilities which
 will start with a default set selected.
 
 The default set will depend on the [project type](#project-type):
 
-* [CRUD project type](#crud): all 3 available capabilities are selected by default
-* [Scaffold project type](#scaffold): defaults depend on [application pattern](#application-pattern)
-
-### Web capability
-This capability will include a `public` directory in the root of the project. The contents of this directory will be served as static content using the built-in Kitura [StaticFileServer module](https://github.com/IBM-Swift/Kitura/wiki/Serving-Static-Content).
-
-This content is hosted on `/`. For example, if you want to view `public/myfile.html` and the application is hosted at https://localhost:8080, go to https://localhost:8080/myfile.html.
-
-This capability is only available for [scaffold projects](#scaffold).
-
-### Swagger endpoint capability
-This capability adds an endpoint to the application for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located at `definitions/<app_name>.yaml`.
-
-The endpoint is hosted on `/swagger/api`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/swagger/api.
-
-This capability is only optional for [scaffold projects](#scaffold) and is always enabled in [CRUD projects](#crud).
-
-### Example endpoints capability
-This capability includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located at `definitions/<app_name>.yaml`.
-
-If the [Web capability](#web-capability) and [Swagger endpoint capability](#swagger-endpoint-capability)
-are enabled then specification of this interface is made available through an embedded Swagger UI hosted
-on `/explorer`. For example, if the application is hosted at https://localhost:8080, go to
-https://localhost:8080/explorer. The Swagger UI will document the paths and http methods that are
-supported by the application.
-
-This capability is only available for [scaffold projects](#scaffold).
-
-### Metrics dashboard capability
-This capability uses the [SwiftMetrics package](https://github.com/RuntimeTools/SwiftMetrics)
-to gather application and system metrics.
-
-These metrics can be viewed in an embedded dashboard on `/swiftmetrics-dash`. The dashboard
-displays various system and application metrics, including CPU, memory usage, HTTP response
-metrics and more.
-
-### Docker capability
-This capability includes the following files for Docker support:
-* `.dockerignore`
-* `Dockerfile`
-* `Dockerfile-tools`
-
-The `.dockerignore` file contains the files/directories that should not be included in the
-built docker image. By default this file contains the `Dockerfile` and `Dockerfile-tools`.
-It can be modified as required.
-
-The `Dockerfile` defines the specification of the default docker image for running the application.
-This image can be used to run the application.
-
-The `Dockerfile-tools` is a docker specification file similar to the `Dockerfile`, except it includes
-the tools required for compiling the application. This image can be used to compile the application.
-
-To build the two docker images, run the following commands from the root directory of the project:
-
-```shell
-docker build -t myapp-run .
-docker build -t myapp-build -f Dockerfile-tools .
-```
-
-You may customize the names of these images by specifying a different value after the `-t` option.
-
-To compile the application using the tools docker image, run:
-
-```shell
-docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-utils.sh build release
-```
-
-To run the application:
-
-```shell
-docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build/release/<app_executable>
-```
-
-### Bluemix capability
-This capability includes a set of Bluemix cloud deployment configuration files to support
-deploying your application to Bluemix:
-* `manifest.yml`
-* `.bluemix/toolchain.yml`
-* `.bluemix/pipeline.yml`
-
-The [`manifest.yml`](https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest) defines
-options which are passed to the Cloud Foundry `cf push` command during application deployment.
-
-[IBM Bluemix DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service
-provides toolchains as a set of tool integrations that support development, deployment, and operations
-tasks inside Bluemix. The "Create Toolchain" button in the [README.md](project_layout_reference.html#readme)
-creates a DevOps toolchain and acts as a single-click deploy to Bluemix including provisioning all required
-services.
-
-> ![warning] You need to publish your project to a public github.com repository to use the "Create toolchain"
-> button.
-
-## Services
-
-> TODO
-
----
-
-## Models
-
-*Models* are at the heart of Swift Server Generator, and represent structures of related data, such as a book or a user, that are stored in data stores such as databases or other back-end services (REST and so on). Swift Server Generator models are defined as a named set of properties and associated metadata ("name" and "type", for example) and are realized in the generated application as Swift types and REST endpoints.
-
-After you have generated an application and defined your models you will have a Kitura Swift application built by using the Swift Package Manager. [*Kitura*](http://www.kitura.io/) is an open source web framework for building Swift applications inspired by [*Express®*](http://expressjs.com/), a Node.js web framework. When you run your Kitura Swift application, it creates a Kitura server that handles REST/HTTP requests for each of the defined resources and their operations.
-
-A key powerful feature of Swift Server Generator is that when you define a model it automatically comes with a predefined REST API with a full set of create, read, update, and delete operations. This REST API is described in more detail in [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html).
-
-You can create models by using the model generator, which creates a [Model definition JSON file](model_definition_json_file.html) that defines your model. By convention, this file is located in the project's `models` directory; for example, `models/customer.json`.
-
----
-
-## OpenAPI (Swagger 2.0)
-
-After a model and its properties have been defined, an [OpenAPI (Swagger 2.0) specification](http://swagger.io/specification/) is also generated that describes and documents the REST APIs. By convention, this is located in the project’s definitions directory; for example, `definitions/customer.yaml`.
+* [CRUD project type](core_concepts.html#crud): all 3 available capabilities are selected by default
+* [Scaffold project type](core_concepts.html#scaffold): defaults depend on [application pattern](#application-pattern)
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
