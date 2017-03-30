@@ -25,11 +25,16 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
 - Create a Cloudant service on Bluemix
 - Create a scaffolded Kitura application
 - Add a Cloudant service to the application
-- Connect to the Cloudant service, running on Bluemix, locally
+- Connect to the Cloudant service
 
 ---
 
-<span class="arrow">&#8227;</span> Create a [Cloudant service](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db?taxonomyNavigation=services) on Bluemix.
+<span class="arrow">&#8227;</span> Create a [Cloudant service](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db?taxonomyNavigation=services) on Bluemix by clicking the `Create` button.
+
+Navigate to `Service Credentials` to view your credentials.
+
+> ![tip] Keep the window open so that you can quickly get the service credentials to configure your Cloudant service.
+
 
 ---
 <span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
@@ -49,14 +54,14 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
     ? Enter the name of the directory to contain the project: (swiftserver-cloudant)
 
 ---
-<span class="arrow">&#8227;</span> Select `Scaffold a starter` at the [type of project prompt](prompts.html#project-type-prompt) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Scaffold a starter`](prompts.html#scaffold) for the [type of project](prompts.html#project-type) and press **Enter**.
 
     ? Select type of project: (Use arrow keys)
     ❯ Scaffold a starter
       Generate a CRUD application
 
 ---
-<span class="arrow">&#8227;</span> Select [`Web`](prompts.html#web-pattern) at the [application pattern](prompts.html#application-pattern-prompt) (this determines the default set of capabilities) and press **Enter**.
+<span class="arrow">&#8227;</span> Select [`Web`](prompts.html#web-pattern) for the [application pattern](prompts.html#application-pattern) (this determines the default set of capabilities) and press **Enter**.
 
     ? Select capability presets for application pattern: (Use arrow keys)
       Basic
@@ -64,7 +69,7 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
       Backend for frontend
 
 ---
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the `Web` application pattern.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](prompts.html#capabilities) for the `Web` application pattern.
 
     ? Select capabilities: (Press <space> to select)
     ❯ ◉ Static web file serving
@@ -92,19 +97,19 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
 
 > ![info] Note: If you want to keep the defaults then leave it unselected and just press **Enter**.
 
-Then configure `Cloudant`:
+Then configure `Cloudant` with the credentials you made earlier in Bluemix:
 
 ```
 Configure Cloudant / CouchDB
-? Enter name (blank for default):
-? Enter host name: sdfef-61c1-4b7f-9b74-1837370d4185-bluemix.cloudant.com
+? Enter name (blank for default): <Your cloudant service name>
+? Enter host name: <Your cloudant host name>
 ? Enter port: 443
 ? Secure (https)? Yes
-? Enter username (blank for none): sdfef-61c1-4b7f-9b74-1837370d4185-bluemix
-? Enter password: ***********
+? Enter username (blank for none): <Your cloudant username>
+? Enter password: <Your cloudant password>
 ```
 
-> ![info] Note: You will need to get the information/credentials from `Bluemix`.
+---
 
 The generator will display messages as it scaffolds and builds the application including:
 
@@ -141,7 +146,46 @@ swiftserver-cloudant/
     $ cd swiftserver-cloudant
 
 ---
-<span class="arrow">&#8227;</span> Start the application:
+
+<span class="arrow">&#8227;</span> Now modify your application to create a CouchDB database. This can be done by adding a line of swift code to create a database: Modify Sources/Application/Application.swift as shown below.
+
+```swift
+public func initialize() throws {
+
+    manager.load(file: "config.json", relativeFrom: .project)
+           .load(.environmentVariables)
+
+    port = manager["port"] as? Int ?? port
+
+    let cloudantConfig = CloudantConfig(manager: manager)
+
+    let couchDBConnProps = ConnectionProperties(host:     cloudantConfig.host,
+                                                port:     cloudantConfig.port,
+                                                secured:  cloudantConfig.secured,
+                                                username: cloudantConfig.username,
+                                                password: cloudantConfig.password )
+
+    couchDBClient = CouchDBClient(connectionProperties: couchDBConnProps)
+
+    /* Add the line below. */
+    couchDBClient?.createDB("cloudant-tutorial"){_,_ in}
+
+    router.all("/*", middleware: BodyParser())
+}
+
+```
+
+<span class="arrow">&#8227;</span> Now go back to the application directory and recompile the application:
+
+```
+$ yo swiftserver:build
+```
+
+> ![info] Why not **swift build**? On MacOS the swift build command will not work if you have opted to include the [Embedded metrics dashboard](/en/resources/tutorials/swiftmetrics.html) capability. The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator works in all environments and should be used instead.
+
+---
+
+<span class="arrow">&#8227;</span> Start the application from the root of your project:
 
     $ .build/debug/swiftserver-cloudant
 
