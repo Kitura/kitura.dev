@@ -6,7 +6,7 @@ layout: page
 title: Setting up a local CouchDB application
 menu: starter
 lang: en
-redirect_from: "/starter/generator/getting_started.html"
+redirect_from: "/starter/generator/local_couchdb_tutorial.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

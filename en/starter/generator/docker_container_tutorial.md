@@ -62,10 +62,10 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 Use the spacebar to select or deselect any capabilities. For this tutorial you must select **Docker files**.
 
 ```
-? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
-  ◯ Static web file serving
+? Select capabilities: (Press <space> to select)
+❯ ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
- ❯◯ Example endpoints
+  ◯ Example endpoints
   ◉ Embedded metrics dashboard
   ◉ Docker files
   ◉ Bluemix cloud deployment
@@ -74,7 +74,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you m
 <span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](prompts.html#services) in the scaffolding.
 
 ```
-? Generate boilerplate for local services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+? Generate boilerplate for local services: (Press <space> to select)
 ❯ ◯ CouchDB
   ◯ Redis
 ```

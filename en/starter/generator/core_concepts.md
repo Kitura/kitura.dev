@@ -157,7 +157,7 @@ docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-
 To run the application:
 
 ```shell
-docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build/release/<app_executable>
+docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-docker/release/<app_executable>
 ```
 
 ### Bluemix capability
