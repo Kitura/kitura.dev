@@ -36,7 +36,7 @@ redirect_from: "/starter/generator/getting_started.html"
     ? Enter the name of the directory to contain the project: (swiftserver-getting-started)
 
 ---
-<span class="arrow">&#8227;</span> Select `Scaffold a starter` at the [type of project prompt](core_concepts.html#project-type-prompt) and press **Enter**.
+<span class="arrow">&#8227;</span> Select `Scaffold a starter` at the [type of project prompt](prompts.html#project-type-prompt) and press **Enter**.
 
     ? Select type of project: (Use arrow keys)
     ❯ Scaffold a starter
