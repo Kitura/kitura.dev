@@ -27,6 +27,8 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ### [Installing](/{{ page.lang }}/starter/generator/installation.html)
 
+### [Core concepts](/{{ page.lang }}/starter/generator/core_concepts.html)
+
 ---
 
 ## Tutorials
