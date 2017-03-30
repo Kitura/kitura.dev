@@ -133,7 +133,7 @@ Capabilities define chunks of functionality that will be implemented by the gene
 application. The application generator will ask you to select the capabilities you would
 like included.
 
-For the scaffold project type, you can select from the following list:
+For the [scaffold project type](#scaffold), you can select from the following list:
 
 * [Static web file serving](#web-capability)
 * [OpenAPI / Swagger endpoint](#swagger-endpoint-capability)
@@ -142,7 +142,7 @@ For the scaffold project type, you can select from the following list:
 * [Docker files](#docker-capability)
 * [Bluemix cloud deployment](#bluemix-capability)
 
-For the CRUD project type, you can select from the following list:
+For the [CRUD project type](#crud), you can select from the following list:
 
 * [Embedded metrics dashboard](#metrics-dashboard-capability)
 * [Docker files](#docker-capability)
@@ -157,40 +157,93 @@ The default set will depend on the [project type](#project-type):
 * [Scaffold project type](#scaffold): defaults depend on [application pattern](#application-pattern)
 
 ### Web capability
+This capability will include a `public` directory in the root of the project. The contents of this directory will be served as static content using the built-in Kitura [StaticFileServer module](https://github.com/IBM-Swift/Kitura/wiki/Serving-Static-Content).
 
-> TODO
+This content is hosted on `/`. For example, if you want to view `public/myfile.html` and the application is hosted at https://localhost:8080, go to https://localhost:8080/myfile.html.
+
+This capability is only available for [scaffold projects](#scaffold).
 
 ### Swagger endpoint capability
+This capability adds an endpoint to the application for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located at `definitions/<app_name>.yaml`.
 
-> TODO
+The endpoint is hosted on `/swagger/api`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/swagger/api.
+
+This capability is only optional for [scaffold projects](#scaffold) and is always enabled in [CRUD projects](#crud).
 
 ### Example endpoints capability
+This capability includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located at `definitions/<app_name>.yaml`.
 
-> TODO
+If the [Web capability](#web-capability) and [Swagger endpoint capability](#swagger-endpoint-capability)
+are enabled then specification of this interface is made available through an embedded Swagger UI hosted
+on `/explorer`. For example, if the application is hosted at https://localhost:8080, go to
+https://localhost:8080/explorer. The Swagger UI will document the paths and http methods that are
+supported by the application.
+
+This capability is only available for [scaffold projects](#scaffold).
 
 ### Metrics dashboard capability
+This capability uses the [SwiftMetrics package](https://github.com/RuntimeTools/SwiftMetrics)
+to gather application and system metrics.
 
-> TODO
+These metrics can be viewed in an embedded dashboard on `/swiftmetrics-dash`. The dashboard
+displays various system and application metrics, including CPU, memory usage, HTTP response
+metrics and more.
 
 ### Docker capability
+This capability includes the following files for Docker support:
+* `.dockerignore`
+* `Dockerfile`
+* `Dockerfile-tools`
 
-> TODO
+The `.dockerignore` file contains the files/directories that should not be included in the
+built docker image. By default this file contains the `Dockerfile` and `Dockerfile-tools`.
+It can be modified as required.
+
+The `Dockerfile` defines the specification of the default docker image for running the application.
+This image can be used to run the application.
+
+The `Dockerfile-tools` is a docker specification file similar to the `Dockerfile`, except it includes
+the tools required for compiling the application. This image can be used to compile the application.
+
+To build the two docker images, run the following commands from the root directory of the project:
+
+```shell
+docker build -t myapp-run .
+docker build -t myapp-build -f Dockerfile-tools .
+```
+
+You may customize the names of these images by specifying a different value after the `-t` option.
+
+To compile the application using the tools docker image, run:
+
+```shell
+docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-utils.sh build release
+```
+
+To run the application:
+
+```shell
+docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build/release/<app_executable>
+```
 
 ### Bluemix capability
+This capability includes a set of Bluemix cloud deployment configuration files to support
+deploying your application to Bluemix:
+* `manifest.yml`
+* `.bluemix/toolchain.yml`
+* `.bluemix/pipeline.yml`
 
-> TODO
+The [`manifest.yml`](https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest) defines
+options which are passed to the Cloud Foundry `cf push` command during application deployment.
 
-:: NOTES (Bluemix) ::
-The `manifest.yml` is used by the [CloudFoundry CLI](LINK) (`cf push`), the
-[Bluemix CLI](LINK) (`bx cf push`) and the Bluemix CLI [Dev plugin](LINK) (`bx dev deploy`)
-to deploy the application to the cloud.
+[IBM Bluemix DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service
+provides toolchains as a set of tool integrations that support development, deployment, and operations
+tasks inside Bluemix. The "Create Toolchain" button in the [README.md](project_layout_reference.html#readme)
+creates a DevOps toolchain and acts as a single-click deploy to Bluemix including provisioning all required
+services.
 
-The `cli-config.yml` is used by the Bluemix CLI [Dev plugin](LINK) to build and run
-the Docker files (`bx dev build` and `bx dev run`).
-
-The files in the `.bluemix` directory provide support for creating a default toolchain
-using the [Create Toolchain button](#create-toolchain).
-:: END ::
+> ![warning] You need to publish your project to a public github.com repository to use the "Create toolchain"
+> button.
 
 ## Services
 

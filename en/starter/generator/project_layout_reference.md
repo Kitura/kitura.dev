@@ -64,6 +64,10 @@ All scaffolded projects will have the following files included:
 │       └── Routes/                 - Directory for organising route handler code
 ```
 
+### README
+The `README.md` file contains customized documentation about the contents of the generated
+application including selected capabilities and services.
+
 ### Web capability
 
 If you select the [web capability](prompts.html#web-capability) then the following

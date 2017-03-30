@@ -31,11 +31,11 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ## Tutorials
 
-### [Local CouchDB](/{{ page.lang }}/starter/generator/local_couchdb_tutorial.html)
+### [Connecting to a local CouchDB database](/{{ page.lang }}/starter/generator/local_couchdb_tutorial.html)
 
-### [Cloudant with Bluemix](/{{ page.lang }}/starter/generator/cloudant_tutorial_bluemix.html)
+### [Connecting to a Bluemix Cloudant service](/{{ page.lang }}/starter/generator/cloudant_tutorial_bluemix.html)
 
-### [Docker container](/{{ page.lang }}/starter/generator/docker_container_tutorial.html)
+### [Running in a Docker container](/{{ page.lang }}/starter/generator/docker_container_tutorial.html)
 
 ### [Deploying to Bluemix with Cloud Foundry](/{{ page.lang }}/starter/generator/deploy_cloud_foundry.html)
 
@@ -45,18 +45,18 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ## Reference
 
-### [Prompt reference](/{{ page.lang }}/starter/generator/prompts.html)
-
 ### [Command-line Tools](/{{ page.lang }}/starter/generator/command_line_tools.html)
 
-### [Swift Server Generator project layout reference](/{{ page.lang }}/starter/generator/project_layout_reference.html)
+### [Prompt reference](/{{ page.lang }}/starter/generator/prompts.html)
+
+### [Project layout reference](/{{ page.lang }}/starter/generator/project_layout_reference.html)
 
 ### [config.json](/{{ page.lang }}/starter/generator/config_json.html)
 
-### [Exposing Swift Server Generator models over REST](/{{ page.lang }}/starter/generator/exposing_ssg_models_over_rest.html)
+### [Exposing CRUD models over REST](/{{ page.lang }}/starter/generator/exposing_ssg_models_over_rest.html)
+
+### [CRUD model definition JSON file](/{{ page.lang }}/starter/generator/model_definition_json_file.html)
 
 ### [Package.swift](/{{ page.lang }}/starter/generator/package_swift.html)
-
-### [Model definition JSON file](/{{ page.lang }}/starter/generator/model_definition_json_file.html)
 
 [info]: ../../../assets/info-blue.png
