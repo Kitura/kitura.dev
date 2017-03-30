@@ -77,9 +77,9 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
 
 ```
 ? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
-  ◯ Static web file serving
+❯ ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
- ❯◯ Example endpoints
+  ◯ Example endpoints
   ◯ Embedded metrics dashboard
   ◯ Docker files
   ◯ Bluemix cloud deployment
