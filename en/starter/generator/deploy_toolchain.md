@@ -12,11 +12,20 @@ redirect_from: "/starter/generator/deply_toolchain.html"
 
 <div class="titleBlock">
 	<h1>Deploying to the Cloud with Create Toolchain</h1>
-	<p>Use the generator to create scaffolding for a simple Kitura web application and deploy to the cloud.	</p>
+	<p>Use the generator to create scaffolding for a simple Kitura web application, deploying to Bluemix and setting up your continuous delivery environment.	</p>
 </div>
 
 > ![warning] Make sure you have installed the command-line tools as described in
 > [Installation](installation.html) before you begin.
+
+---
+
+#### In this tutorial you will:
+
+- Create a scaffolded Kitura application
+- Push to [GitHub](https://github.com/)
+- Deploy to Bluemix
+- Set up your [Continuous Delivery](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) environment
 
 ---
 <span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
@@ -98,7 +107,7 @@ To deploy your application to `Bluemix` and set up [Continuous Delivery](https:/
 
 ---
 
-<span class="arrow">&#8227;</span> When you are on `Bluemix` click on the  `Create` button to finish.
+<span class="arrow">&#8227;</span> When you are on `Bluemix` click on the  `Create` button to finish and create your toolchain.
 
 ---
 
