@@ -31,7 +31,7 @@ For this tutorial, the Ubuntu packaged version (CouchDB 1.6.0) was installed on 
 $ sudo apt-get install couchdb
 ```
 
-Full installation documentation for Linux, Mac and Windows can be found [here](http://docs.couchdb.org/en/1.6.0/install/index.html).  Once installed, you can verify the installation with a curl command:
+Full installation documentation for Linux, Mac and Windows can be found [here](http://docs.couchdb.org/en/1.6.0/install/index.html).  Once installed, you can verify the installation with a [curl](https://curl.haxx.se) command:
 
 ```
 $ curl http://127.0.0.1:5984/
@@ -80,9 +80,9 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
   ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
  ❯◯ Example endpoints
-  ◉ Embedded metrics dashboard
-  ◉ Docker files
-  ◉ Bluemix cloud deployment
+  ◯ Embedded metrics dashboard
+  ◯ Docker files
+  ◯ Bluemix cloud deployment
 ```
 
 <span class="arrow">&#8227;</span> Press **Space** to select the CouchDB boilerplate for inclusion as a [service](prompts.html#services) in the scaffolding.
@@ -93,7 +93,10 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
   ◯ Redis
 ```
 
-<span class="arrow">&#8227;</span> Press **Space** to select the Cloudant / CouchDB configuration. If you let the generator provide the defaults, there is nothing more to do. The generator will now complete its code generation with defaults that allow CouchDB to be accessed on port **5984** on **localhost**. If you opt for setting the configuration options, then you will get further questions about the specifics of the CouchDB service.
+<span class="arrow">&#8227;</span> Leave the Cloudant / CouchDB option unchecked to allow CouchDB to be accessed at port **5984** on **localhost**.
+
+> ![info] Note: If you opt for setting the service credentials, then you will get further questions about the specifics of the CouchDB service.
+
 
 ```
 ? Configure service credentials (leave unchecked for defaults): (Press <space> to select, <a> to toggle all, <i> to inverse selection)
@@ -120,7 +123,7 @@ couchdb-getting-started/
 │       └── main.swift
 ├── Package.swift
 ├── README.md
-├── conig.json
+├── config.json
 └── ...
 </pre>
 
@@ -164,8 +167,10 @@ public func initialize() throws {
 
 ```
 $ cd couchdb-getting-started
-$ swift build
+$ yo swiftserver:build
 ```
+
+> ![info] Why not **swift build**? On MacOS the swift build command will not work if you have opted to include the [Embedded metrics dashboard](/en/resources/tutorials/swiftmetrics.html) capability. The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator works in all environments and should be used instead.
 
 <span class="arrow">&#8227;</span> Start the application:
 
@@ -181,10 +186,10 @@ Welcome to Kitura
 Your Kitura based server is up and running!
 ```
 
-<span class="arrow">&#8227;</span> Use curl to query the databases managed by CouchDB. You should see **couchdb-tutorial** listed as one of the databases:
+<span class="arrow">&#8227;</span> Use [curl](https://curl.haxx.se) to query the databases managed by CouchDB. You should see **couchdb-tutorial** listed as one of the databases:
 
 ```
-$ curl -X GET http://localhost:5984/couchdb-tutorial
+$ curl -X GET http://localhost:5984/_all_dbs
 ["_replicator","_users","couchdb-tutorial"]
 ```
 
