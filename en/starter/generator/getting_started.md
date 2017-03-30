@@ -123,7 +123,7 @@ Now you can:
 * View the embedded metrics dashboard on [http://localhost:8080/swiftmetrics-dash](http://localhost:8080/swiftmetrics-dash).
 
 ## Next Steps
-Learn how to [add a Bluemix Cloudant service to your generated application](http://localhost:4000/en/starter/generator/cloudant_tutorial_bluemix.html).
+Learn how to [generate an application with a Bluemix Cloudant service](cloudant_tutorial_bluemix.html).
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png

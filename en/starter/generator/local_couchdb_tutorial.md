@@ -195,6 +195,10 @@ $ curl -X GET http://localhost:5984/_all_dbs
 
 Congratulations, you now have a simple Kitura application that can communicate with CouchDB.
 
+## Next Steps
+
+Learn how to [run an application with Docker](docker_container_tutorial.html).
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

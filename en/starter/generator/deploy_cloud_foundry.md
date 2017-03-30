@@ -112,17 +112,6 @@ OK
 
 > ![info] Note: Ensure you are logged in to the correct API endpoint. To check type `cf target` and to login type `cf login`, more information on `cf` commands can be found  [here](https://console.ng.bluemix.net/docs/cli/reference/cfcommands/index.html)
 
----
-
-## Next Steps
-
-> TODO
-
-* Review and modify the generated code.
-* Create web content in the `public` directory.
-* View the embedded metrics dashboard.
-* Run the application inside a Docker container.
-
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png
