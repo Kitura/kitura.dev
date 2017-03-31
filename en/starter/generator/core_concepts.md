@@ -53,9 +53,9 @@ match the updated definition and the application will be rebuilt with `swift bui
 
 When you define a model it automatically comes with a predefined REST API with a full set of create, read, update, and delete operations. This REST API is described in more detail in [Exposing Swift Server Generator models over REST](exposing_ssg_models_over_rest.html).
 
-You can create models by using the model generator, which creates a [Model definition JSON file](model_definition_json_file.html) that defines your model. By convention, this file is located in the project's `models` directory; for example, `models/customer.json`.
+You can create models by using the model generator, which creates a [Model definition JSON file](model_definition_json_file.html) that defines your model. By convention, this file is located in the project's `models` directory; for example, `models/bookstore.json`.
 
-After a model and its properties have been defined, an [OpenAPI (Swagger 2.0) specification](http://swagger.io/specification/) is also generated that describes and documents the REST APIs. By convention, this is located in the project’s definitions directory; for example, `definitions/customer.yaml`.
+After a model and its properties have been defined, an [OpenAPI (Swagger 2.0) specification](http://swagger.io/specification/) is also generated that describes and documents the REST APIs. By convention, this is located in the project’s definitions directory; for example, `definitions/bookstore.yaml`.
 
 > ![warning] You should not modify the code in the `Sources/Generated` directory, or the OpenAPI Swagger
 definition file in the `definitions` directory as any modifications will be lost when these
@@ -124,7 +124,7 @@ displays various system and application metrics, including CPU, memory usage, HT
 metrics and more.
 
 ### Docker capability
-This capability includes the following files for Docker support:
+This capability includes the following files for [Docker](https://www.docker.com/) support:
 * `.dockerignore`
 * `Dockerfile`
 * `Dockerfile-tools`
