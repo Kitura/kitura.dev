@@ -198,7 +198,7 @@ The tool regenerates your Swift Server Generator application; the files which ar
 
 **Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
 
-> ![info] In a MacOS environment the build generator will pass additional linker options to the compiler: **-Xlinker -lc++**. for this reason, running **yo swiftserver:build** is prefered over the native **swift build** command.
+> ![info] In a MacOS environment the build generator will pass additional linker options to the compiler: **-Xlinker -lc++**. for this reason, running **yo swiftserver:build** is preferred over the native **swift build** command.
 
 **Synopsis**
 
