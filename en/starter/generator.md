@@ -17,7 +17,7 @@ redirect_from: "/starter/generator.html"
 
 Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/generator/core_concepts.html#scaffold) on which you build your application---it writes the boilerplate so you don't have to.
 
-> ![info] Swift Server Generator uses the [Kitura web framework](http://www.kitura.io) and [Swift 3.0.x](https://swift.org)
+> ![info] Swift Server Generator uses the [Kitura web framework](https://github.com/IBM-Swift/Kitura) and [Swift 3.0.x](https://swift.org)
 
 ---
 
