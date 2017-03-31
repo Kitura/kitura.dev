@@ -95,7 +95,9 @@ Navigate to `Service Credentials` to view your credentials.
     ? Configure service credentials (leave unchecked for defaults): (Press <space> to select)
     ❯ ◉ Cloudant / CouchDB
 
-> ![info] Note: If you want to keep the defaults then leave it unselected and just press **Enter**.
+> ![info] Note: If you leave this unselected then the defaults values will be used. You will
+> need to [update them in the `config.json`](/en/starter/generator/config_json.html#bluemix-capability-enabled)
+> to point at your Bluemix service after the project is generated.
 
 Then configure `Cloudant` with the credentials you made earlier in Bluemix:
 
@@ -108,8 +110,6 @@ Configure Cloudant / CouchDB
 ? Enter username (blank for none): <Your cloudant username>
 ? Enter password: <Your cloudant password>
 ```
-
-> ![info] Note: If you need to change the credentials, use the method as described [here](/en/starter/generator/config_json.html#bluemix-capability-enabled)
 
 ---
 
@@ -149,7 +149,7 @@ swiftserver-cloudant/
 
 ---
 
-<span class="arrow">&#8227;</span> Now modify your application to create a CouchDB database. This can be done by adding a line of swift code to create a database: Modify Sources/Application/Application.swift as shown below.
+<span class="arrow">&#8227;</span> Modify `Sources/Application/Application.swift` to create a CouchDB database by adding the line shown below:
 
 ```swift
 public func initialize() throws {
@@ -169,12 +169,10 @@ public func initialize() throws {
 
     couchDBClient = CouchDBClient(connectionProperties: couchDBConnProps)
 
-    /* Add the line below. */
-    couchDBClient?.createDB("cloudant-tutorial"){_,_ in}
+    couchDBClient?.createDB("cloudant-tutorial"){_,_ in} /* << Add this line */
 
     router.all("/*", middleware: BodyParser())
 }
-
 ```
 
 <span class="arrow">&#8227;</span> Now go back to the application directory and recompile the application:
@@ -183,7 +181,7 @@ public func initialize() throws {
 $ yo swiftserver:build
 ```
 
-> ![info] Why not **swift build**? On MacOS the swift build command will not work if you have opted to include the [Embedded metrics dashboard](/en/resources/tutorials/swiftmetrics.html) capability. The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator works in all environments and should be used instead.
+> ![info] Why not **swift build**? On MacOS the swift build command will not work if you have opted to include the [Embedded metrics dashboard capability](core_concepts.html#metrics-dashboard-capability). The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator ensures the right options are supplied in all environments and should be used instead.
 
 ---
 
