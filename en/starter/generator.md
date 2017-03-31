@@ -21,6 +21,8 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ---
 
+## Introduction
+
 ### [Overview](/{{ page.lang }}/starter/generator/overview.html)
 
 ### [Getting started](/{{ page.lang }}/starter/generator/getting_started.html)
