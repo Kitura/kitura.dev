@@ -33,15 +33,15 @@ Swift Server Generator can create the [scaffolding](/{{ page.lang }}/starter/gen
 
 ## Tutorials
 
-### [Connecting to a local CouchDB database](/{{ page.lang }}/starter/generator/local_couchdb_tutorial.html)
-
 ### [Connecting to a Bluemix Cloudant service](/{{ page.lang }}/starter/generator/cloudant_tutorial_bluemix.html)
-
-### [Running in a Docker container](/{{ page.lang }}/starter/generator/docker_container_tutorial.html)
 
 ### [Deploying to Bluemix with Cloud Foundry](/{{ page.lang }}/starter/generator/deploy_cloud_foundry.html)
 
 ### [Deploying to Bluemix with Create Toolchain](/{{ page.lang }}/starter/generator/deploy_toolchain.html)
+
+### [Connecting to a local CouchDB database](/{{ page.lang }}/starter/generator/local_couchdb_tutorial.html)
+
+### [Running in a Docker container](/{{ page.lang }}/starter/generator/docker_container_tutorial.html)
 
 ---
 

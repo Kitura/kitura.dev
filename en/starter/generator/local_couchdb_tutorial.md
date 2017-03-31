@@ -77,9 +77,9 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
 
 ```
 ? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
-  ◯ Static web file serving
+❯ ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
- ❯◯ Example endpoints
+  ◯ Example endpoints
   ◯ Embedded metrics dashboard
   ◯ Docker files
   ◯ Bluemix cloud deployment
@@ -194,6 +194,10 @@ $ curl -X GET http://localhost:5984/_all_dbs
 ```
 
 Congratulations, you now have a simple Kitura application that can communicate with CouchDB.
+
+## Next Steps
+
+Learn how to [run an application with Docker](docker_container_tutorial.html).
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png

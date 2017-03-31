@@ -200,10 +200,10 @@ Congratulations, you now have a simple Kitura web application ready for extensio
 
 ## Next Steps
 
-Learn how to deploy you application to Bluemix by either:
+Learn how to deploy an application to Bluemix using either
+[the CloudFoundry CLI](deploy_cloud_foundry.html) or
+[the Bluemix Create Toolchain button](deploy_toolchain.html).
 
-- [Creating a toolchain to set up Continuous Delivery](/en/starter/generator/deploy_toolchain.html)
-- [Using the Cloud Foundry CLI to manually push to Bluemix](en/starter/generator/deploy_cloud_foundry.html)
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png

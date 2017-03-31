@@ -109,18 +109,8 @@ To deploy your application to `Bluemix` and set up [Continuous Delivery](https:/
 
 <span class="arrow">&#8227;</span> When you are on `Bluemix` click on the  `Create` button to finish and create your toolchain.
 
----
-
 ## Next Steps
-
-> TODO
-
-* Review and modify the generated code.
-* Create web content in the `public` directory.
-* View the embedded metrics dashboard.
-* Run the application inside a Docker container.
-* Deploy the application to Bluemix or CloudFoundry.
-* Try generating an application with a local CouchDB service.
+Take a look at the [other tutorials](../generator.html#tutorials).
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png

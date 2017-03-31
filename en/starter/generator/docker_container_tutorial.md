@@ -57,7 +57,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
   Backend for frontend
 ```
 
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
+<span class="arrow">&#8227;</span> Press **Space** to select the [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
 
 Use the spacebar to select or deselect any capabilities. For this tutorial you must select **Docker files**.
 
@@ -66,12 +66,12 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you m
 ❯ ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
   ◯ Example endpoints
-  ◉ Embedded metrics dashboard
+  ◯ Embedded metrics dashboard
   ◉ Docker files
-  ◉ Bluemix cloud deployment
+  ◯ Bluemix cloud deployment
 ```
 
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](prompts.html#services) in the scaffolding.
+<span class="arrow">&#8227;</span> Press **Space** to select a boilerplate for inclusion as a [service](prompts.html#services) in the scaffolding. For this tutorial a boilerplate is not selected.
 
 ```
 ? Generate boilerplate for local services: (Press <space> to select)
@@ -139,6 +139,9 @@ $ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run s
     Your Kitura based server is up and running!
 
 Congratulations, you now have a simple Kitura web application in a Docker image which can be distributed and deployed to other Docker servers.
+
+## Next Steps
+Take a look at the [other tutorials](../generator.html#tutorials).
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
