@@ -125,6 +125,7 @@ metrics and more.
 
 ### Docker capability
 This capability includes the following files for [Docker](https://www.docker.com/) support:
+
 * `.dockerignore`
 * `Dockerfile`
 * `Dockerfile-tools`
