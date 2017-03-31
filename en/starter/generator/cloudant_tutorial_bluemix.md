@@ -80,7 +80,7 @@ Navigate to `Service Credentials` to view your credentials.
       ◉ Bluemix cloud deployment
 
 ---
-<span class="arrow">&#8227;</span> Navigate to `Cloudant` and press **Space** to select and include [Cloudant](https://console.ng.bluemix.net/docs/services/Cloudant/index.html#getting-started-with-cloudant) into the scaffolding.
+<span class="arrow">&#8227;</span> Navigate to `Cloudant` and press **Space** and then **Enter** to select and include [Cloudant](https://console.ng.bluemix.net/docs/services/Cloudant/index.html#getting-started-with-cloudant) into the scaffolding.
 
     ? Generate boilerplate for Bluemix services: (Press <space> to select)
     ❯ ◉ Cloudant
@@ -108,6 +108,8 @@ Configure Cloudant / CouchDB
 ? Enter username (blank for none): <Your cloudant username>
 ? Enter password: <Your cloudant password>
 ```
+
+> ![info] Note: If you need to change the credentials, use the method as described [here](/en/starter/generator/config_json.html#bluemix-capability-enabled)
 
 ---
 
