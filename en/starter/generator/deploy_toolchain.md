@@ -99,15 +99,23 @@ The generator will display messages as it scaffolds and builds the application i
 
 ---
 
-<span class="arrow">&#8227;</span> In the README navigate to the `Deploy to Bluemix` section and there you click the button:
-
-![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)
-
-To deploy your application to `Bluemix` and set up [Continuous Delivery](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html).
+<span class="arrow">&#8227;</span> View the README.md on the github repository page.
 
 ---
 
-<span class="arrow">&#8227;</span> When you are on `Bluemix` click on the  `Create` button to finish and create your toolchain.
+<span class="arrow">&#8227;</span> Go to the `Deploy to Bluemix` section and click the "Create Toolchain" button that looks like this:
+
+![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)
+
+This will take you to the page to create a default toolchain in `Bluemix` and set up [Continuous Delivery](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html).
+
+---
+
+<span class="arrow">&#8227;</span> Follow any set-up instructions and then click on the `Create` button to create a toolchain.  
+This will provision services and start a deploy of your application.
+
+> ![info] Note: The default toolchain will automatically redeploy your application when
+> you push new changes to the `master` branch of your github repository.
 
 ## Next Steps
 Take a look at the [other tutorials](../generator.html#tutorials).
