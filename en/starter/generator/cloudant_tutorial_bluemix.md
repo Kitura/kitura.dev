@@ -200,14 +200,10 @@ Congratulations, you now have a simple Kitura web application ready for extensio
 
 ## Next Steps
 
-> TODO
+Learn how to deploy you application to Bluemix by either:
 
-* Review and modify the generated code.
-* Create web content in the `public` directory.
-* View the embedded metrics dashboard.
-* Run the application inside a Docker container.
-* Deploy the application to Bluemix or CloudFoundry.
-* Try generating an application with a local CouchDB service.
+- [Creating a toolchain to set up Continuous Delivery](/en/starter/generator/deploy_toolchain.html)
+- [Using the Cloud Foundry CLI to manually push to Bluemix](en/starter/generator/deploy_cloud_foundry.html)
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
