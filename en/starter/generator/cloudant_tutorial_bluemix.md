@@ -37,7 +37,7 @@ Navigate to `Service Credentials` to view your credentials.
 
 
 ---
-<span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
+<span class="arrow">&#8227;</span> Next, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
 
     $ yo swiftserver
 
@@ -95,7 +95,7 @@ Navigate to `Service Credentials` to view your credentials.
     ? Configure service credentials (leave unchecked for defaults): (Press <space> to select)
     ❯ ◉ Cloudant / CouchDB
 
-> ![info] Note: If you leave this unselected then the defaults values will be used. You will
+> ![info] Note: If you leave this unselected then the default values will be used. You will
 > need to [update them in the `config.json`](/en/starter/generator/config_json.html#bluemix-capability-enabled)
 > to point at your Bluemix service after the project is generated.
 
