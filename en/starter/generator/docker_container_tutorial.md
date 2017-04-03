@@ -12,7 +12,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 
 <div class="titleBlock">
 	<h1>Running inside a Docker container</h1>
-	<p>How to run your Kitura application inside a docker container.</p>
+	<p>How to run your Kitura application inside a Docker container.</p>
 </div>
 
 **Prerequisities:**
@@ -71,7 +71,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you m
   ◯ Bluemix cloud deployment
 ```
 
-<span class="arrow">&#8227;</span> Press **Space** to select a boilerplate for inclusion as a [service](prompts.html#services) in the scaffolding. For this tutorial a boilerplate is not selected.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](core_concepts.html#services) in the scaffolding.
 
 ```
 ? Generate boilerplate for local services: (Press <space> to select)
