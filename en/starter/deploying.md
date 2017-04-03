@@ -29,9 +29,9 @@ Once you have the Cloud Foundry command line tool installed, deploying to the cl
 
 ---
 
-## IBM Cloud Tools for Swift
+## IBM Cloud Application Tools for Swift
 
-[IBM Cloud Tools for Swift](http://cloudtools.bluemix.net/) radically simplifies the management and deployment of server-side assets. It helps improve productivity by complimenting a developer's familiar Xcode environment.
+[IBM Cloud Application Tools](http://cloudtools.bluemix.net/) radically simplifies the management and deployment of server-side assets. It helps improve productivity by complimenting a developer's familiar Xcode environment.
 
 Swift developers can extend their mobile apps and connect them to IBM Bluemix with a local development environment. Now, every Swift developer can more easily begin to deploy cloud services.
 
@@ -51,31 +51,20 @@ We provide a pre-built Docker image containing the latest release of Kitura.  Fo
 $ docker pull ibmcom/kitura-ubuntu:latest
 ```
 
-<span class="arrow">&#8227;</span> Create a Docker container using the `kitura-ubuntu` image you just downloaded and forward port 8090 on host to the container:
+<span class="arrow">&#8227;</span> Create a Docker container to build and run `kitura-ubuntu` image you just downloaded and forward port 8080 on host to the container:
 
 ```
-$ docker run -i -p 8090:8090 -t ibmcom/kitura-ubuntu:latest /bin/bash
+$ docker run -i -p 8080:8080 -t ibmcom/kitura-ubuntu:latest
 ```
 
-<span class="arrow">&#8227;</span> From within the Docker container, execute the `clone_build_kitura.sh` script to build the [Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) sample project:
+You should see an output message that similar to the following:
 
 ```
-# /root/clone_build_kitura.sh
+[2017-04-03T18:22:47.146Z] [INFO] [main.swift:28 Kitura_Starter] Server will be started on 'http://localhost:8080'.
+[2017-04-03T18:22:47.222Z] [INFO] [HTTPServer.swift:104 listen(on:)] Listening on port 8080
 ```
 
-The last line should be:
-
-`>> Build for Kitura-Starter completed (see above for results).`
-
-<span class="arrow">&#8227;</span> You can now run the Kitura-Starter executable inside the Docker container:
-
-```
-# /root/start_kitura_sample.sh
-```
-
-You should see an output message that contains the string `Listening on port 8090`.
-
-<span class="arrow">&#8227;</span> Visit `http://localhost:8090/` in your web browser.
+<span class="arrow">&#8227;</span> Visit `http://localhost:8080/` in your web browser.
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
