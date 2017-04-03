@@ -71,24 +71,22 @@ $ curl http://127.0.0.1:5984/
   Backend for frontend
 ```
 
-<span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
-
-Use the spacebar to select or deselect any capabilities. For this tutorial you do not need any capabilities, you are free to deselect all of them.
+<span class="arrow">&#8227;</span> Use the spacebar to deselect Bluemix cloud deployment. Press **Enter** to accept the other default [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
 
 ```
-? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
-❯ ◯ Static web file serving
+? Select capabilities: (Press <space> to select)
+  ◯ Static web file serving
   ◯ OpenAPI / Swagger endpoint
   ◯ Example endpoints
-  ◯ Embedded metrics dashboard
-  ◯ Docker files
-  ◯ Bluemix cloud deployment
+  ◉ Embedded metrics dashboard
+  ◉ Docker files
+❯ ◯ Bluemix cloud deployment
 ```
 
 <span class="arrow">&#8227;</span> Press **Space** to select the CouchDB boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding.
 
 ```
-? Generate boilerplate for local services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+? Generate boilerplate for local services: (Press <space> to select)
 ❯ ◉ CouchDB
   ◯ Redis
 ```
@@ -99,7 +97,7 @@ Use the spacebar to select or deselect any capabilities. For this tutorial you d
 
 
 ```
-? Configure service credentials (leave unchecked for defaults): (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+? Configure service credentials (leave unchecked for defaults): (Press <space> to select)
 ❯ ◯ Cloudant / CouchDB
 ```
 
@@ -169,8 +167,7 @@ public func initialize() throws {
 $ cd couchdb-getting-started
 $ yo swiftserver:build
 ```
-
-> ![info] Why not **swift build**? On MacOS the swift build command will not work if you have opted to include the [Embedded metrics dashboard](/en/resources/tutorials/swiftmetrics.html) capability. The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator works in all environments and should be used instead.
+> ![info] Why not **swift build**? On MacOS the `swift build` command will not work if you have opted to include the [Embedded metrics dashboard capability](core_concepts.html#metrics-dashboard-capability). The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator ensures the right options are supplied in all environments and should be used instead.
 
 <span class="arrow">&#8227;</span> Start the application:
 
