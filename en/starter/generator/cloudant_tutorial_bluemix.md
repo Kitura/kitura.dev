@@ -175,7 +175,7 @@ public func initialize() throws {
 }
 ```
 
-<span class="arrow">&#8227;</span> Now go back to the application directory and recompile the application:
+<span class="arrow">&#8227;</span> Now recompile the application:
 
 ```
 $ yo swiftserver:build

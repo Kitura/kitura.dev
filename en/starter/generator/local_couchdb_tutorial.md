@@ -161,10 +161,9 @@ public func initialize() throws {
 
 ```
 
-<span class="arrow">&#8227;</span> Now go back to the application directory and recompile the application:
+<span class="arrow">&#8227;</span> Now recompile the application:
 
 ```
-$ cd couchdb-getting-started
 $ yo swiftserver:build
 ```
 > ![info] Why not **swift build**? On MacOS the `swift build` command will not work if you have opted to include the [Embedded metrics dashboard capability](core_concepts.html#metrics-dashboard-capability). The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator ensures the right options are supplied in all environments and should be used instead.

@@ -86,7 +86,7 @@ The generator prompts you for the following information:
 
 The tool creates the standard Swift Server Generator application structure; for details, see [Swift Server Generator project layout reference](project_layout_reference.html).
 
-After you create an application, you can run additional generators from the application root directory:
+After you create an application, you can run additional generators from anywhere inside the application directory:
 
 -   [Model generator](#model-generator)
 
@@ -100,7 +100,7 @@ After you create an application, you can run additional generators from the appl
 
 ## Model generator
 
-**Important:** Before running this generator, you must create a CRUD type application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
+**Important:** Before running this generator, you must create a CRUD type application by using the [Application generator](#application-generator).
 
 **Synopsis**
 
@@ -134,7 +134,7 @@ The tool creates a new file that defines the model, /models/model-name.json; for
 
 ## Property generator
 
-**Important:** Before running this generator, you must create a CRUD type application by using the [Application generator](#application-generator). Then you must create a model using the [Model generator](#model-generator). Then you must run the command from the root directory of the application.
+**Important:** Before running this generator, you must create a CRUD type application by using the [Application generator](#application-generator). Then you must create a model using the [Model generator](#model-generator).
 
 **Synopsis**
 
@@ -170,7 +170,7 @@ The tool modifies the [Model definition JSON file](model_definition_json_file.ht
 
 ## Refresh generator
 
-**Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
+**Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator).
 
 **Synopsis**
 
@@ -196,7 +196,7 @@ The tool regenerates your Swift Server Generator application; the files which ar
 
 ## Build generator
 
-**Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator). Then you must run the command from the root directory of the application.
+**Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator).
 
 > ![info] In a MacOS environment the build generator will pass additional linker options to the compiler: **-Xlinker -lc++**. for this reason, running **yo swiftserver:build** is preferred over the native **swift build** command.
 
