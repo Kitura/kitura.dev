@@ -15,60 +15,143 @@ redirect_from: "/starter/generator/config_json.html"
 	<p>Define Swift Server Generator application settings in the <code>config.json</code> file.</p>
 </div>
 
-The `config.json` file must be in the application root directory.
+The configuration information for your application is stored in the `config.json` file in the project root directory. This file is listed in `.gitignore` to prevent sensitive information from being stored in git. The connection and configuration information for any configured services, such as username, password and hostname, is stored in this file.
 
-The following example `config.json` file shows the default settings:
+Your Swift Server Generator application uses the [Configuration package](https://github.com/IBM-Swift/Configuration) to configure your application, including any [services](core_concepts.html#services) when it was generated.
 
-    {
-      "appName": "ExampleApplication",
-      "store": "memory",
-      "logger": "helium",
-      "port": 8090
-    }
+If the [Bluemix capability](core_concepts.html#bluemix-capability) is enabled, then
+[CloudConfiguration package](https://github.com/IBM-Swift/CloudConfiguration) is also
+used to manage the configuration of [Bluemix services](core_concepts.html#bluemix-services).
+In this case, the configuration information will be read from the environment when the
+application is deployed on Bluemix and from the `config.json` file when running locally.
 
-The following table describes the properties that you can configure:
+## Bluemix capability disabled
 
-*Table 1. `config.json` properties*
+The following example `config.json` file shows the default settings with the [Bluemix capability](core_concepts.html#bluemix-capability) **disabled** and no services:
 
-| Property name | Description                                                                                                                            | Default value |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `appName`     | The name of your application                                                                                                           | N/A           |
-| `store`       | Defines where the data is being stored; `memory` represents the in-memory datastore. Currently, `memory` and `cloudant` are supported. | `memory`      |
-| `logger`      | Swift logger to use. Currently only `helium` is supported.                                                                             | `helium`      |
-| `port`        | TCP port to use.                                                                                                                       | `8090`        |
+```json
+{
+  "services": {},
+  "logger": "helium",
+  "port": "8080"
+}
+```
 
----
+You can configure the `port` used by the application.
 
-## Cloudant store
+Any services you select will necessarily be [Non-Bluemix services](core_concepts.html#non-bluemix-services)
+and their configuration will be added within the `services` object. For example:
 
-The [*Cloudant® store*](https://github.com/IBM-Swift/GeneratedSwiftServer-CloudantStore) supports CouchDB and Cloudant.
-
-The following example shows Cloudant store configuration settings in the `config.json` file:
-
-    {
-      ...
-      "store": {
+```json
+{
+  ...
+  "services": {
+    "cloudant": [
+      {
+        "name": "couchdb",
         "type": "cloudant",
         "host": "localhost",
         "port": 5984,
         "secured": false,
         "username": "user",
         "password": "password"
-      },
-      ...
+      }
+    ],
+    "redis": [
+      {
+        "name": "redis",
+        "type": "redis",
+        "host": "localhost",
+        "port": 6397
+      }
+    ]
+  },
+  ...
+}
+```
+
+You may alter the configuration of these services to match any required connection details.
+If you omit properties, they take their default values.
+
+## Bluemix capability enabled
+
+The following example `config.json` file shows the default settings with the [Bluemix capability](core_concepts.html#bluemix-capability) **enabled** and no services:
+
+```json
+{
+  "vcap": {
+    "services": {}
+  }
+}
+```
+
+Any services you select will necessarily be [Bluemix services](core_concepts.html#bluemix-services)
+and their configuration will be added within the `services` object. For example:
+
+```json
+{
+  "vcap": {
+    "services": {
+      "cloudantNoSQLDB": [
+        {
+          "name": "myapp-Cloudant-z2s2",
+          "label": "cloudantNoSQLDB",
+          "tags": [],
+          "plan": "Lite",
+          "credentials": {
+            "host": "localhost",
+            "url": "",
+            "username": "",
+            "password": "",
+            "port": 6984
+          }
+        }
+      ]
     }
+  }
+}
+```
 
-If you omit properties, they take their default values. If you omit `username` and `password` then no authentication is used.
+If your application is running locally, e.g. when testing, it can connect to Bluemix services using the credentials read from this file. If you need to create credentials for your service, you can do so from the Bluemix web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](http://cli.cloudfoundry.org/en-US/cf/create-service-key.html). If you use the CloudFoundry CLI you need to create the service instance first with the [`cf create-service` command](http://cli.cloudfoundry.org/en-US/cf/create-service.html). The key information is retrieved with the [`cf service-key` command](http://cli.cloudfoundry.org/en-US/cf/service-key.html).
 
-To use all default values, omit the object and specify just the following Cloudant setting:
+> ![info] Note: the service names and types will need to match the settings within your
+> `config.json` file and in the generated boilerplate code in `Sources/Application/Application.swift`.
 
-    {
-      ...
-      “store”: “cloudant”
-      ...
+> ![tip] Tip: Create your Bluemix services before generating your application so you can enter
+> the connection information in the [service configuration prompts](prompts.html#service-configuration-prompt)
+> so you don't have to edit them later.
+
+The following example is a `config.json` which has been updated with credentials information for a service instance called `myapp-Cloudant-z2s2`.
+
+```json
+{
+  "vcap": {
+    "services": {
+      "cloudantNoSQLDB": [
+        {
+          "name": "myapp-Cloudant-z2s2",
+          "label": "cloudantNoSQLDB",
+          "tags": [],
+          "plan": "Lite",
+          "credentials": {
+            "username": "bf274bea-e997-58ac-a108-572b959f2749-bluemix",
+            "password": "c6fe2f0eaad7847ff58dd88c7d9bfb979c40cb3ef8ab7df64738f35310b8de1c",
+            "host": "xy274bea-z978-57ec-a108-572b559f2749-bluemix.cloudant.com",
+            "port": 443,
+            "url": "https://bf274bea-e997-58ac-a108-572b959f2749-bluemix:c6fe2f0eaad7847ff58dd88c7d9bfb979c40cb3ef8ab7df64738f35310b8de1c@xy274bea-z978-57ec-a108-572b559f2749-bluemix.cloudant.com"
+          }
+        }
+      ]
     }
+  }
+}
+```
 
-When you run your application, if the database does not exist, it is created by using the model name (one database per model name). If a database with the same name as the model already exists then that database is used.
+When deployed to Bluemix, the connection information used for a given named service is
+taken from a matching named service bound to the deployed application in preference to
+what is defined in your `config.json` file.
+
+This allows you to run the application locally and on Bluemix without modification.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png

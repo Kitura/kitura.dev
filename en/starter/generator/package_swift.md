@@ -23,21 +23,21 @@ For more information, see the [Package.swift documentation](https://swift.org/pa
 ---
 
 ## Example
+```swift
+import PackageDescription
 
-    import PackageDescription
-
-    let package = Package(
-      name: "ExampleApplication",
-      targets: [
-        Target(name: "ExampleApplication", dependencies: [ .Target(name: "Generated") ]),
-      ],
-      dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 1),
-        .Package(url: "https://github.com/IBM-Swift/GeneratedSwiftServer.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 1, minor: 1),
-        .Package(url: "https://github.com/IBM-Swift/GeneratedSwiftServer-CloudantStore.git", majorVersion: 0, minor: 3),
-      ]
-    )
+let package = Package(
+  name: "ExampleApplication",
+  targets: [
+    Target(name: "ExampleApplication", dependencies: [ .Target(name: "Application") ]),
+  ],
+  dependencies: [
+    .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 6),
+    .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 1, minor: 6),
+    .Package(url: "https://github.com/IBM-Swift/CloudConfiguration.git", majorVersion: 1)
+  ]
+)
+```
 
 
 [info]: ../../../assets/info-blue.png
