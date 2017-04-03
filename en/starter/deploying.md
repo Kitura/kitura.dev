@@ -57,7 +57,7 @@ $ docker pull ibmcom/kitura-ubuntu:latest
 $ docker run -i -p 8080:8080 -t ibmcom/kitura-ubuntu:latest
 ```
 
-You should see an output message that similar to the following:
+You should see an output message similar to the following:
 
 ```
 [2017-04-03T18:22:47.146Z] [INFO] [main.swift:28 Kitura_Starter] Server will be started on 'http://localhost:8080'.
