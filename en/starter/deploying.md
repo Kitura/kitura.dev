@@ -51,7 +51,7 @@ We provide a pre-built Docker image containing the latest release of Kitura.  Fo
 $ docker pull ibmcom/kitura-ubuntu:latest
 ```
 
-<span class="arrow">&#8227;</span> Create a Docker container to build and run `kitura-ubuntu` image you just downloaded and forward port 8080 on host to the container:
+<span class="arrow">&#8227;</span> Create a Docker container to build and run the `kitura-ubuntu` image you just downloaded and forward port 8080 on host to the container:
 
 ```
 $ docker run -i -p 8080:8080 -t ibmcom/kitura-ubuntu:latest
