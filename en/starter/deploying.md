@@ -29,7 +29,7 @@ Once you have the Cloud Foundry command line tool installed, deploying to the cl
 
 ---
 
-## IBM Cloud Application Tools for Swift
+## IBM Cloud Application Tools
 
 [IBM Cloud Application Tools](http://cloudtools.bluemix.net/) radically simplifies the management and deployment of server-side assets. It helps improve productivity by complimenting a developer's familiar Xcode environment.
 
