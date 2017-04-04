@@ -153,6 +153,8 @@ CRUD projects will have the following files included:
 │   │       └── SwaggerRoute.swift  - Swift code for OpenAPI definition endpoint
 │   └── Generated/                  - Generated Swift code for CRUD API logic
 │       ├── AdapterFactory.swift    - Swift code to select CRUD data store adapter
+│       ├── AdapterError.swift      - Swift code for the store adapter error types
+│       ├── ModelError.swift        - Swift code for the model error types
 │       └── CRUDResources.swift     - Swift code to organise CRUD model logic
 ├── definitions/
 │   └── <application_name>.yaml     - Swagger definition for CRUD API
