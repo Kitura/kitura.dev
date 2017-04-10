@@ -16,7 +16,7 @@ redirect_from: "/starter/exposePortInDocker.html"
 
 Depending on your Docker installation the instructions to expose the Docker container's port differs:
 
-### If you are using legacy Docker (i.e., with Virtual Box):
+## If you are using legacy Docker (i.e., with Virtual Box):
 
 These are the steps to expose Kitura's port in a Docker container to the host (e.g. an OS X laptop):
 
@@ -42,7 +42,7 @@ These are the steps to expose Kitura's port in a Docker container to the host (e
 
 8) Open your browser and go to `http://localhost:8090`. You should see the Kitura welcome page.
 
-### If you are using the new Docker for Mac macOS app:
+## If you are using the new Docker for Mac macOS app:
 
 Since the new Docker for Mac macOS app removed the need for VirtualBox, exposing your Kitura server's port in a Docker container is much simpler. Simply pass in the port binding as an option when you first run the container image, like so:
 

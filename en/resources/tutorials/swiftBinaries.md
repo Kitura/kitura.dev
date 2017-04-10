@@ -14,7 +14,7 @@ redirect_from: "/resources/tutorial-todo.html"
 	<h1>Moving To A New Version Of The Swift Binaries</h1>
 </div>
 
-This page document the steps the Kitura development team should follow when moving to a new version of the [Swift binaries](https://swift.org/download/):
+This page documents the steps the Kitura development team should follow when moving to a new version of the [Swift binaries](https://swift.org/download/):
 
 1) Install the latest binaries (Swift) on OS X and (Swift + libdispatch) on Ubuntu v15.10 on your test systems.
 
