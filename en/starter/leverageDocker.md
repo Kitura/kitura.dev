@@ -15,7 +15,6 @@ redirect_from: "/starter/leverageDocker.html"
 </div>
 
 <hr>
-This page describes the steps I took for setting up my development environment for Kitura:
 
 1. Install [Docker](https://docs.docker.com/engine/installation/) on your development system and start a Docker session/terminal.
 
