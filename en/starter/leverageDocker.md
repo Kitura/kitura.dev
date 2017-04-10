@@ -6,7 +6,7 @@ layout: page
 title: Leverage Docker For Your Development Environment Setup
 menu: starter
 lang: en
-redirect_from: "/starter/setting up.html"
+redirect_from: "/starter/leverageDocker.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
