@@ -6,7 +6,7 @@ layout: page
 title: Response Handlers
 menu: resources
 lang: en
-redirect_from: "/resources/tutorial-todo.html"
+redirect_from: "/resources/responsehandlers.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

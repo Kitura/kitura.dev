@@ -69,9 +69,7 @@ Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
 ## Dev Ops
 
-### [Moving to a New Version of the Swift Binaries](/{{ page.lang }}/resources/tutorials/swiftBinaries.html)
-
-### [Generating the Router verb code](/{{ page.lang }}/resources/tutorials/routerVerbGen.html)
+### [Generating the Router verb code](/{{ page.lang }}/resources/tutorials/router_verb_gen.html)
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png

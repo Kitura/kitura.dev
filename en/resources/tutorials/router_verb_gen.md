@@ -6,7 +6,7 @@ layout: page
 title: Router Verb Generation
 menu: resources
 lang: en
-redirect_from: "/resources/tutorial-todo.html"
+redirect_from: "/resources/router_verb_gen.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

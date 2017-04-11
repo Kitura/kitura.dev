@@ -6,7 +6,7 @@ layout: page
 title: Expose Kitura's Port in Docker Container to Host Machine
 menu: starter
 lang: en
-redirect_from: "/starter/exposePortInDocker.html"
+redirect_from: "/starter/exposeport.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
