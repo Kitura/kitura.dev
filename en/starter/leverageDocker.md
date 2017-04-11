@@ -14,6 +14,8 @@ redirect_from: "/starter/leverageDocker.html"
 	<h1>Leverage Docker For Your Development Environment Setup</h1>
 </div>
 
+This page describes the steps I took for setting up my development environment for Kitura:
+
 1. Install [Docker](https://docs.docker.com/engine/installation/) on your development system and start a Docker session/terminal.
 
 2. From the Docker session, pull down the `swift-ubuntu` image from Docker Hub:
