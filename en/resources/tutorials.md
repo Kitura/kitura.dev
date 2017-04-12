@@ -65,12 +65,6 @@ This tutorial shows how to use popular templating engines like Mustache and Sten
 
 Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
----
-
-## Dev Ops
-
-### [Generating the Router verb code](/{{ page.lang }}/resources/tutorials/router_verb_gen.html)
-
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
 [warning]: ../../assets/warning-red.png
