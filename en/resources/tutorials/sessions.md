@@ -11,7 +11,7 @@ redirect_from: "/resources/sessions.html"
 ---
 
 <div class="titleBlock">
-	<h1>Adding sessions with Kitura-Session</h1>
+	<h1>Adding Sessions With Kitura-Session</h1>
 </div>
 
 You can save user session data in your Kitura app by using the `Kitura-Session` middleware. In this tutorial, we will be storing an email address in our session and destroying our session data to emulate logging in and out of a website.
