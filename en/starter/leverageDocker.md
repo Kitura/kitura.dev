@@ -15,9 +15,9 @@ redirect_from: "/starter/leveragedocker.html"
 </div>
 
 
-# Compile and test your code on OSX and Linux
+# Compile and test your code on macOS and Linux
 
-This describes the steps I took for setting up my development environment for Kitura:
+Here are steps you can take for setting up your development environment for Kitura:
 
 1. Install [Docker](https://docs.docker.com/engine/installation/) on your development system and start a Docker session/terminal.
 
@@ -25,7 +25,7 @@ This describes the steps I took for setting up my development environment for Ki
    
    `docker pull ibmcom/swift-ubuntu:latest`
 
-3. Create a Docker container using the `swift-ubuntu` image and mount the folder on your OS X system that contains the Kitura Swift package you are working on:
+3. Create a Docker container using the `swift-ubuntu` image and mount the folder on your macOS system that contains the Kitura Swift package you are working on:
 
    `docker run -i -t -v <absolute path to the swift package>:/root/<swift package name> ibmcom/swift-ubuntu:latest /bin/bash`
 
@@ -33,7 +33,7 @@ This describes the steps I took for setting up my development environment for Ki
 
    `docker run -i -t -v /Users/olivieri/git/Kitura/:/root/Kitura ibmcom/swift-ubuntu:latest /bin/bash`
 
-4. Now you have access to the same source code files from your OS X system and Docker container. You can compile and test your code on OS X and also on Linux with minimal effort.
+4. Now you have access to the same source code files from your macOS system and Docker container. You can compile and test your code on macOS and also on Linux with minimal effort.
 
 
 # Expose Kitura's Port in Docker Container to Host Machine
@@ -50,21 +50,21 @@ For example, if your Kitura server is running on port 3000, and you want to make
 
 `docker run -p 4000:3000 ibmcom/swift-ubuntu:latest`
 
-Your Kitura server can now listen on port 3000 inside the Docker container, and be accessible through your host OS at port 4000. Please check the [official docs](https://docs.docker.com/engine/reference/run/#/expose-incoming-ports) for more information on how to configuration the `-p` option.
+Your Kitura server can now listen on port 3000 inside the Docker container, and be accessible through your host OS at port 4000. Please check the [official docs](https://docs.docker.com/engine/reference/run/#/expose-incoming-ports) for more information on how to configure the `-p` option.
 
 **NOTE** This only works if you don't have a live container already. There is no way to expose ports on a live container. [If you already have a live container and wish to expose a port, you can first commit the live container to a new image, then run this new image with the `-p` option.](http://stackoverflow.com/a/21374974)
 
-## If you are using legacy Docker (i.e., with Virtual Box):
+## If you are using legacy Docker (i.e., with VirtualBox):
 
-These are the steps to expose Kitura's port in a Docker container to the host (e.g. an OS X laptop):
+These are the steps to expose Kitura's port in a Docker container to the host (e.g. a macOS laptop):
 
 1) Execute `docker run -d -P ibmcom/swift-ubuntu:latest`.
 
 2) Execute `docker ps`.
 
-3) Inspect the values under the PORTS column for the container you just started. You should see something like the following: `0.0.0.0:32768->8090/tcp`. This means that Kitura’s port `8090` in the Docker container is mapped to port `32768` on the host. Now, the host in this case is not the OS X laptop. Instead, it is the Virtual Box machine that Docker uses.
+3) Inspect the values under the PORTS column for the container you just started. You should see something like the following: `0.0.0.0:32768->8090/tcp`. This means that Kitura’s port `8090` in the Docker container is mapped to port `32768` on the host. Now, the host in this case is not the macOS laptop. Instead, it is the VirtualBox machine that Docker uses.
 
-4) Go to Virtual Box, and open the settings panel for the virtual machine that is running Docker (i.e. right click on the virtual machine and select `Settings`).
+4) Go to VirtualBox, and open the settings panel for the virtual machine that is running Docker (i.e. right click on the virtual machine and select `Settings`).
 
 5) Go to the Network tab and click on `Port Forwarding`.
 
