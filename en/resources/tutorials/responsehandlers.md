@@ -68,13 +68,13 @@ mainRouter.get("/") {_, response, _ in
 }
 mainRouter.all("sub", middleware: subrouter)
 
-// Add HTTP Server to listen on port 8090
-Kitura.addHTTPServer(onPort: 8090, with: mainRouter)
+// Add HTTP Server to listen on port 8080
+Kitura.addHTTPServer(onPort: 8080, with: mainRouter)
 
 // start the framework - the servers added until now will start listening
 Kitura.run()
 ```
-A GET request to localhost:8090 will return "Welcome" and a request to localhost:8090/sub will return "Hello from subsection"
+A GET request to localhost:8080 will return "Welcome" and a request to localhost:8080/sub will return "Hello from subsection"
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
