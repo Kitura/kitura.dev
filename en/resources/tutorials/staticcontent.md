@@ -41,3 +41,4 @@ When searching for files, `StaticFileServer` looks by default in the `public` di
 To change this default, you can specify your desired path in the `path` parameter
 ```swift
 router.all("/my/path", middleware: StaticFileServer(path: "./files"))
+```
