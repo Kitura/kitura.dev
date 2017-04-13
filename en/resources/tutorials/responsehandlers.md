@@ -6,12 +6,12 @@ layout: page
 title: Response Handlers
 menu: resources
 lang: en
-redirect_from: "/resources/tutorial-todo.html"
+redirect_from: "/resources/responsehandlers.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
 <div class="titleBlock">
-	<h1>Response handlers</h1>
+	<h1>Response Handlers</h1>
 	<p>Kitura allows a variety of ways to specify handlers in order to express complex behavior</p>
 </div>
 

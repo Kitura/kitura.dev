@@ -37,6 +37,7 @@ swift package generate-xcodeproj
 <span class="arrow">&#8227;</span> Run.
 
 <hr>
+
 ## Develop iOS application and Kitura on the same workspace
 
 <span class="arrow">&#8227;</span> Follow the above instructions for creating an Xcode project for your Kitura app. For example:
@@ -63,6 +64,19 @@ client/MyApp-ios.xcodeproj
 
 <span class="arrow">&#8227;</span> Select the scheme you wish to build the server and the client respectively.
 
+<hr>
+
+## Toolchain Settings
+
+We want to use a specific version of toolchain for a Kitura app, however, for an iOS app we have to use Xcode's default toolchain.
+
+To solve this situation:
+
+For iOS:
+- Set the toolchain setting to Xcode's default (menu: Xcode => Toolchains).
+
+For Kitura app:
+- Download the correct toolchain directly from [swift.org](https://swift.org/) (the toolchain might be under `Older snapshots`), install it, then go to `Xcode` => `Toolchains` and select your desired toolchain.
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png

@@ -11,7 +11,7 @@ redirect_from: "/resources/ssl.html"
 ---
 
 <div class="titleBlock">
-	<h1>Enabling SSL/TLS on your Kitura server</h1>
+	<h1>Enabling SSL/TLS On Your Kitura Server</h1>
 </div>
 
 ## SSL/TLS

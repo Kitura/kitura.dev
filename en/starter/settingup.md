@@ -19,7 +19,7 @@ redirect_from: "/starter/setting up.html"
 
 ## macOS
 
-<span class="arrow">&#8227;</span> Download and install [Xcode 8.2](https://developer.apple.com/download/).
+<span class="arrow">&#8227;</span> Download and install [Xcode 8.3](https://developer.apple.com/download/).
 
 <hr>
 ## Ubuntu Linux
@@ -33,7 +33,7 @@ $ sudo apt-get update
 $ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
 ```
 
-<span class="arrow">&#8227;</span> Download a Swift 3.0.2 toolchain from [swift.org](https://swift.org/download/).
+<span class="arrow">&#8227;</span> Download a Swift 3.1 toolchain from [swift.org](https://swift.org/download/).
 
 <span class="arrow">&#8227;</span> After extracting the `.tar.gz` file, update your `PATH` environment variable so that it includes the extracted tools:
 
