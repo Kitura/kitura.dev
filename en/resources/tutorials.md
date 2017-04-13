@@ -29,6 +29,10 @@ Learn how to define response handlers for complex routes.
 
 Learn how to define routes using custom paths, including parameters and custom matching with regular expressions.
 
+### [Serving Static Content](/{{ page.lang }}/resources/tutorials/staticcontent.html)
+
+Learn how to serve static content.
+
 ---
 
 ## Security
