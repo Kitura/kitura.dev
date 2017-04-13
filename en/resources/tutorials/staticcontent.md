@@ -12,9 +12,8 @@ redirect_from: "/resources/staticcontent.html"
 
 <div class="titleBlock">
 	<h1>Serving Static Content</h1>
+    <p>In Kitura, static content is served using the `StaticFileServer` middleware.</p>
 </div>
-
-In Kitura, static content is served using the `StaticFileServer` middleware.
 
 To set up the middleware, first create your router then specify which path should use the middleware.
 
