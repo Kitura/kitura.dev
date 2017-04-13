@@ -11,8 +11,8 @@ redirect_from: "/resources/tutorial-todo.html"
 ---
 
 <div class="titleBlock">
-  <h1>Tutorials</h1>
-  <p>Learn how to use Kitura with these walk-through tutorials</p>
+<h1>Tutorials</h1>
+<p>Learn how to use Kitura with these walk-through tutorials</p>
 </div>
 
 ## Routing and Requests
@@ -28,6 +28,10 @@ Learn how to define response handlers for complex routes.
 ### [Writing Custom Paths](/{{ page.lang }}/resources/tutorials/pathsyntax.html)
 
 Learn how to define routes using custom paths, including parameters and custom matching with regular expressions.
+
+### [Serving Static Content](/{{ page.lang }}/resources/tutorials/staticcontent.html)
+
+Learn how to serve static content.
 
 ---
 
