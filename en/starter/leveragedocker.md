@@ -62,7 +62,7 @@ These are the steps to expose Kitura's port in a Docker container to the host (e
 
 2) Execute `docker ps`.
 
-3) Inspect the values under the PORTS column for the container you just started. You should see something like the following: `0.0.0.0:32768->8090/tcp`. This means that Kitura’s port `8090` in the Docker container is mapped to port `32768` on the host. Now, the host in this case is not the macOS laptop. Instead, it is the VirtualBox machine that Docker uses.
+3) Inspect the values under the PORTS column for the container you just started. You should see something like the following: `0.0.0.0:32768->8080/tcp`. This means that Kitura’s port `8080` in the Docker container is mapped to port `32768` on the host. Now, the host in this case is not the macOS laptop. Instead, it is the VirtualBox machine that Docker uses.
 
 4) Go to VirtualBox, and open the settings panel for the virtual machine that is running Docker (i.e. right click on the virtual machine and select `Settings`).
 
@@ -73,9 +73,9 @@ These are the steps to expose Kitura's port in a Docker container to the host (e
 - name: kitura
 - protocol: tcp
 - host ip: 127.0.0.1
-- host port: 8090
+- host port: 8080
 - guest port: &lt;the host port reported under the PORTS column (e.g. 32768)&gt;
 
 7) Click `OK` and `OK` again to save the settings for the virtual machine.
 
-8) Open your browser and go to `http://localhost:8090`. You should see the Kitura welcome page.
+8) Open your browser and go to `http://localhost:8080`. You should see the Kitura welcome page.
