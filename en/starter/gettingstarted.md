@@ -72,7 +72,7 @@ router.get("/") {
 }
 
 // Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 8090, with: router)
+Kitura.addHTTPServer(onPort: 8080, with: router)
 
 // Start the Kitura runloop (this call never returns)
 Kitura.run()
@@ -92,7 +92,7 @@ $ swift build
 $ .build/debug/myFirstProject
 ```
 ---
-<span class="arrow">&#8227;</span> Open your browser at [http://localhost:8090](http://localhost:8090)
+<span class="arrow">&#8227;</span> Open your browser at [http://localhost:8080](http://localhost:8080)
 
 ---
 
@@ -135,7 +135,7 @@ router.get("/") {
 }
 
 // Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 8090, with: router)
+Kitura.addHTTPServer(onPort: 8080, with: router)
 
 // Start the Kitura runloop (this call never returns)
 Kitura.run()
