@@ -69,7 +69,7 @@ In order to use Kitura in your application, you must add the Kitura module to yo
 import Kitura
 ```
 
-In the main.swift file, we will set up the Kitura router as well as our collection of to-do items, then instruct the HTTPServer to listen to port 8090 for new connections.
+In the main.swift file, we will set up the Kitura router as well as our collection of to-do items, then instruct the HTTPServer to listen to port 8080 for new connections.
 
 ```swift
 ///
@@ -96,13 +96,13 @@ Create a file called Controllers/App.swift. Here we will define function called 
 setupRoutes( router, todos: todos )
 ```
 
-Back on your main.swift file at the end, set up an HTTP server that listens to port 8090:
+Back on your main.swift file at the end, set up an HTTP server that listens to port 8080:
 
 ```swift
 ///
-/// Listen to port 8090
+/// Listen to port 8080
 ///
-Kitura.addHTTPServer(onPort: 8090, with: router)
+Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()
 ```
 
@@ -311,9 +311,9 @@ SwiftPM will place your the dependencies in your Packages directory and next bui
 ./.build/debug/TodoList
 ```
 
-After the executable is running and listening for connections on localhost:8090, you can test out the application by using the TodoBackend web page. This web page can use any backend that implements the API by supplying the address to your backend. View your to-do list at the following address:
+After the executable is running and listening for connections on localhost:8080, you can test out the application by using the TodoBackend web page. This web page can use any backend that implements the API by supplying the address to your backend. View your to-do list at the following address:
 
-[http://todobackend.com/client/index.html?http://localhost:8090](http://todobackend.com/client/index.html?http://localhost:8090)
+[http://todobackend.com/client/index.html?http://localhost:8080](http://todobackend.com/client/index.html?http://localhost:8080)
 
 When this is done, you should have a to-do list that looks like this:
 

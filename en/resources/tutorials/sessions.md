@@ -139,7 +139,7 @@ Our `login.html` will look something like this:
                 /*
                 * Add your authentication here
                 */
-                 $.post("http://localhost:8090/login",{email:email}, function(data){
+                 $.post("http://localhost:8080/login",{email:email}, function(data){
                       if(data==='done')
                            {
                                 window.location.href="/";
@@ -206,7 +206,7 @@ To be able to destroy our data in this example we are going to have to modify ou
 <script>
     $(document).ready(function(){
         $("#submit").click(function(){
-            $.post("http://localhost:8090/logout" ,function(data){
+            $.post("http://localhost:8080/logout" ,function(data){
                 if(data==='done')
                 {
                     window.location.href="/";

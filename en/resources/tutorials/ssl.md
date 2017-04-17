@@ -96,14 +96,14 @@ router.get("/") {
     next()
 }
 
-Kitura.addHTTPServer(onPort: 8090, with: router, withSSL: mySSLConfig)
+Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)
 Kitura.run()
 ```
 
-<span class="arrow">&#8227;</span> Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on `localhost:8090`, you can test out the application by opening a browser on:
+<span class="arrow">&#8227;</span> Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on `localhost:8080`, you can test out the application by opening a browser on:
 
 ```
-https://localhost:8090
+https://localhost:8080
 ```
 
 <span class="arrow">&#8227;</span> Notice the `https` in your URL!  You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
