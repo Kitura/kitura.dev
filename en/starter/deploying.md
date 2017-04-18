@@ -25,7 +25,7 @@ Additionally, you can use our pre-built Docker image to guide you on how to depl
 
 [Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on Bluemix. After cloning this GitHub repo to your local system, you can deploy this application to Bluemix right away.
 
-Once you have the Cloud Foundry command line tool installed, deploying to the cloud is as simple as `cf push`.
+Once you have the Bluemix [command line tool](http://clis.ng.bluemix.net/ui/home.html) installed, deploying to the cloud is as simple as `bx app push`.
 
 ---
 
