@@ -24,7 +24,7 @@ redirect_from: "/starter/setting up.html"
 <hr>
 ## Ubuntu Linux
 
-Kitura is tested on Ubuntu 14.04 LTS, Ubuntu 15.10, and Ubuntu 16.04 LTS.
+Kitura is tested on Ubuntu 14.04 LTS.
 
 <span class="arrow">&#8227;</span> Install the following Linux system packages:
 
