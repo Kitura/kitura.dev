@@ -32,7 +32,7 @@ redirect_from: "/starter/testing.html"
 
 <span class="arrow">&#8227;</span> Create each test case as a different function within the testing class (for example: `func testFrobbingTheFoo() { ... }`). Note that each function must begin with the string "test". You can use [Apple's guide](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/04-writing_tests.html) for tips on how to make good test cases.
 
-<span class="arrow">&#8227;</span> For Linux compatibility, you will need to add an additional class variable to your test class named `allTests` which has a signature like (substituting the name of the class from (3) in place of `FrobTests`):
+<span class="arrow">&#8227;</span> For Linux compatibility, you will need to add an additional class variable to your test class named `allTests` which has a signature like this: (substituting the name of the class in place of `FrobTests`)
 
 ```swift
 static var allTests : [(String, (FrobTests) -> () throws -> Void)]
@@ -41,7 +41,7 @@ static var allTests : [(String, (FrobTests) -> () throws -> Void)]
 This should hold an array of tuples matching a string name to the function name for each test case. For example:
 
 ```swift
-static var allTests : [(String, (robTests) -> () throws -> Void)] {
+static var allTests : [(String, (FrobTests) -> () throws -> Void)] {
   return [
     ("testFrobbingTheFoo", testFrobbingTheFoo)
   ]
