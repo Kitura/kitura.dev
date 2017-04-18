@@ -72,7 +72,7 @@ let router: Router
 let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)
 
 // Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 3000, with: router)  
+Kitura.addHTTPServer(onPort: 8080, with: router)  
 ```
 
 ---
