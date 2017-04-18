@@ -20,7 +20,7 @@ You can save user session data in your Kitura app by using the `Kitura-Session` 
 
 ## How to set up Kitura-Session
 
-<span class="arrow">&#8227;</span> Before being abe to create sessions, you must have the `Kitura-Session` dependency added in your `Package.swift` file:
+<span class="arrow">&#8227;</span> Before being able to create sessions, you must have the `Kitura-Session` dependency added in your `Package.swift` file:
 
 ```swift
 .Package(url: "https://github.com/IBM-Swift/Kitura-Session.git"),
