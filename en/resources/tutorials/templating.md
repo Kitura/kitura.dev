@@ -156,13 +156,13 @@ router.get("/articles") { request, response, next in
 }
 
 // Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 8090, with: router)
+Kitura.addHTTPServer(onPort: 8080, with: router)
 
 // Start the Kitura runloop (this call never returns)
 Kitura.run()
 ```
 
-<span class="arrow">&#8227;</span> The following response is sent as a result when calling `http://localhost:8090/delivery`:
+<span class="arrow">&#8227;</span> The following response is sent as a result when calling `http://localhost:8080/delivery`:
 
 ```
 > Hello Arthur
@@ -172,7 +172,7 @@ Your beard trimmer will arrive on Sep 8, 2016.
 Well, on Sep 19, 2016 because of a Martian attack.
 ```
 
-<span class="arrow">&#8227;</span> and when calling `http://localhost:8090/articles`:
+<span class="arrow">&#8227;</span> and when calling `http://localhost:8080/articles`:
 
 ```
 There are 2 articles.
