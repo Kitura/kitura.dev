@@ -46,7 +46,7 @@ let sm = try SwiftMetrics()
 let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)   
 ```
 
-and amend Package.swift to include the SwiftMetrics dependency
+and amend Package.swift to include the SwiftMetrics dependency with the major and minor [release version](https://github.com/RuntimeTools/SwiftMetrics/releases) that is compatible with your version of Swift.
 
 
 ```swift
@@ -55,7 +55,7 @@ and amend Package.swift to include the SwiftMetrics dependency
       ]     
 ```
 
-By default, SwiftMetricsDash will starts its own kitura server and serve the page up under localhost:<port>/swiftmetrics-dash
+By default, SwiftMetricsDash will starts its own Kitura server and serve the page up under localhost:<port>/swiftmetrics-dash
 
 The port being used is logged to the console when your application starts
 
