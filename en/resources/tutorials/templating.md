@@ -27,8 +27,6 @@ Kitura template engines are classes that implement the `TemplateEngine` protocol
 2. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine).
 3. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
 
-> ![info] GRMustache is available on macOS. It is also available on Linux starting from Swift 3.1.
-
 You can provide your own Kitura template engine by implementing the `TemplateEngine` protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
 
 ---
