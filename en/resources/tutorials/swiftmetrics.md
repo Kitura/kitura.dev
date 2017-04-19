@@ -55,7 +55,7 @@ and amend Package.swift to include the SwiftMetrics dependency with the major an
       ]     
 ```
 
-By default, SwiftMetricsDash will starts its own Kitura server and serve the page up under localhost:<port>/swiftmetrics-dash
+By default, SwiftMetricsDash will start its own Kitura server and serve the page up under localhost:<port>/swiftmetrics-dash
 
 The port being used is logged to the console when your application starts
 
