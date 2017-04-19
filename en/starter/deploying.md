@@ -21,6 +21,20 @@ Additionally, you can use our pre-built Docker image to guide you on how to depl
 
 ---
 
+## Specify a version of Swift (optional, but extremely recommended)
+
+ Pushing your application to Bluemix will build your application using the latest Swift version supported by the [buildpack](https://github.com/IBM-Swift/swift-buildpack/releases), which changes periodically.  Adding a `.swift-version` to your application is a common convention to specify the version of Swift needed for your application.
+
+---
+<span class="arrow">&#8227;</span> Add a `.swift-version` file with the desired version or snapshot of Swift
+
+```bash
+echo "3.1" > .swift-version
+```
+
+
+---
+
 ## Kitura-Starter
 
 [Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on Bluemix. After cloning this GitHub repo to your local system, you can deploy this application to Bluemix right away.

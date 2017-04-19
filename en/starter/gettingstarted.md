@@ -96,19 +96,6 @@ $ .build/debug/myFirstProject
 
 ---
 
-## Specify a version of Swift (optional)
-
- In the code example above, the Swift application will build with the version from in the local toolchain. Using a `.swift-version` is a common convention to specify the version of Swift needed for your application.
-
----
-<span class="arrow">&#8227;</span> Add a `.swift-version` file with the desired version or snapshot of Swift
-
-```bash
-echo "3.0.2" > .swift-version
-```
-
----
-
 ## Add logging (optional)
 
  In the code example above no messages from Kitura will be logged to the console. You may want to add a logger to help diagnose any problems that occur.

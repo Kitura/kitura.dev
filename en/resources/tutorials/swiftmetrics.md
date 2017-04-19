@@ -46,7 +46,7 @@ let sm = try SwiftMetrics()
 let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)   
 ```
 
-and amend Package.swift to include the SwiftMetrics dependency with the major and minor [release version](https://github.com/RuntimeTools/SwiftMetrics/releases) that is compatible with your version of Swift.
+and amend Package.swift to include the SwiftMetrics dependency with the major and minor [release version](https://github.com/RuntimeTools/SwiftMetrics/releases) that is compatible with your **Swift version**.
 
 
 ```swift
