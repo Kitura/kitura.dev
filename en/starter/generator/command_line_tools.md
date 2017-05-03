@@ -119,9 +119,9 @@ Adds a new model to a Swift Server Generator application:
 
 **Options**
 
-    -h, --help
+`-h, --help`
 
-Print the generator’s options and usage.
+Prints the generator’s options and usage.
 
 **Interactive prompts**
 
@@ -153,9 +153,9 @@ Adds a new property to an existing Swift Server Generator model.
 
 **Options**
 
-    -h, --help
+`-h, --help`
 
-Print the generator's options and usage.
+Prints the generator’s options and usage.
 
 **Interactive prompts**
 
@@ -189,9 +189,9 @@ Regenerates your Swift Server Generator application.
 
 **Options**
 
-    -h, --help
+`-h, --help`
 
-Print the generator's options and usage.
+Prints the generator’s options and usage.
 
 **Output**
 
@@ -217,9 +217,9 @@ Builds the Swift Server Generator application.
 
 **Options**
 
-    -h, --help
+`-h, --help`
 
-Print the generator's options and usage.
+Prints the generator’s options and usage.
 
 **Output**
 
