@@ -60,9 +60,18 @@ Creates a new Swift Server Generator application.
 
 **Options**
 
-    -h, --help
+`-h, --help`
 
-Print the generator’s options and usage.
+Prints the generator’s options and usage.
+
+`--skip-build`
+
+Generates an application, but does not build it.
+
+`--single-shot`
+
+Disables creation of generator meta-data files (`.yo-rc.json` and `.swiftservergenerator-project`).
+Although, this means that you cannot run the generator again on your generated application.
 
 **Interactive prompts**
 
