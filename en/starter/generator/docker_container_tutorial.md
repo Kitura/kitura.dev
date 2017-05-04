@@ -129,7 +129,7 @@ $ docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tool
 <span class="arrow">&#8227;</span> To run the application in the Docker container:
 
 ```
-$ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-docker/release/docker-getting-started
+$ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-ubuntu/release/docker-getting-started
 ```
 
 <span class="arrow">&#8227;</span> Confirm the application is running locally by opening the URL
