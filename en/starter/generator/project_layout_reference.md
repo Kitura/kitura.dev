@@ -43,6 +43,8 @@ There are also a number of hidden files included in all generated applications:
 ├── .yo-rc.json                     - Yeoman generator configuration file
 ```
 
+> ![info] Note: `.swiftservergenerator-project` and `.yo-rc.json` are files used by the generator to know where the root of your project is and what kind of project you have. If you don’t need to do any further modifications after initial project generation (such as using the [model generator](command_line_tools.html#model-generator)), use the [single shot option](command_line_tools.html#application-generator).
+
 ## Build files
 
 The following are created when the application is built (by `swift build`):
