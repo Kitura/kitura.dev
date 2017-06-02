@@ -29,6 +29,10 @@ The following structure is common to all generated applications:
 │   │   └── Application.swift       - Swift code for application logic
 │   └── <application_name>/         - Swift module for executable
 │       └── main.swift              - Swift code for executable
+├── Tests/                          - Swift source code for the tests
+│   ├── ApplicationTests/           - Swift test module
+│   │   └── RouteTests.swift        - Swift code for the test implementation
+│   └── LinuxMain.swift             - Swift test definition for Linux
 ├── Package.swift                   - Swift Package Manager configuration file
 ├── config.json                     - Application configuration file
 ├── spec.json                       - Generator specification file for the project
