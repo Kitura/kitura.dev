@@ -51,7 +51,12 @@ import PackageDescription
 let package = Package(
     name: "myFirstProject",
     dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 7)
+        .package(url: "https://github.com/IBM-Swift/Kitura.git", from: "1.7.0")
+    ],
+    targets: [
+        .target(
+            name: "myFirstProject",
+            dependencies: ["Kitura"])
     ])
 ```
 
@@ -109,8 +114,14 @@ import PackageDescription
 let package = Package(
     name: "myFirstProject",
     dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 7),
-        .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 1, minor: 7)
+        .package(url: "https://github.com/IBM-Swift/Kitura.git", from: "1.7.0"),
+        .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", from: "1.7.0")
+    ],
+    targets: [
+    	.target: (
+		name: "myFirstProject",
+		dependencies: ["Kitura", "HeliumLogger"])
+	)
     ])
 ```
 ---
