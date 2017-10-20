@@ -86,8 +86,18 @@ If you like what you've seen of Kitura so far, star the repository by clicking t
 
 <iframe src="https://ghbtns.com/github-btn.html?user=IBM-Swift&repo=Kitura&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
+Join in the conversation on Slack.
+
+<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+<img src="../../assets/slack.png" alt="Slack" width="50"/>
+</a>
+
 <hr>
 ## Next Steps
+
+<p> Follow our TodoList tutorial.</p>
+
+<p> Follow our FoodTracker back-end tutorial.</p>
 
 Learn how to [Deploy your Application to the Cloud](/{{ page.lang }}/starter/deploying.html).
 
