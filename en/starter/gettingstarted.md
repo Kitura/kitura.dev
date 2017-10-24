@@ -30,7 +30,7 @@ $ brew tap ibm-swift/kitura
 Now you can install Kitura's Command Line Interface and dependencies.
 
 ```
-$ brew install kitura-cli
+$ brew install kitura
 ```
 
 <span class="arrow">&#8227;</span> Next let's create a directory for your Kitura project.
