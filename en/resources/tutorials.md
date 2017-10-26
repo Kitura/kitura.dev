@@ -15,7 +15,17 @@ redirect_from: "/resources/tutorial-todo.html"
 <p>Learn how to use Kitura with these walk-through tutorials</p>
 </div>
 
-## Routing and Requests
+## Build a Kitura back-end application
+
+### [TodoList](https://github.com/IBM/TodoBackend)
+
+Learn how to build a back-end for the TodoList web application.
+
+### [Apple FoodTracker](https://github.com/IBM/FoodTrackerBackend)
+
+Learn how to build a back-end for the Apple FoodTracker web application.
+
+## Adding Routing and Requests
 
 ### [Parsing Requests](/{{ page.lang }}/resources/tutorials/parsingrequests.html)
 
