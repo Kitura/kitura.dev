@@ -25,6 +25,8 @@ Learn how to build a back-end for the TodoList web application.
 
 Learn how to build a back-end for the Apple FoodTracker web application.
 
+---
+
 ## Adding Routing and Requests
 
 ### [Parsing Requests](/{{ page.lang }}/resources/tutorials/parsingrequests.html)
@@ -66,6 +68,18 @@ Learn how to enable SSL/TLS on Kitura to enhance the security of your applicatio
 ### [Adding Monitoring with Application Metrics for Swift](/{{ page.lang }}/resources/tutorials/swiftmetrics.html)
 
 Learn how to add monitoring with Application Metrics for Swift (SwiftMetrics) to visualise throughput and performance.
+
+---
+
+## Building
+
+### [Building for Linux on a Mac](/{{ page.lang }}/starter/leveragedocker.html)
+
+Learn how to build your application code for Linux whilst working on a Mac.
+
+### [Building within Xcode](/{{ page.lang }}/starter/xcode.html)
+
+Learn how to set up Xcode to develop iOS applications and Kitura.
 
 ---
 
