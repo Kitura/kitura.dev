@@ -12,7 +12,7 @@ redirect_from: "/resources/parsingrequests.html"
 
 <div class="titleBlock">
   <h1>Parsing requests</h1>
-  <p>Examples showing the different ways that data can be parsed in Kitura</p>
+  <p>Learn how to parse HTTP requests in Kitura</p>
 </div>
 
 ## Parsing URL Encoded Parameters
@@ -61,12 +61,6 @@ router.post("/name") { request, response, _ in
 
 The built in body parsing middleware can parse a variety of body types including JSON.
 
-<span class="arrow">&#8227;</span> To use JSON objects in your app, simply add `import SwiftyJSON` to the top of your files. `SwiftyJSON` is included in the `Kitura` package so you don't need to add it to your app's `Package.swift` file.
-
-> ![warning]
-> 
-> Warning: If you have another version of `SwiftyJSON` in your app, either from a different repository or a different version from the one specified in your app's `Packages/Kitura-x.x.x/Package.swift` file, remove it and use the version of `SwiftyJSON` as specified in `Packages/Kitura-x.x.x/Package.swift`. Otherwise, Swift Package Manager will give errors when you try install your package dependencies.
-
 <span class="arrow">&#8227;</span> Specify that the body parser should be run on all paths starting with `/name`
 
 ```swift
@@ -82,7 +76,7 @@ router.post("/name") { request, response, next in
         return
     }
 
-    switch(parsedBody) {
+    switch parsedBody {
     case .json(let jsonBody):
             let name = jsonBody["name"].string ?? ""
             try response.send("Hello \(name)").end()
