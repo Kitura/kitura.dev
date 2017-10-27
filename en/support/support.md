@@ -21,18 +21,15 @@ Open an issue or get involved and raise a pull request on [GitHub](https://githu
 
 ## Slack
 
-Chat directly with Swift@IBM Engineering on [Slack](http://swift-at-ibm-slack.mybluemix.net/).
+Join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/).
 
 ## Stack Overflow
 
 Use the `kitura` tag to search for questions and answers on [Stack Overflow](https://stackoverflow.com/search?q=kitura).
 
-## dW Answers
+## Commercial Support for Swift
 
-Ask questions on IBM [dW Answers](https://developer.ibm.com/answers/). Search with the `swift` tag, or with `swift-kitura` to narrow the scope.
-
-## Swift@IBM Developer Center
-Learn more at the [IBM Developer Center for Swift](https://developer.ibm.com/swift/).
+If you're interested in learning more about this level of support, please contact [jimmail@uk.ibm.com](mailto://jimmail@uk.ibm.com).
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png

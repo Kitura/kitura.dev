@@ -12,138 +12,89 @@ redirect_from: "/starter/helloworld.html"
 
 <div class="titleBlock">
 	<h1>Getting Started</h1>
-	<p>Let's develop your first Kitura web application!</p>
+	<p>Develop your first Kitura web application.</p>
 </div>
 
-<span class="arrow">&#8227;</span> First, create a new project directory:
+<span class="arrow">&#8227;</span> Install [prerequisites](/{{ page.lang }}/starter/settingup.html).
+
+<span class="arrow">&#8227;</span> Install Homebrew tap.
+
+Installing Kitura's Homebrew tap will allow ```brew``` to access Kitura's package repository.
 
 ```
-$ mkdir myFirstProject
+brew tap ibm-swift/kitura
 ```
 
----
-<span class="arrow">&#8227;</span> Next, create a new Swift project using the Swift Package Manager.
+<span class="arrow">&#8227;</span> Install Kitura's command-line interface.
 
 ```
-$ cd myFirstProject
-$ swift package init --type executable
+brew install kitura
 ```
 
----
-<span class="arrow">&#8227;</span> Now your directory structure under `myFirstProject` should look like this:
+<span class="arrow">&#8227;</span> Create a directory for your Kitura project.
 
-<pre>
-myFirstProject
-├── Package.swift
-├── Sources
-│   └── main.swift
-└── Tests
-</pre>
+```
+mkdir HelloKitura
+cd HelloKitura
+```
 
-> ![info] For more information on the Swift Package Manager, visit [swift.org](https://swift.org/package-manager).
+<span class="arrow">&#8227;</span> Using the Kitura command-line interface, generate a basic starter project.
 
----
-<span class="arrow">&#8227;</span> In `Package.swift`, add Kitura as a dependency for your project.
+```
+kitura init
+```
+
+> ![info] You can learn more about the generated [project structure](/{{ page.lang }}/starter/generator/project_layout_reference.html).
+
+<span class="arrow">&#8227;</span> Open the generated `HelloKitura.xcodeproj` project in Xcode.
+
+```
+open HelloKitura.xcodeproj
+```
+
+
+<span class="arrow">&#8227;</span> Edit `Sources/Application/Application.swift` and add the following code inside the `postInit()` function.
 
 ```swift
-import PackageDescription
-
-let package = Package(
-    name: "myFirstProject",
-    dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 7)
-    ])
-```
-
----
-<span class="arrow">&#8227;</span> In `Sources/main.swift`, add the following code.
-
-```swift
-import Kitura
-
-// Create a new router
-let router = Router()
-
 // Handle HTTP GET requests to /
 router.get("/") {
     request, response, next in
     response.send("Hello, World!")
     next()
 }
-
-// Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 8080, with: router)
-
-// Start the Kitura runloop (this call never returns)
-Kitura.run()
 ```
 
----
-<span class="arrow">&#8227;</span> Compile your application:
+<span class="arrow">&#8227;</span> Edit the Xcode build scheme so it specifies HelloKitura as the Executable.
+
+<span class="arrow">&#8227;</span> Click the play button (&#8984;-R) to build and run your new web application.
+
+<span class="arrow">&#8227;</span> Open your web browser at [http://localhost:8080](http://localhost:8080).
+
+<span class="arrow">&#8227;</span> You should see the following page in your browser:
 
 ```
-$ swift build
+"Hello, World!"
 ```
 
----
-<span class="arrow">&#8227;</span> Now run your new web application:
+<b>Congratulations!</b> You have just created your first server-side Swift application using Kitura.
 
-```
-$ .build/debug/myFirstProject
-```
----
-<span class="arrow">&#8227;</span> Open your browser at [http://localhost:8080](http://localhost:8080)
-
----
-
-## Add logging (optional)
-
- In the code example above no messages from Kitura will be logged to the console. You may want to add a logger to help diagnose any problems that occur.
-
----
-<span class="arrow">&#8227;</span> Add a HeliumLogger dependency to `Package.swift`.
-
-```swift
-import PackageDescription
-
-let package = Package(
-    name: "myFirstProject",
-    dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 7),
-        .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 1, minor: 7)
-    ])
-```
----
-<span class="arrow">&#8227;</span> Enable HeliumLogger in `Sources/main.swift`.
-
-
-```swift
-import Kitura
-import HeliumLogger
-
-// Initialize HeliumLogger
-HeliumLogger.use()
-
-// Create a new router
-let router = Router()
-
-// Handle HTTP GET requests to /
-router.get("/") {
-    request, response, next in
-    response.send("Hello, World!")
-    next()
-}
-
-// Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 8080, with: router)
-
-// Start the Kitura runloop (this call never returns)
-Kitura.run()
-```
 <hr>
-## Next Steps
+## Next
 
-Learn how to [Deploy your Application to the Cloud](/{{ page.lang }}/starter/deploying.html).
+* Learn how to build a back-end for the [TodoList web application](https://github.com/IBM/ToDoBackend).
+
+* Learn how to build a back-end for the [Apple FoodTracker iOS application](https://github.com/IBM/FoodTrackerBackend).
+
+<hr>
+If you like what you've seen of Kitura so far, star the repository by clicking the button below.
+
+<iframe src="https://ghbtns.com/github-btn.html?user=IBM-Swift&repo=Kitura&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+
+Join in the conversation on Slack.
+
+<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+<img src="../../assets/slack.png" alt="Slack" width="50"/>
+</a>
 
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
