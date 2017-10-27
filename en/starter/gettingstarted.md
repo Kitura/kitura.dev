@@ -12,49 +12,48 @@ redirect_from: "/starter/helloworld.html"
 
 <div class="titleBlock">
 	<h1>Getting Started</h1>
-	<p>Let's develop your first Kitura web application!</p>
+	<p>Develop your first Kitura web application.</p>
 </div>
 
 <span class="arrow">&#8227;</span> Install [prerequisites](/{{ page.lang }}/starter/settingup.html).
 
-<span class="arrow">&#8227;</span> Install Homebrew Tap.
+<span class="arrow">&#8227;</span> Install Homebrew tap.
 
-Installing Kitura's Homebrew tap will allow ```brew``` to access (or tap into!) Kitura's package repository.
+Installing Kitura's Homebrew tap will allow ```brew``` to access Kitura's package repository.
 
 ```
 brew tap ibm-swift/kitura
 ```
 
-<span class="arrow">&#8227;</span> Install Kitura's Command Line Interface.
+<span class="arrow">&#8227;</span> Install Kitura's command-line interface.
 
 ```
 brew install kitura
 ```
 
-<span class="arrow">&#8227;</span> Next let's create a directory for your Kitura project.
+<span class="arrow">&#8227;</span> Create a directory for your Kitura project.
 
 ```
 mkdir HelloKitura
 cd HelloKitura
 ```
 
-<span class="arrow">&#8227;</span> Create a basic starter project using the Kitura CLI.
+<span class="arrow">&#8227;</span> Using the Kitura command-line interface, generate a basic starter project.
 
 ```
 kitura init
 ```
 
-> ![info] The ```kitura init``` command creates a template Kitura application.
+> ![info] You can learn more about the generated [project structure](/{{ page.lang }}/starter/generator/project_layout_reference.html).
 
-<span class="arrow">&#8227;</span> Open the application in Xcode, using the HelloKitura.xcodeproj file which has been created for you.
+<span class="arrow">&#8227;</span> Open the generated `HelloKitura.xcodeproj` project in Xcode.
 
 ```
 open HelloKitura.xcodeproj
 ```
 
-> ![info] You can learn more about the generated [project structure](/{{ page.lang }}/starter/generator/project_layout_reference.html).
 
-<span class="arrow">&#8227;</span> In `Sources/Application/Application.swift`, add the following code inside the `postInit()` function.
+<span class="arrow">&#8227;</span> Edit `Sources/Application/Application.swift` and add the following code inside the `postInit()` function.
 
 ```swift
 // Handle HTTP GET requests to /
@@ -67,21 +66,24 @@ router.get("/") {
 
 <span class="arrow">&#8227;</span> Edit the Xcode build scheme so it specifies HelloKitura as the Executable.
 
-<span class="arrow">&#8227;</span> Click the play button (&#8984;-R) to run your new web application.
+<span class="arrow">&#8227;</span> Click the play button (&#8984;-R) to build and run your new web application.
 
-<span class="arrow">&#8227;</span> Open your browser at [http://localhost:8080](http://localhost:8080).
+<span class="arrow">&#8227;</span> Open your web browser at [http://localhost:8080](http://localhost:8080).
 
-<span class="arrow">&#8227;</span> You should see the following output in your browser:
+<span class="arrow">&#8227;</span> You should see the following page in your browser:
 
 ```
 "Hello, World!"
 ```
+
+<b>Congratulations!</b> You have just created your first server-side Swift application using Kitura.
+
 <hr>
 ## Next
 
 * Learn how to build a back-end for the [TodoList web application](https://github.com/IBM/ToDoBackend).
 
-* Learn how to build a back-end for the [Apple FoodTracker web application](https://github.com/IBM/FoodTrackerBackend).
+* Learn how to build a back-end for the [Apple FoodTracker iOS application](https://github.com/IBM/FoodTrackerBackend).
 
 <hr>
 If you like what you've seen of Kitura so far, star the repository by clicking the button below.

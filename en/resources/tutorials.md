@@ -25,7 +25,7 @@ Learn how to build a back-end for the TodoList web application.
 
 ### [Apple FoodTracker](https://github.com/IBM/FoodTrackerBackend)
 
-Learn how to build a back-end for the Apple FoodTracker web application.
+Learn how to build a back-end for the Apple FoodTracker iOS application.
 
 <img src="../../assets/FoodTracker.png" alt="FoodTracker" width="300"/>
 
@@ -79,11 +79,11 @@ Learn how to add monitoring with Application Metrics for Swift (SwiftMetrics) to
 
 ### [Building for Linux on a Mac](/{{ page.lang }}/starter/leveragedocker.html)
 
-Learn how to build your application code for Linux whilst working on a Mac.
+Learn how to build your Kitura application in a Linux container on macOS.
 
 ### [Building within Xcode](/{{ page.lang }}/starter/xcode.html)
 
-Learn how to set up Xcode to develop iOS applications and Kitura.
+Learn how to build Kitura applications inside Xcode.
 
 ---
 
