@@ -6,7 +6,7 @@ layout: page
 title: Getting started with Cloudant on Bluemix
 menu: starter
 lang: en
-redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
+redirect_from: "/starter/generator/cloudant_tutorial_ibm_cloud.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

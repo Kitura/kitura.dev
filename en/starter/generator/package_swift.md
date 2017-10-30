@@ -30,7 +30,7 @@ import PackageDescription
 let package = Package(
   name: "ExampleApplication",
   dependencies: [
-    .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "1.6.0")),
+    .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.0.0")),
     .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", .upToNextMinor(from: "1.2.0")),
     .package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", from: "1.0.0")
   ],

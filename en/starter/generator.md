@@ -35,7 +35,7 @@ redirect_from: "/starter/generator.html"
 
 ## Tutorials
 
-### [Connecting to a Cloudant service](/{{ page.lang }}/starter/generator/cloudant_tutorial_bluemix.html)
+### [Connecting to a Cloudant service](/{{ page.lang }}/starter/generator/cloudant_tutorial_ibm_cloud.html)
 
 ### [Deploying to the Cloud with Cloud Foundry](/{{ page.lang }}/starter/generator/deploy_cloud_foundry.html)
 

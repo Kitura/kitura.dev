@@ -239,27 +239,6 @@ This service uses the [SwiftMetrics package](https://github.com/RuntimeTools/Swi
 
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the SwiftMetrics auto-scaling client.
 
-### Non-IBM Cloud services
-
-Non-IBM Cloud services can be hosted anywhere including your local machine.
-
-#### CouchDB
-This service uses the [Kitura-CouchDB package](https://github.com/IBM-Swift/Kitura-CouchDB), which allows Kitura applications to interact with a CouchDB database.
-
-CouchDB speaks JSON natively and supports binary for all your data storage needs.
-
-Boilerplate code for creating a client object for the Kitura-CouchDB API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
-
-The connection details for this client are loaded from `config/localdev-config.json` by the configuration boilerplate code.
-
-#### Redis
-This service uses the [Kitura-redis](http://ibm-swift.github.io/Kitura-redis/) library, which allows Kitura applications to interact with a Redis database.
-
-Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports a cracking array of data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries.
-
-Boilerplate code for creating a client object for the Kitura-redis API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
-
-The connection details for this client are loaded from `config/localdev-config.json` by the configuration boilerplate code.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
