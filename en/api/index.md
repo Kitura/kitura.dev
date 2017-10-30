@@ -19,7 +19,7 @@ lang: en
 * [HeliumLogger](http://ibm-swift.github.io/HeliumLogger/)
 
 ## Client
-* [KituraKit](https://ibm-swift.io/KituraKit)
+* [KituraKit](https://ibm-swift.github.io/KituraKit)
 
 ## Credentials
 
