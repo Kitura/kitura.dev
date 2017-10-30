@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/deply_toolchain.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Deploying to the Cloud with Create Toolchain</h1>
@@ -132,6 +135,3 @@ This will provision services and start a deploy of your application.
 ## Next Steps
 Take a look at the [other tutorials](../generator.html#tutorials).
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/prompts.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Prompt reference</h1>
@@ -216,6 +219,3 @@ Any services you do not select in this prompt will use default values.
 For each service you select, a set of custom prompts will ask for the relevant connection
 details to be supplied.
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

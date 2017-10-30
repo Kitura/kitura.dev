@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/exposing_ssg_models_over_rest.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Exposing Swift Server Generator models over REST</h1>
@@ -80,7 +83,3 @@ For example:
     }
 
 
-
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

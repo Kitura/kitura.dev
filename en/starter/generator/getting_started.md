@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/getting_started.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Getting started with Kitura generation</h1>
@@ -134,6 +137,3 @@ Now you can:
 ## Next Steps
 Learn how to [generate an application that uses a Cloudant service](cloudant_tutorial_ibm_cloud.html).
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

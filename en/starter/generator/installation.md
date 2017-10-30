@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/installation.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Installing</h1>
@@ -44,6 +47,3 @@ Complete the following steps to install Swift Server Generator
 > -   Ubuntu Linux 14.04 LTS
 > -   Ubuntu Linux 16.04 LTS
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/docker_container_tutorial.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Running inside a Docker container</h1>
@@ -149,6 +152,3 @@ Congratulations, you now have a simple Kitura web application in a Docker image 
 ## Next Steps
 Take a look at the [other tutorials](../generator.html#tutorials).
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

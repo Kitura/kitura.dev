@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/local_couchdb_tutorial.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Setting up a local CouchDB application</h1>
@@ -222,6 +225,3 @@ Congratulations, you now have a simple Kitura application that can communicate w
 
 Learn how to [run an application with Docker](docker_container_tutorial.html).
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

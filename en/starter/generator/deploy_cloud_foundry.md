@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/deploy_cloud_foundry.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Deploying to the Cloud with Cloud Foundry</h1>
@@ -127,6 +130,3 @@ OK
 ## Next Steps
 Take a look at the [other tutorials](../generator.html#tutorials).
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png
