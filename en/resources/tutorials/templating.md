@@ -41,7 +41,7 @@ import PackageDescription
 let package = Package(
     name: "myTemplates",
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "1.0.0")),
+        .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.0.0")),
         .package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", .upToNextMinor(from: "1.0.0")),
         .package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", .upToNextMinor(from: "1.0.0"))
  ])

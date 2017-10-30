@@ -131,7 +131,7 @@ You may customize the names of these images by specifying a different value afte
 To compile the application using the tools docker image, run:
 
 ```shell
-docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-utils.sh build release
+docker run -v $PWD:/root/project -w /root/project myapp-build /swift-utils/tools-utils.sh build release
 ```
 
 To run the application:
