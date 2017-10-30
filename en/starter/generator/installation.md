@@ -14,11 +14,18 @@ redirect_from: "/starter/generator/installation.html"
 	<h1>Installing</h1>
 </div>
 
+## macOS
+
+- Follow the [Getting Started](../gettingstarted.html).
+
+<hr>
+## Ubuntu Linux
+
 **Prerequisities**
 
 -   Install Node.js. If you haven’t already installed Node.js, [download the pre-built installer](https://nodejs.org/en/download/) for your platform and run it.
 
--   Install Swift 3.0.x, so that the tool can compile the generated Kitura/Swift application. For installation instructions, see [Kitura: Setting up](http://www.kitura.io/en/starter/settingup.html).
+-   Install Swift 4.0.x, so that the tool can compile the generated Kitura/Swift application. For installation instructions, see [Kitura: Setting up](../settingup.html).
 
 Complete the following steps to install Swift Server Generator
 
@@ -34,7 +41,6 @@ Complete the following steps to install Swift Server Generator
 
 > ![info] Note: Swift Server Generator is supported only on the following operating systems:
 >
-> -   macOS capable of running Xcode 8.1
 > -   Ubuntu Linux 14.04 LTS
 > -   Ubuntu Linux 16.04 LTS
 

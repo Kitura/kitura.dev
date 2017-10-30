@@ -11,7 +11,7 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
 ---
 
 <div class="titleBlock">
-	<h1>Creating a project with Cloudant for Bluemix</h1>
+	<h1>Creating a project with Cloudant for IBM Cloud</h1>
 	<p>Use the generator to scaffold a Kitura web application with a Cloudant service.</p>
 </div>
 
@@ -22,14 +22,14 @@ redirect_from: "/starter/generator/cloudant_tutorial_bluemix.html"
 
 #### In this tutorial you will:
 
-- Create a Cloudant service on Bluemix
+- Create a Cloudant service on IBM Cloud
 - Create a scaffolded Kitura application
 - Add a Cloudant service to the application
 - Connect to the Cloudant service
 
 ---
 
-<span class="arrow">&#8227;</span> Create a [Cloudant service](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db?taxonomyNavigation=services) on Bluemix by clicking the `Create` button.
+<span class="arrow">&#8227;</span> Create a [Cloudant service](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db?taxonomyNavigation=services) on IBM Cloud by clicking the `Create` button.
 
 Navigate to `Service Credentials` to view your credentials.
 
@@ -37,9 +37,9 @@ Navigate to `Service Credentials` to view your credentials.
 
 
 ---
-<span class="arrow">&#8227;</span> Next, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
+<span class="arrow">&#8227;</span> Next, start the Kitura server generation (see [Command line tools](command_line_tools.html)):
 
-    $ yo swiftserver
+    $ kitura create
 
 ---
 <span class="arrow">&#8227;</span> Enter `swiftserver-cloudant` as the application name.
@@ -71,18 +71,28 @@ Navigate to `Service Credentials` to view your credentials.
 ---
 <span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](prompts.html#capabilities) for the `Web` application pattern.
 
-    ? Select capabilities: (Press <space> to select)
+    ? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
     ❯ ◉ Static web file serving
-      ◯ OpenAPI / Swagger endpoint
-      ◯ Example endpoints
+      ◯ Swagger UI
       ◉ Embedded metrics dashboard
       ◉ Docker files
-      ◉ Bluemix cloud deployment
+
+---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating code from a [swagger](core_concepts.html#endpoints-from-swagger-file) specification in the scaffolding.
+
+    ? Select endpoints to generate: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◯ Swagger file serving endpoint
+      ◯ Endpoints from a swagger file
+
+---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating a Swift server SDK from a swagger file in the scaffolding.
+
+    ? Would you like to generate a Swift server SDK from a Swagger file? (y/N)
 
 ---
 <span class="arrow">&#8227;</span> Navigate to `Cloudant` and press **Space** and then **Enter** to select and include [Cloudant](https://console.ng.bluemix.net/docs/services/Cloudant/index.html#getting-started-with-cloudant) into the scaffolding.
 
-    ? Generate boilerplate for Bluemix services: (Press <space> to select)
+    ? Generate boilerplate for services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
     ❯ ◉ Cloudant
       ◯ Redis
       ◯ Object Storage
@@ -97,7 +107,7 @@ Navigate to `Service Credentials` to view your credentials.
 
 > ![info] Note: If you leave this unselected then the default values will be used. You will
 > need to [update them in the `config.json`](/en/starter/generator/config_json.html#bluemix-capability-enabled)
-> to point at your Bluemix service after the project is generated.
+> to point at your service after the project is generated.
 
 Then configure `Cloudant` with the credentials you made earlier in Bluemix:
 
@@ -150,38 +160,58 @@ swiftserver-cloudant/
 ---
 
 <span class="arrow">&#8227;</span> Modify `Sources/Application/Application.swift` to create a CouchDB database by adding the line shown below:
-
 ```swift
-public func initialize() throws {
+import Foundation
+import Kitura
+import LoggerAPI
+import Configuration
+import CloudEnvironment
+import Health
+// Service imports
+import CouchDB
+public let projectPath = ConfigurationManager.BasePath.project.path
+public let health = Health()
+class ApplicationServices {
+    // Service references
+    public let couchDBService: CouchDBClient
+    public init(cloudEnv: CloudEnv) throws {
+        // Run service initializers
+        couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
+    }
+}
+public class App {
+    let router = Router()
+    let cloudEnv = CloudEnv()
+    let services: ApplicationServices
+    public init() throws {
+        // Services
+        services = try ApplicationServices(cloudEnv: cloudEnv)
+    }
+    func postInit() throws {
+        // Capabilities
+        initializeMetrics(app: self)
+        // Middleware
+        router.all(middleware: StaticFileServer())
+        // Endpoints
+        initializeHealthRoutes(app: self)
+    }
+    public func run() throws {
+        try postInit()
 
-    manager.load(file: "config.json", relativeFrom: .project)
-           .load(.environmentVariables)
+        // Add the line below
+        services.couchDBService.createDB("cloudant-tutorial"){_,_ in}
 
-    port = manager["port"] as? Int ?? port
-
-    let cloudantConfig = CloudantConfig(manager: manager)
-
-    let couchDBConnProps = ConnectionProperties(host:     cloudantConfig.host,
-                                                port:     cloudantConfig.port,
-                                                secured:  cloudantConfig.secured,
-                                                username: cloudantConfig.username,
-                                                password: cloudantConfig.password )
-
-    couchDBClient = CouchDBClient(connectionProperties: couchDBConnProps)
-
-    couchDBClient?.createDB("cloudant-tutorial"){_,_ in} /* << Add this line */
-
-    router.all("/*", middleware: BodyParser())
+        Kitura.addHTTPServer(onPort: cloudEnv.port, with: router)
+        Kitura.run()
+    }
 }
 ```
 
 <span class="arrow">&#8227;</span> Now recompile the application:
 
 ```
-$ yo swiftserver:build
+$ swift build
 ```
-
-> ![info] Why not **swift build**? On MacOS the swift build command will not work if you have opted to include the [Embedded metrics dashboard capability](core_concepts.html#metrics-dashboard-capability). The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator ensures the right options are supplied in all environments and should be used instead.
 
 ---
 
@@ -200,7 +230,7 @@ Congratulations, you now have a simple Kitura web application ready for extensio
 
 ## Next Steps
 
-Learn how to deploy an application to Bluemix using either
+Learn how to deploy an application to IBM Cloud using either
 [the CloudFoundry CLI](deploy_cloud_foundry.html) or
 [the Bluemix Create Toolchain button](deploy_toolchain.html).
 

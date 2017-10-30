@@ -14,7 +14,7 @@ redirect_from: "/starter/generator/core_concepts.html"
 	<h1>Core concepts</h1>
 </div>
 
-Swift Server Generator creates a Kitura Swift application based on the [project type](#project-type), [capabilities](#capabilities) and [services](#services) you select. To do this, use the [command-line tools](command_line_tools.html) provided by [installing the generator](installation.html).
+The `kitura create` command creates a Kitura Swift application based on the [project type](#project-type), [capabilities](#capabilities) and [services](#services) you select. To do this, use the [command-line tools](command_line_tools.html) provided by [installing the generator](installation.html).
 
 ## Project type
 
@@ -70,17 +70,14 @@ like included.
 For the [scaffold project type](#scaffold), you can select from the following list:
 
 * [Static web file serving](#web-capability)
-* [OpenAPI / Swagger endpoint](#swagger-endpoint-capability)
-* [Example endpoints](#example-endpoints-capability)
+* [Swagger UI](#swagger-fileserving-endpoint-capability)
 * [Embedded metrics dashboard](#metrics-dashboard-capability)
 * [Docker files](#docker-capability)
-* [Bluemix cloud deployment](#bluemix-capability)
 
 For the [CRUD project type](#crud), you can select from the following list:
 
 * [Embedded metrics dashboard](#metrics-dashboard-capability)
 * [Docker files](#docker-capability)
-* [Bluemix cloud deployment](#bluemix-capability)
 
 The list allows for toggling of any combination of the available capabilities which
 will start with a default set selected.
@@ -88,30 +85,12 @@ will start with a default set selected.
 The default set will depend on the [project type](#project-type):
 
 * [CRUD project type](#crud): all 3 available capabilities are selected by default
-* [Scaffold project type](#scaffold): defaults depend on [application pattern](#application-pattern)
+* [Scaffold project type](#scaffold): defaults depend on [application pattern](prompts#application-pattern-prompt)
 
 ### Web capability
 This capability will include a `public` directory in the root of the project. The contents of this directory will be served as static content using the built-in Kitura [StaticFileServer module](https://github.com/IBM-Swift/Kitura/wiki/Serving-Static-Content).
 
 This content is hosted on `/`. For example, if you want to view `public/myfile.html` and the application is hosted at https://localhost:8080, go to https://localhost:8080/myfile.html.
-
-This capability is only available for [scaffold projects](#scaffold).
-
-### Swagger endpoint capability
-This capability adds an endpoint to the application for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located at `definitions/<app_name>.yaml`.
-
-The endpoint is hosted on `/swagger/api`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/swagger/api.
-
-This capability is only optional for [scaffold projects](#scaffold) and is always enabled in [CRUD projects](#crud).
-
-### Example endpoints capability
-This capability includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located at `definitions/<app_name>.yaml`.
-
-If the [Web capability](#web-capability) and [Swagger endpoint capability](#swagger-endpoint-capability)
-are enabled then specification of this interface is made available through an embedded
-[Swagger UI](http://swagger.io/swagger-ui/) hosted on `/explorer`. For example, if the application
-is hosted at https://localhost:8080, go to https://localhost:8080/explorer. The Swagger UI will document
-the paths and http methods that are supported by the application.
 
 This capability is only available for [scaffold projects](#scaffold).
 
@@ -161,9 +140,48 @@ To run the application:
 docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-ubuntu/release/<app_executable>
 ```
 
-### Bluemix capability
-This capability includes a set of Bluemix cloud deployment configuration files to support
-deploying your application to Bluemix:
+## Endpoints
+### Swagger fileserving endpoint capability
+This capability adds an endpoint to the application for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located at `definitions/<app_name>.yaml`.
+
+The endpoint is hosted on `/swagger/api`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/swagger/api.
+
+This capability is only optional for [scaffold projects](#scaffold) and is always enabled in [CRUD projects](#crud).
+
+If the [Web capability](#web-capability) and [Swagger endpoint capability](#swagger-fileserving-endpoint-capability)
+are enabled then specification of this interface is made available through an embedded
+[Swagger UI](http://swagger.io/swagger-ui/) hosted on `/explorer`. For example, if the application
+is hosted at https://localhost:8080, go to https://localhost:8080/explorer. The Swagger UI will document
+the paths and http methods that are supported by the application.
+
+### Endpoints from swaggerfile capability
+This capability will generate example or custom API endpoint code from an OpenAPI (swagger) document. If selected, then the fileserving endpoint capability is automatically enabled.
+
+#### Example endpoints capability
+This capability includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located at `definitions/<app_name>.yaml`.
+
+#### Endpoints from swagger file
+The user can choose to generate endpoints by specifing the path or URL to a [swagger](https://swagger.io/specification) specification document.
+
+
+This capability is only available for [scaffold projects](#scaffold).
+
+
+## Services
+
+The services offered by the generator will depend on the [project type](#project-type) and
+[capabilities](#capabilities) you have selected.
+
+For [CRUD project type](#crud) no services are available except those that are implied by
+the [CRUD store prompt](prompts.html#crud-store-prompt).
+
+### IBM Cloud services
+
+These services are hosted on IBM Cloud and the application can connect to them either locally
+or when deployed to IBM Cloud.
+
+When IBM Cloud services are selected, a set of deployment configuration files to support
+deploying your application to IBM Cloud are created:
 * `manifest.yml`
 * `.bluemix/toolchain.yml`
 * `.bluemix/pipeline.yml`
@@ -171,33 +189,16 @@ deploying your application to Bluemix:
 The [`manifest.yml`](https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest) defines
 options which are passed to the Cloud Foundry `cf push` command during application deployment.
 
-[IBM Bluemix DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service
+[IBM Cloud DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service
 provides toolchains as a set of tool integrations that support development, deployment, and operations
-tasks inside Bluemix. The "Create Toolchain" button in the [README.md](project_layout_reference.html#readme)
+tasks inside IBM Cloud. The "Create Toolchain" button in the [README.md](project_layout_reference.html#readme)
 creates a DevOps toolchain and acts as a single-click deploy to Bluemix including provisioning all required
 services.
 
 > ![warning] You need to publish your project to a public github.com repository to use the "Create toolchain"
 > button.
 
-## Services
-
-The services offered by the generator will depend on the [project type](#project-type) and
-[capabilities](#capabilities) you have selected.
-
-For [scaffold project type](#scaffold) the services in the [Bluemix services](#bluemix-services)
-section will be available if the [Bluemix capability](#bluemix-capability) is enabled, otherwise
-the services in the [Non-Bluemix services](#non-bluemix-services) section will be available.
-
-For [CRUD project type](#crud) no services are available except those that are implied by
-the [CRUD store prompt](prompts.html#crud-store-prompt).
-
-### Bluemix services
-
-These services are hosted on Bluemix and the application can connect to them either locally
-or when deployed to Bluemix.
-
-#### Cloudant Bluemix service
+#### Cloudant IBM Cloud service
 This service uses the [Kitura-CouchDB package](https://github.com/IBM-Swift/Kitura-CouchDB), which allows Kitura applications to interact with a Cloudant or CouchDB database.
 
 CouchDB speaks JSON natively and supports binary for all your data storage needs.
@@ -206,7 +207,7 @@ Boilerplate code for creating a client object for the Kitura-CouchDB API is incl
 
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the Kitura-CouchDB client.
 
-#### Redis Bluemix service
+#### Redis IBM Cloud service
 This service uses the [Kitura-redis](http://ibm-swift.github.io/Kitura-redis/) library, which allows Kitura applications to interact with a Redis database.
 
 Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports a cracking array of data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries.
@@ -215,8 +216,8 @@ Boilerplate code for creating a client object for the Kitura-redis API is includ
 
 The connection details for this client are loaded by  the configuration boilerplate code and are passed to the Kitura-redis client.
 
-#### Object Storage Bluemix service
-This service uses the [Object Storage package](https://github.com/ibm-bluemix-mobile-services/bluemix-objectstorage-serversdk-swift.git) to connect to the Bluemix Object Storage service.
+#### Object Storage IBM Cloud service
+This service uses the [Object Storage package](https://github.com/ibm-bluemix-mobile-services/bluemix-objectstorage-serversdk-swift.git) to connect to the IBM Cloud Object Storage service.
 
 Object Storage provides an unstructured cloud data store, which allows the application to store and access unstructured data content.
 
@@ -224,8 +225,8 @@ Boilerplate code for creating a client object for the Object Storage API is incl
 
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the Object Storage client.
 
-#### AppID Bluemix service
-This service uses [App ID package](https://github.com/ibm-cloud-security/appid-serversdk-swift) to connect to the Bluemix App ID service.
+#### AppID IBM Cloud service
+This service uses [App ID package](https://github.com/ibm-cloud-security/appid-serversdk-swift) to connect to the IBM Cloud App ID service.
 
 App ID provides authentication to secure your web applications and back-end systems. In addition App ID supports authentication using social identity providers so that users can login with their existing user accounts, such as Facebook and Google.
 
@@ -233,14 +234,14 @@ Boilerplate code for creating a client object for the App ID API is included ins
 
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the App ID client.
 
-#### Auto-scaling Bluemix service
-This service uses the [SwiftMetrics package](https://github.com/RuntimeTools/SwiftMetrics) for connecting to the Bluemix Auto-scaling service. You can use this to automatically manage your application capacity when deployed to Bluemix.  You will need to define the Auto-Scaling policy (https://console.ng.bluemix.net/docs/services/Auto-Scaling/index.html) to define the rules used to scale the application.
+#### Auto-scaling IBM Cloud service
+This service uses the [SwiftMetrics package](https://github.com/RuntimeTools/SwiftMetrics) for connecting to the IBM Cloud Auto-scaling service. You can use this to automatically manage your application capacity when deployed to IBM Cloud.  You will need to define the Auto-Scaling policy (https://console.ng.bluemix.net/docs/services/Auto-Scaling/index.html) to define the rules used to scale the application.
 
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the SwiftMetrics auto-scaling client.
 
-### Non-Bluemix services
+### Non-IBM Cloud services
 
-Non-Bluemix services can be hosted anywhere including your local machine.
+Non-IBM Cloud services can be hosted anywhere including your local machine.
 
 #### CouchDB
 This service uses the [Kitura-CouchDB package](https://github.com/IBM-Swift/Kitura-CouchDB), which allows Kitura applications to interact with a CouchDB database.
@@ -249,7 +250,7 @@ CouchDB speaks JSON natively and supports binary for all your data storage needs
 
 Boilerplate code for creating a client object for the Kitura-CouchDB API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
 
-The connection details for this client are loaded from the [config.json](config_json.html) file by the configuration boilerplate code and are passed to the Kitura-CouchDB client.
+The connection details for this client are loaded from `config/localdev-config.json` by the configuration boilerplate code.
 
 #### Redis
 This service uses the [Kitura-redis](http://ibm-swift.github.io/Kitura-redis/) library, which allows Kitura applications to interact with a Redis database.
@@ -258,7 +259,7 @@ Redis is an open source (BSD licensed), in-memory data structure store, used as 
 
 Boilerplate code for creating a client object for the Kitura-redis API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
 
- The connection details for this client are loaded from the [config.json](config_json.html) by the configuration boilerplate code and stored in a `struct` for easy access when creating connections to Redis.
+The connection details for this client are loaded from `config/localdev-config.json` by the configuration boilerplate code.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
