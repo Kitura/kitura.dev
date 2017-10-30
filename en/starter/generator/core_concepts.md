@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/core_concepts.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Core concepts</h1>
@@ -240,6 +243,3 @@ This service uses the [SwiftMetrics package](https://github.com/RuntimeTools/Swi
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the SwiftMetrics auto-scaling client.
 
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

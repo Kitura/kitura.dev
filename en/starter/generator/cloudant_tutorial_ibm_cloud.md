@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/cloudant_tutorial_ibm_cloud.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Creating a project with Cloudant for IBM Cloud</h1>
@@ -235,6 +238,3 @@ Learn how to deploy an application to IBM Cloud using either
 [the Bluemix Create Toolchain button](deploy_toolchain.html).
 
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

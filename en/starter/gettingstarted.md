@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/helloworld.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Getting Started</h1>
@@ -96,6 +99,3 @@ Join in the conversation on Slack.
 <img src="../../assets/slack.png" alt="Slack" width="50"/>
 </a>
 
-[info]: ../../assets/info-blue.png
-[tip]: ../../assets/lightbulb-yellow.png
-[warning]: ../../assets/warning-red.png

@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/command_line_tools_for_linux.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Command-line tools</h1>
@@ -228,6 +231,3 @@ Prints the generator’s options and usage.
 
 The tool uses `swift build` to rebuild your Swift Server Generator application.
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

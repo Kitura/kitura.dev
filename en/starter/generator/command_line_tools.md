@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/generator/command_line_tools.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Command-line interface reference</h1>
@@ -43,6 +46,3 @@ Allows you to define a data model for a CRUD ([Create-Read-Update-Delete](core_c
 > ![tip] Note that you must run `kitura create` before creating your first model.
 
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png
