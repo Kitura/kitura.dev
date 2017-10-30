@@ -92,11 +92,11 @@ The generator prompts you for the following information:
 
 -   The pattern type which you would like your application to use; this defaults to Basic, you can also choose Web or Backend for Frontend (BFF).
 
--   The capabilities which you would like to add to your application; these vary according to your project type. If you select a CRUD application type you can choose any/all or none of the Embedded metrics dashboard, Docker files or Bluemix cloud deployment capabilities. If you select scaffold a starter application you can choose additional capabilities of Static web file serving, OpenAPI/Swagger endpoint and Example endpoints.
+-   The capabilities which you would like to add to your application; these vary according to your project type. If you select a CRUD application type you can choose any/all or none of the Embedded metrics dashboard and Docker files capabilities. If you select scaffold a starter application you can choose additional capabilities of Static web file serving, OpenAPI/Swagger endpoint and Example endpoints.
 
 -   Select a Data store to use (for a CRUD application); this defaults to memory which is an in-memory data source that is built into Swift Server Generator and is suitable only for development and initial testing. If you want to connect your models to a real data source such as the Cloudant® database server, choose `cloudant` for your back-end data store. The tool prompts you for additional settings and automatically installs the appropriate Cloudant connector package by using the Swift Package Manager. If you want to switch between data stores see the [`config.json file`](config_json.html).
 
--   Select services (for scaffold a starter application) to generate boilerplate for; these will be Bluemix services if you selected the Bluemix cloud deployment capability, otherwise they will be local services. The available Bluemix services are Cloudant®, Redis, Object Storage, AppID and Auto-scaling; the local services are CouchDB and Redis. The tool prompts you for additional settings and automatically installs the appropriate Swift packages using the Swift Package Manager.
+-   Select services (for scaffold a starter application) to generate boilerplate for; The available IBM Cloud services are Cloudant®, Redis, Object Storage, AppID and Auto-scaling; The tool prompts you for additional settings and automatically installs the appropriate Swift packages using the Swift Package Manager.
 
 The tool creates the standard Swift Server Generator application structure; for details, see [Swift Server Generator project layout reference](project_layout_reference.html).
 
@@ -211,8 +211,6 @@ The tool regenerates your Swift Server Generator application; the files which ar
 ## Build generator
 
 **Important:** Before running this generator, you must create a Swift Server Generator application by using the [Application generator](#application-generator).
-
-> ![info] In a MacOS environment the build generator will pass additional linker options to the compiler: **-Xlinker -lc++**. for this reason, running **yo swiftserver:build** is preferred over the native **swift build** command.
 
 **Synopsis**
 
