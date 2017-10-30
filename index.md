@@ -21,7 +21,7 @@ redirect_from: "/en/index.html"
           <h1>Kitura</h1>
           <p class="text">A high performance and simple to use web framework for building modern Swift applications.</p>
 
-          <a href="/{{ page.lang }}/starter/settingup.html"><div class="button"><span class="store-button">Get started with Kitura</span></div></a>
+          <a href="/{{ page.lang }}/starter/gettingstarted.html"><div class="button"><span class="store-button">Get started with Kitura</span></div></a>
 
         </section>
 
