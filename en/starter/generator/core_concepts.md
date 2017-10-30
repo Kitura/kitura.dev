@@ -261,6 +261,8 @@ Boilerplate code for creating a client object for the Kitura-redis API is includ
 
 The connection details for this client are loaded from `config/localdev-config.json` by the configuration boilerplate code.
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

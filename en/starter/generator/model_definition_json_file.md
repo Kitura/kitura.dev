@@ -115,6 +115,8 @@ The Swift Server Generator model properties can be defined as various data types
 | `object`  | JSON object  | `{ "firstName": "John", "lastName": "Smith", "age": 25 }` |
 | `string`  | JSON string  | `"Example"`                                               |
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

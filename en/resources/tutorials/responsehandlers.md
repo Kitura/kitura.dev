@@ -76,6 +76,8 @@ Kitura.run()
 ```
 A GET request to localhost:8080 will return "Welcome" and a request to localhost:8080/sub will return "Hello from subsection"
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

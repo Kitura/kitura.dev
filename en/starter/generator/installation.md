@@ -44,6 +44,8 @@ Complete the following steps to install Swift Server Generator
 > -   Ubuntu Linux 14.04 LTS
 > -   Ubuntu Linux 16.04 LTS
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

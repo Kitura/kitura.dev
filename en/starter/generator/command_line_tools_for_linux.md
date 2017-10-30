@@ -230,6 +230,8 @@ Prints the generator’s options and usage.
 
 The tool uses `swift build` to rebuild your Swift Server Generator application.
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

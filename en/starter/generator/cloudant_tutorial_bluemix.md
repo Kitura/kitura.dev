@@ -235,6 +235,8 @@ Learn how to deploy an application to IBM Cloud using either
 [the Bluemix Create Toolchain button](deploy_toolchain.html).
 
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

@@ -209,6 +209,8 @@ router.setDefault(templateEngine: MustacheTemplateEngine())
 response.render("document", context: context).
 ```
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

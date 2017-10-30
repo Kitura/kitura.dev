@@ -222,6 +222,8 @@ Congratulations, you now have a simple Kitura application that can communicate w
 
 Learn how to [run an application with Docker](docker_container_tutorial.html).
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

@@ -53,6 +53,8 @@ $ export PATH=<path to uncompressed tar contents>/usr/bin:$PATH
 
 Now you are now ready to develop your first Kitura app. Learn how to [Get Started](/{{ page.lang }}/starter/gettingstarted.html).
 
+
+
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
 [warning]: ../../assets/warning-red.png

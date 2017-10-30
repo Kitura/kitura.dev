@@ -328,6 +328,8 @@ This concludes this tutorial. Keep in mind that Kitura is under active developme
 3. Deploy to Bluemix
 
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png
