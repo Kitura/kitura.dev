@@ -14,11 +14,11 @@ redirect_from: "/starter/generator/prompts.html"
 	<h1>Prompt reference</h1>
 </div>
 
-The following sections describe the prompts provided by the [application generator](command_line_tools.html#application-generator).
+The following sections describe the prompts provided by the [application generator](../generator.html).
 
 ## Application name prompt
 If you did not supply an application name as an argument, the
-[application generator](command_line_tools.html#application-generator) will ask the name
+[application generator](../generator.html) will ask the name
 you would like to use for your application:
 
 ```
@@ -37,7 +37,7 @@ The application name you enter must satisfy the following constraints:
 * Must not be `favicon.ico`
 
 ## Application directory prompt
-The [application generator](command_line_tools.html#application-generator) will ask the name
+The [application generator](../generator.html) will ask the name
 of the directory you would like to use for your application:
 
 ```
@@ -58,7 +58,7 @@ The application directory you enter must satisfy the following constraints:
 
 ## Project type prompt
 
-The [application generator](command_line_tools.html#application-generator) will ask which type of project
+The [application generator](../generator.html) will ask which type of project
 you would like to create, offering two options:
 
 ```
@@ -79,7 +79,7 @@ customizable aside from modifying the data model.
 
 ## Application pattern prompt
 For [scaffolded applications](core_concepts.html#scaffold), the
-[application generator](command_line_tools.html#application-generator) will
+[application generator](../generator.html) will
 ask which application pattern you want to select, offering three options:
 
 ```
@@ -100,11 +100,9 @@ for the [capabilities prompt](#capabilities-prompt):
 
 ```
  ◯ Static web file serving
- ◯ OpenAPI / Swagger endpoint
- ◯ Example endpoints
+ ◯ Swagger UI
  ◉ Embedded metrics dashboard
  ◉ Docker files
- ◉ Bluemix cloud deployment
 ```
 
 ### Web pattern
@@ -114,11 +112,9 @@ for the [capabilities prompt](#capabilities-prompt):
 
 ```
  ◉ Static web file serving
- ◯ OpenAPI / Swagger endpoint
- ◯ Example endpoints
+ ◯ Swagger UI
  ◉ Embedded metrics dashboard
  ◉ Docker files
- ◉ Bluemix cloud deployment
 ```
 
 ### BFF pattern
@@ -129,15 +125,13 @@ for the [capabilities prompt](#capabilities-prompt):
 
 ```
  ◉ Static web file serving
- ◉ OpenAPI / Swagger endpoint
- ◉ Example endpoints
+ ◉ Swagger UI
  ◉ Embedded metrics dashboard
  ◉ Docker files
- ◉ Bluemix cloud deployment
 ```
 
 ## Capabilities prompt
-The [application generator](command_line_tools.html#application-generator) will
+The [application generator](../generator.html) will
 ask which [capabilities](core_concepts.html#capabilities) you want to select.
 
 For [Scaffold project type](core_concepts.html#scaffold), the following capabilities
@@ -146,11 +140,9 @@ are available:
 ```
 ? Select capabilities: (Press <space> to select)
 ❯ ◯ Static web file serving
-  ◯ OpenAPI / Swagger endpoint
-  ◯ Example endpoints
+  ◯ Swagger UI
   ◉ Embedded metrics dashboard
   ◉ Docker files
-  ◉ Bluemix cloud deployment
 ```
 
 For [CRUD project type](core_concepts.html#crud), the following capabilities
@@ -160,16 +152,15 @@ are available:
 ? Select capabilities: (Press <space> to select)
 ❯ ◉ Embedded metrics dashboard
   ◉ Docker files
-  ◉ Bluemix cloud deployment
 ```
 
 The list allows for toggling of any combination of the available capabilities which
 will start with a default set selected.
 
 > ![info] Note: CRUD project type always enables the
-> [OpenAPI / Swagger endpoint](#core_concepts.html#swagger-endpoint-capability)
+> [OpenAPI / Swagger endpoint](core_concepts.html#swagger-fileserving-endpoint-capability)
 
-The capabilities selected by default when this prompt is shown depend on the [project type](#core_concepts.html#project-type):
+The capabilities selected by default when this prompt is shown depend on the [project type](core_concepts.html#project-type):
 
 * [CRUD project type](core_concepts.html#crud): all 3 available capabilities are selected by default
 * [Scaffold project type](core_concepts.html#scaffold): defaults depend on [application pattern](#application-pattern-prompt)
@@ -179,30 +170,20 @@ For [scaffolded applications](core_concepts.html#scaffold), the
 [application generator](command_line_tools.html#application-generator) will
 ask which [services](core_concepts.html#services) you want to select.
 
-If the [Bluemix capability](core_concepts.html#bluemix-capability) is enabled, the following
-[Bluemix services](core_concepts.html#bluemix-services) are available:
-
 ```
-? Generate boilerplate for Bluemix services: (Press <space> to select)
-❯ ◯ Cloudant
+? Generate boilerplate for services: (Press <space> to select)
+❯ ◯ Cloudant / CouchDB
   ◯ Redis
+  ◯ MongoDB
+  ◯ PostgreSQL
   ◯ Object Storage
   ◯ AppID
   ◯ Auto-scaling
 ```
 
-If the [Bluemix capability](core_concepts.html#bluemix-capability) is disabled, the following
-[Non-Bluemix services](core_concepts.html#non-bluemix-services) are available:
-
-```
-? Generate boilerplate for local services: (Press <space> to select)
-❯ ◯ CouchDB
-  ◯ Redis
-```
-
 ## CRUD store prompt
 For [CRUD applications](core_concepts.html#crud), the
-[application generator](command_line_tools.html#application-generator) will
+[application generator](../generator.html) will
 ask how you want to store entities:
 
 ```
@@ -220,7 +201,7 @@ memory-based database.
 Selecting `Cloudant / CouchDB` will add a local CouchDB service for entity storage.
 
 ## Service configuration prompt
-The [application generator](command_line_tools.html#application-generator) will
+The [application generator](../generator.html) will
 ask you which of the services you selected need to be configured, for example:
 
 ```

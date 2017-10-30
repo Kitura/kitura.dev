@@ -51,7 +51,7 @@ and amend Package.swift to include the SwiftMetrics dependency with the major an
 
 ```swift
    dependencies: [
-      .Package(url: "https://github.com/RuntimeTools/SwiftMetrics.git", majorVersion: #, minorVersion: #)
+      .package(url: "https://github.com/RuntimeTools/SwiftMetrics.git", .upToNextMinor(from: "#.#.#"))
       ]     
 ```
 

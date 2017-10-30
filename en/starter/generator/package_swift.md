@@ -18,23 +18,24 @@ The `Package.swift` file is the manifest file for Swift package management. Its 
 
 The `Package.swift` file must be in the application root directory.
 
-For more information, see the [Package.swift documentation](https://swift.org/package-manager/).
+For more information, see the [Package.swift documentation](https://swift.org/blog/swift-package-manager-manifest-api-redesign/).
 
 ---
 
 ## Example
 ```swift
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
   name: "ExampleApplication",
-  targets: [
-    Target(name: "ExampleApplication", dependencies: [ .Target(name: "Application") ]),
-  ],
   dependencies: [
-    .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 6),
-    .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git", majorVersion: 1, minor: 6),
-    .Package(url: "https://github.com/IBM-Swift/CloudConfiguration.git", majorVersion: 1)
+    .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "1.6.0")),
+    .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", .upToNextMinor(from: "1.2.0")),
+    .package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", from: "1.0.0")
+  ],
+  targets: [
+    .target(name: "ExampleApplication", dependencies: [ .target(name: "Application") , "Kitura", "HeliumLogger", "CloudEnvironment"]),
   ]
 )
 ```

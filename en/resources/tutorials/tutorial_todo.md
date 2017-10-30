@@ -55,8 +55,8 @@ import PackageDescription
 let package = Package(
     name: "TodoList",
     dependencies: [
-      .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 1, minor: 0),
-      .Package(url: "https://github.com/IBM-Swift/HeliumLogger.git",  majorVersion: 0, minor: 16)
+      .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextVersion(from: "1.0.0")),
+      .package(url: "https://github.com/IBM-Swift/HeliumLogger.git",  .upToNextVersion(from: "0.16.0"))
     ]
 )
 ```

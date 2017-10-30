@@ -24,14 +24,7 @@ redirect_from: "/starter/generator/local_couchdb_tutorial.html"
 
 Install CouchDB locally:
 
-Instructions for installing CouchDB can be found in the [CouchDB documentation](http://docs.CouchDB.org).
-For this tutorial, the Ubuntu packaged version (CouchDB 1.6.0) was installed on Ubuntu 16.04:
-
-```
-$ sudo apt-get install couchdb
-```
-
-Full installation documentation for Linux, Mac and Windows can be found [here](http://docs.couchdb.org/en/1.6.0/install/index.html).  Once installed, you can verify the installation with a [curl](https://curl.haxx.se) command:
+The full CouchDB documentation can be found in the [CouchDB documentation](http://docs.CouchDB.org), and the installation documentation for version 1.6.0 on Linux, Mac and Windows is [here](http://docs.couchdb.org/en/1.6.0/install/index.html).  Once installed, you can verify the installation with a [curl](https://curl.haxx.se) command:
 
 ```
 $ curl http://127.0.0.1:5984/
@@ -40,9 +33,9 @@ $ curl http://127.0.0.1:5984/
 
 # Generating the scaffolded application
 
-<span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
+<span class="arrow">&#8227;</span> First, start the Kitura server generation (see [Command line tools](command_line_tools.html)):
 
-    $ yo swiftserver
+    $ kitura create
 
 <span class="arrow">&#8227;</span> Enter `couchdb-getting-started` as the application name.
 
@@ -56,50 +49,56 @@ $ curl http://127.0.0.1:5984/
 
 <span class="arrow">&#8227;</span> Select `Scaffold a starter` at the [type of project prompt](prompts.html#project-type-prompt) and press **Enter**.
 
-```
-? Select type of project: (Use arrow keys)
-❯ Scaffold a starter
-  Generate a CRUD application
-```
+    ? Select type of project: (Use arrow keys)
+    ❯ Scaffold a starter
+      Generate a CRUD application
 
 <span class="arrow">&#8227;</span> Select [`Basic`](prompts.html#basic-pattern) at the [application pattern prompt](prompts.html#application-pattern-prompt) (this determines the default set of capabilities) and press **Enter**.
 
-```
-? Select capability presets for application pattern: (Use arrow keys)
-❯ Basic
-  Web
-  Backend for frontend
-```
+    ? Select capability presets for application pattern: (Use arrow keys)
+    ❯ Basic
+      Web
+      Backend for frontend
 
-<span class="arrow">&#8227;</span> Use the spacebar to deselect Bluemix cloud deployment. Press **Enter** to accept the other default [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the other default [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
 
-```
-? Select capabilities: (Press <space> to select)
-  ◯ Static web file serving
-  ◯ OpenAPI / Swagger endpoint
-  ◯ Example endpoints
-  ◉ Embedded metrics dashboard
-  ◉ Docker files
-❯ ◯ Bluemix cloud deployment
-```
+    ? Select capabilities: (Press <space> to select)
+      ◯ Static web file serving
+    ❯ ◯ Swagger UI
+      ◉ Embedded metrics dashboard
+      ◉ Docker files
 
-<span class="arrow">&#8227;</span> Press **Space** to select the CouchDB boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding.
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating code from a [swagger](core_concepts.html#endpoints-from-swagger-file) specification in the scaffolding.
 
-```
-? Generate boilerplate for local services: (Press <space> to select)
-❯ ◉ CouchDB
-  ◯ Redis
-```
+    ? Select endpoints to generate: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◯ Swagger file serving endpoint
+      ◯ Endpoints from a swagger file
+
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating a Swift server SDK from a swagger file in the scaffolding.
+
+    ? Would you like to generate a Swift server SDK from a Swagger file? (y/N)
+
+---
+<span class="arrow">&#8227;</span> Press **Space** to select the Cloudant / CouchDB boilerplate for inclusion as a [service](core_concepts.html#services) in the scaffolding.
+
+    ? Generate boilerplate for services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◉ Cloudant / CouchDB
+      ◯ Redis
+      ◯ MongoDB
+      ◯ PostgreSQL
+      ◯ Object Storage
+      ◯ AppID
+      ◯ Auto-scaling
 
 <span class="arrow">&#8227;</span> Leave the Cloudant / CouchDB option unchecked to allow CouchDB to be accessed at port **5984** on **localhost**.
 
 > ![info] Note: If you opt for setting the service credentials, then you will get further questions about the specifics of the CouchDB service.
 
 
-```
-? Configure service credentials (leave unchecked for defaults): (Press <space> to select)
-❯ ◯ Cloudant / CouchDB
-```
+    ? Configure service credentials (leave unchecked for defaults): (Press <space> to select, <a> to toggle all...
+    ❯ ◯ Cloudant / CouchDB
+
+---
 
 The generator will display messages as it scaffolds and builds the application including:
 
@@ -136,37 +135,65 @@ $ cd couchdb-getting-started
 <span class="arrow">&#8227;</span> Now modify your application to create a CouchDB database. This can be done by adding a line of swift code to create a database: Modify Sources/Application/Application.swift as shown below.
 
 ```swift
-public func initialize() throws {
+import Foundation
+import Kitura
+import LoggerAPI
+import Configuration
+import CloudEnvironment
+import Health
 
-    manager.load(file: "config.json", relativeFrom: .project)
-           .load(.environmentVariables)
+// Service imports
+import CouchDB
 
-    port = manager["port"] as? Int ?? port
+public let projectPath = ConfigurationManager.BasePath.project.path
+public let health = Health()
 
-    let cloudantConfig = CloudantConfig(manager: manager)
+class ApplicationServices {
+   // Service references
+   public let couchDBService: CouchDBClient
 
-    let couchDBConnProps = ConnectionProperties(host:     cloudantConfig.host,
-                                                port:     cloudantConfig.port,
-                                                secured:  cloudantConfig.secured,
-                                                username: cloudantConfig.username,
-                                                password: cloudantConfig.password )
-
-    couchDBClient = CouchDBClient(connectionProperties: couchDBConnProps)
-
-    /* Add the line below. */
-    couchDBClient?.createDB("couchdb-tutorial"){_,_ in}
-
-    router.all("/*", middleware: BodyParser())
+   public init(cloudEnv: CloudEnv) throws {
+        // Run service initializers
+        couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
+    }
 }
 
+public class App {
+    let router = Router()
+    let cloudEnv = CloudEnv()
+    let services: ApplicationServices
+
+   public init() throws {
+
+       // Services
+        services = try ApplicationServices(cloudEnv: cloudEnv)
+    }
+
+   func postInit() throws {
+        // Capabilities
+        initializeMetrics(app: self)
+
+        // Endpoints
+        initializeHealthRoutes(app: self)
+    }
+
+   public func run() throws {
+        try postInit()
+
+        // Add the line below.
+        services.couchDBService.createDB("couchdb-tutorial"){_,_ in}
+
+        Kitura.addHTTPServer(onPort: cloudEnv.port, with: router)
+        Kitura.run()
+    }
+}
 ```
 
 <span class="arrow">&#8227;</span> Now recompile the application:
 
 ```
-$ yo swiftserver:build
+$ swift build
 ```
-> ![info] Why not **swift build**? On MacOS the `swift build` command will not work if you have opted to include the [Embedded metrics dashboard capability](core_concepts.html#metrics-dashboard-capability). The [swiftserver:build](/en/starter/generator/command_line_tools.html#build-generator) generator ensures the right options are supplied in all environments and should be used instead.
 
 <span class="arrow">&#8227;</span> Start the application:
 

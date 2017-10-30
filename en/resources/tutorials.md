@@ -15,7 +15,23 @@ redirect_from: "/resources/tutorial-todo.html"
 <p>Learn how to use Kitura with these walk-through tutorials</p>
 </div>
 
-## Routing and Requests
+## Build a Kitura back-end application
+
+### [TodoList](https://github.com/IBM/TodoBackend)
+
+Learn how to build a back-end for the TodoList web application.
+
+<img src="../../assets/TodoBackend.png" alt="TodoBackend" width="500"/>
+
+### [Apple FoodTracker](https://github.com/IBM/FoodTrackerBackend)
+
+Learn how to build a back-end for the Apple FoodTracker iOS application.
+
+<img src="../../assets/FoodTracker.png" alt="FoodTracker" width="300"/>
+
+---
+
+## Adding Routing and Requests
 
 ### [Parsing Requests](/{{ page.lang }}/resources/tutorials/parsingrequests.html)
 
@@ -56,6 +72,18 @@ Learn how to enable SSL/TLS on Kitura to enhance the security of your applicatio
 ### [Adding Monitoring with Application Metrics for Swift](/{{ page.lang }}/resources/tutorials/swiftmetrics.html)
 
 Learn how to add monitoring with Application Metrics for Swift (SwiftMetrics) to visualise throughput and performance.
+
+---
+
+## Building
+
+### [Building for Linux on a Mac](/{{ page.lang }}/starter/leveragedocker.html)
+
+Learn how to build your Kitura application in a Linux container on macOS.
+
+### [Building within Xcode](/{{ page.lang }}/starter/xcode.html)
+
+Learn how to build Kitura applications inside Xcode.
 
 ---
 

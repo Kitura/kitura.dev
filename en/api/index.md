@@ -13,9 +13,13 @@ lang: en
 ## Core
 
 * [Kitura](http://ibm-swift.github.io/Kitura/)
+* [KituraContracts](https://ibm-swift.github.io/KituraContracts)
 * [Kitura-net](http://ibm-swift.github.io/Kitura-net/)
 * [LoggerAPI](http://ibm-swift.github.io/LoggerAPI/)
 * [HeliumLogger](http://ibm-swift.github.io/HeliumLogger/)
+
+## Client
+* [KituraKit](https://ibm-swift.github.io/KituraKit)
 
 ## Credentials
 

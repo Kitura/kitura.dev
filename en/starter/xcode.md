@@ -14,6 +14,8 @@ redirect_from: "/starter/xcode.html"
 	<h1>Building within Xcode</h1>
 </div>
 
+> ![info] If you used `kitura init` or `kitura create` to generate your web application, the .xcodeproj file will have been created already.
+
 ## Setting up an Xcode project for your Kitura application
 
 You can develop, test and run your Kitura app in Xcode. This gives you productivity features such as debugging, autocompletion, and syntax checking.
