@@ -96,6 +96,8 @@ Join in the conversation on Slack.
 <img src="../../assets/slack.png" alt="Slack" width="50"/>
 </a>
 
+
+
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
 [warning]: ../../assets/warning-red.png

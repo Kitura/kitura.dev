@@ -97,6 +97,8 @@ This tutorial shows how to use popular templating engines like Mustache and Sten
 
 Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
+
+
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
 [warning]: ../../assets/warning-red.png

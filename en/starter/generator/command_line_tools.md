@@ -43,6 +43,8 @@ Allows you to define a data model for a CRUD ([Create-Read-Update-Delete](core_c
 > ![tip] Note that you must run `kitura create` before creating your first model.
 
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

@@ -134,6 +134,8 @@ Now you can:
 ## Next Steps
 Learn how to [generate an application that uses a Cloudant service](cloudant_tutorial_bluemix.html).
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

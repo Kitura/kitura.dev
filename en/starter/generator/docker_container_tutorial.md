@@ -149,6 +149,8 @@ Congratulations, you now have a simple Kitura web application in a Docker image 
 ## Next Steps
 Take a look at the [other tutorials](../generator.html#tutorials).
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

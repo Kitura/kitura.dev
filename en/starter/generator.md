@@ -60,6 +60,8 @@ redirect_from: "/starter/generator.html"
 
 ### [CRUD model definition JSON file](/{{ page.lang }}/starter/generator/model_definition_json_file.html)
 
+
+
 [info]: ../../../assets/info-blue.png
 [warning]: ../../../assets/warning-red.png
 

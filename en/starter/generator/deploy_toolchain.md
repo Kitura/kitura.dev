@@ -132,6 +132,8 @@ This will provision services and start a deploy of your application.
 ## Next Steps
 Take a look at the [other tutorials](../generator.html#tutorials).
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png

@@ -153,6 +153,8 @@ what is defined in your `config.json` file.
 
 This allows you to run the application locally and on Bluemix without modification.
 
+
+
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
 [warning]: ../../../assets/warning-red.png
