@@ -26,9 +26,9 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 
 # Generating the scaffolded application
 
-<span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
+<span class="arrow">&#8227;</span> First, start the Kitura server generation (see [Command line tools](command_line_tools.html)):
 
-    $ yo swiftserver
+    $ kitura create
 
 <span class="arrow">&#8227;</span> Enter `docker-getting-started` as the application name.
 
@@ -42,42 +42,48 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 
 <span class="arrow">&#8227;</span> Select `Scaffold a starter` at the [type of project prompt](prompts.html#project-type-prompt) and press **Enter**.
 
-```
-? Select type of project: (Use arrow keys)
-❯ Scaffold a starter
-  Generate a CRUD application
-```
+    ? Select type of project: (Use arrow keys)
+    ❯ Scaffold a starter
+      Generate a CRUD application
 
 <span class="arrow">&#8227;</span> Select [`Basic`](prompts.html#basic-pattern) at the [application pattern prompt](prompts.html#application-pattern-prompt) (this determines the default set of capabilities) and press **Enter**.
 
-```
-? Select capability presets for application pattern: (Use arrow keys)
-❯ Basic
-  Web
-  Backend for frontend
-```
+    ? Select capability presets for application pattern: (Use arrow keys)
+    ❯ Basic
+      Web
+      Backend for frontend
 
 <span class="arrow">&#8227;</span> Press **Space** to select the [capabilities](core_concepts.html#capabilities) for the [`Basic`](prompts.html#basic-pattern) application pattern.
 
 Use the spacebar to select or deselect any capabilities. For this tutorial you must select **Docker files**.
 
-```
-? Select capabilities: (Press <space> to select)
-❯ ◯ Static web file serving
-  ◯ OpenAPI / Swagger endpoint
-  ◯ Example endpoints
-  ◯ Embedded metrics dashboard
-  ◉ Docker files
-  ◯ Bluemix cloud deployment
-```
+    ? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◯ Static web file serving
+      ◯ Swagger UI
+      ◯ Embedded metrics dashboard
+      ◉ Docker files
+
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating code from a [swagger](core_concepts.html#endpoints-from-swagger-file) specification in the scaffolding.
+
+    ? Select endpoints to generate: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◯ Swagger file serving endpoint
+      ◯ Endpoints from a swagger file
+
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating a Swift server SDK from a swagger file in the scaffolding.
+
+    ? Would you like to generate a Swift server SDK from a Swagger file? (y/N)
 
 <span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](core_concepts.html#services) in the scaffolding.
 
-```
-? Generate boilerplate for local services: (Press <space> to select)
-❯ ◯ CouchDB
-  ◯ Redis
-```
+    ? Generate boilerplate for services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◯ Cloudant / CouchDB
+      ◯ Redis
+      ◯ MongoDB
+      ◯ PostgreSQL
+      ◯ Object Storage
+      ◯ AppID
+      ◯ Auto-scaling
+---
 
 The generator will display messages as it scaffolds and builds the application including:
 
@@ -113,7 +119,7 @@ docker-getting-started/
 
 <span class="arrow">&#8227;</span> Build the Docker run and Docker build tools images:
 
-```
+```bash
 $ docker build -t myapp-run .
 $ docker build -t myapp-build -f Dockerfile-tools .
 ```
@@ -122,13 +128,13 @@ You may customize the names of these images by specifying a different value afte
 
 <span class="arrow">&#8227;</span> To compile the application using the build tools Docker image, run:
 
-```
+```bash
 $ docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-utils.sh build release
 ```
 
 <span class="arrow">&#8227;</span> To run the application in the Docker container:
 
-```
+```bash
 $ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-ubuntu/release/docker-getting-started
 ```
 

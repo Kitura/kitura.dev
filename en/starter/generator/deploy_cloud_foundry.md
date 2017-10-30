@@ -23,12 +23,12 @@ redirect_from: "/starter/generator/deploy_cloud_foundry.html"
 #### In this tutorial you will:
 
 - Create a scaffolded Kitura application
-- Use CloudFoundry CLI to deploy to Bluemix
+- Use CloudFoundry CLI to deploy to IBM Cloud
 
 ---
 <span class="arrow">&#8227;</span> First, run the Swift Server generator (see [Command line tools](command_line_tools.html)):
 
-    $ yo swiftserver
+    $ kitura create
 
 ---
 <span class="arrow">&#8227;</span> Enter `swiftserver-deploy` as the application name.
@@ -60,20 +60,32 @@ redirect_from: "/starter/generator/deploy_cloud_foundry.html"
 ---
 <span class="arrow">&#8227;</span> Press **Enter** to accept the default [capabilities](core_concepts.html#capabilities) for the `Web` application pattern.
 
-    ? Select capabilities: (Press <space> to select)
+    ? Select capabilities: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
     ❯ ◉ Static web file serving
-      ◯ OpenAPI / Swagger endpoint
-      ◯ Example endpoints
+      ◯ Swagger UI
       ◉ Embedded metrics dashboard
       ◉ Docker files
-      ◉ Bluemix cloud deployment
+
+---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating code from a [swagger](core_concepts.html#endpoints-from-swagger-file) specification in the scaffolding.
+
+    ? Select endpoints to generate: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
+    ❯ ◯ Swagger file serving endpoint
+      ◯ Endpoints from a swagger file
+
+---
+<span class="arrow">&#8227;</span> Press **Enter** to accept the default of not generating a Swift server SDK from a swagger file in the scaffolding.
+
+    ? Would you like to generate a Swift server SDK from a Swagger file? (y/N)
 
 ---
 <span class="arrow">&#8227;</span> Press **Enter** to accept the default of not including any boilerplate for [services](core_concepts.html#services) in the scaffolding.
 
-    ? Generate boilerplate for Bluemix services: (Press <space> to select)
+    ? Generate boilerplate for services: (Press <space> to select, <a> to toggle all, <i> to inverse selection)
     ❯ ◯ Cloudant
       ◯ Redis
+      ◯ MongoDB
+      ◯ PostgreSQL
       ◯ Object Storage
       ◯ AppID
       ◯ Auto-scaling
@@ -96,7 +108,7 @@ The generator will display messages as it scaffolds and builds the application i
 ---
 
 
-<span class="arrow">&#8227;</span> To push to `Bluemix` use the `Cloud Foundry` type the command `cf push` in the root of your project.
+<span class="arrow">&#8227;</span> To push to `IBM Cloud` use the `Cloud Foundry` type the command `cf push` in the root of your project.
 
 You will receive updates on the progress of the deploying of your app which will look something like this...
 
