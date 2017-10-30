@@ -9,6 +9,9 @@ lang: en
 redirect_from: "/starter/setting up.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png
 
 <div class="titleBlock">
 	<h1>Setting Up</h1>
@@ -52,7 +55,3 @@ $ export PATH=<path to uncompressed tar contents>/usr/bin:$PATH
 ## Next Steps
 
 Now you are now ready to develop your first Kitura app. Learn how to [Get Started](/{{ page.lang }}/starter/gettingstarted.html).
-
-[info]: ../../assets/info-blue.png
-[tip]: ../../assets/lightbulb-yellow.png
-[warning]: ../../assets/warning-red.png
