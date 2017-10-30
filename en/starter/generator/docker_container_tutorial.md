@@ -129,7 +129,7 @@ You may customize the names of these images by specifying a different value afte
 <span class="arrow">&#8227;</span> To compile the application using the build tools Docker image, run:
 
 ```bash
-$ docker run -v $PWD:/root/project -w /root/project myapp-build /root/utils/tools-utils.sh build release
+$ docker run -v $PWD:/root/project -w /root/project myapp-build /swift-utils/tools-utils.sh build release
 ```
 
 <span class="arrow">&#8227;</span> To run the application in the Docker container:
