@@ -67,7 +67,9 @@ router.get("/") {
 }
 ```
 
-<span class="arrow">&#8227;</span> Edit the Xcode build scheme so it specifies HelloKitura as the Executable.
+<span class="arrow">&#8227;</span> Edit the Xcode build scheme so it specifies HelloKitura as the Executable (by default it will be set to HelloKitura-Package when you open Xcode).
+
+<img src="../../assets/Edit_Xcode_Build_Schema.png" alt="EditXcodeBuildSchema" width="400"/>
 
 <span class="arrow">&#8227;</span> Click the play button (&#8984;-R) to build and run your new web application.
 
@@ -98,4 +100,3 @@ Join in the conversation on Slack.
 <a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
 <img src="../../assets/slack.png" alt="Slack" width="50"/>
 </a>
-
