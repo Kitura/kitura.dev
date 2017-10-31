@@ -10,6 +10,10 @@ redirect_from: "/resources/credentials.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
+
 <div class="titleBlock">
 	<h1>Kitura-Credentials</h1>
 	<p>You can add user authentication to your Kitura app via <a href="https://github.com/IBM-Swift/Kitura-Credentials">Kitura-Credentials</a>.<br>Either use an existing Credentials plugin, or your own Credentials plugin.</p>
@@ -84,6 +88,3 @@ With these endpoints, you can redirect users to `/login/facebook` to begin the l
 
 That’s the basic setup for web-based Facebook login. Please refer to Kitura-CredentialsFacebook for more usage and configurations.
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

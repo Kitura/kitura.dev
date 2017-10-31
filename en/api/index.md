@@ -5,6 +5,10 @@ menu: api
 lang: en
 ---
 
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png
+
 <div class="titleBlock">
   <h1>API reference</h1>
   <p>Kitura is a modular web framework.<br>It is based on a core module with additional pluggable modules.<br>Click below to view the API reference documentation for each module.</p>
@@ -56,6 +60,3 @@ lang: en
 * [Kitura-ResponseTime](http://ibm-swift.github.io/Kitura-ResponseTime)
 * [Kitura-Limiter](https://github.com/teechap/kitura-limiter) (Third-party implemented)
 
-[info]: ../../assets/info-blue.png
-[tip]: ../../assets/lightbulb-yellow.png
-[warning]: ../../assets/warning-red.png

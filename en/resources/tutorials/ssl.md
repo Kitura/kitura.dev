@@ -10,6 +10,10 @@ redirect_from: "/resources/ssl.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
+
 <div class="titleBlock">
 	<h1>Enabling SSL/TLS On Your Kitura Server</h1>
 </div>
@@ -108,6 +112,3 @@ https://localhost:8080
 
 <span class="arrow">&#8227;</span> Notice the `https` in your URL!  You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png
