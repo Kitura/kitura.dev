@@ -10,6 +10,10 @@ redirect_from: "/resources/sessions.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
+
 <div class="titleBlock">
 	<h1>Adding Sessions With Kitura-Session</h1>
 </div>
@@ -255,6 +259,3 @@ public init(secret: String, cookie: [CookieParameter]?=nil, store: Store?=nil)
 To stop all data being lost on server restart, you can use [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) along with a redis server
 
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

@@ -10,6 +10,10 @@ redirect_from: "/resources/responsehandlers.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+[info]: ../../../assets/info-blue.png
+[tip]: ../../../assets/lightbulb-yellow.png
+[warning]: ../../../assets/warning-red.png
+
 <div class="titleBlock">
 	<h1>Response Handlers</h1>
 	<p>Kitura allows a variety of ways to specify handlers in order to express complex behavior</p>
@@ -76,6 +80,3 @@ Kitura.run()
 ```
 A GET request to localhost:8080 will return "Welcome" and a request to localhost:8080/sub will return "Hello from subsection"
 
-[info]: ../../../assets/info-blue.png
-[tip]: ../../../assets/lightbulb-yellow.png
-[warning]: ../../../assets/warning-red.png

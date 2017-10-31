@@ -10,6 +10,10 @@ redirect_from: "/resources/tutorial-todo.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png
+
 <div class="titleBlock">
 <h1>Tutorials</h1>
 <p>Learn how to use Kitura with these walk-through tutorials</p>
@@ -97,6 +101,3 @@ This tutorial shows how to use popular templating engines like Mustache and Sten
 
 Kitura supports FastCGI 1.0 and has been tested with both Nginx and Apache.
 
-[info]: ../../assets/info-blue.png
-[tip]: ../../assets/lightbulb-yellow.png
-[warning]: ../../assets/warning-red.png
