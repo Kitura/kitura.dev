@@ -37,6 +37,7 @@ The following structure is common to all generated applications:
 │   │   └── RouteTests.swift        - Swift code for the test implementation
 │   └── LinuxMain.swift             - Swift test definition for Linux
 ├── Package.swift                   - Swift Package Manager configuration file
+├── Package.resolved                - Swift Package Manager resolved packages
 ├── config.json                     - Application configuration file
 ├── spec.json                       - Generator specification file for the project
 ```
@@ -112,6 +113,21 @@ files will be included in the scaffolded project:
 │   └── <application_name>.yaml     - Swagger definition for example API
 ```
 
+### endpoints from swagger file
+
+If you select [endpoints from swagger file](core_concepts.html#endpoints-from-swagger-file) then the following
+files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Routes/
+│           └── <route_name>Routes.swift - Swift code for generated API endpoints
+├── definitions/
+│   └── <application_name>.yaml          - Swagger definition for generated API
+```
+
+
 ### Both Web capability and Example endpoints capability
 
 If both [web capability](core_concepts.html#web_capability) and
@@ -135,19 +151,40 @@ files will be included in the scaffolded project:
 ├── .dockerignore                   - Defined files to ignore for building images
 ```
 
-### Bluemix capability
+### Server SDK generation
 
-If you select the [bluemix capability](core_concepts.html#bluemix-capability) then the following
+If you select the [Server SDK generation](core_concepts.html#server-sdk-generation) then the following
 files will be included in the scaffolded project:
 
 ```
-├── manifest.yml                    - CloudFoundry deployment manifest file
-├── cli-config.yml                  - Bluemix CLI Dev plugin configuration file
-├── .cfignore                       - Defines files to be ignored for deployment
-├── .bluemix/                       - Bluemix pipeline and toolchain files
-│   ├── toolchain.yml               - Bluemix toolchain configuration file
-│   ├── pipeline.yml                - Bluemix pipeline configuration file
-│   └── deploy.json                 - Bluemix toolchain UI configuration file
+├── Sources/
+│   └── <generated_name>_API_ServerSDK/
+│       └── Routes/
+│           ├── <generated_name>_API_ServerSDKUtility.swift - Swift server SDK helper methods
+│           ├── <generated_name>API.swift                   - Swift server SDK API code
+│           └── <generated_name>.swift                       - Swift server SDK object wrapper
+```
+
+### Services
+
+If you select an [IBM Cloud service](core_concepts#services), then the following
+files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Services/
+│            └── ServiceMongodb.swift - Swift connector to an IBM Cloud Service
+├── manifest.yml                      - CloudFoundry deployment manifest file
+├── cli-config.yml                    - Bluemix CLI Dev plugin configuration file
+├── .cfignore                         - Defines files to be ignored for deployment
+├── .bluemix/                         - Bluemix pipeline and toolchain files
+│   ├── toolchain.yml                 - Bluemix toolchain configuration file
+│   ├── pipeline.yml                  - Bluemix pipeline configuration file
+│   └── deploy.json                   - Bluemix toolchain UI configuration file
+├── config.json                       - Application configuration file
+│   ├── localdev-config.json          - IBM Cloud service configuration file
+│   └── mappings.json                 - Service configuration mappings file
 ```
 
 ## CRUD project

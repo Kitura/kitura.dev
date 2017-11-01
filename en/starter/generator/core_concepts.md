@@ -143,6 +143,10 @@ To run the application:
 docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-ubuntu/release/<app_executable>
 ```
 
+### Server SDK generation
+This is the capability to generate a server SDK library from a [swagger](https://swagger.io/specification) specification document, which
+can be used to allow the generated server application to call APIs on an external service. Providing the swagger document for the external service allows  client-side Swift API stubs to be generated into the Routes directory.
+
 ## Endpoints
 ### Swagger fileserving endpoint capability
 This capability adds an endpoint to the application for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located at `definitions/<app_name>.yaml`.
