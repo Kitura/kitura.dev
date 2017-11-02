@@ -37,6 +37,7 @@ The following structure is common to all generated applications:
 │   │   └── RouteTests.swift        - Swift code for the test implementation
 │   └── LinuxMain.swift             - Swift test definition for Linux
 ├── Package.swift                   - Swift Package Manager configuration file
+├── Package.resolved                - Swift Package Manager resolved packages
 ├── config.json                     - Application configuration file
 ├── spec.json                       - Generator specification file for the project
 ```
@@ -59,6 +60,7 @@ The following are created when the application is built (by `swift build`):
 ```
 ├── Packages/                       - Swift source code for resolved dependencies
 ├── .build/                         - Build metadata, libraries and executables
+├── <application_name>.xcodeproj    - Xcode project file
 ```
 
 ## Scaffolded project
@@ -112,6 +114,21 @@ files will be included in the scaffolded project:
 │   └── <application_name>.yaml     - Swagger definition for example API
 ```
 
+### endpoints from swagger file
+
+If you select [endpoints from swagger file](core_concepts.html#endpoints-from-swagger-file) then the following
+files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Routes/
+│           └── <route_name>Routes.swift - Swift code for generated API endpoints
+├── definitions/
+│   └── <application_name>.yaml          - Swagger definition for generated API
+```
+
+
 ### Both Web capability and Example endpoints capability
 
 If both [web capability](core_concepts.html#web_capability) and
@@ -135,19 +152,40 @@ files will be included in the scaffolded project:
 ├── .dockerignore                   - Defined files to ignore for building images
 ```
 
-### Bluemix capability
+### Server SDK generation
 
-If you select the [bluemix capability](core_concepts.html#bluemix-capability) then the following
+If you select the [Server SDK generation](core_concepts.html#server-sdk-generation) then the following
 files will be included in the scaffolded project:
 
 ```
-├── manifest.yml                    - CloudFoundry deployment manifest file
-├── cli-config.yml                  - Bluemix CLI Dev plugin configuration file
-├── .cfignore                       - Defines files to be ignored for deployment
-├── .bluemix/                       - Bluemix pipeline and toolchain files
-│   ├── toolchain.yml               - Bluemix toolchain configuration file
-│   ├── pipeline.yml                - Bluemix pipeline configuration file
-│   └── deploy.json                 - Bluemix toolchain UI configuration file
+├── Sources/
+│   └── <generated_name>_API_ServerSDK/
+│       └── Routes/
+│           ├── <generated_name>_API_ServerSDKUtility.swift - Swift server SDK helper methods
+│           ├── <generated_name>API.swift                   - Swift server SDK API code
+│           └── <generated_name>.swift                      - Swift server SDK object wrapper
+```
+
+### Services
+
+If you select an [IBM Cloud service](core_concepts#services), then the following
+files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Services/
+│            └── ServiceMongodb.swift - Swift connector to an IBM Cloud Service
+├── manifest.yml                      - CloudFoundry deployment manifest file
+├── cli-config.yml                    - Bluemix CLI Dev plugin configuration file
+├── .cfignore                         - Defines files to be ignored for deployment
+├── .bluemix/                         - Bluemix pipeline and toolchain files
+│   ├── toolchain.yml                 - Bluemix toolchain configuration file
+│   ├── pipeline.yml                  - Bluemix pipeline configuration file
+│   └── deploy.json                   - Bluemix toolchain UI configuration file
+├── config/
+│   ├── localdev-config.json          - IBM Cloud service configuration file
+│   └── mappings.json                 - Service configuration mappings file
 ```
 
 ## CRUD project
@@ -189,5 +227,5 @@ the following files will be included:
 │   └── <model_name>.json                        - Model metadata file
 ```
 
-> ![info] Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the `.json` model files, and as endpoint paths in the the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (`_`).
+> ![info] Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the `.json` model files, and as endpoint paths in the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (`_`).
 
