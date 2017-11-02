@@ -60,6 +60,7 @@ The following are created when the application is built (by `swift build`):
 ```
 ├── Packages/                       - Swift source code for resolved dependencies
 ├── .build/                         - Build metadata, libraries and executables
+├── <application_name>.xcodeproj    - Xcode project file
 ```
 
 ## Scaffolded project
@@ -162,7 +163,7 @@ files will be included in the scaffolded project:
 │       └── Routes/
 │           ├── <generated_name>_API_ServerSDKUtility.swift - Swift server SDK helper methods
 │           ├── <generated_name>API.swift                   - Swift server SDK API code
-│           └── <generated_name>.swift                       - Swift server SDK object wrapper
+│           └── <generated_name>.swift                      - Swift server SDK object wrapper
 ```
 
 ### Services
@@ -182,7 +183,7 @@ files will be included in the scaffolded project:
 │   ├── toolchain.yml                 - Bluemix toolchain configuration file
 │   ├── pipeline.yml                  - Bluemix pipeline configuration file
 │   └── deploy.json                   - Bluemix toolchain UI configuration file
-├── config.json                       - Application configuration file
+├── config/
 │   ├── localdev-config.json          - IBM Cloud service configuration file
 │   └── mappings.json                 - Service configuration mappings file
 ```
@@ -226,5 +227,5 @@ the following files will be included:
 │   └── <model_name>.json                        - Model metadata file
 ```
 
-> ![info] Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the `.json` model files, and as endpoint paths in the the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (`_`).
+> ![info] Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the `.json` model files, and as endpoint paths in the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the [Swift specifications for Identifiers](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/LexicalStructure.html#//apple_ref/doc/uid/TP40014097-CH30-ID410). In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (`_`).
 

@@ -145,7 +145,7 @@ docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh 
 
 ### Server SDK generation
 This is the capability to generate a server SDK library from a [swagger](https://swagger.io/specification) specification document, which
-can be used to allow the generated server application to call APIs on an external service. Providing the swagger document for the external service allows  client-side Swift API stubs to be generated into the Routes directory.
+can be used to allow the generated server application to call APIs on an external service. Providing the swagger document for the external service allows client-side Swift API stubs to be generated into the Routes directory.
 
 ## Endpoints
 ### Swagger fileserving endpoint capability
