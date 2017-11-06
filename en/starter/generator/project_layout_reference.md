@@ -177,12 +177,12 @@ files will be included in the scaffolded project:
 │       └── Services/
 │            └── ServiceMongodb.swift - Swift connector to an IBM Cloud Service
 ├── manifest.yml                      - CloudFoundry deployment manifest file
-├── cli-config.yml                    - Bluemix CLI Dev plugin configuration file
+├── cli-config.yml                    - IBM Cloud CLI Dev plugin configuration file
 ├── .cfignore                         - Defines files to be ignored for deployment
-├── .bluemix/                         - Bluemix pipeline and toolchain files
-│   ├── toolchain.yml                 - Bluemix toolchain configuration file
-│   ├── pipeline.yml                  - Bluemix pipeline configuration file
-│   └── deploy.json                   - Bluemix toolchain UI configuration file
+├── .bluemix/                         - IBM Cloud pipeline and toolchain files
+│   ├── toolchain.yml                 - IBM Cloud toolchain configuration file
+│   ├── pipeline.yml                  - IBM Cloud pipeline configuration file
+│   └── deploy.json                   - IBM Cloud toolchain UI configuration file
 ├── config/
 │   ├── localdev-config.json          - IBM Cloud service configuration file
 │   └── mappings.json                 - Service configuration mappings file

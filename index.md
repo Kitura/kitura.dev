@@ -49,7 +49,7 @@ redirect_from: "/en/index.html"
           </div>
           <div class="text-container">
             <h2>Ready for the cloud</h2>
-            <p class="text">Clone, build, push &ndash; using tools you already know. Easily deploy to cloud platforms like Bluemix, with buildpacks and Docker containers already provided.</p>
+            <p class="text">Clone, build, push &ndash; using tools you already know. Easily deploy to cloud platforms like IBM Cloud, with buildpacks and Docker containers already provided.</p>
             <img class="illustration" src="../assets/BMcloud@2x.png" height="185" width="353"/>
           </div>
         </section>
