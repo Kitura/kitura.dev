@@ -25,7 +25,7 @@ redirect_from: "/resources/tutorial-todo.html"
 
 Learn how to build a back-end for the TodoList web application.
 
-<img src="../../assets/TodoBackend.png" alt="TodoBackend" style="width:100%"/>
+<img src="../../assets/TodoBackend.png" alt="TodoBackend" width="500" style="max-width:100%"/>
 
 ### [Apple FoodTracker](https://github.com/IBM/FoodTrackerBackend)
 
