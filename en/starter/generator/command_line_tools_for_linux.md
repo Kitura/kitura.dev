@@ -27,7 +27,7 @@ generator and its prerequisites are installed correctly.
 >
 > * [IBM API Connect toolkit CLI](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/capic_swift_overview.html) via `apic swiftserver`  
 > (uses v1.0.4 of the generator).
-> * [IBM Cloud CLI Developer Plug-in](https://console.ng.bluemix.net/docs/cloudnative/tutorial_web.html#tutorial/) via `bx dev create`  
+> * [IBM Cloud Developer Tools CLI](https://console.ng.bluemix.net/docs/cloudnative/tutorial_web.html#tutorial/) via `bx dev create`  
 > (only supports scaffolded applications).
 
 You can run the generator use the following command:
