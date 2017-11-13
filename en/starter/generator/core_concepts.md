@@ -199,7 +199,7 @@ options which are passed to the Cloud Foundry `cf push` command during applicati
 [IBM Cloud DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service
 provides toolchains as a set of tool integrations that support development, deployment, and operations
 tasks inside IBM Cloud. The "Create Toolchain" button in the [README.md](project_layout_reference.html#readme)
-creates a DevOps toolchain and acts as a single-click deploy to Bluemix including provisioning all required
+creates a DevOps toolchain and acts as a single-click deploy to IBM Cloud including provisioning all required
 services.
 
 > ![warning] You need to publish your project to a public github.com repository to use the "Create toolchain"

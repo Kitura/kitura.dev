@@ -3,7 +3,7 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
 layout: page
-title: Getting started with Cloudant on Bluemix
+title: Getting started with Cloudant on IBM Cloud
 menu: starter
 lang: en
 redirect_from: "/starter/generator/cloudant_tutorial_ibm_cloud.html"
@@ -112,7 +112,7 @@ Navigate to `Service Credentials` to view your credentials.
 > need to [update them in the `config.json`](/en/starter/generator/config_json.html#bluemix-capability-enabled)
 > to point at your service after the project is generated.
 
-Then configure `Cloudant` with the credentials you made earlier in Bluemix:
+Then configure `Cloudant` with the credentials you made earlier in IBM Cloud:
 
 ```
 Configure Cloudant / CouchDB
@@ -235,6 +235,6 @@ Congratulations, you now have a simple Kitura web application ready for extensio
 
 Learn how to deploy an application to IBM Cloud using either
 [the CloudFoundry CLI](deploy_cloud_foundry.html) or
-[the Bluemix Create Toolchain button](deploy_toolchain.html).
+[the IBM Cloud Create Toolchain button](deploy_toolchain.html).
 
 

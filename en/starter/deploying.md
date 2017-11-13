@@ -15,7 +15,7 @@ redirect_from: "/starter/deploy.html"
 	<p>Kitura is built to be Cloud-ready.</p>
 </div>
 
-We provide a simple starter project that demonstrates deployment to [Bluemix](https://www.bluemix.net), plus a macOS desktop application to aid integration with Xcode.
+We provide a simple starter project that demonstrates deployment to [IBM Cloud](https://www.bluemix.net), plus a macOS desktop application to aid integration with Xcode.
 
 Additionally, you can use our pre-built Docker image to guide you on how to deploy a container-based Kitura application.
 
@@ -23,7 +23,7 @@ Additionally, you can use our pre-built Docker image to guide you on how to depl
 
 ## Specify a version of Swift (optional, but extremely recommended)
 
- Pushing your application to Bluemix will build your application using the latest Swift version supported by the [buildpack](https://github.com/IBM-Swift/swift-buildpack/releases), which changes periodically.  Adding a `.swift-version` to your application is a common convention to specify the version of Swift needed for your application.
+ Pushing your application to IBM Cloud will build your application using the latest Swift version supported by the [buildpack](https://github.com/IBM-Swift/swift-buildpack/releases), which changes periodically.  Adding a `.swift-version` to your application is a common convention to specify the version of Swift needed for your application.
 
 ---
 <span class="arrow">&#8227;</span> Add a `.swift-version` file with the desired version or snapshot of Swift
@@ -37,9 +37,9 @@ echo "3.1" > .swift-version
 
 ## Kitura-Starter
 
-[Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on Bluemix. After cloning this GitHub repo to your local system, you can deploy this application to Bluemix right away.
+[Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on IBM Cloud. After cloning this GitHub repo to your local system, you can deploy this application to IBM Cloud right away.
 
-Once you have the Bluemix [command line tool](http://clis.ng.bluemix.net/ui/home.html) installed, deploying to the cloud is as simple as `bx app push`.
+Once you have the IBM Cloud [command line tool](http://clis.ng.bluemix.net/ui/home.html) installed, deploying to the cloud is as simple as `bx app push`.
 
 ---
 
@@ -47,7 +47,7 @@ Once you have the Bluemix [command line tool](http://clis.ng.bluemix.net/ui/home
 
 [IBM Cloud Application Tools](http://cloudtools.bluemix.net/) radically simplifies the management and deployment of server-side assets. It helps improve productivity by complimenting a developer's familiar Xcode environment.
 
-Swift developers can extend their mobile apps and connect them to IBM Bluemix with a local development environment. Now, every Swift developer can more easily begin to deploy cloud services.
+Swift developers can extend their mobile apps and connect them to IBM Cloud with a local development environment. Now, every Swift developer can more easily begin to deploy cloud services.
 
 Visit [cloudtools.bluemix.net](http://cloudtools.bluemix.net/) to learn more about this free macOS app.
 

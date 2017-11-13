@@ -19,15 +19,15 @@ The configuration information for your application is stored in the `config.json
 
 Your Swift Server Generator application uses the [Configuration package](https://github.com/IBM-Swift/Configuration) to configure your application, including any [services](core_concepts.html#services) when it was generated.
 
-If the [Bluemix capability](core_concepts.html#bluemix-capability) is enabled, then
+If the [IBM Cloud capability](core_concepts.html#bluemix-capability) is enabled, then
 [CloudConfiguration package](https://github.com/IBM-Swift/CloudConfiguration) is also
-used to manage the configuration of [Bluemix services](core_concepts.html#bluemix-services).
+used to manage the configuration of [IBM Cloud services](core_concepts.html#bluemix-services).
 In this case, the configuration information will be read from the environment when the
-application is deployed on Bluemix and from the `config.json` file when running locally.
+application is deployed on IBM Cloud and from the `config.json` file when running locally.
 
-## Bluemix capability disabled
+## IBM Cloud capability disabled
 
-The following example `config.json` file shows the default settings with the [Bluemix capability](core_concepts.html#bluemix-capability) **disabled** and no services:
+The following example `config.json` file shows the default settings with the [IBM Cloud capability](core_concepts.html#bluemix-capability) **disabled** and no services:
 
 ```json
 {
@@ -39,7 +39,7 @@ The following example `config.json` file shows the default settings with the [Bl
 
 You can configure the `port` used by the application.
 
-Any services you select will necessarily be [Non-Bluemix services](core_concepts.html#non-bluemix-services)
+Any services you select will necessarily be [Non-IBM Cloud services](core_concepts.html#non-bluemix-services)
 and their configuration will be added within the `services` object. For example:
 
 ```json
@@ -73,9 +73,9 @@ and their configuration will be added within the `services` object. For example:
 You may alter the configuration of these services to match any required connection details.
 If you omit properties, they take their default values.
 
-## Bluemix capability enabled
+## IBM Cloud capability enabled
 
-The following example `config.json` file shows the default settings with the [Bluemix capability](core_concepts.html#bluemix-capability) **enabled** and no services:
+The following example `config.json` file shows the default settings with the [IBM Cloud capability](core_concepts.html#bluemix-capability) **enabled** and no services:
 
 ```json
 {
@@ -85,7 +85,7 @@ The following example `config.json` file shows the default settings with the [Bl
 }
 ```
 
-Any services you select will necessarily be [Bluemix services](core_concepts.html#bluemix-services)
+Any services you select will necessarily be [IBM Cloud services](core_concepts.html#bluemix-services)
 and their configuration will be added within the `services` object. For example:
 
 ```json
@@ -112,12 +112,12 @@ and their configuration will be added within the `services` object. For example:
 }
 ```
 
-If your application is running locally, e.g. when testing, it can connect to Bluemix services using the credentials read from this file. If you need to create credentials for your service, you can do so from the Bluemix web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](http://cli.cloudfoundry.org/en-US/cf/create-service-key.html). If you use the CloudFoundry CLI you need to create the service instance first with the [`cf create-service` command](http://cli.cloudfoundry.org/en-US/cf/create-service.html). The key information is retrieved with the [`cf service-key` command](http://cli.cloudfoundry.org/en-US/cf/service-key.html).
+If your application is running locally, e.g. when testing, it can connect to IBM Cloud services using the credentials read from this file. If you need to create credentials for your service, you can do so from the IBM Cloud web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](http://cli.cloudfoundry.org/en-US/cf/create-service-key.html). If you use the CloudFoundry CLI you need to create the service instance first with the [`cf create-service` command](http://cli.cloudfoundry.org/en-US/cf/create-service.html). The key information is retrieved with the [`cf service-key` command](http://cli.cloudfoundry.org/en-US/cf/service-key.html).
 
 > ![info] Note: the service names and types will need to match the settings within your
 > `config.json` file and in the generated boilerplate code in `Sources/Application/Application.swift`.
 
-> ![tip] Tip: Create your Bluemix services before generating your application so you can enter
+> ![tip] Tip: Create your IBM Cloud services before generating your application so you can enter
 > the connection information in the [service configuration prompts](prompts.html#service-configuration-prompt)
 > so you don't have to edit them later.
 
@@ -147,11 +147,11 @@ The following example is a `config.json` which has been updated with credentials
 }
 ```
 
-When deployed to Bluemix, the connection information used for a given named service is
+When deployed to IBM Cloud, the connection information used for a given named service is
 taken from a matching named service bound to the deployed application in preference to
 what is defined in your `config.json` file.
 
-This allows you to run the application locally and on Bluemix without modification.
+This allows you to run the application locally and on IBM Cloud without modification.
 
 [info]: ../../../assets/info-blue.png
 [tip]: ../../../assets/lightbulb-yellow.png
