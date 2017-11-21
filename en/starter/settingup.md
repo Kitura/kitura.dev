@@ -24,6 +24,14 @@ redirect_from: "/starter/setting up.html"
 
 <span class="arrow">&#8227;</span> Download and install [Xcode 9](https://developer.apple.com/download/).
 
+<span class="arrow">&#8227;</span> Install the Command Line Tools for Xcode:
+
+```
+$ xcode-select --install
+```
+
+The Xcode command line tools are required to build some of the Kitura libraries, such as CloudEnvironment.
+
 <span class="arrow">&#8227;</span> Install [Homebrew](https://brew.sh).
 
 ```
