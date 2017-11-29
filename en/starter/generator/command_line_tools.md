@@ -18,9 +18,7 @@ redirect_from: "/starter/generator/command_line_tools.html"
 	<p>Documents the Kitura command-line interface for generating server applications</p>
 </div>
 
-> ![info] On Linux, follow [these instructions](command_line_tools_for_linux) to generate Kitura applications.
-
-On macOS, `kitura create` and `kitura init` generate template Kitura applications.
+The Kitura CLI provides commands for generating skeleton Kitura applications.
 
 *Table 1. Available commands*
 
@@ -45,4 +43,4 @@ Allows you to define a data model for a CRUD ([Create-Read-Update-Delete](core_c
 
 > ![tip] Note that you must run `kitura create` before creating your first model.
 
-
+> ![info] Some additional, advanced features of the generator can be accessed by installing the [Advanced Command-line interface](command_line_tools_for_linux).

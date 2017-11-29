@@ -19,7 +19,7 @@ redirect_from: "/starter/generator/cloudant_tutorial_ibm_cloud.html"
 </div>
 
 > ![warning] Make sure you have installed the command-line tools as described in
-> [Installation](installation.html) before you begin.
+> [Getting Started](../gettingstarted.html) before you begin.
 
 ---
 

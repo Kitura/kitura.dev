@@ -23,20 +23,11 @@ redirect_from: "/starter/helloworld.html"
 <span class="arrow">&#8227;</span> Install [prerequisites](/{{ page.lang }}/starter/settingup.html).
 
 <span class="arrow">&#8227;</span> Install the Kitura command-line interface, following the instructions appropriate to your platform:
-
 ### MacOS
 
-<span class="arrow">&#8227;</span> Install Homebrew tap.
-
-Installing Kitura's Homebrew tap will allow ```brew``` to access Kitura's package repository.
-
+Add Kitura's Homebrew tap so that ```brew``` can access Kitura's package repository, then install the Kitura CLI:
 ```
 brew tap ibm-swift/kitura
-```
-
-<span class="arrow">&#8227;</span> Install Kitura's CLI.
-
-```
 brew install kitura
 ```
 
