@@ -18,7 +18,13 @@ redirect_from: "/starter/helloworld.html"
 	<p>Develop your first Kitura web application.</p>
 </div>
 
+## Installation
+
 <span class="arrow">&#8227;</span> Install [prerequisites](/{{ page.lang }}/starter/settingup.html).
+
+<span class="arrow">&#8227;</span> Install the Kitura command-line interface, following the instructions appropriate to your platform:
+
+### MacOS
 
 <span class="arrow">&#8227;</span> Install Homebrew tap.
 
@@ -28,11 +34,19 @@ Installing Kitura's Homebrew tap will allow ```brew``` to access Kitura's packag
 brew tap ibm-swift/kitura
 ```
 
-<span class="arrow">&#8227;</span> Install Kitura's command-line interface.
+<span class="arrow">&#8227;</span> Install Kitura's CLI.
 
 ```
 brew install kitura
 ```
+
+### Linux
+
+```
+npm install -g kitura-cli
+```
+
+## Generating your first Kitura project
 
 <span class="arrow">&#8227;</span> Create a directory for your Kitura project.
 

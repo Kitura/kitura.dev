@@ -18,8 +18,8 @@ redirect_from: "/starter/generator/getting_started.html"
 	<p>Use the <b>kitura create</b> command to create scaffolding for a simple Kitura web application.	</p>
 </div>
 
-> ![warning] Make sure you have installed the command-line tools as described in
-> [Installation](installation.html) before you begin.
+> ![warning] Make sure you have installed the command-line tools and prerequisites as described in
+> [Getting Started](../gettingstarted.html) before you begin.
 
 ---
 <span class="arrow">&#8227;</span> First, run the Kitura application generation (see [Command line tools](command_line_tools.html)):
