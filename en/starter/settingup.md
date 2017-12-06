@@ -30,8 +30,6 @@ redirect_from: "/starter/setting up.html"
 $ xcode-select --install
 ```
 
-The Xcode command line tools are required to build some of the Kitura libraries, such as CloudEnvironment.
-
 <span class="arrow">&#8227;</span> Install [Homebrew](https://brew.sh).
 
 ```
