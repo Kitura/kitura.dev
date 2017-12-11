@@ -56,7 +56,4 @@ lang: en
 * [Kitura-Cache](http://ibm-swift.github.io/Kitura-Cache)
 * [Kitura-Compression](http://ibm-swift.github.io/Kitura-Compression)
 * [Kitura-CORS](http://ibm-swift.github.io/Kitura-CORS)
-* [Kitura-CSRF](http://ibm-swift.github.io/Kitura-CSRF)
-* [Kitura-ResponseTime](http://ibm-swift.github.io/Kitura-ResponseTime)
 * [Kitura-Limiter](https://github.com/teechap/kitura-limiter) (Third-party implemented)
-
