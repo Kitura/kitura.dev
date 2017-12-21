@@ -116,11 +116,8 @@ router.add(templateEngine: StencilTemplateEngine())
 ```swift
 // Handle HTTP GET requests to GRMustache/
 router.get("/delivery") { request, response, next in
-    defer {
-        next()
-    }
 
-    // the example from https://github.com/groue/GRMustache.swift/blob/master/README.md
+    // The example from https://github.com/groue/GRMustache.swift/blob/master/README.md
     var context: [String: Any] = [
         "name": "Arthur",
         "date": Date(),
@@ -134,15 +131,13 @@ router.get("/delivery") { request, response, next in
     context["format"] = dateFormatter
 
     try response.render("document.mustache", context: context).end()
+    next()
 }
 
-//Handle HTTP GET requests to Stencil
+// Handle HTTP GET requests to Stencil
 router.get("/articles") { request, response, next in
-    defer {
-        next()
-    }
 
-    // the example from https://github.com/kylef/Stencil/blob/master/README.md
+    // The example from https://github.com/kylef/Stencil/blob/master/README.md
     var context2 = [
        "articles": [
          ["title": "Migrating from OCUnit to XCTest", "author": "Kyle Fuller"],
@@ -151,6 +146,7 @@ router.get("/articles") { request, response, next in
     ]
 
     try response.render("document.stencil", context: context2).end()
+    next()
 }
 
 // Add an HTTP server and connect it to the router
