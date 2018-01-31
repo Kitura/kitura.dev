@@ -106,11 +106,12 @@ displays various system and application metrics, including CPU, memory usage, HT
 metrics and more.
 
 ### Docker capability
-This capability includes the following files for [Docker](https://www.docker.com/) support:
+This capability includes the following files for [Docker](https://www.docker.com/) and [Kubernetes](https://kubernetes.io/) support:
 
 * `.dockerignore`
 * `Dockerfile`
 * `Dockerfile-tools`
+* `chart`
 
 The `.dockerignore` file contains the files/directories that should not be included in the
 built docker image. By default this file contains the `Dockerfile` and `Dockerfile-tools`.
@@ -121,6 +122,8 @@ This image can be used to run the application.
 
 The `Dockerfile-tools` is a docker specification file similar to the `Dockerfile`, except it includes
 the tools required for compiling the application. This image can be used to compile the application.
+
+The `chart` folder containes pre-configured Kubernetes resources for this project. It allows the use of [Helm](https://github.com/kubernetes/helm) to streamlines the deployment of a docker image to the cloud.
 
 To build the two docker images, run the following commands from the root directory of the project:
 
@@ -142,6 +145,8 @@ To run the application:
 ```shell
 docker run -it -p 8080:8080 -v $PWD:/root/project -w /root/project myapp-run sh -c .build-ubuntu/release/<app_executable>
 ```
+
+
 
 ### Server SDK generation
 This is the capability to generate a server SDK library from a [swagger](https://swagger.io/specification) specification document, which

@@ -30,7 +30,7 @@ The following structure is common to all generated applications:
 ├── Sources/                          - Swift source code for the project
 │   ├── Application/                  - Swift module for application logic
 │   │   └── Application.swift         - Swift code for application logic
-│   │   └── InitialisationError.swift - Swift code for initialisation error
+│   │   └── InitializationError.swift - Swift code for initialization error
 │   └── <application_name>/           - Swift module for executable
 │       └── main.swift                - Swift code for executable
 ├── Tests/                            - Swift source code for the tests
@@ -196,13 +196,15 @@ files will be included in the scaffolded project:
 ├── .bluemix/                         - IBM Cloud pipeline and toolchain files
 │   ├── toolchain.yml                 - IBM Cloud toolchain configuration file
 │   ├── pipeline.yml                  - IBM Cloud pipeline configuration file
-│   └── deploy.json                   - IBM Cloud toolchain UI configuration file
+│   ├── deploy.json                   - IBM Cloud toolchain UI configuration file
+│   └── scripts/                      - Scripts for Kubernetes
+│        ├── container_build.sh       - Script to build a Kubernetes container
+│        └── kube_deploy.sh           - Script to deploy to a Kubernetes container
 ```
 
 ### Cloud Services
 
 If you select an [IBM Cloud service](core_concepts#services), then the following files will be included in the scaffolded project:
-files in the scaffolded project:
 
 ```
 ├── Sources/
