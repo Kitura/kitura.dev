@@ -26,20 +26,20 @@ The files that populate the application directory depend on the [project type](c
 The following structure is common to all generated applications:
 
 ```
-├── LICENSE                         - MIT license for the generated code
-├── Sources/                        - Swift source code for the project
-│   ├── Application/                - Swift module for application logic
-│   │   └── Application.swift       - Swift code for application logic
-│   └── <application_name>/         - Swift module for executable
-│       └── main.swift              - Swift code for executable
-├── Tests/                          - Swift source code for the tests
-│   ├── ApplicationTests/           - Swift test module
-│   │   └── RouteTests.swift        - Swift code for the test implementation
-│   └── LinuxMain.swift             - Swift test definition for Linux
-├── Package.swift                   - Swift Package Manager configuration file
-├── Package.resolved                - Swift Package Manager resolved packages
-├── config.json                     - Application configuration file
-├── spec.json                       - Generator specification file for the project
+├── LICENSE                           - MIT license for the generated code
+├── Sources/                          - Swift source code for the project
+│   ├── Application/                  - Swift module for application logic
+│   │   └── Application.swift         - Swift code for application logic
+│   │   └── InitializationError.swift - Swift code for initialization error
+│   └── <application_name>/           - Swift module for executable
+│       └── main.swift                - Swift code for executable
+├── Tests/                            - Swift source code for the tests
+│   ├── ApplicationTests/             - Swift test module
+│   │   └── RouteTests.swift          - Swift code for the test implementation
+│   └── LinuxMain.swift               - Swift test definition for Linux
+├── Package.swift                     - Swift Package Manager configuration file
+├── Package.resolved                  - Swift Package Manager resolved packages
+├── spec.json                         - Generator specification file for the project
 ```
 
 There are also a number of hidden files included in all generated applications:
@@ -79,6 +79,17 @@ All scaffolded projects will have the following files included:
 The `README.md` file contains customized documentation about the contents of the generated
 application including selected capabilities and services.
 
+### Swift Metrics
+
+If you select the [embedded metrics dashboard](core_concepts.html#metrics-dashboard-capability) then the following
+file will be included in the scaffolded project:
+
+```
+├── Sources/                          - Swift source code for the project
+│   └── Application/                  - Swift module for application logic
+│       └── Metrics.swift             - Swift code for Swift Metrics logic
+```
+
 ### Web capability
 
 If you select the [web capability](core_concepts.html#web-capability) then the following
@@ -90,7 +101,7 @@ files will be included in the scaffolded project:
 
 ### OpenAPI / Swagger endpoint capability
 
-If you select the [Swagger endpoint capability](core_concepts.html#swagger-endpoint-capability) then the following
+If you select the [Swagger endpoint capability](core_concepts.html#swagger-fileserving-endpoint-capability) then the following
 files will be included in the scaffolded project:
 
 ```
@@ -114,7 +125,7 @@ files will be included in the scaffolded project:
 │   └── <application_name>.yaml     - Swagger definition for example API
 ```
 
-### endpoints from swagger file
+### Endpoints from swagger file
 
 If you select [endpoints from swagger file](core_concepts.html#endpoints-from-swagger-file) then the following
 files will be included in the scaffolded project:
@@ -150,6 +161,14 @@ files will be included in the scaffolded project:
 ├── Dockerfile                      - Docker spec for an image to run the application
 ├── Dockerfile-tools                - Docker spec for an image to build the application
 ├── .dockerignore                   - Defined files to ignore for building images
+├── chart/
+│   └── <application_name>/
+│       ├── Chart.yaml              - A Helm chart for Kubernetes
+│       ├── values.yaml             - IBM Cloud values for Kubernetes
+│       └── templates/
+│           ├── deployment.yaml     - Kubernetes deployment configuration
+│           ├── hpa.yaml            - Kubernetes scaling configuration
+│           └── service.yaml        - Kubernetes service configuration
 ```
 
 ### Server SDK generation
@@ -166,23 +185,32 @@ files will be included in the scaffolded project:
 │           └── <generated_name>.swift                      - Swift server SDK object wrapper
 ```
 
-### Services
+### IBM Cloud
 
-If you select an [IBM Cloud service](core_concepts#services), then the following
-files will be included in the scaffolded project:
+[IBM Cloud](core_concepts#services) core files are included by default. The following files are common to all generated applications:
 
 ```
-├── Sources/
-│   └── Application/
-│       └── Services/
-│            └── ServiceMongodb.swift - Swift connector to an IBM Cloud Service
 ├── manifest.yml                      - CloudFoundry deployment manifest file
 ├── cli-config.yml                    - IBM Cloud Dev Tools CLI configuration file
 ├── .cfignore                         - Defines files to be ignored for deployment
 ├── .bluemix/                         - IBM Cloud pipeline and toolchain files
 │   ├── toolchain.yml                 - IBM Cloud toolchain configuration file
 │   ├── pipeline.yml                  - IBM Cloud pipeline configuration file
-│   └── deploy.json                   - IBM Cloud toolchain UI configuration file
+│   ├── deploy.json                   - IBM Cloud toolchain UI configuration file
+│   └── scripts/                      - Scripts for Kubernetes
+│        ├── container_build.sh       - Script to build a Kubernetes container
+│        └── kube_deploy.sh           - Script to deploy to a Kubernetes container
+```
+
+### Cloud Services
+
+If you select an [IBM Cloud service](core_concepts#services), then the following files will be included in the scaffolded project:
+
+```
+├── Sources/
+│   └── Application/
+│       └── Services/
+│            └── <service_name>.swift - Swift connector to an IBM Cloud Service
 ├── config/
 │   ├── localdev-config.json          - IBM Cloud service configuration file
 │   └── mappings.json                 - Service configuration mappings file
