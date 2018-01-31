@@ -101,7 +101,7 @@ files will be included in the scaffolded project:
 
 ### OpenAPI / Swagger endpoint capability
 
-If you select the [Swagger endpoint capability](core_concepts.html#swagger-endpoint-capability) then the following
+If you select the [Swagger endpoint capability](core_concepts.html#swagger-fileserving-endpoint-capability) then the following
 files will be included in the scaffolded project:
 
 ```
