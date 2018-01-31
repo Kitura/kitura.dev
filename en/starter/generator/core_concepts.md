@@ -123,7 +123,7 @@ This image can be used to run the application.
 The `Dockerfile-tools` is a docker specification file similar to the `Dockerfile`, except it includes
 the tools required for compiling the application. This image can be used to compile the application.
 
-The `chart` folder containes pre-configured Kubernetes resources for this project. It allows the use of [Helm](https://github.com/kubernetes/helm) to streamline the deployment of a docker image to the cloud.
+The `chart` folder contains pre-configured Kubernetes resources for this project. It allows the use of [Helm](https://github.com/kubernetes/helm) to streamline the deployment of a docker image to the cloud.
 
 To build the two docker images, run the following commands from the root directory of the project:
 
