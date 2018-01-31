@@ -86,8 +86,8 @@ file will be included in the scaffolded project:
 
 ```
 ├── Sources/                          - Swift source code for the project
-│   ├── Application/                  - Swift module for application logic
-│   │   └── Metrics.swift             - Swift code for Swift Metrics logic
+│   └── Application/                  - Swift module for application logic
+│       └── Metrics.swift             - Swift code for Swift Metrics logic
 ```
 
 ### Web capability
