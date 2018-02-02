@@ -3,7 +3,7 @@
 # Build settings
 markdown: kramdown
 
-gems:
+plugins:
   - jekyll-redirect-from
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'CNAME', 'CONTRIBUTING.md']
