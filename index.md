@@ -3,7 +3,7 @@
 ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
 ### DO NOT CHANGE ANY OTHER TEXT.
 layout: home
-title: Kitura: a server-side Swift web framework
+title: Kitura - a server-side Swift web framework
 menu: home
 lang: en
 redirect_from: "/en/index.html"
