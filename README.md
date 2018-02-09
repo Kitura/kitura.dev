@@ -26,4 +26,3 @@ For more information about Jekyll, see https://jekyllrb.com.
 ## Licence
 Apache Licence, Version 2.0
 
-
