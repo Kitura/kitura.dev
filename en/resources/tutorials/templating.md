@@ -16,16 +16,16 @@ redirect_from: "/resources/templating.html"
 
 Kitura is a lightweight, modular framework &mdash; this means that by default you get only basic HTTP functionality, like routing, parameter handling, parsing request body, etc. You can augment Kitura's out-of-the-box functionality by adding additional packages to your `Package.swift` file.
 
-A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows rendering of documents using static templates by substituting template variables with actual values at runtime. This page explains how you can use template engines integrated with Kitura in your Kitura apps.
+Why use a template engine in your application? A [template engine](https://en.wikipedia.org/wiki/Template_processor) allows rendering of documents using static templates by substituting template variables with actual values at runtime. This means that you have clear separation between your template and data. You can also generate multiple web pages dynamically with a single template! This page explains how you can use template engines integrated with Kitura in your Kitura apps.
 
 ---
 
 ## Kitura template engines
-Kitura template engines are classes that implement the `TemplateEngine` protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Currently, three Kitura template engines are supported:
+Kitura template engines are classes that implement the `TemplateEngine` protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). The most commonly used template engine is Stencil. Currently, three Kitura template engines are supported:
 
-1. [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown).
+1. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
 2. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine).
-3. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
+3. [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown).
 
 You can provide your own Kitura template engine by implementing the `TemplateEngine` protocol from [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
 
@@ -41,9 +41,14 @@ import PackageDescription
 let package = Package(
     name: "myTemplates",
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.0.0")),
-        .package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", .upToNextMinor(from: "1.0.0")),
-        .package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", .upToNextMinor(from: "1.0.0"))
+        .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.2.0")),
+        .package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", .upToNextMajor(from: "1.0.0"))
+		]
+		targets: [
+		    .target(name: "myTemplates", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
+		    .target(name: "Application", dependencies: [ "Kitura", "KituraStencil", "KituraMustache" ])
+		]
  ])
 ```
 
@@ -78,13 +83,14 @@ There are {{ articles.count }} articles.
 ```
 {% endraw %}
 
-Template files should be placed in a `Views` directory, which should be known to Kitura Router. By default, Kitura Router gets the template files from the `./Views/` directory in the directory where `Kitura` runs. You can change the `Views` directory per [Router](https://github.com/IBM-Swift/Kitura/blob/master/Sources/Kitura/Router.swift) instance by setting the `Router.viewsPath` variable.
+Template files should be placed in a `Views` directory, which should be known to the Kitura Router. By default, the Kitura Router gets the template files from the `./Views/` directory in the directory where `Kitura` runs. You can change the `Views` directory per [Router](https://github.com/IBM-Swift/Kitura/blob/master/Sources/Kitura/Router.swift) instance by setting the `Router.viewsPath` variable.
 
 ```
 /myTemplateApp
 |
 |--/Sources
-  |-- main.swift
+  |--/myTemplateApp
+    |-- main.swift
 |--/Views
   |-- document.mustache
   |-- document.stencil
@@ -111,7 +117,9 @@ router.add(templateEngine: StencilTemplateEngine())
 ---
 
 ## Rendering a template
-<span class="arrow">&#8227;</span> You can render a template by calling the `response.render(_:context)` function. Here's the the code for the `document.mustache` and `document.stencil` template files we referenced earlier:
+<span class="arrow">&#8227;</span> You can render a template by calling the `response.render(_:context)` function. Here's the code for the `document.mustache` and `document.stencil` template files we referenced earlier:
+
+> ![tip] If you used the Kitura command-line tools to create your application, edit `Sources/Application/Application.swift` and add the following code, to handle HTTP GET requests, into the `postInit()` function. The code to add an HTTP Server and start the Kitura server is already defined.
 
 ```swift
 // Handle HTTP GET requests to GRMustache/
@@ -184,14 +192,14 @@ There are 2 articles.
 ## Working with multiple template engines
 As you can see from our example above you can use templates from multiple template engines in your Kitura app. The Router will know which template engine to use with a particular template file by the extension of the file.
 
-For example, the extension for [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) is `.mustache` and for [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) is `.stencil`.
+For example, the extension for [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) is `.mustache` and the extension for [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) is `.stencil`.
 
-The file extension of a template engine is defined by `fileExtension` property of the [TemplateEngine protocol](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift)
+The file extension of a template engine is defined by the `fileExtension` property of the [TemplateEngine protocol](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift).
 
 ---
 
 ## Setting the default template engine
-You can set the default template engine for a Router instance in order to save specifying template file extensions of that template engine.
+You can set the default template engine for a Router instance in order to save specifying the template file extensions of that template engine.
 
 <span class="arrow">&#8227;</span> For example, after you set GRMustache.swift as the default template engine:
 
@@ -199,7 +207,7 @@ You can set the default template engine for a Router instance in order to save s
 router.setDefault(templateEngine: MustacheTemplateEngine())
 ```
 
-<span class="arrow">&#8227;</span> You can render `document.mustache` by specifying the name of the file without extension:
+<span class="arrow">&#8227;</span> You can render `document.mustache` by specifying the name of the file without the extension:
 
 ```swift
 response.render("document", context: context).
