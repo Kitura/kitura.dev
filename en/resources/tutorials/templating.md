@@ -21,7 +21,7 @@ Why use a template engine in your application? A [template engine](https://en.wi
 ---
 
 ## Kitura template engines
-Kitura template engines are classes that implement the `TemplateEngine` protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). The most commonly used template engine is Stencil. Currently, three Kitura template engines are supported:
+Kitura template engines are classes that implement the `TemplateEngine` protocol from the [Kitura-TemplateEngine package](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/Sources/KituraTemplateEngine/TemplateEngine.swift). Kitura currently supports three template engines, with Stencil being the most commonly used:
 
 1. [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine).
 2. [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine).
@@ -36,6 +36,7 @@ You can provide your own Kitura template engine by implementing the `TemplateEng
 To use a template engine you need to specify a dependency in `Package.swift` for the engine you want to use. You can specify multiple dependencies if you wish to support more than one template engine (e.g. both Mustache and Stencil). In our example we'll add both templates to demonstrate GRMustache and Stencil integration.
 
 ```swift
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
@@ -44,12 +45,12 @@ let package = Package(
         .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.2.0")),
         .package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", .upToNextMajor(from: "1.0.0"))
-		]
+		],
 		targets: [
-		    .target(name: "myTemplates", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
+		    .target(name: "myTemplates", dependencies: [ .target(name: "Application"), "Kitura"]),
 		    .target(name: "Application", dependencies: [ "Kitura", "KituraStencil", "KituraMustache" ])
 		]
- ])
+)
 ```
 
 > ![tip] If you generated your Xcode project previously, you have to [regenerate](/{{ page.lang }}/starter/xcode.html) it once you add a new dependency so Xcode will be aware of the added dependency.
