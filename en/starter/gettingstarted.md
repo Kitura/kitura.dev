@@ -97,6 +97,6 @@ If you like what you've seen of Kitura so far, star the repository by clicking t
 
 Join in the conversation on Slack.
 
-<a rel="nofollow" href="http://kitura-slack.mybluemix.net/">
+<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
 <img src="../../assets/slack.png" alt="Slack" width="50"/>
 </a>
