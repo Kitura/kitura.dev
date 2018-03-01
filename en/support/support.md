@@ -25,7 +25,7 @@ Open an issue or get involved and raise a pull request on [GitHub](https://githu
 
 ## Slack
 
-Join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/).
+Join the Kitura community on [Slack](http://kitura-slack.mybluemix.net/).
 
 ## Stack Overflow
 
@@ -34,4 +34,3 @@ Use the `kitura` tag to search for questions and answers on [Stack Overflow](htt
 ## Commercial Support for Swift
 
 If you're interested in learning more about this level of support, please contact [jimmail@uk.ibm.com](mailto://jimmail@uk.ibm.com).
-
