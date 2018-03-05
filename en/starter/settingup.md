@@ -46,7 +46,7 @@ Kitura is tested on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS.
 
 ```
 $ sudo apt-get update
-$ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
+$ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl1.0-dev
 ```
 
 <span class="arrow">&#8227;</span> Download a Swift 4 toolchain from [swift.org](https://swift.org/download/).
