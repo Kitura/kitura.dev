@@ -43,10 +43,13 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 Kitura is tested on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS.
 
 <span class="arrow">&#8227;</span> Install the following Linux system packages:
-
 ```
 $ sudo apt-get update
-$ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl1.0-dev
+$ sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev
+```
+> ![info] Kitura requires OpenSSL v1.0.x, whereas newer versions of Linux may install OpenSSL v1.1.x. If this occurs, install OpenSSL v1.0.x using:
+```
+$ sudo apt-get install libssl1.0-dev
 ```
 
 <span class="arrow">&#8227;</span> Download a Swift 4 toolchain from [swift.org](https://swift.org/download/).
