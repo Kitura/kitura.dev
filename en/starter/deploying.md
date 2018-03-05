@@ -29,7 +29,7 @@ Additionally, you can use our pre-built Docker image to guide you on how to depl
 <span class="arrow">&#8227;</span> Add a `.swift-version` file with the desired version or snapshot of Swift
 
 ```bash
-echo "3.1" > .swift-version
+echo "4.0.3" > .swift-version
 ```
 
 
