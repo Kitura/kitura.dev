@@ -102,7 +102,7 @@ router.get("/") {
 }
 ```
 
-Within the `run()` function, pass your SSL configuration into the `Kitura.addHTTPServer(...)` function:
+Pass your SSL configuration into the `Kitura.addHTTPServer(...)` function:
 
 ```swift
 Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)
