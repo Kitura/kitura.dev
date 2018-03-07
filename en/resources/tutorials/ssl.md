@@ -80,11 +80,13 @@ $ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem
 
 ---
 
-## Configuring Kitura for SSL/TLS *on macOS*
+## Configuring Kitura for SSL/TLS
 
-<span class="arrow">&#8227;</span> We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter `usingSelfSignedCerts` to `true`. You will also need to modify the password to be whatever you chose for your password, when converting your certificate to PKCS#12 format.
+<span class="arrow">&#8227;</span> We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter `usingSelfSignedCerts` to `true`.
 
 <span class="arrow">&#8227;</span> Here we assume that you used the [Kitura command-line tools](http://www.kitura.io/en/starter/gettingstarted.html) to create your application. Edit `Sources/Application/Application.swift` and add the following code below the import statements:
+
+### *For macOS*
 
 ```swift
 let mySSLConfig =  SSLConfig(withChainFilePath: "/tmp/Creds/Self-Signed/cert.pfx",
@@ -92,7 +94,23 @@ let mySSLConfig =  SSLConfig(withChainFilePath: "/tmp/Creds/Self-Signed/cert.pfx
                              usingSelfSignedCerts: true)
 ```
 
-Within the `postInit()` function, add the following code to handle HTTP GET requests:
+Note, you will also need to modify the password string to be whatever you chose for your password.
+
+### *For Linux*
+
+```swift
+let myCertPath = "/tmp/Creds/Self-Signed/certificate.pem"
+let myKeyPath = "/tmp/Creds/Self-Signed/key.pem"
+
+let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
+                             usingCertificateFile: myCertPath,
+                             withKeyFile: myKeyPath,
+                             usingSelfSignedCerts: true)
+```
+
+### *For both platforms*
+
+<span class="arrow">&#8227;</span> Within the `postInit()` function, add the following code to handle HTTP GET requests:
 
 ```swift
 router.get("/") {
@@ -102,11 +120,16 @@ router.get("/") {
 }
 ```
 
-Pass your SSL configuration into the `Kitura.addHTTPServer(...)` function:
+<span class="arrow">&#8227;</span> Pass your SSL configuration into the `Kitura.addHTTPServer(...)` function:
 
 ```swift
 Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)
 ```
+
+---
+
+## Testing the application
+
 
 <span class="arrow">&#8227;</span> Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on `localhost:8080`, you can test out the application by opening a browser on:
 
