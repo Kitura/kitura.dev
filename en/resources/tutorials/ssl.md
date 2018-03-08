@@ -57,7 +57,7 @@ Kitura currently only supports PKCS#12 on macOS, while it supports the following
 This difference is because Kitura uses OpenSSL on Linux and Secure Transport on macOS. Unfortunately macOS does not expose any APIs that convert between PKCS#12 and other certificate formats. We need to use OpenSSL or other existing tools to convert between the formats.
 
 
-<span class="arrow">&#8227;</span> In this example, we have created a self-signed PEM certificate using the following OpenSSL commands:
+In this example, we have created a self-signed PEM certificate using the following OpenSSL commands:
 
 ```
 // generate a 2048bit RSA key
@@ -70,21 +70,21 @@ $ openssl req -new -sha256 -key key.pem -out cert.csr
 $ openssl req -x509 -sha256 -days 365 -key key.pem -in cert.csr -out certificate.pem
 ```
 
-<span class="arrow">&#8227;</span> You can convert your certificate to PKCS#12 format using
+You can convert your certificate to PKCS#12 format using:
 
 ```
 $ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem
 ```
 
-<span class="arrow">&#8227;</span> Place your certificate and key in the  `/tmp/Creds/Self-Signed` folder.
+Place your certificate and key in the  `/tmp/Creds/Self-Signed` folder.
 
 ---
 
 ## Configuring Kitura for SSL/TLS
 
-<span class="arrow">&#8227;</span> We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter `usingSelfSignedCerts` to `true`.
+We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter `usingSelfSignedCerts` to `true`.
 
-<span class="arrow">&#8227;</span> Here we assume that you used the [Kitura command-line tools](http://www.kitura.io/en/starter/gettingstarted.html) to create your application. Edit `Sources/Application/Application.swift` and add the following code below the import statements:
+Assuming you used the [Kitura command-line tools](http://www.kitura.io/en/starter/gettingstarted.html) to create your application, edit `Sources/Application/Application.swift` and add the following code below the import statements:
 
 ### *For macOS*
 
@@ -110,7 +110,7 @@ let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
 
 ### *For both platforms*
 
-<span class="arrow">&#8227;</span> Within the `postInit()` function, add the following code to handle HTTP GET requests:
+Within the `postInit()` function, add the following code to handle HTTP GET requests:
 
 ```swift
 router.get("/") {
@@ -120,7 +120,7 @@ router.get("/") {
 }
 ```
 
-<span class="arrow">&#8227;</span> Pass your SSL configuration into the `Kitura.addHTTPServer(...)` function:
+Pass your SSL configuration into the `Kitura.addHTTPServer(...)` function:
 
 ```swift
 Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)
@@ -131,10 +131,10 @@ Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)
 ## Testing the application
 
 
-<span class="arrow">&#8227;</span> Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on `localhost:8080`, you can test out the application by opening a browser on:
+Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on `localhost:8080`, you can test out the application by opening a browser on:
 
 ```
 https://localhost:8080
 ```
 
-<span class="arrow">&#8227;</span> Notice the `https` in your URL!  You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
+Notice the `https` in your URL!  You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
