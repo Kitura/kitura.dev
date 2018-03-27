@@ -154,13 +154,13 @@ can be used to allow the generated server application to call APIs on an externa
 
 ## Endpoints
 ### Swagger fileserving endpoint capability
-This capability adds an endpoint to the application for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located at `definitions/<app_name>.yaml`.
+This capability adds an endpoint to the application to provide file serving of an OpenAPI Swagger definition file for this application. This assumes that a pre-prepared Swagger document has been written and will be placed at `definitions/<app_name>.yaml`.
 
 The endpoint is hosted on `/swagger/api`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/swagger/api.
 
 This capability is only optional for [scaffold projects](#scaffold) and is always enabled in [CRUD projects](#crud).
 
-If the [Web capability](#web-capability) and [Swagger endpoint capability](#swagger-fileserving-endpoint-capability)
+If the [SwaggerUI capability](#swaggerui-capability) and [Swagger endpoint capability](#swagger-fileserving-endpoint-capability)
 are enabled then specification of this interface is made available through an embedded
 [Swagger UI](http://swagger.io/swagger-ui/) hosted on `/explorer`. For example, if the application
 is hosted at https://localhost:8080, go to https://localhost:8080/explorer. The Swagger UI will document
@@ -175,8 +175,10 @@ This capability includes an OpenAPI Swagger definition and routes for a Product 
 #### Endpoints from swagger file
 The user can choose to generate endpoints by specifing the path or URL to a [swagger](https://swagger.io/specification) specification document.
 
-
 This capability is only available for [scaffold projects](#scaffold).
+
+### SwaggerUI capability
+This capability uses the an embedded Swagger explorer web page to load and display the OpenAPI Swagger definition in the user friendly explorer web page. Through the explorer page, the user can view and exercise the APIs documented within the Swagger document.
 
 
 ## Services
