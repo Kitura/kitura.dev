@@ -178,7 +178,7 @@ The user can choose to generate endpoints by specifing the path or URL to a [swa
 This capability is only available for [scaffold projects](#scaffold).
 
 ### SwaggerUI capability
-This capability uses the an embedded Swagger explorer web page to load and display the OpenAPI Swagger definition in the user friendly explorer web page. Through the explorer page, the user can view and exercise the APIs documented within the Swagger document.
+This capability uses an embedded Swagger explorer web page to load and display the OpenAPI Swagger definition in the user friendly explorer web page. Through the explorer page, the user can view and exercise the APIs documented within the Swagger document.
 
 
 ## Services
