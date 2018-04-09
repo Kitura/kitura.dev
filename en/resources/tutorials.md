@@ -37,6 +37,10 @@ Learn how to build a back-end for the Apple FoodTracker iOS application.
 
 ## Adding Routing and Requests
 
+### [Codable Routing](/{{ page.lang }}/resources/tutorials/codablerouting.html)
+
+Learn how to use Codable routing to build REST APIs
+
 ### [Parsing Requests](/{{ page.lang }}/resources/tutorials/parsingrequests.html)
 
 Learn how to parse query and URL parameters also handle JSON requests.
