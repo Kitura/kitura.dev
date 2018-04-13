@@ -274,9 +274,6 @@ We then call the render function, providing the name of the template file we wan
 Our `postInit()` function should look like this now: 
 ```swift
 func postInit() throws {
-	// Capabilities
-	initializeMetrics(app: self)
-
 	// Endpoints
 	initializeHealthRoutes(app: self)
 	router.add(templateEngine: MustacheTemplateEngine())
@@ -348,9 +345,6 @@ Our `postInit()` function should now look like this:
 
 ```swift
 func postInit() throws {
-        // Capabilities
-        initializeMetrics(app: self)
-
         // Endpoints
         initializeHealthRoutes(app: self)
         router.add(templateEngine: MustacheTemplateEngine())
