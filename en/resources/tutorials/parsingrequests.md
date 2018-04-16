@@ -78,7 +78,7 @@ router.post("/name") { request, response, next in
 
     switch parsedBody {
     case .json(let jsonBody):
-            let name = jsonBody["name"].string ?? ""
+            let name = jsonBody["name"] as? String ?? ""
             try response.send("Hello \(name)").end()
     default:
         break
