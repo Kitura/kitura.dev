@@ -18,16 +18,16 @@ redirect_from: "/resources/tutorials.html"
     <h1>Tutorials</h1>
     <p>Quick one hour projects</p>
 </div>
-<div class="featured" style="width:100%;margin:auto;height:400px;">
-    <div class="featured-item" style="width:50%;font-size:18px;float:left;height:100%;">
-        <p class="text" align="center"><a href="https://github.com/IBM-Swift/Kitura-Sample">Food Tracker</a></p>
-        <p style="font-size:16px;text-align:center">Learn how to build a back-end for the Apple FoodTracker iOS application using a Kitura server.</p>
-        <img src="../../assets/FoodTrackerBezel.png" alt="Food Tracker" width="160px" style="align:center;display:block;margin:auto">
+<div class="featured">
+    <div class="featured-item left">
+        <p class="featured title"><a href="https://github.com/IBM-Swift/Kitura-Sample">Food Tracker</a></p>
+        <p>Build a Kitura backend for the Apple FoodTracker iOS application.</p>
+        <img class="featured-img" src="../../assets/FoodTrackerBezel.png" alt="Food Tracker" width="160px">
     </div>
-    <div class="featured-item" style="width:50%;font-size:18px;float:right;height:100%;">
-        <p class="text"  align="center"><a href="https://github.com/IBM/ToDoBackend">ToDo Backend</a></p>
-        <p style="font-size:16px;text-align:center">A whole backend server supporting CORS, REST calls, Codable Routing and more.</p>
-        <img src="../../assets/TodoBackend.png" alt="ToDoBackend" width="90%" style="text-align:center;display:block;margin:auto;padding-top:25px;">
+    <div class="featured-item right">
+        <p class="featured title"><a href="https://github.com/IBM/ToDoBackend">Todo Backend</a></p>
+        <p>Learn how to build a Kitura backend for the Todo-Backend project.</p>
+        <img class="featured-img" src="../../assets/TodoBackend.png" alt="ToDoBackend" width="90%">
     </div>
 </div>
  

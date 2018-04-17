@@ -16,22 +16,20 @@ redirect_from: "/guides/guides.html"
 
 <div class="titleBlock">
 <h1>Programming Guides</h1>
-<p>Learn how to use Kitura and its features using our handy step-by-step guides</p>
+<p>Learn how to use Kitura features with our handy step-by-step guides</p>
 </div>
 
-<div style="border-bottom:1px solid rgb(240,240,240);">
-    <h1 style="font-size:28px;text-align:center;border-bottom:0px;margin-top:0px;display:block;"><a href="https://kitura-sample-ibm.mybluemix.net">Example Kitura Project</a></h1>
-    <p style="text-align:center;">View the Kitura Sample project, which includes code examples of loads of Kitura and IBM Swift features.</p>
-    <a href="https://kitura-sample-ibm.mybluemix.net"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%" style="text-align:center;display:block;margin:auto;padding-top:10px;" /></a>
-    <p style="text-align:center;font-size:18px;padding-top:20px;"><a href="https://github.com/IBM-Swift/Kitura-Sample">View the code on GitHub</a></p>
-    <p style="font-size:18px;text-align:center;padding-bottom:10px;"><a href="https://kitura-sample-ibm.mybluemix.net">Open in IBM Cloud</a></p>
-
+<div class="exampleBlock">
+    <h1><a href="https://github.com/IBM-Swift/Kitura-Sample">Example Kitura Project</a></h1>
+    <p class="example-para">View the Kitura Sample project, which includes code examples of loads of Kitura and IBM Swift features.</p>
+    <a href="https://kitura-sample-ibm.mybluemix.net"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%"/></a>
+    <p><a href="https://kitura-sample-ibm.mybluemix.net"><img class="cloud-logo" src="../../assets/IBM_Cloud_Logo.png" alt="IBM Cloud"/>Open in IBM Cloud</a></p>
 </div>
 
-<div style="border-bottom:1px solid rgb(240,240,240);">
+<div class="big-item">
     <h2>Adding Routing and Requests</h2>
     <h3><a href="/{{ page.lang }}/guides/guides/codablerouting.html">Codable Routing</a></h3>
-    <p>Learn how to use Codable routing to build REST APIs</p>
+    <p>Learn how to use Codable routing to build REST APIs.</p>
     
     <h3><a href="/{{ page.lang }}/guides/guides/parsingrequests.html">Parsing Requests</a></h3>
     <p>Learn how to parse query and URL parameters and also JSON requests.</p>
@@ -46,7 +44,7 @@ redirect_from: "/guides/guides.html"
     <p>Learn how to serve static content, such as a static website.</p>
 </div>
 
-<div style="border-bottom:1px solid rgb(240,240,240);">
+<div class="big-item">
     <h2>Security</h2>
     <h3><a href="/{{ page.lang }}/guides/guides/credentials.html">Adding Authentication with Kitura-Credentials</a></h3>
     <p>Learn how to add intergration with Facebook OAuth authentication.</p>
@@ -58,13 +56,13 @@ redirect_from: "/guides/guides.html"
     <p>Learn how to enable SSL and TLS on Kitura to enhance the security of your application.</p>
 </div>
 
-<div style="border-bottom:1px solid rgb(240,240,240);">
+<div class="big-item">
     <h2>Monitoring and Diagnostics</h2>
     <h3><a href="/{{ page.lang }}/guides/guides/swiftmetrics.html">Adding Monitoring with Application Metrics for Swift</a></h3>
     <p>Learn how to add monitoring with Application Metrics for Swift (Swift Metrics) to visualise throughput and performance.</p>
 </div>
 
-<div style="border-bottom:1px solid rgb(240,240,240);">
+<div class="big-item">
     <h2>Building</h2>
     <h3><a href="/{{ page.lang }}/starter/leveragedocker.html">Building for Linux using macOS</a></h3>
     <p>Learn how to build your Kitura application in a Linux container on macOS.</p>
