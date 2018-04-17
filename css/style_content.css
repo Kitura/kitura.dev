@@ -200,6 +200,128 @@ li code {
   color: #666;
 }
 
+/* Tutorials */
+    
+.featured {
+    width:100%;
+    margin:auto;
+    height:400px;
+}
+
+.featured-item {
+    width:48%;
+    font-size:18px;
+    height:100%;
+}
+
+.featured-item.left {
+    float: left;
+
+}
+
+.featured-item.right {
+    float: right;
+
+}
+
+.featured-item p {
+    font-size:16px;
+    text-align:center;
+}
+
+.featured-img {
+    text-align:center;
+    margin:auto;
+    display: block;
+}
+
+.featured.title {
+    font-size: 22px;
+    height: auto
+}
+
+@media all and (max-width: 899px) {
+.featured {
+    width: 100%;
+    margin: auto;
+    height: 400px;
+    display: inline;
+}
+
+.featured-item {
+    width:100%;
+    font-size:18px;
+    height:100%;
+    border-bottom:1px solid rgb(240,240,240);
+    margin-bottom: 30px;
+}
+
+.featured-item.left {
+    float: none;
+}
+
+.featured-item.right {
+    float: none;
+}
+    
+.featured-item p {
+    font-size:16px;
+    text-align:center
+}
+
+.featured.title {
+    font-size: 22px;
+    text-align: center;
+    display: block;
+}
+    
+}
+
+/* Guides */
+
+.exampleBlock {
+    border-bottom:1px solid rgb(240,240,240);
+    display: none /* Delete this when Kitura Sample has new homepage */
+}
+
+.exampleBlock h1 {
+    font-size:28px;
+    text-align:center;
+    border-bottom:0px;
+    margin-top:0px;
+    display:block;
+    font-weight: 500;
+}
+
+.example-para {
+     text-align: center;
+}
+.exampleBlock img {
+    padding-top:10px; 
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.exampleBlock p {
+    font-size:18px;
+    text-align:center;
+    padding-bottom:10px;
+}
+
+.cloud-logo {
+    width:60px;
+    display: inline;
+    position: inherit;
+    padding-top: 2px;
+    padding-bottom: 10px;
+}
+
+.big-item {
+     border-bottom:1px solid rgb(240,240,240);
+}
+
+
 /* Documentation content CSS - version 2 additions */
 
 hr {
@@ -746,3 +868,5 @@ h2 a {
 #callout5 {top: 165px;}
 
 #callout6 {top: 190px;}
+    
+
