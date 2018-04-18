@@ -241,7 +241,7 @@ public init(secret: String, cookie: [CookieParameter]?=nil, store: Store?=nil)
 
 **Where**:
 
-- *secret*: is a String to be used for session encoding.This should be a large unguessable string. 
+- *secret*: is a String to be used for session encoding.This should be a large unguessable string.
     - Recommended minimum length is 14 characters.
     - The secret parameter is used to derive a pair of encryption and signature keys via PBKDF2 and a fixed IV to make the session id cookie be authenticated encrypted. The secret isn't used directly to encrypt or compute the MAC of the cookie.
 
@@ -258,4 +258,14 @@ public init(secret: String, cookie: [CookieParameter]?=nil, store: Store?=nil)
 
 To stop all data being lost on server restart, you can use [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) along with a redis server
 
-
+<section class="social-section">
+	<div class="social-link">
+		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<p class="social-header">Join the discussion on Slack</p>
+	</div>
+	<div  class="social-link">
+		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+		<p class="social-header">Star Kitura on GitHub</p>
+	</div>
+</section>

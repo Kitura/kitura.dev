@@ -201,7 +201,7 @@ li code {
 }
 
 /* Tutorials */
-    
+
 .featured {
     width:100%;
     margin:auto;
@@ -263,7 +263,7 @@ li code {
 .featured-item.right {
     float: none;
 }
-    
+
 .featured-item p {
     font-size:16px;
     text-align:center
@@ -274,7 +274,7 @@ li code {
     text-align: center;
     display: block;
 }
-    
+
 }
 
 /* Guides */
@@ -297,7 +297,7 @@ li code {
      text-align: center;
 }
 .exampleBlock img {
-    padding-top:10px; 
+    padding-top:10px;
     text-align: center;
     display: block;
     margin: auto;
@@ -321,6 +321,31 @@ li code {
      border-bottom:1px solid rgb(240,240,240);
 }
 
+.social-section {
+  font-size: 0;
+  margin-top: 50px;
+}
+
+.social-link {
+  display: inline-block;
+  width: 50%;
+}
+
+.social-image{
+  display: block;
+  margin: 0 auto;
+}
+
+.social-header {
+  text-align: center;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+  .social-header {
+    font-size: 12px;
+  }
+}
 
 /* Documentation content CSS - version 2 additions */
 
@@ -868,5 +893,3 @@ h2 a {
 #callout5 {top: 165px;}
 
 #callout6 {top: 190px;}
-    
-

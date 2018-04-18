@@ -22,7 +22,7 @@ Here are steps you can take for setting up your development environment for Kitu
 1. Install [Docker](https://docs.docker.com/engine/installation/) on your development system and start a Docker session/terminal.
 
 2. From the Docker session, pull down the `swift-ubuntu` image from Docker Hub:
-   
+
    `docker pull ibmcom/swift-ubuntu:latest`
 
 3. Create a Docker container using the `swift-ubuntu` image and mount the folder on your macOS system that contains the Kitura Swift package you are working on:
@@ -79,3 +79,15 @@ These are the steps to expose Kitura's port in a Docker container to the host (e
 7) Click `OK` and `OK` again to save the settings for the virtual machine.
 
 8) Open your browser and go to `http://localhost:8080`. You should see the Kitura welcome page.
+
+<section class="social-section">
+	<div class="social-link">
+		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<p class="social-header">Join the discussion on Slack</p>
+	</div>
+	<div  class="social-link">
+		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+		<p class="social-header">Star Kitura on GitHub</p>
+	</div>
+</section>
