@@ -1,42 +1,39 @@
 <header>
 
-	<div id="mobile-menu">
-		<div id="nav-button" class="fa fa-bars fa-2x button"></div>
-	</div>
+  <div id="mobile-menu">
+    <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
 
-	<section id="logo"><a href="/en/" class="kitura">Kitura</a>
-	</section>
+  <section id="logo"><a href="/en/" class="kitura">Kitura</a>
+  </section>
 
-	<div id="navbar">
-		<div id="navdiv">
-			<ul id="navmenu" class="menu">
+  <div id="navbar">
+    <div id="navdiv">
+      <ul id="navmenu" class="menu">
+        <li>
+          <a id="test" href="/{{ page.lang }}/starter/gettingstarted.html"{% if page.menu == 'starter' %} class="active"{% endif %}>Getting started</a>
+          <ul>
+            <li><a href="/{{ page.lang }}/starter/gettingstarted.html">Getting started</a></li>
+            <li><a href="/{{ page.lang }}/starter/generator.html">&gt; kitura create</a></li>
+            <li><a href="/{{ page.lang }}/starter/testing.html">Testing your apps</a></li>
+          </ul>
+        </li>
+        <li><a href="/{{ page.lang }}/resources/tutorials.html"{% if page.menu == 'resources' %} class="active"{% endif %}>Tutorials</a></li>
 
-				<li>
-					<a id="test" href="/{{ page.lang }}/starter/gettingstarted.html"{% if page.menu == 'starter' %} class="active"{% endif %}>Getting started</a>
-					<ul>
-						<li><a href="/{{ page.lang }}/starter/gettingstarted.html">Getting started</a></li>
-						<li><a href="/{{ page.lang }}/starter/generator.html">&gt; kitura create</a></li>
-						<li><a href="/{{ page.lang }}/starter/testing.html">Testing your apps</a></li>
+        <li><a href="/{{ page.lang }}/guides/guides.html"{% if page.menu == 'guides' %} class="active"{% endif %}>Guides</a></li>
 
-					</ul>
-				</li>
+        <li><a href="/{{ page.lang }}/api/"{% if page.menu == 'api' %} class="active"{% endif %}>API reference</a></li>
 
-				<li><a href="/{{ page.lang }}/resources/tutorials.html"{% if page.menu == 'resources' %} class="active"{% endif %}>Tutorials</a></li>
-                
-                <li><a href="/{{ page.lang }}/guides/guides.html"{% if page.menu == 'guides' %} class="active"{% endif %}>Guides</a></li>
+        <li><a href="https://developer.ibm.com/swift/blogs"{% if page.menu == 'blog' %} class="active"{% endif %}>Blog</a></li>
 
-				<li><a href="/{{ page.lang }}/api/"{% if page.menu == 'api' %} class="active"{% endif %}>API reference</a></li>
+        <li><a href="/{{ page.lang }}/support/support.html"{% if page.menu == 'support' %} class="active"{% endif %}>Support</a></li>
+      </ul>
+    </div>
+  </div>
 
-				<li><a href="https://developer.ibm.com/swift/blogs"{% if page.menu == 'blog' %} class="active"{% endif %}>Blog</a></li>
-
-				<li><a href="/{{ page.lang }}/support/support.html"{% if page.menu == 'support' %} class="active"{% endif %}>Support</a></li>
-
-			</ul>
-		</div>
-	</div>
-        <section id="social">
-		<a href="http://slack.kitura.io/" target="_blank" title="Join the Kitura community on Slack"><img src="/assets/slack.png" alt="Slack icon" width="22" height="22"/></a>
-		<a href="http://github.com/IBM-Swift/Kitura" target="_blank" title="Contribute to Kitura on GitHub"><img src="/assets/github.png" alt="GitHub icon" width="26" height="22"/></a>
-		<a href="https://stackoverflow.com/questions/tagged/kitura" target="_blank" title="Ask a Kitura question on StackOverflow"><img src="/assets/stackoverflow.png" alt="StackOverflow icon" width="22" height="22"/></a>
-        </section>
+  <section id="social">
+    <a href="http://slack.kitura.io/" target="_blank" title="Join the Kitura community on Slack"><img src="/assets/slack.png" alt="Slack icon" width="22" height="22"/></a>
+    <a href="http://github.com/IBM-Swift/Kitura" target="_blank" title="Contribute to Kitura on GitHub"><img src="/assets/github.png" alt="GitHub icon" width="22" height="22"/></a>
+    <a href="https://stackoverflow.com/questions/tagged/kitura" target="_blank" title="Ask a Kitura question on StackOverflow"><img src="/assets/stackoverflow.png" alt="StackOverflow icon" width="22" height="22"/></a>
+  </section>
 </header>
