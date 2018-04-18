@@ -70,14 +70,28 @@ If you want to add topics or update existing topics, please open an Issue or cre
             <p>This sub-heading, or one-sentence introduction, is optional</p>
         </div>
         
-- At the end of every new topic, add the following Markdown:
-
-        [info]: ../../assets/info-blue.png
-        [tip]: ../../assets/lightbulb-yellow.png
-        [warning]: ../../assets/warning-red.png
-
-    - This addition enables the use of styled callouts in the topic. You should include it, even if you do not plan to use styled callouts.
-    - Make sure that the relative path to the `assets` directory is accurate. Add or remove `../` until the path is accurate.
+- At the end of every new topic, add the following html:
+```html
+<section class="social-section">
+	<div class="social-link">
+		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<p class="social-header">Join the discussion on Slack</p>
+	</div>
+	<div  class="social-link">
+		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+		<p class="social-header">Star Kitura on GitHub</p>
+	</div>
+</section>
+```
+- and then the following Markdown: 
+```
+[info]: ../../assets/info-blue.png
+[tip]: ../../assets/lightbulb-yellow.png
+[warning]: ../../assets/warning-red.png
+```
+This addition enables the use of styled callouts in the topic. You should include it, even if you do not plan to use styled callouts.
+Make sure that the relative path to the `assets` directory is accurate. Add or remove `../` until the path is accurate.
 
 ---
 
