@@ -138,3 +138,15 @@ https://localhost:8080
 ```
 
 Notice the `https` in your URL!  You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
+
+<section class="social-section">
+	<div class="social-link">
+		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<p class="social-header">Join the discussion on Slack</p>
+	</div>
+	<div  class="social-link">
+		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+		<p class="social-header">Star Kitura on GitHub</p>
+	</div>
+</section>

@@ -87,4 +87,14 @@ With these endpoints, you can redirect users to `/login/facebook` to begin the l
 > ![tip] Make sure to whitelist `<your-app-domain>/login/facebook/callback` in your Facebook app’s developer settings in order to allow Facebook to redirect users back to your callback.
 
 That’s the basic setup for web-based Facebook login. Please refer to Kitura-CredentialsFacebook for more usage and configurations.
-
+<section class="social-section">
+	<div class="social-link">
+		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<p class="social-header">Join the discussion on Slack</p>
+	</div>
+	<div  class="social-link">
+		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+		<p class="social-header">Star Kitura on GitHub</p>
+	</div>
+</section>

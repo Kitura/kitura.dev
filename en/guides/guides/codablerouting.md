@@ -17,7 +17,7 @@ redirect_from: "/resources/codablerouting.html"
 
 
 
-## Introduction 
+## Introduction
 Kitura 2.0 introduces “Codable Routing”. Here the router handlers are much like normal functions you might define elsewhere in your code: they take struct or class types as parameters, and respond with stuct or class types via a completion handler, with just an additional requirement that those types implement [Codable](https://developer.apple.com/documentation/swift/codable) from Swift 4 (hence the name).
 
 Codable Routing isn’t suitable for every use case and scenario, so Raw Routing is still available where you need the power and flexibility, but it is perfect for building REST APIs such as you might want to do to build a Backend For Frontend (BFF) for an iOS app.
@@ -30,7 +30,7 @@ Building a Codable Route for a POST API to implement storing a ToDo item require
 router.post("/todos", handler: storeHandler)
 ```
 
-and then provide an implementation of the storeHandler: 
+and then provide an implementation of the storeHandler:
 
 ```swift
 func storeHandler(todo: ToDo, completion: (ToDo?, RequestError?) -> Void ) -> Void {
@@ -61,7 +61,7 @@ Here the ToDo struct would be updated to add an extra field:
 public struct ToDo : Codable {
     public var title: String       
     public var order: Int      
-    public var completed: Bool 
+    public var completed: Bool
     public var id: Int?         // Additional field for identifier
 }
 ```
@@ -75,7 +75,7 @@ func storeHandler(todo: ToDo, completion: (ToDo?, RequestError?) -> Void ) -> Vo
     todo.id = id
     todoStore.append(todo)
     completion(todo, nil)
-} 
+}
 ```
 
 * ### Responding with an additional Identifier value
@@ -107,18 +107,18 @@ func getOneHandler(id: Int, completion: (ToDo?, RequestError?) -> Void ) -> Void
 }
 ```
 
-Here the Kitura router itself parses the URI path, and converts the id into an Int before calling the handler. 
+Here the Kitura router itself parses the URI path, and converts the id into an Int before calling the handler.
 Similar to the way that you can specify incoming data parameters as a type that implements Codable, it is possible to specify identifier parameters as any type that implements Identifier – which is a protocol provided by Kitura.
 
 ## Building Identifiers with the Identifier Protocol
 Defining an Identifier for use with Codable Routing has two requirements. The first is that it must implement the Identifier protocol, creating an instance that can be used as an identifier from a string constructor.
 
 The following is an example of a custom Identifier called `Item`:
-```swift 
+```swift
 public struct Item: Identifier {
     public var value: String
     public let id: Int
- 
+
     public init(value: String) throws {
         if let id = Int(value) {
             self.id = id
@@ -142,10 +142,10 @@ In order to simplify this as much as possible, Kitura also provides [KituraKit](
 With KituraKit it becomes possible to share and import your Codable and Identifier types and use KituraKit to make client calls to the Kitura server with matching APIs. The following code makes a Read (GET) call from the client to the Kitura server using KituraKit:
 ```swift
 let client = KituraKit(baseURL: "http://localhost:8080")
- 
+
 let id = todo.id
 client.get("/todos", id: id, completion: completion)
- 
+
 func completion(todo: ToDo?, error: RequestError?) {
     guard error == nil else {
         print("Error reading ToDo item from Kitura: \(error!)")
@@ -167,6 +167,17 @@ The above examples are just fragments of what’s required to use Codable Routin
 
 * [FoodTracker Backend](https://github.com/IBM/FoodTrackerBackend)  
   This builds a Kitura backend for the FoodTracker iOS application that is provided as part of the Apple tutorials for building your first iOS app. This uses Codable Routing to build the server, and updates the FoodTracker iOS app with KituraKit to be able to store and retrieve data from the Kitura server.
-  
+
 * [ToDo Backend](https://github.com/IBM/ToDoBackend)  
   This builds a Kitura backend that passes the specification and tests for the ToDo web client using Codable Routing. Additionally we provide an example iOS app implementation of the ToDo web client that uses KituraKit to communicate with the Kitura server.
+  <section class="social-section">
+  	<div class="social-link">
+  		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+  		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+  		<p class="social-header">Join the discussion on Slack</p>
+  	</div>
+  	<div  class="social-link">
+  		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+  		<p class="social-header">Star Kitura on GitHub</p>
+  	</div>
+  </section>
