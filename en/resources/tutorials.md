@@ -42,11 +42,14 @@ redirect_from: "/resources/tutorials.html"
 <div class="featured">
     <p class="featured-header">Backend Tutorials</p>
     <div class="section-seperator"></div>
-    <a href="https://github.com/IBM-Swift/Kitura-Sample"><div class="featured-item left">
+    
+    <a href="https://github.com/IBM/FoodTrackerBackend">
+    <div class="featured-item left">
         <p class="featured title">Food Tracker</p>
-        <p style="color: rgb(85, 85, 85);">Build a Kitura backend for the Apple FoodTracker iOS application.</p>
+        <p style="color: rgb(85, 85, 85)">Build a Kitura backend for the Apple FoodTracker iOS application.</p>
         <img class="featured-img" src="../../assets/FoodTrackerBezel.png" alt="Food Tracker" width="160px">
         </div></a>
+    
     <a href="https://github.com/IBM/ToDoBackend">
     <div class="featured-item right">
         <p class="featured title">Todo Backend</p>

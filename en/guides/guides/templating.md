@@ -537,7 +537,7 @@ If you'd like to see a Stencil template engine in use in an iOS app checkout our
 <section class="social-section">
 	<div class="social-link">
 		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
-		<img src="https://developer.ibm.com/swift/wp-content/uploads/sites/69/2018/01/slack-150x150.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<img src="../../../assets/slack.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
 		<p class="social-header">Join the discussion on Slack</p>
 	</div>
 	<div  class="social-link">
