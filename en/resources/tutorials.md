@@ -41,7 +41,7 @@ redirect_from: "/resources/tutorials.html"
 
 <div class="featured">
     <p class="featured-header">Backend Tutorials</p>
-    <div class="section-seperator"></div>
+    <div class="section-separator"></div>
     
     <a href="https://github.com/IBM/FoodTrackerBackend">
     <div class="featured-item left">
