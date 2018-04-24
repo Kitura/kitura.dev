@@ -25,15 +25,15 @@ redirect_from: "/resources/tutorials.html"
     <div class="section-seperator"></div>
     <a class="spotlight-link" href="https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift">
     <div class="spotlight-item">
-        <p class="spotlight-subheading">Ray Wunderlich | David Okun</p>
+        <p class="spotlight-subheading">David Okun | raywenderlich.com</p>
         <p class="featured title">Kitura Tutorial: Getting Started with Server Side Swift</p>
-        <img class="spotlight-banner" src="../../assets/wunderlich-hero.png">
+        <img class="spotlight-banner" src="../../assets/wenderlich-hero.png">
     </div></a>
     <a class="spotlight-link" href="https://www.raywenderlich.com/181130/kitura-stencil-tutorial-how-to-make-websites-with-swift">
     <div class="spotlight-item" style="background-color: rgb(0, 104, 55)">
-        <p class="spotlight-subheading">Ray Wunderlich | David Okun</p>
+        <p class="spotlight-subheading">David Okun | raywenderlich.com</p>
         <p class="featured title">Kitura Stencil Tutorial: How to make Websites with Swift</p>
-        <img class="spotlight-banner" src="../../assets/wunderlich-hero2.png">
+        <img class="spotlight-banner" src="../../assets/wenderlich-hero2.png">
     </div></a>
 </div>
 
