@@ -22,7 +22,7 @@ redirect_from: "/resources/tutorials.html"
 <div class="spotlight">
     <p class="featured-header">Spotlight<img class="new-icon" src="../../assets/new-icon.png"/></p>
     
-    <div class="section-seperator"></div>
+    <div class="section-separator"></div>
     <a class="spotlight-link" href="https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift">
     <div class="spotlight-item">
         <p class="spotlight-subheading">David Okun | raywenderlich.com</p>
