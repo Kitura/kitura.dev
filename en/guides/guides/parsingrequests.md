@@ -71,7 +71,7 @@ router.all("/name", middleware: BodyParser())
 
 ```swift
 router.post("/name") { request, response, next in
-    guard let parsedBody = request.body, let jsonBody = parsedBody.asJSON else {
+    guard let jsonBody = request.body?.asJSON else {
         next()
         return
     }
