@@ -90,13 +90,14 @@ router.get("/") {
 
 * Learn how to build a back-end for the [Apple FoodTracker iOS application](https://github.com/IBM/FoodTrackerBackend).
 
-<hr>
-If you like what you've seen of Kitura so far, star the repository by clicking the button below.
-
-<iframe src="https://ghbtns.com/github-btn.html?user=IBM-Swift&repo=Kitura&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-
-Join in the conversation on Slack.
-
-<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
-<img src="../../assets/slack.png" alt="Slack" width="50"/>
-</a>
+<section class="social-section">
+	<div class="social-link">
+		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
+		<img src="../../../assets/slack.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
+		<p class="social-header">Join the discussion on Slack</p>
+	</div>
+	<div  class="social-link">
+		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+		<p class="social-header">Star Kitura on GitHub</p>
+	</div>
+</section>
