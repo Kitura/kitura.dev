@@ -6,7 +6,8 @@ layout: page
 title: Templating
 menu: resources
 lang: en
-redirect_from: "/resources/templating.html"
+redirect_from: 
+    - "/en/resources/tutorials/templating.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

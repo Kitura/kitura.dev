@@ -6,7 +6,8 @@ layout: page
 title: Parsing Requests
 menu: resources
 lang: en
-redirect_from: "/resources/parsingrequests.html"
+redirect_from: 
+    - "/en/resources/tutorials/parsingrequests.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

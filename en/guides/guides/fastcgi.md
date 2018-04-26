@@ -6,7 +6,8 @@ layout: page
 title: Kitura FastCGI
 menu: resources
 lang: en
-redirect_from: "/resources/fastcgi.html"
+redirect_from: 
+    - "/en/resources/tutorials/fastcgi.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
