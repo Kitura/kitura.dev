@@ -8,6 +8,8 @@ menu: resources
 lang: en
 redirect_from: 
     - "/en/resources/tutorials/ssl.html"
+    - "/resources/tutorials/ssl.html"
+    - "/guides/ssl.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

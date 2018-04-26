@@ -8,6 +8,8 @@ menu: resources
 lang: en
 redirect_from: 
     - "/en/resources/tutorials/templating.html"
+    - "/resources/tutorials/templating.html"
+    - "/guides/templating.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

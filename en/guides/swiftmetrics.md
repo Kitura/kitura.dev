@@ -8,6 +8,8 @@ menu: resources
 lang: en
 redirect_from: 
     - "/en/resources/tutorials/swiftmetrics.html"
+    - "/resources/tutorials/swiftmetrics.html"
+    - "/guides/swiftmetrics.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

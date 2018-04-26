@@ -8,6 +8,8 @@ menu: resources
 lang: en
 redirect_from: 
     - "/en/resources/tutorials/staticcontent.html"
+    - "/resources/tutorials/staticcontent.html"
+    - "/guides/staticcontent.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

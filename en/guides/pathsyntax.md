@@ -8,6 +8,8 @@ menu: resources
 lang: en
 redirect_from: 
     - "/en/resources/tutorials/pathsyntax.html"
+    - "/resources/tutorials/pathsyntax.html"
+    - "/guides/pathsyntax.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
