@@ -18,8 +18,12 @@ redirect_from: "/starter/generator/getting_started.html"
 	<p>Use the <b>kitura create</b> command to create scaffolding for a simple Kitura web application.	</p>
 </div>
 
-> ![warning] Make sure you have installed the command-line tools as described in
-> [Installation](installation.html) before you begin.
+> ![warning] Make sure you have installed the command-line tools and prerequisites as described in
+> [Getting Started](../gettingstarted.html) before you begin.
+
+> ![tip] When accessing the command line remotely, using a terminal emulator such as [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/),
+> check that your terminal's character encoding matches the remote system - for example, `UTF8`.
+> Otherwise, interactive prompts and highlighting at the command line may not be rendered correctly.
 
 ---
 <span class="arrow">&#8227;</span> First, run the Kitura application generation (see [Command line tools](command_line_tools.html)):

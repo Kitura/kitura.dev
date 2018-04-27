@@ -27,8 +27,6 @@ redirect_from: "/starter/generator.html"
 
 ### [Getting started](/{{ page.lang }}/starter/generator/getting_started.html)
 
-### [Installing](/{{ page.lang }}/starter/generator/installation.html)
-
 ### [Core concepts](/{{ page.lang }}/starter/generator/core_concepts.html)
 
 ---
@@ -49,6 +47,8 @@ redirect_from: "/starter/generator.html"
 ## Reference
 
 ### [Command-line Tools](/{{ page.lang }}/starter/generator/command_line_tools.html)
+
+### [Advanced Command-line Tools](/{{ page.lang }}/starter/generator/command_line_tools_for_linux.html)
 
 ### [Prompt reference](/{{ page.lang }}/starter/generator/prompts.html)
 

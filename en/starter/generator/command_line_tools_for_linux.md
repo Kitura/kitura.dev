@@ -14,14 +14,15 @@ redirect_from: "/starter/generator/command_line_tools_for_linux.html"
 [warning]: ../../../assets/warning-red.png
 
 <div class="titleBlock">
-	<h1>Command-line tools</h1>
+	<h1>Advanced Command-line tools</h1>
 	<p>This article summarizes Swift Server Generator CLI tool commands.</p>
 </div>
 
 The generator is an [npm](https://www.npmjs.com) module using the [Yeoman](http://yeoman.io/)
 library. This means that the generator is a plugin that is executed using the `yo` command-line
-front-end to Yeoman. Use the [installation instructions](installation.html) to ensure the
-generator and its prerequisites are installed correctly.
+front-end to Yeoman.  The `kitura` CLI sits on top of this as a convenience, but by invoking
+the `yo swiftserver` generator directly, you can access some more advanced features - such as the
+ability to refresh your generated application.
 
 > ![info] Note: The generator is also available indirectly using:
 >
@@ -29,6 +30,29 @@ generator and its prerequisites are installed correctly.
 > (uses v1.0.4 of the generator).
 > * [IBM Cloud Developer Tools CLI](https://console.ng.bluemix.net/docs/cloudnative/tutorial_web.html#tutorial/) via `bx dev create`  
 > (only supports scaffolded applications).
+
+## Installation
+
+<span class="arrow">&#8227;</span> Install [Prerequisites](/{{ page.lang }}/starter/settingup.html).
+
+<span class="arrow">&#8227;</span> Complete the following steps to install Swift Server Generator:
+
+1.  Open a Terminal window.
+
+2.  You will need the Yeoman command line utility [yo](https://github.com/yeoman/yo) installed in your global Node.js module directory:
+
+        $ npm install -g yo
+
+3.  To install [Swift Server Generator](https://github.com/IBM-Swift/generator-swiftserver), run the following command:
+
+        $ npm install -g generator-swiftserver
+
+> ![info] Note: Swift Server Generator is supported only on the following operating systems:
+>
+> -   Ubuntu Linux 14.04 LTS
+> -   Ubuntu Linux 16.04 LTS
+
+## Usage
 
 You can run the generator use the following command:
 

@@ -60,6 +60,8 @@ $ sudo apt-get install libssl1.0-dev
 $ export PATH=<path to uncompressed tar contents>/usr/bin:$PATH
 ```
 
+<span class="arrow">&#8227;</span> The Kitura CLI requires Node.js. If you do not already have Node.js installed, you can [download the pre-built installer](https://nodejs.org/en/download/) for your platform.
+
 <hr>
 ## Next Steps
 

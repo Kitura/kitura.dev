@@ -21,7 +21,7 @@ redirect_from: "/starter/generator/docker_container_tutorial.html"
 **Prerequisities:**
 
 > ![warning] Make sure you have installed the command-line tools as described in
-> [Installation](installation.html) before you begin.
+> [Getting Started](../gettingstarted.html) before you begin.
 
 ---
 

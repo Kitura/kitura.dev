@@ -17,7 +17,7 @@ redirect_from: "/starter/generator/core_concepts.html"
 	<h1>Core concepts</h1>
 </div>
 
-The `kitura create` command creates a Kitura Swift application based on the [project type](#project-type), [capabilities](#capabilities) and [services](#services) you select. To do this, use the [command-line tools](command_line_tools.html) provided by [installing the generator](installation.html).
+The `kitura create` command creates a Kitura Swift application based on the [project type](#project-type), [capabilities](#capabilities) and [services](#services) you select.
 
 ## Project type
 
