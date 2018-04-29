@@ -20,10 +20,10 @@ redirect_from: "/guides/"
 </div>
 
 <div class="exampleBlock">
-    <h1><a href="https://github.com/IBM-Swift/Kitura-Sample">Example Kitura Project</a></h1>
+    <h1><a href="https://github.com/IBM-Swift/Kitura-Sample" target="_blank">Example Kitura Project</a></h1>
     <p class="example-para">View the Kitura Sample project, which includes code examples of loads of Kitura and IBM Swift features.</p>
-    <a href="https://kitura-sample-ibm.mybluemix.net"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%"/></a>
-    <p><a href="https://kitura-sample-ibm.mybluemix.net"><img class="cloud-logo" src="../../assets/IBM_Cloud_Logo.png" alt="IBM Cloud"/>Open in IBM Cloud</a></p>
+    <a href="https://kitura-sample-ibm.mybluemix.net" target="_blank"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%"/></a>
+    <p><a href="https://kitura-sample-ibm.mybluemix.net" target="_blank"><img class="cloud-logo" src="../../assets/IBM_Cloud_Logo.png" alt="IBM Cloud"/>Open in IBM Cloud</a></p>
 </div>
 
 <div class="big-item">
