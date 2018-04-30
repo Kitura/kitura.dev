@@ -21,7 +21,7 @@ redirect_from: "/guides/"
 
 <div class="exampleBlock">
     <h1><a href="https://github.com/IBM-Swift/Kitura-Sample" target="_blank">Example Kitura Project</a></h1>
-    <p class="example-para">View the Kitura Sample project, which includes code examples of Kitura and IBM Swift features.</p>
+    <p class="example-para">Check out the <a href="https://github.com/IBM-Swift/Kitura-Sample" target="_blank">Kitura Sample project</a>, which includes code examples of Kitura and IBM Swift features.</p>
     <a href="https://kitura-sample-ibm.mybluemix.net" target="_blank"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%"/></a>
     <p><a href="https://kitura-sample-ibm.mybluemix.net" target="_blank"><img class="cloud-logo" src="../../assets/IBM_Cloud_Logo.png" alt="IBM Cloud"/>Open in IBM Cloud</a></p>
 </div>
