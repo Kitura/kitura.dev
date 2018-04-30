@@ -6,7 +6,10 @@ layout: page
 title: Parsing Requests
 menu: resources
 lang: en
-redirect_from: "/resources/parsingrequests.html"
+redirect_from: 
+    - "/en/resources/tutorials/parsingrequests.html"
+    - "/resources/tutorials/parsingrequests.html"
+    - "/guides/parsingrequests.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
@@ -71,19 +74,12 @@ router.all("/name", middleware: BodyParser())
 
 ```swift
 router.post("/name") { request, response, next in
-    guard let parsedBody = request.body else {
+    guard let jsonBody = request.body?.asJSON else {
         next()
         return
     }
-
-    switch parsedBody {
-    case .json(let jsonBody):
-            let name = jsonBody["name"] as? String ?? ""
-            try response.send("Hello \(name)").end()
-    default:
-        break
-    }
-    next()
+    let name = jsonBody["name"] as? String ?? ""
+    try response.send("Hello \(name)").end()
 }
 ```
 <section class="social-section">

@@ -6,7 +6,10 @@ layout: page
 title: Credentials
 menu: resources
 lang: en
-redirect_from: "/resources/credentials.html"
+redirect_from: 
+    - "/en/resources/tutorials/credentials.html"
+    - "/resources/tutorials/credentials.html"
+    - "/guides/credentials.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

@@ -6,7 +6,10 @@ layout: page
 title: Codable Routing
 menu: resources
 lang: en
-redirect_from: "/resources/codablerouting.html"
+redirect_from: 
+    - "/en/resources/tutorials/codablerouting.html"
+    - "/resources/tutorials/codableoruting.html"
+    - "/guides/codablerouting.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

@@ -6,7 +6,7 @@ layout: page
 title: Kitura Tutorials
 menu: resources
 lang: en
-redirect_from: "/resources/tutorials.html"
+redirect_from: "/tutorials/"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

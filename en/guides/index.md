@@ -6,7 +6,7 @@ layout: page
 title: Kitura Programming Guides
 menu: guides
 lang: en
-redirect_from: "/guides/guides.html"
+redirect_from: "/guides/"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
@@ -20,45 +20,45 @@ redirect_from: "/guides/guides.html"
 </div>
 
 <div class="exampleBlock">
-    <h1><a href="https://github.com/IBM-Swift/Kitura-Sample">Example Kitura Project</a></h1>
-    <p class="example-para">View the Kitura Sample project, which includes code examples of loads of Kitura and IBM Swift features.</p>
-    <a href="https://kitura-sample-ibm.mybluemix.net"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%"/></a>
-    <p><a href="https://kitura-sample-ibm.mybluemix.net"><img class="cloud-logo" src="../../assets/IBM_Cloud_Logo.png" alt="IBM Cloud"/>Open in IBM Cloud</a></p>
+    <h1><a href="https://github.com/IBM-Swift/Kitura-Sample" target="_blank">Example Kitura Project</a></h1>
+    <p class="example-para">Check out the <a href="https://github.com/IBM-Swift/Kitura-Sample" target="_blank">Kitura Sample project</a>, which includes code examples of Kitura and IBM Swift features.</p>
+    <a href="https://kitura-sample-ibm.mybluemix.net" target="_blank"><img src="../../assets/example_spread.png" alt="Example Screens" width="75%"/></a>
+    <p><a href="https://kitura-sample-ibm.mybluemix.net" target="_blank"><img class="cloud-logo" src="../../assets/IBM_Cloud_Logo.png" alt="IBM Cloud"/>Open in IBM Cloud</a></p>
 </div>
 
 <div class="big-item">
     <h2>Adding Routing and Requests</h2>
-    <h3><a href="/{{ page.lang }}/guides/guides/codablerouting.html">Codable Routing</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/codablerouting.html">Codable Routing</a></h3>
     <p>Learn how to use Codable routing to build REST APIs.</p>
     
-    <h3><a href="/{{ page.lang }}/guides/guides/parsingrequests.html">Parsing Requests</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/parsingrequests.html">Parsing Requests</a></h3>
     <p>Learn how to parse query and URL parameters and also JSON requests.</p>
 
-    <h3><a href="/{{ page.lang }}/guides/guides/responsehandlers.html">Special Types of Response Handlers</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/responsehandlers.html">Special Types of Response Handlers</a></h3>
     <p>Learn how to define response handlers for complex routes.</p>
     
-    <h3><a href="/{{ page.lang }}/guides/guides/pathsyntax.html">Writing Custom Paths</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/pathsyntax.html">Writing Custom Paths</a></h3>
     <p>Learn how to define routes using custom paths, including parameters for complex routes.</p>
     
-    <h3><a href="/{{ page.lang }}/guides/guides/staticcontent.html">Serving Static Content</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/staticcontent.html">Serving Static Content</a></h3>
     <p>Learn how to serve static content, such as a static website.</p>
 </div>
 
 <div class="big-item">
     <h2>Security</h2>
-    <h3><a href="/{{ page.lang }}/guides/guides/credentials.html">Adding Authentication with Kitura-Credentials</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/credentials.html">Adding Authentication with Kitura-Credentials</a></h3>
     <p>Learn how to add intergration with Facebook OAuth authentication.</p>
     
-    <h3><a href="/{{ page.lang }}/guides/guides/sessions.html">Adding Sessions with Kitura-Session</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/sessions.html">Adding Sessions with Kitura-Session</a></h3>
     <p>Learn how to save user data with a session plugin.</p>
 
-    <h3><a href="/{{ page.lang }}/guides/guides/ssl.html">Enabling SSL/TLS on Kitura</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/ssl.html">Enabling SSL/TLS on Kitura</a></h3>
     <p>Learn how to enable SSL and TLS on Kitura to enhance the security of your application.</p>
 </div>
 
 <div class="big-item">
     <h2>Monitoring and Diagnostics</h2>
-    <h3><a href="/{{ page.lang }}/guides/guides/swiftmetrics.html">Adding Monitoring with Application Metrics for Swift</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/swiftmetrics.html">Adding Monitoring with Application Metrics for Swift</a></h3>
     <p>Learn how to add monitoring with Application Metrics for Swift (Swift Metrics) to visualise throughput and performance.</p>
 </div>
 
@@ -73,10 +73,10 @@ redirect_from: "/guides/guides.html"
 
 <div>
     <h2>Other Topics</h2>
-    <h3><a href="/{{ page.lang }}/guides/guides/templating.html">Using Templating Engines with Kitura</a></h3>
+    <h3><a href="/{{ page.lang }}/guides/templating.html">Using Templating Engines with Kitura</a></h3>
     <p>This guide shows you how to use popular templating engines such as Mustache and Stencil in Kitura.</p> 
     
-    <h3><a href="/{{ page.lang }}/guides/guides/fastcgi.html">Using FastCGI with Kitura</a> (Linux only)</h3>
+    <h3><a href="/{{ page.lang }}/guides/fastcgi.html">Using FastCGI with Kitura</a> (Linux only)</h3>
     <p>Kitura on Linux supports FastCGI 1.0 and has been tested with both Nginx and Apache.</p> 
 </div>
 

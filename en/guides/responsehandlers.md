@@ -6,7 +6,10 @@ layout: page
 title: Response Handlers
 menu: resources
 lang: en
-redirect_from: "/resources/responsehandlers.html"
+redirect_from: 
+    - "/en/resources/tutorials/responsehandlers.html"
+    - "/resources/tutorials/responsehandlers.html"
+    - "/guides/responsehandlers.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

@@ -6,7 +6,10 @@ layout: page
 title: Serving Static Content
 menu: resources
 lang: en
-redirect_from: "/resources/staticcontent.html"
+redirect_from: 
+    - "/en/resources/tutorials/staticcontent.html"
+    - "/resources/tutorials/staticcontent.html"
+    - "/guides/staticcontent.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 

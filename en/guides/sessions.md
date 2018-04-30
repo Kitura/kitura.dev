@@ -6,7 +6,10 @@ layout: page
 title: Sessions
 menu: resources
 lang: en
-redirect_from: "/resources/sessions.html"
+redirect_from: 
+    - "/en/resources/tutorials/sessions.html"
+    - "/resources/tutorials/sessions.html"
+    - "/guides/sessions.html"
 ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
 ---
 
