@@ -263,7 +263,7 @@ The connection details for this client are loaded by the configuration boilerpla
 #### Watson Conversation IBM Cloud Service
 This service uses the [Watson Swift SDK package](https://github.com/watson-developer-cloud/swift-sdk), which allows Kitura applications to build Watson-powered applications, specifically in this case the IBM Watson Conversation service.
 
-With the IBM Watson Conversation service you can create cognitive agents--virtual agents that combine machine learning, natural language understanding, and integrated dialog scripting tools to build outstanding projects, such as a chat room with an integrated Watson chat bot.
+With the IBM Watson Conversation service you can create an AI assistant that combines machine learning, natural language understanding, and integrated dialog scripting tools to build outstanding projects, such as a chat room with an integrated Watson chat bot.
 
 Boilerplate code for creating a client object for the Watson Conversation API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
 
@@ -283,9 +283,10 @@ The connection details for this client are loaded by the [configuration](#config
 A quick start guide to the Alert Notification Service on IBM Cloud can be found  [here](https://www.ibm.com/blogs/bluemix/2015/12/quick-start-guide-to-alert-notification-service/).
 
 #### Push Notifications IBM Cloud Service
-This service uses the [Push notifications package](https://github.com/ibm-bluemix-mobile-services/bms-pushnotifications-serversdk-swift), which is a Swift server-side SDK for sending push notifications via the IBM Cloud Push Notifications services.
+This service uses the [Push notifications package](https://github.com/ibm-bluemix-mobile-services/bms-pushnotifications-serversdk-swift), which is a Swift server-side SDK for sending push notifications via the IBM Cloud Push Notifications service.
 
 Boilerplate code for creating a client object for the Push Notifications API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
 
 The connection details for this client are loaded by the [configuration](#configuration) code and are passed to the Push Notifications client in the boilerplate code.
 
+More information about the Push Notifications Service can be found in the [README](https://github.com/ibm-bluemix-mobile-services/bms-pushnotifications-serversdk-swift/blob/master/README.md).
