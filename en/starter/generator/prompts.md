@@ -182,6 +182,9 @@ ask which [services](core_concepts.html#services) you want to select.
   ◯ Object Storage
   ◯ AppID
   ◯ Auto-scaling
+  ◯ Watson Conversation
+  ◯ Alert Notifications
+  ◯ Push Notifications
 ```
 
 ## CRUD store prompt

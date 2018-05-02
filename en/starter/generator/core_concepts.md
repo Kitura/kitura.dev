@@ -230,6 +230,13 @@ Boilerplate code for creating a client object for the Kitura-redis API is includ
 
 The connection details for this client are loaded by  the configuration boilerplate code and are passed to the Kitura-redis client.
 
+#### PostgreSQL IBM Cloud service
+This service uses the [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) which allows Kitura applications to interact with a PostgreSQL database.
+
+Boilerplate code for creating a client object for the Swift-Kuery-ORM is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
+
+The connection details for this client are loaded by the configuration boilerplate code and are passed to the PostgreSQL client.
+
 #### Object Storage IBM Cloud service
 This service uses the [Object Storage package](https://github.com/ibm-bluemix-mobile-services/bluemix-objectstorage-serversdk-swift.git) to connect to the IBM Cloud Object Storage service.
 
@@ -253,4 +260,33 @@ This service uses the [SwiftMetrics package](https://github.com/RuntimeTools/Swi
 
 The connection details for this client are loaded by the configuration boilerplate code and are passed to the SwiftMetrics auto-scaling client.
 
+#### Watson Conversation IBM Cloud Service
+This service uses the [Watson Swift SDK package](https://github.com/watson-developer-cloud/swift-sdk), which allows Kitura applications to build Watson-powered applications, specifically in this case the IBM Watson Conversation service.
 
+With the IBM Watson Conversation service you can create an AI assistant that combines machine learning, natural language understanding, and integrated dialog scripting tools to build outstanding projects, such as a chat room with an integrated Watson chat bot.
+
+Boilerplate code for creating a client object for the Watson Conversation API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
+
+The connection details for this client are loaded by the [configuration](#configuration) code and are passed to the Watson Conversation client in the boilerplate code.
+
+More information about the Watson Conversation can be found in the [README](https://github.com/watson-developer-cloud/swift-sdk#conversation).
+
+#### Alert Notification IBM Cloud Service
+This service uses the [Alert Notification Service SDK package](https://github.com/IBM-Swift/alert-notification-sdk), which allows Swift developers to utilize the Alert Notifications service in their applications, allowing for the proactive remediation of issues for applications running on IBM Cloud. Alerts and messages can be created, received and deleted through the use of this SDK.
+
+This SDK is for the consumption/usage of the Alert Notification service and not for administration of the service. Adding users, groups, notification policies, etc. should be done through the IBM Cloud dashboard.
+
+Boilerplate code for creating a client object for the Alert Notification API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
+
+The connection details for this client are loaded by the [configuration](#configuration) code and are passed to the Alert Notification client in the boilerplate code.
+
+A quick start guide to the Alert Notification Service on IBM Cloud can be found  [here](https://www.ibm.com/blogs/bluemix/2015/12/quick-start-guide-to-alert-notification-service/).
+
+#### Push Notifications IBM Cloud Service
+This service uses the [Push notifications package](https://github.com/ibm-bluemix-mobile-services/bms-pushnotifications-serversdk-swift), which is a Swift server-side SDK for sending push notifications via the IBM Cloud Push Notifications service.
+
+Boilerplate code for creating a client object for the Push Notifications API is included inside `Sources/Application/Application.swift` as an `internal` variable available for use anywhere in the `Application` module.
+
+The connection details for this client are loaded by the [configuration](#configuration) code and are passed to the Push Notifications client in the boilerplate code.
+
+More information about the Push Notifications Service can be found in the [README](https://github.com/ibm-bluemix-mobile-services/bms-pushnotifications-serversdk-swift/blob/master/README.md).
