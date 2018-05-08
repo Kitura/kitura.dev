@@ -8,9 +8,10 @@ Content on this site is licensed under the Apache Licence, Version 2.0.
 Topics in the English language can be found in the `en/` folder. Within this folder, topics for the website are written in Markdown, and are contained in folders that represent the website menu:
 
 - Getting started: `en/starter/`
-- Tutorials: `en/support/`
+- Tutorials: `en/tutorials/`
+- Guides: `en/guides/`
 - API: `en/api/`
-- Support: `en/resources/`
+- Support: `en/support/`
 
 If you want to add topics or update existing topics, please open an Issue or create a Pull request with your changes.
 
@@ -69,7 +70,7 @@ If you want to add topics or update existing topics, please open an Issue or cre
             <h1>Title of the topic</h1>
             <p>This sub-heading, or one-sentence introduction, is optional</p>
         </div>
-        
+
 - At the end of every new topic, add the following html:
 ```html
 <section class="social-section">
@@ -84,7 +85,7 @@ If you want to add topics or update existing topics, please open an Issue or cre
 	</div>
 </section>
 ```
-- and then the following Markdown: 
+- and then the following Markdown:
 ```
 [info]: ../../assets/info-blue.png
 [tip]: ../../assets/lightbulb-yellow.png
@@ -113,5 +114,3 @@ Follow these steps:
 	- `_includes/footer/footer-en.html`
 	- `_includes/notices/notices-en.html`
 7. Append `/{{ page.lang }}` to all the links within your pages.
-
-
