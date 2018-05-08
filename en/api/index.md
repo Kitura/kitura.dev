@@ -23,6 +23,7 @@ lang: en
 * [HeliumLogger](http://ibm-swift.github.io/HeliumLogger/)
 
 ## Client
+
 * [KituraKit](https://ibm-swift.github.io/KituraKit)
 
 ## Credentials
@@ -38,6 +39,7 @@ lang: en
 
 * [Kitura-Redis](http://ibm-swift.github.io/Kitura-redis/)
 * [Swift-Kuery](http://ibm-swift.github.io/Swift-Kuery/)
+* [Swift-Kuery-ORM](http://ibm-swift.github.io/Swift-Kuery-ORM/)
 
 ## Sessions
 
@@ -45,6 +47,7 @@ lang: en
 * [Kitura-Session-Redis](http://ibm-swift.github.io/Kitura-Session-Redis)
 
 ## Communications
+
 * [Kitura-WebSocket](http://ibm-swift.github.io/Kitura-WebSocket)
 
 ## Templating
