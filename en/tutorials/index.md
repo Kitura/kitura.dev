@@ -21,14 +21,15 @@ redirect_from: "/tutorials/"
 
 <div class="spotlight">
     <p class="featured-header">Spotlight<img class="new-icon" src="../../assets/new-icon.png"/></p>
-    
     <div class="section-separator"></div>
+    
     <a class="spotlight-link" href="https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift">
     <div class="spotlight-item">
         <p class="spotlight-subheading">David Okun | raywenderlich.com</p>
         <p class="featured title">Kitura Tutorial: Getting Started with Server Side Swift</p>
         <img class="spotlight-banner" src="../../assets/wenderlich-hero.png">
     </div></a>
+    
     <a class="spotlight-link" href="https://www.raywenderlich.com/181130/kitura-stencil-tutorial-how-to-make-websites-with-swift">
     <div class="spotlight-item" style="background-color: rgb(0, 104, 55)">
         <p class="spotlight-subheading">David Okun | raywenderlich.com</p>
@@ -48,14 +49,14 @@ redirect_from: "/tutorials/"
         <p class="featured title">Food Tracker</p>
         <p style="color: rgb(85, 85, 85)">Build a Kitura backend for the Apple FoodTracker iOS application.</p>
         <img class="featured-img" src="../../assets/FoodTrackerBezel.png" alt="Food Tracker" width="160px">
-        </div></a>
+    </div></a>
     
     <a href="https://github.com/IBM/ToDoBackend">
     <div class="featured-item right">
         <p class="featured title">Todo Backend</p>
         <p style="color: rgb(85, 85, 85)">Learn how to build a Kitura backend for the Todo-Backend project.</p>
         <img class="featured-img" src="../../assets/TodoBackend.png" alt="ToDoBackend" width="90%">
-        </div></a>
+    </div></a>
 </div>
  
 
@@ -87,8 +88,8 @@ redirect_from: "/tutorials/"
     <a href="https://swift-at-ibm.slack.com/messages/CAKNJL9K3">
     <div class="featured-item right"  style="background-color: white; height: 345px; z-index: 1;">
         <p class="featured title" style="margin: auto;">Submit Content</p>
-        <p style="color: rgb(85, 85, 85)">Feel your work belongs on kitura.io? Click here to Slack us a submission.</p>
-        <img class="featured-img" src="../../assets/plus.png" alt="Submit" width="40%" style="padding-top: 10px; opacity: 0.5; padding-bottom: 10px;">
-        <p style="z-index: 10; margin-top: 10px;"><a href="mailto:kye.maloy@ibm.com?Subject=Addition%20To%20Kitura.io">Don't have Slack? Send us an email.</a></p>
+        <p style="color: rgb(85, 85, 85)">Feel your work belongs on kitura.io?</p>
+        <img class="featured-img" src="../../assets/plus.png" alt="Submit" width="40%" style="padding-top: 30px; opacity: 0.5; padding-bottom: 10px;">
+        <p style="z-index: 10; margin-top: 10px;">Click here to Slack us a submission.</p>
     </div></a>
 </div>
