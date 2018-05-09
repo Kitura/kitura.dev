@@ -66,8 +66,8 @@ redirect_from: "/tutorials/"
     
     <a href="https://www.hackingwithswift.com/store/server-side-swift">
     <div class="featured-item left" style="background-color: rgb(0, 0, 0); height: 345px; padding-bottom: 0px;">
-        <p class="featured title" style="font-family: 'Raleway'; margin: auto;">Server-Side Swift</p>
-        <p style="color: white; font-family: 'Raleway';">This course teaches you everything you need to craft your own server-side APIs and websites, all using Swift.</p>
+        <p class="featured title" style="font-family: 'Raleway', 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'; margin: auto;">Server-Side Swift</p>
+        <p style="color: white; font-family: 'Raleway', 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';">This course teaches you everything you need to craft your own server-side APIs and websites, all using Swift.</p>
         <img class="featured-img" src="../../assets/Store%20Splash.png" alt="Hacking with Swift" width="100%" style="margin-bottom: 0;">
     </div></a>
     
