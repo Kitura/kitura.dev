@@ -206,6 +206,7 @@ li code {
     width:100%;
     margin:auto;
     height:400px;
+    margin-bottom: 90px;
 }
 
 .featured-header {
@@ -231,10 +232,9 @@ li code {
     background: rgb(250, 250, 250);
     box-shadow: 0px 0px 6px 3px rgb(220, 220, 220);
     padding-top: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 30px;
 }
     
-}
 
 .featured-item.left {
     float: left;
@@ -249,6 +249,8 @@ li code {
 .featured-item p {
     font-size:16px;
     text-align:center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .featured-img {
@@ -304,6 +306,12 @@ li code {
     width: 100%;   
 }
 
+.books {
+    width:100%;
+    margin:auto;
+    height: 380px;
+}
+
 
 @media all and (max-width: 899px) {
 .featured {
@@ -331,7 +339,7 @@ li code {
 
 .featured-item p {
     font-size:16px;
-    text-align:center
+    text-align:center;
 }
 
 .featured.title {
@@ -363,7 +371,12 @@ li code {
     margin-left: 10px;
     
 }
-    
+
+.books {
+    width:100%;
+    margin:auto;
+    height: 1530px;
+}
 
 }
 
