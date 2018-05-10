@@ -93,24 +93,24 @@ This provides a simple representation of a user that has two properties, a name 
 
 Now we have a model we can use, next we can create our Codable routes!
 
-### Registering a POST endpoint
-`POST` requests are used to send data to the server, but the server needs an `endpoint` for the request. That is, it needs to know what to do when a `POST` request comes in on a given URI. So how do we do this?  
+### Registering a POST route
+`POST` requests are used to send data to the server, but the server needs a `route` registered for the request. That is, the server needs to know what to do when a `POST` request comes in on a given URI. So how do we do this?  
+
+
 It can actually be done quite simply: 
 ```swift
 router.post("/users", handler: someHandler)
 ```
-What we're doing here is invoking the `post` method on the given `Router()` instance, providing a URI, `/users`, and a handler. We can ignore the handler for now, we will go into more detail about that shortly.  
+What we're doing here is invoking the `post` method on the given `Router()` instance, providing a URI, `/users`, and a handler.  
   
-By default `kitura init` sets the server to run on `http://localhost`.  
-When we provide a URI it is appended to the server's host address, so in our case our POST endpoint would be:  
+As we used `kitura init` to create the server it will be configured to run on `http://localhost`.  
+When we provide a URI it is appended to the server's host address, therefore in our case the POST endpoint would be:  
 ```
 http://localhost/users
 ```  
-What this is saying is, if a POST request is made to the server on the specified adderess then do something. That 'something' is where the handler comes in.  
-The handler, `someHandler` in our case, is a user defined function that contains some logic to be executed when a request is made on the given address:  
-```
-http://localhost/users
-```  
+This means, if a POST request is made to the server on the specified adderess then do something. That 'something' is where the handler comes in.  
+The handler, `someHandler` in our case, is a user defined function that contains some logic to be executed when a request is made on the given endpoint. 
+
 The function looks something like this:  
 ```swift
 func someHandler(user: User, completion: (User?, RequestError?) -> Void ) {
@@ -208,7 +208,7 @@ curl -X POST \
 ```
 In XCode you should see that an Error is logged in the output.
 
-### Registering a GET endpoint
+### Registering a GET route
 `GET` requests are used to retrieve data from a server. However we have a flaw in our server, it has no way of storing data for us to retrieve. So lets rectify that.  
 In `Application.swift` underneath the line:  
 `let cloudEnv = CloudEnv()`
@@ -241,19 +241,19 @@ func getAllHandler(completion: ([User]?, RequestError?) -> Void ) {
     completion(users, nil)
 }
 ```
-So unlike the `postHandler` we don't need to pass a `User` as a parameter here as we're not wanting to send anything to the server. We still have the completion closure though, this time accepting an array of `User`. This makes sense as we're 'getting' all users, and this could be one user or it could be many users.  
+Unlike the `postHandler` we don't need to pass a `User` as a parameter here as we're not wanting to send anything to the server. We still have the completion closure though, this time accepting an array of `User`. This makes sense as we're 'getting' all users, and this could be one user or it could be many users.  
 We need to convert our `userStore` dictionary to an array, a simple way of doing that is using the [map](https://developer.apple.com/documentation/swift/array/2908681-map) function Swift provides.  
-Once we have the array we can pass it to the completion, and thats it.  
+Once we have the array we can pass it to the completion, and that's it.  
 We've implemented our second route!  
 
 Like before we'll use `curl` to test that our routes work correctly (or use your preferred tool).  
-Start the server by running your XCode project and then open a terminal and run the following:  
+Start the server by running your Xcode project and then open a terminal and run the following:  
 ```
 curl -X GET \
   http://localhost:8080/users \
   -H 'content-type: application/json'
 ```
-In the terminal you should see the following: 
+In the terminal, we should see the following: 
 ```
 []%
 ```
@@ -279,6 +279,7 @@ You should now see:
 ```
 
 We have now posted data to a server, and then been able to retrieve it without having to write much code!  
+This guide has shown just how easy it is to implement a Kitura Server with Codable routing!  
 
 ## What next?
 
