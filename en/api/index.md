@@ -34,6 +34,7 @@ lang: en
 * [Kitura-CredentialsGoogle](http://ibm-swift.github.io/Kitura-CredentialsGoogle)
 * [Kitura-CredentialsHTTP](http://ibm-swift.github.io/Kitura-CredentialsHTTP)
 * [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter) (Third-party implemented)
+* [Kitura-CredentialsDropbox](https://github.com/crspybits/CredentialsDropbox) (Third-party implemented)
 
 ## Persistence
 
