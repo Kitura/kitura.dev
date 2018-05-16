@@ -27,6 +27,10 @@ Open an issue or get involved and raise a pull request on [GitHub](https://githu
 
 Join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/).
 
+## Swift Forums
+
+Post to the Kitura category, as well as browse or submit new proposals for the language, all on the [Swift Forums](https://forums.swift.org/c/related-projects/kitura).
+
 ## Stack Overflow
 
 Use the `kitura` tag to search for questions and answers on [Stack Overflow](https://stackoverflow.com/search?q=kitura).
