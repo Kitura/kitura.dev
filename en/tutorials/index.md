@@ -71,7 +71,7 @@ redirect_from: "/tutorials/"
         <img class="featured-img" src="../../assets/Store%20Splash.png" alt="Hacking with Swift" width="100%" style="margin-bottom: 0;">
     </div></a>
     
-    <a href="https://nocturnalsolutions.gitbooks.io/kitura-book/content/">
+    <a href="https://learnkitura.com/">
     <div class="featured-item right"  style="overflow: hidden; height: 345px;">
         <p class="featured title" style="margin: auto;">Kitura Until Dawn</p>
         <p style="color: rgb(85, 85, 85)">Detailed guide on using the Kitura framework, authored by Nocturnal, a member of the Swift community.</p>
