@@ -38,8 +38,8 @@ h2 {
 }
 
 h3 {
+  font-size: 1.5em;
   font-weight: 400;
-  margin: 1.5em 0 -0.5em;  /* Reduces the space between links and paragraphs on Tutorials page. Avoid H3 in other contexts. */
 }
 
 .content {
