@@ -26,10 +26,12 @@ To create a TypeSafeSession, declare a `final class` that conforms to the `TypeS
 final class MySession: TypeSafeSession {
 
     let sessionId: String                       // Requirement: every session must have an ID
+    var books: [Book]                           // User-defined type, where Book conforms to Codable
     
     init(sessionId: String) {                   // Requirement: must be able to create a new (empty)
-        self.sessionId = sessionId              // session containing just an ID. Any non-optional 
-    }                                           // properties should be assigned default / empty values.
+        self.sessionId = sessionId              // session containing just an ID. Assign a default or
+        books = []                              // empty value for any non-optional properties.
+    }
 }
 
 // Defines the configuration of the user's type: how the cookie is constructed, and how the session is
@@ -40,159 +42,51 @@ extension MySession {
 }
 ```
 
+The minimum requirements for a `TypeSafeSession` are:
+- a `sessionId: String`,
+- an initializer that creates a new session from a new `sessionId`,
+- a `sessionCookie: SessionCookie` that defines the name of the cookie and the secret data used to encrypt it, 
+- an optional `store: Store?` that defines how sessions should be persisted.
 
+If `store` is not assigned, then a default in-memory store is used. [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) is an example of a persistent store for sessions, which supports expiry.
 
-
-
-
-and then provide an implementation of the storeHandler:
+The `MySession` type can then be included in the application's Codable route handlers. For example:
 
 ```swift
-func storeHandler(todo: ToDo, completion: (ToDo?, RequestError?) -> Void ) -> Void {
-    todoStore.append(todo)
-    completion(todo, nil)
+router.get("/cart") { (session: MySession, respondWith: ([Book]?, RequestError?) -> Void) -> Void in
+    respondWith(session.books, nil)
 }
-```
 
-Here the store handler accepts a todo item of type `ToDo` and responds using an asynchronous completion handler. The handler then stores the received todo item in the todoStore and returns with the created todo item in the case of success, and an `Error` in the the case of failure.
-
-The input parameter and the response parameter in completion handler can be any Swift type you want, as long as it conforms to Codable. For example, we could use the following as our `ToDo` type:
-
-```swift
-public struct ToDo : Codable {
-    public var title: String        // title of the todo item
-    public var order: Int           // order to display the todo item
-    public var completed: Bool      // has the item been completed
-}
-```
-
-At this point the server has stored the item, but the client has no way of referring to that specific item on the server if it wants to get, update, or delete that item. In order to do that, some kind of unique identifier is required.
-
-Returning an identifier to the client for the stored data is typically done in one of two ways:
-
-* ### Adding an additional Optional field to the type
-Here the ToDo struct would be updated to add an extra field:
-```swift
-public struct ToDo : Codable {
-    public var title: String       
-    public var order: Int      
-    public var completed: Bool
-    public var id: Int?         // Additional field for identifier
-}
-```
-
-And the storeHandler function would then set it:
-
-```swift
-func storeHandler(todo: ToDo, completion: (ToDo?, RequestError?) -> Void ) -> Void {
-    var todo = todo
-    let id = todoStore.count
-    todo.id = id
-    todoStore.append(todo)
-    completion(todo, nil)
-}
-```
-
-* ### Responding with an additional Identifier value
-Alternatively you can choose to respond with an additional value in the completion handler that conforms to the Identifier protocol, which String and Int have been extended to conform to already. The additional identifier value is then written into the “Location” header of the response.
-
-Here the storeHandler would become the following:
-```swift
-func storeHandler(todo: ToDo, completion: (Int?, ToDo?, RequestError?) -> Void ) -> Void {
-    var todo = todo
-    let id = todoStore.count
-    todoStore.append(todo)
-    completion(id, todo, nil)
-}
-```
-
-## Building a Read API for GET requests
-
-Now that the Kitura application can store a `ToDo` item and inform the client where it is, there needs to be a REST API to allow the client to read it. This is done by registering a handler for GET requests on ‘/todos/id’.
-
-```swift
-router.get("/todos", handler: getOneHandler)
-```
-
-The registration of the handler is only against the “/todos” path, but we also need to accept an id sent from the client. This id is then appended to the URI to create the full '/todos/id' URI, you do not need to append the id. This is done in the handler itself:
-
-```swift
-func getOneHandler(id: Int, completion: (ToDo?, RequestError?) -> Void ) -> Void {
-    completion(todoStore[id], nil)
-}
-```
-
-Here the Kitura router itself parses the URI path, and converts the id into an Int before calling the handler.
-Similar to the way that you can specify incoming data parameters as a type that implements Codable, it is possible to specify identifier parameters as any type that implements Identifier – which is a protocol provided by Kitura.
-
-## Building Identifiers with the Identifier Protocol
-Defining an Identifier for use with Codable Routing has two requirements. The first is that it must implement the Identifier protocol, creating an instance that can be used as an identifier from a string constructor.
-
-The following is an example of a custom Identifier called `Item`:
-```swift
-public struct Item: Identifier {
-    public var value: String
-    public let id: Int
-
-    public init(value: String) throws {
-        if let id = Int(value) {
-            self.id = id
-            self.value = value
-        } else {
-            throw IdentifierError.invalidValue
-        }
+router.post("/cart") { (session: MySession, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
+    session.books.append(book)
+    do {
+        try session.save()
+        respondWith(book, nil)
+    } catch {
+        Log.error("Unable to persist session: \(error.localizedDescription)")
+        respondWith(nil, .internalServerError)
     }
 }
 ```
 
-The second requirement is that the original String used in the constructor must be stored in the value field. The reason for this is to allow the Identifier to be used with data types, APIs, and the KituraKit client.
+Here the cart accepts a book item of type `Book`, appends the book to the list of books in the session, and responds with the book that was added, or a `RequestError.internalServerError` if the session could not be saved (such as a failure of the session store).
 
-## Sharing code with the client using KituraKit
-Because the Codable Handlers that are registered with the Router do not use complex RouterRequest and RouterResponse objects but instead work with concrete Swift Types, it becomes must easier to share code between the client and the server.
+## Saving a session
 
-The ease with which you can share code (including the Codable Types), depends on the client connection library used. If the client library does not support passing Codable types directly, then the types need to be encoded to JSON manually using `JSONEncoder.encode()`, and the responses decoded using JSONDecoder.decode(). Additionally the Identifiers need to be encoded into the URL.
+Note that it is currently necessary to save the session explicitly when updates have been made:
 
-In order to simplify this as much as possible, Kitura also provides [KituraKit](https://github.com/IBM-Swift/KituraKit): a pure-Swift client library that can be used on both iOS and Linux that mirrors the Kitura Router API as closely as possible in order to maximize code sharing.
-
-With KituraKit it becomes possible to share and import your Codable and Identifier types and use KituraKit to make client calls to the Kitura server with matching APIs. The following code makes a Read (GET) call from the client to the Kitura server using KituraKit:
 ```swift
-let client = KituraKit(baseURL: "http://localhost:8080")
-
-let id = todo.id
-client.get("/todos", id: id, completion: completion)
-
-func completion(todo: ToDo?, error: RequestError?) {
-    guard error == nil else {
-        print("Error reading ToDo item from Kitura: \(error!)")
-        return
-    }
-    guard let todo = todo else {
-        print("Error reading todo from Kitura, no error and no response")
-        return
-    }
-    print("Read \(todo.title) from Kitura server")
-}
+    try session.save()
 ```
 
-To see an example of KituraKit in use you can check out the [sample app](https://github.com/IBM-Swift/iOSSampleKituraKit)!
+It is planned to introduce an automatic save feature at a later time that a `TypeSafeSession` type can opt in to.
 
-## Building a real REST API with Codable Routing and KituraKit
+## Terminating a session 
 
-The above examples are just fragments of what’s required to use Codable Routing to implement a real RESTful API, and KituraKit to share code and exploit it from a Swift client. The following provide two step-by-step tutorials for building a real API:
+To explicitly terminate a session, removing it from the store, call:
 
-* [FoodTracker Backend](https://github.com/IBM/FoodTrackerBackend)  
-  This builds a Kitura backend for the FoodTracker iOS application that is provided as part of the Apple tutorials for building your first iOS app. This uses Codable Routing to build the server, and updates the FoodTracker iOS app with KituraKit to be able to store and retrieve data from the Kitura server.
+```swift
+    try session.destroy()
+```
 
-* [ToDo Backend](https://github.com/IBM/ToDoBackend)  
-  This builds a Kitura backend that passes the specification and tests for the ToDo web client using Codable Routing. Additionally we provide an example iOS app implementation of the ToDo web client that uses KituraKit to communicate with the Kitura server.
-  <section class="social-section">
-  	<div class="social-link">
-  		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
-  		<img src="../../../assets/slack.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
-  		<p class="social-header">Join the discussion on Slack</p>
-  	</div>
-  	<div  class="social-link">
-  		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
-  		<p class="social-header">Star Kitura on GitHub</p>
-  	</div>
-  </section>
+This removes the session from the store, or throws an error if there was a failure of the session store.
