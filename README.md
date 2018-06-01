@@ -8,20 +8,10 @@ We welcome all improvements to this website.  Please see our [Contributing guide
 ## Local setup
 If you want to preview this website locally, follow these steps:
 
-1. Obtain and install the following packages if you don't already have them: 
-	1. Node.js (or another javascript runtime)
-	2. Ruby
-	2. Bundler
-	3. Jekyll-redirect-from gem
-
-2. Run `bundle install`
-
-3. Start jekyll, by running `bundle exec jekyll serve`
-
-4. Open http://localhost:4000/ in your browser.
-
-For more information about Jekyll, see https://jekyllrb.com.
-
+1. Clone the `kitura.io` project onto your machine:
+`git clone https://github.com/IBM-Swift/kitura.io`
+2. Open the `index.html` which will open the home page. 
+`open index.html`
 
 ## Licence
 Apache Licence, Version 2.0
