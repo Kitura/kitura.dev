@@ -18,9 +18,9 @@ This guide steps you through using `TypeSafeHTTPBasic`, a `TypeSafeCredentials` 
 
 ## Adding TypeSafeHTTPBasic to your project
 
-1) Add `Kitura-CredentialsHTTP` to your `package.swift` dependencies:
+1) Add `Kitura-CredentialsHTTP` to your `Package.swift` dependencies:
 ```swift
-.package(url: "https://github.com/IBM-Swift/Kitura-CredentialsHTTP", from: "2.1.0"),
+.package(url: "https://github.com/IBM-Swift/Kitura-CredentialsHTTP.git", from: "2.1.0"),
 ```
 
 2) Add `CredentialsHTTP` to your Application targets:
