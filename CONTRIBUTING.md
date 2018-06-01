@@ -2,115 +2,141 @@
 
 Content on this site is licensed under the Apache Licence, Version 2.0.
 
-**Important**: If you clone this site to a Windows system you must configure Git to handle the correct line ending characters by running the following command:
-`git config --global core.autocrlf true`
+### All Changes
 
-Topics in the English language can be found in the `en/` folder. Within this folder, topics for the website are written in Markdown, and are contained in folders that represent the website menu:
+#### Create development environment
+1. Clone the kitura.io repo onto your machine:
+	`git clone https://github.com/IBM-Swift/kitura.io`
+2. Create a new branch for your development:
+	`git checkout -b <branch_Name>`
+3. Once changes have been made open a PR against master and link to the corresponding issue if applicable. 
 
-- Getting started: `en/starter/`
-- Tutorials: `en/tutorials/`
-- Guides: `en/guides/`
-- API: `en/api/`
-- Support: `en/support/`
+### Changing an existing guide
 
-If you want to add topics or update existing topics, please open an Issue or create a Pull request with your changes.
+Kitura.io is written in HTML, CSS and JS. 
 
----
+When editting existing topics you should adhere to the following guidelines. Doing so will provide styling for you.
 
-### Changing an existing topic
+#### Headings
+Use `<h1>` tags for the title of the page
 
-- If you add a link to another page on Kitura.io, use the page language variable by prefixing `/{{ page.lang }}`. For example, to link to the *Getting Started* topic, use:
-	`/{{ page.lang }}/starter/gettingstarted.html`
+Use `<h2>` tags for headers of sections
 
-- All headings within the body of the topic should use h2 (represented by two hashes `##`), while h3 (three hashes `###`) can be used for sub-headings.
-- Use three hyphens (`---`) to create a horizontal rule above each heading. Make sure to leave a single-line gap in the Markdown above and below these hyphens.
-- To automatically add a styled callout ('Info', 'Tip', or 'Warning'), you can use the following syntax:
-	- `> ![info] <add text here>` - This creates a blue callout, with a circular 'i' information icon.
-	- `> ![tip] <add text here>` - This creates a yellow callout, with a lightbulb icon.
-	- `> ![warning] <add text here>` - This creates a red callout, with an exclamation-mark warning icon.
-- To automatically highlight Swift syntax in a code block, use the following Markdown:
+Use `<h3>` tags for sub headers. 
 
-        ```swift
-            <add swift code here>
-        ```
+`<h4>` and `<h5>` also have styling included if further nesting is required. 
 
-- To document a process that is longer or more complex than a series of single-line numbered steps, you can use the following HTML to create an arrow icon. Use this arrow icon to highlight the beginning of each new step:
-    `<span class="arrow">&#8227;</span>`
+#### Normal text/paragraphs
+Use the `<p>` tag for this. 
+Not that spacing is added above and below these elements, so wrap an entire paragraph in a single <p> tag. 
+For single sentences use a `<p>` tag for each.
 
----
-
-### Creating a new topic
-
-- All points in the "Changing an existing topic" section also apply when creating a new topic.
-- If your new topic needs to be accessible from the main menu, follow these steps:
-    1. Open the file `_includes/header/header-en.html`.
-    2. Use the existing format as a guide to add new items to the menu.
-    3. For example, to add a new sub-menu item to the "Getting Started" menu, add a new `<li>` element to the parent `<ul>` element:
-
-        `<li><a href="/{{ page.lang }}/starter/example.html">Example Title</a></li>`
-- At the beginning of every new topic, a YAML header is required. For example:
-
-        ---
-        ### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
-        ### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
-        ### DO NOT CHANGE ANY OTHER TEXT.
-        layout: page
-        title: Setting Up
-        menu: starter
-        lang: en
-        redirect_from: "/starter/setting up.html"
-        ### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
-        ---
-  - Only change the values of `title`, `menu`, `lang`, and `redirect_from`, as required.
-  - The value of `menu` should be one of the Markdown directories: `api`, `resources`, `starter`, or `support`.
-  - The value of `redirect_from` should be the path to the Markdown file that you are creating, relative to the parent `en` directory (or other language). Note that this path uses the `.html` suffix, instead of `.md`.
-- Directly after the YAML header, add the following HTML to create a title section:
-
-        <div class="titleBlock">
-            <h1>Title of the topic</h1>
-            <p>This sub-heading, or one-sentence introduction, is optional</p>
-        </div>
-
-- At the end of every new topic, add the following html:
-```html
-<section class="social-section">
-	<div class="social-link">
-		<a rel="nofollow" href="http://swift-at-ibm-slack.mybluemix.net">
-		<img src="../../../assets/slack.png" alt="Slack Logo" width="60" height="60" class="social-image"/></a>
-		<p class="social-header">Join the discussion on Slack</p>
-	</div>
-	<div  class="social-link">
-		<iframe class="social-image" src="https://ghbtns.com/github-btn.html?user=IBM-Swift&amp;repo=Kitura&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
-		<p class="social-header">Star Kitura on GitHub</p>
-	</div>
-</section>
+#### Code Examples
+Swift code blocks should be wrapped in: 
 ```
-- and then the following Markdown:
+<pre><code class="language-swift">
+ 
+</code></pre>
 ```
-[info]: ../../assets/info-blue.png
-[tip]: ../../assets/lightbulb-yellow.png
-[warning]: ../../assets/warning-red.png
+Non-Swift code blocks and single code lines should be wrapped in: 
 ```
-This addition enables the use of styled callouts in the topic. You should include it, even if you do not plan to use styled callouts.
-Make sure that the relative path to the `assets` directory is accurate. Add or remove `../` until the path is accurate.
+<pre><code>
 
----
+</code></pre>
+```
 
-### Translating a topic
+#### Tables
+Tables should be structed as follows: 
+```
+<table>
+    <thead>
+    	<tr>
+    	    <th>Some table heading</th>
+	    ...
+	</tr>
+     </thead>
+     <tbody>
+     	<tr>
+	    <td>Some table content</td>
+	    ...
+	</tr>
+     </tbody>
+</table>
+```
 
-You might also like to make contributions in other languages, by translating the English content.
+#### Notices
+The `<blockquote>` tag can be used for messages that you want brought to a readers attention. 
+There's three categories:
+1. Warning - Use `<blockquote class="warning">`
+2. Info - User `<blockquote class="info">`
+3. Tip - Use `<blockquote class="tip">`	
 
-Follow these steps:
+### Creating a new guide
 
-1. Clone the kitura.io repository
-2. Find the 2-digit ISO 639-1 code for the language you wish to translate into. See [Language codes - ISO 639](http://www.iso.org/iso/language_codes)
-3. Create a directory that has the ISO 639-1 code.
-4. Copy the following files to the language directory:
-	- `index.md`
-	- `en/*` (and subdirectories)
-5. For each markdown file update the `lang` and `title` variables.
-6. Copy, rename and edit the header, footer, and notices files for your language:
-	- `_includes/header/header-en.html`
-	- `_includes/footer/footer-en.html`
-	- `_includes/notices/notices-en.html`
-7. Append `/{{ page.lang }}` to all the links within your pages.
+**NOTE** All points mentioned in the `Changing an existing guide` apply here as well.
+
+Currently Kitura.io only supports HTML documents, and any new guides will need to be written in HTML.
+However if you'd like to write a guide but would prefer not to use HTML, get in touch with us on [Slack!](http://slack.kitura.io/)
+
+For creating a new guide in HTML use the following skeleton: 
+```
+<html lang="en">
+
+<head>
+  <title>Learn - TITLE_OF_PAGE</title>
+  <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../scripts/prism.js"></script>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/guides.css">
+  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/mobile_guides.css">
+</head>
+
+<header>
+  <div class="header-container">
+    <div class="header-main">
+      <a class="home-link" href="../../index.html">
+        <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
+        <h1 class="header-title">KITURA</h1>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a class="header-link active-nav" href="../../learn.html">LEARN</a>
+      <a class="header-link" href="../../packages.html">CONTRIBUTE</a>
+      <a class="header-link" href="../../events.html">MEET</a>
+      <a class="header-link" href="../../help.html">SUPPORT</a>
+    </nav>
+  </div>
+</header>
+<body>
+  <section class="guide-content">
+    <div class="title-block">
+        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
+      <h1>TITLE_OF_GUIDE</h1>
+    </div>
+     /**
+    	Place your content here!
+    */
+  </section>
+  <section class="slack-help">
+    <a href="http://slack.kitura.io/">
+      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
+      <h2>NEED HELP?</h2>
+      <h2>MESSAGE US ON SLACK.</h2>
+    </a>
+  </section>
+</body>
+<footer>
+
+  <nav class="footer-nav">
+    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
+    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+  </nav>
+</footer>
+</html>
+```
