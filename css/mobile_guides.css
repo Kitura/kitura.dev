@@ -1,0 +1,64 @@
+/**
+    Header Styling
+*/
+.header-container {
+  flex-direction: column;
+}
+.header-main, .header-nav {
+  width: 100%;
+  justify-content: center;
+}
+
+.header-logo {
+  width: 40%;
+}
+
+.header-nav {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 1em;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.header-title {
+  font-size: 2em;
+}
+
+.header-link {
+  margin: 0 2%;
+}
+
+/**
+    Main Section Styling
+*/
+.guide-content {
+  margin-top: 160px;
+  width: 95%;
+}
+
+.title-block img {
+  width: 100%;
+}
+
+.title-block h1 {
+  margin-top: -40px;
+}
+
+p {
+  margin: 10px 3%;
+  font-size: 0.7em;
+}
+
+pre {
+  margin: 0 3%;
+  font-size: 0.6em;
+}
+
+/**
+    Footer Styling
+*/
+.footer-link {
+  margin: 0 5%;
+}

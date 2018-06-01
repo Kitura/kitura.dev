@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+  <title>Learn - Raw Routing</title>
+  <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/guides.css">
+  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/mobile_guides.css">
+</head>
+
+<header>
+  <div class="header-container">
+    <div class="header-main">
+      <a class="home-link" href="../../index.html">
+        <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
+        <h1 class="header-title">KITURA</h1>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a class="header-link active-nav" href="../../learn.html">LEARN</a>
+      <a class="header-link" href="../../packages.html">CONTRIBUTE</a>
+      <a class="header-link" href="../../events.html">MEET</a>
+      <a class="header-link" href="../../help.html">SUPPORT</a>
+    </nav>
+  </div>
+</header>
+<body>
+  <section class="guide-content">
+    <div class="title-block">
+        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
+      <h1>DEPLOYING TO THE CLOUD</h1>
+    </div>
+    <p>Kitura is built to be Cloud-ready.</p>
+    <p>We provide a simple starter project that demonstrates deployment to IBM Cloud.</p>
+    <p>Additionally, you can use our pre-built Docker image to guide you on how to deploy a container-based Kitura application.</p>
+    <h2>Specify a version of Swift (optional, but extremely recommended)</h2>
+    <p>Pushing your application to IBM Cloud will build your application using the latest Swift version supported by the buildpack, which changes periodically. Adding a .swift-version to your application is a common convention to specify the version of Swift needed for your application.</p>
+    <p>Add a .swift-version file with the desired version or snapshot of Swift</p>
+    <code>echo "4.0.3" > .swift-version</code>
+    <h2>Kitura-Starter</h2>
+    <p>Kitura-Starter is a Kitura based server application that you can use as a starting point to get your own Kitura application up and running on IBM Cloud. After cloning this GitHub repo to your local system, you can deploy this application to IBM Cloud right away.</p>
+    <p>Once you have the IBM Cloud command line tool installed, deploying to the cloud is as simple as bx app push.</p>
+    <h2>Docker</h2>
+    <p>We provide a pre-built Docker image containing the latest release of Kitura. Follow these steps to try it out:</p>
+    <p>Install Docker on your development system.</p>
+    <p>Pull down the kitura-ubuntu image from Docker Hub:</p>
+    <code>docker pull ibmcom/kitura-ubuntu:latest</code>
+    <p>Create a Docker container to build and run the kitura-ubuntu image you just downloaded and forward port 8080 on host to the container:</p>
+    <code>docker run -i -p 8080:8080 -t ibmcom/kitura-ubuntu:latest</code>
+    <p>You should see an output message similar to the following:</p>
+    <code>
+      <pre>
+[2017-04-03T18:22:47.146Z] [INFO] [main.swift:28 Kitura_Starter] Server will be started on 'http://localhost:8080'.
+[2017-04-03T18:22:47.222Z] [INFO] [HTTPServer.swift:104 listen(on:)] Listening on port 8080</pre>
+    </code>
+    <p>Visit http://localhost:8080/ in your web browser.</p>
+  </section>
+  <section class="slack-help">
+    <a href="http://slack.kitura.io/">
+      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
+      <h2>NEED HELP?</h2>
+      <h2>MESSAGE US ON SLACK.</h2>
+    </a>
+  </section>
+</body>
+<footer>
+  <nav class="footer-nav">
+    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
+    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+  </nav>
+</footer>
+</html>

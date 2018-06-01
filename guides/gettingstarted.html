@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+  <title>Learn - Getting Started</title>
+  <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../scripts/prism.js"></script>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/guides.css">
+  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../css/mobile_guides.css">
+</head>
+<header>
+  <div class="header-container">
+    <div class="header-main">
+      <a class="home-link" href="../index.html">
+        <img class="header-logo" src="../assets/kitura-logo.png" alt="Kitura logo">
+        <h1 class="header-title">KITURA</h1>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a class="header-link active-nav" href="../learn.html">LEARN</a>
+      <a class="header-link" href="../packages.html">PACKAGES</a>
+      <a class="header-link" href="../events.html">EVENTS</a>
+      <a class="header-link" href="../help.html">HELP</a>
+    </nav>
+  </div>
+</header>
+<body>
+  <section class="guide-content">
+    <div class="title-block">
+        <img width="480px" src="../assets/Kitura.svg" alt="Kitura Logo">
+      <h1>GETTING STARTED</h1>
+    </div>
+    <p class="sentence">Install <a href="building/settingup.html">prerequisites</a>.</p>
+    <p class="sentence">Install Homebrew tap.</p>
+    <p class="sentence">Installing Kitura’s Homebrew tap will allow <span class="highlight">brew</span> to access Kitura’s package repository.</p>
+    <pre><code class="language-swift">brew tap ibm-swift/kitura</code></pre>
+    <p class="sentence">Install Kitura’s command-line interface.</p>
+    <pre><code class="language-swift">brew install kitura</code></pre>
+    <p class="sentence">Create a directory for your Kitura project.</p>
+    <pre><code class="language-swift">mkdir HelloKitura
+cd HelloKitura</code></pre>
+    <p class="sentence">Using the Kitura command-line interface, generate a basic starter project.</p>
+    <pre><code class="language-swift">kitura init</code></pre>
+    <blockquote class="info">
+      <p>You can learn more about the <a href="../guides/kituracli/layout_reference.html">project generation here.</a></p>
+    </blockquote>
+    <p class="sentence">Open the generated <span class="highlight">HelloKitura.xcodeproj</span> project in Xcode.</p>
+    <pre><code class="language-swift">open HelloKitura.xcodeproj</code></pre>
+    <p class="sentence">Edit <span class="highlight">Sources/Application/Application.swift</span> and add the following code inside the <span class="highlight">postInit()</span> function.</p>
+    <pre><code class="language-swift">// Handle HTTP GET requests to "/"
+router.get("/") { request, response, next in
+    response.send("Hello, World!")
+    next()
+}</code></pre>
+    <p class="sentence">Edit the Xcode build scheme so it specifies HelloKitura as the Executable (by default it will be set to HelloKitura-Package when you open Xcode).</p>
+    <p><img src="../assets/Edit_Xcode_Build_Schema.png" class="center-image" alt="EditXcodeBuildSchema" width="400" style="max-width:100%" /></p>
+    <p class="sentence">Click the play button (⌘-R) to build and run your new web application.</p>
+    <p class="sentence">Open your web browser at <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</p>
+    <p class="sentence">You should see the following page in your browser:</p>
+    <pre><code>"Hello, World!"</code></pre>
+    <p class="sentence">Congratulations! You have just created your first server-side Swift application using Kitura.</p>
+    <p class="sentence">Learn how to build a back-end for the <a href="https://github.com/IBM/ToDoBackend">TodoList web application</a>.</p>
+    <p class="sentence">Learn how to build a back-end for the <a href="https://github.com/IBM/FoodTrackerBackend">Apple FoodTracker iOS application</a>.</p>
+  </section>
+  <section class="slack-help">
+    <a href="http://slack.kitura.io/">
+      <img width="80px" src="../assets/slack-icon.png" alt="Slack icon">
+      <h2>NEED HELP?</h2>
+      <h2>MESSAGE US ON SLACK.</h2>
+    </a>
+  </section>
+</body>
+<footer>
+
+  <nav class="footer-nav">
+    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../assets/Kitura-White.svg" alt="Kitura logo"></a>
+    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+  </nav>
+</footer>
+</html>
