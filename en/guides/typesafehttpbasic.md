@@ -158,7 +158,7 @@ public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
     public static var verifyPassword: ((String, String, @escaping (MyBasicAuth?) -> Void) -> Void) =
     { userId, password, callback in
         if let storedPassword = authenticate[userId], storedPassword == password {
-            let userProfile: MyBasicAuth = Grade.find(id: userId)
+            let userProfile: MyBasicAuth = MyBasicAuth.find(id: userId)
             callback(userProfile)
         } else {
             callback(nil)
