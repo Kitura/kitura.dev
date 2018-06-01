@@ -115,6 +115,10 @@ header {
   padding: 5%;
 }
 
+.code-panel span {
+  line-height: 30px;
+}
+
 @media only screen and (max-width: 1300px) {
     .code-panel {
       font-size: 1em;
