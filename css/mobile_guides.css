@@ -1,6 +1,10 @@
 /**
     Header Styling
 */
+header {
+  position: relative;
+}
+
 .header-container {
   flex-direction: column;
 }
