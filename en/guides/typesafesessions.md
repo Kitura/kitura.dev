@@ -15,7 +15,21 @@ In contrast, TypeSafeSession has been designed to provide the following guarante
 
 ## Adding TypeSafeSession to your project
 
-TODO (Package.swift, import)
+Add `Kitura-Session` to your `Package.swift` dependencies:
+```swift
+    .package(url: "https://github.com/IBM-Swift/Kitura-Session.git", from: "3.2.0"),
+```
+
+Add `KituraSession` to your Application targets:
+
+```swift
+    .target(name: "Application", dependencies: [ "KituraSession", ...
+```
+
+Regenerate your Xcode project:
+```bash
+swift package generate-xcodeproj
+```
 
 ## Defining a TypeSafeSession
 
@@ -76,7 +90,7 @@ Note that if you define `MySession` as a class, it must be marked `final`.
 If you define `MySession` as a struct, then in order to modify it within a handler, you will first need to assign it to a local variable:
 ```swift
 router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
-    var session = session
+    var session = session                // Required when mutating a Struct
     session.books.append(book)
     session.save()
     respondWith(book, nil)
@@ -101,7 +115,7 @@ To explicitly terminate a session, removing it from the store, call:
 
 ## Handling store failure
 
-It is possible that the session store could become inaccessible, resulting in a failure to persist or remove sessions from the store. In such cases, an error will be logged for you. However, you can also take additional steps in the case of an error by supplying an optional callback:
+It is possible that the session store could become inaccessible, resulting in a failure to persist or remove sessions from the store. In such cases, an error will be logged for you. However, you can also take additional steps in the case of an error by supplying a callback which takes an `Error?`:
 ```swift
 router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (Book?, RequestError) -> Void) -> Void in
     session.books.append(book)
