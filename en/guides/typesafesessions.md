@@ -19,7 +19,7 @@ TODO (Package.swift, import)
 
 ## Defining a TypeSafeSession
 
-To create a TypeSafeSession, declare a `final class` that conforms to the `TypeSafeSession` protocol:
+To create a TypeSafeSession, declare a type that conforms to the `TypeSafeSession` protocol:
 
 ```swift
 // Defines the session instance data
@@ -53,40 +53,88 @@ If `store` is not assigned, then a default in-memory store is used. [Kitura-Sess
 The `MySession` type can then be included in the application's Codable route handlers. For example:
 
 ```swift
+struct Book: Codable {
+    let title: String
+    let author: String
+}
+
 router.get("/cart") { (session: MySession, respondWith: ([Book]?, RequestError?) -> Void) -> Void in
     respondWith(session.books, nil)
 }
 
 router.post("/cart") { (session: MySession, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
     session.books.append(book)
-    do {
-        try session.save()
-        respondWith(book, nil)
-    } catch {
-        Log.error("Unable to persist session: \(error.localizedDescription)")
-        respondWith(nil, .internalServerError)
-    }
+    session.save()
+    respondWith(book, nil)
 }
 ```
 
 Here the cart accepts a book item of type `Book`, appends the book to the list of books in the session, and responds with the book that was added, or a `RequestError.internalServerError` if the session could not be saved (such as a failure of the session store).
 
-## Saving a session
+Note that if you define `MySession` as a class, it must be marked `final`.
 
-Note that it is currently necessary to save the session explicitly when updates have been made:
-
+If you define `MySession` as a struct, then in order to modify it within a handler, you will first need to assign it to a local variable:
 ```swift
-    try session.save()
+router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
+    var session = session
+    session.books.append(book)
+    session.save()
+    respondWith(book, nil)
+}
 ```
 
-It is planned to introduce an automatic save feature at a later time that a `TypeSafeSession` type can opt in to.
+## Saving a session
+
+It is necessary to save the session when updates have been made:
+
+```swift
+    session.save()
+```
 
 ## Terminating a session 
 
 To explicitly terminate a session, removing it from the store, call:
 
 ```swift
-    try session.destroy()
+    session.destroy()
 ```
 
-This removes the session from the store, or throws an error if there was a failure of the session store.
+## Handling store failure
+
+It is possible that the session store could become inaccessible, resulting in a failure to persist or remove sessions from the store. In such cases, an error will be logged for you. However, you can also take additional steps in the case of an error by supplying an optional callback:
+```swift
+router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (Book?, RequestError) -> Void) -> Void in
+    session.books.append(book)
+    session.save() { error in
+        if let error = error {
+            respondWith(nil, .internalServerError)
+        } else {
+            respondWith(book, nil)
+        }
+    }
+}
+```
+
+## Automatic saving of sessions
+
+If you have declared `MySession` as a class, it is possible to implement an automatic saving of the session by defining a deinitializer on the class:
+```swift
+    deinit {
+        self.save()
+    }
+```
+Be aware that the session will then be saved after every request, regardless of whether it has been modified.
+
+Care should be taken if combining this with the automatic saving technique described above: you may want to introduce a flag on your type to track whether `destroy()` has been called, to avoid calling `save()` during deinitialization - otherwise, the session will be persisted back into the store again:
+```swift
+    var destroyed: Bool = false {
+        didSet { destroy() }
+    }
+
+    deinit {
+        if !self.destroyed {
+            self.save()
+        }
+    }
+```
+Then, you can replace `session.destroy()` with `session.destroyed = true`.
