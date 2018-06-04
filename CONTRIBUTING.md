@@ -8,37 +8,37 @@ Content on this site is licensed under the Apache Licence, Version 2.0.
 1. Clone the kitura.io repo onto your machine:
 	`git clone https://github.com/IBM-Swift/kitura.io`
 2. Create a new branch for your development:
-	`git checkout -b <branch_Name>`
-3. Once changes have been made open a PR against master and link to the corresponding issue if applicable. 
+	`git checkout -b <branch>`
+3. Once changes have been made, open a PR against master and link to the corresponding issue, if applicable.
 
 ### Changing an existing guide
 
-Kitura.io is written in HTML, CSS and JS. 
+Kitura.io is written in HTML, CSS and JS.
 
-When editting existing topics you should adhere to the following guidelines. Doing so will provide styling for you.
+When editing existing topics you should adhere to the following guidelines, doing so will provide styling for you.
 
 #### Headings
-Use `<h1>` tags for the title of the page
+Use `<h1>` tags for the title of the page.
 
-Use `<h2>` tags for headers of sections
+Use `<h2>` tags for headers of sections.
 
-Use `<h3>` tags for sub headers. 
+Use `<h3>` tags for sub headers.
 
-`<h4>` and `<h5>` also have styling included if further nesting is required. 
+`<h4>` and `<h5>` also have styling included, if further nesting is required.
 
 #### Normal text/paragraphs
-Use the `<p>` tag for this. 
-Not that spacing is added above and below these elements, so wrap an entire paragraph in a single <p> tag. 
+Use the `<p>` tag for this.
+NOTE that spacing is added above and below these elements, so wrap an entire paragraph in a single `<p>` tag.
 For single sentences use a `<p>` tag for each.
 
 #### Code Examples
-Swift code blocks should be wrapped in: 
+Swift code blocks should be wrapped in:
 ```
 <pre><code class="language-swift">
- 
+
 </code></pre>
 ```
-Non-Swift code blocks and single code lines should be wrapped in: 
+Non-Swift code blocks and single code lines should be wrapped in:
 ```
 <pre><code>
 
@@ -46,39 +46,39 @@ Non-Swift code blocks and single code lines should be wrapped in:
 ```
 
 #### Tables
-Tables should be structed as follows: 
+Tables should be structured as follows:
 ```
 <table>
     <thead>
-    	<tr>
-    	    <th>Some table heading</th>
-	    ...
-	</tr>
-     </thead>
-     <tbody>
-     	<tr>
-	    <td>Some table content</td>
-	    ...
-	</tr>
-     </tbody>
+      <tr>
+        <th>Some table heading</th>
+        ...
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Some table content</td>
+        ...
+      </tr>
+    </tbody>
 </table>
 ```
 
 #### Notices
-The `<blockquote>` tag can be used for messages that you want brought to a readers attention. 
-There's three categories:
+The `<blockquote>` tag can be used for messages that you want brought to a reader's attention.
+There are three categories:
 1. Warning - Use `<blockquote class="warning">`
-2. Info - User `<blockquote class="info">`
-3. Tip - Use `<blockquote class="tip">`	
+2. Info - Use `<blockquote class="info">`
+3. Tip - Use `<blockquote class="tip">`
 
 ### Creating a new guide
 
 **NOTE** All points mentioned in the `Changing an existing guide` apply here as well.
 
-Currently Kitura.io only supports HTML documents, and any new guides will need to be written in HTML.
+Currently kitura.io only supports HTML documents, and any new guides will need to be written in HTML.
 However if you'd like to write a guide but would prefer not to use HTML, get in touch with us on [Slack!](http://slack.kitura.io/)
 
-For creating a new guide in HTML use the following skeleton: 
+To create a new guide in HTML use the following skeleton:
 ```
 <html lang="en">
 
@@ -118,8 +118,8 @@ For creating a new guide in HTML use the following skeleton:
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
       <h1>TITLE_OF_GUIDE</h1>
     </div>
-     /**
-    	Place your content here!
+    /**
+      Place your content here!
     */
   </section>
   <section class="slack-help">
@@ -130,8 +130,8 @@ For creating a new guide in HTML use the following skeleton:
     </a>
   </section>
 </body>
-<footer>
 
+<footer>
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
     <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
