@@ -1061,3 +1061,77 @@ footer {
 .support-hero-image-smaller {
   display: none;
 }
+
+
+/* KITURA APP PAGE */
+
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.app-left-container {
+  width: 49%;
+  display: inline;
+}
+
+.app-left-container img {
+  padding-left: 70px;
+}
+
+.app-right-container {
+  width: 49%;
+  float: right;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.app-right-container h4 {
+  font-size: 1.2em;
+  margin-top: 30px;
+  line-height: 24px;
+}
+
+.app-right-container h3 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.app-right-container h2 {
+  font-weight: bold;
+  font-size: 2.2em;
+  
+}
+
+.download-button {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.app-preview-container {
+  background-color: #00bbe6;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.app-preview-container img {
+  width: 22%;
+  margin: auto;
+}
+
+.preview-heading-section {
+    font-weight: bold;
+    max-width: 1200px;
+    width: 100%;
+    font-size: 2.2em;
+    margin: auto;
+    text-align: left;
+    padding-top: 20px;
+}
+  
