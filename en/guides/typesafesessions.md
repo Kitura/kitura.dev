@@ -4,14 +4,14 @@
 </div>
 
 ## Introduction
-Kitura 2.4 introduces "Type-safe Middleware": middlewares that have a structure and data types that you define, that are instantiated and passed to your handler upon a request. Type-Safe Sessions is an implementation of `TypeSafeMiddleware` that allows an application developer to describe the exact structure and content of a Session, in the form of a `class` conforming to the `TypeSafeSession` protocol.
+Kitura 2.4 introduces "Type-safe Middleware": middlewares that have a structure and data types that you define, that are instantiated and passed to your handler upon a request. Type-Safe Sessions is an implementation of `TypeSafeMiddleware` that allows an application developer to describe the exact structure and content of a session, in the form of a `class` conforming to the `TypeSafeSession` protocol.
 
-The key feature is in the name: type safety. The previous implementation of Session that can be used alongside "Raw Routing" provides you with a general `[String: Any]` store, into which any type could be stored and retrieved. This places the burden of type checking on the user: any value retrieved from the session would need a downcast to its expected type, resulting in boilerplate checking and error handling, and the possibility of runtime errors.
+The key feature is in the name: type safety. The previous implementation of KituraSession that can be used alongside "Raw Routing" provides you with a general `[String: Any]` store, into which any type could be stored and retrieved. This places the burden of type checking on the user: any value retrieved from the session would need a downcast to its expected type, resulting in boilerplate checking and error handling, and the possibility of runtime errors.
 
-In contrast, TypeSafeSession has been designed to provide the following guarantees:
+In contrast, `TypeSafeSession` has been designed to provide the following guarantees:
 - If your route is invoked, a session has already been successfully created (or retrieved from a store), and you are passed a (non-optional) instance of your session class. There is no need to check whether a session exists.
-- All data in the session can be accessed directly from your class, with strongly typed properties - there is no need to downcast or handle failure.
-- All data that can be stored on a session can be persisted, and this is enforced at compile time. A `TypeSafeSession` is `Codable`, so all types that are stored in the session must also be `Codable`.
+- All data in the session can be accessed directly from your class, with strongly typed properties. There is no need to downcast or handle failure.
+- All data that can be stored in a session can be persisted, and this is enforced at compile time. A `TypeSafeSession` is `Codable`, so all types that are stored in the session must also be `Codable`.
 
 ## Adding TypeSafeSession to your project
 
@@ -33,7 +33,7 @@ swift package generate-xcodeproj
 
 ## Defining a TypeSafeSession
 
-To create a TypeSafeSession, declare a type that conforms to the `TypeSafeSession` protocol:
+To create a `TypeSafeSession`, declare a type that conforms to the `TypeSafeSession` protocol:
 
 ```swift
 // Defines the session instance data
@@ -139,7 +139,7 @@ If you have declared `MySession` as a class, it is possible to implement an auto
 ```
 Be aware that the session will then be saved after every request, regardless of whether it has been modified.
 
-Care should be taken if combining this with the automatic saving technique described above: you may want to introduce a flag on your type to track whether `destroy()` has been called, to avoid calling `save()` during deinitialization - otherwise, the session will be persisted back into the store again:
+You may also want a method of tracking whether `destroy()` has been called, to suppress calling `save()` during deinitialization - otherwise, the session will be persisted back into the store again. For example:
 ```swift
     var destroyed: Bool = false {
         didSet { destroy() }
