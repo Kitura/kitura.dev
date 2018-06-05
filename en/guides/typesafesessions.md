@@ -1,3 +1,18 @@
+---
+### TRANSLATION INSTRUCTIONS FOR THIS SECTION:
+### TRANSLATE THE VALUE OF THE title ATTRIBUTE AND UPDATE THE VALUE OF THE lang ATTRIBUTE.
+### DO NOT CHANGE ANY OTHER TEXT.
+layout: page
+title: Type-Safe Sessions
+menu: resources
+lang: en
+redirect_from: 
+    - "/en/resources/tutorials/typesafesessions.html"
+    - "/resources/tutorials/typesafesessions.html"
+    - "/guides/typesafesessions.html"
+### END HEADER BLOCK - BEGIN GENERAL TRANSLATION
+---
+
 <div class="titleBlock">
   <h1>Type-Safe Sessions</h1>
   <p>How to add Session support to Kitura's Codable Routing</p>
