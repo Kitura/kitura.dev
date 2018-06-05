@@ -85,6 +85,7 @@ The function, `verifyPassword`, takes a username and password and, on success, r
 ```swift
 if let storedPassword = authenticate[username], storedPassword == password {
     callback(MyBasicAuth(id: username))
+    return
 }
 callback(nil)
 ```
@@ -99,6 +100,7 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
     public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
         if let storedPassword = authenticate[username], storedPassword == password {
             callback(MyBasicAuth(id: username))
+            return
         }
         callback(nil)
     }
@@ -150,6 +152,7 @@ public let customField: Int
 if let userProfile = MyBasicAuth.find(id: username) {
     if password == userProfile.password {
         callback(userProfile)
+        return
     }   
 }
 callback(nil)
@@ -164,6 +167,7 @@ public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
         if let userProfile = MyBasicAuth.find(id: username) {
             if password == userProfile.password {
                 callback(userProfile)
+                return
             }   
         }
         callback(nil)
@@ -175,4 +179,4 @@ public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
 }
 ```
 
-Now when your route authenticates, a `MyBasicAuth` instance with a primary key matching the provided user name is returned. The instance fields on `MyBasicAuth` should match your user data giving you type-safe authentication in your Codable routes!
+In this example, we have implemented the verifyPassword function by retrieving a user’s profile from a database. A profile with an id matching the supplied username is retrieved. If no matching id is found, or if the supplied password does not match, the middleware fails. If a match is found, the ORM returns an instance of MyBasicAuth, which is then provided to the route handler. The instance fields on `MyBasicAuth` should match your user data giving you type-safe authentication in your Codable routes!
