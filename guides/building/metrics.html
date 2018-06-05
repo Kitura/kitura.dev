@@ -1,0 +1,117 @@
+<html lang="en">
+
+<head>
+  <title>Learn - Swift Metrics</title>
+  <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../scripts/prism.js"></script>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/guides.css">
+  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/mobile_guides.css">
+</head>
+
+<header>
+  <div class="header-container">
+    <div class="header-main">
+      <a class="home-link" href="../../index.html">
+        <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
+        <h1 class="header-title">KITURA</h1>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a class="header-link active-nav" href="../../learn.html">LEARN</a>
+      <a class="header-link" href="../../packages.html">PACKAGES</a>
+      <a class="header-link" href="../../events.html">EVENTS</a>
+      <a class="header-link" href="../../help.html">HELP</a>
+    </nav>
+  </div>
+</header>
+<body>
+  <section class="guide-content">
+    <div class="title-block">
+        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
+      <h1>APPLICATION METRICS FOR SWIFT (SwiftMetrics)</h1>
+    </div>
+    <h2>What is SwiftMetrics</h2>
+    <p class="sentence"><a href="https://developer.ibm.com/swift/monitoring-diagnostics/application-metrics-for-swift/">SwiftMetrics</a> instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API or visually with the included embedded dashboard.</p>
+    <p class="sentence">SwiftMetrics provides the following built-in data collection sources:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Environment</td>
+          <td>Machine and runtime environment information</td>
+        </tr>
+        <tr>
+          <td>CPU</td>
+          <td>Process and system CPU</td>
+        </tr>
+        <tr>
+          <td>Memory</td>
+          <td>Process and system memory usage</td>
+        </tr>
+        <tr>
+          <td>HTTP</td>
+          <td>HTTP metric information</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Adding SwiftMetrics monitoring to your application</h2>
+    <p class="sentence">To add SwiftMetrics monitoring to your code</p>
+    <pre><code class="language-swift">
+import SwiftMetrics
+import SwiftMetricsDash
+
+// Enable SwiftMetrics Monitoring
+let sm = try SwiftMetrics()
+
+// Pass SwiftMetrics to the dashboard for visualising
+let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)
+    </code></pre>
+    <p class="sentence">and amend Package.swift to include the SwiftMetrics dependency with the major and minor <a href="https://github.com/RuntimeTools/SwiftMetrics/releases">release version</a> that is compatible with your Swift version.</p>
+    <pre><code class="language-swift">
+dependencies: [
+    .package(url: "https://github.com/RuntimeTools/SwiftMetrics.git", from: "#.#.#")
+]
+    </code></pre>
+    <p class="sentence">By default, SwiftMetricsDash will start its own Kitura server and serve the page up under localhost:/swiftmetrics-dash</p>
+    <p class="sentence">The port being used is logged to the console when your application starts</p>
+    <p class="sentence">SwiftMetricsDash : Starting on port 8080</p>
+    <p class="sentence">You can pass an existing Router object to SwiftMetricsDash from which to serve the page up on. SwiftMetricsDash will then use whatever server you are using in your existing application.</p>
+    <pre><code class="language-swift">
+let sm = try SwiftMetrics()
+let router: Router
+
+// Activate the Swift Metrics dashboard.
+let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)
+
+// Add an HTTP server and connect it to the router
+Kitura.addHTTPServer(onPort: 8080, with: router)
+    </code></pre>
+  </section>
+  <section class="slack-help">
+    <a href="http://slack.kitura.io/">
+      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
+      <h2>NEED HELP?</h2>
+      <h2>MESSAGE US ON SLACK.</h2>
+    </a>
+  </section>
+</body>
+<footer>
+
+  <nav class="footer-nav">
+    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
+    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+  </nav>
+</footer>
+</html>

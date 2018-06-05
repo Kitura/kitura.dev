@@ -1,0 +1,193 @@
+<html lang="en">
+
+<head>
+  <title>Learn - Prompt Reference</title>
+  <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/guides.css">
+  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/mobile_guides.css">
+</head>
+
+<header>
+  <div class="header-container">
+    <div class="header-main">
+      <a class="home-link" href="../../index.html">
+        <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
+        <h1 class="header-title">KITURA</h1>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a class="header-link active-nav" href="../../learn.html">LEARN</a>
+      <a class="header-link" href="../../packages.html">CONTRIBUTE</a>
+      <a class="header-link" href="../../events.html">MEET</a>
+      <a class="header-link" href="../../help.html">SUPPORT</a>
+    </nav>
+  </div>
+</header>
+<body>
+  <section class="guide-content">
+    <div class="title-block">
+        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
+      <h1>PROMPT REFERENCE</h1>
+    </div>
+    <p>The following sections describe the prompts provided by the application generator.</p>
+    <h2>Application name prompt</h2>
+    <p>If you did not supply an application name as an argument, the application generator will ask the name you would like to use for your application:</p>
+    <code>What's the name of your application? (currentDirectory)</code>
+    <p>The default value is the name of the current working directory.</p>
+    <p>The application name you enter must satisfy the following constraints:</p>
+    <ul>
+      <li>Must not start with a .</li>
+      <li>Must not contain whitespace characters</li>
+      <li>Must not contain any of the following characters: /@+%:</li>
+      <li>Must not contain characters reserved in URIs</li>
+      <li>Must not be node_modules</li>
+      <li>Must not be favicon.ico</li>
+    </ul>
+    <h2>Application directory prompt</h2>
+    <p>The application generator will ask the name of the directory you would like to use for your application:</p>
+    <code>Enter the name of the directory to contain the project: (applicationName)</code>
+    <p>The default value is the name of the application.</p>
+    <p>If the directory name is the same as the current directory, then the generator will assume you want to create the project in direcly in the current directory rather than creating a subdirectory of the same name.</p>
+    <p>The application directory you enter must satisfy the following constraints:</p>
+    <ul>
+      <li>Must not contain whitespace characters</li>
+      <li>Must not contain any of the following characters: /@+%:</li>
+      <li>Must not contain characters reserved in URIs</li>
+    </ul>
+    <h2>Project type prompt</h2>
+    <p>The application generator will ask which type of project you would like to create, offering two options:</p>
+    <code>
+      <pre>
+  Select type of project: (Use arrow keys)
+❯ Scaffold a starter
+  Generate a CRUD application</pre>
+    </code>
+    <p>The Scaffold a starter option will direct the generator to create a scaffolded application providing boilerplate code and application structure to which your application logic can be added.</p>
+    <p>The Generate a CRUD application option will direct the generator to create a CRUD application on top of which a data model can be defined which will automatically be mapped to REST endpoints for create, read and update operations. At present the code for this type of application is not very customizable aside from modifying the data model.</p>
+    <h2>Application pattern prompt</h2>
+    <p>For scaffolded applications, the application generator will ask which application pattern you want to select, offering three options:</p>
+    <code>
+      <pre>
+  Select capability presets for application pattern: (Use arrow keys)
+❯ Basic
+  Web</pre>
+    </code>
+    <p>The application pattern defines the capabilities that are selected by default in the subsequent capabilities prompt. They are presets and the capabilities they suggest can be modified as required.</p>
+    <h3>Basic pattern</h3>
+    <p>The Basic pattern is intended for any type of application, making the fewest assumptions about the application logic. Selecting this pattern will result in the following defaults for the capabilities prompt:</p>
+    <code>
+      <pre>
+◯ Static web file serving
+◯ Swagger UI
+◉ Embedded metrics dashboard
+◉ Docker files</pre>
+    </code>
+    <h3>Web pattern</h3>
+    <p>The Web pattern is intended for an application that needs to provide a web server hosting static files. Selecting this pattern will result in the following defaults for the capabilities prompt:</p>
+    <code>
+      <pre>
+◉ Static web file serving
+◯ Swagger UI
+◉ Embedded metrics dashboard
+◉ Docker files</pre>
+    </code>
+    <h3>BFF pattern</h3>
+    <p>The Backend-for-frontend (BFF) pattern is intended for an application that provides a microservice intended for consumption by a client application (for example, a web or mobile application). Selecting this pattern will result in the following defaults for the capabilities prompt:</p>
+    <code>
+      <pre>
+◉ Static web file serving
+◉ Swagger UI
+◉ Embedded metrics dashboard
+◉ Docker files</pre>
+    </code>
+    <h2>Capabilities prompt</h2>
+    <p>The application generator will ask which capabilities you want to select.</p>
+    <p>For Scaffold project type, the following capabilities are available:</p>
+  </section>
+  <code>
+    <pre>
+  Select capabilities: (Press {space} to select)
+❯ ◯ Static web file serving
+  ◯ Swagger UI
+  ◉ Embedded metrics dashboard
+  ◉ Docker files</pre>
+  </code>
+  <p>For CRUD project type, the following capabilities are available:</p>
+  <code>
+    <pre>
+  Select capabilities: (Press <space> to select)
+❯ ◉ Embedded metrics dashboard
+  ◉ Docker files</pre>
+  </code>
+  <p>The list allows for toggling of any combination of the available capabilities which will start with a default set selected.</p>
+  <blockquote class="info">
+    <p>CRUD project type always enables the OpenAPI / Swagger endpoint</p>
+  </blockquote>
+  <p>The capabilities selected by default when this prompt is shown depend on the project type:</p>
+  <ul>
+    <li>CRUD project type: all 3 available capabilities are selected by default</li>
+    <li>Scaffold project type: defaults depend on application pattern</li>
+  </ul>
+  <h2>Services prompt</h2>
+  <p>For scaffolded applications, the application generator will ask which services you want to select.</p>
+  <code>
+    <pre>
+  Generate boilerplate for services: (Press <space> to select)
+❯ ◯ Cloudant / CouchDB
+  ◯ Redis
+  ◯ MongoDB
+  ◯ PostgreSQL
+  ◯ Object Storage
+  ◯ AppID
+  ◯ Auto-scaling
+  ◯ Watson Conversation
+  ◯ Alert Notifications
+  ◯ Push Notifications</pre>
+  </code>
+  <h2>CRUD store prompt</h2>
+  <p>For CRUD applications, the application generator will ask how you want to store entities:</p>
+  <code>
+    <pre>
+  Select data store: (Use arrow keys)
+❯ Memory (for development purposes)
+  Cloudant / CouchDB</pre>
+  </code>
+  <p>Selecting Memory (for development purposes) will mean entities are stored in a simple memory-based database.</p>
+  <blockquote class="warning">
+    <p>The memory data store is volatile and any data added will be lost when the application is stopped. As such, it is only suitable for development purposes.</p>
+  </blockquote>
+  <p>Selecting Cloudant / CouchDB will add a local CouchDB service for entity storage.</p>
+  <h2>Service configuration prompt</h2>
+  <p>The application generator will ask you which of the services you selected need to be configured, for example:</p>
+  <code>
+    <pre>
+  Configure service credentials (leave unchecked for defaults): (Press <space> to select)
+❯ ◯ Cloudant / CouchDB
+  ◯ Redis
+  ◯ Object Storage</pre>
+  </code>
+  <p>Any services you do not select in this prompt will use default values.</p>
+    <p>For each service you select, a set of custom prompts will ask for the relevant connection details to be supplied.</p>
+    <section class="slack-help">
+    <a href="http://slack.kitura.io/">
+      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
+      <h2>NEED HELP?</h2>
+      <h2>MESSAGE US ON SLACK.</h2>
+    </a>
+  </section>
+</body>
+<footer>
+
+  <nav class="footer-nav">
+    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
+    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+  </nav>
+</footer>
+</html>

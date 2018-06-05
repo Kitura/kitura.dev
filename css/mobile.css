@@ -1,0 +1,307 @@
+/**
+      General styling
+*/
+
+html, body {
+  font-family: IBM Plex Sans, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Styles all the titles on the nav pages */
+.title-heading-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title-heading-section h3 {
+  font-size: 0.4em;
+  padding: 5px;
+}
+/**
+    Header Styling
+*/
+header {
+  display: block;
+  width: 100%;
+}
+
+.header-main {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 1em;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.header-logo {
+  width: 30%;
+}
+
+.header-link {
+  margin: 0 2%;
+}
+
+.header-title {
+  font-size: 2em;
+}
+/**
+    Main section styling
+*/
+
+/* Slider styling */
+.code-section {
+  display: none;
+}
+.main-section {
+  margin-top: 20px;
+  height: 300px;
+}
+
+.slideshow-section {
+  width: 100%;
+  height: 300px;
+  border: none;
+}
+.slide-logo {
+  margin-bottom: 10px;
+}
+
+.slide-logo img {
+  width: 20vmax;
+}
+
+.slide-logo h2 {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-left: -10%;
+}
+
+.slide-content h3 {
+  font-size: 0.9em;
+}
+
+.slide-logo-2 {
+  margin: 30px 0;
+  width: 30%;
+  height: 30%;
+}
+.slide-logo-2 h2 {
+  font-size: 1.5em;
+  white-space: nowrap;
+  margin-top: 20px;
+  margin-left: -30px;
+}
+
+.slide-logo-2 img {
+  width: 150%;
+}
+
+.slide-content-2 h3 {
+    font-size: 1em;
+}
+
+.slack-slide-icon {
+  width: 12%;
+}
+
+.swift-slide-icon {
+  width: 12%;
+}
+
+.slide-logo-3 h2 {
+  font-size: 1.3em;
+}
+
+.slide-content-3 h3 {
+  font-size: 0.9em;
+}
+
+.slack-button {
+  display: none;
+}
+
+/* Blogs styling */
+.blogs-heading-section {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.blogs-section {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+}
+
+.blog-item {
+  width: 80%;
+  margin: 10px auto;
+  overflow: hidden;
+  height: 20vmax;
+}
+
+.blog-item h2 {
+  font-size: 1em;
+}
+
+.blog-item h3 {
+  font-size: 0.7em;
+}
+/**
+    LEARN PAGE STYLING
+*/
+
+.guides-list {
+  flex-direction: column;
+}
+
+.guide-rectangle {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.learn-button {
+  margin: 30px 0;
+}
+.tutorials-header, .community-header {
+  text-align: center;
+}
+
+.tutorials-section {
+  max-width: 900px;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.featured-tutorial {
+  width: 90%;
+  margin: 2%;
+}
+.community-section {
+  display: flex;
+  flex-direction: column;
+}
+.community-item {
+  width: 90%;
+  margin: 10px 2%;
+}
+
+.community-item h2 {
+  font-size: 1em;
+}
+
+.community-item h3 {
+  font-size: 0.65em;
+}
+
+/**
+    PACKAGES PAGE STYLING
+*/
+
+.kitura-core {
+  flex-direction: column;
+}
+
+.base-dependency {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.base-dependency a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.repo-header {
+  text-align: center;
+}
+
+.repo-card-section {
+  flex-direction: column;
+}
+
+.card {
+  width: 90%;
+  margin: 10px auto;
+  overflow: visible;
+  height: 100%;
+}
+
+.card img {
+  width: 10%;
+}
+
+/**
+    EVENT PAGE STYLING
+*/
+.meetups-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.meet {
+  overflow: visible;
+  margin: 10px auto;
+}
+
+.meetup-link a {
+  font-size: 0.8em;
+}
+
+.past {
+  height: 400px;
+  margin: 30px auto;
+}
+
+.meetup-image {
+  height: 100%;
+  border-radius: 10px;
+}
+.summary {
+  font-size: 0.8em;
+}
+
+/**
+    HELP PAGE STYLING
+*/
+
+.support-commerce-header {
+  text-align: center;
+}
+
+.support-hero-image-smaller {
+  display: block;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
+  width: 80%;
+}
+
+.support-hero {
+  display: none;
+}
+/**
+    Footer Sytling
+*/
+
+.footer-link {
+  margin: 0 5%;
+}
