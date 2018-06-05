@@ -136,13 +136,15 @@ callback(nil)
 public let customField: Int
 </code></pre>
 <p>Change <code>verifyPassword</code> to initialize <code>MyBasicAuth</code> from the database:</p>
-<pre><code class="language-swift">if let userProfile = MyBasicAuth.find(id: username) {
-    if password == userProfile.password {
-        callback(userProfile)
-        return
+<pre><code class="language-swift">MyBasicAuth.find(id: username) { userProfile, error in
+    if let userProfile = userProfile {
+        if password == userProfile.password {
+            callback(userProfile)
+            return
+        }
     }
+    callback(nil)
 }
-callback(nil)
 </code></pre>
 <p>MyBasicAuth should now look as follows:</p>
 <pre><code class="language-swift">public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
@@ -150,12 +152,13 @@ callback(nil)
     static var idColumnName = &quot;id&quot;
 
     public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -&gt; Void) {
-        if let userProfile = MyBasicAuth.find(id: username) {
-            if password == userProfile.password {
-                callback(userProfile)
-                return
+        MyBasicAuth.find(id: username) { userProfile, error in
+            if let userProfile = userProfile {
+                if password == userProfile.password {
+                    callback(userProfile)
+                    return
+                }
             }
-        }
         callback(nil)
     }
 
