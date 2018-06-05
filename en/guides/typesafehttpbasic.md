@@ -4,7 +4,7 @@
 </div>
 
 ## Introduction
-Kitura 2.4 introduces "Type-safe Middleware": middlewares that have a structure and data types that you define, that are instantiated and passed to your handler upon a request. We also introduce `TypeSafeCredentials`, a protocol that implements `TypeSafeMiddleware` to authenticate a request on a Codable route and initialize itself with the authenticated users data.
+Kitura 2.4 introduces "Type-safe Middleware": middlewares with the structure and data types that you define. On successfully executing, they are instantiated and passed to your handler. We also introduce `TypeSafeCredentials`, a protocol that implements `TypeSafeMiddleware` to authenticate a request on a Codable route and initialize itself with the authenticated user's data.
 
 HTTP Basic authentication transmits credentials in an "Authorization" header as base64 encoded user ID/password pairs. Many clients also let you send the username and the password in the URL as follows:
 
@@ -17,6 +17,7 @@ However some web browsers disable this for security reasons.
 This guide steps you through using `TypeSafeHTTPBasic`, a `TypeSafeCredentials` plugin for safe and easy HTTP basic authentication in Codable routes.
 
 ## Adding TypeSafeHTTPBasic to your project
+If you do not have an existing project, run `kitura init` in terminal to generate a new project.
 
 1) Add `Kitura-CredentialsHTTP` to your `Package.swift` dependencies:
 ```swift
@@ -46,7 +47,7 @@ We will declare a struct which conforms to `TypeSafeHTTPBasic`. This will be ini
 
 1) Define the TypeSafeHTTPBasic Struct:
 
-At the bottom of `Application.swift`, Define a public struct called `MyBasicAuth` and set it to conforms to `TypeSafeHTTPBasic`:
+At the bottom of `Application.swift`, define a public struct called `MyBasicAuth` that conforms to the `TypeSafeHTTPBasic` protocol:
 ```swift
 public struct MyBasicAuth: TypeSafeHTTPBasic {
 
@@ -54,13 +55,15 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
 ```
 2) Add protocol stubs:
 
-Xcode should appear with the message:
+Xcode should display the message:
 `Type 'MyBasicAuth' does not conform to protocol 'TypeSafeCredentials'`
 
-Click fix to autogenerate the stubs and produce the below struct:
+Click "Fix" to autogenerate the stubs and produce the struct below:
 ```swift
 public struct MyBasicAuth: TypeSafeHTTPBasic {
-    public static var verifyPassword: ((String, String, @escaping (MyBasicAuth?) -> Void) -> Void)
+    public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
+     
+    }
 
     public var id: String
 }
@@ -77,18 +80,15 @@ __Note:__ In a real project, never store passwords in plain text!
 
 4) Define verifyPassword:
 
-The closure, `verifyPassword`, takes a username and password and returns a `MyBasicAuth` instance on success. We want to check if the password matches the user's stored password. On successful match, we initialise `MyBasicAuth` with an `id` equal to username.
+The function, `verifyPassword`, takes a username and password and, on success, returns a `MyBasicAuth` instance . We want to check if the password matches the user's stored password. On successful match, we initialize `MyBasicAuth` with an `id` equal to username.
 
 ```swift
-public static var verifyPassword: ((String, String, @escaping (MyBasicAuth?) -> Void) -> Void) =
-   { userId, password, callback in
-       if let storedPassword = authenticate[userId], storedPassword == password {
-           callback(MyBasicAuth(id: userId))
-       } else {
-           callback(nil)
-       }
-   }
+if let storedPassword = authenticate[username], storedPassword == password {
+    callback(MyBasicAuth(id: username))
+}
+callback(nil)
 ```
+This function is asyc, so that you can perform asyc actions to verify the password, e.g. looking up the username and password in a database. You must call the callback closure with either an instance of `Self` or `nil` before exiting `verifyPassword`. If you do not, the server will not know to continue and you will recieve a 503 "Service Unavailable" error, when you call the route. 
 
 5) Your complete struct should now look as follows:
 ```swift
@@ -96,76 +96,82 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
 
     public static let authenticate = ["username" : "password"]
 
-    public static var verifyPassword: ((String, String, @escaping (MyBasicAuth?) -> Void) -> Void) =
-    { userId, password, callback in
-        if let storedPassword = authenticate[userId], storedPassword == password {
-            callback(MyBasicAuth(id: userId))
-        } else {
-            callback(nil)
+    public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
+        if let storedPassword = authenticate[username], storedPassword == password {
+            callback(MyBasicAuth(id: username))
         }
+        callback(nil)
     }
+
     public var id: String
 }
 ```
 
-## Using your MyBasicAuth in a route
+## Using TypeSafeHTTPBasic in a route
 
-1) Inside postInit(), add the following route:
+1) Inside `postInit()`, add the following route:
 ```swift
 router.get("/basic") { (user: MyBasicAuth, respondWith: (MyBasicAuth?, RequestError?) -> Void) in
     print("authenticated \(user.id) using \(user.provider)")
     respondWith(user, nil)
 }
 ```
-
-2) Go to [http://localhost:8080/basic](http://localhost:8080/basic)
-3) Login with User Name: username, Password: password
-4) You will successfully login and be returned your username
+2) Start your Kitura server
+3) Go to [http://localhost:8080/basic](http://localhost:8080/basic)
+4) Login with User Name: username, Password: password
+5) You will successfully login and be returned your username
 
 Congratulations, you have just implemented HTTP basic authentication of a Codable route!!!
 
-The browser will store your login credentials and automatically log you in if you return to the route. Use a private window if you would like to test failed authentication.
+The browser will store your login credentials and automatically log you in if you return to the route. Use a private window if you would like to test incorrect authentication.
 
 ## Using TypeSafeHTTPBasic with the ORM
 
-This example is a simple struct just containing the required id. A real world project would probably have a user profile with lots of fields which is keyed by the unique id. We will show you how to implement this is using [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM).
+This example showed a simple struct that contains only the required id. A real world project would probably have a user profile with lots of fields, which is keyed by the unique id. We demonstrate how to implement this using [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM).
 
- 1) Set up the ORM and connect it to a database by following the instructions in the [README](https://github.com/IBM-Swift/Swift-Kuery-ORM/blob/master/README.md) using `MyBasicAuth` as your Model.
+1) Set up the ORM and connect it to a database by following the instructions in the [README](https://github.com/IBM-Swift/Swift-Kuery-ORM/blob/master/README.md) using `MyBasicAuth` as your Model.
 
 2) Make `MyBasicAuth` a Model:
 ```swift
 public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
 ```
-3) Inside MyBasicAuth, Set id as the id column in the database
+3) Inside `MyBasicAuth`, set `id` as the id column in the database
 ```swift
 static var idColumnName = "id"
 ```
-4) Inside verifyPassword, Initialize MyBasicAuth from the database:
+4) Remove `public static let authenticate = ["username" : "password"]`
+5) Add in a new fields for the password and a custom field:
 ```swift
-if let storedPassword = authenticate[userId], storedPassword == password {
-    let userProfile: MyBasicAuth = Grade.find(id: userId)
-    callback(userProfile)
-}
+private let password: String
+public let customField: Int 
 ```
-5) MyBasicAuth should now look as follows:
+6) Change `verifyPassword` to initialize `MyBasicAuth` from the database:
+```swift
+if let userProfile = MyBasicAuth.find(id: username) {
+    if password == userProfile.password {
+        callback(userProfile)
+    }   
+}
+callback(nil)
+```
+7) MyBasicAuth should now look as follows:
 ```swift
 public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
 
     static var idColumnName = "id"
 
-    public static let authenticate = ["username" : "password"]
-
-    public static var verifyPassword: ((String, String, @escaping (MyBasicAuth?) -> Void) -> Void) =
-    { userId, password, callback in
-        if let storedPassword = authenticate[userId], storedPassword == password {
-            let userProfile: MyBasicAuth = MyBasicAuth.find(id: userId)
-            callback(userProfile)
-        } else {
-            callback(nil)
+    public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
+        if let userProfile = MyBasicAuth.find(id: username) {
+            if password == userProfile.password {
+                callback(userProfile)
+            }   
         }
+        callback(nil)
     }
 
     public var id: String    
+    private let password: String
+    public let customField: Int 
 }
 ```
 
