@@ -35,7 +35,18 @@
         <img width="480px" src="../assets/Kitura.svg" alt="Kitura Logo">
       <h1>GETTING STARTED</h1>
     </div>
-    <p class="sentence">Install <a href="building/settingup.html">prerequisites</a>.</p>
+    <h2>Before Starting</h2>
+    <p class="sentence">Check you have all required <a href="building/settingup.html">prerequisites</a> installed.</p>
+    <p>Once you have installed them, you can choose between Option 1 which uses a macOS application to generate a project, or Option 2 which uses a command line tool.</p>
+    <h2>Option 1: Kitura macOS App</h2>
+    <p><img src="../assets/preview1.png" class="center-image" alt="App Screengrab" width="400" style="max-width:100%; box-shadow: 0 0 0 0;" /></p>
+    <p class="sentence">Get started without the command line by using our new <a href="../app.html">macOS app</a>. It will download dependencies using a template and opens the project automatically.</p>
+    <p class="sentence">Once you have downloaded and installed the app using the above link, run it and select the <span class="highlight">Starter</span> tile, and name your project <span class="highlight">HelloKitura</span> in the dialog box. Once it has created the project, select <span class="highlight">Open</span>. This will open the project in Xcode.</p>
+    <p class="sentence">You're now ready to skip ahead to <a href="#creating-app">Creating Your App</a>.</p>
+    <h2>Option 2: Kitura Command Line Interface (CLI)</h2>
+      <p class="sentence">The Kitura CLI offers a quick way get started on both macOS and supported Linux platforms using the Terminal. See the source for it on <a href="kitura create">GitHub</a>.</p>
+    <p class="sentence">Install <a href="https://brew.sh" target="_blank">Homebrew</a>:</p>
+    <pre><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre>
     <p class="sentence">Install Homebrew tap.</p>
     <p class="sentence">Installing Kitura’s Homebrew tap will allow <span class="highlight">brew</span> to access Kitura’s package repository.</p>
     <pre><code class="language-swift">brew tap ibm-swift/kitura</code></pre>
@@ -51,6 +62,7 @@ cd HelloKitura</code></pre>
     </blockquote>
     <p class="sentence">Open the generated <span class="highlight">HelloKitura.xcodeproj</span> project in Xcode.</p>
     <pre><code class="language-swift">open HelloKitura.xcodeproj</code></pre>
+      <h2><a name="creating-app" style="padding-top: 100px;color: black;">Creating Your App</a></h2>
     <p class="sentence">Edit <span class="highlight">Sources/Application/Application.swift</span> and add the following code inside the <span class="highlight">postInit()</span> function.</p>
     <pre><code class="language-swift">// Handle HTTP GET requests to "/"
 router.get("/") { request, response, next in
