@@ -488,6 +488,8 @@ footer {
 .guides-list {
     max-width: 1200px;
     margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px #606060;
     width: 100%;
     background: linear-gradient(#00bbe6, #0086a5);
     display: flex;
