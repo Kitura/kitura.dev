@@ -1,0 +1,63 @@
+{% extends "base_template.stencil" %}
+{% block content %}
+<section class="main-section">
+    <section class="slideshow-section">
+        {% for slideItem in slideItems %}
+        <div class="slide fade slide-1">
+            <a href={{ slideItem.url }}>
+                <div class="slide-content">
+                    <div class="slide-logo">
+                        <img width="300px" src="/public/assets/Kitura.svg" alt="Kitura Logo">
+                        <h2>{{slideItem.title}}</h2>
+                    </div>
+                    <h3>{{ slideItem.caption }}</h3>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        </div>
+        <a class="prev" onclick="moveSlidesBy(-1)">
+            <img src="/public/assets/backwards-new.png" alt="">
+        </a>
+        <a class="next" onclick="moveSlidesBy(1)">
+            <img src="/public/assets/forward-new.png" alt="">
+        </a>
+    </section>
+    <section class="code-section">
+        <pre class="code-panel">
+            <code class="language-swift">
+import Kitura
+
+let router = Router()
+
+router.get("/") { request, response, next in
+response.send("Hello world")
+next()
+}
+
+Kitura.addHTTPServer(onPort: 8080, with: router)
+Kitura.run()</code></pre>
+    </section>
+</section>
+<section class="button-section">
+    <button class="button" type="button" name="start-button" onclick="window.open('guides/gettingstarted.html', '_self')">>  GET STARTED</button>
+    <button class="button slack-button" type="button" name="slack-button" onclick="window.open('http://slack.kitura.io/')"><img class="slack-icon" src="/public/assets/slack-icon.png" alt="Slack Icon">SLACK</button>
+    <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="/public/assets/api-icon.png" alt="API Icon">API DOCS</button>
+</section>
+<div class="blogs-heading-section">
+    <h2>RECENT BLOGS</h2>
+    <div class="decorative-line-fullwidth"></div>
+</div>
+<div class="blogs-section">
+    {% for blog in blogs %}
+    <a class="blog-item" href={{ blog.url }}>
+        <h3>{{ blog.team }} | {{ blog.author }}</h3>
+        <h2>{{ blog.title }}</h2>
+        <img src={{ blog.image }} alt={{ blog.alt }}>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- Script for slider  -->
+<script src="/public/scripts/slider.js"></script>
+{% endblock %}

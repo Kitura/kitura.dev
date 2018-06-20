@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <title>Kitura</title>
+                  <link rel="icon" type="image/png" href="/public/assets/favicon-32x32.png" sizes="32x32" />
+                  <link rel="icon" type="image/png" href="/public/assets/favicon-16x16.png" sizes="16x16" />
+                  <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+                  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+                  <script src="/public/scripts/prism.js"></script>
+                  <link rel="stylesheet" href="/public/css/reset.css">
+                  <link rel="stylesheet" href="/public/css/main.css">
+                  <link rel="stylesheet" media="screen and (max-width: 900px)" href="css/mobile.css">
+  </head>
+  <header>
+      <div class="header-main">
+          <a class="home-link" href="/">
+              <img class="header-logo" src="/public/assets/kitura-logo.png" alt="Kitura logo">
+              <h1 class="header-title">KITURA</h1>
+          </a>
+      </div>
+      <nav class="header-nav">
+          <a class="header-link" href="/learn">LEARN</a>
+          <a class="header-link" href="packages.html">PACKAGES</a>
+          <a class="header-link" href="events.html">EVENTS</a>
+          <a class="header-link" href="help.html">HELP</a>
+      </nav>
+  </header>
+  <body>
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+  </body>
+  <footer>
+      <nav class="footer-nav">
+          <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+          <a class="footer-link" href="https://github.com/IBM-Swift/Kitura">
+              <img class="footer-logo" src="/public/assets/Kitura-White.svg" alt="Kitura logo">
+          </a>
+          <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+      </nav>
+  </footer>
+</html>

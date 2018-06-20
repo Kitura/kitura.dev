@@ -1,0 +1,62 @@
+{% extends "base_template.stencil" %}
+{% block content %}
+<div class="title-heading-section">
+    <h2>LEARN</h2>
+    <div class="decorative-line-fullwidth"></div>
+</div>
+<div class="guides-list">
+  {% for guideCard in guideCards %}
+  <div class="guide-rectangle">
+      <img class="guide-card-image" src={{ guideCard.image }} alt={{ guideCard.alt }}>
+      <h3 class="guide-card-title">{{ guideCard.title }}</h3>
+      <ul class="guide-list">
+          {% for topic in guideCard.topics %}
+          <li><a href={{ topic.url }}>> {{ topic.title }}</a></li>
+          {% endfor %}
+      </ul>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="button-section learn-button">
+      <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="/public/assets/api-icon.png" alt="API Icon">API DOCS</button>
+</div>
+
+<div class="tutorials-header">
+    <h2>TUTORIALS</h2>
+    <div class="decorative-line-fullwidth"></div>
+</div>
+
+<div class="tutorials-section">
+{% for tutorial in tutorials %}
+<a href={{ tutorial.url }}>
+    <div class="featured-tutorial wenderlich-starter">
+        <h3>{{ tutorial.author }}</h3>
+        <h2>{{ tutorial.title }}</h2>
+        <img src={{ tutorial.image }} alt={{ tutorial.alt }}>
+    </div></a>
+{% endfor %}
+</div>
+<div class="community-header">
+    <h2>COMMUNITY AND BOOKS</h2>
+    <div class="decorative-line-fullwidth"></div>
+</div>
+<div class="community-section">
+  <a class="community-item hacking-swift" href="https://www.hackingwithswift.com/store/server-side-swift">
+      <h3>Paul Hudson | @TwoStraws</h3>
+      <h2>Server-Side Swift</h2>
+      <img src="/public/assets/Store%20Splash.png" alt="Store Splash">
+  </a>
+  <a class="community-item kitura-dawn" href="https://learnkitura.com/">
+      <h3>Community Book | Nocturnal</h3>
+      <h2>Kitura Until Dawn</h2>
+      <img src="/public/assets/kitura-until-dawn-screengrab.png" alt="Kitura Until Dawn">
+  </a>
+  <a class="community-item objc-book" href="https://www.objc.io/books/functional-swift/">
+      <h3>Books We Love ❤️</h3>
+      <h2>Functional Swift by objc</h2>
+      <p>&uarr;</p>
+      <p>&darr;</p>
+  </a>
+</div>
+{% endblock %}
