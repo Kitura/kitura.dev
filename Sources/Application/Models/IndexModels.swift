@@ -15,7 +15,7 @@ struct Blog: Codable {
     let url: String
 }
 
-public struct CodableWrapper: Codable {
+public struct IndexWrapper: Codable {
     let slideItems: [SlideItem]
     let blogs: [Blog]
 }
@@ -32,4 +32,4 @@ let blogs = [
     Blog(title: "TYPESAFE TEMPLATING", author: "David Dunn", team: "Kitura Team", image: "/public/assets/typesafe-icon.jpg", alt: "Typesafe Templating", url: "https://developer.ibm.com/swift/2018/05/31/type-safe-templating/")
 ]
 
-public let indexContext = CodableWrapper(slideItems: slideItems, blogs: blogs)
+public let indexContext = IndexWrapper(slideItems: slideItems, blogs: blogs)

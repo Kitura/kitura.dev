@@ -1,0 +1,3 @@
+{% extends "base_template.stencil" %}
+{% block content %}
+{% endblock %}
