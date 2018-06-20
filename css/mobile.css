@@ -5,7 +5,6 @@
 html, body {
   font-family: IBM Plex Sans, sans-serif;
   height: 100%;
-  overflow-x: hidden;
 }
 
 /* Styles all the titles on the nav pages */
