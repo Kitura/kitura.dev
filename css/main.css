@@ -6,15 +6,6 @@ html, body {
   font-family: IBM Plex Sans, sans-serif;
   height: 100%;
 }
-
-html {
-    overflow: hidden;
-}
-
-body {
-    overflow: auto;
-}
-
 /**
       Header styling
 */
@@ -25,6 +16,7 @@ header {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  top: 0;
   align-items: center;
   font-weight: bold;
 }
