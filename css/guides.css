@@ -1,5 +1,8 @@
 html {
-    background: linear-gradient(#00bbe6, #0086a5);
+    background: linear-gradient(#00bbe6, #0086a5) no-repeat center fixed ;
+    background-size: cover;
+
+
 }
 
 header {
