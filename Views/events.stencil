@@ -12,32 +12,16 @@
 </div>
 
 <div class="meetups-section">
-<div class="meet">
-  <div class="meetup-image" style="background-color:rgb(127, 24, 28);"><img src="assets/calendar-white.png" alt="Alt Conf 2018"></div>
-  <div class="meetup-info">
-    <h2>AltConf 2018 - San Jose, USA</h2>
-    <h3>Meet the Kitura team across the street from WWDC, and explore a series of workshops and tutorials alongside presentations from some of our lead developers.</h3>
-    <h3 class="meetup-link"><a href="http://altconf.com/">Visit the AltConf 2018 site ></a></h3>
-  </div>
-</div>
-
-<div class="meet">
-  <div class="meetup-image" style="background-color:rgb(194, 230, 248);"><img src="assets/calendar.png" alt="try! Swift 2018"></div>
-  <div class="meetup-info">
-    <h2>try! Swift 2018 - NYC, USA</h2>
-    <h3>More information will be announced soon!</h3>
-    <h3 class="meetup-link"><a href="https://www.tryswift.co/">Visit the try! Swift site ></a></h3>
-  </div>
-</div>
-
-<div class="meet">
-  <div class="meetup-image" style="background-color:rgb(234, 234, 234);"><img src="assets/calendar.png" alt="Swift Summit"></div>
-  <div class="meetup-info">
-    <h2>Swift Summit - San Francisco, USA</h2>
-    <h3>More information will be announced soon!</h3>
-    <h3 class="meetup-link"><a href="http://www.swiftsummit.com/">Visit the Swift Summit site ></a></h3>
-  </div>
-</div>
+    {% for event in upcomingEvents %}
+    <div class="meet">
+     <div class="meetup-image" style="background-color:{{ event.colour }};"><img src={{ event.image }} alt={{ event.alt }}></div>
+      <div class="meetup-info">
+        <h2>{{ event.title }}</h2>
+           <h3>{{ event.description }}</h3>
+           <h3 class="meetup-link"><a href={{ event.url }}>{{ event.linkTitle }}></a></h3>
+      </div>
+    </div>
+    {% endfor %}
 </div>
 
 <div class="blogs-heading-section">
@@ -46,54 +30,20 @@
 </div>
 
 <div class="past-meetups-section">
+{% for event in pastEvents %}
 <div class="meet past">
-  <div class="meetup-image" style="background-color:black"><img src="assets/calendar-white.png" alt="Swift Summit"></div>
+ <div class="meetup-image" style="background-color:{{ event.colour }}"><img src={{ event.image }} alt={{ event.alt }}></div>
   <div class="meetup-info">
-    <h2>iOSLondon - London, UK</h2>
-    <h3><a href="https://skillsmatter.com/skillscasts/11998-ibm-server-side-swift-with-the-kitura-web-framework">Video: Server-side Swift with Kitura - David Dunn</a></h3>
+    <h2>{{ event.title }}</h2>
+    {% for resource in event.resource %}
+    <h3><a href={{ resource.resourceLink }}>{{ resource.resourceTitle }}</a></h3>
+    {% endfor %}
     <div class="summary">
-      <h3>David Dunn gave a presentation about server-side Swift with Kitura and spoke to attendees about the Swift community and the state of server-side Swift.</h3>
+      <h3>{{ event.description }}</h3>
     </div>
-    <h3 class="meetup-link"><a href="https://skillsmatter.com/groups/10773-ios-london">Visit the iOS London site ></a></h3>
+    <h3 class="meetup-link"><a href={{ event.url }}>{{ event.linkTitle }}</a></h3>
   </div>
 </div>
-
-<div class="meet past">
-  <div class="meetup-image" style="background-color:black;"><img src="assets/calendar-white.png" alt="Swift Summit"></div>
-  <div class="meetup-info">
-    <h2>iOSCon 2018 - London, UK</h2>
-    <h3><a href="https://skillsmatter.com/skillscasts/11530-understanding-codable">Video: Understanding Codable - Ian Partridge</a></h3>
-    <div class="summary">
-      <h3>Our own Ian Partridge also gave a talk on Codable in Swift 4, which we have linked above. Visit the link below to catch up on the other talks at the event.</h3>
-    </div>
-    <h3 class="meetup-link"><a href="https://skillsmatter.com/conferences/9319-ioscon-2018-the-conference-for-ios-and-swift-developers">Visit the iOS Con 2018 site ></a></h3>
-  </div>
-</div>
-
-<div class="meet past">
-  <div class="meetup-image" style="background-color:rgb(234, 234, 234);"><img src="assets/calendar.png" alt="Swift Summit"></div>
-  <div class="meetup-info">
-    <h2>try! Swift 2018 - Tokyo, Japan</h2>
-    <h3><a href="https://www.youtube.com/watch?v=5ciZS7Cxyp0">Video: Codable Routing in Kitura - Pushkar Kulkarni</a></h3>
-    <h3><a href="https://developer.ibm.com/swift/2017/10/30/kitura-20/">Blog Post: Introducing Kitura 2 - Chris Bailey</a></h3>
-    <div class="summary">
-      <h3>Our very own Pushkar gave a presentation on the power of codable routing, introduced in Kitura 2. We also spoke to lots of developers and ran some workshops that proved popular with the community, ran by our own Ian Partridge and David Okun.</h3>
-    </div>
-    <h3 class="meetup-link"><a href="https://www.tryswift.co/">Visit the try! Swift site ></a></h3>
-  </div>
-</div>
-
-<div class="meet past">
-  <div class="meetup-image" style="background-color:rgb(234, 234, 234);"><img src="assets/calendar.png" alt="Swift Summit"></div>
-  <div class="meetup-info">
-    <h2>Swift Summit 2017 - San Francisco, USA</h2>
-    <h3><a href="https://www.skilled.io/u/swiftsummit/ibm-kitura-swift-on-the-server">Video: Swift on the Server | State of the Union - Chris Bailey</a></h3>
-    <h3><a href="https://developer.ibm.com/swift/2017/10/30/kiturakit-client-side-rest-made-easy/">Blog Post: KituraKit : Client-side REST made Easy - Kye Maloy</a></h3>
-    <div class="summary">
-      <h3>We had some exciting announcements including <a href="https://www.ibm.com/us-en/marketplace/support-for-runtimes">Commerical Support</a> for Swift on Linux and we also introduced <a href="https://www.github.com/IBM-Swift/KituraKit">KituraKit (GitHub)</a> to help developers with their client-side Swift.</h3>
-    </div>
-    <h3 class="meetup-link"><a href="http://www.swiftsummit.com/">Visit the Swift Summit site ></a></h3>
-  </div>
-</div>
+{% endfor %}
 </div>
 {% endblock %}

@@ -15,11 +15,11 @@ func initializeWebRoutes(app: App) {
         try response.render("learn", with: learnContext)
     }
     
-    //        router.get("/packages") { request, response, next in
-    //            try response.render("packages", with: packagesContext)
-    //        }
-    //
-    //        router.get("/events") { request, response, next in
-    //            try response.render("events", with: eventsContext)
-    //        }
+    app.router.get("/packages") { request, response, next in
+        try response.render("packages", with: packagesContext)
+    }
+    
+    app.router.get("/events") { request, response, next in
+        try response.render("events", with: eventsContext)
+    }
 }

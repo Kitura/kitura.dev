@@ -1,3 +1,39 @@
 {% extends "base_template.stencil" %}
 {% block content %}
+<div class="title-heading-section">
+    <h2>PACKAGES</h2>
+    <div class="decorative-line-fullwidth"></div>
+      <h3>Kitura is a server-side Swift web framework, with a large ecosystem of supporting packages to make developing cloud-native applications easy.</h3>
+      <!-- <h3>Kitura and its associated repos are all open source with all the code available on GitHub, and we welcome PRs from the community. <br/> Below is a list of Kitura and some of its dependencies to help you get started.</h3> -->
+</div>
+
+<div class="kitura-core-section">
+  <div class="kitura-core">
+    <h2>Popular Packages</h2>
+    {% for package in popularPackages %}
+    <div class="base-dependency"><a href={{ package.url }}>
+      <img width="190px" src={{ package.image }} alt={{ package.url }}>
+      <h3>{{ package.title }}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="repo-card-section">
+  <div class="repo-header">
+    <h2><a name="all" style="padding-top: 10px"></a>ALL REPOS</h2>
+  <div class="decorative-line-fullwidth"></div>
+</div>
+{% for repo in repositories %}
+  <div class="core card">
+    <img src={{ repo.image }} alt={{ repo.alt }}>
+    <h2>{{ repo.title }}</h2>
+    {% for topic in repo.topics %}
+      <h3><a href={{ topic.url }}>{{ topic.title }}</a></h3>{% if topic.apiUrl %}<a href={{ topic.apiUrl }}><h5>API</h5></a>{% endif %}
+      <h4>{{ topic.description }}</h4>
+    {% endfor %}
+  </div>
+{% endfor %}
+</div>
 {% endblock %}

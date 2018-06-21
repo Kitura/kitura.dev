@@ -27,9 +27,26 @@ let slideItems = [
 ]
 
 let blogs = [
-    Blog(title:"ANNOUNCING KITURA 2.4", author: "Ian Partridge", team: "Kitura Team", image: "/public/assets/kitura-2dot4.jpg", alt: "Kitura 2.4", url: "https://developer.ibm.com/swift/2018/06/01/announcing-kitura-2-4/"),
-    Blog(title: "INTRODUCING KITURA-NIO", author: "Pushkar Kulkarni", team: "Kitura Team", image: "/public/assets/kitura-nio.jpg", alt: "Kitura NIO", url: "https://developer.ibm.com/swift/2018/05/31/introducing-kitura-nio/"),
-    Blog(title: "TYPESAFE TEMPLATING", author: "David Dunn", team: "Kitura Team", image: "/public/assets/typesafe-icon.jpg", alt: "Typesafe Templating", url: "https://developer.ibm.com/swift/2018/05/31/type-safe-templating/")
+    Blog(title:"ANNOUNCING KITURA 2.4",
+         author: "Ian Partridge",
+         team: "Kitura Team",
+         image: "/public/assets/kitura-2dot4.jpg",
+         alt: "Kitura 2.4",
+         url: "https://developer.ibm.com/swift/2018/06/01/announcing-kitura-2-4/"),
+    
+    Blog(title: "INTRODUCING KITURA-NIO",
+         author: "Pushkar Kulkarni",
+         team: "Kitura Team",
+         image: "/public/assets/kitura-nio.jpg",
+         alt: "Kitura NIO",
+         url: "https://developer.ibm.com/swift/2018/05/31/introducing-kitura-nio/"),
+    
+    Blog(title: "TYPESAFE TEMPLATING",
+         author: "David Dunn",
+         team: "Kitura Team",
+         image: "/public/assets/typesafe-icon.jpg",
+         alt: "Typesafe Templating",
+         url: "https://developer.ibm.com/swift/2018/05/31/type-safe-templating/")
 ]
 
 public let indexContext = IndexWrapper(slideItems: slideItems, blogs: blogs)

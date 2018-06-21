@@ -23,9 +23,9 @@
       </div>
       <nav class="header-nav">
           <a class="header-link" href="/learn">LEARN</a>
-          <a class="header-link" href="packages.html">PACKAGES</a>
-          <a class="header-link" href="events.html">EVENTS</a>
-          <a class="header-link" href="help.html">HELP</a>
+          <a class="header-link" href="/packages">PACKAGES</a>
+          <a class="header-link" href="/events">EVENTS</a>
+          <a class="header-link" href="/help">HELP</a>
       </nav>
   </header>
   <body>

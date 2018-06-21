@@ -57,10 +57,29 @@ let guideCards = [
     GuideCard(title: "TEMPLATING", alt: "templating", image: "/public/assets/file.png", topics: topicsFourth),
 ]
 let tutorials = [
-    Tutorial(title: "Kitura Tutorial: Getting Started with Server Side Swift", author: "David Okun | raywenderlich.com", url: "https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift", image: "/public/assets/ray-icon.png", alt: "Getting Started"),
-    Tutorial(title: "Kitura and Stencil: How to Make Websites with Swift", author: "David Okun | raywenderlich.com", url: "https://www.raywenderlich.com/181130/kitura-stencil-tutorial-how-to-make-websites-with-swift", image: "/public/assets/wenderlich-hero2.png", alt: "Stencil Tutorial"),
-    Tutorial(title: "Food Tracker: Building a Swift Backend", author: "Kitura Team", url: "https://github.com/IBM/FoodTrackerBackend", image: "/public/assets/FoodTrackerBezel.png", alt: "Food Tracker"),
-    Tutorial(title: "ToDo Backend: Make a Backend server", author: "Kitura Team", url: "https://github.com/IBM/ToDoBackend", image: "/public/assets/TodoBackend.png", alt: "ToDo Backend"),
+    Tutorial(title: "Kitura Tutorial: Getting Started with Server Side Swift",
+             author: "David Okun | raywenderlich.com",
+             url: "https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift",
+             image: "/public/assets/ray-icon.png",
+             alt: "Getting Started"),
+    
+    Tutorial(title: "Kitura and Stencil: How to Make Websites with Swift",
+             author: "David Okun | raywenderlich.com",
+             url: "https://www.raywenderlich.com/181130/kitura-stencil-tutorial-how-to-make-websites-with-swift",
+             image: "/public/assets/wenderlich-hero2.png",
+             alt: "Stencil Tutorial"),
+    
+    Tutorial(title: "Food Tracker: Building a Swift Backend",
+             author: "Kitura Team",
+             url: "https://github.com/IBM/FoodTrackerBackend",
+             image: "/public/assets/FoodTrackerBezel.png",
+             alt: "Food Tracker"),
+    
+    Tutorial(title: "ToDo Backend: Make a Backend server",
+             author: "Kitura Team",
+             url: "https://github.com/IBM/ToDoBackend",
+             image: "/public/assets/TodoBackend.png",
+             alt: "ToDo Backend"),
 ]
 
 public let learnContext = LearnWrapper(guideCards: guideCards, tutorials: tutorials)
