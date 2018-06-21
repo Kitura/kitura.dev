@@ -22,4 +22,8 @@ func initializeWebRoutes(app: App) {
     app.router.get("/events") { request, response, next in
         try response.render("events", with: eventsContext)
     }
+    
+    app.router.get("/help") { request, response, next in
+        try response.render("help", context: [:])
+    }
 }

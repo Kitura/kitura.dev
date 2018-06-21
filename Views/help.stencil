@@ -1,3 +1,42 @@
 {% extends "base_template.stencil" %}
 {% block content %}
+<div class="title-heading-section">
+  <h2>HELP</h2>
+  <div class="decorative-line-fullwidth"></div>
+</div>
+<section class="support-social-section">
+<div class="support-social-header">
+  <h2>GET INVOLVED</h2>
+</div>
+<div class="support-social-container">
+  <a href="http://slack.kitura.io/"><div class="support-social-box support-slack">
+      <img src="public/assets/slack-icon.png" alt="Slack">
+      <p>Join us on the Kitura Slack!</p>
+      </div></a>
+  <a href="https://forums.swift.org/c/related-projects/kitura"><div class="support-social-box support-forums">
+      <img src="public/assets/swift-black-white.png" alt="Swift Forums">
+      <p>Post about Kitura on the Swift Forums.</p>
+      </div></a>
+  <a href="https://github.com/IBM-Swift/Kitura"><div class="support-social-box support-report">
+      <img src="public/assets/github-white.png" alt="GitHub">
+      <p>Found a bug? Report it on GitHub!</p>
+  </div></a>
+  <a href="https://developer.ibm.com/swift"><div class="support-social-box support-dev">
+      <img src="public/assets/swift-ibm.png" alt="DevWorks">
+      <p>Learn more about Swift@IBM.</p>
+      </div></a>
+</div>
+</section>
+<section class="support-commerce-section">
+<div class="support-commerce-header">
+  <h2>COMMERCIAL SUPPORT</h2>
+  <div class="decorative-line-fullwidth"></div>
+</div>
+<div class="support-hero">
+  <a href="https://www.ibm.com/us-en/marketplace/support-for-runtimes"><img class="support-hero-image" src="public/assets/commercial-2.jpg"></a>
+</div>
+<a href="https://www.ibm.com/us-en/marketplace/support-for-runtimes">
+<img class="support-hero-image-smaller" src="public/assets/smaller-commercial.jpg">
+</a>
+</section>
 {% endblock %}

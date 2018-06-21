@@ -361,7 +361,7 @@ let repositories = [
     
     Repositories(title: "TEMPLATING",
                  className: "templating card",
-                 image: "public/assets/file.svg",
+                 image: "public/assets/file.png",
                  alt: "Templating",
                  topics: templatingTopics),
     
