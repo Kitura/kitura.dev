@@ -62,7 +62,7 @@
 
     <h2><a name="html-form" style="padding-top: 100px;"></a>Create the HTML Form</h2>
 
-    <p class="sentence">Webpages use <a href="https://www.w3schools.com/html/html_forms.asp">HTML forms</a> to take a user's input and send it as an HTTP request.</p>
+    <p class="sentence">Webpages use <a href="https://www.w3schools.com/html/html_forms.asp" target="_blank">HTML forms</a> to take a user's input and send it as an HTTP request.</p>
     <p class="sentence">The form data can be sent via a HTTP GET request. In this case, the data gets appended to the url as a query string query string consisting of “key=value” pairs, separated by the “&amp” symbol.</p>
     <p class="sentence">A example HTML form GET request could be:</p>
     <pre><code class="language-swift">http://localhost.com/form?name=Andy&age=&isDeveloper=true</code></pre>
@@ -76,15 +76,15 @@ Content-Length: 31
 name=Andy&age=&isDeveloper=true</pre>
     <p class="sentence">Use POST whenever you are working with sensitive or personal information.</p>
     <p class="sentence">We will now create an HTML page containing get and post forms</p>
-    <p class="sentence">Create a public directory:</p>
+    <p class="sentence">1. Create a public directory:</p>
     <pre><code class="language-swift">mkdir ~/HTMLForms/public</code></pre>
-    <p class="sentence">Move to your new directory:</p>
+    <p class="sentence">2. Move to your new directory:</p>
     <pre><code class="language-swift">cd ~/HTMLForms/public</code></pre>
-    <p class="sentence">Create an HTML file:</p>
+    <p class="sentence">3. Create an HTML file:</p>
     <pre><code class="language-swift">touch formwebpage.html</code></pre>
-    <p class="sentence">Open your HTML file:</p>
+    <p class="sentence">4. Open your HTML file:</p>
     <pre><code class="language-swift">open -a Xcode.app formwebpage.html</code></pre>
-    <p class="sentence">Copy in the following HTML: </p>
+    <p class="sentence">5. Copy in the following HTML: </p>
     <pre>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;body&gt;
@@ -139,7 +139,7 @@ name=Andy&age=&isDeveloper=true</pre>
     <p class="sentence">3. Inside the postInit function, add the static file server middleware: </p>
     <pre><code class="language-swift">router.get("/", middleware: StaticFileServer())</code></pre>
     <p class="sentence">4. In the top left of Xcode is a toolbox icon. Click this and change the scheme from "HTMLForms-Package" to "HTMLForms".</p>
-    <p class="sentence">5. Run the server and go to: <a href="localhost:8080/formwebpage.html">localhost:8080/formwebpage.html</a></p>
+    <p class="sentence">5. Run the server and go to: <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a></p>
     <p class="sentence">You should see a simple HTML page with four HTML forms. These will send the input data to our server. Now we need to create the server routes that receive this data.</p>
 
     <h2><a name="form-model" style="padding-top: 100px;"></a>Create the Form Model</h2>
@@ -156,7 +156,9 @@ name=Andy&age=&isDeveloper=true</pre>
     <p class="sentence">For now, let's create a very simple model:</p>
     <p class="sentence">1. Open Models.swift</p>
     <p class="sentence">2. Copy in the following code:</p>
-    <pre><code class="language-swift">struct InputForm: Codable, QueryParams {
+    <pre><code class="language-swift">import KituraContracts
+
+struct Form: Codable, QueryParams {
     let name: String
     let age: Int?
     let isDeveloper: Bool
@@ -167,58 +169,63 @@ name=Andy&age=&isDeveloper=true</pre>
 
 
     <h2><a name="codable-routes" style="padding-top: 100px;"></a>Setup the Codable Routes</h2>
-    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html">Codable route</a> to recieve the POST request from an HTML form.</p>
-    <p class="sentence">1. Inside "postInit", Register the route handler:</p>
+    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html target="_blank"">Codable route</a> to recieve the POST request from an HTML form.</p>
+    <p class="sentence">1. Open Application.swift</p>
+    <p class="sentence">2. Inside the "postInit" function, Register the route handler:</p>
     <pre><code class="language-swift">router.post("/codable", handler: postFormHandler)</code></pre>
-    <p class="sentence">2. After the "postInit" function, add your "postFormHandler" function:
-    <pre><code class="language-swift">func postFormHandler(user: User, respondWith: (User?, RequestError?) -> Void) {
-    print("Codable POST route: \(user.name), is \(user.age) years old")
+    <p class="sentence">3. After the "postInit" function, add your "postFormHandler" function:
+    <pre><code class="language-swift">func postFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
+    print("Codable POST route: \(user.name)")
+    if let age = user.age { print("is \(age) years old") }
     if(user.isDeveloper) { print("and they are a developer") }
     respondWith(user, nil)
 }</code></pre>
-    <p class="sentence">3. Go to <a href="localhost:8080/formwebpage.html">localhost:8080/formwebpage.html</a> and send the "Post to Codable route" form. In the Xcode logger you should see our printed message with the form data.</p>
+    <p class="sentence">4. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "Post to Codable route" form and in the Xcode logger you should see our printed message with the form data.</p>
 
-    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html">Codable route</a> to recieve the GET request from an HTML form.</p>
-    <p class="sentence">4. Inside "postInit", Register the route handler:</p>
+    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html target="_blank"">Codable route</a> to recieve the GET request from an HTML form.</p>
+    <p class="sentence">5. Inside "postInit", Register the route handler:</p>
     <pre><code class="language-swift">router.get("/codable", handler: getFormHandler)</code></pre>
-    <p class="sentence">5. After the "postInit" function, add your "getFormHandler" function:
-    <pre><code class="language-swift">func getFormHandler(user: User, respondWith: (User?, RequestError?) -> Void) {
-    print("Codable GET route: \(user.name), is \(user.age) years old")
+    <p class="sentence">6. After the "postInit" function, add your "getFormHandler" function:
+    <pre><code class="language-swift">func getFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
+    print("Codable GET route: \(user.name)")
+    if let age = user.age { print("is \(age) years old") }
     if(user.isDeveloper) { print("and they are a developer") }
     respondWith(user, nil)
 }</code></pre>
-    <p class="sentence">6. Go to <a href="localhost:8080/formwebpage.html">localhost:8080/formwebpage.html</a> and send the "Get to Codable route" form. In the Xcode logger you should see our printed message with the form data.</p>
+    <p class="sentence">7. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "Get to Codable route" form and in the Xcode logger you should see our printed message with the form data.</p>
 
 
     <h2><a name="raw-routes" style="padding-top: 100px;"></a>Setup the Raw Routes</h2>
     <p class="sentence">We will now create a Raw route to recieve the POST request from an HTML form.</p>
     <p class="sentence">1. Inside "postInit", Register the Raw POST route:</p>
     <pre><code class="language-swift">router.post("/raw") { request, response, next in
-    guard let user = try? request.read(as: User.self)
+    guard let user = try? request.read(as: Form.self)
     else {
         return try response.status(.unprocessableEntity).end()
     }
-    print("Raw POST route: \(user.name), is \(user.age) years old")
+    print("Raw POST route: \(user.name)")
+    if let age = user.age { print("is \(age) years old") }
     if(user.isDeveloper) { print("and they are a developer") }
     response.status(.created).send(json: user)
     next()
 }</code></pre>
     <p class="sentence">This will function the same as the Codable POST route above, to receive and parse the HTML form.</p>
-    <p class="sentence">2. Go to <a href="localhost:8080/formwebpage.html">localhost:8080/formwebpage.html</a> and send the "POST to Raw route" form. In the Xcode logger you should see our printed message with the form data.</p>
+    <p class="sentence">2. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "POST to Raw route" form and in the Xcode logger you should see our printed message with the form data.</p>
     <p class="sentence">3. After the Raw POST route, Register the Raw GET route:</p>
     <pre><code class="language-swift">router.get("/raw") { request, response, next in
-    guard let user = getQueryParameters(as: User.self)
+    guard let user = request.getQueryParameters(as: Form.self)
     else {
         return try response.status(.unprocessableEntity).end()
     }
-    print("Raw GET route: \(user.name), is \(user.age) years old")
+    print("Raw GET route: \(user.name)")
+    if let age = user.age { print("is \(age) years old") }
     if(user.isDeveloper) { print("and they are a developer") }
     response.status(.created).send(json: user)
     next()
-}
 }</code></pre>
-    <p class="sentence">4. Go to <a href="localhost:8080/formwebpage.html">localhost:8080/formwebpage.html</a> and send the "GET to Raw route" form. In the Xcode logger you should see our printed message with the form data.</p>
+    <p class="sentence">4. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "GET to Raw route" form and in the Xcode logger you should see our printed message with the form data.</p>
     <p class="sentence">This will function the same as the Codable GET route above, to receive and parse the HTML form.</p>
+    <p class="sentence">Congratulations!! You have just created and hosted a HTML forms webpage. Then set up a server to receive and parse these forms using four different methods! </p>
     </section>
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
