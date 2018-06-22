@@ -30,7 +30,7 @@
 <div class="tutorials-section">
 {% for tutorial in tutorials %}
 <a href={{ tutorial.url }}>
-    <div class="featured-tutorial wenderlich-starter">
+    <div class="featured-tutorial {{ tutorial.styleClass }}">
         <h3>{{ tutorial.author }}</h3>
         <h2>{{ tutorial.title }}</h2>
         <img src={{ tutorial.image }} alt={{ tutorial.alt }}>

@@ -26,4 +26,12 @@ func initializeWebRoutes(app: App) {
     app.router.get("/help") { request, response, next in
         try response.render("help", context: [:])
     }
+    
+//    app.router.get("/guides/:name") { request, response, next in
+//        guard let name = request.parameters["name"] else {
+//            next()
+//            return
+//        }
+//        try response.render("\(name).html", with: "")
+//    }
 }

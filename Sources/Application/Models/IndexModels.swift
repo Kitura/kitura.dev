@@ -4,6 +4,9 @@ struct SlideItem: Codable {
     let title: String
     let caption: String
     let url: String
+    let image: String?
+    let alt: String
+    let styleClass: String
 }
 
 struct Blog: Codable {
@@ -21,9 +24,19 @@ public struct IndexWrapper: Codable {
 }
 
 let slideItems = [
-    SlideItem(title: "Kitura", caption: "A powerful server-side Swift web framework", url: "http://www.google.com"),
-    SlideItem(title: "Kitura", caption: "This is my second slide", url: ""),
-    SlideItem(title: "Kitura", caption: "This is my third slide", url: "")
+    SlideItem(title: "KITURA",
+              caption: "A powerful server-side Swift web framework",
+              url: "public/guides/gettingstarted.html",
+              image: "public/assets/Kitura.svg",
+              alt: "",
+              styleClass: "slide-1"),
+    
+    SlideItem(title: "KITURA 2.4",
+              caption: "Click here to find out what's new.",
+              url: "https://developer.ibm.com/swift/2018/06/01/announcing-kitura-2-4/",
+              image: "public/assets/Kitura-White.svg",
+              alt: "",
+              styleClass: "slide-2"),
 ]
 
 let blogs = [

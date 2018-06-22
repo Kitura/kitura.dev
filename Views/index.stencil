@@ -3,11 +3,11 @@
 <section class="main-section">
     <section class="slideshow-section">
         {% for slideItem in slideItems %}
-        <div class="slide fade slide-1">
+        <div class="slide fade {{ slideItem.styleClass }}">
             <a href={{ slideItem.url }}>
                 <div class="slide-content">
                     <div class="slide-logo">
-                        <img width="300px" src="/public/assets/Kitura.svg" alt="Kitura Logo">
+                        <img width="300px" src={{slideItem.image}} alt={{slideItem.alt}}>
                         <h2>{{slideItem.title}}</h2>
                     </div>
                     <h3>{{ slideItem.caption }}</h3>
@@ -15,6 +15,16 @@
             </a>
         </div>
         {% endfor %}
+        <div class="slide fade slide-3">
+          <a href="help.html"><div class="slide-content-3">
+            <div class="slide-logo-3">
+              <img width="100px" class="swift-slide-icon" src="public/assets/swift-black-transparent.png" alt="Swift Logo">
+              <h2>SWIFT FORUMS + SLACK</h2>
+              <img width="100px" class="slack-slide-icon" src="public/assets/slack-icon.png" alt="Slack Logo">
+            </div>
+            <h3>Get help, talk Swift and contribute.</h3>
+          </div></a>
+        </div>
         </div>
         <a class="prev" onclick="moveSlidesBy(-1)">
             <img src="/public/assets/backwards-new.png" alt="">
@@ -40,7 +50,7 @@ Kitura.run()</code></pre>
     </section>
 </section>
 <section class="button-section">
-    <button class="button" type="button" name="start-button" onclick="window.open('guides/gettingstarted.html', '_self')">>  GET STARTED</button>
+    <button class="button" type="button" name="start-button" onclick="window.open('public/guides/gettingstarted.html', '_self')">>  GET STARTED</button>
     <button class="button slack-button" type="button" name="slack-button" onclick="window.open('http://slack.kitura.io/')"><img class="slack-icon" src="/public/assets/slack-icon.png" alt="Slack Icon">SLACK</button>
     <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="/public/assets/api-icon.png" alt="API Icon">API DOCS</button>
 </section>

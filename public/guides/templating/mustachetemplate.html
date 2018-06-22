@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-  <title>Learn - Stencil Templating</title>
+  <title>Learn - Mustache Templating</title>
   <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
   <meta charset="utf-8">
@@ -17,16 +17,16 @@
 <header>
   <div class="header-container">
     <div class="header-main">
-      <a class="home-link" href="../../index.html">
+      <a class="home-link" href="../../../">
         <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
         <h1 class="header-title">KITURA</h1>
       </a>
     </div>
     <nav class="header-nav">
-      <a class="header-link active-nav" href="../../learn.html">LEARN</a>
-      <a class="header-link" href="../../packages.html">PACKAGES</a>
-      <a class="header-link" href="../../events.html">EVENTS</a>
-      <a class="header-link" href="../../help.html">HELP</a>
+      <a class="header-link active-nav" href="../../../learn">LEARN</a>
+      <a class="header-link" href="../../../packages">PACKAGES</a>
+      <a class="header-link" href="../../../events">EVENTS</a>
+      <a class="header-link" href="../../../help">HELP</a>
     </nav>
   </div>
 </header>
@@ -34,60 +34,58 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>USING KITURA-STENCIL</h1>
+      <h1>USING KITURA-MUSTACHE</h1>
     </div>
+
     <h2>Setup environment</h2>
     <p>1. Create a directory:</p>
-    <pre><code>mkdir ~/KituraStencilExample</code></pre>
+    <pre><code class="language-swift">mkdir ~/KituraMustacheExample</code></pre>
     <p>2. Change to new directory:</p>
-    <pre><code>cd ~/KituraStencilExample</code></pre>
+    <pre><code class="language-swift">cd ~/KituraMustacheExample</code></pre>
     <p>3. Create a Kitura sever:</p>
     <pre><code>kitura init</code></pre>
     <p>kitura init creates, builds and generates a starter Kitura Xcode project and will take a couple of minutes to complete. This includes best-practice implementations of health checking and monitoring as well as configuration files to allow easy deployment to a Docker container, a Kubernetes cluster, or the IBM Cloud.</p>
-    <h2>Add Kitura-StencilTemplateEngine to the Kitura app</h2>
-    <p>Add KituraStencil to the package dependencies:</p>
-    <pre><code class="language-swift">.package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", from: "1.0.0")</code></pre>
-    <p>Add KituraStencil to the target dependencies:</p>
-    <pre><code class="language-swift">.target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics","Health", "KituraStencil"]),</code></pre>
+    <h2>Add Kitura-MustacheTemplateEngine to the Kitura app</h2>
+    <p>Add KituraMustache to the package dependencies:</p>
+    <pre><code class="language-swift">.package(url: "https://github.com/IBM-Swift/Kitura-MustacheEngine.git", from: "1.0.0")</code></pre>
+    <p>Add KituraMustache to the target dependencies:</p>
+    <pre><code class="language-swift">.target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics","Health", "KituraMustache"]),</code></pre>
     <p>Our Package.swift should look like this:</p>
-    <pre>
-      <code class="language-swift">
-// swift-tools-version:4.0
+    <pre><code class="language-swift">// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
-    name: "KituraStencilExample",
+    name: "KituraMustacheExample",
     dependencies: [
         .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.2.0")),
         .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", .upToNextMinor(from: "1.7.1")),
         .package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", .upToNextMinor(from: "6.0.0")),
         .package(url: "https://github.com/RuntimeTools/SwiftMetrics.git", from: "2.0.0"),
         .package(url: "https://github.com/IBM-Swift/Health.git", from: "0.0.0"),
-        .package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", from: "1.0.0"),
-	],
-	targets: [
-      	    .target(name: "KituraStencilExample", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
-      	    .target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics","Health", "KituraStencil"]),
+        .package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", from: "1.0.0"),
+  ],
+  targets: [
+            .target(name: "KituraMustacheExample", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
+            .target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics","Health", "KituraStencil"]),
 
-      	    .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
+            .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
         ]
-)</code>
-  </pre>
+)</code></pre>
     <h2>Add a template file to the Kitura app</h2>
     <p>By default template engines look in a ./Views directory for the template files to use so we need to add this directory to our project. In a terminal window run the following:</p>
-    <pre><code>mkdir ~/KituraStencilExample/Views</code></pre>
-    <p>We’ve added two new packages and a new directory to our project but if you open the KituraStencilExample.xcodeproj that was generated by kitura init none of our additions will be visible within Xcode. To solve this we need to generate a new Xcode project so it will be aware of all we’ve added. Open a terminal and run the following:</p>
+    <pre><code class="language-swift">mkdir ~/KituraMustacheExample/Views</code></pre>
+    <p>We’ve added two new packages and a new directory to our project but if you open the KituraMustacheExample.xcodeproj that was generated by kitura init none of our additions will be visible within Xcode. To solve this we need to generate a new Xcode project so it will be aware of all we’ve added. Open a terminal and run the following:</p>
     <p>1. Ensure you’re in the correct directory:</p>
-    <pre><code>cd ~/KituraStencilExample</code></pre>
+    <pre><code class="language-swift">cd ~/KituraMustacheExample</code></pre>
     <p>2. Generate new Xcode project:</p>
-    <pre><code>swift package generate-xcodeproj</code></pre>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
     <p>3. Once the command has finished executing open the new project:</p>
-    <pre><code>open KituraStencilExample.xcodeproj</code></pre>
+    <pre><code class="language-swift">open KituraMustacheExample.xcodeproj</code></pre>
     <p>Now we can add a template file to our application:</p>
     <p>1. In Xcode right-click on the Views folder and select New File.</p>
-    <p>2. Click on the new file (called File by default) and change the name to StencilExample.stencil.</p>
-    <p>Add the following into the StencilExample.stencil file:</p>
-    <pre><code>Hello {{ name }}!</code></pre>
+    <p>2. Click on the new file (called File by default) and change the name to MustacheExample.mustache.</p>
+    <p>Add the following into the MustacheExample.mustache file:</p>
+    <pre><code class="language-swift">Hello {{ name }}!</code></pre>
     <h2>Register the template engine with a Router instance</h2>
     <p>We now have everything in place to start writing the code for our implementation of the template engines!</p>
     <p>In Xcode open the Application.swift file found in Sources/Application/</p>
@@ -95,7 +93,7 @@ let package = Package(
     <p>Below the line:</p>
     <pre><code class="language-swift">import Health</code></pre>
     <p>Add the following:</p>
-    <pre><code class="language-swift">import KituraStencil</code></pre>
+    <pre><code class="language-swift">import KituraMustache</code></pre>
     <blockquote class="tip">
       <p>You may need to build your project before Xcode can find the package.</p>
     </blockquote>
@@ -103,18 +101,16 @@ let package = Package(
     <p>In the postInit() function below the line:</p>
     <pre><code class="language-swift">initializeHealthRoutes(app: self)</code></pre>
     <p>Add the following:</p>
-    <pre><code class="language-swift">router.add(templateEngine: StencilTemplateEngine())</code></pre>
+    <pre><code class="language-swift">router.add(templateEngine: MustacheTemplateEngine())</code></pre>
     <h2>Rendering a template</h2>
     <p>We can render a template by calling the response.render(_:context) function, where context is the information the template engine will use to fill out the corresponding template files.</p>
     <p>Below the line:</p>
-    <pre><code class="language-swift">router.add(templateEngine: StencilTemplateEngine())</code></pre>
+    <pre><code class="language-swift">router.add(templateEngine: MustacheTemplateEngine())</code></pre>
     <p>add the following:</p>
-    <pre><code class="language-swift">
-router.get("/hello") { request, response, next in
-    try response.render("StencilExample.stencil", context: ["name": "World!"]])
+    <pre><code class="language-swift">router.get("/hello") { request, response, next in
+    try response.render("MustacheExample.mustache", context: ["name": "World!"]])
     next()
-}
-    </code></pre>
+}</code></pre>
     <p>That's it! Three lines of code is all we need to render a template file!</p>
     <p>To see the result we need to start the Kitura server, in Xcode we can do this using the shortcut cmd + R</p>
     <blockquote class="tip">
@@ -124,7 +120,7 @@ router.get("/hello") { request, response, next in
     <p>Then open:</p>
     <p>http://localhost:8080/hello</p>
     <p>In the browser we should see:</p>
-    <pre><code>Hello World!</code></pre>
+    <pre><code class="language-swift">Hello World!</code></pre>
   </section>
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
@@ -135,6 +131,7 @@ router.get("/hello") { request, response, next in
   </section>
 </body>
 <footer>
+
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
     <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
