@@ -44,6 +44,10 @@ Non-Swift code blocks and single code lines should be wrapped in:
 
 </code></pre>
 ```
+Single key words or functions should be wrapped in:
+```
+<span class="highlight"> </span>
+```
 
 #### Tables
 Tables should be structured as follows:
