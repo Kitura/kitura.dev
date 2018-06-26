@@ -39,6 +39,7 @@
     <ul class="contents"> Contents
       <li><a href="#kitura-server">Create a Kitura Server</a></li>
       <li><a href="#html-form">Create the HTML Form</a></li>
+      <li><a href="#staticfileserver">Create a StaticFileServer</a></li>
       <li><a href="#form-model">Create the Form Model</a></li>
       <li><a href="#codable-routes">Set up Codable Routes</a></li>
       <li><a href="#raw-routes">Set up Raw Routes</a></li>
@@ -63,19 +64,19 @@
     <h2><a name="html-form" style="padding-top: 100px;"></a>Create the HTML Form</h2>
 
     <p class="sentence">Webpages use <a href="https://www.w3schools.com/html/html_forms.asp" target="_blank">HTML forms</a> to take a user's input and send it as an HTTP request.</p>
-    <p class="sentence">The form data can be sent via a HTTP GET request. In this case, the data gets appended to the url as a query string query string consisting of “key=value” pairs, separated by the “&amp” symbol.</p>
-    <p class="sentence">A example HTML form GET request could be:</p>
+    <p class="sentence">The form data can be sent via a HTTP GET request. In this case, the data gets appended to the url as a query string consisting of “key=value” pairs, separated by the “&amp” symbol.</p>
+    <p class="sentence">An example of a HTML form GET request:</p>
     <pre><code class="language-swift">http://localhost.com/form?name=Andy&age=&isDeveloper=true</code></pre>
-    <p class="sentence">Using a GET request allows users to bookmark the result and is better for non-secure data</p>
-    <p class="sentence">The form data can also be sent via a HTTP POST request. In this case, the data is sent with the content-type header "application/x-www-form-urlencoded". This indicates that the body of the request is a query string.</p>
-    <p class="sentence">The data from above sent as a POST request, would be:</p>
+    <p class="sentence">Using a GET request allows users to bookmark the result and is better for non-secure data.</p>
+    <p class="sentence">The form data can also be sent via an HTTP POST request. In this case, the data is sent with the content-type header "application/x-www-form-urlencoded". This indicates that the body of the request is a query string.</p>
+    <p class="sentence">The data from the example above sent as a POST request:</p>
     <pre>POST / HTTP/1.1
 Host: http://localhost:8080/form
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 31
 name=Andy&age=&isDeveloper=true</pre>
     <p class="sentence">Use POST whenever you are working with sensitive or personal information.</p>
-    <p class="sentence">We will now create an HTML page containing get and post forms</p>
+    <p class="sentence">We will now create an HTML page containing get and post forms.</p>
     <p class="sentence">1. Create a public directory:</p>
     <pre><code class="language-swift">mkdir ~/HTMLForms/public</code></pre>
     <p class="sentence">2. Move to your new directory:</p>
@@ -93,7 +94,7 @@ name=Andy&age=&isDeveloper=true</pre>
 &lt;h4&gt;Post to Codable route&lt;/h4&gt;
 &lt;form action="codable" method="post" enctype="application/x-www-form-urlencoded" target="redirect"&gt;
     Name: &lt;input type="text" name="name" required="required"&gt;&lt;br&gt;
-    Age: &lt;input type="number" name="age" &gt;&lt;br&gt;
+    Age: &lt;input type="number" name="age"&gt;&lt;br&gt;
     isDeveloper:&lt;input type="checkbox" name="isDeveloper" value="true"&gt;&lt;br&gt;
     &lt;input type="submit" value="Submit"&gt;
 &lt;/form&gt;
@@ -101,7 +102,7 @@ name=Andy&age=&isDeveloper=true</pre>
 &lt;h4&gt;Get to Codable route&lt;/h4&gt;
 &lt;form action="codable" method="get" enctype="application/x-www-form-urlencoded" target="redirect"&gt;
     Name: &lt;input type="text" name="name" required="required"&gt;&lt;br&gt;
-    Age: &lt;input type="number" name="age" &gt;&lt;br&gt;
+    Age: &lt;input type="number" name="age"&gt;&lt;br&gt;
     isDeveloper:&lt;input type="checkbox" name="isDeveloper" value="true"&gt;&lt;br&gt;
     &lt;input type="submit" value="Submit"&gt;
 &lt;/form&gt;
@@ -117,7 +118,7 @@ name=Andy&age=&isDeveloper=true</pre>
 &lt;h4&gt;Get to Raw route&lt;/h4&gt;
 &lt;form action="raw" method="get" enctype="application/x-www-form-urlencoded" target="redirect"&gt;
     Name: &lt;input type="text" name="name" required="required"&gt;&lt;br&gt;
-    Age: &lt;input type="number" name="age" &gt;&lt;br&gt;
+    Age: &lt;input type="number" name="age"&gt;&lt;br&gt;
     isDeveloper:&lt;input type="checkbox" name="isDeveloper" value="true"&gt;&lt;br&gt;
     &lt;input type="submit" value="Submit"&gt;
 &lt;/form&gt;
@@ -130,15 +131,19 @@ name=Andy&age=&isDeveloper=true</pre>
     <ul>
       <li>"Name": a required text input</li>
       <li>"Age": an optional number input</li>
-      <li>"isDeveloper": A checkbox, which sends "true" if checked</li>
+      <li>"isDeveloper": a checkbox, which sends "true" if checked</li>
     </ul>
-    <p class="sentence">We will serve this page using a "StaticFileServer".</p>
+
+
+    <h2><a name="staticfileserver" style="padding-top: 100px;"></a>Create a StaticFileServer</h2>
+
+    <p class="sentence">We will serve the HTML page using a <span class="highlight">StaticFileServer</span>.</p>
     <p class="sentence">1. Open your Xcode project:</p>
     <pre><code class="language-swift">open ~/HTMLForms/HTMLForms.xcodeproj</code></pre>
     <p class="sentence">2. Open Sources > Application > Application.swift</p>
-    <p class="sentence">3. Inside the postInit function, add the static file server middleware: </p>
+    <p class="sentence">3. Inside the <span class="highlight">postInit</span> function, add the static file server middleware: </p>
     <pre><code class="language-swift">router.get("/", middleware: StaticFileServer())</code></pre>
-    <p class="sentence">4. In the top left of Xcode is a toolbox icon. Click this and change the scheme from "HTMLForms-Package" to "HTMLForms".</p>
+    <p class="sentence">4. In the top left of Xcode is a toolbox icon. Click this and change the scheme from <span class="highlight">HTMLForms-Package</span> to <span class="highlight">HTMLForms</span>.</p>
     <p class="sentence">5. Run the server and go to: <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a></p>
     <p class="sentence">You should see a simple HTML page with four HTML forms. These will send the input data to our server. Now we need to create the server routes that receive this data.</p>
 
@@ -163,17 +168,17 @@ struct Form: Codable, QueryParams {
     let age: Int?
     let isDeveloper: Bool
 }</code></pre>
-    <p class="sentence">This provides a simple representation of a data we will recieve from our form. We marked it as Codable so it can be used in Codable routes and as QueryParams so it can be decoded from query parameters on a GET request.</p>
-    <p class="sentence">If the forms "age" field is empty, it will send the empty string in the query and Kitura will decode the value to nil. If the forms "isDeveloper" field is empty, it will send the empty string in the query and Kitura will decode the value to false.
+    <p class="sentence">This provides a simple representation of the data we will receive from our form. The struct conforms to Codable so it can be used in Codable routes and also conforms to QueryParams so it can be decoded from the query parameters on a GET request.</p>
+    <p class="sentence">If the form's <span class="highlight">age</span> or <span class="highlight">isDeveloper</span>  fields are empty, an empty value will be sent with the key (i.e "age=isDeveloper="). In this case, Kitura will decode <span class="highlight">age</span>  to <span class="highlight">nil</span>  and <span class="highlight">isDeveloper</span>  to <span class="highlight">false</span>.
     <p class="sentence">Now we have a model we can use, we can create our routes!</p>
 
 
     <h2><a name="codable-routes" style="padding-top: 100px;"></a>Setup the Codable Routes</h2>
-    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html target="_blank"">Codable route</a> to recieve the POST request from an HTML form.</p>
+    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html" target="_blank">Codable route</a> to receive the POST request from an HTML form.</p>
     <p class="sentence">1. Open Application.swift</p>
-    <p class="sentence">2. Inside the "postInit" function, Register the route handler:</p>
+    <p class="sentence">2. Inside the <span class="highlight">postInit</span> function, Register the route handler:</p>
     <pre><code class="language-swift">router.post("/codable", handler: postFormHandler)</code></pre>
-    <p class="sentence">3. After the "postInit" function, add your "postFormHandler" function:
+    <p class="sentence">3. After the <span class="highlight">postInit</span> function, add your <span class="highlight">postFormHandler</span> function:
     <pre><code class="language-swift">func postFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
     print("Codable POST route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
@@ -182,7 +187,7 @@ struct Form: Codable, QueryParams {
 }</code></pre>
     <p class="sentence">4. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "Post to Codable route" form and in the Xcode logger you should see our printed message with the form data.</p>
 
-    <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html target="_blank"">Codable route</a> to recieve the GET request from an HTML form.</p>
+    <p class="sentence">We will now create a Codable route to receive the GET request from an HTML form.</p>
     <p class="sentence">5. Inside "postInit", Register the route handler:</p>
     <pre><code class="language-swift">router.get("/codable", handler: getFormHandler)</code></pre>
     <p class="sentence">6. After the "postInit" function, add your "getFormHandler" function:
@@ -196,7 +201,7 @@ struct Form: Codable, QueryParams {
 
 
     <h2><a name="raw-routes" style="padding-top: 100px;"></a>Setup the Raw Routes</h2>
-    <p class="sentence">We will now create a Raw route to recieve the POST request from an HTML form.</p>
+    <p class="sentence">We will now create a Raw route to receive the POST request from an HTML form.</p>
     <p class="sentence">1. Inside "postInit", Register the Raw POST route:</p>
     <pre><code class="language-swift">router.post("/raw") { request, response, next in
     guard let user = try? request.read(as: Form.self)
@@ -225,7 +230,7 @@ struct Form: Codable, QueryParams {
 }</code></pre>
     <p class="sentence">4. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "GET to Raw route" form and in the Xcode logger you should see our printed message with the form data.</p>
     <p class="sentence">This will function the same as the Codable GET route above, to receive and parse the HTML form.</p>
-    <p class="sentence">Congratulations!! You have just created and hosted a HTML forms webpage. Then set up a server to receive and parse these forms using four different methods! </p>
+    <p class="sentence">Congratulations!! You have just created and hosted an HTML forms webpage and set up a server to receive and parse these forms using four different methods! </p>
     </section>
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
