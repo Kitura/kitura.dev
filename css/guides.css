@@ -102,6 +102,11 @@ td {
   padding: 7px;
   border: 1px solid #a6a5a6;
 }
+
+.italic {
+  font-style: italic;
+}
+
 .contents {
   margin: 20px 4%;
   font-weight: bold;

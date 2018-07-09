@@ -37,32 +37,39 @@
       <h1>DEPLOY YOUR APP USING KUBERNETES AND DOCKER</h1>
     </div>
 
-<p>This guide will show you how to deploy the Kitura application you created by following our <a href="guides/gettingstarted.html">Getting Started</a> guide to a <a href="https://kubernetes.io/">Kubernetes</a> based environment. The guide assumes you already have an environment to deploy to. If not, you can <a href="https://console.bluemix.net/registration/">sign up</a> to IBM Cloud and <a href="https://console.bluemix.net/docs/containers/container_index.html#container_index">create a Kubernetes cluster</a> for free, or <a href="https://kubernetes.io/docs/setup/minikube/">set one up locally using minikube</a>.</p>
+<p>This guide will show you how to deploy the Kitura application you created by following our <a href="../gettingstarted.html">Getting Started</a> guide to a <a href="https://kubernetes.io/">Kubernetes</a> based environment. The guide assumes you already have an environment to deploy to. If not, you can <a href="https://console.bluemix.net/registration/">sign up</a> to IBM Cloud and <a href="https://console.bluemix.net/docs/containers/container_index.html#container_index">create a Kubernetes cluster</a> for free, or <a href="https://kubernetes.io/docs/setup/minikube/">set one up locally using Minikube</a>.</p>
 <h4 id="starter-project-contents">Starter project contents</h4>
 <p>Your generated Kitura project already contains Docker related files and a <a href="https://docs.helm.sh/developing_charts/">Helm chart</a> used to describe the set of Kubernetes resources it requires.</p>
-<p>To deploy your application to Kubernetes, we first need to build it into a Docker container for Kubernetes to execute. Your project includes the following files for Docker support: - .dockerignore - Dockerfile - Dockerfile-tools</p>
+<p>To deploy your application to Kubernetes, we first need to build it into a Docker container for Kubernetes to execute. Your project includes the following files for Docker support:
+<ul>
+  <li>.dockerignore</li>
+  <li>Dockerfile</li>
+  <li>Dockerfile-tools</li>
+</ul>
+</p>
 <p>The .dockerignore file contains the files/directories that should not be included in the built Docker image. By default this file contains the Dockerfile and Dockerfile-tools. It can be modified as required.</p>
-<p><code>Dockerfile</code> defines the specification of the default Docker image for running the application. This image can be used to <em>run</em> the application.</p>
-<p><code>Dockerfile-tools</code> is a Docker specification file similar to a Dockerfile, except it includes the tools required for compiling the application. This image can be used to <em>compile</em> the application.</p>
+<p><span class="highlight">Dockerfile</span> defines the specification of the default Docker image for running the application. This image can be used to <span class="italic">run</span> the application.</p>
+<p><span class="highlight">Dockerfile-tools</span> is a Docker specification file similar to a Dockerfile, except it includes the tools required for compiling the application. This image can be used to <span class="italic">compile</span> the application.</p>
 <h4 id="build-and-push-your-docker-image">Build and push your Docker image</h4>
-<p>You need to build the Docker image that will run your Kitura application and will deployed to your Kubernetes cluster. The following commands should all be run from the directory containing your Dockerfiles.</p>
+<p>You need to build the Docker image that will run your Kitura application and will be deployed to your Kubernetes cluster. The following commands should all be run from the directory containing your Dockerfiles.</p>
 <p>First, build the image that will be used to compile your app.</p>
 <div><pre><code class="sourceCode bash">docker build -t myapp-build -f Dockerfile-tools .</code></pre></div>
 <p>Then, use this image to compile your application code into an executable:</p>
 <div><pre><code class="sourceCode bash">docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release</code></pre></div>
 <p>You’ll need to use the default Dockerfile to build the image that will run the executable you just created:</p>
 <div><pre><code class="sourceCode bash">docker build -t myapp-run .</code></pre></div>
-<p>You can check that your container runs correctly by running the following command and then visiting <code>localhost:8080</code> in your browser:</p>
+<p>You can check that your container runs correctly by running the following command and then visiting <span class="highlight">localhost:8080</span> in your browser:</p>
 <div><pre><code class="sourceCode bash">docker run -p 8080:8080 -it myapp-run</code></pre></div>
 <p>Once you are happy with your Docker image, tag it appropriately for the registry you are using and push it. If you are yet to choose a registry and have no specific cloud provider requirements, we suggest you try <a href="https://hub.docker.com/">Docker Hub</a>.</p>
 <h4>Deploy to Kubernetes</h4>
-<p>Before you deploy your application to your Kubernetes cluster, you need to make sure that the Helm chart is referencing the Docker image you’ve just pushed to your registry. You do this by editing the <code>repository</code> variable in the <code>values.yaml</code> file in your <code>/chart</code>directory.</p>
+<p>Before you deploy your application to your Kubernetes cluster, you need to make sure that the Helm chart is referencing the Docker image you’ve just pushed to your registry. You do this by editing the <span class="highlight">repository</span> variable in the <span class="highlight">values.yaml</span> file in your <span class="highlight">/chart</span>directory.</p>
 <p>The Helm chart provided configures a number of default resource options, such as memory allowance and replica policies. You can make changes to this depending on your or your cloud provider’s requirements.</p>
-<p>To install the chart into your cluster, run the following from the <code>/chart/&lt;your app name&gt;</code> directory:</p>
+<p>To install the chart into your cluster, run the following from the <span class="highlight">/chart/&lt;your app name&gt;</span> directory:</p>
 <div><pre><code class="sourceCode bash">helm install --name myapp .</code></pre></div>
 <p>You may have to wait a few minutes for it to be available, but your application should now be deployed to your Kubernetes cluster. To access your application, you have to find the external IP of the worker node it has been deployed to. This process varies, so check with your cloud provider on how to do so. The port that your application had been deployed on is described by the <code>NodePort</code> which you can find by running the following command on your cluster:</p>
 <div><pre><code class="sourceCode bash">kubectl describe service &lt;your app name&gt;-service</code></pre></div>
-<p>Congratulations! You have now successfully deployed your Kitura application using Kubernetes! If you visit <code>&lt;external IP&gt;:&lt;NodePort&gt;</code> you should se the Kitura splash page.</p>
+<p>Congratulations! You have now successfully deployed your Kitura application using Kubernetes! If you visit <span class="highlight">&lt;external IP&gt;:&lt;NodePort&gt;</span> you should see the Kitura splash page.</p>
+</section>
 
 <section class="slack-help">
   <a href="http://slack.kitura.io/">
