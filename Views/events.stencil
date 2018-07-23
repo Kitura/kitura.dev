@@ -1,0 +1,49 @@
+{% extends "base_template.stencil" %}
+{% block content %}
+<div class="title-heading-section">
+  <h2>EVENTS</h2>
+  <div class="decorative-line-fullwidth"></div>
+  <h3>Kitura is proud to be a part of the wider Swift community. Below you can see details of future and past events which featured Kitura technology.</h3>
+</div>
+
+<div class="blogs-heading-section">
+  <h2>UPCOMING EVENTS</h2>
+  <div class="decorative-line-fullwidth"></div>
+</div>
+
+<div class="meetups-section">
+    {% for event in upcomingEvents %}
+    <div class="meet">
+     <div class="meetup-image" style="background-color:{{ event.colour }};"><img src={{ event.image }} alt={{ event.alt }}></div>
+      <div class="meetup-info">
+        <h2>{{ event.title }}</h2>
+           <h3>{{ event.description }}</h3>
+           <h3 class="meetup-link"><a href={{ event.url }}>{{ event.linkTitle }}></a></h3>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="blogs-heading-section">
+  <h2>PAST EVENTS</h2>
+  <div class="decorative-line-fullwidth"></div>
+</div>
+
+<div class="past-meetups-section">
+{% for event in pastEvents %}
+<div class="meet past">
+ <div class="meetup-image" style="background-color:{{ event.colour }}"><img src={{ event.image }} alt={{ event.alt }}></div>
+  <div class="meetup-info">
+    <h2>{{ event.title }}</h2>
+    {% for resource in event.resource %}
+    <h3><a href={{ resource.resourceLink }}>{{ resource.resourceTitle }}</a></h3>
+    {% endfor %}
+    <div class="summary">
+      <h3>{{ event.description }}</h3>
+    </div>
+    <h3 class="meetup-link"><a href={{ event.url }}>{{ event.linkTitle }}</a></h3>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

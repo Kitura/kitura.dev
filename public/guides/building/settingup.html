@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+  <title>Learn - Setting Up</title>
+  <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <script src="../../scripts/prism.js"></script> -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/guides.css">
+  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/mobile_guides.css">
+</head>
+
+<header>
+  <div class="header-container">
+    <div class="header-main">
+      <a class="home-link" href="../../../">
+        <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
+        <h1 class="header-title">KITURA</h1>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a class="header-link active-nav" href="../../../learn">LEARN</a>
+      <a class="header-link" href="../../../packages">PACKAGES</a>
+      <a class="header-link" href="../../../events">EVENTS</a>
+      <a class="header-link" href="../../../help">HELP</a>
+    </nav>
+  </div>
+</header>
+<body>
+<section class="guide-content">
+  <div class="title-block">
+      <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
+    <h1>SETTING UP</h1>
+  </div>
+  <p>Kitura can run on both macOS and Linux.</p>
+  <p>To start, you’ll need to install a few prerequisites.</p>
+  <h2>macOS</h2>
+  <p>Download and install Xcode 9.</p>
+  <p>Install the Command Line Tools for Xcode:</p>
+  <pre><code class="language-swift">xcode-select --install</code></pre>
+  <h2>Ubuntu Linux</h2>
+  <p>Kitura is tested on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS.</p>
+  <p>Install the following Linux system packages:</p>
+  <pre><code class="language-swift">sudo apt-get update
+sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev</code></pre>
+  <blockquote class="info">
+    <p>Kitura requires OpenSSL v1.0.x, whereas newer versions of Linux may install OpenSSL v1.1.x. If this occurs, install OpenSSL v1.0.x using:</p>
+    <pre><code class="language-swift">sudo apt-get install libssl1.0-dev</code></pre>
+  </blockquote>
+  <p>Download a Swift 4 toolchain from swift.org.</p>
+  <p>After extracting the .tar.gz file, update your PATH environment variable so that it includes the extracted tools:</p>
+  <pre><code class="language-swift">export PATH={path to uncompressed tar contents}/usr/bin:$PATH</code></pre>
+</section>
+<section class="slack-help">
+  <a href="http://slack.kitura.io/">
+    <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
+    <h2>NEED HELP?</h2>
+    <h2>MESSAGE US ON SLACK.</h2>
+  </a>
+</section>
+</body>
+<footer>
+  <nav class="footer-nav">
+    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
+    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+  </nav>
+</footer>
+</html>

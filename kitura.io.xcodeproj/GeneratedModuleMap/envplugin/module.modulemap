@@ -1,0 +1,4 @@
+module envplugin {
+    umbrella header "/Users/david/Documents/Development/WebDevelopment/kitura.io/.build/checkouts/omr-agentcore-1826539389957424207/src/envplugin/include/envplugin.h"
+    export *
+}
