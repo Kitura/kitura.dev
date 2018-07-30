@@ -1109,6 +1109,29 @@ footer {
   margin-top: 30px;
 }
 
+.app-changelog-container {
+  font-weight: bold;
+  max-width: 1200px;
+  width: 100%;
+  font-size: 2.2em;
+  margin: auto;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.changes {
+	font-size: 0.6em;
+	font-weight: normal;
+	list-style: circle;
+	padding-left: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.changes li {
+		padding: 5px 0;
+}
+
 .app-preview-container {
   background-color: #00bbe6;
   width: 100%;
