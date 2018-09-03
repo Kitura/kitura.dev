@@ -180,7 +180,7 @@ header {
 }
 
 .slide-2 {
-    background-image: url("../assets/blue-gradient.jpg");
+    background: linear-gradient(to bottom right, #01C1EF, #97E3F5);
     height: 100%;
     width: 100%;
 }
