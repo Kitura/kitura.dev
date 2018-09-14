@@ -216,7 +216,7 @@ You are now going to create a route that will filter the
 </p>
 <pre><code class="language-swift">struct Query: QueryParams {
   let course: String?
-  let grade: InclusiveRange<Double>?
+  let grade: InclusiveRange&lt;Int&gt;?
   let order: Ordering?
 }
 </code></pre>
