@@ -137,7 +137,7 @@ SELECT * FROM "Grades";
 <p>
     At the bottom of your postInit function, define your routes:
 </p>
-<pre><code class="language-swift">router.get("/grades", handler: getAllHandler)
+<pre><code class="language-swift">router.get("/grades", handler: loadHandler)
 router.get("/grades", handler: getOneHandler)
 router.post("/grades", handler: postHandler)
 router.delete("/grades", handler: deleteAllHandler)
@@ -146,7 +146,7 @@ router.delete("/grades", handler: deleteOneHandler)
 <p>
     After your postInit function, define your handlers:
 </p>
-<pre><code class="language-swift">func getAllHandler(completion: @escaping ([Grade]?, RequestError?) -> Void ) {
+<pre><code class="language-swift">func loadHandler(completion: @escaping ([Grade]?, RequestError?) -> Void ) {
     Grade.findAll(completion)
 }
 func getOneHandler(id: Int, completion: @escaping (Grade?, RequestError?) -> Void ) {
@@ -163,9 +163,29 @@ func deleteOneHandler(id: Int, completion: @escaping (RequestError?) -> Void ) {
 }
 </code></pre>
 
+<h2>Accessing the response on the server</h2>
+
 <p>
-    You can test these route using the OpenAPI interface:
+    Because the ORM API matches the Codable routes API,
+    you can pass the completion straight to the Codable route response. <br>
+    You can access your ORM response for your getOneHandler as follows:
 </p>
+
+<pre><code class="language-swift">
+    func getOneHandler(completion: @escaping (Grade?, RequestError?) -> Void ) {
+        Grade.findAll { grade, error in
+            guard let grade = grade else {
+                return completion(nil, error)
+            }
+            print(grade)
+            completion(grade, nil)
+        }
+    }
+</code></pre>
+
+<h2>Testing with OpenAPI</h2>
+
+<p>You can test these route using the OpenAPI interface:</p>
 
 <p>
     1. Start your Kitura Server<br>
@@ -183,6 +203,53 @@ func deleteOneHandler(id: Int, completion: @escaping (RequestError?) -> Void ) {
     3. You should see your Grades.<br>
     4. Quit PSQL with: <code>\q</code>
 </p>
+
+<h2>Using Query Parameters with Swift-Kuery-ORM</h2>
+
+<p>
+You are now going to create a route that will filter the
+ database results using Query Parameters.
+  This will allow you to get only results you are interested in.
+</p>
+<p>
+    At the bottom of your application.swift file, Define your query:
+</p>
+<pre><code class="language-swift">struct Query: QueryParams {
+  let course: String?
+  let grade: InclusiveRange<Double>?
+  let order: Ordering?
+}
+</code></pre>
+<p>
+    Add query parameters to your loadHandler:
+</p>
+<pre><code class="language-swift">func loadHandler(query: Query?, completion: @escaping([Grade]?, RequestError?) -> Void) {
+    Grade.findAll(matching: query, completion)
+}
+</code></pre>
+<p>
+    The grades route can now accept query parameters to filter the response.<br>
+    You can test this as follows:
+</p>
+<p>
+    1. Start your Kitura Server<br>
+    2. Go to <a href="http://localhost:8080/openapi/ui" target="_blank">http://localhost:8080/openapi/ui</a><br>
+    3. Using the interface, POST the following three courses:
+</p>
+<pre><code>course: Art, grade: 60
+course: Physics, grade: 80
+course: History, grade: 90
+</code></pre>
+<p>
+    4. Go to <a href="http://localhost:8080/grades?course=Art" target="_blank">http://localhost:8080/grades?course=Art</a><br>
+    5. Go to <a href="http://localhost:8080/grades?grade=70,100&order=desc(grade)" target="_blank">http://localhost:8080/grades?grade=70,100&order=desc(grade)</a><br>
+    The grades matching your query parameters should be shown.
+    You can POST more Grades or change the query values to test this further.
+</p>
+
+<h4>Congratulations, you have just successfully connected a Kitura Server
+ to a PostgreSQL database using the ORM!
+</h4>
   </section>
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
