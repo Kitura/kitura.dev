@@ -20,6 +20,10 @@ h4 {
 .flex-row {
   display: flex;
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
 /* Header styling */
 .header-main{
   align-items: center;
@@ -40,6 +44,38 @@ h4 {
 .header-nav > a {
   margin: 1em;
 }
+/* Slider styling */
+.slide-1 {
+  height: 550px;
+  background: linear-gradient(#f2f2f2, #eaeaea);
+  align-items: center;
+  justify-content: center;
+}
+.slide-1-main {
+  align-items: center;
+  justify-content: center;
+  margin-left: -80px;
+  margin-bottom: -20px;
+}
+.slide-1-main > h1 {
+  margin-left: -70px;
+  font-size: 5em;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1s;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+@-webkit-keyframes fade {
+  from {opacity: 0.4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: 0.4}
+  to {opacity: 1}
+}
 /* index.html CSS grid layout */
 .index-item-1 {
   grid-area: header;
@@ -49,7 +85,6 @@ h4 {
 }
 .index-item-3 {
   grid-area: slider;
-  background-color: yellow;
 }
 .index-item-4 {
   grid-area: code;
@@ -68,7 +103,6 @@ h4 {
   grid-template-areas:
     'header header nav nav nav nav'
     'slider slider slider slider code code'
-    'buttons buttons buttons buttons buttons buttons'
+    '. . buttons buttons . .'
     'blogs blogs blogs blogs blogs blogs';
-    grid-gap: 0.5em;
 }
