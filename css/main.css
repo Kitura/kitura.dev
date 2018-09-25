@@ -421,8 +421,8 @@ header {
 	position: relative;
 	background: white;
 	border-radius: .4em;
-  width: 300px;
-  height: 60px;
+  width: 340px;
+  height: 95px;
   border-radius: 20px;
   padding: 20px;
   color: rgb(100, 100, 120);
@@ -433,6 +433,35 @@ header {
 }
 
 .speech-bubble5:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 10px solid white;
+  border-left: 10px solid transparent;
+  border-top: 10px solid white;
+  border-bottom: 10px solid transparent;
+  left: -20px;
+  top: 35%;
+}
+
+
+.speech-bubble6 {
+	position: relative;
+	background: white;
+	border-radius: .4em;
+  width: 300px;
+  height: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  color: rgb(100, 100, 120);
+  margin-left: 40px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+}
+
+.speech-bubble6:before {
   content: "";
   width: 0px;
   height: 0px;
@@ -995,6 +1024,7 @@ box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
   margin-bottom: 15px;
   text-align: left;
   padding-left: 0px;
+  color: rgb(200, 200, 210);
 }
 
 .card h3 {
