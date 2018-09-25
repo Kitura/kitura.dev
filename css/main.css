@@ -1,3 +1,4 @@
+/*general styling*/
 body {
   font-family: IBM Plex Sans, sans-serif;
   font-size: 16px;
@@ -159,6 +160,40 @@ h4 {
 .code-terminal span {
   line-height: 30px;
 }
+/* Button section styling */
+.button-section {
+  margin: 5% 0;
+}
+.button {
+  width: 180px;
+  height: 60px;
+  background-color: #1b2834;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #5f5757;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 16px;
+}
+.button:focus, .button:active {
+  outline:0;
+}
+.button:active {
+  box-shadow: 0 0.5px 2px #5f5757;
+  transform: translateY(1px);
+}
+.slack-button-icon {
+  width: 23px;
+  margin-right: 9px;
+}
+.api-button-icon {
+  width: 25px;
+  margin-right: 7px;
+}
 /* index.html CSS grid layout */
 .index-item-1 {
   grid-area: header;
@@ -176,7 +211,6 @@ h4 {
 }
 .index-item-5 {
   grid-area: buttons;
-  background-color: pink;
 }
 .index-item-6 {
   grid-area: blogs;
