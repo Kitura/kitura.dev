@@ -450,12 +450,12 @@ header {
 	position: relative;
 	background: white;
 	border-radius: .4em;
-  width: 300px;
+  width: 290px;
   height: 20px;
   border-radius: 20px;
   padding: 20px;
   color: rgb(100, 100, 120);
-  margin-left: 40px;
+  margin-left: 0px;
   margin-bottom: 30px;
   margin-top: 10px;
   box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
@@ -1022,7 +1022,6 @@ box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
   font-size: 18px;
   padding-top: 10px;
   margin-bottom: 15px;
-  text-align: left;
   padding-left: 0px;
   color: rgb(200, 200, 210);
 }
