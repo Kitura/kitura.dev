@@ -24,11 +24,11 @@ h4 {
   display: flex;
   flex-direction: column;
 }
-/* Header styling */
-.header-main{
+.centre {
   align-items: center;
   justify-content: center;
 }
+/* Header styling */
 .header-main > a {
   margin-left: -30px;
 }
@@ -45,22 +45,72 @@ h4 {
   margin: 1em;
 }
 /* Slider styling */
-.slide-1 {
+.slider-section {
+  position: relative;
+  border-right: black solid 3px;
   height: 550px;
-  background: linear-gradient(#f2f2f2, #eaeaea);
-  align-items: center;
-  justify-content: center;
+  max-width: 1550px;
 }
-.slide-1-main {
-  align-items: center;
-  justify-content: center;
+.slide {
+  /* display: flex; set in slider.js */
+  height: 100%;
+}
+.slide-1 {
+  background: linear-gradient(#f2f2f2, #eaeaea);
+}
+.slide-2 {
+  background: linear-gradient(to bottom right, #01C1EF, #97E3F5);
+}
+.slide-2 > h4 {
+  color: white;
+}
+.slide-3 {
+    background-image: linear-gradient(to bottom right, #c75739, #bb1a5f);
+    position: relative;
+    color: white;
+}
+.slide-1-content {
   margin-left: -80px;
   margin-bottom: -20px;
 }
-.slide-1-main > h1 {
+.slide-1-content > h1 {
   margin-left: -70px;
   font-size: 5em;
 }
+.slide-2-content {
+  margin-left: -80px;
+  margin-bottom: -20px;
+}
+.slide-2-content > h1 {
+  margin-left: -30px;
+  font-size: 4.5em;
+  color: white;
+}
+.slide-3-swift-icon, .slide-3-slack-icon {
+  position: absolute;
+  width: 100px;
+}
+.slide-3-swift-icon {
+  top: 30px;
+  left: 30px;
+}
+.slide-3-slack-icon {
+  bottom: 30px;
+  right: 30px;
+}
+/* Slider Nav styling */
+.prev, .next {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+}
+.prev img, .next img {
+  width: 50px;
+}
+.next {
+  right: 0;
+}
+/* Slider fade animation */
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1s;
