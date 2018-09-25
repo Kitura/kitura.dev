@@ -1,18 +1,51 @@
 body {
   font-family: IBM Plex Sans, sans-serif;
+  font-size: 16px;
 }
-.flex-row-end {
+h1, h2, h3 {
+  font-weight: bold;
+}
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.4em;
+}
+h4 {
+  font-size: 1.2em;
+}
+.flex-row {
   display: flex;
+}
+/* Header styling */
+.header-main{
+  align-items: center;
+  justify-content: center;
+}
+.header-main > a {
+  margin-left: -30px;
+}
+.header-main > img {
+  height: 120px;
+}
+.header-nav {
+  padding: 0.5em;
+  margin-right: 5em;
+  align-items: center;
   justify-content: flex-end;
+}
+.header-nav > a {
+  margin: 1em;
 }
 /* index.html CSS grid layout */
 .index-item-1 {
   grid-area: header;
-  background-color: blue;
 }
 .index-item-2 {
   grid-area: nav;
-  background-color: purple;
 }
 .index-item-3 {
   grid-area: slider;
