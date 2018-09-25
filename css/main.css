@@ -69,6 +69,13 @@ h4 {
     position: relative;
     color: white;
 }
+.slide-3 > h1 {
+  font-size: 3em;
+}
+.slide-3 > p {
+  font-size: 1.5em;
+  margin-top: 30px;
+}
 .slide-1-content {
   margin-left: -80px;
   margin-bottom: -20px;
@@ -152,7 +159,7 @@ h4 {
   display: grid;
   grid-template-areas:
     'header header nav nav nav nav'
-    'slider slider slider slider code code'
+    'slider slider slider code code code'
     '. . buttons buttons . .'
     'blogs blogs blogs blogs blogs blogs';
 }
