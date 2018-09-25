@@ -661,7 +661,7 @@ footer {
 }
 
 .footer-nav {
-  max-width: 1200px;
+  max-width: 900px;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -672,7 +672,7 @@ footer {
 
 .footer-link {
   font-size: 0.8em;
-  margin: 0 30px;
+  margin: 0 20px;
   color: rgba(150, 150, 156, 1);
   transition-duration: 0.4s;
 }
@@ -897,7 +897,11 @@ color: rgb(75, 139, 209);
 
 
 .objc-book {
-    background: linear-gradient(rgb(238, 157, 57), rgb(221, 70, 58));
+    background: linear-gradient(rgb(238, 157, 57), rgb(231, 80, 68));
+}
+
+.todo-backend {
+  background: rgb(230, 63, 60);
 }
 
 .community-item h3 {
@@ -936,7 +940,7 @@ color: rgb(75, 139, 209);
 }
 
 .kitura-dawn {
-    background: linear-gradient(#00bbe6, #0086a5);
+    background: rgb(86, 130, 200);
 }
 
 .kitura-dawn img {
