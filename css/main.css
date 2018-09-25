@@ -1,30 +1,41 @@
-.grid-item-1 {
+body {
+  font-family: IBM Plex Sans, sans-serif;
+}
+.flex-row-end {
+  display: flex;
+  justify-content: flex-end;
+}
+/* index.html CSS grid layout */
+.index-item-1 {
   grid-area: header;
   background-color: blue;
 }
-.grid-item-2 {
-  grid-area: main;
+.index-item-2 {
+  grid-area: nav;
+  background-color: purple;
+}
+.index-item-3 {
+  grid-area: slider;
   background-color: yellow;
 }
-.grid-item-3 {
-  grid-area: buttons;
+.index-item-4 {
+  grid-area: code;
   background-color: red;
 }
-.grid-item-4 {
-  grid-area: menu;
+.index-item-5 {
+  grid-area: buttons;
   background-color: pink;
 }
-.grid-item-5 {
-  grid-area: footer;
+.index-item-6 {
+  grid-area: blogs;
   background-color: green;
 }
 .grid-container {
   display: grid;
   grid-template-areas:
-    'header header header header header header'
-    'main main main main main main'
+    'header header nav nav nav nav'
+    'slider slider slider slider code code'
     'buttons buttons buttons buttons buttons buttons'
-    'menu menu menu menu menu menu'
-    'footer footer footer footer footer footer';
-  grid-gap: 10px;
+    'blogs blogs blogs blogs blogs blogs';
+    grid-gap: 0.5em;
 }

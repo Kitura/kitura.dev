@@ -33,62 +33,59 @@
 
 <body>
   <div class="grid-container">
-    <header class="grid-item-1">
-      <div class="header-main">
-        <a class="home-link" href="index.html">
-            <img width="300px" class="header-logo" src="assets/Kitura.svg" alt="Kitura logo">
-            <h1 class="header-title">KITURA</h1>
+    <header class="index-item-1">
+      <a class="flex-row-end" href="index.html">
+          <img class="header-logo" src="assets/Kitura.svg" alt="Kitura logo">
+          <h1 class="header-title">KITURA</h1>
+        </a>
+    </header>
+    <nav class="index-item-2 flex-row-end">
+      <a class="header-link" href="learn.html">LEARN</a>
+      <a class="header-link" href="packages.html">PACKAGES</a>
+      <a class="header-link" href="events.html">EVENTS</a>
+      <a class="header-link" href="help.html">HELP</a>
+    </nav>
+    <section class="index-item-3">
+      <div class="slide fade slide-1">
+        <a href="guides/gettingstarted.html">
+            <div class="slide-content">
+              <div class="slide-logo">
+                <img width="300px" src="assets/Kitura.svg" alt="Kitura Logo">
+                <h2>KITURA</h2>
+              </div>
+              <h3>A powerful server-side Swift web framework.</h3>
+            </div>
           </a>
       </div>
-      <nav class="header-nav">
-        <a class="header-link" href="learn.html">LEARN</a>
-        <a class="header-link" href="packages.html">PACKAGES</a>
-        <a class="header-link" href="events.html">EVENTS</a>
-        <a class="header-link" href="help.html">HELP</a>
-      </nav>
-    </header>
-    <section class="grid-item-2">
-      <section class="slideshow-section">
-        <div class="slide fade slide-1">
-          <a href="guides/gettingstarted.html">
-              <div class="slide-content">
-                <div class="slide-logo">
-                  <img width="300px" src="assets/Kitura.svg" alt="Kitura Logo">
-                  <h2>KITURA</h2>
-                </div>
-                <h3>A powerful server-side Swift web framework.</h3>
+      <div class="slide fade slide-2">
+        <a href="https://developer.ibm.com/swift/2018/09/01/announcing-kitura-2-5/">
+            <div class="slide-content-2">
+              <div class="slide-logo-2">
+                <img width="300px" src="assets/Kitura-White.svg" alt="Kitura Logo">
+                <h2>KITURA 2.5</h2>
               </div>
-            </a>
-        </div>
-        <div class="slide fade slide-2">
-          <a href="https://developer.ibm.com/swift/2018/09/01/announcing-kitura-2-5/">
-              <div class="slide-content-2">
-                <div class="slide-logo-2">
-                  <img width="300px" src="assets/Kitura-White.svg" alt="Kitura Logo">
-                  <h2>KITURA 2.5</h2>
-                </div>
-                <h3>Click here to find out what's new.</h3>
-              </div>
-            </a>
-        </div>
-        <div class="slide fade slide-3">
-          <a href="help.html"><div class="slide-content-3">
-              <div class="slide-logo-3">
-                <img width="100px" class="swift-slide-icon" src="assets/swift-black-transparent.png" alt="Swift Logo">
-                <h2>SWIFT FORUMS + SLACK</h2>
-                <img width="100px" class="slack-slide-icon" src="assets/slack-icon.png" alt="Slack Logo">
-              </div>
-              <h3>Get help, talk Swift and contribute.</h3>
-            </div></a>
-        </div>
-        <a class="prev" onclick="moveSlidesBy(-1)">
-            <img src="assets/backwards-new.png" alt="">
+              <h3>Click here to find out what's new.</h3>
+            </div>
           </a>
-        <a class="next" onclick="moveSlidesBy(1)">
-            <img src="assets/forward-new.png" alt="">
-          </a>
-      </section>
-      <section class="code-section">
+      </div>
+      <div class="slide fade slide-3">
+        <a href="help.html"><div class="slide-content-3">
+            <div class="slide-logo-3">
+              <img width="100px" class="swift-slide-icon" src="assets/swift-black-transparent.png" alt="Swift Logo">
+              <h2>SWIFT FORUMS + SLACK</h2>
+              <img width="100px" class="slack-slide-icon" src="assets/slack-icon.png" alt="Slack Logo">
+            </div>
+            <h3>Get help, talk Swift and contribute.</h3>
+          </div></a>
+      </div>
+      <a class="prev" onclick="moveSlidesBy(-1)">
+          <img src="assets/backwards-new.png" alt="">
+        </a>
+      <a class="next" onclick="moveSlidesBy(1)">
+          <img src="assets/forward-new.png" alt="">
+        </a>
+    </section>
+      <section class="index-item-4">
         <pre class="code-panel">
             <code class="language-swift">
   import Kitura
@@ -105,19 +102,14 @@
             </code>
           </pre>
       </section>
-    </section>
 
-    <section class="grid-item-3">
+    <section class="index-item-5">
       <button class="button" type="button" name="start-button" onclick="window.open('guides/gettingstarted.html', '_self')">>  GET STARTED</button>
       <button class="button slack-button" type="button" name="slack-button" onclick="window.open('http://slack.kitura.io/')"><img class="slack-icon" src="assets/slack-icon.png" alt="Slack Icon">SLACK</button>
       <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="assets/api-icon.png" alt="API Icon">API DOCS</button>
     </section>
-
-    <div class="grid-item-4">
+    <div class="index-item-6">
       <h2>RECENT BLOGS</h2>
-      <div class="decorative-line-fullwidth"></div>
-    </div>
-    <div class="grid-item-5">
       <a class="blog-item" href="https://developer.ibm.com/swift/2018/09/01/announcing-kitura-2-5/">
               <h3>Kitura Team | Ian Partridge</h3>
               <h2>ANNOUNCING KITURA 2.5</h2>
