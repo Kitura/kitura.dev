@@ -133,6 +133,32 @@ h4 {
   from {opacity: 0.4}
   to {opacity: 1}
 }
+/* Code terminal styling */
+.code-terminal {
+  font-family: IBM Plex Mono, monospace;
+  background-color: #1b2834;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 5%;
+  color: white;
+  box-shadow: 2px 5px 5px #272727;
+}
+.keyword {
+  color: rgb(246, 59, 176);
+}
+.function, .instance {
+  color: #00a78f;
+}
+.string {
+  color: rgb(250, 69, 75);
+}
+.comment {
+  color: green;
+}
+/* Spans are added by prism.js */
+.code-terminal span {
+  line-height: 30px;
+}
 /* index.html CSS grid layout */
 .index-item-1 {
   grid-area: header;
@@ -142,10 +168,11 @@ h4 {
 }
 .index-item-3 {
   grid-area: slider;
+  box-shadow: 2px 5px 50px #cdcdcd;
 }
 .index-item-4 {
   grid-area: code;
-  background-color: red;
+  box-shadow: 2px 5px 50px #cdcdcd;
 }
 .index-item-5 {
   grid-area: buttons;
