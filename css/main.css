@@ -196,7 +196,7 @@ h4 {
 }
 /* Blog section styling */
 .blog-card {
-  box-shadow: 2px 5px 50px #cdcdcd;
+  box-shadow: 1px 1px 5px #5f5757;
   margin: 0 auto;
   width: 30%;
   border-radius: 5px;
@@ -204,6 +204,7 @@ h4 {
 }
 .blog-card > img {
   width: 50%;
+  height: 120px;
 }
 .blog-card > p, h3 {
   margin-bottom: 10px;
