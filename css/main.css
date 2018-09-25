@@ -45,6 +45,19 @@ h4 {
 .header-nav > a {
   margin: 1em;
 }
+/* Footer styling */
+footer {
+  background-color: #152333;
+  height: 70px;
+}
+.footer-link {
+  color: white;
+  margin: 0 100px;
+}
+.footer-logo {
+  width: 100px;
+  height: 62px;
+}
 /* Slider styling */
 .slider-section {
   position: relative;
@@ -204,7 +217,7 @@ h4 {
 }
 .blog-card > img {
   width: 50%;
-  height: 120px;
+  height: 100px;
 }
 .blog-card > p, h3 {
   margin-bottom: 10px;
@@ -231,11 +244,15 @@ h4 {
 .index-item-6 {
   grid-area: blogs;
 }
+.index-item-7 {
+  grid-area: footer;
+}
 .grid-container {
   display: grid;
   grid-template-areas:
     'header header nav nav nav nav'
     'slider slider slider code code code'
     '. . buttons buttons . .'
-    'blogs blogs blogs blogs blogs blogs';
+    '. blogs blogs blogs blogs .'
+    'footer footer footer footer footer footer';
 }
