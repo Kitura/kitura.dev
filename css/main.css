@@ -526,6 +526,7 @@ border-bottom: 10px solid transparent;
 
 .learn-button {
   margin: 0px 0;
+  margin-top: 20px;
 }
 
 .button {
@@ -690,7 +691,7 @@ footer {
     margin: auto;
     padding-top: 30px;
     margin-bottom: 40px;
-
+    margin-top: 10px;
 }
 
 .title-heading-section h3 {
@@ -704,23 +705,32 @@ footer {
 .guides-list {
     max-width: 1500px;
     margin: 0 auto;
-    border-radius: 15px;
-    box-shadow: 3px 3px 15px #606060;
-    width: 100%;
-    background: linear-gradient(#00bbe6, #0086a5);
+    border-radius: 20px;
+    width: 80%;
     display: flex;
     justify-content: center;
 }
 
 .guide-rectangle {
     background-color: white;
-    width: 25%;
-    margin: 12px 10px;
-    border-radius: 15px;
-    box-shadow: 3px 3px 15px #606060;
+    width: 20%;
+    margin: 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
     display: inline-block;
-    padding-top: 10px;
+    padding: 20px;
 }
+
+
+.guide-rectangle h3 {
+  margin-top: 20px;
+  color: rgb(200, 200, 210);
+}
+
+.guide-rectangle img {
+  width: 30%;
+}
+
 
 ::-webkit-scrollbar {
     display: none;
@@ -755,19 +765,24 @@ footer {
 
 .guide-list li:hover {
     cursor: pointer;
-    font-weight: bold;
+    color: rgb(75, 139, 209);
 }
 
 .guide-list a {
     color: black;
+    transition-duration: 0.4s;
+    color: rgb(120, 120, 130);
+}
+
+.guide-list a:hover {
+color: rgb(75, 139, 209);
 }
 
 .tutorials-header {
-    font-weight: bold;
     max-width: 1200px;
     width: 100%;
-    font-size: 1.5em;
     margin: auto;
+      margin-top: 40px;
 }
 
 .tutorials-section {
