@@ -45,46 +45,6 @@
   </header>
   <body>
     <section class="main-section">
-      <section class="slideshow-section">
-        <div class="slide fade slide-1">
-          <a href="guides/gettingstarted.html">
-            <div class="slide-content">
-              <div class="slide-logo">
-                <img width="300px" src="assets/Kitura.svg" alt="Kitura Logo">
-                <h2>KITURA</h2>
-              </div>
-              <h3>A powerful server-side Swift web framework.</h3>
-            </div>
-          </a>
-        </div>
-        <div class="slide fade slide-2">
-          <a href="https://developer.ibm.com/swift/2018/09/01/announcing-kitura-2-5/">
-            <div class="slide-content-2">
-              <div class="slide-logo-2">
-                <img width="300px" src="assets/Kitura-White.svg" alt="Kitura Logo">
-                <h2>KITURA 2.5</h2>
-              </div>
-              <h3>Click here to find out what's new.</h3>
-            </div>
-          </a>
-        </div>
-        <div class="slide fade slide-3">
-          <a href="help.html"><div class="slide-content-3">
-            <div class="slide-logo-3">
-              <img width="100px" class="swift-slide-icon" src="assets/swift-black-transparent.png" alt="Swift Logo">
-              <h2>SWIFT FORUMS + SLACK</h2>
-              <img width="100px" class="slack-slide-icon" src="assets/slack-icon.png" alt="Slack Logo">
-            </div>
-            <h3>Get help, talk Swift and contribute.</h3>
-          </div></a>
-        </div>
-        <a class="prev" onclick="moveSlidesBy(-1)">
-          <img src="assets/backwards-new.png" alt="">
-        </a>
-        <a class="next" onclick="moveSlidesBy(1)">
-          <img src="assets/forward-new.png" alt="">
-        </a>
-      </section>
       <section class="code-section">
         <pre class="code-panel">
           <code class="language-swift">
@@ -102,35 +62,45 @@ Kitura.run()
           </code>
         </pre>
       </section>
+
+<div class="speech-bubble">
+  Getting started with Kitura is quick and easy!<br><br>All it takes is a few lines of code.<br><br>Simple.
+</div>
+<div class="speech-bubble2" onclick="window.open('guides/gettingstarted.html', '_self')">
+  Sounds great!
+</div>
+
     </section>
 
+
     <section class="button-section">
-      <button class="button" type="button" name="start-button" onclick="window.open('guides/gettingstarted.html', '_self')">>  GET STARTED</button>
-      <button class="button slack-button" type="button" name="slack-button" onclick="window.open('http://slack.kitura.io/')"><img class="slack-icon" src="assets/slack-icon.png" alt="Slack Icon">SLACK</button>
-      <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="assets/api-icon.png" alt="API Icon">API DOCS</button>
+      <button class="button" type="button" name="start-button" onclick="window.open('guides/gettingstarted.html', '_self')"><img class="slack-icon" src="assets/start.png" alt="Start Icon">  Get Started</button>
+      <button class="button slack-button" type="button" name="slack-button" onclick="window.open('http://slack.kitura.io/')"><img class="slack-icon" src="assets/slack-icon.png" alt="Slack Icon">Slack</button>
+      <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="assets/api-icon.png" alt="API Icon">API Docs</button>
     </section>
 
     <div class="blogs-heading-section">
-        <h2>RECENT BLOGS</h2>
-        <div class="decorative-line-fullwidth"></div>
+        <h2>Recent Blog Posts</h2>
     </div>
     <div class="blogs-section">
       <a class="blog-item" href="https://developer.ibm.com/swift/2018/09/01/announcing-kitura-2-5/">
-            <h3>Kitura Team | Ian Partridge</h3>
-            <h2>ANNOUNCING KITURA 2.5</h2>
-            <img src="assets/kitura-2dot5.jpg" alt="Kitura 2.5">
+            <h3 class="subt">Kitura Team | Ian Partridge</h3>
+            <h2>Announcing Kitura 2.5</h2>
+            <img src="assets/25kit.png" alt="Kitura 2.5">
       </a>
       <a class="blog-item" href="https://developer.ibm.com/swift/2018/09/01/kitura-custom-encoders-and-decoders/">
-          <h3>Kitura Team | Andrew Lees</h3>
-          <h2>PLUGGABLE JSON ENCODERS</h2>
-          <img src="assets/pluggable-json.jpg" alt="Pluggable JSON encoders">
+          <h3 class="subt">Kitura Team | Andrew Lees</h3>
+          <h2>Pluggable JSON Encoders</h2>
+          <img src="assets/jsonbrackets.png" alt="Pluggable JSON encoders">
       </a>
       <a class="blog-item" href="https://developer.ibm.com/swift/2018/08/02/swift-jwt/">
-          <h3>Kitura Team | Kye Maloy</h3>
-          <h2>JSON WEB TOKENS</h2>
-          <img src="assets/json-web-token.jpg" alt="JSON Web Tokens">
+          <h3 class="subt">Kitura Team | Kye Maloy</h3>
+          <h2>JSON Web Tokens</h2>
+          <img src="assets/jsontok.png" alt="JSON Web Tokens">
       </a>
     </div>
+
+
 
     <!-- Script for slider  -->
     <script src="scripts/slider.js"></script>
@@ -138,7 +108,6 @@ Kitura.run()
   <footer>
     <nav class="footer-nav">
       <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-      <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="assets/Kitura-White.svg" alt="Kitura logo"></a>
       <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
     </nav>
   </footer>
