@@ -815,7 +815,7 @@ color: rgb(75, 139, 209);
     transition-duration: 0.4s;
 }
 .featured-tutorial:hover {
-    box-shadow: 0px 50px 80px rgba(40, 40, 45, 0.3);
+    box-shadow: 0px 45px 70px rgba(40, 40, 45, 0.3);
     transform: translateY(-2px);
 }
 
