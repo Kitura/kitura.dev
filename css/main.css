@@ -1148,7 +1148,7 @@ transform: translateY(-2px);
   display: inline-block;
   position: absolute;
   margin: 24px 20px;
-  font-weight: bold;
+  font-weight: 500;
   color: rgba(75, 139, 209, 0.85);
   border: 1.4px solid rgba(75, 139, 209, 0.85);
   border-radius: 8px;
