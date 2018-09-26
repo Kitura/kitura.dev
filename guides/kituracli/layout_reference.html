@@ -40,13 +40,17 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>SWIFT SERVER GENERATOR PROJECT LAYOUT REFERENCE</h1>
-    </div>
+
+                                <div class="speech-bubble2">
+                                    Let's look over the Swift Server Generator project layout refernces and what it is.
+                                </div>
+
     <p>Swift Server Generator generates applications in a layout compatible with Swift Package Manager.</p>
     <p>The files that populate the application directory depend on the project type, capabilities and services selected during creation.</p>
-    <h2>Common files</h2>
+
+                                    <div class="speech-bubble">
+                                        Let's start with some of the common files.
+                                    </div>
     <p>The following structure is common to all generated applications:</p>
     <code>
       <pre>
@@ -76,7 +80,11 @@
     <blockquote class="info">
       <p>.swiftservergenerator-project and .yo-rc.json are files used by the generator to know where the root of your project is and what kind of project you have. If you don’t need to do any further modifications after initial project generation (such as using the model generator), use the single shot option.</p>
     </blockquote>
-    <h2>Build files</h2>
+
+                                    <div class="speech-bubble">
+                                        Let's look at some of the build files.
+                                    </div>
+
     <p>The following are created when the application is built (by swift build):</p>
     <code>
       <pre>
@@ -84,7 +92,10 @@
 ├── .build/                         - Build metadata, libraries and executables
 ├── {application_name}.xcodeproj    - Xcode project file</pre>
     </code>
-    <h2>Scaffolded project</h2>
+                                    <div class="speech-bubble2">
+                                        Next, let's look at the scaffolded project and its hierarchical structure.
+                                    </div>
+
     <p>The following subsections apply to the scaffold project type. All scaffolded projects will have the following files included:</p>
     <code>
       <pre>
@@ -198,7 +209,10 @@
 │   ├── localdev-config.json          - IBM Cloud service configuration file
 │   └── mappings.json                 - Service configuration mappings file</pre>
     </code>
-    <h2>CRUD project</h2>
+
+                                    <div class="speech-bubble2">
+                                        Next, let's look at CRUD project types and how they're structured.
+                                    </div>
     <p>The following section applies to the CRUD project type. CRUD projects will have the following files included:</p>
     <code>
       <pre>
@@ -232,23 +246,18 @@
 │   └── <model_name>.json                        - Model metadata file
       </pre>
     </code>
+                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                  I need some help. Can I message you on Slack?
+                </div>
     <blockquote class="warning">
       <p>Model names entered into the model generator are used in a number of places in the generated project. They are used verbatim as filenames for the .json model files, and as endpoint paths in the application router and API definition. In the generated Swift code, Model names are converted to Swift classnames, using a simple transform that attempts to make them comply with the Swift specifications for Identifiers. In addition, the convention that Swift class names start with an uppercase letter is applied, unless the model name starts with an underscore character (_).</p>
     </blockquote>
-  </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
   </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
