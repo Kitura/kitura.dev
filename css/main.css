@@ -121,6 +121,12 @@ header {
   align-items: center;
   animation-duration: 4s;
   animation-name: slidein;
+  transition-duration: 0.4s;
+}
+
+.code-panel:hover {
+					transform: rotateY(0deg) rotateX(0deg);
+          box-shadow: 0px 40px 74px rgba(0, 0, 0, 0.30);
 }
 
 @keyframes slidein {
@@ -502,6 +508,20 @@ header {
   box-shadow: -10px 40px 80px rgba(40, 40, 45, 0.22);
   cursor: pointer;
   transition-duration: 0.4s;
+  animation-duration: 2s;
+  animation-name: slideup;
+}
+
+
+
+@keyframes slideup {
+  from {
+  margin-top: 160px;
+  }
+
+  to {
+  margin-top: 120px;
+  }
 }
 
 .speech-bubble20:before {
