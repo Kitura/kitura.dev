@@ -41,26 +41,33 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>Writing Custom Paths</h1>
-    </div>
+                                <div class="speech-bubble">
+                                    Let's learn how to write custom paths.
+                                </div>
     <p>When hooking up middleware and handlers to your Kitura server, you can customize your paths using Kitura’s path syntax. This guide assumes familiarity with the concepts of Kitura app and route handler.</p>
-    <h2>Static Paths</h2>
+
+                                  <div class="speech-bubble">
+                                      Here are some static paths.
+                                  </div>
     <p>The most basic of paths, static paths, are supported. Simply specify the path as it is when mounting your middleware or handler, like so:</p>
     <pre><code class="language-swift">// handler example
 app.get("/test") { req, res, next in
     try res.send("Hello world").end()
 }</code></pre>
     <p>In this case, the path /test will be matched for /test only.</p>
-    <h2>Paths with Parameter(s)</h2>
+    <div class="speech-bubble">
+        Here are some paths with parameter(s).
+    </div>
     <p>Kitura supports parameters in the path for use cases such as performing CRUD operations against an object. Simply tag the parameter using :, like so:</p>
     <pre><code class="language-swift">app.get("/:id") { req, res, next in
     let id = req.parameters["id"] ?? ""
     try res.send("Hello world to user \(id)").end()
 }</code></pre>
     <p>In this case, the path /:id will be for /123 as well as /abc. You can then access the id parameter’s value via req.parameters["id"].</p>
-    <h2>Parameter Modifiers</h2>
+
+    <div class="speech-bubble">
+        Here are some parameter modifiers.
+    </div>
     <h3>Zero or One</h3>
     <p>You can specify that a parameter is optional by using the ? operator, like so:</p>
     <pre><code class="language-swift">app.get("/:id?") { req, res, next in
@@ -88,6 +95,10 @@ app.get("/test") { req, res, next in
     let id = req.parameters["id"] ?? ""
     try res.send("Hello world to user \(id)").end()
 }</code></pre>
+
+                    <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                      I need some help. Can I message you on Slack?
+                    </div>
     <p>In this case, the path /:id(\\d+) specifies that only digits should be matched; this path will be matched for /123, but not / or /abc.</p>
     <h3>Unnamed Parameters</h3>
     <p>You can use custom matching without naming a parameter, like so:</p>
@@ -97,19 +108,11 @@ app.get("/test") { req, res, next in
 }</code></pre>
     <p>In this case, the path /(\\d+) will be matched for /123, but not / or /abc. The matched parameter can then be referenced via its index; in this case, since this is the first unnamed parameter, its index is 0.</p>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
