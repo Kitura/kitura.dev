@@ -41,11 +41,11 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>APPLICATION METRICS FOR SWIFT (SwiftMetrics)</h1>
-    </div>
-    <h2>What is SwiftMetrics</h2>
+
+                                <div class="speech-bubble2">
+                                    So, what is SwiftMetrics? (also known as Application metrics for Swift).
+                                </div>
+
     <p class="sentence"><a href="https://developer.ibm.com/swift/monitoring-diagnostics/application-metrics-for-swift/">SwiftMetrics</a> instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API or visually with the included embedded dashboard.</p>
     <p class="sentence">SwiftMetrics provides the following built-in data collection sources:</p>
     <table>
@@ -74,7 +74,10 @@
         </tr>
       </tbody>
     </table>
-    <h2>Adding SwiftMetrics monitoring to your application</h2>
+                                    <div class="speech-bubble">
+                                      Let's add SwiftMetrics monitoring to your app.
+                                    </div>
+                                    
     <blockquote class="tip">
       <p>If you created your Kitura application using the Kitura CLI or by building a starter project using the kitura app then you will already have Swift Metrics included in your project.</p>
     </blockquote>
@@ -99,7 +102,11 @@ dependencies: [
     <p class="sentence">The port being used is logged to the console when your application starts</p>
     <p class="sentence">SwiftMetricsDash : Starting on port 8080</p>
     <p class="sentence">You can pass an existing Router object to SwiftMetricsDash from which to serve the page up on. SwiftMetricsDash will then use whatever server you are using in your existing application.</p>
-    <pre><code class="language-swift">
+
+                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                  I need some help. Can I message you on Slack?
+                </div>
+                <pre><code class="language-swift">
 let sm = try SwiftMetrics()
 let router: Router
 
@@ -110,19 +117,11 @@ let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)
 Kitura.addHTTPServer(onPort: 8080, with: router)
     </code></pre>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
