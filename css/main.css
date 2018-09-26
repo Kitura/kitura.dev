@@ -132,11 +132,13 @@ header {
 
 @keyframes slidein {
   from {
-            					transform: rotateY(15deg) rotateX(8deg);
+    margin-top: 40px;
+            					transform: rotateY(12deg) rotateX(0deg);
                       box-shadow: -54px 64px 74px rgba(0, 0, 0, 0.22);
   }
 
   to {
+    margin-top: 0px;
   					transform: rotateY(8deg) rotateX(3deg);
             box-shadow: -44px 50px 74px rgba(0, 0, 0, 0.32);
   }
@@ -513,8 +515,6 @@ header {
   animation-name: slideup;
 }
 
-
-
 @keyframes slideup {
   from {
   margin-top: 160px;
@@ -524,6 +524,115 @@ header {
   margin-top: 120px;
   }
 }
+
+
+/*
+#boxDiv {
+    width: 50px;
+    transform-style: preserve-3d;
+    animation: rotate 50s linear infinite;
+}
+
+#boxDiv div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+}
+
+
+#boxDiv2 {
+    width: 50px;
+    transform-style: preserve-3d;
+    animation: rotate 30s linear infinite;
+    z-index: 0;
+}
+
+#boxDiv2 div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+}
+
+
+#boxDiv3 {
+    width: 50px;
+    transform-style: preserve-3d;
+    animation: rotate 70s linear infinite;
+    z-index: 0;
+}
+
+#boxDiv3 div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+    top: 10px;
+}
+
+#front {
+    transform: rotateY(0) translateZ(25px);
+    background: rgba(245, 245, 245, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#back {
+    transform: rotateY(180deg) translateZ(25px);
+    background: rgba(245, 245, 245, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#left {
+    transform: rotateY(-90deg) translateX(-25px);
+    transform-origin: left;
+    background: rgba(230, 230, 234, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#right {
+    transform: rotateY(90deg) translateX(25px);
+    transform-origin: right;
+    background: rgba(238, 238, 243, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#top {
+    transform: rotateX(-90deg) translateY(-25px);
+    transform-origin: top;
+    background: rgba(240, 240, 245, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#bottom {
+    transform: rotateX(90deg) translateY(25px);
+    transform-origin: bottom;
+    background: rgba(235, 235, 240, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotateY(0) rotateX(360deg) rotateZ(90deg);
+    }
+    50% {
+      transform: rotateY(360deg) rotateX(0) rotateZ(270deg);
+    }
+    100% {
+      transform: rotateY(0) rotateX(360deg) rotateZ(90deg);
+    }
+}
+*/
+
+
+
+
 
 .speech-bubble20:before {
   content: "";
@@ -1153,7 +1262,7 @@ transform: translateY(-2px);
   border: 1.4px solid rgba(75, 139, 209, 0.85);
   border-radius: 8px;
   padding: 4px 7px;;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .card img {
