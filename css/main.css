@@ -115,10 +115,24 @@ header {
   width: 80%;
   height: 60%;
   font-size: 0.95em;
-  box-shadow: -40px 54px 74px rgba(0, 0, 0, 0.32);
+  box-shadow: -40px 50px 74px rgba(0, 0, 0, 0.32);
   color: black;
   padding: 15px 40px;
   align-items: center;
+  animation-duration: 4s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+            					transform: rotateY(15deg) rotateX(8deg);
+                      box-shadow: -50px 64px 74px rgba(0, 0, 0, 0.22);
+  }
+
+  to {
+  					transform: rotateY(8deg) rotateX(3deg);
+            box-shadow: -40px 50px 74px rgba(0, 0, 0, 0.32);
+  }
 }
 
 .code-panel span {
