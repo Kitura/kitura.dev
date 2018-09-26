@@ -40,12 +40,18 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>EXPOSING SWIFT SERVER GENERATOR MODELS OVER REST</h1>
-    </div>
+
+                                <div class="speech-bubble2">
+                                    Let's learn how to expose Swift Server Generator models over REST.
+                                </div>
+
     <p>Swift Server Generator models automatically have a standard set of HTTP endpoints that provide REST APIs for create, read, update and delete (CRUD) operations on model data.</p>
-    <h2>REST paths</h2>
+
+
+                                    <div class="speech-bubble">
+                                        Some common REST paths are shown below.
+                                    </div>
+
     <p>The REST APIs are mounted to the plural model name in the Model definition JSON file. For example, a model named location with plural locations has its REST API mounted on /api/locations.</p>
     <p>The REST API is as follows:</p>
     <table>
@@ -138,6 +144,9 @@ Keep-Alive: timeout=60, max=99
   }
 ]</pre>
     </code>
+                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                  I need some help. Can I message you on Slack?
+                </div>
     <p>The HTTP status code indicates whether a request succeeded, as follows:</p>
     <table>
       <thead>
@@ -171,19 +180,11 @@ Keep-Alive: timeout=60, max=99
 }</pre>
     </code>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
