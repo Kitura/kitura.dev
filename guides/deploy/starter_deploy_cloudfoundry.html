@@ -41,10 +41,10 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>DEPLOY YOUR APP USING CLOUD FOUNDRY</h1>
-    </div>
+
+                    <div class="speech-bubble2">
+                      Let's learn how to deploy your Kitura applications using Cloud Foundry.
+                    </div>
 
 <p>This guide will show you how to deploy the Kitura application you created by following our <a href="../gettingstarted.html">Getting Started</a> guide to a <a href="#cloud-foundry">Cloud Foundry</a> based cloud environment. The guide assumes you already have an environment to deploy to. If not, you can <a href="https://console.bluemix.net/registration/">sign up</a> to IBM Cloud for free and use it to host your Cloud Foundry apps.</p>
 <h4 >Starter project contents</h4>
@@ -55,23 +55,19 @@
 <p>You’ll also need to provide your username and password when prompted. Next, you’ll need to find the organisation and space you are pushing to, and target them like this:</p>
 <div><pre><code class="sourceCode bash">cf target -o &lt;organisation&gt; -s &lt;space&gt;</code></pre></div>
 <p>Now, you’re ready to push your app. Simply run the following command from the same location as your <span class="highlight">manifest.yml</span>:</p>
-<div><pre><code class="sourceCode bash">cf push</code></pre></div>
+
+            <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+              I need some help. Can I message you on Slack?
+            </div>
+            <div><pre><code class="sourceCode bash">cf push</code></pre></div>
 <p>Your Kitura application should now be successfully deployed into your Cloud Foundry environment! If you haven’t edited the <span class="highlight">manifest.yml</span> file, it will have been assigned a random route. If you visit this URL you should see the Kitura splash page.</p>
 
-</section>
-<section class="slack-help">
-  <a href="http://slack.kitura.io/">
-    <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-    <h2>NEED HELP?</h2>
-    <h2>MESSAGE US ON SLACK.</h2>
-  </a>
 </section>
 </body>
 <footer>
 
 <nav class="footer-nav">
   <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-  <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
   <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
 </nav>
 </footer>
