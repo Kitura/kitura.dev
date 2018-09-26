@@ -41,14 +41,17 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>BUILDING WITHIN XCODE</h1>
-    </div>
+
+                                <div class="speech-bubble">
+                                    Learn how to build from within Xcode.
+                                </div>
     <blockquote class="info">
       <p>If you used kitura init or kitura create to generate your web application, the .xcodeproj file will have been created already.</p>
     </blockquote>
-    <h2>Setting up an Xcode project for your Kitura application</h2>
+                                    <div class="speech-bubble2">
+                                        First thing first. Set up an Xcode project for your Kitura application.
+                                    </div>
+
     <p>You can develop, test and run your Kitura app in Xcode. This gives you productivity features such as debugging, autocompletion, and syntax checking.</p>
     <p>Swift Package Manager can generate an Xcode project for you by reading your project’s Package.swift file. It will automatically set up several targets that will be built using Xcode — note that when Xcode builds the project it is not using swift build, rather it uses its internal build process.</p>
     <blockquote class="tip">
@@ -60,7 +63,11 @@
     <p>Open the generated project in Xcode.</p>
     <p>Change the build scheme to your executable. Xcode defaults to the module of the same name, which won’t run.</p>
     <p>Run.</p>
-    <h2>Develop iOS application and Kitura on the same workspace</h2>
+
+                                    <div class="speech-bubble">
+                                        Shared workspace for iOS and Kitura.
+                                    </div>
+
     <p>Follow the above instructions for creating an Xcode project for your Kitura app. For example:</p>
     <pre><code class="language-swift">./MyApp-server.xcodeproj</code></pre>
     <p>Create a new iOS project and sources in a new subdirectory e.g.</p>
@@ -70,10 +77,16 @@
     <p>Open up Finder and drag and drop your MyApp-server.xcodeproj and MyApp-ios.xcodeproj to your workspace.</p>
     <p>Be sure to choose to create new references to these projects and sources, but do not actually copy the files in the filesystem.</p>
     <p>Select the scheme you wish to build the server and the client respectively.</p>
-    <h2>Toolchain Settings</h2>
+
+                                        <div class="speech-bubble">
+                                            Let's check out some toolchain settings.
+                                        </div>
     <p>We want to use a specific version of toolchain for a Kitura app, however, for an iOS app we have to use Xcode’s default toolchain.</p>
     <p>To solve this situation:</p>
     <p>For iOS:</p>
+                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                  I need some help. Can I message you on Slack?
+                </div>
     <ul>
       <li>Set the toolchain setting to Xcode’s default (menu: Xcode => Toolchains).</li>
     </ul>
@@ -82,19 +95,11 @@
       <li>Download the correct toolchain directly from <a href="https://swift.org/">swift.org</a> (the toolchain might be under Older snapshots), install it, then go to Xcode => Toolchains and select your desired toolchain.</li>
     </ul>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
