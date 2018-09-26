@@ -41,11 +41,10 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>LEVERAGE DOCKER FOR YOUR DEVELOPMENT ENVIRONMENT SETUP</h1>
-    </div>
-    <h2>Compile and test your code on macOS and Linux</h2>
+                              <div class="speech-bubble2">
+                                  Leverage Docker for your dev env setup. Compile and test your code on macOS and Linux.
+                              </div>
+
     <p>Here are steps you can take for setting up your development environment for Kitura:</p>
     <p>1. Install <a href="https://docs.docker.com/engine/installation/">Docker</a> on your development system and start a Docker session/terminal.</p>
     <p>2. From the Docker session, pull down the swift-ubuntu image from Docker Hub:</p>
@@ -55,7 +54,11 @@
     <p>For example:</p>
     <pre><code class="language-swift">docker run -i -t -v /Users/olivieri/git/Kitura/:/root/Kitura ibmcom/swift-ubuntu:latest /bin/bash</code></pre>
     <p>4. Now you have access to the same source code files from your macOS system and Docker container. You can compile and test your code on macOS and also on Linux with minimal effort.</p>
-    <h2>Expose Kitura’s Port in Docker Container to Host Machine</h2>
+
+                <div class="speech-bubble2">
+                  Let's expose Kitura’s port in the Docker container to a host machine.
+                </div>
+
     <p>Depending on your Docker installation the instructions to expose the Docker container’s port differs:</p>
     <h3>If you are using the new Docker for Mac macOS app:</h3>
     <p>Since the new Docker for Mac macOS app removed the need for VirtualBox, exposing your Kitura server’s port in a Docker container is much simpler. Simply pass in the port binding as an option when you first run the container image, like so:</p>
@@ -74,6 +77,10 @@
     <p>4. Go to VirtualBox, and open the settings panel for the virtual machine that is running Docker (i.e. right click on the virtual machine and select Settings).</p>
     <p>5. Go to the Network tab and click on Port Forwarding.</p>
     <p>6. Add a new row with the following values:</p>
+
+            <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+              I need some help. Can I message you on Slack?
+            </div>
     <ul>
       <li>name: kitura</li>
       <li>protocol: tcp</li>
@@ -83,20 +90,13 @@
     </ul>
     <p>7. Click OK and OK again to save the settings for the virtual machine.</p>
     <p>8. Open your browser and go to http://localhost:8080. You should see the Kitura welcome page.</p>
-  </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
+
   </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
