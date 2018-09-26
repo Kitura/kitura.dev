@@ -1435,6 +1435,8 @@ p {
     transform: translateY(-2px);
 }
 
+
+
 .support-social-box img {
     width: 80px;
     display: inline-block;
@@ -1444,7 +1446,7 @@ p {
 }
 
 .support-social-box p {
-    font-weight: 500;
+    font-weight: 340;
     color: white;
     font-size: 1.1em;
     margin-left: 10px;
@@ -1484,6 +1486,35 @@ p {
 
 .support-hero-image-smaller {
   display: none;
+}
+
+
+.innerT2 {
+  background-color: rgba(228, 228, 232, 0);
+  box-shadow: 0px 54px 74px rgba(49, 81, 183, 0);
+  border-color: rgb(170, 170, 180);
+  border-width: 2px;
+  border-style: dashed;
+}
+.innerT3 {
+color: rgb(150, 150, 160);
+transition-duration: 0.4s;
+}
+.innerT3:hover {
+  color: rgb(40, 40, 50);
+}
+.innerT2 p {
+  color: rgb(50, 50, 66);
+  font-weight: 400;
+}
+.innerT2:hover {
+  background-color: rgba(228, 228, 232, 0);
+  box-shadow: 0px 54px 74px rgba(49, 81, 183, 0);
+  color: rgb(150, 150, 160);
+  transform: translateY(0px);
+}
+.innerT2:hover p {
+  color: rgb(50, 50, 60);
 }
 
 
