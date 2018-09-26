@@ -41,10 +41,12 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>HTML Forms: Parsing URL Encoded Data</h1>
-    </div>
+
+
+                                <div class="speech-bubble2">
+                                    Let's learn about HTML forms and how to parse URL encoded data.
+                                </div>
+
     <ul class="contents"> Contents
       <li><a href="#kitura-server">Create a Kitura Server</a></li>
       <li><a href="#html-form">Create the HTML Form</a></li>
@@ -55,7 +57,10 @@
     </ul>
 
 
-    <h2><a name="kitura-server" style="padding-top: 100px;"></a>Create a Kitura Server</h2>
+
+                                    <div class="speech-bubble">
+                                        <a name="kitura-server"></a>Let's create and set up a Kitura server.
+                                    </div>
 
     <p class="sentence">First we need a Kitura server to add our routes to. If you are working with an existing project you can skip this section.</p>
     <p class="sentence">Kitura has a command-line interface which provides us with utilities for quickly creating a Kitura server.</p>
@@ -70,7 +75,9 @@
     <p class="sentence">Now we're ready create our HTML form!</p>
 
 
-    <h2><a name="html-form" style="padding-top: 100px;"></a>Create the HTML Form</h2>
+                                        <div class="speech-bubble">
+                                            <a name="html-form"></a>Let's create the HTML form.
+                                        </div>
 
     <p class="sentence">Webpages use <a href="https://www.w3schools.com/html/html_forms.asp" target="_blank">HTML forms</a> to take a user's input and send it as an HTTP request.</p>
     <p class="sentence">The form data can be sent via a HTTP GET request. In this case, the data gets appended to the url as a query string consisting of “key=value” pairs, separated by the “&amp” symbol.</p>
@@ -144,7 +151,9 @@ name=Andy&age=&isDeveloper=true</pre>
     </ul>
 
 
-    <h2><a name="staticfileserver" style="padding-top: 100px;"></a>Create a StaticFileServer</h2>
+                                            <div class="speech-bubble">
+                                                <a name="staticfileserver"></a>Let's create a static file server.
+                                            </div>
 
     <p class="sentence">We will serve the HTML page using a <span class="highlight">StaticFileServer</span>.</p>
     <p class="sentence">1. Open your Xcode project:</p>
@@ -156,7 +165,9 @@ name=Andy&age=&isDeveloper=true</pre>
     <p class="sentence">5. Run the server and go to: <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a></p>
     <p class="sentence">You should see a simple HTML page with four HTML forms. These will send the input data to our server. Now we need to create the server routes that receive this data.</p>
 
-    <h2><a name="form-model" style="padding-top: 100px;"></a>Create the Form Model</h2>
+                                                <div class="speech-bubble">
+                                                    <a name="form-model"></a>Next, let's create the form model.
+                                                </div>
 
     <p class="sentence">The Kitura server works directly with Swift value types, therefore we need to contruct a value type to use.
     <p class="sentence">It's good practice to keep value types (in this case models) and logic separated. Create a new file, to contain the models, called Models.swift as follows:</p>
@@ -182,7 +193,10 @@ struct Form: Codable, QueryParams {
     <p class="sentence">Now we have a model we can use, we can create our routes!</p>
 
 
-    <h2><a name="codable-routes" style="padding-top: 100px;"></a>Setup the Codable Routes</h2>
+                                                    <div class="speech-bubble">
+                                                        <a name="codable-routes"></a>Next, setup the Codable Routes.
+                                                    </div>
+
     <p class="sentence">We will now create a <a href="https://www.kitura.io/guides/routing/codablerouting.html" target="_blank">Codable route</a> to receive the POST request from an HTML form.</p>
     <p class="sentence">1. Open Application.swift</p>
     <p class="sentence">2. Inside the <span class="highlight">postInit</span> function, register the route handler:</p>
@@ -208,8 +222,11 @@ struct Form: Codable, QueryParams {
 }</code></pre>
     <p class="sentence">7. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "Get to Codable route" form and in the Xcode logger you should see our printed message with the form data.</p>
 
+                                                        <div class="speech-bubble">
+                                                            <a name="raw-routes"></a>Next, setup the Raw Routes.
+                                                        </div>
 
-    <h2><a name="raw-routes" style="padding-top: 100px;"></a>Setup the Raw Routes</h2>
+
     <p class="sentence">We will now create a Raw route to receive the POST request from an HTML form.</p>
     <p class="sentence">1. Inside <span class="highlight">postInit</span>, register the Raw POST route:</p>
     <pre><code class="language-swift">router.post("/raw") { request, response, next in
@@ -237,23 +254,18 @@ struct Form: Codable, QueryParams {
     response.status(.created).send(json: user)
     next()
 }</code></pre>
+                    <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                      I need some help. Can I message you on Slack?
+                    </div>
     <p class="sentence">4. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "GET to Raw route" form and in the Xcode logger you should see our printed message with the form data.</p>
     <p class="sentence">This will function the same as the Codable GET route above, to receive and parse the HTML form.</p>
     <p class="sentence">Congratulations!! You have just created and hosted an HTML forms webpage and set up a server to receive and parse these forms using four different methods! </p>
     </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
