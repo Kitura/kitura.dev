@@ -41,18 +41,22 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>TYPE-SAFE HTTP BASIC AUTHENTICATION</h1>
-    </div>
-    <h2>Introduction</h2>
+
+                                <div class="speech-bubble2">
+                                    An overview and introduction to type-safe HTTP basic authentication.
+                                </div>
+
 <p>Kitura 2.4 introduces &quot;Type-safe Middleware&quot;: middlewares with the structure and data types that you define. On successfully executing, they are instantiated and passed to your handler. We also introduce <code>TypeSafeCredentials</code>, a protocol that implements <code>TypeSafeMiddleware</code> to authenticate a request on a Codable route and initialize itself with the authenticated user's data.</p>
 <p>HTTP Basic authentication transmits credentials in an &quot;Authorization&quot; header as base64 encoded user ID/password pairs. Many clients also let you send the username and the password in the URL as follows:</p>
 <pre><code>https://username:password@www.example.com/
 </code></pre>
 <p>However some web browsers disable this for security reasons.</p>
 <p>This guide steps you through using <code>TypeSafeHTTPBasic</code>, a <code>TypeSafeCredentials</code> plugin for safe and easy HTTP basic authentication in Codable routes.</p>
-<h2>Adding TypeSafeHTTPBasic to your project</h2>
+
+                                <div class="speech-bubble2">
+                                    Learn how to add TypeSafeHTTPBasic to your project.
+                                </div>
+
 <p>If you do not have an existing project, run <code>kitura init</code> in terminal to generate a new project.</p>
 <p>Add <code>Kitura-CredentialsHTTP</code> to your <code>Package.swift</code> dependencies:</p>
 
@@ -68,7 +72,11 @@
 <p>Add <code>CredentialsHTTP</code> to your import statements:</p>
 <pre><code class="language-swift">import CredentialsHTTP
 </code></pre>
-<h2>Defining a TypeSafeHTTPBasic object</h2>
+
+                                <div class="speech-bubble2">
+                                    Let's dive in and look at how to define TypeSafeHTTPBasic objects.
+                                </div>
+
 <p>We will declare a struct which conforms to <code>TypeSafeHTTPBasic</code>. This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
 <p>Define the TypeSafeHTTPBasic Struct:</p>
 <p>At the bottom of <code>Application.swift</code>, define a public struct called <code>MyBasicAuth</code> that conforms to the <code>TypeSafeHTTPBasic</code> protocol:</p>
@@ -117,7 +125,11 @@ callback(nil)
     public var id: String
 }
 </code></pre>
-<h2>Using TypeSafeHTTPBasic in a route</h2>
+
+                                <div class="speech-bubble2">
+                                    Let's dive in and look at how to use TypeSafeHTTPBasic in a route.
+                                </div>
+
 <p>Inside <code>postInit()</code>, add the following route:</p>
 <pre><code class="language-swift">router.get(&quot;/basic&quot;) { (user: MyBasicAuth, respondWith: (MyBasicAuth?, RequestError?) -&gt; Void) in
     print(&quot;authenticated \(user.id) using \(user.provider)&quot;)
@@ -130,7 +142,11 @@ callback(nil)
 <p>You will successfully login and be returned your username</p>
 <p>Congratulations, you have just implemented HTTP basic authentication of a Codable route!!!</p>
 <p>The browser will store your login credentials and automatically log you in if you return to the route. Use a private window if you would like to test incorrect authentication.</p>
-<h2>Using TypeSafeHTTPBasic with the ORM</h2>
+
+                                <div class="speech-bubble2">
+                                    Let's dive in and look at how to use TypeSafeHTTPBasic with the ORM.
+                                </div>
+
 <p>This example showed a simple struct that contains only the required id. A real world project would probably have a user profile with lots of fields, which is keyed by the unique id. We demonstrate how to implement this using <a href="https://github.com/IBM-Swift/Swift-Kuery-ORM">Swift-Kuery-ORM</a>.</p>
 <p>Set up the ORM and connect it to a database by following the instructions in the <a href="https://github.com/IBM-Swift/Swift-Kuery-ORM/blob/master/README.md">README</a> using <code>MyBasicAuth</code> as your Model.</p>
 <p>Make <code>MyBasicAuth</code> a Model:</p>
@@ -156,6 +172,9 @@ public let customField: Int
 }
 </code></pre>
 <p>MyBasicAuth should now look as follows:</p>
+                    <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                      I need some help. Can I message you on Slack?
+                    </div>
 <pre><code class="language-swift">public struct MyBasicAuth: TypeSafeHTTPBasic, Model {
 
     static var idColumnName = &quot;id&quot;
@@ -178,19 +197,11 @@ public let customField: Int
 </code></pre>
 <p>Now when your route authenticates, a <code>MyBasicAuth</code> instance with a primary key matching the provided user name is returned. The instance fields on <code>MyBasicAuth</code> should match your user data giving you type-safe authentication in your Codable routes!</p>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 
 <footer>
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>

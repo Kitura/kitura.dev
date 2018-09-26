@@ -474,7 +474,7 @@ header {
   top: 35%;
 }
 
-.speech-bubble2 {
+.speech-bubble20 {
 	position: relative;
 	background: rgb(56, 140, 215);
 	border-radius: .4em;
@@ -490,7 +490,7 @@ header {
   transition-duration: 0.4s;
 }
 
-.speech-bubble2:before {
+.speech-bubble20:before {
   content: "";
   width: 0px;
   height: 0px;
@@ -504,12 +504,12 @@ header {
   transition-duration: 0.4s;
 }
 
-.speech-bubble2:hover {
+.speech-bubble20:hover {
   background-color: rgb(78, 162, 240);
   transform: translateY(-2px);
   box-shadow: 0px 40px 80px rgba(40, 40, 45, 0.3);
 }
-.speech-bubble2:hover:before {
+.speech-bubble20:hover:before {
 border-left: 10px solid rgb(78, 162, 240);
 border-right: 10px solid transparent;
 border-top: 10px solid rgb(78, 162, 240);
