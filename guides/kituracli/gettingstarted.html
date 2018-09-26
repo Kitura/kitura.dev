@@ -41,10 +41,10 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>USING KITURA CREATE</h1>
-    </div>
+
+                    <div class="speech-bubble2">
+                      Let's learn how to use Kitura Create. Grab some coffee because this might be a long one.
+                    </div>
     <ul class="contents"> Contents
       <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
@@ -52,7 +52,10 @@
       <li><a href="#core-concepts">Core Concepts</a></li>
       <li><a href="#prompt-reference">Prompt Reference</a></li>
     </ul>
-    <h2><a name="overview"></a>OVERVIEW</h2>
+
+                        <div class="speech-bubble">
+                          <a name="overview"></a>But first, let's give you a brief overview.
+                        </div>
     <p>The kitura create command is a command-line tool that provides a guided question-and-answer way to create Kitura Swift applications.</p>
     <p>The generator supports two different ways to generate an application: scaffolding a starter and generating a CRUD application.</p>
     <h3>Scaffolding a starter</h2>
@@ -60,7 +63,10 @@
     <p>You can select from a number of different options presented by the generator to define extra content to be included in the resulting application. For example, these include things like adding the boilerplate for serving static files and creating connections to databases.</p>
     <h3>Generating a CRUD application</h2>
     <p>A CRUD (Create-Read-Update-Delete) application is one where you provide a description of a data model and the generator creates application code for a REST webservice that will provide endpoints to perform create, read, update and delete operations for data matching that data model. In the current version of the generator, most of the generated CRUD application is not open for modification or extension—expect this to change in a future version to allow for more flexibility.</p>
-    <h2><a name="installation"></a>Installation</h2>
+
+                            <div class="speech-bubble">
+                              <a name="installation"></a>Okay, let's get to it! Starting with installation.
+                            </div>
     <h3>macOS</h3>
     <p>Follow the <a href="../gettingstarted.html">Getting Started</a>.</p>
     <h3>Ubuntu Linux</h3>
@@ -87,8 +93,10 @@
         <li>> Ubuntu Linux 16.04 LTS</li>
       </ul>
     </blockquote>
+                                <div class="speech-bubble">
+                                  <a name="getting-started"></a>Onto the meaty part now, getting started.
+                                </div>
 
-    <h2><a name="getting-started"></a>Getting Started</h2>
     <p>First, run the Kitura application generation (see Command line tools):</p>
     <pre><code class="language-swift">kitura create</code></pre>
     <p>Enter swiftserver-getting-started as the application name.</p>
@@ -165,7 +173,10 @@ Your Kitura based server is up and running!</code></pre>
       <li>2. Create web content in the public directory.</li>
       <li>3. View the embedded metrics dashboard on http://localhost:8080/swiftmetrics-dash.</li>
     </ul>
-    <h2><a name="core-concepts"></a>Core Concepts</h2>
+
+                                <div class="speech-bubble">
+                                  <a name="core-concepts"></a>Before going any further, here are core concepts.
+                                </div>
     <p>The kitura create command creates a Kitura Swift application based on the project type, capabilities and services you select. To do this, use the command-line tools provided by installing the generator.</p>
     <h3>Project type</h3>
     <p>The project type defines whether the generated application is a scaffold or CRUD application.</p>
@@ -315,8 +326,12 @@ docker build -t myapp-build -f Dockerfile-tools .</code></pre>
     <p>Boilerplate code for creating a client object for the Push Notifications API is included inside Sources/Application/Application.swift as an internal variable available for use anywhere in the Application module.</p>
     <p>The connection details for this client are loaded by the configuration code and are passed to the Push Notifications client in the boilerplate code.</p>
     <p>More information about the Push Notifications Service can be found in the README.</p>
-    <h2><a name="prompt-reference"></a>Prompt Reference</h2>
-    <p>The following sections describe the prompts provided by the application generator.</p>
+
+
+                                    <div class="speech-bubble">
+                                      <a name="prompt-reference"></a>Let's dive into all the prompts provided.
+                                    </div>
+
     <h3>Application name prompt</h3>
     <p>If you did not supply an application name as an argument, the application generator will ask the name you would like to use for your application:</p>
     <code><pre>What's the name of your application? (currentDirectory)</pre></code>
@@ -351,7 +366,7 @@ docker build -t myapp-build -f Dockerfile-tools .</code></pre>
     </code>
     <p>The Scaffold a starter option will direct the generator to create a scaffolded application providing boilerplate code and application structure to which your application logic can be added.</p>
     <p>The Generate a CRUD application option will direct the generator to create a CRUD application on top of which a data model can be defined which will automatically be mapped to REST endpoints for create, read and update operations. At present the code for this type of application is not very customizable aside from modifying the data model.</p>
-    <h2>Application pattern prompt</h2>
+    <h3>Application pattern prompt</h3>
     <p>For scaffolded applications, the application generator will ask which application pattern you want to select, offering three options:</p>
     <code>
       <pre>
@@ -387,7 +402,7 @@ docker build -t myapp-build -f Dockerfile-tools .</code></pre>
 ◉ Embedded metrics dashboard
 ◉ Docker files</pre>
     </code>
-    <h2>Capabilities prompt</h2>
+    <h3>Capabilities prompt</h3>
     <p>The application generator will ask which capabilities you want to select.</p>
     <p>For Scaffold project type, the following capabilities are available:</p>
   <code>
@@ -452,23 +467,18 @@ docker build -t myapp-build -f Dockerfile-tools .</code></pre>
   ◯ Redis
   ◯ Object Storage</pre>
   </code>
+              <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                I need some help. Can I message you on Slack?
+              </div>
   <p>Any services you do not select in this prompt will use default values.</p>
     <p>For each service you select, a set of custom prompts will ask for the relevant connection details to be supplied.</p>
 
-  </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
   </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
