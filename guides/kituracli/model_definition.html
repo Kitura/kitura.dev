@@ -40,11 +40,11 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>MODEL DEFINTION JSON FILE</h1>
-    </div>
-    <h2>Overview</h2>
+
+                    <div class="speech-bubble2">
+                      Here's a brief overview of the model definition JSON file created by the Model generator.
+                    </div>
+
     <p>The Model generator creates a model definition JSON file for a model in the models directory. The file is named <model_name>.json, where <model_name> is the name of the model; for example, customer.json. The model definition JSON file defines all of the properties of the models.</p>
     <p>The following example shows the model definition JSON file for the sample todo application:</p>
     <code>
@@ -103,7 +103,11 @@
         </tr>
       </tbody>
     </table>
-    <h2>Properties</h2>
+
+                        <div class="speech-bubble2">
+                          Here's a brief overview of the properties and property definitions.
+                        </div>
+
     <p>The properties key defines one or more properties, each of which is an object that has keys. The following example shows a basic property definition:</p>
     <code>
       <pre>
@@ -155,7 +159,9 @@
         </tr>
       </tbody>
     </table>
-    <h2>ID properties</h2>
+                            <div class="speech-bubble2">
+                              Here's a brief overview of the ID properties that uniquely identify model instances.
+                            </div>
     <p>A model representing data to be persisted in a database has one ID property that uniquely identifies the model instance. The ID property must be named id.</p>
     <p>By default, Swift Server Generator automatically adds an id property to each model as follows:</p>
     <code>
@@ -168,9 +174,15 @@
     <p>The type defaults to string.</p>
     <p>Swift Server Generator CRUD methods expect the model to have an id property.</p>
 
-    <h2>Swift Server Generator types</h2>
+                            <div class="speech-bubble2">
+                              Here are the Swift Server Generator types, which are summarized below.
+                            </div>
     <p>The Swift Server Generator model properties can be defined as various data types. The following table summarizes the supported data types:</p>
-    <table>
+
+                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                  I need some help. Can I message you on Slack?
+                </div>
+                <table>
       <thead>
         <tr>
           <th>Type</th>
@@ -207,19 +219,11 @@
       </tbody>
     </table>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
