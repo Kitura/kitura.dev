@@ -41,11 +41,11 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>RESPONSE HANDLERS</h1>
-    </div>
-    <h2>Multi-handlers</h2>
+
+                                <div class="speech-bubble2">
+                                    Let's talk about response handlers and multi-handlers, and what they are.
+                                </div>
+
     <p>Responses can accept multiple handlers allowing logic to be broken up into sections.</p>
     <pre><code class="language-swift">router.get("foo", handler: { request, response, next in
     if request.queryParameters["bar"] == nil {
@@ -55,7 +55,10 @@
 }, { request, response, next in
     // Only gets called if no error
 })</code></pre>
-    <h2>Multi-HTTP Verbs</h2>
+                                    <div class="speech-bubble">
+                                        Let's get familiar with multi-HTTP verbs.
+                                    </div>
+
     <p>Multiple HTTP verbs can be specified for one path using the route method.</p>
     <pre><code class="language-swift">router.route("foo")
 .get() { request, response, next in
@@ -64,9 +67,15 @@
 .post() { request, response, next in
     // Post logic here
 }</code></pre>
-    <h2>Sub-routers</h2>
+                                        <div class="speech-bubble">
+                                            Let's get familiar with sub-routers.
+                                        </div>
     <p>A large router can be broken up into sub-routers and be mounted under a path prefix. These sub-routers can even be placed in separate files.</p>
-    <pre><code class="language-swift">let subrouter = Router()
+
+                    <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                      I need some help. Can I message you on Slack?
+                    </div>
+                    <pre><code class="language-swift">let subrouter = Router()
 subrouter.get("/") { _, response, _ in
     try response.send("Hello from subsection").end()
 }
@@ -88,19 +97,11 @@ Kitura.addHTTPServer(onPort: 8080, with: mainRouter)
 Kitura.run()</code></pre>
     <p>A GET request to localhost:8080 will return “Welcome” and a request to localhost:8080/sub will return “Hello from subsection”</p>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
