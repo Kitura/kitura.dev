@@ -41,10 +41,11 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>DEPLOY YOUR APP USING KUBERNETES AND DOCKER</h1>
-    </div>
+
+
+                    <div class="speech-bubble2">
+                      Let's deploy your Kitura application using Kubernetes and Docker.
+                    </div>
 
 <p>This guide will show you how to deploy the Kitura application you created by following our <a href="../gettingstarted.html">Getting Started</a> guide to a <a href="https://kubernetes.io/">Kubernetes</a> based environment. The guide assumes you already have an environment to deploy to. If not, you can <a href="https://console.bluemix.net/registration/">sign up</a> to IBM Cloud and <a href="https://console.bluemix.net/docs/containers/container_index.html#container_index">create a Kubernetes cluster</a> for free, or <a href="https://kubernetes.io/docs/setup/minikube/">set one up locally using Minikube</a>.</p>
 <h4 id="starter-project-contents">Starter project contents</h4>
@@ -76,23 +77,19 @@
 <p>To install the chart into your cluster, run the following from the <span class="highlight">/chart/&lt;your app name&gt;</span> directory:</p>
 <div><pre><code class="sourceCode bash">helm install --name myapp .</code></pre></div>
 <p>You may have to wait a few minutes for it to be available, but your application should now be deployed to your Kubernetes cluster. To access your application, you have to find the external IP of the worker node it has been deployed to. This process varies, so check with your cloud provider on how to do so. The port that your application had been deployed on is described by the <code>NodePort</code> which you can find by running the following command on your cluster:</p>
-<div><pre><code class="sourceCode bash">kubectl describe service &lt;your app name&gt;-service</code></pre></div>
+
+            <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+              I need some help. Can I message you on Slack?
+            </div>
+            <div><pre><code class="sourceCode bash">kubectl describe service &lt;your app name&gt;-service</code></pre></div>
 <p>Congratulations! You have now successfully deployed your Kitura application using Kubernetes! If you visit <span class="highlight">&lt;external IP&gt;:&lt;NodePort&gt;</span> you should see the Kitura splash page.</p>
 </section>
 
-<section class="slack-help">
-  <a href="http://slack.kitura.io/">
-    <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-    <h2>NEED HELP?</h2>
-    <h2>MESSAGE US ON SLACK.</h2>
-  </a>
-</section>
 </body>
 <footer>
 
 <nav class="footer-nav">
   <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-  <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
   <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
 </nav>
 </footer>
