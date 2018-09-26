@@ -82,6 +82,7 @@ header {
       Main section styling
 */
 
+
 .main-section {
   width: 80%;
   height: 100%;
@@ -126,7 +127,7 @@ header {
 
 .code-panel:hover {
 					transform: rotateY(0deg) rotateX(0deg);
-          box-shadow: 0px 42px 80px rgba(0, 0, 0, 0.30);
+          box-shadow: 0px 34px 80px rgba(0, 0, 0, 0.30);
 }
 
 @keyframes slidein {
@@ -1052,6 +1053,17 @@ color: rgb(75, 139, 209);
   margin-bottom: 25px;
   padding-left: 30px;
   width: 100%;
+}
+
+
+.opt2 {
+  background: rgb(220, 100, 100);
+}
+.opt3 {
+  background: rgb(100, 180, 130);
+}
+.opt4 {
+  background: rgb(100, 100, 220);
 }
 
 .repo-header {
