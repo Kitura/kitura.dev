@@ -1059,11 +1059,20 @@ color: rgb(75, 139, 209);
 .opt2 {
   background: rgb(220, 100, 100);
 }
+.opt2:hover {
+  background: rgb(250, 130, 130);
+}
 .opt3 {
   background: rgb(100, 180, 130);
 }
+.opt3:hover {
+  background: rgb(130, 210, 160);
+}
 .opt4 {
   background: rgb(100, 100, 220);
+}
+.opt4:hover {
+  background: rgb(130, 130, 250);
 }
 
 .repo-header {
