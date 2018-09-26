@@ -719,8 +719,13 @@ footer {
     box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
     display: inline-block;
     padding: 20px;
+    transition-duration: 0.4s;
 }
 
+.guide-rectangle:hover {
+box-shadow: 0px 44px 75px rgba(40, 40, 45, 0.3);
+transform: translateY(-2px);
+}
 
 .guide-rectangle h3 {
   margin-top: 20px;
@@ -1036,6 +1041,11 @@ color: rgb(75, 139, 209);
   margin-bottom: 50px;
 }
 
+
+
+
+
+
 .card {
 box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
   background-color: white;
@@ -1046,6 +1056,12 @@ box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
   position: relative;
   overflow-y: scroll;
   height: 400px;
+  transition-duration: 0.4s
+}
+
+.card:hover {
+box-shadow: 0px 45px 74px rgba(40, 40, 45, 0.3);
+transform: translateY(-2px);
 }
 
 .card h2 {

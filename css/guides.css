@@ -1,27 +1,167 @@
 html {
-    background: linear-gradient(#00bbe6, #0086a5) no-repeat center fixed ;
+background: rgba(243, 243, 245, 1);
     background-size: cover;
-
-
 }
 
 header {
-  background-color: white;
   max-width: 100%;
-  box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
   margin-top: 0;
-  position: fixed;
 }
 
+
+.speech-bubble {
+	position: relative;
+	background: white;
+	border-radius: .4em;
+  width: 180px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 20px;
+  color: rgb(100, 100, 120);
+  margin-left: 40px;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+  text-align: left;
+}
+
+.speech-bubble:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 10px solid white;
+  border-left: 10px solid transparent;
+  border-top: 10px solid white;
+  border-bottom: 10px solid transparent;
+  left: -20px;
+  top: 35%;
+}
+
+
+.speech-bubble2 {
+	position: relative;
+	background: white;
+	border-radius: .4em;
+  width: 240px;
+  height: 44px;
+  border-radius: 20px;
+  padding: 20px;
+  color: rgb(100, 100, 120);
+  margin-left: 40px;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+  text-align: left;
+}
+
+.speech-bubble2:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 10px solid white;
+  border-left: 10px solid transparent;
+  border-top: 10px solid white;
+  border-bottom: 10px solid transparent;
+  left: -20px;
+  top: 35%;
+}
+
+.speech-bubble3 {
+	position: relative;
+	background: white;
+	border-radius: .4em;
+  width: 190px;
+  height: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  color: rgb(100, 100, 120);
+  margin-left: 40px;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+  text-align: left;
+}
+
+.speech-bubble3:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 10px solid white;
+  border-left: 10px solid transparent;
+  border-top: 10px solid white;
+  border-bottom: 10px solid transparent;
+  left: -20px;
+  top: 35%;
+}
+
+
+
+
+
+
+
+.speech-bubble4 {
+	position: relative;
+	background: rgb(56, 140, 215);
+	border-radius: .4em;
+  width: 180px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  margin-top: 50px;
+  box-shadow: -10px 40px 80px rgba(40, 40, 45, 0.22);
+  cursor: pointer;
+  transition-duration: 0.4s;
+  margin-right: 0px;
+  float: right;
+}
+
+.speech-bubble4:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid rgb(56, 140, 215);
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgb(56, 140, 215);
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  left: 220px;
+  top: 34%;
+  transition-duration: 0.4s;
+}
+
+.speech-bubble4:hover {
+  background-color: rgb(78, 162, 240);
+  transform: translateY(-2px);
+  box-shadow: 0px 40px 80px rgba(40, 40, 45, 0.3);
+}
+.speech-bubble4:hover:before {
+border-left: 10px solid rgb(78, 162, 240);
+border-right: 10px solid transparent;
+border-top: 10px solid rgb(78, 162, 240);
+border-bottom: 10px solid transparent;
+}
+
+
+
+
+
+
+
+
 h1 {
-  font-weight: bold;
   font-size: 30px;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 25px;
-  margin: 20px 4%;
+  font-size: 24px;
+  margin: 80px 0px 0px 50px;
 }
 
 h3 {
@@ -46,15 +186,16 @@ p {
   margin: 20px 6%;
   line-height: 20px;
   font-size: 16px;
+  color: rgb(100, 100, 110);
 }
 
 pre {
-  box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
-  border-radius: 5px;
-  margin: 0 6%;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+  border-radius: 14px;
+  margin: 5px 0px 5px 75px;
   background-color: #1b2834;
   color: white;
-  padding: 20px;
+  padding: 14px 20px;
   font-family: IBM Plex Mono, monospace;
   line-height: 25px;
   font-size: 13px;
@@ -78,7 +219,7 @@ blockquote {
 }
 
 a {
-  color: #00bbe6;
+  color: rgb(75, 139, 209);
 }
 
 table {
@@ -124,6 +265,7 @@ td {
 }
 
 .info {
+  margin-top: 30px;
   border-left: 5px solid #5392ff;
   background-color: #c8daf4;
 }
@@ -151,11 +293,9 @@ td {
   max-width: 1200px;
   width: 65%;
   margin: 0 auto;
-  background-color: white;
-  box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
-  margin-top: 120px;
-  margin-bottom: 10px;
-  padding: 20px 0;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 0px 0;
   border-radius: 10px;
 }
 
@@ -178,9 +318,10 @@ td {
 }
 
 .center-image {
+  margin: 50px 0px 50px 0px;
   display: block;
-  margin: 0 auto;
-  box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
+  width: 50%;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
 }
 
 @media all and (max-width: 1200px) {
