@@ -39,14 +39,16 @@
 </header>
 <body>
   <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>TESTING YOUR KITURA APP</h1>
-    </div>
-    <h2>Setting up the Tests directory</h2>
+                                <div class="speech-bubble">
+                                    Testing your Kitura app and setting up the tests.
+                                </div>
+
     <p>In the root level of your project, create a directory called Tests.</p>
     <p>Inside Tests create a directory for holding your test suite module. It is recommended that it is the same name as the module you wish to test, suffixed with Tests (for example: if you have a module Foo that you would like to test, create a directory FooTests).</p>
-    <h2>Creating Test Cases</h2>
+
+                                  <div class="speech-bubble">
+                                      Let's create some test cases.
+                                  </div>
     <p>Create a new Swift file in the test suite directory (for example: if you would like to test the Frob feature of your Foo module you might call it FooTests/FrobTests.swift)</p>
     <p>Add import XCTest at the top</p>
     <p>Add a line @testable import <module-name> for each of the modules you want to access in this set of tests. (Note the @testable keyword allows you to call internal methods in your tests)</p>
@@ -60,7 +62,10 @@
     ("testFrobbingTheFoo", testFrobbingTheFoo)
   ]
 }</code></pre>
-    <h2>Creating Test Main (Linux only)</h2>
+                                  <div class="speech-bubble">
+                                      Creating Test Main (only for Linux).
+                                  </div>
+
     <p>Inside your Tests directory, create a new file called LinuxMain.swift</p>
     <p> In this file import all your test modules. The names of the test modules are the names of your test suite directories (eg: FooTests, which will import any classes defined in Swift files inside the FooTests module).</p>
     <p>Import XCTest as well</p>
@@ -68,9 +73,14 @@
     <pre><code class="language-swift">XCTMain([
    testCase(FrobTests.allTests)
 ])</code></pre>
-    <h2>Run Tests</h2>
+                                      <div class="speech-bubble">
+                                          Moment of truth. Run your tests.
+                                      </div>
     <p>In your projects root directory, run the command swift test after having built them using swift build.</p>
-    <h2>Example files:</h2>
+
+                                          <div class="speech-bubble">
+                                              Here are some example files.
+                                          </div>
     <p>Tests/FooTests/FrobTests.swift:</p>
     <pre><code class="language-swift">import XCTest
 @testable import Foo
@@ -97,6 +107,10 @@ XCTMain([
   testCase(FrobTests.allTests)
 ])</code></pre>
     <p>Sources/Foo/Foo.swift:</p>
+
+                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+                  I need some help. Can I message you on Slack?
+                </div>
     <pre><code class="language-swift">public class Foo: CustomStringConvertible {
   internal var frobCount = 0
 
@@ -111,20 +125,12 @@ XCTMain([
   public init() {}
 }</code></pre>
   </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
 
 </body>
 <footer>
 
   <nav class="footer-nav">
     <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
     <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
   </nav>
 </footer>
