@@ -115,29 +115,29 @@ header {
   width: 80%;
   height: 60%;
   font-size: 0.95em;
-  box-shadow: -40px 50px 74px rgba(0, 0, 0, 0.32);
+  box-shadow: -44px 50px 74px rgba(0, 0, 0, 0.32);
   color: black;
   padding: 15px 40px;
   align-items: center;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-name: slidein;
   transition-duration: 0.4s;
 }
 
 .code-panel:hover {
 					transform: rotateY(0deg) rotateX(0deg);
-          box-shadow: 0px 40px 74px rgba(0, 0, 0, 0.30);
+          box-shadow: 0px 42px 80px rgba(0, 0, 0, 0.30);
 }
 
 @keyframes slidein {
   from {
             					transform: rotateY(15deg) rotateX(8deg);
-                      box-shadow: -50px 64px 74px rgba(0, 0, 0, 0.22);
+                      box-shadow: -54px 64px 74px rgba(0, 0, 0, 0.22);
   }
 
   to {
   					transform: rotateY(8deg) rotateX(3deg);
-            box-shadow: -40px 50px 74px rgba(0, 0, 0, 0.32);
+            box-shadow: -44px 50px 74px rgba(0, 0, 0, 0.32);
   }
 }
 
