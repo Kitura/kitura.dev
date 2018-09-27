@@ -58,6 +58,7 @@ footer {
   width: 100px;
   height: 62px;
 }
+/* Index Styling */
 /* Slider styling */
 .slider-section {
   position: relative;
@@ -189,7 +190,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 1%;
   font-size: 16px;
 }
 .button:focus, .button:active {
@@ -223,6 +224,7 @@ footer {
   margin-bottom: 10px;
   font-weight: bold;
 }
+/* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
   grid-area: header;
@@ -256,3 +258,4 @@ footer {
     '. blogs blogs blogs blogs .'
     'footer footer footer footer footer footer';
 }
+/* learn.html CSS grid layout */
