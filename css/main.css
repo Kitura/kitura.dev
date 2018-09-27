@@ -364,6 +364,32 @@ footer {
   box-shadow: 2px 2px 10px #cdcdcd;
   margin: 1% auto;
   border-radius: 5px;
+  position: relative;
+  padding: 1%;
+}
+.card img {
+  width: 20%;
+  display: block;
+  margin: 1% auto;
+}
+.card > h3 {
+  text-align: center;
+  margin: 5% 0 10% 0;
+}
+.card > h4 > a {
+  font-size: 0.9em;
+  color: #00bbe6;
+}
+.card > p {
+  margin: 2% 0 5% 0;
+}
+.card > a {
+  float: right;
+  color: #00bbe6;
+  border: solid #00bbe6 1px;
+  border-radius: 5px;
+  padding: 0.5%;
+  font-size: 0.9em;
 }
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
