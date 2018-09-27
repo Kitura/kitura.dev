@@ -330,6 +330,41 @@ footer {
 .swift-book-icon-right {
   margin: 40px 0 0 -20px;
 }
+
+/* Packages Styling */
+/* Popular packages styling */
+.popular-packages-section {
+  border-radius: 5px;
+  box-shadow: 2px 5px 50px #cdcdcd;
+  margin: 2% 0;
+  padding: 1%;
+}
+.packages-section {
+  justify-content: center;
+}
+.popular-packages-card {
+  margin: 1% auto;
+  background: #00bbe6;
+  border-radius: 5px;
+  box-shadow: 2px 5px 10px #cdcdcd;
+  width: 20%;
+}
+.popular-packages-card > h3 {
+  color: white;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 15%;
+}
+.all-repo-section {
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.card {
+  width: 30%;
+  box-shadow: 2px 2px 10px #cdcdcd;
+  margin: 1% auto;
+  border-radius: 5px;
+}
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
@@ -390,5 +425,33 @@ footer {
       'guides guides guides guides guides guides'
       '. tutorials tutorials tutorials tutorials .'
       '. community community community community .'
+      'footer footer footer footer footer footer';
+}
+/* packages.html CSS grid layout */
+.packages-item-1 {
+  grid-area: header;
+}
+.packages-item-2 {
+  grid-area: nav;
+}
+.packages-item-3 {
+  grid-area: title;
+}
+.packages-item-4 {
+  grid-area: core;
+}
+.packages-item-5 {
+  grid-area: repos;
+}
+.packages-item-6 {
+  grid-area: footer;
+}
+.packages-grid-container {
+  display: grid;
+  grid-template-areas:
+      'header header nav nav nav nav'
+      '. title title title title .'
+      '. core core core core .'
+      '. repos repos repos repos .'
       'footer footer footer footer footer footer';
 }
