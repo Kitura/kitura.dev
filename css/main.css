@@ -3,7 +3,7 @@ body {
   font-family: IBM Plex Sans, sans-serif;
   font-size: 16px;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-weight: bold;
 }
 h1 {
@@ -224,6 +224,112 @@ footer {
   margin-bottom: 10px;
   font-weight: bold;
 }
+/* Learn Sytling */
+/* Guide section styling */
+.guide-section {
+  background: linear-gradient(#00bbe6, #0086a5);
+  border-radius: 5px;
+  box-shadow: 2px 5px 50px #cdcdcd;
+}
+.guide-card {
+  background-color: white;
+  margin: 1% auto;
+  border-radius: 5px;
+  width: 22%;
+  padding: 1%;
+  align-items: center;
+  box-shadow: 3px 3px 5px #606060;
+}
+.guide-card > h4 {
+  text-align: center;
+}
+.guide-card-image {
+  width: 20%;
+  height: 15%;
+  display: block;
+  margin: 2% auto;
+}
+.guide-list {
+  margin-top: 10%;
+}
+.guide-list > li {
+  font-size: 0.95em;
+  margin-bottom: 8%;
+}
+.guide-list > li:hover {
+  font-weight: bold;
+}
+/* Tutorial section styling */
+.tutorial-section {
+  justify-content: center;
+}
+/* Community card styling added here as well */
+.tutorial-card, .community-card {
+  width: 21%;
+  height: 200px;
+  margin: 3% 1%;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #606060;
+  color: white;
+  padding: 1%;
+}
+.tutorial-card > p, .community-card > p {
+  font-size: 0.8em;
+  margin-bottom: 5%;
+}
+.wenderlich-starter, .food-tracker, .todo-backend {
+  background: linear-gradient(#00bbe6, #0086a5);
+  overflow: hidden;
+}
+.wenderlich-stencil {
+  background: linear-gradient(forestgreen, darkgreen);
+}
+.tutorial-card > img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.wenderlich-starter > img {
+  width: 45%;
+}
+.food-tracker > img {
+  width: 65%;
+}
+.todo-backend > img {
+  width: 70%;
+}
+.wenderlich-stencil > img {
+  width: 80%;
+}
+/* Community section styling */
+.community-section {
+  justify-content: center;
+}
+.hacking-swift {
+  background-color: black;
+}
+.kitura-dawn {
+  background: linear-gradient(#00bbe6, #0086a5);
+}
+.objc-book {
+  background: linear-gradient(rgb(238, 157, 57), rgb(221, 70, 58));
+}
+.hacking-swift > img, .kitura-dawn > img {
+  width: 100%;
+}
+.hacking-swift > img {
+  margin-top: 5%;
+}
+.swift-book-icon-left, .swift-book-icon-right {
+  font-size: 100px;
+  display: inline-block;
+}
+.swift-book-icon-left {
+  margin: 40px 0 0 40px;
+}
+.swift-book-icon-right {
+  margin: 40px 0 0 -20px;
+}
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
@@ -249,7 +355,7 @@ footer {
 .index-item-7 {
   grid-area: footer;
 }
-.grid-container {
+.index-grid-container {
   display: grid;
   grid-template-areas:
     'header header nav nav nav nav'
@@ -259,3 +365,30 @@ footer {
     'footer footer footer footer footer footer';
 }
 /* learn.html CSS grid layout */
+.learn-item-1 {
+  grid-area: header;
+}
+.learn-item-2 {
+  grid-area: nav;
+}
+.learn-item-3 {
+  grid-area: guides;
+}
+.learn-item-4 {
+  grid-area: tutorials;
+}
+.learn-item-5 {
+  grid-area: community;
+}
+.learn-item-6 {
+  grid-area: footer;
+}
+.learn-grid-container {
+  display: grid;
+  grid-template-areas:
+      'header header nav nav nav nav'
+      'guides guides guides guides guides guides'
+      '. tutorials tutorials tutorials tutorials .'
+      '. community community community community .'
+      'footer footer footer footer footer footer';
+}

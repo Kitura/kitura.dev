@@ -21,31 +21,23 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" media="screen and (max-width: 900px)" href="css/mobile.css">
   </head>
-  <header>
-    <div class="header-main">
-      <a class="home-link" href="index.html">
-        <img class="header-logo" src="assets/kitura-logo.png" alt="Kitura logo">
-        <h1 class="header-title">KITURA</h1>
-      </a>
-    </div>
-    <nav class="header-nav">
-      <a class="header-link active-nav" href="learn.html">LEARN</a>
-      <a class="header-link" href="packages.html">PACKAGES</a>
-      <a class="header-link" href="events.html">EVENTS</a>
-      <a class="header-link" href="help.html">HELP</a>
-    </nav>
-  </header>
-
 <body>
-    <div class="title-heading-section">
-        <h2>LEARN</h2>
-        <div class="decorative-line-fullwidth"></div>
-    </div>
-    <div class="guides-list">
-      <div class="guide-rectangle">
+  <div class="learn-grid-container">
+    <header class="learn-item-1 flex-row centre header-main">
+      <img src="assets/Kitura.svg" alt="Kitura logo">
+      <a href="index.html"><h1>KITURA</h1></a>
+    </header>
+    <nav class="learn-item-2 flex-row header-nav">
+      <a href="learn.html"><h3>LEARN</h3></a>
+      <a href="packages.html"><h3>PACKAGES</h3></a>
+      <a href="events.html"><h3>EVENTS</h3></a>
+      <a href="help.html"><h3>HELP</h3></a>
+    </nav>
+    <div class="learn-item-3 flex-row guide-section">
+      <div class="guide-card">
           <img class="guide-card-image" src="assets/tools.png" alt="Building">
-          <h3 class="guide-card-title">BUILDING</h3>
-          <ul class="guide-list">
+          <h4>BUILDING</h4>
+          <ul class="guide-list flex-column">
               <li><a href="guides/gettingstarted.html">> GETTING STARTED</a></li>
               <li><a href="guides/building/linuxbuild.html">> BUILDING FOR LINUX USING A MAC</a></li>
               <li><a href="guides/building/xcodebuild.html">> BUILDING WITHIN XCODE</a></li>
@@ -54,9 +46,9 @@
               <li><a href="guides/building/ssl.html">> ENABLING SSL/TLS</a></li>
           </ul>
       </div>
-      <div class="guide-rectangle">
-          <img class="guide-card-image" src="assets/terminal.png" alt="Codable Routing">
-          <h3 class="guide-card-title">KITURA CLI</h3>
+      <div class="guide-card">
+          <img class="guide-card-image" src="assets/terminal.png" alt="Command line icon">
+          <h4>KITURA CLI</h4>
           <ul class="guide-list">
               <li><a href="guides/kituracli/gettingstarted.html">> USING KITURA CREATE</a></li>
               <!-- <li><a href="guides/kituracli/deploying_cloud.html">> DEPLOYING TO THE CLOUD</a></li> -->
@@ -68,9 +60,9 @@
               <li><a href="guides/kituracli/ssg_rest.html">> EXPOSING SWIFT SERVER GENERATOR MODELS OVER REST</a></li>
           </ul>
       </div>
-        <div class="guide-rectangle">
-            <img class="guide-card-image" src="assets/code.png" alt="Codable Routing">
-            <h3 class="guide-card-title">ROUTING</h3>
+        <div class="guide-card">
+            <img class="guide-card-image" src="assets/code.png" alt="Routing icon">
+            <h4>ROUTING</h4>
             <ul class="guide-list">
                 <li><a href="guides/routing/codablerouting.html">> CODABLE ROUTING</a></li>
                 <li><a href="guides/routing/specialresponsehandlers.html">> SPECIAL RESPONSE HANDLERS</a></li>
@@ -80,90 +72,63 @@
                 <li><a href="guides/middleware/typesafehttpbasic.html">> HTTP BASIC AUTHENTICATION</a></li>
             </ul>
         </div>
-        <div class="guide-rectangle">
-            <img class="guide-card-image" src="assets/file.png" alt="Templating">
-            <h3 class="guide-card-title">TEMPLATING</h3>
-            <ul class="guide-list">
+        <div class="guide-card">
+            <img class="guide-card-image" src="assets/file.png" alt="Templating icon">
+            <h4>TEMPLATING</h4>
+            <ul class="guide-list flex-column">
               <li><a href="guides/templating/stenciltemplate.html">> USING KITURA-STENCIL</a></li>
               <li><a href="guides/templating/mustachetemplate.html">> USING KITURA-MUSTACHE</a></li>
               <li><a href="guides/templating/markdowntemplate.html">> USING KITURA-MARKDOWN</a></li>
             </ul>
         </div>
     </div>
-
-  <div class="button-section learn-button">
-          <button class="button" type="button" name="slack-button" onclick="window.location.href='packages.html#all'"><img class="slack-icon" src="assets/api-icon.png" alt="API Icon">API DOCS</button>
-  </div>
-
-    <div class="tutorials-header">
-        <h2>TUTORIALS</h2>
-        <div class="decorative-line-fullwidth"></div>
-    </div>
-
-    <div class="tutorials-section">
-
-      <a href="https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift">
-        <div class="featured-tutorial wenderlich-starter">
-            <h3>David Okun | raywenderlich.com</h3>
-            <h2>Kitura Tutorial: Getting Started with Server Side Swift</h2>
-            <img src="assets/ray-icon.png" alt="Getting Started">
-        </div></a>
-
-      <a href="https://www.raywenderlich.com/181130/kitura-stencil-tutorial-how-to-make-websites-with-swift">
-        <div class="featured-tutorial wenderlich-stencil">
-            <h3>David Okun | raywenderlich.com</h3>
-            <h2>Kitura and Stencil: How to Make Websites with Swift</h2>
-            <img src="assets/wenderlich-hero2.png" alt="Stencil Tutorial">
-        </div>
+    <div class="learn-item-4 flex-row tutorial-section">
+      <a class="tutorial-card wenderlich-starter" href="https://www.raywenderlich.com/180721/kitura-tutorial-getting-started-with-server-side-swift">
+        <p>David Okun | raywenderlich.com</p>
+        <h4>Kitura Tutorial: Getting Started with Server Side Swift</h4>
+        <img src="assets/ray-icon.png" alt="Getting Started">
       </a>
-
-      <a href="https://github.com/IBM/FoodTrackerBackend">
-        <div class="featured-tutorial food-tracker">
-            <h3>Kitura Team</h3>
-            <h2>Food Tracker: Building a Swift Backend</h2>
-            <img src="assets/FoodTrackerBezel.png" alt="Food Tracker">
-        </div>
+      <a class="tutorial-card wenderlich-stencil" href="https://www.raywenderlich.com/181130/kitura-stencil-tutorial-how-to-make-websites-with-swift">
+        <p>David Okun | raywenderlich.com</p>
+        <h4>Kitura and Stencil: How to Make Websites with Swift</h4>
+        <img src="assets/wenderlich-hero2.png" alt="Stencil Tutorial">
       </a>
-
-      <a href="https://github.com/IBM/ToDoBackend">
-        <div class="featured-tutorial todo-backend">
-            <h3>Kitura Team</h3>
-            <h2>ToDo Backend: Make a Backend server</h2>
-            <img src="assets/TodoBackend.png" alt="ToDo Backend">
-        </div>
+      <a class="tutorial-card food-tracker" href="https://github.com/IBM/FoodTrackerBackend">
+        <p>Kitura Team</p>
+        <h4>Food Tracker: Building a Swift Backend</h4>
+        <img src="assets/FoodTrackerBezel.png" alt="Food Tracker">
       </a>
-
+      <a  class="tutorial-card todo-backend" href="https://github.com/IBM/ToDoBackend">
+        <p>Kitura Team</p>
+        <h4>ToDo Backend: Make a Backend server</h4>
+        <img src="assets/TodoBackend.png" alt="ToDo Backend">
+      </a>
     </div>
-    <div class="community-header">
-        <h2>COMMUNITY AND BOOKS</h2>
-        <div class="decorative-line-fullwidth"></div>
-    </div>
-    <div class="community-section">
-      <a class="community-item hacking-swift" href="https://www.hackingwithswift.com/store/server-side-swift">
-          <h3>Paul Hudson | @TwoStraws</h3>
-          <h2>Server-Side Swift</h2>
+    <div class="learn-item-5 flex-row community-section">
+      <a class="community-card hacking-swift" href="https://www.hackingwithswift.com/store/server-side-swift">
+          <p>Paul Hudson | @TwoStraws</p>
+          <h4>Server-Side Swift</h4>
           <img src="assets/Store%20Splash.png" alt="Store Splash">
       </a>
-      <a class="community-item kitura-dawn" href="https://learnkitura.com/">
-          <h3>Community Book | Nocturnal</h3>
-          <h2>Kitura Until Dawn</h2>
+      <a class="community-card kitura-dawn" href="https://learnkitura.com/">
+          <p>Community Book | Nocturnal</p>
+          <h4>Kitura Until Dawn</h4>
           <img src="assets/kitura-until-dawn-screengrab.png" alt="Kitura Until Dawn">
       </a>
-      <a class="community-item objc-book" href="https://www.objc.io/books/functional-swift/">
-          <h3>Books We Love ❤️</h3>
-          <h2>Functional Swift by objc</h2>
-          <p>&uarr;</p>
-          <p>&darr;</p>
+      <a class="community-card objc-book" href="https://www.objc.io/books/functional-swift/">
+          <p>Books We Love ❤️</p>
+          <h4>Functional Swift by objc</h4>
+          <span class="swift-book-icon-left">&uarr;</span>
+          <span class="swift-book-icon-right">&darr;</span>
       </a>
     </div>
+    <footer class="learn-item-6 flex-row centre">
+      <nav class="flex-row centre">
+        <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+        <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="assets/Kitura-White.svg" alt="Kitura logo"></a>
+        <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+      </nav>
+    </footer>
+  </div>
 </body>
-
-<footer>
-
-  <nav class="footer-nav">
-    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="assets/Kitura-White.svg" alt="Kitura logo"></a>
-    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
-  </nav>
-</footer>
 </html>
