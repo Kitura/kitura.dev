@@ -481,3 +481,15 @@ footer {
       '. repos repos repos repos .'
       'footer footer footer footer footer footer';
 }
+/* events.html CSS grid layout */
+.events-item-1 {
+  grid-area: header;
+}
+.events-item-2 {
+  grid-area: nav;
+}
+.events-grid-container {
+  display: grid;
+  grid-template-areas:
+      'header header nav nav nav nav';
+}
