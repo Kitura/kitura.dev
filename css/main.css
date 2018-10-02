@@ -1022,6 +1022,12 @@ color: rgb(75, 139, 209);
     padding-left: 240px;
 }
 
+@media screen and (max-width: 900px) {
+.tutorials-section {
+  width: 90%;
+}
+}
+
 .featured-tutorial {
   width: 200px;
     height: 280px;
@@ -1099,6 +1105,13 @@ color: rgb(75, 139, 209);
     white-space: nowrap;
     margin-bottom: 60px;
     justify-content: center;
+}
+
+
+@media screen and (max-width: 900px) {
+.community-section {
+  width: 90%;
+}
 }
 
 .community-item {
@@ -1181,6 +1194,13 @@ color: rgb(75, 139, 209);
   width:100%;
   margin: auto;
   margin-bottom: 30px;
+}
+
+
+@media screen and (max-width: 900px) {
+.kitura-core-section  {
+width: 90%;
+}
 }
 
 .kitura-core {
@@ -1283,6 +1303,11 @@ color: rgb(75, 139, 209);
 }
 
 
+@media screen and (max-width: 900px) {
+.repo-card-section {
+width: 80%;
+}
+}
 
 
 
