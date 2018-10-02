@@ -596,6 +596,7 @@ height: 30px;
 @media screen and (max-width: 900px) {
 .speech-bubble20 {
 height: 20px;
+margin-left: -80px;
 }
 }
 
