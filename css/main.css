@@ -138,15 +138,21 @@ margin: 0px 26px 0px 26px;
             margin-left: 150px;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1440px) {
 .code-section {
   width: 82%;
 }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1500px) {
 .code-section {
   width: 48%;
+}
+}
+
+@media screen and (max-width: 1600px) {
+.code-section {
+  width: 46%;
 }
 }
 
@@ -427,6 +433,11 @@ margin: 0px 26px 0px 26px;
 }
 
 
+@media screen and (max-width: 1350px) {
+.speech-bubble {
+height: 120px;
+}
+}
 @media screen and (max-width: 1200px) {
 .speech-bubble {
 height: 140px;
@@ -434,12 +445,12 @@ height: 140px;
 }
 @media screen and (max-width: 1100px) {
 .speech-bubble {
-height: 150px;
+height: 140px;
 }
 }
 @media screen and (max-width: 1000px) {
 .speech-bubble {
-height: 200px;
+height: 190px;
 }
 }
 @media screen and (max-width: 900px) {
@@ -973,7 +984,8 @@ transform: translateY(-2px);
 
 .guide-rectangle h3 {
   margin-top: 20px;
-  color: rgb(200, 200, 210);
+  color: rgb(190, 190, 200);
+  font-weight: 400;
 }
 
 .guide-rectangle img {
@@ -1239,12 +1251,14 @@ width: 90%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  padding: 40px 0px 20px 0px;
 }
 
 
 @media screen and (max-width: 900px) {
 .kitura-core {
   width:100%;
+  padding-top: 0px;
 }
 }
 
