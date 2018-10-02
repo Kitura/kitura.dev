@@ -21,6 +21,18 @@ header {
   align-items: center;
 }
 
+@media screen and (max-width: 1200px) {
+header {
+padding: 0px 0px 0px 30px;
+}
+}
+
+@media screen and (max-width: 900px) {
+header {
+padding: 0px;
+}
+}
+
 .header-main {
   width: 50%;
   height: 90px;
@@ -51,6 +63,18 @@ header {
   width: 50%;
   text-align: right;
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 1200px) {
+.header-nav {
+  margin-right: 50px;
+}
+}
+
+@media screen and (max-width: 900px) {
+.header-nav {
+  margin-right: 0px;
+}
 }
 
 .header-link {
@@ -456,7 +480,7 @@ height: 100px;
 
 @media screen and (max-width: 900px) {
 .speech-bubble3 {
-margin-top: 50px;
+margin-top: 40px;
 }
 }
 
@@ -955,6 +979,11 @@ transform: translateY(-2px);
   width: 30%;
 }
 
+@media screen and (max-width: 900px) {
+  .guide-rectangle img {
+    width: 16%;
+  }
+}
 
 ::-webkit-scrollbar {
     display: none;
