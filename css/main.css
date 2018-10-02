@@ -107,6 +107,18 @@ header {
             margin-left: 150px;
 }
 
+@media screen and (max-width: 1400px) {
+.code-section {
+  width: 82%;
+}
+}
+
+@media screen and (max-width: 1600px) {
+.code-section {
+  width: 48%;
+}
+}
+
 .code-panel {
 					transform: rotateY(8deg) rotateX(3deg);
   font-family: IBM Plex Mono, monospace;
@@ -132,7 +144,7 @@ header {
 
 @keyframes slidein {
   from {
-    margin-top: 40px;
+    margin-top: 60px;
             					transform: rotateY(12deg) rotateX(0deg);
                       box-shadow: -54px 64px 74px rgba(0, 0, 0, 0.22);
   }
@@ -326,6 +338,7 @@ header {
 /**
       Code Snippet styling
 */
+
 .code-snippet {
   margin: 30px 0 0 40px;
   color: white;
@@ -380,6 +393,28 @@ header {
   border-bottom: 10px solid transparent;
   left: -20px;
   top: 40%;
+}
+
+
+@media screen and (max-width: 1200px) {
+.speech-bubble {
+height: 140px;
+}
+}
+@media screen and (max-width: 1100px) {
+.speech-bubble {
+height: 150px;
+}
+}
+@media screen and (max-width: 1000px) {
+.speech-bubble {
+height: 200px;
+}
+}
+@media screen and (max-width: 900px) {
+.speech-bubble {
+height: 100px;
+}
 }
 
 
@@ -513,6 +548,17 @@ header {
   transition-duration: 0.4s;
   animation-duration: 2s;
   animation-name: slideup;
+}
+
+@media screen and (max-width: 1400px) {
+.speech-bubble20 {
+height: 30px;
+}
+}
+@media screen and (max-width: 900px) {
+.speech-bubble20 {
+height: 20px;
+}
 }
 
 @keyframes slideup {
