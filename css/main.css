@@ -447,6 +447,13 @@ height: 100px;
 }
 
 
+@media screen and (max-width: 900px) {
+.speech-bubble3 {
+margin-top: 50px;
+}
+}
+
+
 .speech-bubble4 {
 	position: relative;
 	background: white;
@@ -790,6 +797,13 @@ box-shadow: 0px 20px 60px rgba(36, 120, 195, 0.4);
     flex-direction: row;
 }
 
+
+@media screen and (max-width: 900px) {
+.blogs-section {
+height: 800px;
+}
+}
+
 .blog-item {
     margin: 0 20px 0 20px;
     width: 30%;
@@ -803,6 +817,8 @@ box-shadow: 0px 20px 60px rgba(36, 120, 195, 0.4);
     margin-bottom: 20px;
     transition-duration: 0.4s;
 }
+
+
 
 .blog-item:hover {
 box-shadow: 0px 30px 80px rgba(0, 0, 0, 0.24);
@@ -835,6 +851,11 @@ transform: translateY(-2px);
     margin-top: 10%;
 }
 
+@media screen and (max-width: 900px) {
+.blog-item img {
+margin-top: 2%;
+}
+}
 /**
       Footer Styling
 */
@@ -844,6 +865,7 @@ footer {
   height: 70px;
   overflow: hidden;
 }
+
 
 .footer-logo {
   width: 100px;
@@ -989,7 +1011,8 @@ color: rgb(75, 139, 209);
     padding-bottom: 40px;
     display: flex;
     justify-content: center;
-    margin-left: 240px;
+    margin-left: 20px;
+    padding-left: 240px;
 }
 
 .featured-tutorial {
@@ -1249,6 +1272,7 @@ color: rgb(75, 139, 209);
   flex-flow: row wrap;
   justify-content: space-around;
   margin-bottom: 50px;
+  padding: 0px 20px 0px 20px;
 }
 
 
