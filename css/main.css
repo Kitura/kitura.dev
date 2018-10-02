@@ -30,7 +30,7 @@ header {
 }
 
 .home-link {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -67,7 +67,7 @@ header {
 
 @media screen and (max-width: 900px) {
 .header-link:hover {
-margin: 0px 14px 0px 14px;
+margin: 0px 26px 0px 26px;
 }
 }
 
@@ -1012,14 +1012,12 @@ color: rgb(75, 139, 209);
 .tutorials-section {
     max-width: 1200px;
     width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
     white-space: nowrap;
     padding-bottom: 40px;
     display: flex;
     justify-content: center;
-    margin-left: 20px;
-    padding-left: 240px;
+    margin: auto;
+    flex-direction: row;
 }
 
 @media screen and (max-width: 900px) {
@@ -1207,7 +1205,7 @@ width: 90%;
   width:100%;
   margin: auto;
   border-radius: 15px;
-  padding: 20px;
+  padding: 0px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
