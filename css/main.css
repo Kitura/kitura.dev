@@ -64,6 +64,13 @@ header {
     color: rgb(56, 140, 215);
 }
 
+
+@media screen and (max-width: 900px) {
+.header-link:hover {
+margin: 0px 14px 0px 14px;
+}
+}
+
 .active-nav {
     color: rgb(56, 140, 215);
     /*border-bottom: 4px solid black;*/
