@@ -1211,6 +1211,13 @@ width: 90%;
   justify-content: space-around;
 }
 
+
+@media screen and (max-width: 900px) {
+.kitura-core {
+  width:100%;
+}
+}
+
 .base-dependency {
     background-color: rgb(56, 140, 215);
     box-shadow: 0px 48px 74px rgba(49, 81, 183, 0.22);
