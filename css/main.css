@@ -1027,6 +1027,7 @@ transform: translateY(-2px);
     font-size: 0.95em;
     display: block;
     word-wrap: normal;
+    font-weight: 500;
 }
 
 .guide-list li:hover {
@@ -1393,7 +1394,6 @@ transform: translateY(-2px);
   margin: 30px auto;
   font-weight: bold;
   display: inline-block;
-
 }
 
 .card h4 {
@@ -1426,6 +1426,11 @@ transform: translateY(-2px);
 }
 
 .card a {
+  color: rgba(130, 130, 140, 1);
+  transition-duration: 0.4s;
+}
+
+.card a:hover {
   color: rgba(75, 139, 209, 1);
 }
 
