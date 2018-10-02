@@ -1333,7 +1333,7 @@ width: 90%;
   flex-flow: row wrap;
   justify-content: space-around;
   margin-bottom: 50px;
-  padding: 0px 20px 0px 20px;
+  padding: 0px;
 }
 
 
@@ -1351,8 +1351,8 @@ box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
   background-color: white;
   width: 25%;
   border-radius: 15px;
-  margin: 20px 15px 30px 15px;
-  padding: 20px 30px 30px 30px;
+  margin: 20px 0px 30px 0px;
+  padding: 20px 0px 30px 30px;
   position: relative;
   overflow-y: scroll;
   height: 400px;
@@ -1366,12 +1366,12 @@ transform: translateY(-2px);
 
 .card h2 {
   text-align: center;
-  font-weight: bold;
+  font-weight: 400;
   font-size: 18px;
   padding-top: 10px;
   margin-bottom: 15px;
-  padding-left: 0px;
-  color: rgb(200, 200, 210);
+  padding-right: 40px;
+  color: rgb(190, 190, 200);
 }
 
 .card h3 {
@@ -1386,6 +1386,7 @@ transform: translateY(-2px);
   font-size: 14px;
   line-height: 16px;
   color: rgb(120, 120, 130);
+  padding-right: 20px;
 }
 
 .card h5 {
@@ -1406,6 +1407,7 @@ transform: translateY(-2px);
   display: block;
   margin: auto;
   margin-bottom: 10px;
+  padding-right: 20px;
 }
 
 .card a {
