@@ -1691,6 +1691,10 @@ p {
     margin-bottom: 40px;
 }
 
+.support-social-box b {
+  font-weight: bold;
+}
+
 .support-social-box p {
     font-weight: 340;
     color: white;
