@@ -1062,6 +1062,7 @@ color: rgb(75, 139, 209);
     justify-content: center;
     margin: auto;
     flex-direction: row;
+    perspective: 800px;
 }
 
 @media screen and (max-width: 900px) {
@@ -1119,13 +1120,27 @@ color: rgb(75, 139, 209);
     width: 50%;
 }
 
+.wenderlich-starter {
+                          background: linear-gradient(rgb(80, 130, 230), rgb(90, 160, 250));
+                            transform: rotateY(6deg) rotateX(8deg);
+                            animation-duration: 0.4s;
+}
+
 .wenderlich-stencil {
-    background: forestgreen;
+                          background: linear-gradient(rgb(100, 210, 150), rgb(90, 200, 100));
+                            transform: rotateY(-6deg) rotateX(6deg);
+                            animation-duration: 0.4s;
 }
 
 .wenderlich-stencil img {
     width: 90%;
     margin-top: 0px;
+}
+
+.food-tracker {
+                        background: linear-gradient(rgb(106, 130, 225), rgb(86, 80, 215));
+                          transform: rotateY(2deg) rotateX(4deg);
+                          animation-duration: 0.4s;
 }
 
 .food-tracker img {
@@ -1147,6 +1162,7 @@ color: rgb(75, 139, 209);
     white-space: nowrap;
     margin-bottom: 60px;
     justify-content: center;
+    perspective: 800px;
 }
 
 
@@ -1178,10 +1194,14 @@ color: rgb(75, 139, 209);
 
 .objc-book {
     background: linear-gradient(rgb(238, 157, 57), rgb(231, 80, 68));
+                              transform: rotateY(-4deg) rotateX(6deg);
+                              animation-duration: 0.4s;
 }
 
 .todo-backend {
-  background: rgb(230, 63, 60);
+                          background: linear-gradient(rgb(230, 63, 60), rgb(230, 60, 120));
+                            transform: rotateY(-6deg) rotateX(-2deg);
+                            animation-duration: 0.4s;
 }
 
 .community-item h3 {
@@ -1209,18 +1229,24 @@ color: rgb(75, 139, 209);
 
 .hacking-swift {
 /*    background: linear-gradient(#404040, black);*/
-    background-color: black;
+                            background: linear-gradient(rgb(230, 40, 10), rgb(220, 18, 46));
+                              transform: rotateY(2deg) rotateX(4deg);
+                              animation-duration: 0.4s;
 }
 
 .hacking-swift img {
-    width: 110%;
+    width: 100px;
+    height: 100px;
     position: relative;
-    left: -20px;
-    margin-top: 20px;
+    left: -10px;
+    margin-top: 60px;
 }
 
 .kitura-dawn {
     background: rgb(86, 130, 200);
+                            background: linear-gradient(rgb(80, 140, 205), rgb(40, 135, 230));
+                              transform: rotateY(-2deg) rotateX(8deg);
+                              animation-duration: 0.4s;
 }
 
 .kitura-dawn img {
