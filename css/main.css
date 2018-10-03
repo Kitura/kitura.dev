@@ -802,6 +802,18 @@ box-shadow: 0px 20px 60px rgba(36, 120, 195, 0.4);
   transform: translateY(1px);
 }
 
+.start-button {
+  background: linear-gradient(rgb(130, 140, 230), rgb(100, 120, 200));
+}
+
+.slack-button {
+    background: linear-gradient(rgb(220, 80, 10), rgb(200, 40, 50));
+}
+
+.api-button {
+    background: linear-gradient(rgb(82, 150, 210), rgb(90, 140, 220));
+}
+
 .run-button img {
     width: 100%;
 }
@@ -1228,8 +1240,7 @@ color: rgb(75, 139, 209);
 }
 
 .hacking-swift {
-/*    background: linear-gradient(#404040, black);*/
-                            background: linear-gradient(rgb(230, 40, 10), rgb(220, 18, 46));
+                            background: linear-gradient(rgb(220, 40, 40), rgb(200, 18, 56));
                               transform: rotateY(2deg) rotateX(4deg);
                               animation-duration: 0.4s;
 }
@@ -1245,7 +1256,7 @@ color: rgb(75, 139, 209);
 .kitura-dawn {
     background: rgb(86, 130, 200);
                             background: linear-gradient(rgb(80, 140, 205), rgb(40, 135, 230));
-                              transform: rotateY(-2deg) rotateX(8deg);
+                              transform: rotateY(4deg) rotateX(12deg);
                               animation-duration: 0.4s;
 }
 
@@ -1307,7 +1318,6 @@ width: 90%;
 }
 
 .base-dependency:hover {
-                  background: linear-gradient(rgb(66, 154, 225), rgb(62, 180, 245));
     box-shadow: 0px 50px 80px rgba(49, 81, 183, 0.4);
     transform: translateY(-2px);
   }
@@ -1348,13 +1358,11 @@ width: 90%;
     animation-duration: 0.3s;
 }
 .opt2:hover {
-      background: linear-gradient(rgb(240, 120, 120), rgb(245, 140, 110));
 }
 .opt3 {
         background: linear-gradient(rgb(100, 180, 130), rgb(100, 200, 120));
 }
 .opt3:hover {
-          background: linear-gradient(rgb(110, 190, 140), rgb(110, 210, 130));
 }
 .opt4 {
             background: linear-gradient(rgb(100, 100, 220), rgb(90, 110, 240));
@@ -1362,7 +1370,6 @@ width: 90%;
     box-shadow: 34px 48px 74px rgba(49, 81, 183, 0.32);
 }
 .opt4:hover {
-              background: linear-gradient(rgb(110, 110, 230), rgb(100, 120, 250));
 }
 
 .repo-header {
@@ -1750,7 +1757,7 @@ p {
   height: 265px;
     background-color: rgb(56, 140, 215);
                           background: linear-gradient(rgb(56, 140, 215), rgb(66, 160, 235));
-    box-shadow: 0px 48px 74px rgba(49, 81, 183, 0.22);
+    box-shadow: 0px 48px 74px rgba(49, 81, 183, 0.32);
     transition-duration: 0.4s;
     					transform: rotateY(8deg) rotateX(3deg);
 }
