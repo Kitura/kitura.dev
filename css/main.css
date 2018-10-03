@@ -1602,6 +1602,10 @@ box-shadow: 0px 40px 74px rgba(0, 0, 0, 0.3);
 transform: translateY(-2px);
 }
 
+.support-hero-image {
+  width: 100%;
+}
+
 .support-commerce-header {
     font-weight: bold;
     font-size: 1.5em;
