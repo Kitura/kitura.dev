@@ -1731,10 +1731,12 @@ p {
 
 .innerT4 {
           transform: rotateY(-6deg) rotateX(3deg);
+                                background: linear-gradient(rgb(106, 130, 225), rgb(86, 100, 215));
 }
 
 .innerT5 {
           transform: rotateY(4deg) rotateX(6deg);
+                                background: linear-gradient(rgb(86, 130, 225), rgb(76, 140, 235));
 }
 
 .support-event:hover {
