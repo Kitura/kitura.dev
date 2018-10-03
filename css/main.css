@@ -1580,12 +1580,14 @@ transform: translateY(-2px);
   width: 100%;
   text-align: center;
   margin-top: 6px;
+  perspective: 800px;
 }
 
 .support-social-container2 {
   width: 100%;
   text-align: center;
   margin-top: 6px;
+  perspective: 800px;
 }
 
 .support-commerce-section {
@@ -1637,50 +1639,57 @@ transform: translateY(-2px);
 }
 
 .support-slack {
-    background-color: rgb(217, 20, 71);
-    box-shadow: 0px 44px 74px rgba(217, 20, 71, 0.2);
+                      background: linear-gradient(rgb(217, 20, 71), rgb(247, 60, 41));
+    box-shadow: -30px 44px 74px rgba(217, 20, 71, 0.34);
     transition-duration: 0.4s;
+      transform: rotateY(6deg) rotateX(8deg);
 }
 
 .support-forums {
     background-color: rgb(237, 82, 63);
-    box-shadow: 0px 44px 74px rgba(237, 82, 63, 0.2);
+                          background: linear-gradient(rgb(237, 102, 13), rgb(237, 82, 53));
+    box-shadow: 20px 44px 74px rgba(237, 82, 63, 0.34);
     transition-duration: 0.4s;
+      transform: rotateY(-6deg) rotateX(8deg);
 }
 
 .support-dev {
     background-color: rgb(49, 81, 183);
-    box-shadow: 0px 44px 74px rgba(49, 81, 183, 0.2);
+                          background: linear-gradient(rgb(49, 81, 183), rgb(49, 121, 203));
+    box-shadow: -30px 44px 74px rgba(49, 81, 183, 0.34);
     transition-duration: 0.4s;
+      transform: rotateY(7deg) rotateX(5deg);
 }
 
 .support-report {
     background-color: black;
-    box-shadow: 0px 44px 74px rgba(0, 0, 0, 0.2);
+                          background: linear-gradient(rgb(10, 10, 10), rgb(40, 40, 60));
+    box-shadow: 30px 44px 74px rgba(0, 0, 0, 0.3);
     transition-duration: 0.4s;
+      transform: rotateY(-8deg) rotateX(8deg);
 }
 
 .support-slack:hover {
     background-color: rgb(237, 40, 91);
-    box-shadow: 0px 54px 74px rgba(217, 20, 71, 0.3);
+    box-shadow: 0px 46px 74px rgba(217, 20, 71, 0.26);
     transform: translateY(-2px);
 }
 
 .support-forums:hover {
     background-color: rgb(255, 102, 83);
-    box-shadow: 0px 54px 74px rgba(237, 82, 63, 0.3);
+    box-shadow: 0px 46px 74px rgba(237, 82, 63, 0.26);
     transform: translateY(-2px);
 }
 
 .support-dev:hover {
     background-color: rgb(69, 101, 203);
-    box-shadow: 0px 54px 74px rgba(49, 81, 183, 0.3);
+    box-shadow: 0px 46px 74px rgba(49, 81, 183, 0.26);
     transform: translateY(-2px);
 }
 
 .support-report:hover {
     background-color: rgb(20, 20, 30);
-    box-shadow: 0px 54px 74px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 46px 74px rgba(0, 0, 0, 0.26);
     transform: translateY(-2px);
 }
 
@@ -1714,8 +1723,18 @@ p {
 .support-event {
   height: 265px;
     background-color: rgb(56, 140, 215);
+                          background: linear-gradient(rgb(56, 140, 215), rgb(66, 160, 235));
     box-shadow: 0px 48px 74px rgba(49, 81, 183, 0.22);
     transition-duration: 0.4s;
+    					transform: rotateY(8deg) rotateX(3deg);
+}
+
+.innerT4 {
+          transform: rotateY(-6deg) rotateX(3deg);
+}
+
+.innerT5 {
+          transform: rotateY(4deg) rotateX(6deg);
 }
 
 .support-event:hover {
@@ -1788,6 +1807,7 @@ p {
   border-color: rgb(170, 170, 180);
   border-width: 2px;
   border-style: dashed;
+                        background: linear-gradient(rgb(230, 230, 230), rgb(240, 240, 250));
 }
 .innerT3 {
 color: rgb(150, 150, 160);
