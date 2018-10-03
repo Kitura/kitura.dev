@@ -979,11 +979,11 @@ footer {
 }
 
 .guide-rectangle {
-    background-color: white;
+    background-color: rgb(40, 40, 52);
     width: 1200px;
     margin: 20px 20px;
     border-radius: 20px;
-    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.3);
     display: inline-block;
     padding: 20px;
     transition-duration: 0.4s;
@@ -991,13 +991,13 @@ footer {
 }
 
 .guide-rectangle:hover {
-box-shadow: 0px 44px 75px rgba(40, 40, 45, 0.3);
+box-shadow: 0px 56px 78px rgba(40, 40, 45, 0.42);
 transform: translateY(-2px);
 }
 
 .guide-rectangle h3 {
   margin-top: 20px;
-  color: rgb(190, 190, 200);
+  color: white;
   font-weight: 400;
 }
 
@@ -1051,7 +1051,7 @@ transform: translateY(-2px);
 .guide-list a {
     color: black;
     transition-duration: 0.4s;
-    color: rgb(120, 120, 130);
+    color: rgba(160, 160, 170, 0.9);
 }
 
 .guide-list a:hover {
@@ -1765,16 +1765,18 @@ p {
 .innerT4 {
           transform: rotateY(-6deg) rotateX(3deg);
                                 background: linear-gradient(rgb(106, 130, 225), rgb(86, 100, 215));
+          box-shadow: 40px 58px 74px rgba(49, 81, 183, 0.32);
 }
 
 .innerT5 {
           transform: rotateY(4deg) rotateX(6deg);
                                 background: linear-gradient(rgb(86, 130, 225), rgb(76, 140, 235));
+          box-shadow: -30px 52px 74px rgba(49, 81, 183, 0.32);
 }
 
 .support-event:hover {
     background-color: rgb(76, 160, 235);
-    box-shadow: 0px 54px 74px rgba(49, 81, 183, 0.3);
+    box-shadow: 0px 34px 74px rgba(49, 81, 183, 0.2);
     transform: translateY(-2px);
 }
 
@@ -1837,12 +1839,11 @@ p {
 
 
 .innerT2 {
-  background-color: rgba(228, 228, 232, 1);
-  box-shadow: 0px 54px 74px rgba(49, 81, 183, 0);
-  border-color: rgb(170, 170, 180);
-  border-width: 2px;
+  background-color: rgba(243, 243, 245, 1);
+  border-color: rgb(220, 220, 229);
+  border-width: 4.2px;
   border-style: dashed;
-                        background: linear-gradient(rgb(230, 230, 230), rgb(240, 240, 250));
+                        background: linear-gradient(rgb(243, 243, 245), rgb(243, 243, 245));
 }
 .innerT3 {
 color: rgb(150, 150, 160);
@@ -1857,8 +1858,8 @@ transition-duration: 0.4s;
 }
 .innerT2:hover {
   background-color: rgba(228, 228, 232, 1);
-  box-shadow: 0px 54px 74px rgba(49, 81, 183, 0);
-  color: rgb(150, 150, 160);
+  box-shadow: 0px 54px 74px rgba(49, 81, 183, 0.1);
+  color: rgb(190, 190, 200);
   transform: translateY(0px);
 }
 .innerT2:hover p {
