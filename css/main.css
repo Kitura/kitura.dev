@@ -833,11 +833,11 @@ box-shadow: 0px 20px 60px rgba(36, 120, 195, 0.4);
 
 .blogs-heading-section {
     font-weight: bold;
-    max-width: 1200px;
+    max-width: 1050px;
     width: 100%;
     font-size: 1.5em;
     margin: auto;
-    margin-top: 60px;
+    margin-top: 70px;
 }
 
 .blogs-section {
@@ -847,7 +847,7 @@ box-shadow: 0px 20px 60px rgba(36, 120, 195, 0.4);
     margin-top: 20px;
     margin-bottom: 60px;
     white-space: nowrap;
-    padding-left: 10px;
+    padding-left: 140px;
     display: flex;
     flex-direction: row;
 }
@@ -861,19 +861,17 @@ height: 800px;
 
 .blog-item {
     margin: 0 20px 0 20px;
-    width: 30%;
-    height: 200px;
+    width: 290px;
+    height: 160px;
     margin-top: 20px;
     padding: 18px 10px 18px 10px;
     background-color: white;
     box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.12);
-    border-radius: 12px;
+    border-radius: 20px;
     text-align: center;
     margin-bottom: 20px;
     transition-duration: 0.4s;
 }
-
-
 
 .blog-item:hover {
 box-shadow: 0px 30px 80px rgba(0, 0, 0, 0.24);
@@ -884,7 +882,7 @@ transform: translateY(-2px);
     margin-top: 25px;
     text-align: left;
     color: rgb(160, 160, 170);
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.3em;
 }
 
@@ -981,16 +979,18 @@ footer {
 .guide-rectangle {
     background-color: rgb(40, 40, 52);
     width: 1200px;
-    margin: 20px 20px;
+    margin: 20px 15px;
     border-radius: 20px;
     box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.3);
     display: inline-block;
-    padding: 20px;
+    padding: 20px 15px 0px 15px;
     transition-duration: 0.4s;
     min-width: 260px;
+    transition-duration: 0.4s;
 }
 
 .guide-rectangle:hover {
+    background-color: rgb(50, 50, 62);
 box-shadow: 0px 56px 78px rgba(40, 40, 45, 0.42);
 transform: translateY(-2px);
 }
@@ -1089,7 +1089,7 @@ color: rgb(75, 139, 209);
     margin-top: 20px;
     padding: 20px 30px 20px 20px;
     background: rgb(75, 135, 209);
-    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.3);
     display: inline-block;
     border-radius: 20px;
     text-align: center;
@@ -1101,7 +1101,7 @@ color: rgb(75, 139, 209);
     transition-duration: 0.4s;
 }
 .featured-tutorial:hover {
-    box-shadow: 0px 45px 70px rgba(40, 40, 45, 0.3);
+    box-shadow: 0px 35px 70px rgba(40, 40, 45, 0.2);
     transform: translateY(-2px);
 }
 
@@ -1188,18 +1188,18 @@ color: rgb(75, 139, 209);
     width: 260px;
     height: 280px;
     margin-top: 20px;
-    padding: 20px;
+    padding: 10px;
     background-color: #00bbe6;
-    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+    box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.3);
     border-radius: 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 40px;
     transition-duration: 0.4s;
 }
 .community-item:hover {
-    box-shadow: 0px 50px 80px rgba(40, 40, 45, 0.3);
+    box-shadow: 0px 30px 80px rgba(40, 40, 45, 0.2);
     transform: translateY(-2px);
 }
 
@@ -1240,7 +1240,7 @@ color: rgb(75, 139, 209);
 }
 
 .hacking-swift {
-                            background: linear-gradient(rgb(220, 40, 40), rgb(200, 18, 56));
+                            background: linear-gradient(rgb(220, 40, 40), rgb(210, 0, 80));
                               transform: rotateY(2deg) rotateX(4deg);
                               animation-duration: 0.4s;
 }
@@ -1255,7 +1255,7 @@ color: rgb(75, 139, 209);
 
 .kitura-dawn {
     background: rgb(86, 130, 200);
-                            background: linear-gradient(rgb(80, 140, 205), rgb(40, 135, 230));
+                              background: linear-gradient(rgb(80, 130, 230), rgb(90, 170, 240));
                               transform: rotateY(4deg) rotateX(12deg);
                               animation-duration: 0.4s;
 }
