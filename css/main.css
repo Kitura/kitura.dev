@@ -1686,6 +1686,14 @@ p {
   padding: -4px 5px 0px 5px;
   height: 170px;
   font-weight: 300;
+  transition-duration: 0.4s;
+}
+.innerT:hover {
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  padding: -4px 5px 0px 5px;
+  height: 170px;
+  font-weight: 300;
 }
 
 .innerD {
@@ -1872,6 +1880,24 @@ transition-duration: 0.4s;
   margin-top: 0px;
   }
 }
+.starsdown {
+  align-items: center;
+  width: 32%;
+  margin-left: 34%;
+  margin-right: 34%;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .starsdown {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  }
+}
 
 .question {
   align-items: center;
@@ -1913,9 +1939,9 @@ transition-duration: 0.4s;
 
 .books {
   align-items: center;
-  width: 24%;
-  margin-left: 38%;
-  margin-right: 38%;
+  width: 38%;
+  margin-left: 31%;
+  margin-right: 31%;
   margin-bottom: 10px;
   margin-top: -40px;
 }
