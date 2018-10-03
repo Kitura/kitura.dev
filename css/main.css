@@ -1266,7 +1266,7 @@ width: 90%;
 }
 
 .base-dependency {
-    background-color: rgb(56, 140, 215);
+                  background: linear-gradient(rgb(56, 144, 215), rgb(52, 170, 235));
     box-shadow: -20px 55px 74px rgba(49, 81, 183, 0.3);
     transition-duration: 0.4s;
   width: 20%;
@@ -1281,10 +1281,11 @@ width: 90%;
 }
 
 .base-dependency:hover {
-    background-color: rgb(76, 160, 235);
+                  background: linear-gradient(rgb(66, 154, 225), rgb(62, 180, 245));
     box-shadow: 0px 50px 80px rgba(49, 81, 183, 0.4);
     transform: translateY(-2px);
   }
+
 
 .base-dependency p {
   margin-top: 0px
@@ -1315,26 +1316,27 @@ width: 90%;
 
 
 .opt2 {
-  background: rgb(220, 100, 100);
+      background: linear-gradient(rgb(220, 100, 100), rgb(240, 120, 100));
     transform: rotateY(-8deg) rotateX(10deg);
     box-shadow: 34px 48px 74px rgba(49, 81, 183, 0.32);
+    animation-duration: 0.3s;
 }
 .opt2:hover {
-  background: rgb(250, 130, 130);
+      background: linear-gradient(rgb(240, 120, 120), rgb(245, 140, 110));
 }
 .opt3 {
-  background: rgb(100, 180, 130);
+        background: linear-gradient(rgb(100, 180, 130), rgb(100, 200, 120));
 }
 .opt3:hover {
-  background: rgb(130, 210, 160);
+          background: linear-gradient(rgb(110, 190, 140), rgb(110, 210, 130));
 }
 .opt4 {
-  background: rgb(100, 100, 220);
+            background: linear-gradient(rgb(100, 100, 220), rgb(90, 110, 240));
     transform: rotateY(-12deg) rotateX(10deg);
     box-shadow: 34px 48px 74px rgba(49, 81, 183, 0.32);
 }
 .opt4:hover {
-  background: rgb(130, 130, 250);
+              background: linear-gradient(rgb(110, 110, 230), rgb(100, 120, 250));
 }
 
 .repo-header {
