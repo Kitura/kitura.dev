@@ -391,6 +391,49 @@ footer {
   padding: 5px;
   font-size: 0.9em;
 }
+/* Events Styling */
+.events-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 50px;
+  margin: 50px 0 50px 0;
+}
+.event-card {
+  box-shadow: 2px 2px 10px #cdcdcd;
+  border-radius: 5px;
+  width: 80%;
+  margin: 0 auto;
+  height: 250px;
+  position: relative;
+}
+.event-card-image-container {
+  background: linear-gradient(#f2f2f2, #eaeaea);
+  width: 50%;
+}
+.event-card-image {
+  width: 50%;
+}
+.event-card-info {
+  width: 100%;
+}
+.event-card-info a {
+  color: #00bbe6;
+}
+.event-card-info > h3 {
+  margin: 2% 0 3% 2%;
+}
+.event-card-info > p {
+  margin: 2% 0 3% 2%;
+}
+.summary {
+  margin: 4% 0 3% 2%;
+}
+.event-link {
+  position: absolute;
+  bottom: -20px;
+  left: 33%;
+}
+
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
@@ -488,8 +531,20 @@ footer {
 .events-item-2 {
   grid-area: nav;
 }
+.events-item-3 {
+  grid-area: title;
+}
+.events-item-4 {
+  grid-area: events;
+}
+.events-item-5 {
+  grid-area: footer;
+}
 .events-grid-container {
   display: grid;
   grid-template-areas:
-      'header header nav nav nav nav';
+      'header header nav nav nav nav'
+      '. title title title title .'
+      '. events events events events .'
+      'footer footer footer footer footer footer';
 }
