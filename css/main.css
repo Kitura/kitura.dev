@@ -1766,7 +1766,7 @@ p {
 
 
 .innerT2 {
-  background-color: rgba(228, 228, 232, 0);
+  background-color: rgba(228, 228, 232, 1);
   box-shadow: 0px 54px 74px rgba(49, 81, 183, 0);
   border-color: rgb(170, 170, 180);
   border-width: 2px;
@@ -1784,7 +1784,7 @@ transition-duration: 0.4s;
   font-weight: 400;
 }
 .innerT2:hover {
-  background-color: rgba(228, 228, 232, 0);
+  background-color: rgba(228, 228, 232, 1);
   box-shadow: 0px 54px 74px rgba(49, 81, 183, 0);
   color: rgb(150, 150, 160);
   transform: translateY(0px);
@@ -1842,7 +1842,7 @@ transition-duration: 0.4s;
   margin-left: 30%;
   margin-right: 30%;
   margin-bottom: 10px;
-  margin-top: -40px;
+  margin-top: -50px;
 }
 
 @media screen and (max-width: 900px) {
@@ -1879,7 +1879,7 @@ transition-duration: 0.4s;
   margin-left: 30%;
   margin-right: 30%;
   margin-bottom: 10px;
-  margin-top: -30px;
+  margin-top: -40px;
 }
 
 @media screen and (max-width: 900px) {
@@ -1898,7 +1898,7 @@ transition-duration: 0.4s;
   margin-left: 33%;
   margin-right: 33%;
   margin-bottom: 0px;
-  margin-top: -30px;
+  margin-top: -40px;
 }
 
 @media screen and (max-width: 900px) {
@@ -1922,9 +1922,9 @@ transition-duration: 0.4s;
 
 @media screen and (max-width: 900px) {
   .books {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  width: 34%;
+  margin-left: 33%;
+  margin-right: 33%;
   margin-bottom: 0px;
   margin-top: 0px;
   }
@@ -1946,6 +1946,35 @@ transition-duration: 0.4s;
   margin-right: 25%;
   margin-bottom: 0px;
   margin-top: 0px;
+  }
+}
+
+.endloop {
+  align-items: right;
+  width: 44%;
+  float: right;
+  margin-top: -120px;
+  margin-left: -200px;
+}
+
+@media screen and (max-width: 900px) {
+  .endloop {
+  width: 50%;
+  }
+}
+
+.beginloop {
+  align-items: left;
+  width: 40%;
+  float: left;
+  margin-top: -20px;
+  margin-left: 25px;
+  margin-right: -1000px;
+}
+
+@media screen and (max-width: 900px) {
+  .beginloop {
+  width: 50%;
   }
 }
 
