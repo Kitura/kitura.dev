@@ -958,7 +958,7 @@ footer {
 }
 
 .guides-list {
-    max-width: 1500px;
+    max-width: 2000px;
     margin: 0 auto;
     border-radius: 20px;
     width: 80%;
@@ -1832,8 +1832,83 @@ transition-duration: 0.4s;
 
 }
 
+.lightbulb {
+  align-items: center;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 10px;
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 900px) {
+  .lightbulb {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  }
+}
+.stars {
+  align-items: center;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 20px;
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 900px) {
+  .stars {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  }
+}
+
+.question {
+  align-items: center;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 10px;
+  margin-top: -30px;
+}
+
+@media screen and (max-width: 900px) {
+  .question {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+}
+
+.calendars {
+  align-items: center;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 0px;
+  margin-top: -30px;
+}
+
+@media screen and (max-width: 900px) {
+  .calendars {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+}
+
 h2 {
-  font-weight: bold;
+  font-weight: 500;
   color: rgb(150, 150, 158);
   font-size: 1em;
   padding-left: 20px;
