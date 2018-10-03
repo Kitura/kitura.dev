@@ -1073,7 +1073,7 @@ color: rgb(75, 139, 209);
   width: 200px;
     height: 280px;
     margin-top: 20px;
-    padding: 20px;
+    padding: 20px 30px 20px 20px;
     background: rgb(75, 135, 209);
     box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
     display: inline-block;
@@ -1856,9 +1856,9 @@ transition-duration: 0.4s;
 }
 .stars {
   align-items: center;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 34%;
+  margin-left: 33%;
+  margin-right: 33%;
   margin-bottom: 20px;
   margin-top: -40px;
 }
@@ -1894,15 +1894,53 @@ transition-duration: 0.4s;
 
 .calendars {
   align-items: center;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 34%;
+  margin-left: 33%;
+  margin-right: 33%;
   margin-bottom: 0px;
   margin-top: -30px;
 }
 
 @media screen and (max-width: 900px) {
   .calendars {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+}
+
+.books {
+  align-items: center;
+  width: 24%;
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-bottom: 10px;
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 900px) {
+  .books {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+}
+
+.steps123 {
+  align-items: center;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 10px;
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 900px) {
+  .steps123 {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
