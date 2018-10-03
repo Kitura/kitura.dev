@@ -563,7 +563,7 @@ margin-top: 40px;
   padding: 20px;
   color: rgb(100, 100, 120);
   margin-left: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 10px;
   box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
 }
@@ -1026,6 +1026,7 @@ transform: translateY(-2px);
 
 .whatiskitura i {
   font-style: italic;
+  color: rgb(160, 160, 180);
 }
 
 ::-webkit-scrollbar {
@@ -2040,9 +2041,9 @@ transition-duration: 0.4s;
 
 .steps123 {
   align-items: center;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 38%;
+  margin-left: 31%;
+  margin-right: 31%;
   margin-bottom: 10px;
   margin-top: -40px;
 }
