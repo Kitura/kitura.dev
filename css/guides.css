@@ -38,6 +38,13 @@ header {
   top: 35%;
 }
 
+@media screen and (max-width: 900px) {
+.speech-bubble {
+  margin-top: -100px;
+  top: 0px;
+}
+}
+
 
 .speech-bubble2 {
 	position: relative;
@@ -66,6 +73,14 @@ header {
   border-bottom: 10px solid transparent;
   left: -20px;
   top: 35%;
+}
+
+
+@media screen and (max-width: 900px) {
+.speech-bubble2 {
+  margin-top: -100px;
+  top: 0px;
+}
 }
 
 .speech-bubble3 {
@@ -201,6 +216,8 @@ pre {
   line-height: 25px;
   font-size: 13px;
   overflow-x: scroll;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 ul {
@@ -230,8 +247,9 @@ table {
 
 thead {
   background-color: rgb(230, 230, 236);
-  font-weight: bold;
+  font-weight: 500;
   color: rgb(100, 100, 110);
+  text-align: left;
 }
 
 th {
@@ -244,6 +262,7 @@ td {
   line-height: 120%;
   padding: 7px;
   border: 1px solid rgb(200, 200, 210);
+  color: rgb(80, 80, 90);
 }
 
 .italic {
