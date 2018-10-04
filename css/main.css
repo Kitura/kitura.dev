@@ -209,6 +209,9 @@ footer {
   margin-right: 7px;
 }
 /* Blog section styling */
+.blog-section {
+  margin-bottom: 3%;
+}
 .blog-card {
   box-shadow: 1px 1px 5px #5f5757;
   margin: 0 auto;
@@ -349,10 +352,8 @@ footer {
   box-shadow: 2px 5px 10px #cdcdcd;
   width: 20%;
 }
-.popular-packages-card > h3 {
+.popular-packages-card > h4 {
   color: white;
-  text-align: center;
-  margin-top: -20px;
   margin-bottom: 15%;
 }
 .all-repo-section {
@@ -433,7 +434,50 @@ footer {
   bottom: -20px;
   left: 33%;
 }
-
+/* Help Styling */
+.social-section {
+  justify-content: center;
+}
+.support-social-box {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px #cdcdcd;
+  margin: 20px 10px 20px 10px;
+  color: white;
+  display: flex;
+  text-align: center;
+  line-height: 24px;
+}
+.support-social-box img {
+  width: 35%;
+  margin-bottom: 20%;
+}
+.support-social-box p {
+  margin: 0 5%;
+}
+.help-slack {
+  background-color: rgb(217, 20, 71);
+}
+.help-forums {
+  background-color: rgb(237, 82, 63);
+}
+.help-report {
+  background-color: black;
+}
+.help-dev {
+  background-color: rgb(49, 81, 183);
+}
+.help-commerce-header {
+  margin: 3% 0;
+}
+.help-hero {
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 3%;
+  box-shadow: 2px 2px 10px #cdcdcd;
+  height: 200px;
+}
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
@@ -546,5 +590,33 @@ footer {
       'header header nav nav nav nav'
       '. title title title title .'
       '. events events events events .'
+      'footer footer footer footer footer footer';
+}
+/* help.html CSS grid layout */
+.help-item-1 {
+  grid-area: header;
+}
+.help-item-2 {
+  grid-area: nav;
+}
+.help-item-3 {
+  grid-area: title;
+}
+.help-item-4 {
+  grid-area: help;
+}
+.help-item-5 {
+  grid-area: support;
+}
+.help-item-6 {
+  grid-area: footer;
+}
+.help-grid-container {
+  display: grid;
+  grid-template-areas:
+      'header header nav nav nav nav'
+      '. title title title title .'
+      '. help help help help .'
+      '. support support support support .'
       'footer footer footer footer footer footer';
 }
