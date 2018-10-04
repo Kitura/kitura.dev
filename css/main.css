@@ -1002,7 +1002,7 @@ transform: translateY(-2px);
 }
 
 .guide-rectangle img {
-  width: 30%;
+  width: 22%;
 }
 
 @media screen and (max-width: 900px) {
@@ -1481,7 +1481,7 @@ transform: translateY(-2px);
 }
 
 .card img {
-  width: 30%;
+  width: 22%;
   display: block;
   margin: auto;
   margin-bottom: 10px;
