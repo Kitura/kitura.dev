@@ -1069,7 +1069,7 @@ transform: translateY(-2px);
 .guide-list a {
     color: black;
     transition-duration: 0.4s;
-    color: rgba(160, 160, 170, 0.9);
+    color: rgba(180, 180, 190, 0.9);
 }
 
 .guide-list a:hover {
@@ -1336,7 +1336,7 @@ width: 90%;
 }
 
 .base-dependency:hover {
-    box-shadow: 0px 50px 80px rgba(49, 81, 183, 0.4);
+    box-shadow: 0px 28px 80px rgba(49, 81, 183, 0.3);
     transform: translateY(-2px);
   }
 
@@ -1372,15 +1372,18 @@ width: 90%;
 .opt2 {
       background: linear-gradient(rgb(220, 100, 100), rgb(240, 120, 100));
     transform: rotateY(-5deg) rotateX(4deg);
-    box-shadow: 34px 48px 74px rgba(49, 81, 183, 0.32);
+    box-shadow: 34px 48px 74px rgba(209, 109, 104, 0.32);
     animation-duration: 0.3s;
 }
 .opt2:hover {
+box-shadow: 0px 28px 74px rgba(209, 109, 104, 0.32);
 }
 .opt3 {
         background: linear-gradient(rgb(100, 180, 130), rgb(100, 200, 120));
+        box-shadow: -10px 48px 74px rgba(118, 180, 113, 0.32);
 }
 .opt3:hover {
+box-shadow: 0px 28px 74px rgba(118, 180, 113, 0.32);
 }
 .opt4 {
             background: linear-gradient(rgb(100, 100, 220), rgb(90, 110, 240));
