@@ -1152,13 +1152,13 @@ color: rgb(75, 139, 209);
 
 .wenderlich-starter {
                           background: linear-gradient(rgb(80, 130, 230), rgb(90, 160, 250));
-                            transform: rotateY(6deg) rotateX(8deg);
+                            transform: rotateY(3deg) rotateX(6deg);
                             animation-duration: 0.4s;
 }
 
 .wenderlich-stencil {
                           background: linear-gradient(rgb(100, 210, 150), rgb(90, 200, 100));
-                            transform: rotateY(-6deg) rotateX(6deg);
+                            transform: rotateY(-3deg) rotateX(3deg);
                             animation-duration: 0.4s;
 }
 
@@ -1230,7 +1230,7 @@ color: rgb(75, 139, 209);
 
 .todo-backend {
                           background: linear-gradient(rgb(230, 63, 60), rgb(230, 60, 120));
-                            transform: rotateY(-6deg) rotateX(-2deg);
+                            transform: rotateY(-4deg) rotateX(-2deg);
                             animation-duration: 0.4s;
 }
 
@@ -1259,7 +1259,7 @@ color: rgb(75, 139, 209);
 
 .hacking-swift {
                             background: linear-gradient(rgb(220, 40, 40), rgb(210, 0, 80));
-                              transform: rotateY(2deg) rotateX(4deg);
+                              transform: rotateY(2deg) rotateX(1deg);
                               animation-duration: 0.4s;
 }
 
@@ -1274,7 +1274,7 @@ color: rgb(75, 139, 209);
 .kitura-dawn {
     background: rgb(86, 130, 200);
                               background: linear-gradient(rgb(80, 130, 230), rgb(90, 170, 240));
-                              transform: rotateY(4deg) rotateX(12deg);
+                              transform: rotateY(4deg) rotateX(8deg);
                               animation-duration: 0.4s;
 }
 
@@ -1332,7 +1332,7 @@ width: 90%;
   border-radius: 20px;
   color: white;
   font-size: 18px;
-    transform: rotateY(8deg) rotateX(10deg);
+    transform: rotateY(5deg) rotateX(6deg);
 }
 
 .base-dependency:hover {
@@ -1371,7 +1371,7 @@ width: 90%;
 
 .opt2 {
       background: linear-gradient(rgb(220, 100, 100), rgb(240, 120, 100));
-    transform: rotateY(-8deg) rotateX(10deg);
+    transform: rotateY(-5deg) rotateX(4deg);
     box-shadow: 34px 48px 74px rgba(49, 81, 183, 0.32);
     animation-duration: 0.3s;
 }
@@ -1384,7 +1384,7 @@ width: 90%;
 }
 .opt4 {
             background: linear-gradient(rgb(100, 100, 220), rgb(90, 110, 240));
-    transform: rotateY(-12deg) rotateX(10deg);
+    transform: rotateY(-8deg) rotateX(6deg);
     box-shadow: 34px 48px 74px rgba(49, 81, 183, 0.32);
 }
 .opt4:hover {
@@ -1431,7 +1431,7 @@ box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
   padding: 20px 0px 30px 30px;
   position: relative;
   overflow-y: scroll;
-  height: 400px;
+  min-height: 400px;
   transition-duration: 0.4s
 }
 
@@ -1693,7 +1693,7 @@ transform: translateY(-2px);
                       background: linear-gradient(rgb(217, 20, 71), rgb(247, 60, 41));
     box-shadow: -30px 44px 74px rgba(217, 20, 71, 0.34);
     transition-duration: 0.4s;
-      transform: rotateY(6deg) rotateX(8deg);
+      transform: rotateY(4deg) rotateX(6deg);
 }
 
 .support-forums {
@@ -1701,7 +1701,7 @@ transform: translateY(-2px);
                           background: linear-gradient(rgb(237, 102, 13), rgb(237, 82, 53));
     box-shadow: 20px 44px 74px rgba(237, 82, 63, 0.34);
     transition-duration: 0.4s;
-      transform: rotateY(-6deg) rotateX(8deg);
+      transform: rotateY(-4deg) rotateX(6deg);
 }
 
 .support-dev {
@@ -1709,7 +1709,7 @@ transform: translateY(-2px);
                           background: linear-gradient(rgb(49, 81, 183), rgb(49, 121, 203));
     box-shadow: -30px 44px 74px rgba(49, 81, 183, 0.34);
     transition-duration: 0.4s;
-      transform: rotateY(7deg) rotateX(5deg);
+      transform: rotateY(5deg) rotateX(3deg);
 }
 
 .support-report {
@@ -1717,7 +1717,7 @@ transform: translateY(-2px);
                           background: linear-gradient(rgb(10, 10, 10), rgb(40, 40, 60));
     box-shadow: 30px 44px 74px rgba(0, 0, 0, 0.3);
     transition-duration: 0.4s;
-      transform: rotateY(-8deg) rotateX(8deg);
+      transform: rotateY(-5deg) rotateX(6deg);
 }
 
 .support-slack:hover {
@@ -1777,17 +1777,17 @@ p {
                           background: linear-gradient(rgb(56, 140, 215), rgb(66, 160, 235));
     box-shadow: 0px 48px 74px rgba(49, 81, 183, 0.32);
     transition-duration: 0.4s;
-    					transform: rotateY(8deg) rotateX(3deg);
+    					transform: rotateY(4deg) rotateX(2deg);
 }
 
 .innerT4 {
-          transform: rotateY(-6deg) rotateX(3deg);
+          transform: rotateY(-4deg) rotateX(2deg);
                                 background: linear-gradient(rgb(106, 130, 225), rgb(86, 100, 215));
           box-shadow: 40px 58px 74px rgba(49, 81, 183, 0.32);
 }
 
 .innerT5 {
-          transform: rotateY(4deg) rotateX(6deg);
+          transform: rotateY(4deg) rotateX(5deg);
                                 background: linear-gradient(rgb(86, 130, 225), rgb(76, 140, 235));
           box-shadow: -30px 52px 74px rgba(49, 81, 183, 0.32);
 }
