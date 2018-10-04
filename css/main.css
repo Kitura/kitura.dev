@@ -1012,8 +1012,8 @@ transform: translateY(-2px);
 }
 
 .whatiskitura {
-  width: 100%;
-  margin: 20px 60px;
+  width: 40%;
+  margin: 30px 30%;
   color: rgb(100, 100, 120);
   font-size: 1.1em;
   border-left: 5px solid rgba(110, 110, 140, 1);
@@ -1987,7 +1987,7 @@ transition-duration: 0.4s;
   width: 44%;
   margin-left: 28%;
   margin-right: 28%;
-  margin-bottom: -10px;
+  margin-bottom: 10px;
   margin-top: 0px;
 }
 
