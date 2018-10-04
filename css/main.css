@@ -1053,13 +1053,12 @@ transform: translateY(-2px);
 
 .noti {
   position: absolute;
+  background: rgba(255, 0, 0, 0);
   width: 20%;
   margin-left: 70%;
   margin-right: 10%;
-  border-radius: 20px;
-  margin-top: -600px;
+  margin-top: -630px;
   margin-bottom: 0px;
-  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.22);
 }
 
 .macb {
