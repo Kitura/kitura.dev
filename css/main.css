@@ -1057,8 +1057,21 @@ transform: translateY(-2px);
   width: 20%;
   margin-left: 70%;
   margin-right: 10%;
+  border-radius: 10px;
   margin-top: -630px;
   margin-bottom: 0px;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.22);
+}
+.noti2 {
+  position: absolute;
+  background: rgba(255, 0, 0, 0);
+  width: 20%;
+  margin-left: 70%;
+  margin-right: 10%;
+  border-radius: 10px;
+  margin-top: -508px;
+  margin-bottom: 0px;
+  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.22);
 }
 
 .macb {
