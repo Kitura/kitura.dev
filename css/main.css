@@ -308,6 +308,9 @@ footer {
 .community-section {
   justify-content: center;
 }
+.community-card {
+  margin: 0 1% 3% 1%;
+}
 .hacking-swift {
   background-color: black;
 }
