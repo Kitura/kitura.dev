@@ -76,7 +76,7 @@ footer {
 .slide-2 {
   background: linear-gradient(to bottom right, #01C1EF, #97E3F5);
 }
-.slide-2 > h4 {
+.slide-2 > p {
   color: white;
 }
 .slide-3 {
@@ -85,7 +85,7 @@ footer {
     color: white;
 }
 .slide-3 > h1 {
-  font-size: 3em;
+  font-size: 2.5em;
 }
 .slide-3 > p {
   font-size: 1.5em;
@@ -96,8 +96,12 @@ footer {
   margin-bottom: -20px;
 }
 .slide-1-content > h1 {
-  margin-left: -70px;
+  margin-left: -30px;
   font-size: 5em;
+}
+.slide-1-content > img {
+  width: 100%;
+  height: auto;
 }
 .slide-2-content {
   margin-left: -80px;
@@ -105,12 +109,16 @@ footer {
 }
 .slide-2-content > h1 {
   margin-left: -30px;
-  font-size: 4.5em;
+  font-size: 4em;
+  white-space: nowrap;
   color: white;
+}
+.slide-2-content > img {
+  width: 70%;
 }
 .slide-3-swift-icon, .slide-3-slack-icon {
   position: absolute;
-  width: 100px;
+  width: 10%;
 }
 .slide-3-swift-icon {
   top: 30px;
@@ -127,7 +135,7 @@ footer {
   top: 50%;
 }
 .prev img, .next img {
-  width: 50px;
+  width: 40px;
 }
 .next {
   right: 0;
