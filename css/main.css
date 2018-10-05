@@ -497,6 +497,29 @@ footer {
 .help-hero-image {
   width: 100%;
 }
+/* App Styling */
+.app-info-section > h2, .app-info-section > p {
+  margin-bottom: 5%;
+  text-align: center;
+}
+.download-icon {
+  width: 15%;
+  margin-right: 10px;
+}
+.changes-list {
+  list-style: circle;
+  margin: 2% 0 0 3%;
+  line-height: 25px;
+  font-size: 1.1em;
+}
+.preview-section {
+  margin-top: 5%;
+  background-color: #00bbe6;
+  padding-top: 2%;
+}
+.preview-section > img {
+  width: 25%;
+}
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
@@ -638,4 +661,29 @@ footer {
       '. help help help help .'
       '. support support support support .'
       'footer footer footer footer footer footer';
+}
+/* app.html CSS grid layout */
+.app-item-1 {
+  grid-area: header;
+}
+.app-item-2 {
+  grid-area: nav;
+}
+.app-item-3 {
+  grid-area: download;
+}
+.app-item-4 {
+  grid-area: changes;
+}
+.app-item-5 {
+  grid-area: preview;
+}
+.app-grid-container {
+  display: grid;
+  grid-template-areas:
+      'header header nav nav nav nav'
+      '. download download download download .'
+      '. changes changes changes changes .'
+      'preview preview preview preview preview preview'
+      'footer footer footer footer footer footer'
 }

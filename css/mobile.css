@@ -182,3 +182,19 @@ h4 {
   height: 100%;
   margin-bottom: 10%;
 }
+/* app.html styling */
+.app-grid-container {
+  display: block;
+}
+.preview-section {
+  display: none;
+}
+.app-item-3 {
+  flex-direction: column;
+}
+.app-item-4 {
+  margin-bottom: 10%;
+}
+.download-button {
+  margin-bottom: 10%;
+}
