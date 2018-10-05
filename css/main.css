@@ -38,7 +38,7 @@ h4 {
 }
 .header-nav {
   padding: 0.5em;
-  margin-right: 5em;
+  padding-right: 5em;
   align-items: center;
   justify-content: flex-end;
 }
