@@ -7,15 +7,40 @@ html {
 
 header {
   background-color: white;
-  max-width: 100%;
   box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
-  margin-top: 0;
   position: fixed;
+  width: 100%;
+  margin-top: 0;
+  top: 0;
+  height: 120px;
+  display: flex;
+  justify-content: center;
 }
-
+.header-nav {
+  display: flex;
+  align-items: flex-end;
+  width: 70%;
+}
+.home-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+}
+.header-link {
+  color: black;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.header-logo {
+  width: 25%;
+}
+.header-title {
+  margin-left: 10px;
+}
 h1 {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 2.5em;
 }
 
 h2 {
@@ -153,7 +178,7 @@ td {
   margin: 0 auto;
   background-color: white;
   box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
-  margin-top: 120px;
+  margin-top: 140px;
   margin-bottom: 10px;
   padding: 20px 0;
   border-radius: 10px;
@@ -217,4 +242,9 @@ td {
   float: right;
   margin-right: 23%;
   width: 23%;
+}
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

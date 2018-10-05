@@ -223,7 +223,7 @@ footer {
   width: 50%;
   height: 100px;
 }
-.blog-card > p, h3 {
+.blog-card > p, .blog-card > h3 {
   margin-bottom: 10px;
   font-weight: bold;
 }
