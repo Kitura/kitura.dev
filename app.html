@@ -21,59 +21,50 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" media="screen and (max-width: 900px)" href="css/mobile.css">
   </head>
-  <header>
-    <div class="header-main">
-      <a class="home-link" href="index.html">
-        <img class="header-logo" src="assets/kitura-logo.png" alt="Kitura logo">
-        <h1 class="header-title">KITURA</h1>
-      </a>
-    </div>
-    <nav class="header-nav">
-      <a class="header-link" href="learn.html">LEARN</a>
-      <a class="header-link" href="packages.html">PACKAGES</a>
-      <a class="header-link" href="events.html">EVENTS</a>
-      <a class="header-link" href="help.html">HELP</a>
-    </nav>
-  </header>
-
   <body>
-    <div class="app-container">
-      <div class="app-left-container">
-        <img src="assets/mainscreen.png" alt="Kitura for macOS" width="500px">
+    <div class="app-grid-container">
+      <header class="app-item-1 flex-row centre header-main">
+        <img src="assets/Kitura.svg" alt="Kitura logo">
+        <a href="index.html"><h1>KITURA</h1></a>
+      </header>
+      <nav class="app-item-2 flex-row header-nav">
+        <a href="learn.html"><h3>LEARN</h3></a>
+        <a href="packages.html"><h3>PACKAGES</h3></a>
+        <a href="events.html"><h3>EVENTS</h3></a>
+        <a href="help.html"><h3>HELP</h3></a>
+      </nav>
+      <div class="app-item-3 flex-row">
+        <section>
+          <img src="assets/mainscreen.png" alt="Kitura for macOS" width="400px">
+        </section>
+        <div class="app-info-section flex-column centre">
+          <h2>Kitura - macOS App</h2>
+          <p>Get started with Kitura quickly using our new native macOS app.</p>
+          <p>There's no need to use the command line as the whole process, from package resolution to Xcode project generation, is automated.</p>
+          <button class="button download-button" type="button" name="download-button" onclick="window.open('Kitura.dmg')"><img class="download-icon" src="assets/download.png" alt="Download Icon">DOWNLOAD</button>
+        </div>
       </div>
-      <div class="app-right-container">
-        <h2>Kitura - macOS App</h2>
-        <h4>Get started with Kitura quickly using our new native macOS app. </h4>
-        <h4>There's no need to use the command line as the whole process, from package resolution to Xcode project generation, is automated.</h4>
-        <button class="button download-button" type="button" name="download-button" onclick="window.open('Kitura.dmg')"><img class="slack-icon" src="assets/download.png" alt="Download Icon">DOWNLOAD</button>
+      <div class="app-item-4">
+        <h2>RECENT CHANGES</h2>
+      	<ul class="changes-list">
+            <li>v1.1.1: We've made a few UI changes, added a great new app icon, added Notification Center notifications for when your project finishes being built, and Touch Bar support for Macs that support it.</li>
+            <li>v1.1: We've added a third tile which allows you to create Kitura projects with built-in OpenAPI support.</li>
+      	    <li>v1.0.1: When you close the window, the app quits plus various bug fixes.</li>
+      	    <li>v1.0.0: Initial Release.</li>
+      	</ul>
       </div>
-    </div>
-    <div class="app-changelog-container">
-    <h2>RECENT CHANGES</h2>
-	<ul class="changes">
-      <li>v1.1.1: We've made a few UI changes, added a great new app icon, added Notification Center notifications for when your project finishes being built, and Touch Bar support for Macs that support it.</li>
-      <li>v1.1: We've added a third tile which allows you to create Kitura projects with built-in OpenAPI support.</li>
-	    <li>v1.0.1: When you close the window, the app quits plus various bug fixes.</li>
-	    <li>v1.0.0: Initial Release.</li>
-	</ul>
-    </div>
-    <div class="app-preview-container">
-      <div class="preview-heading-section">
-        <h2 style="color: white;">PREVIEW</h2>
-      </div>
+      <div class="app-item-5 preview-section flex-row centre">
         <img src="assets/preview1.png" alt="Preview 1">
         <img src="assets/preview2.png" alt="Preview 2">
         <img src="assets/preview3.png" alt="Preview 3">
+      </div>
     </div>
+    <footer class="app-item-6">
+      <nav class="flex-row centre">
+        <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
+        <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="assets/Kitura-White.svg" alt="Kitura logo"></a>
+        <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
+      </nav>
+    </footer>
   </body>
-
-
-<footer>
-
-  <nav class="footer-nav">
-    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="assets/Kitura-White.svg" alt="Kitura logo"></a>
-    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
-  </nav>
-</footer>
 </html>

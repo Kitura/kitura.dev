@@ -1,44 +1,45 @@
+html, body {
+  overflow-x: hidden;
+}
+h1 {
+  font-size:2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1em;
+}
+h4 {
+  font-size: 0.8em;
+}
 /**
     Header Styling
 */
 header {
   position: relative;
 }
-
 .header-container {
   flex-direction: column;
+  justify-content: center;
 }
-.header-main, .header-nav {
+.home-link {
+  justify-content: center;
+}
+.header-nav, .header-main {
   width: 100%;
-  justify-content: center;
 }
-
-.header-logo {
-  width: 40%;
-}
-
-.header-nav {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: row;
-  font-size: 1em;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.header-title {
-  font-size: 2em;
-}
-
 .header-link {
-  margin: 0 2%;
+  font-size: 0.9em;
 }
-
+.header-logo {
+  width: 20%;
+}
 /**
     Main Section Styling
 */
 .guide-content {
-  margin-top: 160px;
+  margin-top: 40px;
   width: 95%;
 }
 
