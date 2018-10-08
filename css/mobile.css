@@ -170,16 +170,21 @@ h4 {
 .help-item-3 {
   text-align: center;
 }
+.help-item-4 {
+  height: 900px;
+}
 .support-social-header {
   text-align: center;
 }
 .social-section {
   flex-direction: column;
   margin-top: 10%;
+  height: 800px;
 }
 .support-social-box {
   width: 90%;
   margin: 3% auto;
+  height: 25%;
 }
 .support-social-box > img {
   width: 20%;
@@ -189,10 +194,17 @@ h4 {
   text-align: center;
   margin-top: 10%;
 }
+.help-item-5 {
+  height: 180px;
+}
 .help-hero {
   width: 100%;
   height: 100%;
   margin-bottom: 10%;
+}
+.help-hero-image {
+  width: 100%;
+  height: 100px;
 }
 /* app.html styling */
 .app-grid-container {
