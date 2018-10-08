@@ -56,9 +56,8 @@
      creating your model, and persisting it using the ORM.
 </p>
 <h2>Adding Swift-Kuery-ORM and Swift-Kuery-PostgreSQL to your project</h2>
-<p>If you do not have an existing project, run <code>kitura init</code> in terminal to generate a new project.</p>
-<p>Add <code>Swift-Kuery-ORM</code> and <code>Swift-Kuery-PostgreSQL</code> to your <code>Package.swift</code> dependencies:</p>
-
+<p>If you do not have an existing project, run <code>kitura init</code> in your terminal to generate a new project.</p>
+<p>Edit your <code>Package.swift</code> adding <code>Swift-Kuery-ORM</code> and <code>Swift-Kuery-PostgreSQL</code> to your dependencies and application targets:</p>
 <pre><code class="language-swift">.package(url: &quot;https://github.com/IBM-Swift/Swift-Kuery-ORM.git&quot;, .upToNextMinor(from: &quot;0.3.1&quot;)),
 .package(url: &quot;https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL.git&quot;, from: &quot;1.2.0&quot;),
 </code></pre>
@@ -171,16 +170,14 @@ func deleteOneHandler(id: Int, completion: @escaping (RequestError?) -> Void ) {
     You can access your ORM response for your getOneHandler as follows:
 </p>
 
-<pre><code class="language-swift">
-    func getOneHandler(completion: @escaping (Grade?, RequestError?) -> Void ) {
-        Grade.findAll { grade, error in
-            guard let grade = grade else {
-                return completion(nil, error)
-            }
-            print(grade)
-            completion(grade, nil)
+<pre><code class="language-swift">func getOneHandler(id: Int, completion: @escaping (Grade?, RequestError?) -> Void ) {
+    Grade.find(id: id) { grade, error in
+        guard let grade = grade else {
+            return completion(nil, error)
         }
+        completion(grade, nil)
     }
+}
 </code></pre>
 
 <h2>Testing with OpenAPI</h2>
