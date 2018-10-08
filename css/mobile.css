@@ -42,6 +42,9 @@ h4 {
 .slide-1-content > h1 {
   font-size: 2em;
 }
+.slide-1 > p {
+  white-space: nowrap;
+}
 .slide-2-content > h1 {
   font-size: 2em;
 }
@@ -53,6 +56,7 @@ h4 {
 }
 .button-section {
   flex-direction: column;
+  height: 150px;
 }
 .button {
   width: 60%;
@@ -63,6 +67,7 @@ h4 {
 }
 .blog-section {
   flex-direction: column;
+  height: 600px;
 }
 .blog-card {
   width: 90%;
@@ -115,9 +120,16 @@ h4 {
   line-height: 25px;
   font-size: 0.8em;
 }
+.popular-packages-section {
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .packages-section {
   flex-direction: column;
-  margin-top: 10%;
+  width: 100%;
 }
 .popular-packages-card {
   width: 90%;

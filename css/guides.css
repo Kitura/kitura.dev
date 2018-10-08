@@ -1,8 +1,6 @@
 html {
     background: linear-gradient(#00bbe6, #0086a5) no-repeat center fixed ;
     background-size: cover;
-
-
 }
 
 header {
@@ -83,7 +81,7 @@ pre {
   font-family: IBM Plex Mono, monospace;
   line-height: 25px;
   font-size: 13px;
-  overflow-x: scroll;
+  overflow-x:auto;
 }
 
 ul {
