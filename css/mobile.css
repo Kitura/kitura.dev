@@ -1,4 +1,4 @@
-html {
+html, body {
   overflow-x: hidden;
 }
 h1 {
@@ -50,6 +50,7 @@ h4 {
 }
 .slide-3 > h1 {
   font-size: 2em;
+  text-align: center;
 }
 .slide-3 > p {
   font-size: 1em;
