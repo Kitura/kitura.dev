@@ -275,8 +275,8 @@ footer {
 }
 /* Community card styling added here as well */
 .tutorial-card, .community-card {
-  width: 20%;
   height: 200px;
+  width: 20%;
   margin: 3% 1%;
   border-radius: 5px;
   box-shadow: 3px 3px 5px #606060;
@@ -340,7 +340,7 @@ footer {
   display: inline-block;
 }
 .swift-book-icon-left {
-  margin: 20px 0 0 40px;
+  margin: 20px 0 0 20%;
 }
 .swift-book-icon-right {
   margin: 20px 0 0 -20px;
@@ -489,19 +489,22 @@ footer {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 2px 2px 10px #cdcdcd;
-  height: 100%;
   width: 70%;
   display: block;
   margin: 0 auto 3% auto;
-  height: 130px;
+  height: 110px;
 }
 .help-hero-image {
   width: 100%;
+  height: auto;
 }
 /* App Styling */
 .app-info-section > h2, .app-info-section > p {
   margin-bottom: 5%;
   text-align: center;
+}
+.download-button {
+  height: 60px;
 }
 .download-icon {
   width: 15%;
@@ -548,6 +551,7 @@ footer {
 }
 .index-grid-container {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     'header header nav nav nav nav'
     'slider slider slider code code code'
@@ -576,11 +580,12 @@ footer {
 }
 .learn-grid-container {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
       'header header nav nav nav nav'
       'guides guides guides guides guides guides'
-      '. tutorials tutorials tutorials tutorials .'
-      '. community community community community .'
+      'tutorials tutorials tutorials tutorials tutorials tutorials'
+      'community community community community community community'
       'footer footer footer footer footer footer';
 }
 /* packages.html CSS grid layout */
@@ -604,6 +609,7 @@ footer {
 }
 .packages-grid-container {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
       'header header nav nav nav nav'
       '. title title title title .'
@@ -630,6 +636,7 @@ footer {
 }
 .events-grid-container {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
       'header header nav nav nav nav'
       '. title title title title .'
@@ -659,6 +666,7 @@ footer {
 }
 .help-grid-container {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
       'header header nav nav nav nav'
       '. title title title title .'
@@ -684,6 +692,7 @@ footer {
 }
 .app-grid-container {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
       'header header nav nav nav nav'
       '. download download download download .'
