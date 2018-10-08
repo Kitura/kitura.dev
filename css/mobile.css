@@ -1,306 +1,212 @@
-/**
-      General styling
-*/
-
-html, body {
-  font-family: IBM Plex Sans, sans-serif;
-  height: 100%;
+html {
+  overflow-x: hidden;
 }
-
-/* Styles all the titles on the nav pages */
-.title-heading-section {
-  text-align: center;
-  margin-bottom: 20px;
+h1 {
+  font-size:2em;
 }
-
-.title-heading-section h3 {
-  font-size: 0.4em;
-  padding: 5px;
+h2 {
+  font-size: 1.5em;
 }
-/**
-    Header Styling
-*/
-header {
-  display: block;
-  width: 100%;
-}
-
-.header-main {
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header-nav {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+h3 {
   font-size: 1em;
-  justify-content: center;
-  margin-top: 20px;
 }
-
-.header-logo {
+h4 {
+  font-size: 0.8em;
+}
+/* Header Styling */
+.header-main {
+  width: 100%;
+}
+.header-main > img {
   width: 30%;
 }
-
-.header-link {
-  margin: 0 2%;
+.header-main > a {
+  margin-left: -20px;
 }
-
-.header-title {
-  font-size: 2em;
+.header-nav {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-/**
-    Main section styling
-*/
-
-/* Slider styling */
-.code-section {
+/* index.html styling */
+.index-grid-container {
+  display: block;
+}
+.index-item-4 {
   display: none;
 }
-.main-section {
-  margin-top: 20px;
-  height: 300px;
-}
-
-.slideshow-section {
-  width: 100%;
-  height: 300px;
+.slider-section {
   border: none;
 }
-.slide-logo {
-  margin-bottom: 10px;
+.slide-1-content > h1 {
+  font-size: 2em;
 }
-
-.slide-logo img {
-  width: 20vmax;
-}
-
-.slide-logo h2 {
-  font-size: 1.5em;
-  margin-top: 20px;
-  margin-left: -10%;
-}
-
-.slide-content h3 {
-  font-size: 0.9em;
-}
-
-.slide-logo-2 {
-  margin: 30px 0;
-  width: 30%;
-  height: 30%;
-}
-.slide-logo-2 h2 {
-  font-size: 1.5em;
+.slide-1 > p {
   white-space: nowrap;
-  margin-top: 20px;
-  margin-left: -30px;
 }
-
-.slide-logo-2 img {
-  width: 150%;
+.slide-2-content > h1 {
+  font-size: 2em;
 }
-
-.slide-content-2 h3 {
-    font-size: 1em;
+.slide-3 > h1 {
+  font-size: 2em;
 }
-
-.slack-slide-icon {
-  width: 12%;
+.slide-3 > p {
+  font-size: 1em;
 }
-
-.swift-slide-icon {
-  width: 12%;
+.button-section {
+  flex-direction: column;
+  height: 150px;
 }
-
-.slide-logo-3 h2 {
-  font-size: 1.3em;
+.button {
+  width: 60%;
+  margin: 10px 0;
 }
-
-.slide-content-3 h3 {
-  font-size: 0.9em;
-}
-
 .slack-button {
   display: none;
 }
-
-/* Blogs styling */
-.blogs-heading-section {
-  text-align: center;
-  margin: 0 0 10px 0;
-}
-
-.blogs-section {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
+.blog-section {
   flex-direction: column;
+  height: 600px;
 }
-
-.blog-item {
-  width: 80%;
-  margin: 10px auto;
-  overflow: hidden;
-  height: 20vmax;
-}
-
-.blog-item h2 {
-  font-size: 1em;
-}
-
-.blog-item h3 {
-  font-size: 0.7em;
-}
-/**
-    LEARN PAGE STYLING
-*/
-
-.guides-list {
-  flex-direction: column;
-}
-
-.guide-rectangle {
+.blog-card {
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px 0
 }
-
-.learn-button {
-  margin: 30px 0;
+/* learn.html styling */
+.learn-grid-container {
+  display: block;
 }
-.tutorials-header, .community-header {
-  text-align: center;
-}
-
-.tutorials-section {
-  max-width: 900px;
-  overflow: visible;
-  display: flex;
+.guide-section {
   flex-direction: column;
-  padding: 0;
-  margin-top: 40px;
+  padding: 1% 0;
 }
-
-.featured-tutorial {
+.guide-card {
   width: 90%;
-  margin: 2%;
+}
+.tutorial-section {
+  flex-direction: column;
+  margin-top: 10%;
+}
+.tutorial-card {
+  width: 90%;
+  margin: 3% auto;
 }
 .community-section {
-  display: flex;
   flex-direction: column;
+  margin-top: 10%;
 }
-.community-item {
+.community-card {
   width: 90%;
-  margin: 10px 2%;
+  margin: 3% auto;
+  overflow: hidden;
 }
-
-.community-item h2 {
-  font-size: 1em;
+.hacking-swift > img, .kitura-dawn > img {
+  width: 80%;
+  display: block;
+  margin: 3% auto 0 auto;
 }
-
-.community-item h3 {
-  font-size: 0.65em;
+.swift-book-icon-left {
+  margin: 20px 0 0 100px;
 }
-
-/**
-    PACKAGES PAGE STYLING
-*/
-
-.kitura-core {
-  flex-direction: column;
+/* packages.html styling */
+.packages-grid-container {
+  display: block;
 }
-
-.base-dependency {
-  width: 90%;
-  margin: 20px auto;
-  display: flex;
-  justify-content: center;
+.packages-item-3 {
+  text-align: center;
 }
-
-.base-dependency a {
+.packages-item-3 > p {
+  line-height: 25px;
+  font-size: 0.8em;
+}
+.popular-packages-section {
+  height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
-.repo-header {
-  text-align: center;
-}
-
-.repo-card-section {
+.packages-section {
   flex-direction: column;
+  width: 100%;
 }
-
+.popular-packages-card {
+  width: 90%;
+  margin: 3% auto;
+}
+.all-repo-section {
+  flex-direction: column;
+  margin: 10% auto;
+}
 .card {
   width: 90%;
-  margin: 10px auto;
-  overflow: visible;
-  height: 100%;
 }
-
-.card img {
-  width: 10%;
+/* events.html styling */
+.events-grid-container {
+  display: block;
 }
-
-/**
-    EVENT PAGE STYLING
-*/
-.meetups-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.meet {
-  overflow: visible;
-  margin: 10px auto;
-}
-
-.meetup-link a {
-  font-size: 0.8em;
-}
-
-.past {
-  height: 400px;
-  margin: 30px auto;
-}
-
-.meetup-image {
-  height: 100%;
-  border-radius: 10px;
-}
-.summary {
-  font-size: 0.8em;
-}
-
-/**
-    HELP PAGE STYLING
-*/
-
-.support-commerce-header {
+.events-item-3 {
   text-align: center;
 }
-
-.support-hero-image-smaller {
-  display: block;
-  margin: auto;
-  border-radius: 15px;
-  box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
-  width: 80%;
+.events-item-3 > p {
+  line-height: 25px;
 }
-
-.support-hero {
+.event-card-image-container {
   display: none;
 }
-/**
-    Footer Sytling
-*/
-
-.footer-link {
-  margin: 0 5%;
+.event-link {
+  bottom: 0;
+  white-space: nowrap;
+}
+.event-card {
+  width: 90%;
+  padding: 3%;
+}
+/* help.html styling */
+.help-grid-container {
+  display: block;
+}
+.help-item-3 {
+  text-align: center;
+}
+.support-social-header {
+  text-align: center;
+}
+.social-section {
+  flex-direction: column;
+  margin-top: 10%;
+}
+.support-social-box {
+  width: 90%;
+  margin: 3% auto;
+}
+.support-social-box > img {
+  width: 20%;
+  margin-bottom: 5%;
+}
+.help-commerce-header {
+  text-align: center;
+  margin-top: 10%;
+}
+.help-hero {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10%;
+}
+/* app.html styling */
+.app-grid-container {
+  display: block;
+}
+.preview-section {
+  display: none;
+}
+.app-item-3 {
+  flex-direction: column;
+}
+.app-item-4 {
+  margin-bottom: 10%;
+}
+.download-button {
+  margin-bottom: 10%;
 }
