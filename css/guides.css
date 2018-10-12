@@ -206,7 +206,7 @@ p {
 }
 
 pre {
-  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18);
+  /* box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18); */
   border-radius: 14px;
   margin: 5px 0px 5px 75px;
   background-color: #1b2834;
@@ -359,9 +359,17 @@ td {
   width: 680px;
 }
 
+.prepre {
+  background: rgba(80, 90, 114, 1);
+}
+
+.cliapp .sentence2 {
+  color: rgba(250, 250, 250, 0.6);
+}
+
 .cliapp {
   width: 100%;
-  background: rgb(234, 234, 240);
+  background: #1b2834;
   height: 940px;
   margin-top: -60px;
   margin-bottom: -100px;
@@ -422,7 +430,7 @@ text-align: left;
 .top12-block {
 margin-left: 115px;
 margin-right: 100px;
-margin-bottom: 50px;
+margin-bottom: 30px;
 text-align: center;
 }
 
