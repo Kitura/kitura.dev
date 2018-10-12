@@ -8,6 +8,21 @@ header {
   margin-top: 0;
 }
 
+pre {
+  /* box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18); */
+  border-radius: 14px;
+  margin: 5px 0px 5px 75px;
+  background-color: #1b2834;
+  color: white;
+  padding: 14px 20px;
+  font-family: IBM Plex Mono, monospace;
+  line-height: 25px;
+  font-size: 13px;
+  overflow-x: scroll;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 
 .speech-bubble {
 	position: relative;
@@ -205,21 +220,6 @@ p {
   color: rgb(100, 100, 110);
 }
 
-pre {
-  /* box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.18); */
-  border-radius: 14px;
-  margin: 5px 0px 5px 75px;
-  background-color: #1b2834;
-  color: white;
-  padding: 14px 20px;
-  font-family: IBM Plex Mono, monospace;
-  line-height: 25px;
-  font-size: 13px;
-  overflow-x: scroll;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
 ul {
   margin-left: 10%;
   margin-bottom: 10px;
@@ -375,6 +375,49 @@ td {
 
 .cliapp .sentence2 {
   color: rgba(250, 250, 250, 0.6);
+}
+
+
+.xccreate {
+  width: 100%;
+  background: #1b2834;
+  height: 570px;
+  margin-top: -80px;
+  margin-bottom: -40px;
+  -webkit-clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 90%);
+  clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 100%);
+  z-index: 0;
+  padding-top: 110px;
+}
+.xccreate .sentence {
+  color: rgba(250, 250, 250, 0.6);
+  margin-left: 180px;
+  margin-right: 180px;
+}
+.xccreate pre {
+  background: rgba(80, 90, 114, 1);
+  width: 640px;
+  margin-left: 180px;
+}
+
+.xccreate2 {
+  width: 100%;
+  background: rgb(234, 234, 240);
+  height: 370px;
+  margin-top: -20px;
+  margin-bottom: 60px;
+  -webkit-clip-path: polygon(0 0, 100% 16%, 100% 100%, 0 100%);
+  clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 100%);
+  z-index: 0;
+  padding-top: 60px;
+}
+.xccreate2 .sentence {
+  margin-left: 180px;
+  margin-right: 180px;
+}
+.xccreate2 ul {
+  margin-left: 200px;
+  margin-bottom: 50px;
 }
 
 .legacydocker {
