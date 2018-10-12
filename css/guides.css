@@ -361,10 +361,60 @@ td {
 
 .prepre {
   background: rgba(80, 90, 114, 1);
+  border-radius: 14px;
+  margin: 5px 0px 5px 75px;
+  color: white;
+  padding: 14px 20px;
+  font-family: IBM Plex Mono, monospace;
+  line-height: 25px;
+  font-size: 13px;
+  overflow-x: scroll;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .cliapp .sentence2 {
   color: rgba(250, 250, 250, 0.6);
+}
+
+.legacydocker {
+  width: 100%;
+  background: rgb(234, 234, 240);
+  height: 710px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  -webkit-clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 100%);
+  clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 100%);
+  z-index: 0;
+  padding-top: 140px;
+}
+.legacydocker .sentence {
+  margin-left: 180px;
+  margin-right: 180px;
+}
+.legacydocker ul {
+  margin-left: 200px;
+  margin-bottom: 50px;
+}
+
+.dockermac {
+  width: 100%;
+  background: #1b2834;
+  height: 600px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  -webkit-clip-path: polygon(0 0, 100% 16%, 100% 84%, 0 100%);
+  clip-path: polygon(0 0, 100% 16%, 100% 84%, 0 100%);
+  z-index: 0;
+  padding-top: 140px;
+}
+.dockermac .sentence0 {
+  color: black;
+}
+.dockermac .sentence {
+  color: rgba(250, 250, 250, 0.6);
+  margin-left: 180px;
+  margin-right: 180px;
 }
 
 .cliapp {
@@ -423,7 +473,7 @@ td {
 
 .top1-block {
 margin-left: 115px;
-margin-right: 100px;
+margin-right: 180px;
 text-align: left;
 }
 
@@ -437,7 +487,7 @@ text-align: center;
 .option-bubble {
   	position: relative;
   	border-radius: .4em;
-    width: 600px;
+    width: 79%;
     height: 50px;
     border-radius: 20px;
     padding: 20px;

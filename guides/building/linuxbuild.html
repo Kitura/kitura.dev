@@ -41,11 +41,14 @@
 </header>
 <body>
   <section class="guide-content">
-                              <div class="speech-bubble2">
-                                  Leverage Docker for your dev env setup. Compile and test your code on macOS and Linux.
-                              </div>
+    <div class="option-bubble">
+    <div class="optbubble">Leverage Docker for your dev env setup</div><br><div class="opt2bubble">
+    Compile and test your code on macOS and Linux
+    </div>
+    </div>
 
-    <p>Here are steps you can take for setting up your development environment for Kitura:</p>
+          <div class="top1-block">
+    <p><br><br>Here are steps you can take for setting up your development environment for Kitura:</p>
     <p>1. Install <a href="https://docs.docker.com/engine/installation/">Docker</a> on your development system and start a Docker session/terminal.</p>
     <p>2. From the Docker session, pull down the swift-ubuntu image from Docker Hub:</p>
     <pre><code class="language-swift">docker pull ibmcom/swift-ubuntu:latest</code></pre>
@@ -54,33 +57,39 @@
     <p>For example:</p>
     <pre><code class="language-swift">docker run -i -t -v /Users/olivieri/git/Kitura/:/root/Kitura ibmcom/swift-ubuntu:latest /bin/bash</code></pre>
     <p>4. Now you have access to the same source code files from your macOS system and Docker container. You can compile and test your code on macOS and also on Linux with minimal effort.</p>
+</div>
 
-                <div class="speech-bubble2">
-                  Let's expose Kitura’s port in the Docker container to a host machine.
-                </div>
 
-    <p>Depending on your Docker installation the instructions to expose the Docker container’s port differs:</p>
-    <h3>If you are using the new Docker for Mac macOS app:</h3>
-    <p>Since the new Docker for Mac macOS app removed the need for VirtualBox, exposing your Kitura server’s port in a Docker container is much simpler. Simply pass in the port binding as an option when you first run the container image, like so:</p>
-    <pre><code class="language-swift">docker run -p {host-port}:{container-port} [additional-options] ibmcom/swift-ubuntu:latest.</code></pre>
-    <p>For example, if your Kitura server is running on port 3000, and you want to make it accessible at port 4000 on the host OS:</p>
-    <pre><code class="language-swift">docker run -p 4000:3000 ibmcom/swift-ubuntu:latest</code></pre>
-    <p>Your Kitura server can now listen on port 3000 inside the Docker container, and be accessible through your host OS at port 4000. Please check the <a href="https://docs.docker.com/engine/reference/run/#/expose-incoming-ports">official docs</a> for more information on how to configure the -p option.</p>
+                              <div class="option-bubble">
+                                  <div class="optbubble">Expose Kitura’s port in the Docker container to a host machine</div><br><div class="opt2bubble">If you are using the new Docker for Mac macOS app</div>
+                              </div>
+
+
+
+                                  <div class="dockermac">
+    <p class="sentence">Since the new Docker for Mac macOS app removed the need for VirtualBox, exposing your Kitura server’s port in a Docker container is much simpler. Simply pass in the port binding as an option when you first run the container image, like so:</p>
+    <pre><code class="language-swift prepre">docker run -p {host-port}:{container-port} [additional-options] ibmcom/swift-ubuntu:latest.</code></pre>
+    <p class="sentence">For example, if your Kitura server is running on port 3000, and you want to make it accessible at port 4000 on the host OS:</p>
+    <pre><code class="language-swift prepre">docker run -p 4000:3000 ibmcom/swift-ubuntu:latest</code></pre>
+    <p class="sentence">Your Kitura server can now listen on port 3000 inside the Docker container, and be accessible through your host OS at port 4000. Please check the <a href="https://docs.docker.com/engine/reference/run/#/expose-incoming-ports">official docs</a> for more information on how to configure the -p option.</p>
     <blockquote class="tip">
-      <p>This only works if you don’t have a live container already. There is no way to expose ports on a live container. <a href="http://stackoverflow.com/a/21374974">If you already have a live container and wish to expose a port, you can first commit the live container to a new image, then run this new image with the -p option.</a></p>
+      <p class="sentence0">This only works if you don’t have a live container already. There is no way to expose ports on a live container. <a href="http://stackoverflow.com/a/21374974">If you already have a live container and wish to expose a port, you can first commit the live container to a new image, then run this new image with the -p option.</a></p>
     </blockquote>
-    <h3>If you are using legacy Docker (i.e., with VirtualBox):</h3>
-    <p>These are the steps to expose Kitura’s port in a Docker container to the host (e.g. a macOS laptop):</p>
-    <p>1. Execute docker run -d -P ibmcom/swift-ubuntu:latest.</p>
-    <p>2. Execute docker ps.</p>
-    <p>3. Inspect the values under the PORTS column for the container you just started. You should see something like the following: 0.0.0.0:32768->8080/tcp. This means that Kitura’s port 8080 in the Docker container is mapped to port 32768 on the host. Now, the host in this case is not the macOS laptop. Instead, it is the VirtualBox machine that Docker uses.</p>
-    <p>4. Go to VirtualBox, and open the settings panel for the virtual machine that is running Docker (i.e. right click on the virtual machine and select Settings).</p>
-    <p>5. Go to the Network tab and click on Port Forwarding.</p>
-    <p>6. Add a new row with the following values:</p>
+</div>
 
-            <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
-              I need some help. Can I message you on Slack?
-            </div>
+
+                              <div class="option-bubble">
+                                  <div class="optbubble">Expose Kitura’s port in the Docker container to a host machine</div><br><div class="opt2bubble">If you are using legacy Docker (i.e., with VirtualBox)</div>
+                              </div>
+
+              <div class="legacydocker">
+    <p class="sentence">These are the steps to expose Kitura’s port in a Docker container to the host (e.g. a macOS laptop):</p>
+    <p class="sentence">1. Execute docker run -d -P ibmcom/swift-ubuntu:latest.</p>
+    <p class="sentence">2. Execute docker ps.</p>
+    <p class="sentence">3. Inspect the values under the PORTS column for the container you just started. You should see something like the following: 0.0.0.0:32768->8080/tcp. This means that Kitura’s port 8080 in the Docker container is mapped to port 32768 on the host. Now, the host in this case is not the macOS laptop. Instead, it is the VirtualBox machine that Docker uses.</p>
+    <p class="sentence">4. Go to VirtualBox, and open the settings panel for the virtual machine that is running Docker (i.e. right click on the virtual machine and select Settings).</p>
+    <p class="sentence">5. Go to the Network tab and click on Port Forwarding.</p>
+    <p class="sentence">6. Add a new row with the following values:</p>
     <ul>
       <li>name: kitura</li>
       <li>protocol: tcp</li>
@@ -88,9 +97,19 @@
       <li>host port: 8080</li>
       <li>guest port: {the host port reported under the PORTS column (e.g. 32768)}</li>
     </ul>
-    <p>7. Click OK and OK again to save the settings for the virtual machine.</p>
-    <p>8. Open your browser and go to http://localhost:8080. You should see the Kitura welcome page.</p>
+    <p class="sentence">7. Click OK and OK again to save the settings for the virtual machine.</p>
+    <p class="sentence">8. Open your browser and go to <a href="http://localhost:8080">http://localhost:8080</a>. You should see the Kitura welcome page.</p>
+</div>
 
+                            <div class="starsguide">
+                                <img class="stars" src="../../assets/stars.png">
+                            </div>
+                                                                  <div class="option-bubble2">
+                                                                      <div class="optbubble">Woohoo!</div><br><div class="opt2bubble">Congratulations</div>
+                                                                  </div>
+                      <div class="top12-block">
+                    <p class="sentence"><br><br>You have just leveraged Docker for your development environment setup.</p>
+</div>
   </section>
 </body>
 <footer>
