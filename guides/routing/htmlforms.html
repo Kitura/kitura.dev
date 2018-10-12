@@ -175,7 +175,7 @@ name=Andy&age=&isDeveloper=true</pre>
 struct Form: Codable, QueryParams {
     let name: String
     let age: Int?
-    let isDeveloper: Bool
+    let isDeveloper: Bool?
 }</code></pre>
     <p class="sentence">This provides a simple representation of the data we will receive from our form. The struct conforms to Codable so it can be used in Codable routes and also conforms to QueryParams so it can be decoded from the query parameters on a GET request.</p>
     <p class="sentence">If the form's <span class="highlight">age</span> or <span class="highlight">isDeveloper</span>  fields are empty, an empty value will be sent with the key (i.e "age=isDeveloper="). In this case, Kitura will decode <span class="highlight">age</span>  to <span class="highlight">nil</span>  and <span class="highlight">isDeveloper</span>  to <span class="highlight">false</span>.
@@ -191,7 +191,7 @@ struct Form: Codable, QueryParams {
     <pre><code class="language-swift">func postFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
     print("Codable POST route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
-    if(user.isDeveloper) { print("and they are a developer") }
+    if(user.isDeveloper ?? false) { print("and they are a developer") }
     respondWith(user, nil)
 }</code></pre>
     <p class="sentence">4. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "Post to Codable route" form and in the Xcode logger you should see our printed message with the form data.</p>
@@ -203,7 +203,7 @@ struct Form: Codable, QueryParams {
     <pre><code class="language-swift">func getFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
     print("Codable GET route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
-    if(user.isDeveloper) { print("and they are a developer") }
+    if(user.isDeveloper ?? false) { print("and they are a developer") }
     respondWith(user, nil)
 }</code></pre>
     <p class="sentence">7. Restart your server and go to <a href="http://localhost:8080/formwebpage.html" target="_blank">localhost:8080/formwebpage.html</a>. Send the "Get to Codable route" form and in the Xcode logger you should see our printed message with the form data.</p>
@@ -219,7 +219,7 @@ struct Form: Codable, QueryParams {
     }
     print("Raw POST route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
-    if(user.isDeveloper) { print("and they are a developer") }
+    if(user.isDeveloper ?? false) { print("and they are a developer") }
     response.status(.created).send(json: user)
     next()
 }</code></pre>
@@ -233,7 +233,7 @@ struct Form: Codable, QueryParams {
     }
     print("Raw GET route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
-    if(user.isDeveloper) { print("and they are a developer") }
+    if(user.isDeveloper ?? false) { print("and they are a developer") }
     response.status(.created).send(json: user)
     next()
 }</code></pre>
