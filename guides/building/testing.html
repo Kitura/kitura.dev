@@ -39,16 +39,25 @@
 </header>
 <body>
   <section class="guide-content">
-                                <div class="speech-bubble">
-                                    Testing your Kitura app and setting up the tests.
-                                </div>
+                                                                <div class="option-bubble">
+                                                                <div class="opt2bubble">
+                                                                Testing your Kitura app and setting up the tests
+                                                                </div>
+                                                                </div>
 
+                                                                                <div class="top1-block">
     <p>In the root level of your project, create a directory called Tests.</p>
     <p>Inside Tests create a directory for holding your test suite module. It is recommended that it is the same name as the module you wish to test, suffixed with Tests (for example: if you have a module Foo that you would like to test, create a directory FooTests).</p>
+</div>
 
-                                  <div class="speech-bubble">
-                                      Let's create some test cases.
-                                  </div>
+
+                                                              <div class="option-bubble">
+                                                              <div class="opt2bubble">
+                                                              Create test cases
+                                                              </div>
+                                                              </div>
+
+                                                                                                                                              <div class="top1-block">
     <p>Create a new Swift file in the test suite directory (for example: if you would like to test the Frob feature of your Foo module you might call it FooTests/FrobTests.swift)</p>
     <p>Add import XCTest at the top</p>
     <p>Add a line @testable import <module-name> for each of the modules you want to access in this set of tests. (Note the @testable keyword allows you to call internal methods in your tests)</p>
@@ -62,68 +71,79 @@
     ("testFrobbingTheFoo", testFrobbingTheFoo)
   ]
 }</code></pre>
-                                  <div class="speech-bubble">
-                                      Creating Test Main (only for Linux).
-                                  </div>
+</div>
 
-    <p>Inside your Tests directory, create a new file called LinuxMain.swift</p>
-    <p> In this file import all your test modules. The names of the test modules are the names of your test suite directories (eg: FooTests, which will import any classes defined in Swift files inside the FooTests module).</p>
-    <p>Import XCTest as well</p>
-    <p>Invoke XCTMain with an array as follows:</p>
+
+                                                              <div class="option-bubble">
+                                                              <div class="optbubble">Only for Linux</div><br>
+                                                              <div class="opt2bubble">Creating Test Main
+                                                              </div>
+                                                              </div>
+
+                                                                                                        <div class="xccreate3">
+    <p class="sentence">Inside your Tests directory, create a new file called LinuxMain.swift</p>
+    <p class="sentence"> In this file import all your test modules. The names of the test modules are the names of your test suite directories (eg: FooTests, which will import any classes defined in Swift files inside the FooTests module).</p>
+    <p class="sentence">Import XCTest as well</p>
+    <p class="sentence">Invoke XCTMain with an array as follows:</p>
     <pre><code class="language-swift">XCTMain([
    testCase(FrobTests.allTests)
 ])</code></pre>
-                                      <div class="speech-bubble">
-                                          Moment of truth. Run your tests.
-                                      </div>
-    <p>In your projects root directory, run the command swift test after having built them using swift build.</p>
+<p class="sentence">Moment of truth. Run your tests.</p>
+    <p class="sentence">In your projects root directory, run the command swift test after having built them using swift build.</p>
 
-                                          <div class="speech-bubble">
-                                              Here are some example files.
-                                          </div>
-    <p>Tests/FooTests/FrobTests.swift:</p>
-    <pre><code class="language-swift">import XCTest
-@testable import Foo
+    <p class="sentence">Here are some example files.</p>
+        <p class="sentence">Tests/FooTests/FrobTests.swift:</p>
+        <pre><code class="language-swift">import XCTest
+    @testable import Foo
 
-class FrobTests: XCTestCase {
-  static var allTests: [(String, (FrobTests) -> () throws -> Void)] {
-    return [
-      ("testFrobbingTheFoo", testFrobbingTheFoo)
-    ]
-  }
+    class FrobTests: XCTestCase {
+      static var allTests: [(String, (FrobTests) -> () throws -> Void)] {
+        return [
+          ("testFrobbingTheFoo", testFrobbingTheFoo)
+        ]
+      }
 
-  func testFrobbingTheFoo() {
-    let foo = Foo()
-    foo.frob()
-    foo.frob()
-    XCTAssertEqual(2, foo.frobCount, "incorrect number of frobs recorded")
-  }
-}</code></pre>
-    <p>Tests/LinuxMain.swift:</p>
-    <pre><code class="language-swift">import XCTest
-@testable import FooTests
+      func testFrobbingTheFoo() {
+        let foo = Foo()
+        foo.frob()
+        foo.frob()
+        XCTAssertEqual(2, foo.frobCount, "incorrect number of frobs recorded")
+      }
+    }</code></pre>
+        <p class="sentence">Tests/LinuxMain.swift:</p>
+        <pre><code class="language-swift">import XCTest
+    @testable import FooTests
 
-XCTMain([
-  testCase(FrobTests.allTests)
-])</code></pre>
-    <p>Sources/Foo/Foo.swift:</p>
+    XCTMain([
+      testCase(FrobTests.allTests)
+    ])</code></pre>
+        <p class="sentence">Sources/Foo/Foo.swift:</p>
+        <pre><code class="language-swift">public class Foo: CustomStringConvertible {
+      internal var frobCount = 0
 
-                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
-                  I need some help. Can I message you on Slack?
-                </div>
-    <pre><code class="language-swift">public class Foo: CustomStringConvertible {
-  internal var frobCount = 0
+      public func frob() {
+        frobCount = frobCount + 1
+      }
 
-  public func frob() {
-    frobCount = frobCount + 1
-  }
+      public var description: String {
+        return (frobCount == 0 ? "unfrobbed" : "frobbed")
+      }
 
-  public var description: String {
-    return (frobCount == 0 ? "unfrobbed" : "frobbed")
-  }
+      public init() {}
+    }</code></pre>
+</div>
 
-  public init() {}
-}</code></pre>
+
+
+                            <div class="starsguide">
+                                <img class="stars" src="../../assets/stars.png">
+                            </div>
+                                                                  <div class="option-bubble2">
+                                                                      <div class="optbubble">Woohoo!</div><br><div class="opt2bubble">Congratulations</div>
+                                                                  </div>
+                      <div class="top12-block">
+                    <p class="sentence"><br><br>You have just learnt to test your Kitura app.</p>
+</div>
   </section>
 
 </body>
