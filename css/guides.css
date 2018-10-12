@@ -325,8 +325,8 @@ td {
   height: 560px;
   margin-top: 10px;
   margin-bottom: 60px;
-  -webkit-clip-path: polygon(0 2%, 100% 16%, 100% 100%, 0 100%);
-  clip-path: polygon(0 16%, 100% 0%, 100% 84%, 0 100%);
+  -webkit-clip-path: polygon(0 2%, 100% 20%, 100% 100%, 0 100%);
+  clip-path: polygon(0 2%, 100% 20%, 100% 100%, 0 100%);
   z-index: 0;
   padding-top: 90px;
   padding-left: 100px;
@@ -374,7 +374,7 @@ td {
   margin-top: -60px;
   margin-bottom: -100px;
   -webkit-clip-path: polygon(0 12%, 100% 0%, 100% 100%, 0 90%);
-  clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 90%);
+  clip-path: polygon(0 12%, 100% 0%, 100% 100%, 0 90%);
   z-index: 0;
   padding-top: 160px;
   padding-left: 100px;
