@@ -337,13 +337,17 @@ td {
   margin-left: 60px;
 }
 
+.rotateim .createappim {
+					transform: rotate(-4deg);
+}
+
 .createappim {
   position: absolute;
   width: 30%;
   border-radius: 15px;
   margin-top: -360px;
   margin-right: 160px;
-  box-shadow: 0px 40px 70px rgba(40, 40, 45, 0.22);
+  box-shadow: 40px 40px 70px rgba(40, 40, 45, 0.22);
 
   margin-left: 60%;
   margin-right: 20%;
