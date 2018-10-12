@@ -41,70 +41,101 @@
 <body>
   <section class="guide-content">
     <div class="title-block">
+      <div class="option-bubble">
+      <div class="opt2bubble">
+      Getting started
+      </div>
+      </div>
+        <div class="top1-block">
 
-                          <div class="speech-bubble">
-                              Let's learn how to set up and get started!
-                          </div>
+    <p>Check you have all required <a href="building/settingup.html">prerequisites</a> installed. Once you have installed them, you can choose between Option 1 which uses a macOS application to generate a project, or Option 2 which uses a command line tool.</p>
+
     </div>
-    <p class="sentence">Check you have all required <a href="building/settingup.html">prerequisites</a> installed.</p>
-    <p>Once you have installed them, you can choose between Option 1 which uses a macOS application to generate a project, or Option 2 which uses a command line tool.</p>
+  </div>
 
-                              <div class="speech-bubble">
-                                  Your first option is to use the Kitura macOS app.
+                              <div class="option-bubble">
+                                  <div class="optbubble">Option 1</div><br><div class="opt2bubble">Kitura macOS app</div>
                               </div>
-    <p><img src="../assets/preview1.png" class="center-image" alt="App Screengrab"/></p>
-    <p class="sentence">Get started without the command line by using our new <a href="../app.html">macOS app</a>. It will download dependencies using a template and opens the project automatically.</p>
+
+
+    <div class="macapp">
+        <img src="../assets/preview1.png" alt="mac-app">
+        <div class="mactext"><b>Get started quickly with the<br>Kitura macOS app.</b><br><br>There's no need to use the command line as the whole process, from package resolution to Xcode project generation, is automated.<br><br>Winning.</div>
+        <div class="mactext2"><b>Quick and easy.</b><br><br>No fuss. No messing around with the Terminal. No worries.<br><br>Hit the download button below to get up and running before you can say 'Server-Side Swift'.</div>
+    </div>
+    <button class="button macb start-button" type="button" name="start-button" onclick="window.open('Kitura.dmg')"><img class="slack-icon" src="../assets/start.png" alt="Start Icon">Download</button>
+
+    <img class="noti" src="../assets/noti.png" alt="mac-app-notification">
+    <img class="noti2" src="../assets/noti3.png" alt="mac-app-notification">
+
+
+      <div class="top1-block">
     <p class="sentence">Once you have downloaded and installed the app using the above link, run it and select the <span class="highlight">Starter</span> tile, and name your project <span class="highlight">HelloKitura</span> in the dialog box. Once it has created the project, select <span class="highlight">Open</span>. This will open the project in Xcode.</p>
     <p class="sentence">You're now ready to skip ahead to <a href="#creating-app">Creating Your App</a>.</p>
+</div>
 
-                                  <div class="speech-bubble2">
-                                      Your second option is to use the Kitura Command Line Interface (CLI).
+
+                                  <div class="option-bubble">
+                                      <div class="optbubble">Option 2</div><br><div class="opt2bubble">Kitura Command Line Interface (CLI)</div>
                                   </div>
-      <p class="sentence">The Kitura CLI offers a quick way get started on both macOS and supported Linux platforms using the Terminal. See the source for it on <a href="kitura create">GitHub</a>.</p>
-    <p class="sentence">Install <a href="https://brew.sh" target="_blank">Homebrew</a>:</p>
-    <pre><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre>
-    <p class="sentence">Install Homebrew tap.</p>
-    <p class="sentence">Installing Kitura’s Homebrew tap will allow <span class="highlight">brew</span> to access Kitura’s package repository.</p>
-    <pre><code class="language-swift">brew tap ibm-swift/kitura</code></pre>
-    <p class="sentence">Install Kitura’s command-line interface.</p>
-    <pre><code class="language-swift">brew install kitura</code></pre>
-    <p class="sentence">Create a directory for your Kitura project.</p>
-    <pre><code class="language-swift">mkdir HelloKitura
+
+        <div class="cliapp">
+          <p class="sentence">Install <a href="https://brew.sh" target="_blank">Homebrew</a>:</p>
+          <pre><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre>
+          <p class="sentence">Install Homebrew tap.</p>
+          <p class="sentence">Installing Kitura’s Homebrew tap will allow <span class="highlight">brew</span> to access Kitura’s package repository.</p>
+          <pre><code class="language-swift">brew tap ibm-swift/kitura</code></pre>
+          <p class="sentence">Install Kitura’s command-line interface.</p>
+          <pre><code class="language-swift">brew install kitura</code></pre>
+          <p class="sentence">Create a directory for your Kitura project.</p>
+          <pre><code class="language-swift">mkdir HelloKitura
 cd HelloKitura</code></pre>
-    <p class="sentence">Using the Kitura command-line interface, generate a basic starter project.</p>
-    <pre><code class="language-swift">kitura init</code></pre>
+          <p class="sentence">Using the Kitura command-line interface, generate a basic starter project.</p>
+          <pre><code class="language-swift">kitura init</code></pre>
+          <p class="sentence234">The Kitura CLI offers a quick way get started on both macOS and supported Linux platforms using the Terminal. See the source for it on <a href="kitura create">GitHub</a>.</p>
 
+              <p class="sentence">Open the generated <span class="highlight">HelloKitura.xcodeproj</span> project in Xcode.</p>
+              <pre><code class="language-swift">open HelloKitura.xcodeproj</code></pre>
 
-    <div class="speech-bubble4" onclick="window.open('../guides/kituracli/layout_reference.html', '_self')">
-      Tell me more about this project generation.
-    </div>
-
-    <p class="sentence">Open the generated <span class="highlight">HelloKitura.xcodeproj</span> project in Xcode.</p>
-    <pre><code class="language-swift">open HelloKitura.xcodeproj</code></pre>
-
-                                      <div class="speech-bubble3">
-                                          Let's create your app now!
-                                      </div>
-    <p class="sentence">Edit <span class="highlight">Sources/Application/Application.swift</span> and add the following code inside the <span class="highlight">postInit()</span> function.</p>
-    <pre><code class="language-swift">// Handle HTTP GET requests to "/"
-router.get("/") { request, response, next in
-    response.send("Hello, World!")
-    next()
-}</code></pre>
-    <p class="sentence">Edit the Xcode build scheme so it specifies HelloKitura as the Executable (by default it will be set to HelloKitura-Package when you open Xcode).</p>
-    <p><img src="../assets/Edit_Xcode_Build_Schema.png" class="center-image" alt="EditXcodeBuildSchema" width="400" style="max-width:100%" /></p>
-    <p class="sentence">Click the play button (⌘-R) to build and run your new web application.</p>
-    <p class="sentence">Open your web browser at <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</p>
-    <p class="sentence">You should see the following page in your browser:</p>
-    <pre><code>"Hello, World!"</code></pre>
-            <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
-              I need some help. Can I message you on Slack?
+              <div class="sentence2345" onclick="window.open('../guides/kituracli/layout_reference.html', '_self')">
+                Find out more about this project generation.
+              </div>
             </div>
-    <p class="sentence">Congratulations! You have just created your first server-side Swift application using Kitura.</p>
-    <p class="sentence">Learn how to build a back-end for the <a href="https://github.com/IBM/ToDoBackend">TodoList web application</a>.</p>
-    <p class="sentence">Learn how to build a back-end for the <a href="https://github.com/IBM/FoodTrackerBackend">Apple FoodTracker iOS application</a>.</p>
+
+                                              <div class="option-bubble">
+                                                  <div class="optbubble">Last but not least</div><br><div class="opt2bubble">Create your app</div>
+                                              </div>
+
+                    <div class="createapp">
+                      <p class="sentence">Edit <span class="highlight">Sources/Application/Application.swift</span> and add the following code inside the <span class="highlight">postInit()</span> function.</p>
+                      <pre><code class="language-swift">// Handle HTTP GET requests to "/"
+router.get("/") { request, response, next in
+  response.send("Hello, World!")
+  next()
+}</code></pre>
+                          <p class="sentence">Edit the Xcode build scheme so it specifies HelloKitura as the Executable (by default it will be set to HelloKitura-Package when you open Xcode).</p>
+                          <p class="sentence">Click the play button (⌘-R) to build and run your new web application.</p>
+                          <p class="sentence">Open your web browser at <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</p>
+                          <p class="sentence">You should see the following page in your browser:</p>
+                          <pre><code>"Hello, World!"</code></pre>
+                    </div>
+                    <img src="../assets/Edit_Xcode_Build_Schema.png" class="createappim" alt="EditXcodeBuildSchema" width="400" style="max-width:100%" />
 
 
+                            <div class="starsguide">
+                                <img class="stars" src="../assets/stars.png">
+                            </div>
+                                                                  <div class="option-bubble2">
+                                                                      <div class="optbubble">Woohoo!</div><br><div class="opt2bubble">Congratulations</div>
+                                                                  </div>
+                      <div class="top12-block">
+                    <p class="sentence"><br><br>You have just created your first server-side Swift application using Kitura.</p>
+                    <p class="sentence">Learn how to build a back-end for the <a href="https://github.com/IBM/ToDoBackend">TodoList web application</a>.<br>Learn how to build a back-end for the <a href="https://github.com/IBM/FoodTrackerBackend">Apple FoodTracker iOS application</a>.</p>
+</div>
+
+            <!-- <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
+              I need some help. Can I message you on Slack?
+            </div> -->
 
   </section>
 </body>
