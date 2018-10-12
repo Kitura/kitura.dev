@@ -447,6 +447,32 @@ td {
   margin-left: 180px;
 }
 
+.xccreate4 {
+  width: 100%;
+  background: #1b2834;
+  height: 1100px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  -webkit-clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 100%);
+  clip-path: polygon(0 16%, 100% 0%, 100% 100%, 0 100%);
+  z-index: 0;
+  padding-top: 80px;
+}
+.xccreate4 .sentence {
+  color: rgba(250, 250, 250, 0.6);
+  margin-left: 180px;
+  margin-right: 180px;
+}
+.xccreate4 ul {
+  margin-left: 200px;
+  margin-bottom: 50px;
+}
+.xccreate4 pre {
+  background: rgba(80, 90, 114, 1);
+  width: 800px;
+  margin-left: 180px;
+}
+
 .legacydocker {
   width: 100%;
   background: rgb(234, 234, 240);

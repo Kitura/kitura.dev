@@ -42,12 +42,16 @@
 <body>
   <section class="guide-content">
 
-                                <div class="speech-bubble2">
-                                    So, what is SwiftMetrics? (also known as Application metrics for Swift).
-                                </div>
+                                                                  <div class="option-bubble">
+                                                                  <div class="opt2bubble">
+                                                                  SwiftMetrics (also known as Application metrics for Swift)
+                                                                  </div>
+                                                                  </div>
 
+                                                                                                                                                  <div class="top1-block">
     <p class="sentence"><a href="https://developer.ibm.com/swift/monitoring-diagnostics/application-metrics-for-swift/">SwiftMetrics</a> instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API or visually with the included embedded dashboard.</p>
     <p class="sentence">SwiftMetrics provides the following built-in data collection sources:</p>
+  </div>
     <table>
       <thead>
         <tr>
@@ -74,13 +78,20 @@
         </tr>
       </tbody>
     </table>
-                                    <div class="speech-bubble">
-                                      Let's add SwiftMetrics monitoring to your app.
-                                    </div>
-                                    
+
+
     <blockquote class="tip">
       <p>If you created your Kitura application using the Kitura CLI or by building a starter project using the kitura app then you will already have Swift Metrics included in your project.</p>
     </blockquote>
+
+
+                                                                                                          <div class="option-bubble">
+                                                                                                          <div class="opt2bubble">
+                                                                                                          Add SwiftMetrics monitoring to your app
+                                                                                                          </div>
+                                                                                                          </div>
+
+<div class="xccreate4">
     <p class="sentence">To add SwiftMetrics monitoring to your code</p>
     <pre><code class="language-swift">
 import SwiftMetrics
@@ -103,9 +114,7 @@ dependencies: [
     <p class="sentence">SwiftMetricsDash : Starting on port 8080</p>
     <p class="sentence">You can pass an existing Router object to SwiftMetricsDash from which to serve the page up on. SwiftMetricsDash will then use whatever server you are using in your existing application.</p>
 
-                <div class="speech-bubble4" onclick="window.open('http://slack.kitura.io/')">
-                  I need some help. Can I message you on Slack?
-                </div>
+
                 <pre><code class="language-swift">
 let sm = try SwiftMetrics()
 let router: Router
@@ -116,6 +125,21 @@ let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)
 // Add an HTTP server and connect it to the router
 Kitura.addHTTPServer(onPort: 8080, with: router)
     </code></pre>
+
+</div>
+
+
+
+                            <div class="starsguide">
+                                <img class="stars" src="../../assets/stars.png">
+                            </div>
+                                                                  <div class="option-bubble2">
+                                                                      <div class="optbubble">Woohoo!</div><br><div class="opt2bubble">Congratulations</div>
+                                                                  </div>
+                      <div class="top12-block">
+                    <p class="sentence"><br><br>You have just learnt how to add SwiftMetrics.</p>
+</div>
+
   </section>
 </body>
 <footer>
