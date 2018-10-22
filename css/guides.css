@@ -380,7 +380,7 @@ td {
 
 .xccreate {
   width: 100%;
-  background: #1b2834;
+  background: rgb(234, 234, 240);
   height: 570px;
   margin-top: -80px;
   margin-bottom: -40px;
@@ -390,7 +390,7 @@ td {
   padding-top: 110px;
 }
 .xccreate .sentence {
-  color: rgba(250, 250, 250, 0.6);
+  color: black;
   margin-left: 180px;
   margin-right: 180px;
 }
@@ -423,7 +423,7 @@ td {
 
 .xccreate3 {
   width: 100%;
-  background: #1b2834;
+  background: rgb(234, 234, 240);
   height: 1700px;
   margin-top: 20px;
   margin-bottom: 60px;
@@ -433,7 +433,7 @@ td {
   padding-top: 80px;
 }
 .xccreate3 .sentence {
-  color: rgba(250, 250, 250, 0.6);
+  color: black;
   margin-left: 180px;
   margin-right: 180px;
 }
@@ -449,7 +449,7 @@ td {
 
 .xccreate4 {
   width: 100%;
-  background: #1b2834;
+  background: rgb(234, 234, 240);
   height: 1100px;
   margin-top: 20px;
   margin-bottom: 60px;
@@ -459,7 +459,7 @@ td {
   padding-top: 80px;
 }
 .xccreate4 .sentence {
-  color: rgba(250, 250, 250, 0.6);
+  color: black;
   margin-left: 180px;
   margin-right: 180px;
 }
@@ -475,7 +475,7 @@ td {
 
 .xccreate5 {
   width: 100%;
-  background: #1b2834;
+  background: rgb(234, 234, 240);
   height: 320px;
   margin-top: 20px;
   margin-bottom: 0px;
@@ -485,7 +485,7 @@ td {
   padding-top: 70px;
 }
 .xccreate5 .sentence {
-  color: rgba(250, 250, 250, 0.6);
+  color: black;
   margin-left: 180px;
   margin-right: 180px;
 }
@@ -525,7 +525,7 @@ td {
 
 .xccreate7 {
   width: 100%;
-  background: #1b2834;
+  background: rgb(234, 234, 240);
   height: 1200px;
   margin-top: 0px;
   margin-bottom: -30px;
@@ -535,7 +535,7 @@ td {
   padding-top: 100px;
 }
 .xccreate7 .sentence {
-  color: rgba(250, 250, 250, 0.6);
+  color: black;
   margin-left: 180px;
   margin-right: 180px;
 }
@@ -595,7 +595,7 @@ td {
 
 .dockermac {
   width: 100%;
-  background: #1b2834;
+  background: rgb(234, 234, 240);
   height: 600px;
   margin-top: 30px;
   margin-bottom: 40px;
@@ -608,7 +608,7 @@ td {
   color: black;
 }
 .dockermac .sentence {
-  color: rgba(250, 250, 250, 0.6);
+  color: black;
   margin-left: 180px;
   margin-right: 180px;
 }
