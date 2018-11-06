@@ -1,7 +1,7 @@
 /*general styling*/
 body {
   font-family: IBM Plex Sans, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 h1, h2, h3, h4 {
   font-weight: bold;
@@ -17,6 +17,9 @@ h3 {
 }
 h4 {
   font-size: 1.2em;
+}
+input:focus {
+  outline: none;
 }
 .flex-row {
   display: flex;
@@ -235,115 +238,126 @@ footer {
   text-align: center;
 }
 /* Learn Sytling */
-/* Guide section styling */
-.guide-section {
-  background: linear-gradient(#00bbe6, #0086a5);
-  border-radius: 5px;
-  box-shadow: 2px 5px 50px #cdcdcd;
+.docs-sidebar {
+	height: 100vh;
+  width: 20%;
+  background: #FAF8F8;
+  box-shadow: 1px 0 1px #DEDEDE;
+	position: fixed;
+  color: #676767;
+	left: 0;
+	overflow-y: auto;
 }
-.guide-card {
-  background-color: white;
-  margin: 1% auto;
-  border-radius: 5px;
-  width: 22%;
-  padding: 1%;
-  align-items: center;
-  box-shadow: 3px 3px 5px #606060;
-}
-.guide-card > h4 {
+
+.docs-title {
+  font-size: 2.44rem;
+  font-weight: 600;
   text-align: center;
-}
-.guide-card-image {
-  width: 20%;
-  height: 15%;
-  display: block;
-  margin: 2% auto;
-}
-.guide-list {
-  margin-top: 10%;
-}
-.guide-list > li {
-  font-size: 0.95em;
-  margin-bottom: 8%;
-}
-.guide-list > li:hover {
-  font-weight: bold;
-}
-/* Tutorial section styling */
-.tutorial-section {
-  justify-content: center;
-}
-/* Community card styling added here as well */
-.tutorial-card, .community-card {
-  height: 200px;
-  width: 20%;
-  margin: 3% 1%;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px #606060;
-  color: white;
-  overflow: hidden;
-}
-.tutorial-card > p, .community-card > p {
-  font-size: 0.8em;
-  margin: 3%;
-}
-.tutorial-card > h4, .community-card > h4 {
-  margin: 3%;
-}
-.wenderlich-starter, .food-tracker, .todo-backend {
-  background: linear-gradient(#00bbe6, #0086a5);
-}
-.wenderlich-stencil {
-  background: linear-gradient(forestgreen, darkgreen);
-}
-.tutorial-card > img {
-  display: block;
   margin: 0 auto;
-  margin-top: 15px;
+  margin-top: 2.7rem;
 }
-.wenderlich-starter > img {
-  width: 45%;
+
+.docs-title-section {
+  color: #0780B5;
 }
-.food-tracker > img {
-  width: 65%;
+
+.underline {
+  height: 1px;
+  background: #C7C7C7;
+  width: 16rem;
+  margin: 0 auto;
+  opacity: 0.21;
+  margin-bottom: 3.4rem;
 }
-.todo-backend > img {
-  width: 70%;
+
+.sidebar-nav {
+  width: 13rem;
+  margin: 0 auto;
 }
-.wenderlich-stencil > img {
-  width: 80%;
+
+.sidebar-list {
+  list-style: none;
+  font-size: 1.33rem;
+  font-weight: 500;
 }
-/* Community section styling */
-.community-section {
+
+.sidebar-item {
+  margin-bottom: 1.5rem;
+	cursor: pointer;
+	-webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.nested-sidebar-list {
+	list-style: none;
+	font-size: 1rem;
+	margin-left: 1rem;
+	margin-top: -0.5rem;
+}
+
+.nested-sidebar-item {
+	margin-bottom: 1rem;
+	cursor: pointer;
+}
+.content {
+	display: none;
+}
+
+/*
+ Search section styling
+*/
+.search-container {
+  height: 5.1rem;
+  border-right: 1px solid rgba(234, 232, 232, 0.42);
+  border-bottom: 1px solid rgba(234, 232, 232, 0.42);
+}
+.docs-search {
+  width: 90%;
+  height: 90%;
+  border: none;
+  color: #676767;
+  opacity: 0.58;
+  font-size: 1.33rem;
+	padding-left: 2rem;
+	margin-left: 1rem;
+}
+
+/* Nav section styling */
+
+.docs-nav {
+  height: 5.1rem;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(234, 232, 232, 0.42);
 }
-.community-card {
-  margin: 0 1% 3% 1%;
+
+.apiref-button {
+  height: 2.66rem;
+  width: 10.88rem;
+  background: #6478C8;
+  color: white;
+  border-radius: 0.55rem;
+  border: none;
+  box-shadow: 1px 2px 2px #DEDEDE;
+  font-size: 1.11rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+  cursor: pointer;
 }
-.hacking-swift {
-  background-color: black;
+
+button:focus {
+  outline: none;
 }
-.kitura-dawn {
-  background: linear-gradient(#00bbe6, #0086a5);
-}
-.objc-book {
-  background: linear-gradient(rgb(238, 157, 57), rgb(221, 70, 58));
-}
-.hacking-swift > img, .kitura-dawn > img {
-  width: 100%;
-}
-.hacking-swift > img {
-  margin-top: 5%;
-}
-.swift-book-icon-left, .swift-book-icon-right {
-  font-size: 100px;
-  display: inline-block;
-}
-.swift-book-icon-left {
-  margin: 20px 0 0 20%;
-}
-.swift-book-icon-right {
-  margin: 20px 0 0 -20px;
+
+.nav-item {
+  margin-right: 1.5rem;
+  color: #0780B5;
+  cursor: pointer;
 }
 
 /* Packages Styling */
@@ -560,33 +574,29 @@ footer {
     'footer footer footer footer footer footer';
 }
 /* learn.html CSS grid layout */
-.learn-item-1 {
-  grid-area: header;
+.docs-item-1 {
+  grid-area: sidebar;
 }
-.learn-item-2 {
+
+.docs-item-2 {
+  grid-area: search;
+}
+
+.docs-item-3 {
   grid-area: nav;
 }
-.learn-item-3 {
-  grid-area: guides;
+
+.docs-item-4 {
+  grid-area: iframe;
 }
-.learn-item-4 {
-  grid-area: tutorials;
-}
-.learn-item-5 {
-  grid-area: community;
-}
-.learn-item-6 {
-  grid-area: footer;
-}
-.learn-grid-container {
+
+.docs-grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr;
+	grid-template-rows: 6rem;
   grid-template-areas:
-      'header header nav nav nav nav'
-      'guides guides guides guides guides guides'
-      'tutorials tutorials tutorials tutorials tutorials tutorials'
-      'community community community community community community'
-      'footer footer footer footer footer footer';
+      'sidebar search nav'
+      'sidebar iframe iframe';
 }
 /* packages.html CSS grid layout */
 .packages-item-1 {
