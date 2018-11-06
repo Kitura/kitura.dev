@@ -13,15 +13,27 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-function loadPage(src) {
+function loadPage(src, id) {
   localStorage.setItem("src", src);
+  localStorage.setItem("id", id);
+  var selectables = document.getElementsByClassName('selectable');
+
+  for (var j = 0; j < selectables.length; j++) {
+    if (selectables[j].classList.contains('active')) {
+      selectables[j].classList.remove('active')
+    }
+  }
+
+  document.getElementById(id).classList.add('active');
+
   document.getElementById('doc-window').setAttribute('src', src);
 }
 
 if (localStorage.getItem("src") === "null") {
   localStorage.setItem("src", './docs/kitura-cli.html');
+  localStorage.setItem("id", 'kitura-cli');
 }
-loadPage(localStorage.getItem("src"));
+loadPage(localStorage.getItem("src"), localStorage.getItem("id"));
 
 
 function resizeIframe(obj) {

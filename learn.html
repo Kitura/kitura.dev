@@ -30,71 +30,65 @@
         <ul class="sidebar-list">
           <li class="sidebar-item collapsible">Getting Started</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="setting-up" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/setting-up.html', 'setting-up')">Setting up</li>
+            <li id="configuration" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/configuration.html', 'configuration')">Configuration</li>
+            <li id="kitura-cli" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/kitura-cli.html', 'kitura-cli')">Kitura CLI</li>
+            <li id="macos-app" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/macos-app.html', 'macos-app')">macOS App</li>
+            <li id="spm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/spm.html', 'spm')">SPM</li>
           </ul>
-          <li class="sidebar-item" onclick="loadPage('./docs/logging.html')">Logging</li>
-          <li class="sidebar-item" onclick="loadPage('./docs/monitoring.html')">Monitoring</li>
-          <li class="sidebar-item" onclick="loadPage('./docs/open-api.html')">OpenAPI</li>
+          <li id="logging" class="sidebar-item selectable" onclick="loadPage('./docs/logging.html', 'logging')">Logging</li>
           <li class="sidebar-item collapsible">Routing</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/routing.html', 'routing')">What is routing?</li>
+            <li id="raw-routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/raw-routing.html', 'raw-routing')">Raw routing</li>
+            <li id="codable-routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/codable-routing.html', 'codable-routing')">Codable routing</li>
           </ul>
           <li class="sidebar-item collapsible">Middlewares</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="middleware" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/middleware.html', 'middleware')">What is a Middleware?</li>
+            <li id="raw-middleware" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/raw-middleware.html', 'raw-middleware')">Raw middlewares</li>
+            <li id="typesafe-middleware" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/typesafe-middleware.html', 'typesafe-middleware')">Type-safe middlewares</li>
           </ul>
+          <li id="monitoring" class="sidebar-item selectable" onclick="loadPage('./docs/monitoring.html', 'monitoring')">Monitoring</li>
+          <li id="openapi" class="sidebar-item selectable" onclick="loadPage('./docs/open-api.html', 'openapi')">OpenAPI</li>
           <li class="sidebar-item collapsible">Databases</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="databases" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/databases.html', 'databases')">What are Databases?</li>
+            <li id="swift-kuery" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/swift-kuery.html', 'swift-kuery')">Swift-Kuery</li>
+            <li id="orm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/orm.html', 'orm')">ORM</li>
+            <li id="plugins" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/plugins.html', 'plugins')">Plugins</li>
+            <li id="couchdb" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/couchdb.html', 'couchdb')">CouchDB</li>
+            <li id="redis" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/redis.html', 'redis')">Redis</li>
           </ul>
           <li class="sidebar-item collapsible">Sessions</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="sessions" class="nested-sidebar-item selectable" onclick="loadPage('./docs/sessions/sessions.html', 'sessions')">What are Sessions?</li>
+            <li id="raw-sessions" class="nested-sidebar-item selectable" onclick="loadPage('./docs/sessions/raw-sessions.html', 'raw-sessions')">Raw sessions</li>
+            <li id="typesafe-sessions" class="nested-sidebar-item selectable" onclick="loadPage('./docs/sessions/typesafe-sessions.html', 'typesafe-sessions')">Type-safe sessions</li>
           </ul>
           <li class="sidebar-item collapsible">Authentication</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="authentication" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/authentication.html', 'authentication')">What is Authentication?</li>
+            <li id="basic-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/basic-auth.html', 'basic-auth')">Basic Auth</li>
+            <li id="jwt-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/jwt-auth.html', 'jwt-auth')">JWT Auth</li>
+            <li id="fb-google-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/fb-google-auth.html', 'fb-google-auth')">Facebook/Google Auth</li>
+            <li id="fb-google-oauth2" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/fb-google-oauth2.html', 'fb-google-oauth2')">Facebook/Google Oauth2</li>
           </ul>
           <li class="sidebar-item collapsible">Web Application</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="templating" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/templating.html', 'templating')">What is templating?</li>
+            <li id="stencil" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/stencil.html', 'stencil')">Stencil</li>
+            <li id="mustache" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/mustache.html', 'mustache')">Mustache</li>
+            <li id="markdown" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/markdown.html', 'markdown')">Markdown</li>
+            <li id="html-forms" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/html-forms.html', 'html-forms')">HTML Forms</li>
           </ul>
           <li class="sidebar-item collapsible">Deploying</li>
           <ul class="nested-sidebar-list content">
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/setting-up.html')">Setting up</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/configuration.html')">Configuration</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/kitura-cli.html')">Kitura CLI</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/macos-app.html')">macOS App</li>
-            <li class="nested-sidebar-item" onclick="loadPage('./docs/spm.html')">SPM</li>
+            <li id="docker" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/docker.html', 'docker')">Docker</li>
+            <li id="kubernetes" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/kubernetes.html', 'kubernetes')">Kubernetes</li>
+            <li id="cloud-foundry" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/cloud-foundry.html', 'cloud-foundry')">Cloud Foundry</li>
           </ul>
+          <li id="ios-client" class="sidebar-item selectable" onclick="loadPage('./docs/ios-client.html', 'ios-client')">iOS client</li>
         </ul>
       </nav>
     </aside>
