@@ -249,6 +249,7 @@ footer {
 	position: fixed;
   color: #676767;
 	left: 0;
+  overflow-y: scroll;
 }
 
 .docs-title {
@@ -261,6 +262,10 @@ footer {
 
 .docs-title-section {
   color: #0780B5;
+}
+
+.show {
+  display: block;
 }
 
 .underline {
@@ -311,10 +316,11 @@ footer {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
+
 .content {
 	display: none;
 }
-.active {
+.active, .nested-sidebar-item:hover, .sidebar-item:hover {
   color: #0780B5;
   font-weight: 800;
 }

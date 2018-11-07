@@ -1,4 +1,5 @@
 var coll = document.getElementsByClassName("collapsible");
+var items = document.getElementsByClassName('nested-sidebar-list');
 var i;
 var currentPage;
 
@@ -8,6 +9,11 @@ for (i = 0; i < coll.length; i++) {
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {
+      for (var j = 0; j < items.length; j++) {
+        if (items[j].style.display === "block" && items[j] !== content) {
+          items[j].style.display = "none";
+        }
+      }
       content.style.display = "block";
     }
   });
