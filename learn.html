@@ -36,12 +36,17 @@
             <li id="macos-app" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/macos-app.html', 'macos-app')">macOS App</li>
             <li id="spm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/spm.html', 'spm')">SPM</li>
           </ul>
-          <li id="logging" class="sidebar-item selectable" onclick="loadPage('./docs/logging.html', 'logging')">Logging</li>
+          <li id="logging" class="sidebar-item collapsible">Logging</li>
+          <ul class="nested-sidebar-list content">
+            <li id="logging" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Kitura/" onclick="loadPage('./docs/logging/logging.html', 'logging')">What is Logging?</li>
+            <li id="logger-api" class="nested-sidebar-item selectable" api="https://github.com/IBM-Swift/LoggerAPI/" onclick="loadPage('./docs/logging/logger-api.html', 'logger-api')">Logger API</li>
+            <li id="helium-logger" class="nested-sidebar-item selectable" api="https://github.com/IBM-Swift/HeliumLogger/" onclick="loadPage('./docs/logging/helium-logger.html', 'helium-logger')">Helium Logger</li>
+          </ul>
           <li class="sidebar-item collapsible">Routing</li>
           <ul class="nested-sidebar-list content">
-            <li id="routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/routing.html', 'routing')">What is routing?</li>
-            <li id="raw-routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/raw-routing.html', 'raw-routing')">Raw routing</li>
-            <li id="codable-routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/codable-routing.html', 'codable-routing')">Codable routing</li>
+            <li id="routing" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Kitura/" onclick="loadPage('./docs/routing/routing.html', 'routing')">What is routing?</li>
+            <li id="raw-routing" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Kitura/" onclick="loadPage('./docs/routing/raw-routing.html', 'raw-routing')">Raw routing</li>
+            <li id="codable-routing" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Kitura/" onclick="loadPage('./docs/routing/codable-routing.html', 'codable-routing')">Codable routing</li>
           </ul>
           <li class="sidebar-item collapsible">Middlewares</li>
           <ul class="nested-sidebar-list content">
@@ -96,7 +101,7 @@
       <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation...">
     </div>
     <nav class="docs-item-3 docs-nav">
-      <button class="apiref-button" type="button" name="button">API Reference</button>
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
       <a class="nav-item">Need help?</a>
       <a class="nav-item">Found an issue?</a>
     </nav>

@@ -1,5 +1,6 @@
 var coll = document.getElementsByClassName("collapsible");
 var items = document.getElementsByClassName('nested-sidebar-list');
+var selectables = document.getElementsByClassName('selectable');
 var i;
 var currentPage;
 
@@ -19,11 +20,18 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-function loadPage(src, id) {
+for (var x = 0; x < selectables.length; x++) {
+  selectables[x].addEventListener("click", function() {
+    var button = document.getElementById('api-button');
+    var api = this.getAttribute('api');
+    button.setAttribute('onclick', "window.open('" + api + "')");
+  });
+}
+
+//For all selectable class elements addEventListener to set window.open on button
+function loadPage(src, id, link) {
   localStorage.setItem("src", src);
   localStorage.setItem("id", id);
-  var selectables = document.getElementsByClassName('selectable');
-
   for (var j = 0; j < selectables.length; j++) {
     if (selectables[j].classList.contains('active')) {
       selectables[j].classList.remove('active')
