@@ -8,9 +8,7 @@
       gtag('js', new Date());
       gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
     </script>
-    <title>Learn - Getting Started</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <title>Learn - Server Side Swift Prerequisites</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +17,17 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura macOS App</h1>
+    <h1>Setting up a workspace</h1>
+    <h2><span class="blue-text">Setup:</span> macOS</h2>
+    <p>Download and install the latest version of Xcode.</p>
+    <p>Install the command line tools for Xcode</p>
+    <pre>xcode-select --install</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Setup:</span> Ubuntu Linux</h2>
+    <p>Kitura is tested on Ubuntu 14.04 (LTS) and Ubuntu 16.04 (LTS).</p>
+    <p>Swift development on Ubuntu Linux requires various Linux system packages.</p>
+    <pre>sudo apt-get update</pre>
+    <pre>sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev libpython2.7</pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
