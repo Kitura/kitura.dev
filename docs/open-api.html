@@ -19,7 +19,41 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura macOS App</h1>
+    <h1>Kitura OpenAPI</h1>
+    <h2>Prerequisites</h2>
+    <p>Kitura OpenAPI provides a way to test your RestAPIs.</p>
+    <p>To get the most out of this guide you should have the following:</p>
+    <ol>
+      <li>A Kitura app</li>
+      <li>At least one Codable Route added to your Kitura App</li>
+    </ol>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 1:</span> Add Kitura OpenAPI to your project</h2>
+    <p>In your Package.swift you need to add the following:</p>
+    <pre>.package(url: "https://github.com/IBM-Swift/Kitura-OpenAPI.git", from: "x.x.x"),</pre>
+    <p>Where x.x.x represents the latest version</p>
+    <p>For more information on adding Kitura OpenAPI to your project you can view the Readme.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Build your project</h2>
+    <p>Since you've added a new package to your Package.swift you need to rebuild your project.</p>
+    <p>In a terminal run the following:</p>
+    <pre>swift package update</pre>
+    <p>If you're on macOS and using Xcode you will also need to generate a new xcode project:</p>
+    <pre>swift package generate-xcodeproj</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Add Kitura OpenAPI to your App code</h2>
+    <p>Import Kitura OpenAPI into your project</p>
+    <pre>import KituraOpenAPI</pre>
+    <p>Add Kitura OpenAPI to your router:</p>
+    <pre>KituraOpenAPI.addEndpoints(to: router)</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Test your RestAPIs</h2>
+    <p>Start your Kitura server</p>
+    <p>TODO: Add instructions for this?</p>
+    <p>In a browser navigate to the following:</p>
+    <pre>localhost:8080/openapi/ui</pre>
+    <p>You should see your Codable routes listed</p>
+    <p>TODO: Pad this out with more information</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
