@@ -21,7 +21,53 @@
   <body>
     <h1>Swift Package Manager</h1>
     <p>NOTE: Ensure your workspace has been setup.</p>
-    <h2></h2>
+    <h2>Step 1: Initialise project</h2>
+    <pre>swift package init --type executable</pre>
+    <div class="underline"></div>
+    <h2>Step 2: Add Kitura to project</h2>
+    <p>To add a new dependency to your project you need to modify the Package.swift file.</p>
+    <p>Firstly in a terminal open the Package.swift with your default text editer</p>
+    <pre>open Package.swift</pre>
+    <p>Next add the following line to the dependencies section:</p>
+    <pre>.package(url: "https://github.com/IBM-Swift/Kitura", from: "x.x.x")</pre>
+    <p>Where 'x.x.x' is your chosen version. You can find a list of the releases on Github.</p>
+    <p>Finally you need to add 'Kitura' to your target's dependencies.</p>
+    <p>Your Package.swift should look something like this:</p>
+    <pre>// swift-tools-version:4.2
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "spm-example",
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.5.0")
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "spm-example",
+            dependencies: ["Kitura"]),
+        .testTarget(
+            name: "spm-exampleTests",
+            dependencies: ["spm-example"]),
+    ]
+)</pre>
+    <div class="underline"></div>
+    <h2>Step 3: Build the project</h2>
+    <p>In a terminal run:</p>
+    <pre>swift build</pre>
+    <p>Once this has you can create an executable to run:</p>
+    <pre>swift run</pre>
+    <p>This will output an executable for you to run. Copy and paste the executable to your terminal to start your server.</p>
+    <div class="underline"></div>
+    <h2>Step 4: Run in Xcode</h2>
+    <p>If you're using Xcode you can also generate an Xcode project:</p>
+    <pre>swift package generate xcode-proj</pre>
+    <p>This will generate an Xcode project for you allowing you to develop your server within Xcode.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
