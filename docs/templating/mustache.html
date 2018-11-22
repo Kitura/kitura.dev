@@ -19,7 +19,42 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura macOS App</h1>
+    <h1>Mustache</h1>
+    <h2><span class="blue-text">Step 1:</span> Add Kitura-Mustache to your project</h2>
+    <p>In your Package.swift you need to add the following:</p>
+    <pre>.package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", from: "x.x.x"),</pre>
+    <p>Where x.x.x represents the latest version</p>
+    <p>For more information on adding Kitura-Mustache to your project you can view the Readme.</p>
+    <p>Finally you will need to add Kitura-Mustache to your build targets.</p>
+    <p>TODO: So we need to talk about this? Link to Readme instead?</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Build your project</h2>
+    <p>Since you've added a new package to your Package.swift you need to rebuild your project.</p>
+    <p>In a terminal run the following:</p>
+    <pre>swift package update</pre>
+    <p>If you're on macOS and using Xcode you will also need to generate a new xcode project:</p>
+    <pre>swift package generate-xcodeproj</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Create template files</h2>
+    <p>For Kitura to make use of templating you need template files to work with.</p>
+    <p>By default Kitura template engines look in a ./Views directory for the template files.</p>
+    <p>In the root of your project, run the following in a terminal:</p>
+    <pre>mkdir Views</pre>
+    <p>Note: If you're working in Xcode you will need to generate a new Xcode project:</p>
+    <pre>swift package generate-xcodeproj</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Add Kitura-Mustache to your App code</h2>
+    <p>Import KituraMustache into your project</p>
+    <pre>import KituraMustache</pre>
+    <p>Add KituraMustache to your router:</p>
+    <pre>router.add(templateEngine: MustacheTemplateEngine())</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Render a template</h2>
+    <pre>
+      router.get("/hello") { request, response, next in
+        try response.render("Example.mustache", context: ["name": "Kitura!"])
+      }
+    </pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
