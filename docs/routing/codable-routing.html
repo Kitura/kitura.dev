@@ -21,18 +21,96 @@
     <h2>Prerequisites</h2>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 1:</span> Create the models</h2>
-    <h2><span class="blue-text">Step 2:</span> Create the Endpoints</h2>
+    <p>To use Codable routing you need to create a Struct to represent your data.</p>
+    <p>This Struct then needs to conform to Codable.</p>
+    <p>For example:</p>
+    <pre>
+    struct User: Codable {
+      let name: String
+      let age: Int
+    }</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Create datastore</h2>
+    <p>To begin implementing RestAPI you need a way to store the data.</p>
+    <p>A simple way to do this is to create a Dictionary:</p>
+    <pre>var userStore: [String: User] = [:]</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Create the Endpoints</h2>
     <h3>POST</h3>
+    <p>Register the POST route</p>
+    <pre>router.post("/users", handler: postHandler)</pre>
+    <p>TODO: Brief explanation of code?</p>
+    <p>Define the postHandler function</p>
+    <pre>
+      func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
+        //Add user to the data store
+        userStore[user.name] = user
+        completion(user, nil)
+      }</pre>
     <h3>GET</h3>
     <h4>Get All</h4>
+    <p>Register the GET route</p>
+    <pre>router.get("/users", handler: getAllHandler)</pre>
+    <p>TODO: Brief explanation of code?</p>
+    <p>Define the getAllHandler function</p>
+    <pre>
+      func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
+        let users = userStore.map({ $0.value })
+        completion(users, nil)
+      }</pre>
     <h4>Get Single</h4>
+    <p>Register the GET route</p>
+    <pre>router.get("/users", handler: getSingleHandler)</pre>
+    <p>TODO: Brief explanation of code?</p>
+    <p>Define the getSingleHandler function</p>
+    <pre>
+      func getSingleHandler(id: Int, completion: (User?, RequestError?) -> Void) {
+        //Some logic
+        completion(user, nil)
+      }</pre>
     <h3>DELETE</h3>
     <h4>Delete All</h4>
+    <p>Register the delete route</p>
+    <pre>router.delete("/users", handler: deleteAllHandler)</pre>
+    p>TODO: Brief explanation of code?</p>
+    <p>Define the deleteAllHandler function</p>
+    <pre>
+      func deleteAllHandler(completion: (RequestError?) -> Void) {
+        userStore = [:]
+        completion(nil)
+      }</pre>
     <h4>Delete Single</h4>
+    <p>Register the delete route</p>
+    <pre>router.delete("/users", handler: deleteSingleHandler)</pre>
+    <p>TODO: Brief explanation of code?</p>
+    <p>Define the deleteSingleHandler function</p>
+    <pre>
+      func deleteSingleHandler(id: Int, completion: (RequestError?) -> Void) {
+        //Some Logic
+        completion(nil)
+      }</pre>
     <h3>PUT</h3>
+    <p>Register the put route</p>
+    <pre>router.put("/users", handler: putHandler)</pre>
+    <p>TODO: Brief explanation of code?</p>
+    <p>Define the putHandler function</p>
+    <pre>
+      func putHandler(user: User, completion: (User?, RequestError?) -> Void) {
+        //Some Logic
+        completion(user, nil)
+      }</pre>
     <h3>PATCH</h3>
+    <p>Register the PATCH route</p>
+    <pre>router.patch("/users", handler: patchHandler)</pre>
+    <p>TODO: Brief explanation of code?</p>
+    <p>Define the patchHandler function</p>
+    <pre>
+      func patchHandler(user: User, completion: (User?, RequestError?) -> Void) {
+        //Some Logic
+        completion(user, nil)
+      }</pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Test the Endpoints</h2>
+    <h2><span class="blue-text">Step 4:</span> Test the Endpoints</h2>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>

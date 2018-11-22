@@ -18,6 +18,18 @@ h2 {
   margin-bottom: 1.8rem;
 }
 
+h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1.6rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1.4rem;
+}
+
 p {
   margin-bottom: 1rem;
 }
@@ -31,7 +43,7 @@ pre {
   box-shadow: 1px 2px 2px #DEDEDE;
   display: flex;
   align-items: center;
-  padding-left: 2rem;
+  padding: 1rem 0 1rem 2rem;
   font-size: 0.88rem;
   font-family: courier;
   overflow-x: auto;
