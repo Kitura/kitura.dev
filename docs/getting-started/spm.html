@@ -20,11 +20,12 @@
   </head>
   <body>
     <h1>Swift Package Manager</h1>
+    <h2>Adding Kitura</h2>
     <p>NOTE: Ensure your workspace has been setup.</p>
-    <h2>Step 1: Initialise project</h2>
+    <h3>Step 1: Initialise project</h3>
     <pre>swift package init --type executable</pre>
     <div class="underline"></div>
-    <h2>Step 2: Add Kitura to project</h2>
+    <h3>Step 2: Add Kitura to project</h3>
     <p>To add a new dependency to your project you need to modify the Package.swift file.</p>
     <p>Firstly in a terminal open the Package.swift with your default text editer</p>
     <pre>open Package.swift</pre>
@@ -57,17 +58,23 @@ let package = Package(
     ]
 )</pre>
     <div class="underline"></div>
-    <h2>Step 3: Build the project</h2>
+    <h3>Step 3: Build the project</h3>
     <p>In a terminal run:</p>
     <pre>swift build</pre>
     <p>Once this has you can create an executable to run:</p>
     <pre>swift run</pre>
     <p>This will output an executable for you to run. Copy and paste the executable to your terminal to start your server.</p>
     <div class="underline"></div>
-    <h2>Step 4: Run in Xcode</h2>
+    <h3>Step 4: Run in Xcode</h3>
     <p>If you're using Xcode you can also generate an Xcode project:</p>
     <pre>swift package generate xcode-proj</pre>
     <p>This will generate an Xcode project for you allowing you to develop your server within Xcode.</p>
+    <div class="underline"></div>
+    <h2>Adding a new package to your project</h2>
+    <h3>Step 1: Add package to Package.swift</h3>
+    <h3>Step 2: Add package to target dependencies</h3>
+    <h3>Step 3: Build project</h3>
+    <h3>Step 4: Regenerate Xcode project if on macOS</h3>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
