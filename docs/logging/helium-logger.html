@@ -21,6 +21,49 @@
   <body>
     <h1>HeliumLogger</h1>
     <div class="underline"></div>
+    <h2>Prerequisites</h2>
+    <div class="underline"></div>
+    <h2>Step 1: Add HeliumLogger to project</h2>
+    <p>TODO: Link to Package.swift instructions</p>
+    <pre>import HeliumLogger</pre>
+    <p>HeliumLogger also needs LoggerAPI</p>
+    <pre>import LoggerAPI</pre>
+    <div class="underline"></div>
+    <h2>Step 2: Initilise HeliumLogger</h2>
+    <p>HeliumLogger can be customised to change the level of logging.</p>
+    <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
+    <p>If you want to use HeliumLogger out of the box then you only need the following:</p>
+    <pre>HeliumLogger.use()</pre>
+    <p>TODO: Add testing instructions?</p>
+    <p>If you'd like to customise the level of logging then first you need to create an instance of HeliumLogger:</p>
+    <pre>let logger = HeliumLogger()</pre>
+    <p>Next you need to set it as the Logger used by LoggerAPI:</p>
+    <pre>Log.logger = logger</pre>
+    <div class="underline"></div>
+    <h2>Step 3: Set logging level (Optional)</h2>
+    <p>Logging levels:</p>
+    <ol>
+      <li>1. entry</li>
+      <li>2. exit</li>
+      <li>3. debug</li>
+      <li>4. verbose (default)</li>
+      <li>5. info</li>
+      <li>6. warning</li>
+      <li>7. error</li>
+    </ol>
+    <p>Verbose is set by default. Setting a particular logging level also includes all levels above it.</p>
+    <p>For example, if you set a logging level of `verbose`:</p>
+    <pre>HeliumLogger.use(.verbose)</pre>
+    <p>You will get logging for; `verbose`, `info`, `warning` and `error`.</p>
+    <p>Similarly if you set a logging level of `warning`:</p>
+    <pre>HeliumLogger.use(.verbose)</pre>
+    <p>You will get logging for `warning` and `error`.</p>
+    <p>TODO: Add instructions for setting logging at runtime?</p>
+    <div class="underline"></div>
+    <h2>TODO: Add instructions for adding logging to own application</h2>
+    <div class="underline"></div>
+    <h2>TODO: Add instructions for further customisation</h2>
+    <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
