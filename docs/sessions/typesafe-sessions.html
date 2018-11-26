@@ -21,6 +21,130 @@
   <body>
     <h1>Type-Safe Sessions</h1>
     <div class="underline"></div>
+    <h2>Prerequisites</h2>
+    <p>TODO: Link to Package.swift setup</p>
+    <p>TODO: Need the following somewhere:</p>
+    <pre>import KituraSession</pre>
+    <h2>Step 1: Define a Type-Safe Session</h2>
+    <p>Creating a type-safe session is as simple as declaring a type that conforms to the TypeSafeSession protocol:</p>
+    <pre>
+// Defines the session instance data
+final class MySession: TypeSafeSession {
+
+    let sessionId: String                       // Requirement: every session must have an ID
+    var books: [Book]                           // User-defined type, where Book conforms to Codable
+
+    init(sessionId: String) {                   // Requirement: must be able to create a new (empty)
+        self.sessionId = sessionId              // session containing just an ID. Assign a default or
+        books = []                              // empty value for any non-optional properties.
+    }
+}
+
+// Defines the configuration of the user's type: how the cookie is constructed, and how the session is
+// persisted.
+extension MySession {
+    static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
+    static var store: Store?
+}   </pre>
+    <p>The minimum requirements for a type-safe session are:</p>
+    <ul>
+      <li>A sessionID: String</li>
+      <li>An Initiliser that creates a new sessionId</li>
+      <li>A sessionCookie that defines the name of the cookie and the secret data used to encrypt it</li>
+      <li>An optional store: Store? that defines how sessions should be persisted</li>
+    </ul>
+    <p>NOTE: If `store` is not defined then a default in-memory store is used.</p>
+    <p>NOTE: If your session is a Class it must be declared as final. TODO: Why?</p>
+    <p>NOTE: If you define MySession as a struct, then in order to modify it within a handler, you will first need to assign it to a local variable:</p>
+    <pre>
+router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
+    var session = session                // Required when mutating a Struct
+    session.books.append(book)
+    session.save()
+    respondWith(book, nil)
+}
+    </pre>
+    <p>For an example of a persistent store for sessions see Kitura-Session-Redis</p>
+    <div class="underline"></div>
+    <h2>Step 2: Add the Session to your Application code</h2>
+    <p>TODO: Link to Codable Routing</p>
+    <p>You can now make use of this `MySession` type within your Codable routes:</p>
+    <pre>
+struct Book: Codable {
+    let title: String
+    let author: String
+}
+
+router.get("/cart") { (session: MySession, respondWith: ([Book]?, RequestError?) -> Void) -> Void in
+    respondWith(session.books, nil)
+}
+
+router.post("/cart") { (session: MySession, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
+    session.books.append(book)
+    session.save()
+    respondWith(book, nil)
+}   </pre>
+    <p></p>
+    <div class="underline"></div>
+    <h2>Step 3: Saving/Terminating a session</h2>
+    <h2>TODO: Does this need to be it's own step?</h2>
+    <p>You need to save the session when a change is made to the session.</p>
+    <p>A change could look something like this:</p>
+    <pre>
+router.post("/cart") { (session: MySession, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
+    session.books.append(book)
+    ...
+}   </pre>
+    <p>Where during a HTTP POST you need to store some data.</p>
+    <p>Saving the session:</p>
+    <pre>session.save()</pre>
+    <p>When you want to remove a session from the store it can be done as follows:</p>
+    <pre>session.destroy()</pre>
+    <div class="underline"></div>
+    <h2>Step 4: Handling a store failure</h2>
+    <p>During the application's run cycle the store could become inaccessible which will result in a failure to persist or remove sessions.</p>
+    <p>In cases like this a server error will be logged to help you understand the issue that has occured</p>
+    <p>TODO: Show example of this?</p>
+    <p>You can also supply a callback which takes an `Error?`:</p>
+    <pre>
+router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (Book?, RequestError) -> Void) -> Void in
+    session.books.append(book)
+    session.save() { error in
+        if let error = error {
+            respondWith(nil, .internalServerError)
+        } else {
+            respondWith(book, nil)
+        }
+    }
+}
+    </pre>
+    <div class="underline"></div>
+    <h2>Step 5: Enable automatic saving of sessions</h2>
+    <p>NOTE: This can only be done if your Session is a class.</p>
+    <p>You can define a deinitialiser for the class like so:</p>
+    <pre>
+ deinit {
+     self.save()
+ }
+    </pre>
+    <p>WARNING: The session will be saved after every request regardless of whether a change has been made</p>
+    <p>It's also useful to create a method to check if destroy has been called on the session:</p>
+    <pre>
+  var destroyed: Bool = false {
+      didSet { destroy() }
+  }
+
+  deinit {
+      if !self.destroyed {
+          self.save()
+      }
+  }
+    </pre>
+    <p>Then in your application code rather then calling `session.destroy` you would do:</p>
+    <pre>session.destroyed = true</pre>
+    <p>With this you can supress the calling of `save()` during deinitialisation</p>
+    <p>Which will prevent the session being persisted back into the store.</p>
+    <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
