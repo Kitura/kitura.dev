@@ -20,6 +20,30 @@
   </head>
   <body>
     <h1>Cloud Foundry</h1>
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>IBM Cloud Account</li>
+    </ul>
+    <div class="underline"></div>
+    <h2>Step 1: Create a manifest file</h2>
+    <p>TODO: instructions for this?</p>
+    <p>NOTE: Certain project creations will already have this!</p>
+    <div class="underline"></div>
+    <h2>Step 2: Set URL target</h2>
+    <p>TODO: Add instructions about how to find this!</p>
+    <p>To push your application, you first need to consult your cloud operator to find the URL you need to target. You can set it in the command line like this:</p>
+    <pre>cf login -a &ltAPI endpoint&gt</pre>
+    <p>You’ll also need to provide your username and password when prompted.</p>
+    <div class="underline"></div>
+    <h2>Step 3: Set target organisation</h2>
+    <p>TODO: Add instructions about finding organisation and space</p>
+    <p>Set target:</p>
+    <pre>cf target -o &ltorganisation&gt -s &ltspace&gt</pre>
+    <div class="underline"></div>
+    <h2>Step 4: Push your app</h2>
+    <p>Now, you’re ready to push your app. Simply run the following command from the same location as your manifest.yml:</p>
+    <pre>cf push</pre>
+    <p>Your Kitura application should now be successfully deployed into your Cloud Foundry environment! If you haven’t edited the manifest.yml file, it will have been assigned a random route. If you visit this URL you should see the Kitura splash page.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
