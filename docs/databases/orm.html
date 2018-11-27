@@ -19,7 +19,109 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>ORM</h1>
+    <h1>Swift Kuery ORM</h1>
+    <p>NOTE: This package is currently in BETA</p>
+    <h2>Step 1: Add Swift Kuery ORM to your project</h2>
+    <p>TODO: Link to SPM instructions</p>
+    <p>import Swift Kuery ORM to your project:</p>
+    <pre>import SwiftKueryORM</pre>
+    <p>To work with the ORM you need to have a Database plugin to use.</p>
+    <p>See the Swift Kuery Postgres guide for instructions on setting this up.</p>
+    <div class="underline"></div>
+    <p>Step 2: Create your Model</p>
+    <p>The key component of Swift Kuery ORM is the protocol Model.</p>
+    <p>To make use of this protocol you need to create a type that conforms to Codable:</p>
+    <pre>
+struct Grade: Codable {
+  var course: String
+  var grade: Int
+}   </pre>
+    <p>The Model protocol extends what Codable provides to work with the ORM.</p>
+    <p>Create an extension on the `Grades` struct:</p>
+    <pre>extension Grade: Model { }</pre>
+    <div class="underline"></div>
+    <h2>Step 3: Create a database connection</h2>
+    <p>TODO: Add instructions for setting up a database connection. Or link to Database guides?</p>
+    <div class="underline"></div>
+    <h2>Step 4: Save an Object to your database</h2>
+    <p>If you'd like to save a new object to your database, you have to create the object and use the save() function:</p>
+    <pre>
+let grade = Grade(course: "physics", grade: 80)
+grade.save { grade, error in
+  ...
+}   </pre>
+    <p>You also optionally have the ability to pass the ID of the newly saved object into your closure. Add it to the collection of parameters like so:</p>
+    <pre>
+grade.save { (id: Int?, grade: Grade?, error: RequestError?) in
+  ...
+}   </pre>
+    <div class="underline"></div>
+    <h2>Step 5: Update an Object in your database</h2>
+    <p>If you have the id for an existing record of your object, and you'd like to update the record with an object, you can use the update() function to do so:</p>
+    <pre>
+let grade = Grade(course: "physics", grade: 80)
+grade.course = "maths"
+
+grade.update(id: 1) { grade, error in
+  ...
+}   </pre>
+    <div class="underline"></div>
+    <h2>Step 6: Retrieve an Object from your database</h2>
+    <p>If you'd like to find a specific object, and you have its id, you can use the find() function to retrieve it:</p>
+    <pre>
+Grade.find(id: 1) { result, error in
+  ...
+}   </pre>
+    <p>If you'd like to retrieve all instances of a particular object, you can make use of findAll() as a static function on the type you are trying to retrieve:</p>
+    <pre>
+Grade.findAll { (result: [Grade]?, error: RequestError?) in
+  ...
+}   </pre>
+    <p>You also have the ability to form your results in different ways and formats, like so:</p>
+    <pre>
+Grade.findAll { (result: [(Int, Grade)]?, error: RequestError?) in
+  ...
+}   </pre>
+    <pre>
+Grade.findAll { (result: [Int: Grade]?, error: RequestError?) in
+  ...
+}   </pre>
+    <div class="underline"></div>
+    <h2>Step 7: Delete an Object from your database</h2>
+    <p>If you'd like to delete an object, and you have its id, you can use the delete() function like so:</p>
+    <pre>
+Grade.delete(id: 1) { error in
+  ...
+}   </pre>
+    <p>If you're feeling bold, and you'd like to remove all instances of an object from your database, you can use the static function deleteAll() with your type:</p>
+    <pre>
+Grade.deleteAll { error in
+  ...
+}   </pre>
+    <div class="underline"></div>
+    <h2>Step 8: Customise your queries</h2>
+    <p>The ORM uses Swift-Kuery which allows you to customize and execute your own queries without breaking any existing ORM functionality. You'll want to have access to the table for your object, which you can get with the getTable() function:</p>
+    <pre>
+do {
+  let table = Grade.getTable()
+} catch {
+  // Error
+}   </pre>
+    <p>After you retrieve your table, you can create a Query object to specify what you want to execute on your database, and perform it like so:</p>
+    <pre>
+executeQuery(query: Query) { (grade: Grade?, error: RequestError?) in
+  ...
+}   </pre>
+    <p>You can customize the parameters passed into your closure after you execute a Query like so:</p>
+    <pre>
+executeQuery(query: Query) { grade, error in
+  ...
+}
+
+executeQuery(query: Query) { error in
+  ...
+}   </pre>
+    <p>If you'd like to learn more about how you can customize queries, check out the Swift-Kuery repository for more information.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
