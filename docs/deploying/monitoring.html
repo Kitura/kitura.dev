@@ -23,6 +23,52 @@
     <p>NOTE: Depending on how you created your Kitura project you may already have these capabilities.</p>
     <div class="underline"></div>
     <h2>Swift Metrics</h2>
+    <h3>What is Swift Metrics?</h3>
+    <p>SwiftMetrics instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API or visually with the included embedded dashboard.</p>
+    <p>SwiftMetrics provides the following built-in data collection sources:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Environment</td>
+          <td>Machine and runtime environment information</td>
+        </tr>
+        <tr>
+          <td>CPU</td>
+          <td>Process and system CPU</td>
+        </tr>
+        <tr>
+          <td>Memory</td>
+          <td>Process and system memory usage</td>
+        </tr>
+        <tr>
+          <td>HTTP</td>
+          <td>HTTP metric information</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Step 1: Adding Swift Metrics to your project</h3>
+    <p>TODO: Link to SPM install instructions</p>
+    <p>Import Swift Metrics to your project</p>
+    <pre>import SwiftMetrics</pre>
+    <p>You also need to import the Swift Metrics Dashboard</p>
+    <pre>import SwiftMetricsDash</pre>
+    <h3>Step 2: Initilize Swift Metrics</h3>
+    <p>Create an instance of Swift Metrics:</p>
+    <pre>let sm = try SwiftMetrics()</pre>
+    <p>Use this Swift Metrics instance to initilize the dashboard:</p>
+    <pre>let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)</pre>
+    <p>By default, SwiftMetricsDash will start its own Kitura server and serve the page up under localhost:/swiftmetrics-dash</p>
+    <p>TODO: Test this!</p>
+    <h3>Step 3: Add Swift Metrics to your router instance</h3>
+    <p>You can pass an existing Router object to SwiftMetricsDash from which to serve the page up on.</p>
+    <p>SwiftMetricsDash will then use whatever server you are using in your existing application:</p>
+    <pre>let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)</pre>
     <div class="underline"></div>
     <h2>Health</h2>
     <div class="underline"></div>
