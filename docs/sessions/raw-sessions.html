@@ -20,6 +20,39 @@
   </head>
   <body>
     <h1>Raw Sessions</h1>
+    <h2>Prerequisites</h2>
+    <div class="underline"></div>
+    <h2>Step 1: Add Kitura Sessions to your project</h2>
+    <div class="underline"></div>
+    <h2>Step 2: Initialize the session</h2>
+    <p>Create an instance of Session:</p>
+    <pre>let session = Session(secret: "secret", cookie: [CookieParameter.name("cookie-name")])</pre>
+    <div class="underline"></div>
+    <h2>Step 3: Register the session on the route</h2>
+    <p>Add a the session middleware to a GET route on a given endpoint:</p>
+    <pre>router.get("/cart", middleware: session)</pre>
+    <div class="underline"></div>
+    <h2>Step 4: Interact with the session within the route</h2>
+    <p>Add a GET route:</p>
+    <pre>
+router.get("/cart") { request, response, next in
+    guard let session = request.session,
+          let bookData = session["books"] as? [[String: String]]
+    else {
+         return try response.status(.internalServerError).end()
+    }
+    var books: [Book] = []
+    for book in bookData {
+        guard let bookTitle = book["title"],
+              let bookAuthor = book["author"]
+        else { continue }
+        books.append(Book(title: bookTitle, author: bookAuthor))
+    }
+    // Work with your books from the session
+    response.send(json: books)
+    next()
+}
+    </pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
