@@ -20,16 +20,79 @@
   </head>
   <body>
     <h1>Kitura CLI</h1>
-    <h2><span class="blue-text">Step 1:</span> Installation</h2>
+    <h2>Prerequisites</h2>
+    <p>To use the CLI you must first install it.</p>
+    <h4>Install via brew</h4>
+    <pre>brew tap ibm-swift/kitura</pre>
+    <pre>brew install kitura</pre>
+    <h4>Install via npm</h4>
+    <pre>npm install -g kitura-cli</pre>
+    <div class="underline"></div>
+    <h2>Using the CLI</h2>
+    <p>There are various commands you can run via the CLI.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>kitura init</td>
+          <td>Create a cloud ready Kitura application.</td>
+        </tr>
+        <tr>
+          <td>kitura api</td>
+          <td>Create a cloud ready Kitura application with OpenAPI for testing.</td>
+        </tr>
+        <tr>
+          <td>kitura basic</td>
+          <td>Create a bare bones Kitura project with a `Hello World` example route.</td>
+        </tr>
+        <tr>
+          <td>kitura create</td>
+          <td>Creare a custom Kitura project via command prompts.</td>
+        </tr>
+        <tr>
+          <td>kitura build</td>
+          <td>Build the project in a local container.</td>
+        </tr>
+        <tr>
+          <td>kitura run</td>
+          <td>Run the project in a local container.</td>
+        </tr>
+        <tr>
+          <td>kitura idt</td>
+          <td>Install IBM Cloud Developer Tools</td>
+        </tr>
+        <tr>
+          <td>kitura --help</td>
+          <td>Display information about each Kitura CLI command.</td>
+        </tr>
+        <tr>
+          <td>kitura help [cmd]</td>
+          <td>Display information about a specific Kitura CLI command.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="underline"></div>
+    <h3>kitura init</h3>
+    <h4><span class="blue-text">Step 1:</span> Installation</h4>
     <p>In a terminal run:</p>
     <pre>brew tap ibm-swift/kitura</pre>
     <pre>brew install kitura</pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Create project</h2>
+    <h4><span class="blue-text">Step 2:</span> Create project</h4>
     <p>In a terminal run:</p>
     <pre>mkdir SampleProject && cd SampleProject</pre>
     <pre>kitura init</pre>
-    <p>Congratulations! You've created a Kitura project.</p>
+    <div class="underline"></div>
+    <h3>kitura api</h3>
+    <div class="underline"></div>
+    <h3>kitura basic</h3>
+    <div class="underline"></div>
+    <h3>kitura create</h3>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>

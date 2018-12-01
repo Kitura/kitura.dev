@@ -67,6 +67,33 @@ pre {
   overflow-y: hidden;
 }
 
+table {
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  width: 90%;
+}
+thead {
+  background-color: rgba(7, 128, 181, 0.3);
+  height: 10rem;
+}
+
+th {
+  padding: 1rem 0;
+  font-weight: bold;
+}
+
+td:first-child {
+  color: #0780B5;
+  font-weight: 600;
+}
+
+td {
+  padding: 0.6rem 0.2rem;
+}
+
+td, th {
+  border: 1px solid grey;
+}
 .underline {
   height: 1px;
   background: #C7C7C7;
