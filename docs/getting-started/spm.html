@@ -20,12 +20,16 @@
   </head>
   <body>
     <h1>Swift Package Manager</h1>
-    <h2>Adding Kitura</h2>
-    <p>NOTE: Ensure your workspace has been setup.</p>
-    <h3>Step 1: Initialise project</h3>
+    <p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a>, or SPM, provides a way to create Swift libraries and Swift apps on macOS and Linux.</p>
+    <p>SPM also provides a way for you to manage your dependencies and makes sharing Swift code easier.</p>
+    <p>Kitura is a Swift code base which is made usuable by SPM, that is you will use SPM to add Kitura to a Swift project.</p>
+    <h2>Creating a Kitura project</h2>
+    <p>Before continuing with these steps ensure you have <a href="setting-up.html">setup your workspace</a>.</p>
+    <h3><span class="blue-text">Step 1:</span> Initialize project</h3>
+    <p></p>
     <pre>swift package init --type executable</pre>
     <div class="underline"></div>
-    <h3>Step 2: Add Kitura to project</h3>
+    <h3><span class="blue-text">Step 2:</span> Add Kitura to project</h3>
     <p>To add a new dependency to your project you need to modify the Package.swift file.</p>
     <p>Firstly in a terminal open the Package.swift with your default text editer</p>
     <pre>open Package.swift</pre>
@@ -58,14 +62,14 @@ let package = Package(
     ]
 )</pre>
     <div class="underline"></div>
-    <h3>Step 3: Build the project</h3>
+    <h3><span class="blue-text">Step 3:</span> Build the project</h3>
     <p>In a terminal run:</p>
     <pre>swift build</pre>
     <p>Once this has you can create an executable to run:</p>
     <pre>swift run</pre>
     <p>This will output an executable for you to run. Copy and paste the executable to your terminal to start your server.</p>
     <div class="underline"></div>
-    <h3>Step 4: Run in Xcode</h3>
+    <h3><span class="blue-text">Step 4:</span> Run in Xcode</h3>
     <p>If you're using Xcode you can also generate an Xcode project:</p>
     <pre>swift package generate xcode-proj</pre>
     <p>This will generate an Xcode project for you allowing you to develop your server within Xcode.</p>

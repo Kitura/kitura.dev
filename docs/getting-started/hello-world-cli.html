@@ -19,23 +19,24 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura CLI</h1>
-    <h2>Prerequisites</h2>
-    <p>You need to have the <a href="installation.html">Kitura CLI installed</a>.</p>
+    <h1>Hello World Example</h1>
+    <p>This guide uses the command line via the Terminal.</p>
+    <p>If you'd prefer a UI based experience you can follow the <a href="hello-world-app.html">Hello World example using the Kitura macOS app</a>.</p>
+    <p>However if you'd prefer a more hands on approach you can follow the <a href="hello-world-spm.html">Hello World example using SPM</a>.</p>
+    <h2>Step 1: Create project</h2>
+    <p>Create a directory for your project:</p>
+    <pre>mkdir HelloWorld && cd HelloWorld</pre>
+    <p>Create a Kitura application using the <a href="kitura-cli.html">Kitura CLI</a>:</p>
+    <pre>kitura basic</pre>
+    <p>`kitura basic` will create a Kitura application in your current directory and also builds your application.</p>
     <div class="underline"></div>
-    <h2>Using the Kitura CLI</h2>
-    <p>The Kitura Command Line Interface, or CLI, provides easy to use commands for creating a Kitura server.</p>
-    <p>NOTE: Kitura CLI commands need to be run in an empty directory</p>
-    <h3>kitura init</h3>
-    <p>First </p>
-    <pre>mkdir SampleProject && cd SampleProject</pre>
-    <pre>kitura init</pre>
-    <div class="underline"></div>
-    <h3>kitura api</h3>
-    <div class="underline"></div>
-    <h3>kitura basic</h3>
-    <div class="underline"></div>
-    <h3>kitura create</h3>
+    <h2>Step 2: Run your project</h2>
+    <p>`kitura basic` adds a Hello World example for you in `Sources/HelloWorld/main.swift`.</p>
+    <p>To run the project:</p>
+    <pre>swift run</pre>
+    <p>Now if you go to:</p>
+    <p><a target="_blank" href="http://localhost:8080">localhost:8080</a></p>
+    <p>You should see `Hello, World!` in the browser.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>

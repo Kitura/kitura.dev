@@ -5,6 +5,10 @@ body {
   padding: 1rem 5rem;
 }
 
+a {
+  color: #0780B5;
+}
+
 h1 {
   font-size: 1.94rem;
   font-weight: bold;
@@ -109,4 +113,12 @@ td, th {
 
 .bold {
   font-weight: bold;
+}
+
+.info {
+  background-color: rgba(7, 128, 181, 0.15);
+  padding: 0.8rem 2rem 0.8rem 1rem;
+  border-left: solid 3px #0780B5;
+  font-size: 0.8rem;
+  width: 20%;
 }
