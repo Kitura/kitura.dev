@@ -122,3 +122,12 @@ td, th {
   font-size: 0.8rem;
   width: 20%;
 }
+
+.plain-list {
+  list-style-type: none;
+}
+
+.example-image {
+  width: 70%;
+  height: auto;
+}

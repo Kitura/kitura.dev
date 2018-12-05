@@ -19,17 +19,22 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Hello World with SPM</h1>
-    <p>This guide uses the command line with the Swift Package Manager.</p>
-    <p>If you'd prefer a UI based experience you can follow the <a href="hello-world-app.html">Hello World example using the Kitura macOS app</a>.</p>
-    <p>If you'd prefer to work with the command line with a project created for you then you can follow the <a href="hello-world-cli.html">Hello World example using the Kitura CLI</a>.</p>
-    <h2>Step 1: Create project</h2>
+    <h1>Create a Kitura project</h1>
+    <p>There's several ways to create a Kitura project:</p>
+    <ul class="plain-list">
+      <li><a href="#create-proj-spm">SPM</a>: The Swift Package Manager is the standard way of creating Swift on the server projects.</li>
+      <li><a href="#create-proj-cli">Kitura CLI</a>: A command line interface to make creating a Kitura project easier and faster.</li>
+      <li><a href="#create-proj-app">Kitura macOS App:</a> A UI based version of the Kitura CLI. Ideal for those wishing to avoid the terminal.</li>
+    </ul>
+    <div class="underline"></div>
+    <h2 id="create-proj-spm">Create a project with SPM</h2>
+    <h3>Step 1: Create project</h3>
     <p>Create a directory for your project:</p>
     <pre>mkdir HelloWorld && cd HelloWorld</pre>
     <p>Inialize the directory as a Swift project:</p>
     <pre>swift package init --type executable</pre>
     <div class="underline"></div>
-    <h2>Step 2: Add Kitura to your dependencies</h2>
+    <h3>Step 2: Add Kitura to your dependencies</h3>
     <p>To add Kitura to your dependencies you need to edit the Package.swift</p>
     <p>Open Package.swift in your default text editor:</p>
     <pre>open Package.swift</pre>
@@ -61,23 +66,35 @@ let package = Package(
     </pre>
     <p>Now build your project to pull down your dependencies:</p>
     <pre>swift build</pre>
-    <div class="underline"></div>
-    <h2>Step 3: Add the route</h2>
-    <h3>macOS</h3>
-    <p>If you're on a Mac you can create an Xcode project to continue:</p>
-    <pre>swift package generate-xcodeproj</pre>
-    <p>Once this command has completed open the Xcode project:</p>
-    <pre>open HelloWorld.xcodeproj</pre>
-    <p>TODO: Add following instructions</p>
-    <p>TODO: Add image for Scheme change</p>
-    <div class="underline"></div>
-    <h3>Ubuntu Linux</h3>
-    <div class="underline"></div>
-    <p>Now if you go to:</p>
-    <p><a target="_blank" href="http://localhost:8080">localhost:8080</a></p>
-    <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <div class="underline"></div>
+    <h2 id="create-proj-cli">Create a project with Kitura CLI</h2>
+    <h3>Step 1: Create a directory</h3>
+    <p>Kitura CLI needs to be run in an empty directory so you will need to create a new directory for your project:</p>
+    <pre>mkdir KituraExample && cd KituraExample</pre>
+    <div class="underline"></div>
+    <h3>Step 2: Create a Kitura project</h3>
+    <p>Create a Kitura application using the <a href="kitura-cli.html">Kitura CLI</a>:</p>
+    <pre>kitura init</pre>
+    <p>`kitura init` will create a cloud ready Kitura application in your current directory and also builds your application.</p>
+    <p>The name of your project will be the same as the directory name.</p>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <div class="underline"></div>
+    <h2 id="create-proj-app">Create a project with the Kitura macOS app</h2>
+    <h3>Step 1: Create project</h3>
+    <p>Open the <a href="macos-app.html">Kitura macOS app</a> from your application folder.</p>
+    <p>Hover over the starter tile and click create:</p>
+    <img class="example-image" src="../../assets/preview1.png" alt="">
+    <p>Enter the following for Project Name and Where:</p>
+    <img class="example-image" src="../../assets/preview2.png" alt="">
+    <p>The following guides will assume you've chosen the above destination and name.</p>
+    <p>However you can use whatever destination and name you'd like, just substitute those in throughout the rest of the guides.</p>
+    <p>Once you click create the app will create and build your project. It will also generate you an xcode project.</p>
+    <img class="example-image" src="../../assets/preview3.png" alt="">
+    <h2>Next steps</h2>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
   </body>
 </html>
