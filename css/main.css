@@ -213,6 +213,14 @@ footer {
   width: 25px;
   margin-right: 7px;
 }
+/* About section styling */
+.about-section {
+  margin: 2rem 0;
+  padding: 2rem 5rem;
+}
+.about-title {
+  margin: 1rem 0;
+}
 /* Blog section styling */
 .blog-section {
   height: 200px;
@@ -544,9 +552,12 @@ footer {
   grid-area: buttons;
 }
 .index-item-6 {
-  grid-area: blogs;
+  grid-area: about;
 }
 .index-item-7 {
+  grid-area: blogs;
+}
+.index-item-8 {
   grid-area: footer;
 }
 .index-grid-container {
@@ -556,6 +567,7 @@ footer {
     'header header nav nav nav nav'
     'slider slider slider code code code'
     '. . buttons buttons . .'
+    'about about about about about about'
     '. blogs blogs blogs blogs .'
     'footer footer footer footer footer footer';
 }
