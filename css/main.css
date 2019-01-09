@@ -235,12 +235,15 @@ footer {
 }
 .blog-card > img {
   width: 50%;
-  height: 100px;
+  margin-bottom: 10px;
 }
 .blog-card > p, .blog-card > h3 {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
+}
+.blog-card > h3 {
+  margin-bottom: 40px;
 }
 /* Learn Sytling */
 /* Guide section styling */
@@ -566,7 +569,7 @@ footer {
   grid-template-areas:
     'header header nav nav nav nav'
     'slider slider slider code code code'
-    '. . buttons buttons . .'
+    '. buttons buttons buttons buttons .'
     'about about about about about about'
     '. blogs blogs blogs blogs .'
     'footer footer footer footer footer footer';
