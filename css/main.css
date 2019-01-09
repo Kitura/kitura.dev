@@ -569,7 +569,7 @@ footer {
   grid-template-areas:
     'header header nav nav nav nav'
     'slider slider slider code code code'
-    '. . buttons buttons . .'
+    '. buttons buttons buttons buttons .'
     'about about about about about about'
     '. blogs blogs blogs blogs .'
     'footer footer footer footer footer footer';
