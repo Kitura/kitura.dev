@@ -235,12 +235,15 @@ footer {
 }
 .blog-card > img {
   width: 50%;
-  height: 100px;
+  margin-bottom: 10px;
 }
 .blog-card > p, .blog-card > h3 {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
+}
+.blog-card > h3 {
+  margin-bottom: 40px;
 }
 /* Learn Sytling */
 /* Guide section styling */
