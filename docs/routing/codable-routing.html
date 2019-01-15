@@ -18,18 +18,32 @@
   </head>
   <body>
     <h1>Codable Routing</h1>
+    <p>In this guide we will create a simple Kitura server which will have routes defined for the more common HTTP methods.</p>
+    <p>We will define these routes using Codable, a Swift protocol.</p>
     <h2>Prerequisites</h2>
-
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+    </ul>
+    <div class="info">
+      <p> We also highly recommend you have logging enabled on your server. You can learn how to add logging in our Logging guide.</p>
+    </div>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Create the models</h2>
-    <p>To use Codable routing you need to create a Struct to represent your data.</p>
-    <p>This Struct then needs to conform to Codable.</p>
-    <p>For example:</p>
+    <h2><span class="blue-text">Step 1:</span> Create the data model</h2>
+    <p>Before we can get started with creating our routes we need to create our data model.</p>
+    <p>We will create a Struct called `User` and give it three properties.</p>
+    <ol class="plain-list">
+      <li>Name of type String</li>
+      <li>Age of type Int</li>
+      <li>Active of type Bool</li>
+    </ol>
     <pre>
     struct User: Codable {
       let name: String
       let age: Int
+      let active: Bool
     }</pre>
+
+    <p></p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Create datastore</h2>
     <p>To begin implementing RestAPI you need a way to store the data.</p>

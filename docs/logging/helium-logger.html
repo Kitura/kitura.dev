@@ -20,28 +20,44 @@
   </head>
   <body>
     <h1>HeliumLogger</h1>
-    <div class="underline"></div>
+    <p>Helium Logger is lightweight Swift logging framework which supports logging to standard output.</p>
+    <div class="info">
+      <p>Depending on how you created your Kitura Server you may already have Logging enabled.</p>
+    </div>
     <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+    </ul>
     <div class="underline"></div>
-    <h2>Step 1: Add HeliumLogger to project</h2>
+    <h2><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
     <p>TODO: Link to Package.swift instructions</p>
-    <pre>import HeliumLogger</pre>
-    <p>HeliumLogger also needs LoggerAPI</p>
+    <p>To start we need to import LoggerAPI in our code</p>
     <pre>import LoggerAPI</pre>
+    <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
+    <div class="info">
+      <p>You can learn more about LoggerAPI in our LoggerAPI guide.</p>
+    </div>
+    <p>Now we need to import HeliumLogger:</p>
+    <pre>import HeliumLogger</pre>
     <div class="underline"></div>
-    <h2>Step 2: Initilise HeliumLogger</h2>
+    <h2><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
+    <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger:</p>
+    <pre>HeliumLogger.use()</pre>
+    <p>Now if you start your server you should see some output:</p>
+    <pre>
+[xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
+[xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
+[xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
+[xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Set logging level (Optional)</h2>
     <p>HeliumLogger can be customised to change the level of logging.</p>
     <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
-    <p>If you want to use HeliumLogger out of the box then you only need the following:</p>
-    <pre>HeliumLogger.use()</pre>
-    <p>TODO: Add testing instructions?</p>
-    <p>If you'd like to customise the level of logging then first you need to create an instance of HeliumLogger:</p>
-    <pre>let logger = HeliumLogger()</pre>
-    <p>Next you need to set it as the Logger used by LoggerAPI:</p>
-    <pre>Log.logger = logger</pre>
-    <div class="underline"></div>
-    <h2>Step 3: Set logging level (Optional)</h2>
-    <p>Logging levels:</p>
+
+    <!-- <p>TODO: Add testing instructions?</p> -->
+    <p>If you'd like to customise the level of logging then first you can simply pass the level to the `use()` method:</p>
+    <pre>HeliumLogger.use(.error)</pre>
+    <p>There are several logging levels:</p>
     <ol>
       <li>entry</li>
       <li>exit</li>
@@ -56,16 +72,15 @@
     <pre>HeliumLogger.use(.verbose)</pre>
     <p>You will get logging for; `verbose`, `info`, `warning` and `error`.</p>
     <p>Similarly if you set a logging level of `warning`:</p>
-    <pre>HeliumLogger.use(.verbose)</pre>
+    <pre>HeliumLogger.use(.warning)</pre>
     <p>You will get logging for `warning` and `error`.</p>
-    <p>TODO: Add instructions for setting logging at runtime?</p>
-    <div class="underline"></div>
+    <!-- <p>TODO: Add instructions for setting logging at runtime?</p> -->
+    <!-- <div class="underline"></div>
     <h2>TODO: Add instructions for adding logging to own application</h2>
     <div class="underline"></div>
-    <h2>TODO: Add instructions for further customisation</h2>
+    <h2>TODO: Add instructions for further customisation</h2> -->
     <div class="underline"></div>
     <h2>Next steps</h2>
-    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
   </body>
 </html>

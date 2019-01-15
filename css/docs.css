@@ -1,6 +1,6 @@
 body {
   font-family: IBM Plex Sans, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: #676767;
   padding: 1rem 5rem;
 }
@@ -117,10 +117,16 @@ td, th {
 
 .info {
   background-color: rgba(7, 128, 181, 0.15);
-  padding: 0.8rem 2rem 0.8rem 1rem;
+  padding: 0.8rem 2rem 0.1rem 1rem;
   border-left: solid 3px #0780B5;
   font-size: 0.8rem;
-  width: 20%;
+  width: 70%;
+  line-height: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.info > pre {
+  width: 80%;
 }
 
 .plain-list {
