@@ -18,8 +18,7 @@
   </head>
   <body>
     <h1>Codable Routing</h1>
-    <p>In this guide we will create a simple Kitura server which will have routes defined for the more common HTTP methods.</p>
-    <p>We will define these routes using Codable, a Swift protocol.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <h2>Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
@@ -27,28 +26,142 @@
     <div class="info">
       <p> We also highly recommend you have logging enabled on your server. You can learn how to add logging in our Logging guide.</p>
     </div>
+    <p>In this guide the project name we will be using is `MyKituraApp`.</p>
+    <p>So if you've ended up here from the Getting Started or Logging sections all commands should be accurate.</p>
+    <p>For everyone else, just replace all instances of `MyKituraApp` with the name of your own project.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Create the data model</h2>
+    <h2><span class="blue-text">Step 1:</span> Create a POST Codable Route</h2>
+    <div class="info">
+      <p>If you created your project using Kitura CLI or the Kitura macOS app then your project structure may be different.</p>
+      <p>The file you will be working with is:</p>
+      <pre>/Sources/Application/Application.swift</pre>
+    </div>
+    <p>Open your main.swift file:</p>
+    <pre>open Sources/MyKituraApp/main.swift</pre>
+    <p>Add a simple POST route:</p>
+    <pre>router.post("users", handler: postHandler)</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Define the Handler</h2>
+    <p>If we try to build your project now it will fail to compile.</p>
+    <p>This is because the `postHandler` hasn't been defined.</p>
+    <p>The postHandler is a block of code, called a closure, that is executed when a POST request is made to "/users".</p>
+    <p>Add the following code above the `router.post(...)` line:</p>
+    <pre>func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
+  completion(user, nil)
+}</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Create the data model</h2>
+    <p>If we try to compile the code now it will still fail, but this time for a different reason.</p>
+    <p>In our postHandler we have a completion parameter that accepts a tuple of type:</p>
+    <pre>(User?, RequestError?)</pre>
+    <p>User is a custom Swift type that we haven't defined yet.</p>
+    <p>We will create the User type now:</p>
+    <pre>struct User: Codable {
+  let name: String
+  let age: Int
+  let active: Bool
+}</pre>
+    <p>Simply put, `User` is a struct that conforms to Codable.</p>
+    <p>Codable is a Swift protocol that provides Encoders and Decoders to convert to and from JSON.</p>
+    <p>We can now successfully compile the project!</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Test the endpoint</h2>
+    <div class="info">
+      <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.</p>
+      <p>You can add OpenAPI to your server using our OpenAPI guide.</p>
+    </div>
+    <p>With the project now compiling we can start the server.</p>
+    <p>Once the server is running open a terminal window and enter the following:</p>
+    <pre>curl -X POST \
+  http://localhost:8080/users \
+  -H 'content-type: application/json' \
+  -d '{
+    "name": "Sarah",
+    "age": 32,
+    "active": true
+}'</pre>
+    <p>We can use the cURL command to send a request to our server.</p>
+    <p>If your Codable route was created correctly you should see the following:</p>
+    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 5:</span> Create a GET Codable Route</h2>
+    <p>We have just posted data, now we need to be able to retrieve the data.</p>
+    <p>We register a GET route in a similar way to how we registered the POST route:</p>
+    <pre>router.get("/users", handler: getAllHandler)</pre>
+    <p>Just like before we now need to define the handler:</p>
+    <pre>func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
+  completion(nil, nil)
+}</pre>
+    <p>You may have noticed that the completion here is expecting an array of Users.</p>
+    <p>That is because we're defining a route that will retrieve all of the Users stored on the server.</p>
+    <p>To be able to retrieve data from the server we first need a way to store the data that's sent to it.</p>
+    <p>A simple way to do this is using a Dictionary:</p>
+    <pre>var userStore: [String: User] = [:]</pre>
+    <div class="info">
+      <p>It's worth noting using a Dictionary not good practice. The better solution would be to create a Database to store the data.</p>
+      <p>You can learn how to do this in our Database guide.</p>
+    </div>
+    <p>Now that we have a way to store our Users we need to update our `getAllHandler`:</p>
+    <pre>func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
+  let users = userStore.map({ $0.value })
+  completion(users, nil)
+}</pre>
+    <p>Now we can restart our server to test our new endpoint.</p>
+    <p>Once the server is running, run the following command in your terminal:</p>
+    <pre>curl -X GET \
+  http://localhost:8080/users \
+  -H 'content-type: application/json'</pre>
+    <p>If everything is working you should see the following output:</p>
+    <pre>[]%</pre>
+    <p>Which makes sense as we haven't stored anything on our server yet.</p>
+    <h2><span class="blue-text">Step 6:</span> Store and retrieve data from the server (Optional)</h2>
+    <div class="info">
+      <p>We will go into greater detail about storing and retrieving data in the Database section.</p>
+    </div>
+    <p>You can modify the postHandler to store the posted user:</p>
+    <pre>func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
+  //Add user to the data store
+  userStore[user.name] = user
+  completion(user, nil)
+}</pre>
+    <p>Then resart your server, and run the following in a terminal:</p>
+    <pre>curl -X POST \
+  http://localhost:8080/users \
+  -H 'content-type: application/json' \
+  -d '{
+    "name": "Sarah",
+    "age": 32,
+    "active": true
+}'</pre>
+    <p>Followed by:</p>
+    <pre>curl -X GET \
+  http://localhost:8080/users \
+  -H 'content-type: application/json'</pre>
+    <p>You should now see the following output:</p>
+    <pre>[{"name":"Sarah","age":32,"active":true}]%</pre>
+    <p>Again using Dictionaries isn't a practical way to store your data. Infact it's really not a good idea for an application.</p>
+    <p>We use it here simply to demonstrate Codable routing.</p>
+    <p>In the Database Guides we will dicuss a better way of storing and retrieving data.</p>
+    <div class="underline"></div>
+    <!-- <p>Currently this route doe</p>
+    <p>It's good practice to keep your data models and code logic separate.</p>
+    <p>So first lets create a directory for our Models.</p>
+
     <p>Before we can get started with creating our routes we need to create our data model.</p>
+
     <p>We will create a Struct called `User` and give it three properties.</p>
     <ol class="plain-list">
       <li>Name of type String</li>
       <li>Age of type Int</li>
       <li>Active of type Bool</li>
     </ol>
-    <pre>
-    struct User: Codable {
-      let name: String
-      let age: Int
-      let active: Bool
-    }</pre>
 
     <p></p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Create datastore</h2>
     <p>To begin implementing RestAPI you need a way to store the data.</p>
     <p>A simple way to do this is to create a Dictionary:</p>
-    <pre>var userStore: [String: User] = [:]</pre>
+
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Create the Endpoints</h2>
     <h3>POST</h3>
@@ -125,10 +238,10 @@
         completion(user, nil)
       }</pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Test the Endpoints</h2>
-    <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Test the Endpoints</h2> -->
     <h2>Next steps</h2>
-    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
-    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <p><span class="blue-text bold">Add a Database:</span> Some blurb about Databases</p>
+    <p><span class="blue-text bold">Add Sessions:</span> Some blurb about Sessions</p>
+    <p><span class="blue-text bold">Add Authentication:</span> Some blurb about Authentication</p>
   </body>
 </html>
