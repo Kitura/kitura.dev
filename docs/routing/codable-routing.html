@@ -24,7 +24,9 @@
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
     </ul>
     <div class="info">
-      <p> We also highly recommend you have logging enabled on your server. You can learn how to add logging in our Logging guide.</p>
+      <p> We also highly recommend you have logging enabled on your server.</p>
+      <p>You can learn how to add logging in our Logging guide.</p>
+      <p>The code examples will assume you have logging enabled.</p>
     </div>
     <p>In this guide the project name we will be using is `MyKituraApp`.</p>
     <p>So if you've ended up here from the Getting Started or Logging sections all commands should be accurate.</p>
@@ -38,34 +40,76 @@
     </div>
     <p>Open your main.swift file:</p>
     <pre>open Sources/MyKituraApp/main.swift</pre>
-    <p>Add a simple POST route:</p>
-    <pre>router.post("users", handler: postHandler)</pre>
+    <p>Below the line `let router = Router()` add:</p>
+    <pre>router.post("/users", handler: postHandler)</pre>
+    <p>What we've done is register a POST on our router that will handle any POST requests made on "/users".</p>
+    <p>The handling is defined by the handler parameter. Which is a block of code that will be executed in reponse to the request.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Define the Handler</h2>
-    <p>If we try to build your project now it will fail to compile.</p>
+    <p>If we try to build the project now it will fail to compile.</p>
     <p>This is because the `postHandler` hasn't been defined.</p>
     <p>The postHandler is a block of code, called a closure, that is executed when a POST request is made to "/users".</p>
     <p>Add the following code above the `router.post(...)` line:</p>
     <pre>func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
   completion(user, nil)
 }</pre>
+    <p>The result should look similar to this:</p>
+    <pre>import Kitura
+import LoggerAPI
+import HeliumLogger
+
+HeliumLogger.use()
+
+let router = Router()
+
+func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
+    completion(user, nil)
+}
+
+router.post("/users", handler: postHandler)
+
+Kitura.addHTTPServer(onPort: 8080, with: router)
+Kitura.run()</pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Create the data model</h2>
     <p>If we try to compile the code now it will still fail, but this time for a different reason.</p>
     <p>In our postHandler we have a completion parameter that accepts a tuple of type:</p>
     <pre>(User?, RequestError?)</pre>
-    <p>User is a custom Swift type that we haven't defined yet.</p>
-    <p>We will create the User type now:</p>
+    <p>User is a custom Swift type that we haven't defined yet. So lets go ahead and define it.</p>
+    <p>Below the line `let router = Router()` add:</p>
     <pre>struct User: Codable {
   let name: String
   let age: Int
   let active: Bool
 }</pre>
+    <p>Your code should look similar to this:</p>
+    <pre>import Kitura
+import LoggerAPI
+import HeliumLogger
+
+HeliumLogger.use()
+
+let router = Router()
+
+struct User: Codable {
+    let name: String
+    let age: Int
+    let active: Bool
+}
+
+func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
+    completion(user, nil)
+}
+
+router.post("/users", handler: postHandler)
+
+Kitura.addHTTPServer(onPort: 8080, with: router)
+Kitura.run()</pre>
     <p>Simply put, `User` is a struct that conforms to Codable.</p>
     <p>Codable is a Swift protocol that provides Encoders and Decoders to convert to and from JSON.</p>
     <p>We can now successfully compile the project!</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Test the endpoint</h2>
+    <h2><span class="blue-text">Step 4:</span> Test the POST route</h2>
     <div class="info">
       <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.</p>
       <p>You can add OpenAPI to your server using our OpenAPI guide.</p>
@@ -83,19 +127,22 @@
     <p>We can use the cURL command to send a request to our server.</p>
     <p>If your Codable route was created correctly you should see the following:</p>
     <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <p>We have just posted data, now we need to be able to retrieve the data.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 5:</span> Create a GET Codable Route</h2>
-    <p>We have just posted data, now we need to be able to retrieve the data.</p>
-    <p>We register a GET route in a similar way to how we registered the POST route:</p>
+    <p>We register a GET route in a similar way to how we registered the POST route.</p>
+    <p>Below the line `router.post("/users", handler: postHandler)` add:</p>
     <pre>router.get("/users", handler: getAllHandler)</pre>
-    <p>Just like before we now need to define the handler:</p>
+    <p>Just like before we now need to define the handler.</p>
+    <p>Below the `postHandler` function add:</p>
     <pre>func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
   completion(nil, nil)
 }</pre>
     <p>You may have noticed that the completion here is expecting an array of Users.</p>
     <p>That is because we're defining a route that will retrieve all of the Users stored on the server.</p>
     <p>To be able to retrieve data from the server we first need a way to store the data that's sent to it.</p>
-    <p>A simple way to do this is using a Dictionary:</p>
+    <p>A simple way to do this is using a Dictionary.</p>
+    <p>Just above our `postHandler` function add:</p>
     <pre>var userStore: [String: User] = [:]</pre>
     <div class="info">
       <p>It's worth noting using a Dictionary not good practice. The better solution would be to create a Database to store the data.</p>
@@ -106,6 +153,37 @@
   let users = userStore.map({ $0.value })
   completion(users, nil)
 }</pre>
+    <p>The result of all the changes should look something like this:</p>
+    <pre>import Kitura
+import LoggerAPI
+import HeliumLogger
+
+HeliumLogger.use()
+
+let router = Router()
+
+struct User: Codable {
+    let name: String
+    let age: Int
+    let active: Bool
+}
+
+var userStore: [String: User] = [:]
+
+func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
+    completion(user, nil)
+}
+
+func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
+    let users = userStore.map({ $0.value })
+    completion(users, nil)
+}
+
+router.post("/users", handler: postHandler)
+router.get("/users", handler: getAllHandler)
+
+Kitura.addHTTPServer(onPort: 8080, with: router)
+Kitura.run()</pre>
     <p>Now we can restart our server to test our new endpoint.</p>
     <p>Once the server is running, run the following command in your terminal:</p>
     <pre>curl -X GET \

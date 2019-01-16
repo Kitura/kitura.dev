@@ -41,8 +41,21 @@
     <pre>import HeliumLogger</pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
-    <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger:</p>
+    <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
+    <p>Below the line `import HeliumLogger` add:</p>
     <pre>HeliumLogger.use()</pre>
+    <p>Your code should look like this:</p>
+    <pre>import Kitura
+import LoggerAPI
+import HeliumLogger
+
+HeliumLogger.use()
+
+let router = Router()
+
+
+Kitura.addHTTPServer(onPort: 8080, with: router)
+Kitura.run()</pre>
     <p>Now if you start your server you should see some output:</p>
     <pre>
 [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
