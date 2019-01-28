@@ -55,101 +55,88 @@
     <h3>Create a PostgreSQL database</h3>
     <p>Now that we have PostgreSQL installed we can create a database:</p>
     <pre>createdb userdb</pre>
-    <p>Then we can open the PostgreSQL command-line interface:</p>
-    <pre>psql userdb</pre>
-    <p>Finally we can create a table in our database:</p>
-    <pre>CREATE TABLE users (
-    name varchar(100) NOT NULL CHECK (name &lt;&gt; ''),
-    age integer NOT NULL,
-    active BOOLEAN NOT NULL
-);</pre>
-    <p>All that's left is to add values to our database:</p>
-    <pre>INSERT INTO users VALUES ('David', 27, true);
-INSERT INTO users VALUES ('Sammi', 32, false);
-INSERT INTO users VALUES ('Jane', 48, true);</pre>
     <p>Now we're ready to connect to our database from our Kitura server.</p>
-    <h3>Create a PostgreSQLConnection:</h3>
-    <pre>let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("userdb")])</pre>
+    <h3>Create a PostgreSQL connection pool</h3>
+    <p>Next we create an instance of a PostgreSQL connection:</p>
+    <pre>let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("userdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
+Database.default = Database(pool)</pre>
+    <h3>Create a table in the database</h3>
+    <p></p>
+    <pre>do {
+    try User.createTableSync()
+} catch let error {
+    print(error)
+}</pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Save an Object to our database</h2>
-    <p>If you'd like to save a new object to your database, you have to create the object and use the save() function:</p>
-    <pre>
-let grade = Grade(course: "physics", grade: 80)
-grade.save { grade, error in
-  ...
-}   </pre>
-    <p>You also optionally have the ability to pass the ID of the newly saved object into your closure. Add it to the collection of parameters like so:</p>
-    <pre>
-grade.save { (id: Int?, grade: Grade?, error: RequestError?) in
-  ...
-}   </pre>
+    <div class="info">
+      <p>We are no longer using a Dictionary to store data. If you followed the Codable routing guide to get here then make sure you remove all the `userStore` code.</p>
+    </div>
+    <p>If we want to save a new object to our database we have to use the save() method.</p>
+    <p>In our handler for the POST route we can add the following:</p>
+    <pre>user.save(completion)</pre>
+    <p>The POST handler should look similar to this:</p>
+    <pre>func postHandler(user: User, completion: @escaping (User?, RequestError?) -> Void) {
+    user.save(completion)
+    completion(user, nil)
+}</pre>
+    <p>That's all we need to do. With that line any User data posted to the `/users` end point will be stored in our database.</p>
+    <p>All we need to do now is be able to retrieve data from our database.</p>
     <div class="underline"></div>
-    <h2>Step 5: Update an Object in your database</h2>
-    <p>If you have the id for an existing record of your object, and you'd like to update the record with an object, you can use the update() function to do so:</p>
-    <pre>
-let grade = Grade(course: "physics", grade: 80)
-grade.course = "maths"
-
-grade.update(id: 1) { grade, error in
-  ...
-}   </pre>
-    <div class="underline"></div>
-    <h2>Step 6: Retrieve an Object from your database</h2>
-    <p>If you'd like to find a specific object, and you have its id, you can use the find() function to retrieve it:</p>
-    <pre>
-Grade.find(id: 1) { result, error in
-  ...
-}   </pre>
-    <p>If you'd like to retrieve all instances of a particular object, you can make use of findAll() as a static function on the type you are trying to retrieve:</p>
-    <pre>
-Grade.findAll { (result: [Grade]?, error: RequestError?) in
-  ...
-}   </pre>
-    <p>You also have the ability to form your results in different ways and formats, like so:</p>
-    <pre>
-Grade.findAll { (result: [(Int, Grade)]?, error: RequestError?) in
-  ...
-}   </pre>
-    <pre>
-Grade.findAll { (result: [Int: Grade]?, error: RequestError?) in
-  ...
-}   </pre>
-    <div class="underline"></div>
-    <h2>Step 7: Delete an Object from your database</h2>
-    <p>If you'd like to delete an object, and you have its id, you can use the delete() function like so:</p>
-    <pre>
-Grade.delete(id: 1) { error in
-  ...
-}   </pre>
-    <p>If you're feeling bold, and you'd like to remove all instances of an object from your database, you can use the static function deleteAll() with your type:</p>
-    <pre>
-Grade.deleteAll { error in
-  ...
-}   </pre>
-    <div class="underline"></div>
-    <h2>Step 8: Customise your queries</h2>
-    <p>The ORM uses Swift-Kuery which allows you to customize and execute your own queries without breaking any existing ORM functionality. You'll want to have access to the table for your object, which you can get with the getTable() function:</p>
-    <pre>
-do {
-  let table = Grade.getTable()
-} catch {
-  // Error
-}   </pre>
-    <p>After you retrieve your table, you can create a Query object to specify what you want to execute on your database, and perform it like so:</p>
-    <pre>
-executeQuery(query: Query) { (grade: Grade?, error: RequestError?) in
-  ...
-}   </pre>
-    <p>You can customize the parameters passed into your closure after you execute a Query like so:</p>
-    <pre>
-executeQuery(query: Query) { grade, error in
-  ...
-}
-
-executeQuery(query: Query) { error in
-  ...
-}   </pre>
-    <p>If you'd like to learn more about how you can customize queries, check out the Swift-Kuery repository for more information.</p>
+    <h2><span class="blue-text">Step 5:</span> Retrieve an Object from your database</h2>
+    <p>If we want to retrieve all the User data from our database we use the `findAll` method.</p>
+    <p>This will return an array containing the all the users.</p>
+    <p>In our handler for getting all the users we can add the following:</p>
+    <pre>User.findAll { users, error in
+  guard let users = users else {
+    completion(nil, .internalServerError)
+    return
+  }
+  completion(users, nil)
+}</pre>
+    <p>The GET handler should look similar to this:</p>
+    <pre>func getAllHandler(completion: @escaping ([User]?, RequestError?) -> Void) {
+  User.findAll { users, error in
+    guard let users = users else {
+      completion(nil, .internalServerError)
+      return
+    }
+    completion(users, nil)
+  }
+}</pre>
+    <p>We've added some error handling here as well. We check to ensure we got something back, otherwise there's an error with the server.</p>
+    <p>Even an empty Array is a valid response.</p>
+    <p>Now we can test our Database using cURL to ensure everything is working correctly.</p>
+    <div class="info">
+      <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.</p>
+      <p>You can add OpenAPI to your server using our OpenAPI guide.</p>
+    </div>
+    <p>Firstly we need to start our Kitura server</p>
+    <p>Then in a terminal:</p>
+    <pre>curl -X POST \
+  http://localhost:8080/users \
+  -H 'content-type: application/json' \
+  -d '{
+    "name": "Sarah",
+    "age": 32,
+    "active": true
+}'</pre>
+    <p>You should see the following:</p>
+    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <p>Next we can retrieve the data back.</p>
+    <p>In a terminal:</p>
+    <pre>curl -X GET \
+  http://localhost:8080/users \
+  -H 'content-type: application/json'</pre>
+    <p>Again you should see the following:</p>
+    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <p>If we stop the server, and then restart it and run the following in a terminal again:</p>
+    <pre>curl -X GET \
+  http://localhost:8080/users \
+  -H 'content-type: application/json'</pre>
+    <p>You should still see the following output:</p>
+    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <p>Our data has persisted even though our server has been stopped. This is one of the many perks of using a database.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
