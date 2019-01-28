@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Swift Kuery PostgreSQL</h1>
+    <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+      <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
+      <li><span class="blue-text">Updated Package.swift:</span> Learn how to update the Package.swift in our guide</li>
+    </ul>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 1:</span> Install the PostgreSQL client</h2>
+    <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
+    <h3>macOS</h3>
+    <p>On macOS we can use Homebrew to install Postgres:</p>
+    <pre>brew install postgresql</pre>
+    <h3>Linux</h3>
+    <p>On Linux we can use `apt-get` to install Postgres:</p>
+    <pre>sudo apt-get install libpq-dev</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Create a Postgres Database</h2>
+    <p>Now that we have PostgreSQL installed we can create a database:</p>
+    <pre>createdb userdb</pre>
+    <p>Then we can open the PostgreSQL command-line interface:</p>
+    <pre>psql userdb</pre>
+    <p>Finally we can create a table in our database:</p>
+    <pre>CREATE TABLE users (
+    name varchar(100) NOT NULL CHECK (name &lt;&gt; ''),
+    age integer NOT NULL,
+    active BOOLEAN NOT NULL
+);</pre>
+    <p>All that's left is to add values to our database:</p>
+    <pre>INSERT INTO users VALUES ('David', 27, true);
+INSERT INTO users VALUES ('Sammi', 32, false);
+INSERT INTO users VALUES ('Jane', 48, true);</pre>
+    <p>Now we're ready to connect to our database from our Kitura server.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Connect to PostgreSQL</h2>
+    <p>First we need to import the SwiftKuery and SwiftKueryPostgreSQL packages.</p>
+    <pre>import SwiftKuery
+import SwiftKueryPostgreSQL</pre>
+    <p>Next we create an instance of a PostgreSQL connection:</p>
+    <pre>let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("userdb")])</pre>
+    <p>Next we need to define a fuction:</p>
+    <pre>func users(_ callback: @escaping (String) -> Void) -> Void {
+    connection.connect() { result in
+        guard result.success else {
+            guard let error = result.asError else {
+                return callback("Error connecting: Unknown Error")
+            }
+            return callback("Error connecting: \(error)")
+        }
+
+        let query = Select(users.name, users.active, from: users)
+
+        connection.execute(query: query) { result in
+            guard let resultSet = result.asResultSet else {
+                guard let error = result.asError else {
+                    return callback("Error executing query: Unknown Error")
+                }
+                return callback("Error executing query: \(error)")
+            }
+
+            var retString = ""
+            resultSet.getColumnTitles() { titles, error in
+                guard let titles = titles else {
+                    guard let error = error else {
+                        return callback("Error fetching column titles: Unknown error")
+                    }
+                    return callback("Error fetching column titles: \(error)")
+                }
+
+                for title in titles {
+                    retString.append("\(title.padding(toLength: 35, withPad: " ", startingAt: 0))")
+                }
+                retString.append("\n")
+
+                resultSet.forEach() { row, error in
+
+                    guard let row = row else {
+                        if let error = error {
+                            return callback("Error fetching row: \(error)")
+                        }
+
+                        return callback(retString)
+                    }
+                    for value in row {
+                        if let value = value {
+                            let valueString = String(describing: value)
+                            retString.append("\(valueString.padding(toLength: 35, withPad: " ", startingAt: 0))")
+                        }
+                    }
+                    retString.append("\n")
+                }
+            }
+        }
+    }
+}</pre>
+    <p>TODO: BREAK THIS SECTION UP!!</p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>

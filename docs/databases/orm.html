@@ -20,30 +20,58 @@
   </head>
   <body>
     <h1>Swift Kuery ORM</h1>
-    <p>NOTE: This package is currently in BETA</p>
-    <h2>Step 1: Add Swift Kuery ORM to your project</h2>
-    <p>TODO: Link to SPM instructions</p>
-    <p>import Swift Kuery ORM to your project:</p>
+    <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our getting started guide</li>
+      <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
+      <li><span class="blue-text">Updated Package.swift:</span> Learn how to update the Package.swift in our guide</li>
+    </ul>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 1:</span> Add Swift Kuery ORM to the project</h2>
+    <p>import Swift Kuery ORM to our project:</p>
     <pre>import SwiftKueryORM</pre>
-    <p>To work with the ORM you need to have a Database plugin to use.</p>
-    <p>See the Swift Kuery Postgres guide for instructions on setting this up.</p>
+    <p>To work with the ORM we need to have a Database plugin to use.</p>
+    <p>In this example we will be using <a>SwiftKueryPostgreSQL</a>:</p>
+    <pre>import SwiftKueryPostgreSQL</pre>
+    <div class="info">
+      <p>You can use any database plugin but ensure that it's been added to your Package.swift.</p>
+    </div>
     <div class="underline"></div>
-    <p>Step 2: Create your Model</p>
-    <p>The key component of Swift Kuery ORM is the protocol Model.</p>
-    <p>To make use of this protocol you need to create a type that conforms to Codable:</p>
-    <pre>
-struct Grade: Codable {
-  var course: String
-  var grade: Int
-}   </pre>
+    <h2><span class="blue-text">Step 2:</span> Update our Model</h2>
+    <p>The key component of Swift Kuery ORM is the Model protocol.</p>
+    <p>All we need to do to make use of the Model protocol is create an extension for our Model:</p>
+    <pre>extension User: Model { }</pre>
     <p>The Model protocol extends what Codable provides to work with the ORM.</p>
-    <p>Create an extension on the `Grades` struct:</p>
-    <pre>extension Grade: Model { }</pre>
     <div class="underline"></div>
-    <h2>Step 3: Create a database connection</h2>
-    <p>TODO: Add instructions for setting up a database connection. Or link to Database guides?</p>
+    <h2><span class="blue-text">Step 3:</span> Create a database connection</h2>
+    <h3>Install the PostgreSQL client</h3>
+    <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
+    <h4>macOS</h4>
+    <p>On macOS we can use Homebrew to install Postgres:</p>
+    <pre>brew install postgresql</pre>
+    <h4>Linux</h4>
+    <p>On Linux we can use `apt-get` to install Postgres:</p>
+    <pre>sudo apt-get install libpq-dev</pre>
+    <h3>Create a PostgreSQL database</h3>
+    <p>Now that we have PostgreSQL installed we can create a database:</p>
+    <pre>createdb userdb</pre>
+    <p>Then we can open the PostgreSQL command-line interface:</p>
+    <pre>psql userdb</pre>
+    <p>Finally we can create a table in our database:</p>
+    <pre>CREATE TABLE users (
+    name varchar(100) NOT NULL CHECK (name &lt;&gt; ''),
+    age integer NOT NULL,
+    active BOOLEAN NOT NULL
+);</pre>
+    <p>All that's left is to add values to our database:</p>
+    <pre>INSERT INTO users VALUES ('David', 27, true);
+INSERT INTO users VALUES ('Sammi', 32, false);
+INSERT INTO users VALUES ('Jane', 48, true);</pre>
+    <p>Now we're ready to connect to our database from our Kitura server.</p>
+    <h3>Create a PostgreSQLConnection:</h3>
+    <pre>let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("userdb")])</pre>
     <div class="underline"></div>
-    <h2>Step 4: Save an Object to your database</h2>
+    <h2><span class="blue-text">Step 4:</span> Save an Object to our database</h2>
     <p>If you'd like to save a new object to your database, you have to create the object and use the save() function:</p>
     <pre>
 let grade = Grade(course: "physics", grade: 80)
