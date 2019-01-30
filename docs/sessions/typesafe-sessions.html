@@ -20,16 +20,25 @@
   </head>
   <body>
     <h1>Type-Safe Sessions</h1>
-    <div class="underline"></div>
     <h2>Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+      <li><span class="blue-text">Codable Model:</span> Learn how to create one in our Codable Routing guide</li>
+      <li><span class="blue-text">Kitura OpenAPI:</span> Learn how to add this in our Kitura OpenAPI guide</li>
+      <div class="info">
+        <p>In this section we will be using Codable routes, and will continue with the examples used in the Codable Routing guide.</p>
+        <p>If you are unfamiliar with Codable Routing we suggest completing the Codable Routing guide first.</p>
+      </div>
     </ul>
-    <h2>Step 1: Define a Type-Safe Session</h2>
-    <p>Creating a type-safe session is as simple as declaring a type that conforms to the TypeSafeSession protocol:</p>
-    <pre>
-// Defines the session instance data
-final class MySession: TypeSafeSession {
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 1:</span> Define a Type-Safe Session</h2>
+    <p>First we need to import the KituraSession package:</p>
+    <pre>import KituraSession</pre>
+    <p>Next we can declare a type that conforms to the TypeSafeSession protocol.</p>
+    <p>We can use either a Class or a Struct here but we will use a Class.</p>
+    <p>Underneath our Codable model we add the following:</p>
+    <pre>// Defines the session instance data
+final class CheckoutSession: TypeSafeSession {
 
     let sessionId: String                       // Requirement: every session must have an ID
     var books: [Book]                           // User-defined type, where Book conforms to Codable
@@ -45,15 +54,18 @@ final class MySession: TypeSafeSession {
 extension MySession {
     static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
     static var store: Store?
-}   </pre>
+} </pre>
+    <div class="info">
+      <p>When using a Class you need to declare it as final.</p>
+    </div>
     <p>The minimum requirements for a type-safe session are:</p>
     <ul>
-      <li>A sessionID: String</li>
-      <li>An Initiliser that creates a new sessionId</li>
-      <li>A sessionCookie that defines the name of the cookie and the secret data used to encrypt it</li>
-      <li>An optional store: Store? that defines how sessions should be persisted</li>
+      <li><span class="blue-text">sessionID:</span></li>
+      <li><span class="blue-text">Initiliser:</span> Used to create a new sessionId</li>
+      <li><span class="blue-text">sessionCookie:</span> Defines the name of the cookie and the secret data used to encrypt it</li>
+      <li><span class="blue-text">An optional store:</span> Defines how sessions should be persisted</li>
     </ul>
-    <p>NOTE: If `store` is not defined then a default in-memory store is used.</p>
+    <!-- <p>NOTE: If `store` is not defined then a default in-memory store is used.</p>
     <p>NOTE: If your session is a Class it must be declared as final. TODO: Why?</p>
     <p>NOTE: If you define MySession as a struct, then in order to modify it within a handler, you will first need to assign it to a local variable:</p>
     <pre>
@@ -63,30 +75,36 @@ router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book
     session.save()
     respondWith(book, nil)
 }
-    </pre>
+    </pre> -->
+    <p>If store isn't specified then a default in memory store is used.</p>
     <p>For an example of a persistent store for sessions see Kitura-Session-Redis</p>
     <div class="underline"></div>
-    <h2>Step 2: Add the Session to your Application code</h2>
-    <p>TODO: Link to Codable Routing</p>
-    <p>You can now make use of this `MySession` type within your Codable routes:</p>
-    <pre>
-struct Book: Codable {
-    let title: String
-    let author: String
-}
-
-router.get("/cart") { (session: MySession, respondWith: ([Book]?, RequestError?) -> Void) -> Void in
-    respondWith(session.books, nil)
-}
-
-router.post("/cart") { (session: MySession, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
+    <h2><span class="blue-text">Step 2:</span> Add session POST route</h2>
+    <p>At the bottom of the list of the rest of our routes add the following:</p>
+    <pre>router.post("/cart", handler: postSessionHandler)</pre>
+    <p>Then below our `handlers` section add the following:</p>
+    <pre>func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) -> Void {
     session.books.append(book)
     session.save()
-    respondWith(book, nil)
-}   </pre>
-    <p></p>
+    completion(book, nil)
+}</pre>
+    <p>What we're doing here is storing the posted Book into the session.</p>
+    <p>We use the `append` method as we know `books` is an Array as we defined it as an Array in the CheckoutSession class.</p>
+    <p>Then we need to save the session.</p>
+    <p>Now we can add a route for retrieving the data.</p>
+    <h2><span class="blue-text">Step 3:</span> Add session GET route</h2>
+    <p>Just below the POST route we just added we can add the following:</p>
+    <pre>router.get("/cart", handler: getSessionHandler)</pre>
+    <p>Then again below our postSessionHandler handler we can add:</p>
+    <pre>func getSessionHandler(session: UserSession, completion: ([User]?, RequestError?) -> Void) -> Void {
+    completion(session.users, nil)
+}</pre>
+    <p>Add that's it. We've now enabled a Kitura Session on our server.</p>
+    <p>We can now test to enusre this works, and the easiest way to do that is using Kitura OpenAPI</p>
     <div class="underline"></div>
-    <h2>Step 3: Saving/Terminating a session</h2>
+    <h2><span class="blue-text">Step 4:</span> Test our Session</h2>
+    <div class="underline"></div>
+    <!-- <h2>Step 3: Saving/Terminating a session</h2>
     <h2>TODO: Does this need to be it's own step?</h2>
     <p>You need to save the session when a change is made to the session.</p>
     <p>A change could look something like this:</p>
@@ -144,7 +162,7 @@ router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (
     <pre>session.destroyed = true</pre>
     <p>With this you can supress the calling of `save()` during deinitialisation</p>
     <p>Which will prevent the session being persisted back into the store.</p>
-    <div class="underline"></div>
+    <div class="underline"></div> -->
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
