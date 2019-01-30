@@ -137,3 +137,18 @@ td, th {
   width: 70%;
   height: auto;
 }
+
+.img-container {
+  width: 56.5rem;
+  height: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.openapi-img {
+  height: auto;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 15px #F4F2F2;
+}

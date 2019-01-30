@@ -27,18 +27,33 @@
     </ul>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 1:</span> Add Kitura OpenAPI to your project</h2>
-    <p>Import Kitura OpenAPI into your project</p>
+    <p>First we need to import KituraOpenAPI into our project:</p>
     <pre>import KituraOpenAPI</pre>
-    <p>Add Kitura OpenAPI to your router:</p>
+    <p>Next we need to add the KituraOpenAPI end points to our router.</p>
+    <p>Just above the `Kitura.addHTTPServer()` line, add:</p>
     <pre>KituraOpenAPI.addEndpoints(to: router)</pre>
+    <p>That's all we need to do to enable KituraOpenAPI on our server.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Test your RestAPIs</h2>
-    <p>Start your Kitura server</p>
-    <p>TODO: Add instructions for this?</p>
-    <p>In a browser navigate to the following:</p>
+    <h2><span class="blue-text">Step 2:</span> View the OpenAPI UI</h2>
+    <p>We need to start our Kitura server first.</p>
+    <p>Once the server has started, navigate to:</p>
     <pre>localhost:8080/openapi/ui</pre>
-    <p>You should see your Codable routes listed</p>
-    <p>TODO: Pad this out with more information</p>
+    <p>You should see your Codable routes listed:</p>
+    <div class="img-container">
+      <img class="openapi-img" src="../../assets/OpenAPI-Routes-List.png" alt="Kitura OpenAPI routes list">
+    </div>
+    <p>We can then click on the list routes to find out more information about each individual route:</p>
+    <div class="img-container">
+      <img class="openapi-img" src="../../assets/OpenAPI-GET-Route-Example.png" alt="Kitura OpenAPI example GET route">
+    </div>
+    <p>From here we can see the response code from the server which is 200 (Success) in our case</p>
+    <p>We can also see an example value in JSON for our User.</p>
+    <p>Finally we can actually test our route from this UI by hitting the `Try it out` button:</p>
+    <p>As this is a get route we don't need to provide any data so just hit execute:</p>
+
+    <div class="img-container">
+      <img class="openapi-img" src="../../assets/OpenAPI-POST-Route-Example.png" alt="Kitura OpenAPI example POST route">
+    </div>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
