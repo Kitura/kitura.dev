@@ -20,16 +20,22 @@
   </head>
   <body>
     <h1>Raw Routing</h1>
-    <h2><span class="blue-text">Step 1:</span> Create the Endpoints</h2>
-    <h3>POST</h3>
-    <h3>GET</h3>
-    <h4>Get All</h4>
-    <h4>Get Single</h4>
-    <h3>DELETE</h3>
-    <h4>Delete All</h4>
-    <h4>Delete Single</h4>
-    <h3>PUT</h3>
-    <h3>PATCH</h3>
+    <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+    </ul>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 1:</span> Create a POST raw route</h2>
+    <pre>router.post("/some-path") { request, response, next in
+    // Do something else
+    next()
+}</pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Create a GET raw route</h2>
+    <pre>router.get("/some-path") { request, response, next in
+    // Do something
+    next()
+}</pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
