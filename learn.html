@@ -64,10 +64,10 @@
           <ul class="nested-sidebar-list content">
             <li id="databases" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/databases.html', 'databases')">What are Databases?</li>
             <li id="kuery-postgressql" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Swift-Kuery-PostgreSQL/" onclick="loadPage('./docs/databases/kuery-postgressql.html', 'kuery-postgressql')">PostgreSQL</li>
-            <li id="plugins" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/plugins.html', 'plugins')">Plugins</li>
+            <!-- <li id="plugins" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/plugins.html', 'plugins')">Plugins</li> -->
             <li id="orm" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Swift-Kuery-ORM/" onclick="loadPage('./docs/databases/orm.html', 'orm')">ORM</li>
-            <li id="couchdb" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Kitura-CouchDB/" onclick="loadPage('./docs/databases/couchdb.html', 'couchdb')">CouchDB</li>
-            <li id="redis" class="nested-sidebar-item selectable" api="http://ibm-swift.github.io/Kitura-redis/" onclick="loadPage('./docs/databases/redis.html', 'redis')">Redis</li>
+            <!-- <li id="couchdb" class="nested-sidebar-item selectable" api="https://ibm-swift.github.io/Kitura-CouchDB/" onclick="loadPage('./docs/databases/couchdb.html', 'couchdb')">CouchDB</li> -->
+            <!-- <li id="redis" class="nested-sidebar-item selectable" api="http://ibm-swift.github.io/Kitura-redis/" onclick="loadPage('./docs/databases/redis.html', 'redis')">Redis</li> -->
           </ul>
           <li class="sidebar-item collapsible">Sessions</li>
           <ul class="nested-sidebar-list content">
@@ -110,8 +110,8 @@
     </div>
     <nav class="docs-item-3 docs-nav">
       <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
-      <a class="nav-item">Need help?</a>
-      <a class="nav-item">Found an issue?</a>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
     </nav>
     <div class="docs-item-4 docs-window">
       <iframe id="doc-window" width="100%" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
