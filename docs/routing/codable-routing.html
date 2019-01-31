@@ -41,17 +41,17 @@
     <p>Open your main.swift file:</p>
     <pre>open Sources/MyKituraApp/main.swift</pre>
     <p>Below the line `let router = Router()` add:</p>
-    <pre>router.post("/users", handler: postHandler)</pre>
-    <p>What we've done is register a POST on our router that will handle any POST requests made on "/users".</p>
+    <pre>router.post("/books", handler: postHandler)</pre>
+    <p>What we've done is register a POST on our router that will handle any POST requests made on "/books".</p>
     <p>The handling is defined by the handler parameter. Which is a block of code that will be executed in reponse to the request.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Define the Handler</h2>
     <p>If we try to build the project now it will fail to compile.</p>
     <p>This is because the `postHandler` hasn't been defined.</p>
-    <p>The postHandler is a block of code, called a closure, that is executed when a POST request is made to "/users".</p>
+    <p>The postHandler is a block of code, called a closure, that is executed when a POST request is made to "/books".</p>
     <p>Add the following code above the `router.post(...)` line:</p>
-    <pre>func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
-  completion(user, nil)
+    <pre>func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+  completion(book, nil)
 }</pre>
     <p>The result should look similar to this:</p>
     <pre>import Kitura
@@ -62,11 +62,11 @@ HeliumLogger.use()
 
 let router = Router()
 
-func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
-    completion(user, nil)
+func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+    completion(book, nil)
 }
 
-router.post("/users", handler: postHandler)
+router.post("/books", handler: postHandler)
 
 Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()</pre>
@@ -74,10 +74,10 @@ Kitura.run()</pre>
     <h2><span class="blue-text">Step 3:</span> Create the data model</h2>
     <p>If we try to compile the code now it will still fail, but this time for a different reason.</p>
     <p>In our postHandler we have a completion parameter that accepts a tuple of type:</p>
-    <pre>(User?, RequestError?)</pre>
-    <p>User is a custom Swift type that we haven't defined yet. So lets go ahead and define it.</p>
+    <pre>(Book?, RequestError?)</pre>
+    <p>Book is a custom Swift type that we haven't defined yet. So lets go ahead and define it.</p>
     <p>Below the line `let router = Router()` add:</p>
-    <pre>struct User: Codable {
+    <pre>struct Book: Codable {
   let name: String
   let age: Int
   let active: Bool
@@ -91,21 +91,21 @@ HeliumLogger.use()
 
 let router = Router()
 
-struct User: Codable {
+struct Book: Codable {
     let name: String
     let age: Int
     let active: Bool
 }
 
-func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
-    completion(user, nil)
+func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+    completion(book, nil)
 }
 
-router.post("/users", handler: postHandler)
+router.post("/books", handler: postHandler)
 
 Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()</pre>
-    <p>Simply put, `User` is a struct that conforms to Codable.</p>
+    <p>Simply put, `Book` is a struct that conforms to Codable.</p>
     <p>Codable is a Swift protocol that provides Encoders and Decoders to convert to and from JSON.</p>
     <p>We can now successfully compile the project!</p>
     <div class="underline"></div>
@@ -117,7 +117,7 @@ Kitura.run()</pre>
     <p>With the project now compiling we can start the server.</p>
     <p>Once the server is running open a terminal window and enter the following:</p>
     <pre>curl -X POST \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
     "name": "Sarah",
@@ -130,28 +130,28 @@ Kitura.run()</pre>
     <p>We have just posted data, now we need to be able to retrieve the data.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 5:</span> Create a GET Codable Route</h2>
-    <p>We register a GET route in a similar way to how we registered the POST route.</p>
-    <p>Below the line `router.post("/users", handler: postHandler)` add:</p>
-    <pre>router.get("/users", handler: getAllHandler)</pre>
+    <p>We register a GET route in a similar way to the POST route.</p>
+    <p>Below the line `router.post("/books", handler: postHandler)` add:</p>
+    <pre>router.get("/books", handler: getAllHandler)</pre>
     <p>Just like before we now need to define the handler.</p>
     <p>Below the `postHandler` function add:</p>
-    <pre>func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
+    <pre>func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
   completion(nil, nil)
 }</pre>
-    <p>You may have noticed that the completion here is expecting an array of Users.</p>
-    <p>That is because we're defining a route that will retrieve all of the Users stored on the server.</p>
+    <p>You may have noticed that the completion here is expecting an array of books.</p>
+    <p>That is because we're defining a route that will retrieve all of the books stored on the server.</p>
     <p>To be able to retrieve data from the server we first need a way to store the data that's sent to it.</p>
     <p>A simple way to do this is using a Dictionary.</p>
     <p>Just above our `postHandler` function add:</p>
-    <pre>var userStore: [String: User] = [:]</pre>
+    <pre>var bookstore: [String: Book] = [:]</pre>
     <div class="info">
       <p>It's worth noting using a Dictionary not good practice. The better solution would be to create a Database to store the data.</p>
       <p>You can learn how to do this in our Database guide.</p>
     </div>
-    <p>Now that we have a way to store our Users we need to update our `getAllHandler`:</p>
-    <pre>func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
-  let users = userStore.map({ $0.value })
-  completion(users, nil)
+    <p>Now that we have a way to store our books we need to update our `getAllHandler`:</p>
+    <pre>func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+  let books = bookstore.map({ $0.value })
+  completion(books, nil)
 }</pre>
     <p>The result of all the changes should look something like this:</p>
     <pre>import Kitura
@@ -162,32 +162,32 @@ HeliumLogger.use()
 
 let router = Router()
 
-struct User: Codable {
+struct Book: Codable {
     let name: String
     let age: Int
     let active: Bool
 }
 
-var userStore: [String: User] = [:]
+var bookstore: [String: Book] = [:]
 
-func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
-    completion(user, nil)
+func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+    completion(book, nil)
 }
 
-func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
-    let users = userStore.map({ $0.value })
-    completion(users, nil)
+func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+    let books = bookstore.map({ $0.value })
+    completion(books, nil)
 }
 
-router.post("/users", handler: postHandler)
-router.get("/users", handler: getAllHandler)
+router.post("/books", handler: postHandler)
+router.get("/books", handler: getAllHandler)
 
 Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()</pre>
     <p>Now we can restart our server to test our new endpoint.</p>
     <p>Once the server is running, run the following command in your terminal:</p>
     <pre>curl -X GET \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json'</pre>
     <p>If everything is working you should see the following output:</p>
     <pre>[]%</pre>
@@ -196,15 +196,15 @@ Kitura.run()</pre>
     <div class="info">
       <p>We will go into greater detail about storing and retrieving data in the Database section.</p>
     </div>
-    <p>You can modify the postHandler to store the posted user:</p>
-    <pre>func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
-  //Add user to the data store
-  userStore[user.name] = user
-  completion(user, nil)
+    <p>You can modify the postHandler to store the posted book:</p>
+    <pre>func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+  //Add book to the data store
+  bookstore[book.name] = book
+  completion(book, nil)
 }</pre>
     <p>Then resart your server, and run the following in a terminal:</p>
     <pre>curl -X POST \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
     "name": "Sarah",
@@ -213,7 +213,7 @@ Kitura.run()</pre>
 }'</pre>
     <p>Followed by:</p>
     <pre>curl -X GET \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json'</pre>
     <p>You should now see the following output:</p>
     <pre>[{"name":"Sarah","age":32,"active":true}]%</pre>
@@ -227,7 +227,7 @@ Kitura.run()</pre>
 
     <p>Before we can get started with creating our routes we need to create our data model.</p>
 
-    <p>We will create a Struct called `User` and give it three properties.</p>
+    <p>We will create a Struct called `Book` and give it three properties.</p>
     <ol class="plain-list">
       <li>Name of type String</li>
       <li>Age of type Int</li>
@@ -244,50 +244,50 @@ Kitura.run()</pre>
     <h2><span class="blue-text">Step 3:</span> Create the Endpoints</h2>
     <h3>POST</h3>
     <p>Register the POST route</p>
-    <pre>router.post("/users", handler: postHandler)</pre>
+    <pre>router.post("/books", handler: postHandler)</pre>
     <p>TODO: Brief explanation of code?</p>
     <p>Define the postHandler function</p>
     <pre>
-      func postHandler(user: User, completion: (User?, RequestError?) -> Void) {
-        //Add user to the data store
-        userStore[user.name] = user
-        completion(user, nil)
+      func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+        //Add book to the data store
+        bookstore[book.name] = book
+        completion(book, nil)
       }</pre>
     <h3>GET</h3>
     <h4>Get All</h4>
     <p>Register the GET route</p>
-    <pre>router.get("/users", handler: getAllHandler)</pre>
+    <pre>router.get("/books", handler: getAllHandler)</pre>
     <p>TODO: Brief explanation of code?</p>
     <p>Define the getAllHandler function</p>
     <pre>
-      func getAllHandler(completion: ([User]?, RequestError?) -> Void) {
-        let users = userStore.map({ $0.value })
-        completion(users, nil)
+      func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+        let books = bookstore.map({ $0.value })
+        completion(books, nil)
       }</pre>
     <h4>Get Single</h4>
     <p>Register the GET route</p>
-    <pre>router.get("/users", handler: getSingleHandler)</pre>
+    <pre>router.get("/books", handler: getSingleHandler)</pre>
     <p>TODO: Brief explanation of code?</p>
     <p>Define the getSingleHandler function</p>
     <pre>
-      func getSingleHandler(id: Int, completion: (User?, RequestError?) -> Void) {
+      func getSingleHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
         //Some logic
-        completion(user, nil)
+        completion(book, nil)
       }</pre>
     <h3>DELETE</h3>
     <h4>Delete All</h4>
     <p>Register the delete route</p>
-    <pre>router.delete("/users", handler: deleteAllHandler)</pre>
+    <pre>router.delete("/books", handler: deleteAllHandler)</pre>
     p>TODO: Brief explanation of code?</p>
     <p>Define the deleteAllHandler function</p>
     <pre>
       func deleteAllHandler(completion: (RequestError?) -> Void) {
-        userStore = [:]
+        bookstore = [:]
         completion(nil)
       }</pre>
     <h4>Delete Single</h4>
     <p>Register the delete route</p>
-    <pre>router.delete("/users", handler: deleteSingleHandler)</pre>
+    <pre>router.delete("/books", handler: deleteSingleHandler)</pre>
     <p>TODO: Brief explanation of code?</p>
     <p>Define the deleteSingleHandler function</p>
     <pre>
@@ -297,29 +297,29 @@ Kitura.run()</pre>
       }</pre>
     <h3>PUT</h3>
     <p>Register the put route</p>
-    <pre>router.put("/users", handler: putHandler)</pre>
+    <pre>router.put("/books", handler: putHandler)</pre>
     <p>TODO: Brief explanation of code?</p>
     <p>Define the putHandler function</p>
     <pre>
-      func putHandler(user: User, completion: (User?, RequestError?) -> Void) {
+      func putHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
         //Some Logic
-        completion(user, nil)
+        completion(book, nil)
       }</pre>
     <h3>PATCH</h3>
     <p>Register the PATCH route</p>
-    <pre>router.patch("/users", handler: patchHandler)</pre>
+    <pre>router.patch("/books", handler: patchHandler)</pre>
     <p>TODO: Brief explanation of code?</p>
     <p>Define the patchHandler function</p>
     <pre>
-      func patchHandler(user: User, completion: (User?, RequestError?) -> Void) {
+      func patchHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
         //Some Logic
-        completion(user, nil)
+        completion(book, nil)
       }</pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Test the Endpoints</h2> -->
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add a Database:</span> Some blurb about Databases</p>
-    <p><span class="blue-text bold">Add Sessions:</span> Some blurb about Sessions</p>
-    <p><span class="blue-text bold">Add Authentication:</span> Some blurb about Authentication</p>
+    <!-- <p><span class="blue-text bold">Add Sessions:</span> Some blurb about Sessions</p>
+    <p><span class="blue-text bold">Add Authentication:</span> Some blurb about Authentication</p> -->
   </body>
 </html>

@@ -38,19 +38,19 @@
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Create a Postgres Database</h2>
     <p>Now that we have PostgreSQL installed we can create a database:</p>
-    <pre>createdb userdb</pre>
+    <pre>createdb bookdb</pre>
     <p>Then we can open the PostgreSQL command-line interface:</p>
-    <pre>psql userdb</pre>
+    <pre>psql bookdb</pre>
     <p>Finally we can create a table in our database:</p>
-    <pre>CREATE TABLE users (
+    <pre>CREATE TABLE books (
     name varchar(100) NOT NULL CHECK (name &lt;&gt; ''),
     age integer NOT NULL,
     active BOOLEAN NOT NULL
 );</pre>
     <p>All that's left is to add values to our database:</p>
-    <pre>INSERT INTO users VALUES ('David', 27, true);
-INSERT INTO users VALUES ('Sammi', 32, false);
-INSERT INTO users VALUES ('Jane', 48, true);</pre>
+    <pre>INSERT INTO books VALUES ('David', 27, true);
+INSERT INTO books VALUES ('Sammi', 32, false);
+INSERT INTO books VALUES ('Jane', 48, true);</pre>
     <p>Now we're ready to connect to our database from our Kitura server.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Connect to PostgreSQL</h2>
@@ -58,9 +58,9 @@ INSERT INTO users VALUES ('Jane', 48, true);</pre>
     <pre>import SwiftKuery
 import SwiftKueryPostgreSQL</pre>
     <p>Next we create an instance of a PostgreSQL connection:</p>
-    <pre>let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("userdb")])</pre>
+    <pre>let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("bookdb")])</pre>
     <p>Next we need to define a fuction:</p>
-    <pre>func users(_ callback: @escaping (String) -> Void) -> Void {
+    <pre>func books(_ callback: @escaping (String) -> Void) -> Void {
     connection.connect() { result in
         guard result.success else {
             guard let error = result.asError else {
@@ -69,7 +69,7 @@ import SwiftKueryPostgreSQL</pre>
             return callback("Error connecting: \(error)")
         }
 
-        let query = Select(users.name, users.active, from: users)
+        let query = Select(books.name, books.active, from: books)
 
         connection.execute(query: query) { result in
             guard let resultSet = result.asResultSet else {

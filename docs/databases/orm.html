@@ -40,7 +40,7 @@
     <h2><span class="blue-text">Step 2:</span> Update our Model</h2>
     <p>The key component of Swift Kuery ORM is the Model protocol.</p>
     <p>All we need to do to make use of the Model protocol is create an extension for our Model:</p>
-    <pre>extension User: Model { }</pre>
+    <pre>extension Book: Model { }</pre>
     <p>The Model protocol extends what Codable provides to work with the ORM.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Create a database connection</h2>
@@ -54,54 +54,54 @@
     <pre>sudo apt-get install libpq-dev</pre>
     <h3>Create a PostgreSQL database</h3>
     <p>Now that we have PostgreSQL installed we can create a database:</p>
-    <pre>createdb userdb</pre>
+    <pre>createdb bookdb</pre>
     <p>Now we're ready to connect to our database from our Kitura server.</p>
     <h3>Create a PostgreSQL connection pool</h3>
     <p>Next we create an instance of a PostgreSQL connection:</p>
-    <pre>let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("userdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
+    <pre>let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
 Database.default = Database(pool)</pre>
     <h3>Create a table in the database</h3>
     <p></p>
     <pre>do {
-    try User.createTableSync()
+    try Book.createTableSync()
 } catch let error {
     print(error)
 }</pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Save an Object to our database</h2>
     <div class="info">
-      <p>We are no longer using a Dictionary to store data. If you followed the Codable routing guide to get here then make sure you remove all the `userStore` code.</p>
+      <p>We are no longer using a Dictionary to store data. If you followed the Codable routing guide to get here then make sure you remove all the `bookStore` code.</p>
     </div>
     <p>If we want to save a new object to our database we have to use the save() method.</p>
     <p>In our handler for the POST route we can add the following:</p>
-    <pre>user.save(completion)</pre>
+    <pre>book.save(completion)</pre>
     <p>The POST handler should look similar to this:</p>
-    <pre>func postHandler(user: User, completion: @escaping (User?, RequestError?) -> Void) {
-    user.save(completion)
-    completion(user, nil)
+    <pre>func postHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+    book.save(completion)
+    completion(book, nil)
 }</pre>
-    <p>That's all we need to do. With that line any User data posted to the `/users` end point will be stored in our database.</p>
+    <p>That's all we need to do. With that line any Book data posted to the `/books` end point will be stored in our database.</p>
     <p>All we need to do now is be able to retrieve data from our database.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 5:</span> Retrieve an Object from your database</h2>
-    <p>If we want to retrieve all the User data from our database we use the `findAll` method.</p>
-    <p>This will return an array containing the all the users.</p>
-    <p>In our handler for getting all the users we can add the following:</p>
-    <pre>User.findAll { users, error in
-  guard let users = users else {
+    <p>If we want to retrieve all the Book data from our database we use the `findAll` method.</p>
+    <p>This will return an array containing the all the books.</p>
+    <p>In our handler for getting all the books we can add the following:</p>
+    <pre>Book.findAll { books, error in
+  guard let books = books else {
     completion(nil, .internalServerError)
     return
   }
-  completion(users, nil)
+  completion(books, nil)
 }</pre>
     <p>The GET handler should look similar to this:</p>
-    <pre>func getAllHandler(completion: @escaping ([User]?, RequestError?) -> Void) {
-  User.findAll { users, error in
-    guard let users = users else {
+    <pre>func getAllHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
+  Book.findAll { books, error in
+    guard let books = books else {
       completion(nil, .internalServerError)
       return
     }
-    completion(users, nil)
+    completion(books, nil)
   }
 }</pre>
     <p>We've added some error handling here as well. We check to ensure we got something back, otherwise there's an error with the server.</p>
@@ -114,7 +114,7 @@ Database.default = Database(pool)</pre>
     <p>Firstly we need to start our Kitura server</p>
     <p>Then in a terminal:</p>
     <pre>curl -X POST \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
     "name": "Sarah",
@@ -126,13 +126,13 @@ Database.default = Database(pool)</pre>
     <p>Next we can retrieve the data back.</p>
     <p>In a terminal:</p>
     <pre>curl -X GET \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json'</pre>
     <p>Again you should see the following:</p>
     <pre>{"name":"Sarah","age":32,"active":true}%</pre>
     <p>If we stop the server, and then restart it and run the following in a terminal again:</p>
     <pre>curl -X GET \
-  http://localhost:8080/users \
+  http://localhost:8080/books \
   -H 'content-type: application/json'</pre>
     <p>You should still see the following output:</p>
     <pre>{"name":"Sarah","age":32,"active":true}%</pre>
