@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Server Side Swift Prerequisites</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Installation for macOS</h1>
+    <h3>Install Xcode</h3>
+    <p>Download and install the latest version of <a target="_blank" href="https://developer.apple.com/xcode/">Xcode</a> from the App Store.</p>
+    <p>To confirm whether Swift has been installed successfully open a terminal and run the following:</p>
+    <pre>swift --version</pre>
+    <p>You should see something similar like this:</p>
+    <pre>
+Apple Swift version 4.1.1 (swift-4.1.1-RELEASE)
+Target: x86_64-apple-darwin18.0.0</pre>
+    <p>If you got an error similar to this:</p>
+    <pre>swift: command not found</pre>
+    <p>Then you may need to manually install the Xcode command line tools.</p>
+    <p>You can do that by typing the following into a terminal:</p>
+    <pre>xcode-select --install</pre>
+    <p>You can also do this via Xcode:</p>
+    <ol>
+      <li>Open Xcode preferences using the shortcut: CMD + ,</li>
+      <li>Click on the Locations tab</li>
+      <li>From the Command Line Tools drop down ensure the correct version of Xcode is selected.</li>
+    </ol>
+    <div class="underline"></div>
+    <h3>Install Kitura CLI</h3>
+    <h4>Install via brew</h4>
+    <p>For this installation you will need to have Homebrew installed.</p>
+    <p>If you do not have Homebrew installed you can follow the <a target="_blank" href="https://docs.brew.sh/Installation">Homebrew installation steps</a></p>
+    <p>Then run the following in a terminal:</p>
+    <pre>brew tap ibm-swift/kitura</pre>
+    <pre>brew install kitura</pre>
+    <div class="underline"></div>
+    <h4>Install via npm</h4>
+    <p>For this installation method you need to have npm installed.</p>
+    <p>If you do not have npm installed you can follow the <a target="_blank" href="https://www.npmjs.com/get-npm">npm installation steps</a>.</p>
+    <p>Then run the following in a terminal:</p>
+    <pre>npm install -g kitura-cli</pre>
+    <p>Verify the Kitura CLI is installed by running the following:</p>
+    <pre>kitura --version</pre>
+    <p>You should see output similar to this:</p>
+    <pre>0.0.12</pre>
+    <div class="underline"></div>
+    <h3>Install Kitura MacOS app</h3>
+    <h4>Step 1: Download the macOS App</h4>
+    <p>To download the macOS app click the button below:</p>
+    <button class="macos-download-button" type="button" name="macos-download-button" onclick="window.open('../../Kitura.dmg')">Download</button>
+    <h4>Step 2: Install macOS app</h4>
+    <p>Once the download has completed open the kitura.dmg.</p>
+    <p>When the UI pops up drag the Kitura Icon into your applications folder.</p>
+    <p>Open the macOS Finder and find Kitura in the applications folder.</p>
+    <p>Right click on the Kitura application and select open.</p>
+    <p>You only need to open it once this way</p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-project')" href="create-project.html#">Create a Kitura server:</a></span> Make use of SPM, the Kitura CLI or the macOS app to create a server.</p>
+    <!-- <p><a href="hello-world-spm.html">Create application using SPM:</a> Create a Hello World Kitura app using Swift Package Manager</p>
+    <p><a href="hello-world-app.html">Create application using macOS app:</a> Create a Hello World Kitura app using the Kitura macOS app</p>
+    <p><a href="hello-world-cli.html">Create application using CLI:</a> Create a Hello World Kitura app using the Kitura Command Line Interface</p> -->
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+  </body>
+</html>

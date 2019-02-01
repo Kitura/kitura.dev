@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Server Side Swift Prerequisites</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Installation for Linux</h1>
+    <p>Kitura is tested on Ubuntu 14.04 (LTS) and Ubuntu 16.04 (LTS).</p>
+    <p>Swift development on Ubuntu Linux requires various Linux system packages.</p>
+    <pre>sudo apt-get update</pre>
+    <pre>sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev libpython2.7</pre>
+    <div class="underline"></div>
+    <h3>Install Kitura CLI</h3>
+    <h4>Install via npm</h4>
+    <p>For this installation method you need to have npm installed.</p>
+    <p>If you do not have npm installed you can follow the <a target="_blank" href="https://www.npmjs.com/get-npm">npm installation steps</a>.</p>
+    <p>Then run the following in a terminal:</p>
+    <pre>npm install -g kitura-cli</pre>
+    <p>Verify the Kitura CLI is installed by running the following:</p>
+    <pre>kitura --version</pre>
+    <p>You should see output similar to this:</p>
+    <pre>0.0.12</pre>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-project')" href="create-project.html#">Create a Kitura server:</a></span> Make use of SPM, the Kitura CLI or the macOS app to create a server.</p>
+    <!-- <p><a href="hello-world-spm.html">Create application using SPM:</a> Create a Hello World Kitura app using Swift Package Manager</p>
+    <p><a href="hello-world-app.html">Create application using macOS app:</a> Create a Hello World Kitura app using the Kitura macOS app</p>
+    <p><a href="hello-world-cli.html">Create application using CLI:</a> Create a Hello World Kitura app using the Kitura Command Line Interface</p> -->
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+  </body>
+</html>
