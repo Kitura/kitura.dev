@@ -19,42 +19,76 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Stencil</h1>
-    <h2><span class="blue-text">Step 1:</span> Add Kitura-Stencil to your project</h2>
-    <p>In your Package.swift you need to add the following:</p>
-    <pre>.package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", from: "x.x.x"),</pre>
-    <p>Where x.x.x represents the latest version</p>
-    <p>For more information on adding Kitura-Stencil to your project you can view the Readme.</p>
-    <p>Finally you will need to add Kitura-Stencil to your build targets.</p>
-    <p>TODO: So we need to talk about this? Link to Readme instead?</p>
+    <h1>Kitura Stencil</h1>
+    <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+    </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Build your project</h2>
-    <p>Since you've added a new package to your Package.swift you need to rebuild your project.</p>
-    <p>In a terminal run the following:</p>
-    <pre>swift package update</pre>
-    <p>If you're on macOS and using Xcode you will also need to generate a new xcode project:</p>
-    <pre>swift package generate-xcodeproj</pre>
-    <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Create template files</h2>
-    <p>For Kitura to make use of templating you need template files to work with.</p>
-    <p>By default Kitura template engines look in a ./Views directory for the template files.</p>
-    <p>In the root of your project, run the following in a terminal:</p>
-    <pre>mkdir Views</pre>
-    <p>Note: If you're working in Xcode you will need to generate a new Xcode project:</p>
-    <pre>swift package generate-xcodeproj</pre>
-    <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Add Kitura-Stencil to your App code</h2>
-    <p>Import KituraStencil into your project</p>
+    <h2><span class="blue-text">Step 1:</span> Add KituraStencil to our project</h2>
+    <p>First we need to import the KituraStencil package:</p>
     <pre>import KituraStencil</pre>
-    <p>Add KituraStencil to your router:</p>
+    <p>Now we can add a temple engine to our router instance.</p>
+    <p>Below the line: `let router = Router()` add:</p>
     <pre>router.add(templateEngine: StencilTemplateEngine())</pre>
+    <p>The above line of code tells the server on this instance of the router we'd like to use Stencil as the default template engine.</p>
+    <div class="info">
+      <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
+      <p>Kitura then provides APIs to select a default template engine to use.</p>
+    </div>
+    <p>We've just added the Stencil template engine to our router, so now we can use it in a route.</p>
+    <p>Just below our other registered routes add the following:</p>
+    <pre>router.get("/book") { request, response, next in
+    try response.render("book.stencil", with: book)
+}</pre>
+    <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
+    <p>In our case, the file `book.stencil` template will be populated with the `book` data and then rendered in the browser on `"/book"`.</p>
+    <p>This obviously will not work as we haven't created our `book.stencil` file.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Render a template</h2>
-    <pre>
-      router.get("/hello") { request, response, next in
-        try response.render("Example.stencil", context: ["name": "Kitura!"])
-      }
-    </pre>
+    <h2><span class="blue-text">Step 2:</span> Create the template file</h2>
+    <p>By default Kitura looks for template files in a `./Views` directory found at the root of the project.</p>
+    <div class="info">
+      <p>Typically the root of your project is where the `.xcodeproj` directory is.</p>
+    </div>
+    <p>Once we are in the root of our project we can create the directory.</p>
+    <p>In the terminal run the following:</p>
+    <pre>mkdir Views</pre>
+    <div class="info">
+      <p>If you would prefer you can create your directory using a UI based approach, such as Finder on Mac.</p>
+    </div>
+    <p>Then we need to create our template file within the Views directory.</p>
+    <p>In a terminal run the following:</p>
+    <pre>cd Views && touch book.stencil</pre>
+    <p>Now we have everything we need to start creating our templates.</p>
+    <p>The last thing we need to do is recreate our Xcode project:</p>
+    <pre>swift package generate-xcodeproj</pre>
+    <p>This is to enable Xcode to pick up the new directory we've just added.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Populate the Stencil template file</h2>
+    <div class="info">
+      <p>Stencil is a templating language that has a lot of powerful features, you can learn about them in the <a target="_blank" href="http://stencil.fuller.li/en/latest/">Stencil guide.</a></p>
+    </div>
+    <p>We first need some template code to populate.</p>
+    <p>Open the `book.stencil` file and add the following:</p>
+    <pre>&lt;html&gt;
+  &lt;p>Title: {{ title }}&lt;/p&gt; &lt;br /&gt;
+  &lt;p>Price: {{ price }}&lt;/p&gt; &lt;br /&gt;
+  &lt;p>Available: {{ inStock }}&lt;/p&gt;
+&lt;/html&gt;</pre>
+    <p>Next we can create the data we want to render into the browser.</p>
+    <p>just below where created our model add:</p>
+    <pre>let book = Book(title: "A Game of Thrones", price: 14.99, inStock: true)</pre>
+    <p>Now to test our templating, we first need to start the Kitura server.</p>
+    <p>Then in a browser open: <a target="_blank" href="http://localhost:8080/book">http://localhost:8080/book</a></p>
+    <p>In the browser we should see:</p>
+    <pre>Title: A Game of Thrones
+
+
+Price: 14.99
+
+
+Available: 1</pre>
+    <p>That's it! We've just rendered a simple data type in the browser using Kitura Stencil.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('cloud-foundry')" href="../deploying/cloud-foundry.html#">Deploy your application:</a></span> Get useful feedback from your server about startup and errors</p>

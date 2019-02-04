@@ -6,10 +6,6 @@ addCollapsibleElements();
 loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
 setAPIButtonTarget();
 
-
-
-resizeIframe();
-
 function resizeIframe() {
   document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.scrollHeight + 'px';
 }
