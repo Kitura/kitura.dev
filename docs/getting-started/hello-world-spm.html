@@ -25,16 +25,16 @@
     <p>If you'd prefer to work with the command line with a project created for you then you can follow the <a href="hello-world-cli.html">Hello World example using the Kitura CLI</a>.</p>
     <h2>Step 1: Create project</h2>
     <p>Create a directory for your project:</p>
-    <pre>mkdir HelloWorld && cd HelloWorld</pre>
+    <pre><code class="language-swift">mkdir HelloWorld && cd HelloWorld</code></pre>
     <p>Inialize the directory as a Swift project:</p>
-    <pre>swift package init --type executable</pre>
+    <pre><code class="language-swift">swift package init --type executable</code></pre>
     <div class="underline"></div>
     <h2>Step 2: Add Kitura to your dependencies</h2>
     <p>To add Kitura to your dependencies you need to edit the Package.swift</p>
     <p>Open Package.swift in your default text editor:</p>
-    <pre>open Package.swift</pre>
+    <pre><code class="language-swift">open Package.swift</code></pre>
     <p>Add Kitura to your dependencies so your Package.swift looks like this:</p>
-    <pre>
+    <pre><code class="language-swift">
 // swift-tools-version:4.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
@@ -58,16 +58,16 @@ let package = Package(
             dependencies: ["spm-example"]),
     ]
 )
-    </pre>
+    </code></pre>
     <p>Now build your project to pull down your dependencies:</p>
-    <pre>swift build</pre>
+    <pre><code class="language-swift">swift build</code></pre>
     <div class="underline"></div>
     <h2>Step 3: Add the route</h2>
     <h3>macOS</h3>
     <p>If you're on a Mac you can create an Xcode project to continue:</p>
-    <pre>swift package generate-xcodeproj</pre>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
     <p>Once this command has completed open the Xcode project:</p>
-    <pre>open HelloWorld.xcodeproj</pre>
+    <pre><code class="language-swift">open HelloWorld.xcodeproj</code></pre>
     <p>TODO: Add following instructions</p>
     <p>TODO: Add image for Scheme change</p>
     <div class="underline"></div>

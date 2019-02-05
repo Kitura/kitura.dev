@@ -32,36 +32,36 @@
     <p>We will declare a struct which conforms to TypeSafeHTTPBasic.</p>
     <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
     <p>Below our Codable model we will add:</p>
-    <pre>public struct MyBasicAuth: TypeSafeHTTPBasic {
+    <pre><code class="language-swift">public struct MyBasicAuth: TypeSafeHTTPBasic {
 
-}</pre>
+}</code></pre>
     <p>If you're using Xcode it should display the message: Type 'MyBasicAuth' does not conform to protocol 'TypeSafeCredentials'</p>
     <p>Click "Fix" to autogenerate the stubs and produce the struct below:</p>
-    <pre>public struct MyBasicAuth: TypeSafeHTTPBasic {
+    <pre><code class="language-swift">public struct MyBasicAuth: TypeSafeHTTPBasic {
     public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
 
     }
 
     public var id: String
-}</pre>
+}</code></pre>
     <p>Inside MyBasicAuth, add an authentication dictionary:</p>
-    <pre>public static let authenticate = ["username" : "password"]</pre>
+    <pre><code class="language-swift">public static let authenticate = ["username" : "password"]</code></pre>
     <div class="info">
       <p>In a real project, never store passwords in plain text!</p>
     </div>
     <p>Define verifyPassword:</p>
     <p>The function, verifyPassword, takes a username and password and, on success, returns a MyBasicAuth instance.</p>
     <p>We want to check if the password matches the user's stored password. On successful match, we initialize MyBasicAuth with an id equal to username.</p>
-    <pre>if let storedPassword = authenticate[username], storedPassword == password {
+    <pre><code class="language-swift">if let storedPassword = authenticate[username], storedPassword == password {
     callback(MyBasicAuth(id: username))
     return
 }
-callback(nil)</pre>
+callback(nil)</code></pre>
     <p>This function is async, so that we can perform async actions to verify the password, e.g. looking up the username and password in a database.</p>
     <p>We must call the callback closure with either an instance of Self or nil before exiting verifyPassword.</p>
     <p>If we do not, the server will not know to continue and we will recieve a 503 "Service Unavailable" error, when we call the route.</p>
     <p>Our completed struct should now look as follows:</p>
-    <pre>public struct MyBasicAuth: TypeSafeHTTPBasic {
+    <pre><code class="language-swift">public struct MyBasicAuth: TypeSafeHTTPBasic {
 
     public static let authenticate = ["username" : "password"]
 
@@ -74,22 +74,22 @@ callback(nil)</pre>
     }
 
     public var id: String
-}</pre>
+}</code></pre>
     <div class="underline"></div>
     <h3><span class="blue-text">Step 2:</span> Using TypeSafeHTTPBasic in a route</h3>
     <p>Underneath our other Codable routes we will add:</p>
-    <pre>router.get("/basic") { (user: MyBasicAuth, respondWith: (MyBasicAuth?, RequestError?) -> Void) in
+    <pre><code class="language-swift">router.get("/basic") { (user: MyBasicAuth, respondWith: (MyBasicAuth?, RequestError?) -> Void) in
     print("authenticated \(user.id) using \(user.provider)")
     respondWith(user, nil)
-}</pre>
+}</code></pre>
     <p>That's it! We've implemented HTTP basic authentication of a Codable route.</p>
     <div class="underline"></div>
     <h3><span class="blue-text">Step 3:</span> Test TypeSafeHTTPBasic routes</h3>
     <p>We need to first start our Kitura server.</p>
     <p>Then navigate to: <a href="http://localhost:8080/basic">http://localhost:8080/basic</a></p>
     <p>Log in with the credentials we defined:</p>
-    <pre>User Name: username</pre>
-    <pre>Password: password</pre>
+    <pre><code class="language-swift">User Name: username</code></pre>
+    <pre><code class="language-swift">Password: password</code></pre>
     <p>We then should be logged in and see "username" in the browser.</p>
     <p>The browser will store your login credentials and automatically log you in if you return to the route.</p>
     <p>Use a private window if you would like to test incorrect authentication.</p>
@@ -98,5 +98,6 @@ callback(nil)</pre>
     <h3>Next steps</h3>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`stencil`)" href="../templating/stencil.html#">Add a Web Page:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

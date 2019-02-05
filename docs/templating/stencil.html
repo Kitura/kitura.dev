@@ -27,10 +27,10 @@
     <div class="underline"></div>
     <h2><span class="blue-text">Step 1:</span> Add KituraStencil to our project</h2>
     <p>First we need to import the KituraStencil package:</p>
-    <pre>import KituraStencil</pre>
+    <pre><code class="language-swift">import KituraStencil</code></pre>
     <p>Now we can add a temple engine to our router instance.</p>
     <p>Below the line: `let router = Router()` add:</p>
-    <pre>router.add(templateEngine: StencilTemplateEngine())</pre>
+    <pre><code class="language-swift">router.add(templateEngine: StencilTemplateEngine())</code></pre>
     <p>The above line of code tells the server on this instance of the router we'd like to use Stencil as the default template engine.</p>
     <div class="info">
       <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
@@ -38,9 +38,9 @@
     </div>
     <p>We've just added the Stencil template engine to our router, so now we can use it in a route.</p>
     <p>Just below our other registered routes add the following:</p>
-    <pre>router.get("/book") { request, response, next in
+    <pre><code class="language-swift">router.get("/book") { request, response, next in
     try response.render("book.stencil", with: book)
-}</pre>
+}</code></pre>
     <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
     <p>In our case, the file `book.stencil` template will be populated with the `book` data and then rendered in the browser on `"/book"`.</p>
     <p>This obviously will not work as we haven't created our `book.stencil` file.</p>
@@ -52,16 +52,16 @@
     </div>
     <p>Once we are in the root of our project we can create the directory.</p>
     <p>In the terminal run the following:</p>
-    <pre>mkdir Views</pre>
+    <pre><code class="language-swift">mkdir Views</code></pre>
     <div class="info">
       <p>If you would prefer you can create your directory using a UI based approach, such as Finder on Mac.</p>
     </div>
     <p>Then we need to create our template file within the Views directory.</p>
     <p>In a terminal run the following:</p>
-    <pre>cd Views && touch book.stencil</pre>
+    <pre><code class="language-swift">cd Views && touch book.stencil</code></pre>
     <p>Now we have everything we need to start creating our templates.</p>
     <p>The last thing we need to do is recreate our Xcode project:</p>
-    <pre>swift package generate-xcodeproj</pre>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
     <p>This is to enable Xcode to pick up the new directory we've just added.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Populate the Stencil template file</h2>
@@ -70,28 +70,29 @@
     </div>
     <p>We first need some template code to populate.</p>
     <p>Open the `book.stencil` file and add the following:</p>
-    <pre>&lt;html&gt;
+    <pre><code class="language-swift">&lt;html&gt;
   &lt;p>Title: {{ title }}&lt;/p&gt; &lt;br /&gt;
   &lt;p>Price: {{ price }}&lt;/p&gt; &lt;br /&gt;
   &lt;p>Available: {{ inStock }}&lt;/p&gt;
-&lt;/html&gt;</pre>
+&lt;/html&gt;</code></pre>
     <p>Next we can create the data we want to render into the browser.</p>
     <p>just below where created our model add:</p>
-    <pre>let book = Book(title: "A Game of Thrones", price: 14.99, inStock: true)</pre>
+    <pre><code class="language-swift">let book = Book(title: "A Game of Thrones", price: 14.99, inStock: true)</code></pre>
     <p>Now to test our templating, we first need to start the Kitura server.</p>
     <p>Then in a browser open: <a target="_blank" href="http://localhost:8080/book">http://localhost:8080/book</a></p>
     <p>In the browser we should see:</p>
-    <pre>Title: A Game of Thrones
+    <pre><code class="language-swift">Title: A Game of Thrones
 
 
 Price: 14.99
 
 
-Available: 1</pre>
+Available: 1</code></pre>
     <p>That's it! We've just rendered a simple data type in the browser using Kitura Stencil.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <!-- <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('cloud-foundry')" href="../deploying/cloud-foundry.html#">Deploy your application:</a></span> Get useful feedback from your server about startup and errors</p> -->
     <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

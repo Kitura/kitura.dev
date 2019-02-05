@@ -27,23 +27,23 @@
     <p>For Kitura to make use of templating you need template files to work with.</p>
     <p>By default Kitura template engines look in a ./Views directory for the template files.</p>
     <p>In the root of your project, run the following in a terminal:</p>
-    <pre>mkdir Views</pre>
+    <pre><code class="language-swift">mkdir Views</code></pre>
     <p>Note: If you're working in Xcode you will need to generate a new Xcode project:</p>
-    <pre>swift package generate-xcodeproj</pre>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
     <p>TODO: Create the template file. Need some example Markdown!</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Add Kitura-Markdown to your App code</h2>
     <p>Import KituraMarkdown into your project</p>
-    <pre>import KituraMarkdown</pre>
+    <pre><code class="language-swift">import KituraMarkdown</code></pre>
     <p>Add KituraMarkdown to your router:</p>
-    <pre>router.add(templateEngine: MarkdownTemplateEngine())</pre>
+    <pre><code class="language-swift">router.add(templateEngine: MarkdownTemplateEngine())</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Render a template</h2>
-    <pre>
+    <pre><code class="language-swift">
       router.get("/hello") { request, response, next in
         try response.render("Example.md", context: [:])
       }
-    </pre>
+    </code></pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>

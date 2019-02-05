@@ -32,20 +32,20 @@
     <h2><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
     <p>TODO: Link to Package.swift instructions</p>
     <p>To start we need to import LoggerAPI in our code</p>
-    <pre>import LoggerAPI</pre>
+    <pre><code class="language-swift">import LoggerAPI</code></pre>
     <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
     <div class="info">
       <p>You can learn more about LoggerAPI in our LoggerAPI guide.</p>
     </div>
     <p>Now we need to import HeliumLogger:</p>
-    <pre>import HeliumLogger</pre>
+    <pre><code class="language-swift">import HeliumLogger</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
     <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
     <p>Below the line `import HeliumLogger` add:</p>
-    <pre>HeliumLogger.use()</pre>
+    <pre><code class="language-swift">HeliumLogger.use()</code></pre>
     <p>Your code should look like this:</p>
-    <pre>import Kitura
+    <pre><code class="language-swift">import Kitura
 import LoggerAPI
 import HeliumLogger
 
@@ -55,13 +55,13 @@ let router = Router()
 
 
 Kitura.addHTTPServer(onPort: 8080, with: router)
-Kitura.run()</pre>
+Kitura.run()</code></pre>
     <p>Now if you start your server you should see some output:</p>
-    <pre>
+    <pre><code class="language-swift">
 [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
 [xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
 [xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
-[xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</pre>
+[xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Set logging level (Optional)</h2>
     <p>HeliumLogger can be customised to change the level of logging.</p>
@@ -69,7 +69,7 @@ Kitura.run()</pre>
 
     <!-- <p>TODO: Add testing instructions?</p> -->
     <p>If you'd like to customise the level of logging then first you can simply pass the level to the `use()` method:</p>
-    <pre>HeliumLogger.use(.error)</pre>
+    <pre><code class="language-swift">HeliumLogger.use(.error)</code></pre>
     <p>There are several logging levels:</p>
     <ol>
       <li>entry</li>
@@ -82,10 +82,10 @@ Kitura.run()</pre>
     </ol>
     <p>Verbose is set by default. Setting a particular logging level also includes all levels above it.</p>
     <p>For example, if you set a logging level of `verbose`:</p>
-    <pre>HeliumLogger.use(.verbose)</pre>
+    <pre><code class="language-swift">HeliumLogger.use(.verbose)</code></pre>
     <p>You will get logging for; `verbose`, `info`, `warning` and `error`.</p>
     <p>Similarly if you set a logging level of `warning`:</p>
-    <pre>HeliumLogger.use(.warning)</pre>
+    <pre><code class="language-swift">HeliumLogger.use(.warning)</code></pre>
     <p>You will get logging for `warning` and `error`.</p>
     <!-- <p>TODO: Add instructions for setting logging at runtime?</p> -->
     <!-- <div class="underline"></div>
@@ -96,5 +96,6 @@ Kitura.run()</pre>
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

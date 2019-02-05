@@ -29,10 +29,10 @@
     <div class="underline"></div>
     <h2><span class="blue-text">Step 1:</span> Add Swift Kuery ORM to the project</h2>
     <p>import Swift Kuery ORM to our project:</p>
-    <pre>import SwiftKueryORM</pre>
+    <pre><code class="language-swift">import SwiftKueryORM</code></pre>
     <p>To work with the ORM we need to have a Database plugin to use.</p>
     <p>In this example we will be using <a>SwiftKueryPostgreSQL</a>:</p>
-    <pre>import SwiftKueryPostgreSQL</pre>
+    <pre><code class="language-swift">import SwiftKueryPostgreSQL</code></pre>
     <div class="info">
       <p>You can use any database plugin but ensure that it's been added to your Package.swift.</p>
     </div>
@@ -40,7 +40,7 @@
     <h2><span class="blue-text">Step 2:</span> Update our Model</h2>
     <p>The key component of Swift Kuery ORM is the Model protocol.</p>
     <p>All we need to do to make use of the Model protocol is create an extension for our Model:</p>
-    <pre>extension Book: Model { }</pre>
+    <pre><code class="language-swift">extension Book: Model { }</code></pre>
     <p>The Model protocol extends what Codable provides to work with the ORM.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Create a database connection</h2>
@@ -48,25 +48,25 @@
     <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
     <h4>macOS</h4>
     <p>On macOS we can use Homebrew to install Postgres:</p>
-    <pre>brew install postgresql</pre>
+    <pre><code class="language-swift">brew install postgresql</code></pre>
     <h4>Linux</h4>
     <p>On Linux we can use `apt-get` to install Postgres:</p>
-    <pre>sudo apt-get install libpq-dev</pre>
+    <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
     <h3>Create a PostgreSQL database</h3>
     <p>Now that we have PostgreSQL installed we can create a database:</p>
-    <pre>createdb bookdb</pre>
+    <pre><code class="language-swift">createdb bookdb</code></pre>
     <p>Now we're ready to connect to our database from our Kitura server.</p>
     <h3>Create a PostgreSQL connection pool</h3>
     <p>Next we create an instance of a PostgreSQL connection:</p>
-    <pre>let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
-Database.default = Database(pool)</pre>
+    <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
+Database.default = Database(pool)</code></pre>
     <h3>Create a table in the database</h3>
     <p></p>
-    <pre>do {
+    <pre><code class="language-swift">do {
     try Book.createTableSync()
 } catch let error {
     print(error)
-}</pre>
+}</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Save an Object to our database</h2>
     <div class="info">
@@ -74,12 +74,12 @@ Database.default = Database(pool)</pre>
     </div>
     <p>If we want to save a new object to our database we have to use the save() method.</p>
     <p>In our handler for the POST route we can add the following:</p>
-    <pre>book.save(completion)</pre>
+    <pre><code class="language-swift">book.save(completion)</code></pre>
     <p>The POST handler should look similar to this:</p>
-    <pre>func postHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+    <pre><code class="language-swift">func postHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
     book.save(completion)
     completion(book, nil)
-}</pre>
+}</code></pre>
     <p>That's all we need to do. With that line any Book data posted to the `/books` end point will be stored in our database.</p>
     <p>All we need to do now is be able to retrieve data from our database.</p>
     <div class="underline"></div>
@@ -87,15 +87,15 @@ Database.default = Database(pool)</pre>
     <p>If we want to retrieve all the Book data from our database we use the `findAll` method.</p>
     <p>This will return an array containing the all the books.</p>
     <p>In our handler for getting all the books we can add the following:</p>
-    <pre>Book.findAll { books, error in
+    <pre><code class="language-swift">Book.findAll { books, error in
   guard let books = books else {
     completion(nil, .internalServerError)
     return
   }
   completion(books, nil)
-}</pre>
+}</code></pre>
     <p>The GET handler should look similar to this:</p>
-    <pre>func getAllHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
+    <pre><code class="language-swift">func getAllHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
   Book.findAll { books, error in
     guard let books = books else {
       completion(nil, .internalServerError)
@@ -103,7 +103,7 @@ Database.default = Database(pool)</pre>
     }
     completion(books, nil)
   }
-}</pre>
+}</code></pre>
     <p>We've added some error handling here as well. We check to ensure we got something back, otherwise there's an error with the server.</p>
     <p>Even an empty Array is a valid response.</p>
     <p>Now we can test our Database using cURL to ensure everything is working correctly.</p>
@@ -113,33 +113,34 @@ Database.default = Database(pool)</pre>
     </div>
     <p>Firstly we need to start our Kitura server</p>
     <p>Then in a terminal:</p>
-    <pre>curl -X POST \
+    <pre><code class="language-swift">curl -X POST \
   http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
     "name": "Sarah",
     "age": 32,
     "active": true
-}'</pre>
+}'</code></pre>
     <p>You should see the following:</p>
-    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
     <p>Next we can retrieve the data back.</p>
     <p>In a terminal:</p>
-    <pre>curl -X GET \
+    <pre><code class="language-swift">curl -X GET \
   http://localhost:8080/books \
-  -H 'content-type: application/json'</pre>
+  -H 'content-type: application/json'</code></pre>
     <p>Again you should see the following:</p>
-    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
     <p>If we stop the server, and then restart it and run the following in a terminal again:</p>
-    <pre>curl -X GET \
+    <pre><code class="language-swift">curl -X GET \
   http://localhost:8080/books \
-  -H 'content-type: application/json'</pre>
+  -H 'content-type: application/json'</code></pre>
     <p>You should still see the following output:</p>
-    <pre>{"name":"Sarah","age":32,"active":true}%</pre>
+    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
     <p>Our data has persisted even though our server has been stopped. This is one of the many perks of using a database.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-sessions')" href="../sessions/typesafe-sessions.html#">Add Kitura Sessions:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

@@ -23,11 +23,11 @@
     <h2>Step 1: Add Kitura CORS to your project</h2>
     <p>TODO: Link to SPM instructions</p>
     <p>Import Kitura CORS to your project:</p>
-    <pre>import KituraCORS</pre>
+    <pre><code class="language-swift">import KituraCORS</code></pre>
     <div class="underline"></div>
     <h2>Step 2: Initilize options for Kitura CORS</h2>
     <p>Kitura CORS needs options to be passed into it's Initilizer.</p>
-    <pre>public init(options : Options)</pre>
+    <pre><code class="language-swift">public init(options : Options)</code></pre>
     <p>Where possible options are:</p>
     <ul>
       <li>allowedOrigin - an enum that configures the Access-Control-Allow-Origin CORS server response header. Possible values are:
@@ -49,11 +49,11 @@
     <div class="underline"></div>
     <h2>Step 3: Initilize Kitura CORS</h2>
     <p>Create an instance of Kitura CORS:</p>
-    <pre>let cors = CORS(options: options)</pre>
+    <pre><code class="language-swift">let cors = CORS(options: options)</code></pre>
     <p>Which accepts the options you defined in the previous step.</p>
     <div class="underline"></div>
     <h2>Step 4: Add CORS instance to router</h2>
-    <pre>router.all("/cors", middleware: cors)</pre>
+    <pre><code class="language-swift">router.all("/cors", middleware: cors)</code></pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>

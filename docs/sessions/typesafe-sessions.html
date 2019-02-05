@@ -33,11 +33,11 @@
     <div class="underline"></div>
     <h2><span class="blue-text">Step 1:</span> Define a Type-Safe Session</h2>
     <p>First we need to import the KituraSession package:</p>
-    <pre>import KituraSession</pre>
+    <pre><code class="language-swift">import KituraSession</code></pre>
     <p>Next we can declare a type that conforms to the TypeSafeSession protocol.</p>
     <p>We can use either a Class or a Struct here but we will use a Class.</p>
     <p>Underneath our Codable model we add the following:</p>
-    <pre>// Defines the session instance data
+    <pre><code class="language-swift">// Defines the session instance data
 final class CheckoutSession: TypeSafeSession {
 
     let sessionId: String                       // Requirement: every session must have an ID
@@ -54,7 +54,7 @@ final class CheckoutSession: TypeSafeSession {
 extension MySession {
     static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
     static var store: Store?
-} </pre>
+} </code></pre>
     <div class="info">
       <p>When using a Class you need to declare it as final.</p>
     </div>
@@ -68,37 +68,37 @@ extension MySession {
     <!-- <p>NOTE: If `store` is not defined then a default in-memory store is used.</p>
     <p>NOTE: If your session is a Class it must be declared as final. TODO: Why?</p>
     <p>NOTE: If you define MySession as a struct, then in order to modify it within a handler, you will first need to assign it to a local variable:</p>
-    <pre>
+    <pre><code class="language-swift">
 router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
     var session = session                // Required when mutating a Struct
     session.books.append(book)
     session.save()
     respondWith(book, nil)
 }
-    </pre> -->
+    </code></pre> -->
     <p>If store isn't specified then a default in memory store is used.</p>
     <p>For an example of a persistent store for sessions see Kitura-Session-Redis</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Add session POST route</h2>
     <p>At the bottom of the list of the rest of our routes add the following:</p>
-    <pre>router.post("/cart", handler: postSessionHandler)</pre>
+    <pre><code class="language-swift">router.post("/cart", handler: postSessionHandler)</code></pre>
     <p>Then below our `handlers` section add the following:</p>
-    <pre>func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) -> Void {
+    <pre><code class="language-swift">func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) -> Void {
     session.books.append(book)
     session.save()
     completion(book, nil)
-}</pre>
+}</code></pre>
     <p>What we're doing here is storing the posted Book into the session.</p>
     <p>We use the `append` method as we know `books` is an Array as we defined it as an Array in the CheckoutSession class.</p>
     <p>Then we need to save the session.</p>
     <p>Now we can add a route for retrieving the data.</p>
     <h2><span class="blue-text">Step 3:</span> Add session GET route</h2>
     <p>Just below the POST route we just added we can add the following:</p>
-    <pre>router.get("/cart", handler: getSessionHandler)</pre>
+    <pre><code class="language-swift">router.get("/cart", handler: getSessionHandler)</code></pre>
     <p>Then again below our postSessionHandler handler we can add:</p>
-    <pre>func getSessionHandler(session: UserSession, completion: ([User]?, RequestError?) -> Void) -> Void {
+    <pre><code class="language-swift">func getSessionHandler(session: UserSession, completion: ([User]?, RequestError?) -> Void) -> Void {
     completion(session.users, nil)
-}</pre>
+}</code></pre>
     <p>Add that's it. We've now enabled a Kitura Session on our server.</p>
     <p>We can now test to enusre this works, and the easiest way to do that is using Kitura OpenAPI</p>
     <div class="underline"></div>
@@ -108,23 +108,23 @@ router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book
     <h2>TODO: Does this need to be it's own step?</h2>
     <p>You need to save the session when a change is made to the session.</p>
     <p>A change could look something like this:</p>
-    <pre>
+    <pre><code class="language-swift">
 router.post("/cart") { (session: MySession, book: Book, respondWith: (Book?, RequestError) -> Void) -> Void in
     session.books.append(book)
     ...
-}   </pre>
+}   </code></pre>
     <p>Where during a HTTP POST you need to store some data.</p>
     <p>Saving the session:</p>
-    <pre>session.save()</pre>
+    <pre><code class="language-swift">session.save()</code></pre>
     <p>When you want to remove a session from the store it can be done as follows:</p>
-    <pre>session.destroy()</pre>
+    <pre><code class="language-swift">session.destroy()</code></pre>
     <div class="underline"></div>
     <h2>Step 4: Handling a store failure</h2>
     <p>During the application's run cycle the store could become inaccessible which will result in a failure to persist or remove sessions.</p>
     <p>In cases like this a server error will be logged to help you understand the issue that has occured</p>
     <p>TODO: Show example of this?</p>
     <p>You can also supply a callback which takes an `Error?`:</p>
-    <pre>
+    <pre><code class="language-swift">
 router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (Book?, RequestError) -> Void) -> Void in
     session.books.append(book)
     session.save() { error in
@@ -135,19 +135,19 @@ router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (
         }
     }
 }
-    </pre>
+    </code></pre>
     <div class="underline"></div>
     <h2>Step 5: Enable automatic saving of sessions</h2>
     <p>NOTE: This can only be done if your Session is a class.</p>
     <p>You can define a deinitialiser for the class like so:</p>
-    <pre>
+    <pre><code class="language-swift">
  deinit {
      self.save()
  }
-    </pre>
+    </code></pre>
     <p>WARNING: The session will be saved after every request regardless of whether a change has been made</p>
     <p>It's also useful to create a method to check if destroy has been called on the session:</p>
-    <pre>
+    <pre><code class="language-swift">
   var destroyed: Bool = false {
       didSet { destroy() }
   }
@@ -157,14 +157,15 @@ router.post("/cart") { (session: MySession, book: Book, respondWith: @escaping (
           self.save()
       }
   }
-    </pre>
+    </code></pre>
     <p>Then in your application code rather then calling `session.destroy` you would do:</p>
-    <pre>session.destroyed = true</pre>
+    <pre><code class="language-swift">session.destroyed = true</code></pre>
     <p>With this you can supress the calling of `save()` during deinitialisation</p>
     <p>Which will prevent the session being persisted back into the store.</p>
     <div class="underline"></div> -->
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="../authentication/typesafe-auth.html#">Add Authentication:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

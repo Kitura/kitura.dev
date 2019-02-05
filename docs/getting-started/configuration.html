@@ -43,7 +43,7 @@
     </ul>
     <p>This difference is because Kitura uses OpenSSL on Linux and Secure Transport on macOS. Unfortunately macOS does not expose any APIs that convert between PKCS#12 and other certificate formats. We need to use OpenSSL or other existing tools to convert between the formats.</p>
     <p>In this example, we have created a self-signed PEM certificate using the following OpenSSL commands:</p>
-    <pre>
+    <pre><code class="language-swift">
 // generate a 2048bit RSA key
 $ openssl genrsa -out key.pem 2048
 
@@ -51,23 +51,23 @@ $ openssl genrsa -out key.pem 2048
 $ openssl req -new -sha256 -key key.pem -out cert.csr
 
 // create the certificate
-$ openssl req -x509 -sha256 -days 365 -key key.pem -in cert.csr -out certificate.pem</pre>
+$ openssl req -x509 -sha256 -days 365 -key key.pem -in cert.csr -out certificate.pem</code></pre>
     <p>You can convert your certificate to PKCS#12 format using:</p>
-    <pre>$ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem</pre>
+    <pre><code class="language-swift">$ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem</code></pre>
     <p>Place your certificate and key in the /tmp/Creds/Self-Signed folder.</p>
     <div class="underline"></div>
     <h3>Step 3: Configure Kitura for SSL/TLS</h3>
     <p>We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter usingSelfSignedCerts to true.</p>
     <p>Assuming you used the Kitura command-line tools to create your application, edit Sources/Application/Application.swift and add the following code below the import statements:</p>
     <h4>macOS</h4>
-    <pre>
+    <pre><code class="language-swift">
 let mySSLConfig =  SSLConfig(withChainFilePath: "/tmp/Creds/Self-Signed/cert.pfx",
                  withPassword: "password",
                  usingSelfSignedCerts: true)
-    </pre>
+    </code></pre>
     <p>Note, you will also need to modify the password string to be whatever you chose for your password.</p>
     <h4>Linux</h4>
-    <pre>
+    <pre><code class="language-swift">
 let myCertPath = "/tmp/Creds/Self-Signed/certificate.pem"
 let myKeyPath = "/tmp/Creds/Self-Signed/key.pem"
 
@@ -75,21 +75,21 @@ let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
                              usingCertificateFile: myCertPath,
                              withKeyFile: myKeyPath,
                              usingSelfSignedCerts: true)
-    </pre>
+    </code></pre>
     <div class="underline"></div>
     <h3>Step 4: Setup your routes</h3>
     <p>Setup a GET Request:</p>
-    <pre>
+    <pre><code class="language-swift">
 router.get("/") { request, response, next in
   response.send("Hello, World!")
   next()
-}   </pre>
+}   </code></pre>
     <p>Pass your SSL configuration into the Kitura.addHTTPServer(...) function:</p>
-    <pre>Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)</pre>
+    <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)</code></pre>
     <h3>Step 5: Test your application</h3>
     <p>Start your server.</p>
     <p>Open:</p>
-    <pre>https://localhost:8080</pre>
+    <pre><code class="language-swift">https://localhost:8080</code></pre>
     <p>You should notice the `https` in your URL. This means that the data your application transmits is secure and the server your users are connecting to is authenticated.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>

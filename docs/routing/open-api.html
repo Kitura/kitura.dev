@@ -28,16 +28,16 @@
     <div class="underline"></div>
     <h2><span class="blue-text">Step 1:</span> Add Kitura OpenAPI to your project</h2>
     <p>First we need to import KituraOpenAPI into our project:</p>
-    <pre>import KituraOpenAPI</pre>
+    <pre><code class="language-swift">import KituraOpenAPI</code></pre>
     <p>Next we need to add the KituraOpenAPI end points to our router.</p>
     <p>Just above the `Kitura.addHTTPServer()` line, add:</p>
-    <pre>KituraOpenAPI.addEndpoints(to: router)</pre>
+    <pre><code class="language-swift">KituraOpenAPI.addEndpoints(to: router)</code></pre>
     <p>That's all we need to do to enable KituraOpenAPI on our server.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> View the OpenAPI UI</h2>
     <p>We need to start our Kitura server first.</p>
     <p>Once the server has started, navigate to:</p>
-    <pre>localhost:8080/openapi/ui</pre>
+    <pre><code class="language-swift">localhost:8080/openapi/ui</code></pre>
     <p>You should see your Codable routes listed:</p>
     <div class="img-container">
       <img class="openapi-img" src="../../assets/OpenAPI-Routes-List.png" alt="Kitura OpenAPI routes list">
@@ -56,7 +56,8 @@
     </div>
     <div class="underline"></div>
     <h2>Next steps</h2>
-    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('orm')" href="../databases/orm.html#">Add a Database:</a></span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-databases')" href="../databases/typesafe-databases.html#">Add a Database:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

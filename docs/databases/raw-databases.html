@@ -31,36 +31,36 @@
     <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
     <h3>macOS</h3>
     <p>On macOS we can use Homebrew to install Postgres:</p>
-    <pre>brew install postgresql</pre>
+    <pre><code class="language-swift">brew install postgresql</code></pre>
     <h3>Linux</h3>
     <p>On Linux we can use `apt-get` to install Postgres:</p>
-    <pre>sudo apt-get install libpq-dev</pre>
+    <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Create a Postgres Database</h2>
     <p>Now that we have PostgreSQL installed we can create a database:</p>
-    <pre>createdb bookdb</pre>
+    <pre><code class="language-swift">createdb bookdb</code></pre>
     <p>Then we can open the PostgreSQL command-line interface:</p>
-    <pre>psql bookdb</pre>
+    <pre><code class="language-swift">psql bookdb</code></pre>
     <p>Finally we can create a table in our database:</p>
-    <pre>CREATE TABLE books (
+    <pre><code class="language-swift">CREATE TABLE books (
     name varchar(100) NOT NULL CHECK (name &lt;&gt; ''),
     age integer NOT NULL,
     active BOOLEAN NOT NULL
-);</pre>
+);</code></pre>
     <p>All that's left is to add values to our database:</p>
-    <pre>INSERT INTO books VALUES ('David', 27, true);
+    <pre><code class="language-swift">INSERT INTO books VALUES ('David', 27, true);
 INSERT INTO books VALUES ('Sammi', 32, false);
-INSERT INTO books VALUES ('Jane', 48, true);</pre>
+INSERT INTO books VALUES ('Jane', 48, true);</code></pre>
     <p>Now we're ready to connect to our database from our Kitura server.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Connect to PostgreSQL</h2>
     <p>First we need to import the SwiftKuery and SwiftKueryPostgreSQL packages.</p>
-    <pre>import SwiftKuery
-import SwiftKueryPostgreSQL</pre>
+    <pre><code class="language-swift">import SwiftKuery
+import SwiftKueryPostgreSQL</code></pre>
     <p>Next we create an instance of a PostgreSQL connection:</p>
-    <pre>let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("bookdb")])</pre>
+    <pre><code class="language-swift">let connection = PostgreSQLConnection(host: "localhost", port: 5432, options: [.databaseName("bookdb")])</code></pre>
     <p>Next we need to define a fuction:</p>
-    <pre>func books(_ callback: @escaping (String) -> Void) -> Void {
+    <pre><code class="language-swift">func books(_ callback: @escaping (String) -> Void) -> Void {
     connection.connect() { result in
         guard result.success else {
             guard let error = result.asError else {
@@ -113,7 +113,7 @@ import SwiftKueryPostgreSQL</pre>
             }
         }
     }
-}</pre>
+}</code></pre>
     <p>TODO: BREAK THIS SECTION UP!!</p>
     <div class="underline"></div>
     <h2>Next steps</h2>

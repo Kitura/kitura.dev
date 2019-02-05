@@ -24,13 +24,13 @@
     <h2>Step 1: Add Kitura Compression to your project</h2>
     <p>TODO: Link to SPM instructions</p>
     <p>import Kitura Compression to your project</p>
-    <pre>import KituraCompression</pre>
+    <pre><code class="language-swift">import KituraCompression</code></pre>
     <div class="underline"></div>
     <h2>Step 2: Initilise Kitura Compression</h2>
     <p>Create an instance of Kitura Compression:</p>
-    <pre>let compression = Compression()</pre>
+    <pre><code class="language-swift">let compression = Compression()</code></pre>
     <p>You can also configure Compression with various arguments:</p>
-    <pre>public init (threshold: Int = 1024, chunkSize: Int = 16384, compressionLevel: CompressionLevel = CompressionLevel.defaultCompression, compressionStrategy: CompressionStrategy = CompressionStrategy.defaultStrategy, memoryLevel: Int32 = 8)</pre>
+    <pre><code class="language-swift">public init (threshold: Int = 1024, chunkSize: Int = 16384, compressionLevel: CompressionLevel = CompressionLevel.defaultCompression, compressionStrategy: CompressionStrategy = CompressionStrategy.defaultStrategy, memoryLevel: Int32 = 8)</code></pre>
     <p>Where:</p>
     <ul>
       <li>threshold is the byte threshold for the response body size before compression is considered for the response, defaults to 1024.</li>

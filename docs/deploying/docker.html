@@ -24,21 +24,21 @@
     <p>The compiler is rather large, we don't want to include this in the overall build image.</p>
     <p>To prevent this with have a build image and a run image. The run image contains just the compiled code.</p>
     <p>We first need to build the compile image:</p>
-    <pre>docker build -t myapp-build -f Dockerfile-tools .</pre>
+    <pre><code class="language-swift">docker build -t myapp-build -f Dockerfile-tools .</code></pre>
     <p>TODO: Explain the commands being used!</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Compile application code</h2>
     <p>Using the image we've just built we can compile the application code.</p>
-    <pre>docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release</pre>
+    <pre><code class="language-swift">docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release</code></pre>
     <p>TODO: Explain the commands</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 3:</span> Build the run image</h2>
     <p>Now we can build the image containing the compiled application code.</p>
-    <pre>docker build -t myapp-run .</pre>
+    <pre><code class="language-swift">docker build -t myapp-run .</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Start the Docker container</h2>
     <p>We have an image that contains all of our application code so now we just need to start it.</p>
-    <pre>docker run -p 8080:8080 -it myapp-run</pre>
+    <pre><code class="language-swift">docker run -p 8080:8080 -it myapp-run</code></pre>
     <p>TODO: Explain what commands are doing</p>
     <div class="underline"></div>
     <h2>Next steps</h2>

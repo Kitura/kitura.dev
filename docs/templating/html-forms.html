@@ -25,16 +25,16 @@
     <p>Webpages use HTML forms to take a user's input and send it as an HTTP request.</p>
     <p>The form data can be sent via a HTTP GET request. In this case, the data gets appended to the url as a query string consisting of “key=value” pairs, separated by the “&” symbol.</p>
     <p>An example of a HTML form GET request:</p>
-    <pre>http://localhost.com/form?name=Andy&age=&isDeveloper=true</pre>
+    <pre><code class="language-swift">http://localhost.com/form?name=Andy&age=&isDeveloper=true</code></pre>
     <p>Using a GET request allows users to bookmark the result and is better for non-secure data.</p>
     <p>The form data can also be sent via an HTTP POST request. In this case, the data is sent with the content-type header "application/x-www-form-urlencoded". This indicates that the body of the request is a query string.</p>
     <p>The data from the example above sent as a POST request:</p>
-    <pre>
+    <pre><code class="language-swift">
 POST / HTTP/1.1
 Host: http://localhost:8080/form
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 31
-name=Andy&age=&isDeveloper=true</pre>
+name=Andy&age=&isDeveloper=true</code></pre>
     <p>Use POST whenever you are working with sensitive or personal information.</p>
     <div class="underline"></div>
     <h2>Prerequisites</h2>
@@ -43,15 +43,15 @@ name=Andy&age=&isDeveloper=true</pre>
     <h2>Step 1: Create the HTML form</h2>
     <p>First you need to create a `public` directory in the root of your project and then navigate to it.</p>
     <p>In a terminal:</p>
-    <pre>mkdir public</pre>
-    <pre>cd public</pre>
+    <pre><code class="language-swift">mkdir public</code></pre>
+    <pre><code class="language-swift">cd public</code></pre>
     <p>Next you need to create the HTML file:</p>
-    <pre>touch formwebpage.html</pre>
+    <pre><code class="language-swift">touch formwebpage.html</code></pre>
     <p>Open the `formwebpage.html` in your default text editor:</p>
-    <pre>open formwebpage.html</pre>
+    <pre><code class="language-swift">open formwebpage.html</code></pre>
     <p>NOTE: If you're using Xcode you may need to rebuild your project. See SPM section for more details.</p>
     <p>Copy in the following example HTML:</p>
-    <pre><xmp><!DOCTYPE html>
+    <pre><code class="language-swift"><xmp><!DOCTYPE html>
 <html>
 <body>
 <h2>URL Encoded Forms</h2>
@@ -93,7 +93,7 @@ name=Andy&age=&isDeveloper=true</pre>
 </body>
 </html>
       </xmp>
-    </pre>
+    </code></pre>
     <p>This HTML will make a simple page with four HTML forms.</p>
     <p>These forms contain:</p>
     <ul>
@@ -104,24 +104,24 @@ name=Andy&age=&isDeveloper=true</pre>
     <div class="underline"></div>
     <h2>Step 2: Create a Static File Server</h2>
     <p>A static file server is needed to server the HTML page</p>
-    <pre>router.get("/", middleware: StaticFileServer())</pre>
+    <pre><code class="language-swift">router.get("/", middleware: StaticFileServer())</code></pre>
     <p>TODO: Specify start options? Start the server.</p>
     <p>Once the server has started you can go to the following URL:</p>
-    <pre>localhost:8080/formwebpage.html</pre>
+    <pre><code class="language-swift">localhost:8080/formwebpage.html</code></pre>
     <p>You should now see the HTML forms.</p>
     <p>These forms will send the input data to the server.</p>
     <div class="underline"></div>
     <h2>Step 3: Create the form model</h2>
     <p>HTML forms can make use of <a href="#">Codable Routing</a>.</p>
     <p>First you need to import KitraContracts. TODO: Why?</p>
-    <pre>import KituraContracts</pre>
+    <pre><code class="language-swift">import KituraContracts</code></pre>
     <p>Next you need to create your model:</p>
-    <pre>
+    <pre><code class="language-swift">
 struct Form: Codable, QueryParams {
     let name: String
     let age: Int?
     let isDeveloper: Bool?
-}   </pre>
+}   </code></pre>
     <p>This provides a simple representation of the data we will receive from our form.</p>
     <p>The struct conforms to Codable so it can be used in Codable routes and also conforms to QueryParams so it can be decoded from the query parameters on a GET request.</p>
     <p>If the form's age or isDeveloper fields are empty, an empty value will be sent with the key (i.e "age=isDeveloper="). In this case, Kitura will decode age to nil and isDeveloper to false.</p>
@@ -129,32 +129,32 @@ struct Form: Codable, QueryParams {
     <h2>Step 4: Create the routes</h2>
     <h3>Codable Routes</h3>
     <p>Create a POST route:</p>
-    <pre>router.post("/codable", handler: postFormHandler)</pre>
+    <pre><code class="language-swift">router.post("/codable", handler: postFormHandler)</code></pre>
     <p>Add an implementation for the postFormHandler:</p>
-    <pre>
+    <pre><code class="language-swift">
 func postFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
     print("Codable POST route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
     if(user.isDeveloper ?? false) { print("and they are a developer") }
     respondWith(user, nil)
-}   </pre>
+}   </code></pre>
     <p>TODO: Explain code block?</p>
     <p>Restart your server. TODO: More info.</p>
     <p>Create a GET route</p>
-    <pre>router.get("/codable", handler: getFormHandler)</pre>
+    <pre><code class="language-swift">router.get("/codable", handler: getFormHandler)</code></pre>
     <p>Add an implementation for the getFormHandler</p>
-    <pre>
+    <pre><code class="language-swift">
 func getFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
     print("Codable GET route: \(user.name)")
     if let age = user.age { print("is \(age) years old") }
     if(user.isDeveloper ?? false) { print("and they are a developer") }
     respondWith(user, nil)
-}   </pre>
+}   </code></pre>
     <p>TODO: Explain code block?</p>
     <p>Restart your server. TODO: More info.</p>
     <h3>Raw Routes</h3>
     <p>Create a POST route:</p>
-    <pre>
+    <pre><code class="language-swift">
 router.post("/raw") { request, response, next in
     guard let user = try? request.read(as: Form.self)
     else {
@@ -165,11 +165,11 @@ router.post("/raw") { request, response, next in
     if(user.isDeveloper ?? false) { print("and they are a developer") }
     response.status(.created).send(json: user)
     next()
-}   </pre>
+}   </code></pre>
     <p>TODO: Explain Code block?</p>
     <p>Restart your server. TODO: More info.</p>
     <p>Create a GET route:</p>
-    <pre>router.get("/raw") { request, response, next in
+    <pre><code class="language-swift">router.get("/raw") { request, response, next in
     guard let user = request.getQueryParameters(as: Form.self)
     else {
         return try response.status(.unprocessableEntity).end()
@@ -179,7 +179,7 @@ router.post("/raw") { request, response, next in
     if(user.isDeveloper ?? false) { print("and they are a developer") }
     response.status(.created).send(json: user)
     next()
-}   </pre>
+}   </code></pre>
     <p>TODO: Explain Code block?</p>
     <p>Restart your server. TODO: More info.</p>
     <div class="underline"></div>

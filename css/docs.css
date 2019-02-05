@@ -167,3 +167,16 @@ td, th {
   cursor: pointer;
   margin-bottom: 1rem;
 }
+
+.keyword {
+  color: rgb(246, 59, 176);
+}
+.function, .instance {
+  color: #00a78f;
+}
+.string {
+  color: rgb(250, 69, 75);
+}
+.comment {
+  color: green;
+}
