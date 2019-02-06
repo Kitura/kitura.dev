@@ -41,24 +41,33 @@
     <div class="info">
       <p>If the values `request`, `repsonse` and `next` are unfamiliar to you then you can learn more about them in our What is Routing? guide.</p>
     </div>
-    <p>Our POST route will be used to send the title of books to our server therefore we need a way of reading this data.</p>
-    <p>To do this we can tap into the `readString` method of the RouterRequest class:</p>
-    <pre><code class="language-swift">request.readString()</code></pre>
-    <p>This method takes the body of the request, the data we're posting, and tries to convert it to a String.</p>
-    <p>We will add this method to our POST route:</p>
+    <p>Our POST route will be used to send information about our books to the server and therefore we need a way of reading this data.</p>
+    <p>To do this we can tap into the `read(as:)` method of the RouterRequest class:</p>
+    <pre><code class="language-swift">request.read(as: Book.self)</code></pre>
+    <p>This method takes the body of the request, the data we're posting, and tries to convert it to the Book type.</p>
+    <p>So lets add this method to our POST route:</p>
     <pre><code class="language-swift">router.post("/books") { request, response, next in
     do {
-        try request.readString()
+        try request.read(as: Book.self)
     } catch {
         Log.error(error.localizedDescription)
     }
     next()
 }</code></pre>
-    <p>The `readString` method can throw so we need to wrap it in a do-catch block.</p>
-    <p>To test this route works, we can the `send()` method of the RouterResponse to send the result of `request.readString()`:</p>
+    <p>The `read(as:)` method can throw so we need to wrap it in a do-catch block.</p>
+    <p>Now our project won't compile as `Book` is a custom type that we haven't defined yet.</p>
+    <p>Below the `let router = Router()` line, add the following:</p>
+    <pre><code class="language-swift">struct Book: Codable {
+    let id: Int         // A unique ID given to each book
+    let title: String
+    let price: Double
+    let genre: String
+}</code></pre>
+    <p></p>
+    <p>To test this route works, we can the `send()` method of the RouterResponse to send the result of `request.read(as: Book.self)`:</p>
     <pre><code class="language-swift">router.post("/books") { request, response, next in
     do {
-        try response.send(request.readString())
+        try response.send(request.read(as: Book.self))
     } catch {
         Log.error(error.localizedDescription)
     }
@@ -66,16 +75,18 @@
 }</code></pre>
     <p>Now if we start our Kitura server we can use curl to test our route.</p>
     <p>In a terminal enter the following:</p>
-    <pre><code class="language-swift">curl -X POST \
+    <pre><code>curl -X POST \
   http://localhost:8080/books \
-  -H 'content-type: text/plain' \
-  -d 'A Game of Thrones'</code></pre>
+  -H 'content-type: application/json' \
+  -d '{
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}'</code></pre>
     <p>We should then see the following printed to the terminal:</p>
-    <pre><code class="language-swift">A Game of Thrones%</code></pre>
+    <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
     <p>That's it! We've implemented a basic POST route.</p>
-    <div class="info">
-      <p>We're using plain text here for our data. For a complex object like a Book, which could have several properties, JSON would be the better solution.</p>
-    </div>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 2:</span> Create a GET route</h2>
     <p>We register a GET route in a similar way to the POST route.</p>
@@ -83,55 +94,58 @@
     <pre><code class="language-swift">router.get("/books") { request, response, next in
     next()
 }</code></pre>
-    <p>In a GET route we can simply just respond with the data we want:</p>
-    <pre><code class="language-swift">router.get("/books") { request, response, next in
-  reponse.send("A Game of Thrones")
-  next()
-}</code></pre>
-    <p>Now if we need to restart our server.</p>
-    <p>Open <a href="http://localhost:8080/books">http://localhost:8080/books</a></p>
-    <p>We should see the following in our browser:</p>
-    <pre><code class="language-swift">A Game of Thrones</code></pre>
-    <p>That's it! We've now also implemented a simple GET route.</p>
-    <p>Now we need to be able to `get` the data we `post`</p>
-    <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Store and retrieve data from the server (Optional)</h2>
-    <p>First we need to create a way for the server to store the data we send.</p>
+    <p>In a GET route we can simply just respond with the data we want.</p>
+    <p>Before we can do this we need a way to store data in our server.</p>
     <p>To do this we will use an Array.</p>
     <div class="info">
       <p>It's worth noting using an Array not good practice. The better solution would be to create a Database to store the data.</p>
       <p>You can learn how to do this in our Database guide.</p>
     </div>
-    <p>Just below the line `let router = Router()` add the following:</p>
-    <pre><code class="language-swift">var bookStore: [String] = []</code></pre>
-    <p>Next we need to modify our POST route to store the data into the array:</p>
+    <p>Just below our `Book` struct add the following:</p>
+    <pre><code class="language-swift">var books: [Book] = []</code></pre>
+    <p>Now we can simply respond with the books array:</p>
+    <pre><code class="language-swift">router.get("/books") { request, response, next in
+  reponse.send(books)
+  next()
+}</code></pre>
+    <p>Now if we need to restart our server.</p>
+    <p>Then if we open: <a href="http://localhost:8080/books">http://localhost:8080/books</a></p>
+    <p>We should see the following in our browser:</p>
+    <pre><code class="language-swift">[]%</code></pre>
+    <p>We get back an empty array as there isn't any data stored on the server yet.</p>
+    <p>That's it! We've now also implemented a simple GET route.</p>
+    <p>Now we need to be able to `get` the data we `post`</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Store and retrieve data from the server (Optional)</h2>
+    <p>We need to modify our POST route to store the data into the array:</p>
     <pre><code class="language-swift">router.post("/books") { request, response, next in
     do {
-        guard let title = try request.readString() else {
-            Log.error("Could not read body as a String")
-            return
-        }
-        bookStore.append(title)
+      let book = try request.read(as: Book.self)
+      books.append(book)
+      response.send(book)
     } catch {
-        Log.error(error.localizedDescription)
+      Log.error(error.localizedDescription)
+      return
     }
     next()
 }</code></pre>
-    <p>We need to employ some error handling here incase the body doesn't contain any data.</p>
-    <p>Now we modify our GET route to respond with the `bookStore` array:</p>
-    <pre><code class="language-swift">response.send(json: bookStore)</code></pre>
     <p>To test we need to restart the Kitura server.</p>
     <p>Open <a href="http://localhost:8080/books">http://localhost:8080/books</a></p>
     <p>In the browser you should see:</p>
     <pre><code class="language-swift">[]</code></pre>
     <p>An empty array makes sense as we haven't posted any data.</p>
     <p>In a terminal enter the following:</p>
-    <pre><code class="language-swift">curl -X POST \
+    <pre><code>curl -X POST \
   http://localhost:8080/books \
-  -H 'content-type: text/plain' \
-  -d 'A Game of Thrones'</code></pre>
+  -H 'content-type: application/json' \
+  -d '{
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}'</code></pre>
     <p>If we refresh the browser we should see:</p>
-    <pre><code class="language-swift">["A Game of Thrones"]</code></pre>
+    <pre><code>[{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]</code></pre>
     <p>We can make as many posts as we'd like and our Array would be updated.</p>
     <p>However if the server is restarted, all data will be lost and we'd have an empty array again.</p>
     <p>This is one of the flaws of using an Array as the data store.</p>
