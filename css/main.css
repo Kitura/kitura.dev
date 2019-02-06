@@ -285,10 +285,11 @@ footer {
   list-style: none;
   font-size: 1.33rem;
   font-weight: 500;
+  margin-top: 4rem;
 }
 
 .sidebar-item {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 	cursor: pointer;
 	-webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -306,7 +307,7 @@ footer {
 }
 
 .nested-sidebar-item {
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
