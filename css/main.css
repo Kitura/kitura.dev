@@ -342,6 +342,19 @@ footer {
 	margin-left: 1rem;
 }
 
+/*
+    BETA Stlying
+*/
+.temp-beta {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #676767;
+  opacity: 0.5;
+}
+
 /* Nav section styling */
 
 .docs-nav {
