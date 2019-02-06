@@ -180,3 +180,8 @@ td, th {
 .comment {
   color: green;
 }
+
+.block-text {
+  line-height: 1.6rem;
+  margin-bottom: 3rem;
+}
