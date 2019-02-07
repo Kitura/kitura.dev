@@ -113,29 +113,30 @@ Database.default = Database(pool)</code></pre>
     </div>
     <p>Firstly we need to start our Kitura server</p>
     <p>Then in a terminal:</p>
-    <pre><code class="language-swift">curl -X POST \
+    <pre><code>curl -X POST \
   http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
-    "name": "Sarah",
-    "age": 32,
-    "active": true
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": Fantasy
 }'</code></pre>
     <p>You should see the following:</p>
-    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
+    <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
     <p>Next we can retrieve the data back.</p>
     <p>In a terminal:</p>
     <pre><code class="language-swift">curl -X GET \
   http://localhost:8080/books \
   -H 'content-type: application/json'</code></pre>
     <p>Again you should see the following:</p>
-    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
+    <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]%</code></pre>
     <p>If we stop the server, and then restart it and run the following in a terminal again:</p>
-    <pre><code class="language-swift">curl -X GET \
+    <pre><code>curl -X GET \
   http://localhost:8080/books \
   -H 'content-type: application/json'</code></pre>
     <p>You should still see the following output:</p>
-    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
+    <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]%</code></pre>
     <p>Our data has persisted even though our server has been stopped. This is one of the many perks of using a database.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
