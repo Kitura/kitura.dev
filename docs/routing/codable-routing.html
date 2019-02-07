@@ -76,9 +76,10 @@ Kitura.run()</code></pre>
     <p>Book is a custom Swift type that we haven't defined yet. So lets go ahead and define it.</p>
     <p>Below the line `let router = Router()` add:</p>
     <pre><code class="language-swift">struct Book: Codable {
-  let name: String
-  let age: Int
-  let active: Bool
+  let id: Int
+  let title: String
+  let price: Double
+  let genre: String
 }</code></pre>
     <p>Your code should look similar to this:</p>
     <pre><code class="language-swift">import Kitura
@@ -90,13 +91,14 @@ HeliumLogger.use()
 let router = Router()
 
 struct Book: Codable {
-    let name: String
-    let age: Int
-    let active: Bool
+  let id: Int
+  let title: String
+  let price: Double
+  let genre: String
 }
 
 func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-    completion(book, nil)
+  completion(book, nil)
 }
 
 router.post("/books", handler: postHandler)
@@ -114,17 +116,18 @@ Kitura.run()</code></pre>
     </div>
     <p>With the project now compiling we can start the server.</p>
     <p>Once the server is running open a terminal window and enter the following:</p>
-    <pre><code class="language-swift">curl -X POST \
+    <pre><code>curl -X POST \
   http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
-    "name": "Sarah",
-    "age": 32,
-    "active": true
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": Fantasy
 }'</code></pre>
     <p>We can use the cURL command to send a request to our server.</p>
     <p>If your Codable route was created correctly you should see the following:</p>
-    <pre><code class="language-swift">{"name":"Sarah","age":32,"active":true}%</code></pre>
+    <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
     <p>We have just posted data, now we need to be able to retrieve the data.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 5:</span> Create a GET Codable Route</h2>
@@ -161,20 +164,21 @@ HeliumLogger.use()
 let router = Router()
 
 struct Book: Codable {
-    let name: String
-    let age: Int
-    let active: Bool
+  let id: Int
+  let title: String
+  let price: Double
+  let genre: String
 }
 
 var bookstore: [String: Book] = [:]
 
 func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-    completion(book, nil)
+  completion(book, nil)
 }
 
 func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-    let books = bookstore.map({ $0.value })
-    completion(books, nil)
+  let books = bookstore.map({ $0.value })
+  completion(books, nil)
 }
 
 router.post("/books", handler: postHandler)
@@ -184,7 +188,7 @@ Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()</code></pre>
     <p>Now we can restart our server to test our new endpoint.</p>
     <p>Once the server is running, run the following command in your terminal:</p>
-    <pre><code class="language-swift">curl -X GET \
+    <pre><code>curl -X GET \
   http://localhost:8080/books \
   -H 'content-type: application/json'</code></pre>
     <p>If everything is working you should see the following output:</p>
@@ -197,24 +201,25 @@ Kitura.run()</code></pre>
     <p>You can modify the postHandler to store the posted book:</p>
     <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
   //Add book to the data store
-  bookstore[book.name] = book
+  bookstore[book.id] = book
   completion(book, nil)
 }</code></pre>
     <p>Then resart your server, and run the following in a terminal:</p>
-    <pre><code class="language-swift">curl -X POST \
+    <pre><code>curl -X POST \
   http://localhost:8080/books \
   -H 'content-type: application/json' \
   -d '{
-    "name": "Sarah",
-    "age": 32,
-    "active": true
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": Fantasy
 }'</code></pre>
     <p>Followed by:</p>
-    <pre><code class="language-swift">curl -X GET \
+    <pre><code>curl -X GET \
   http://localhost:8080/books \
   -H 'content-type: application/json'</code></pre>
     <p>You should now see the following output:</p>
-    <pre><code class="language-swift">[{"name":"Sarah","age":32,"active":true}]%</code></pre>
+    <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]%</code></pre>
     <p>Again using Dictionaries isn't a practical way to store your data. Infact it's really not a good idea for an application.</p>
     <p>We use it here simply to demonstrate Codable routing.</p>
     <p>In the Database Guides we will dicuss a better way of storing and retrieving data.</p>
