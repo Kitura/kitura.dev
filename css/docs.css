@@ -185,3 +185,130 @@ td, th {
   line-height: 1.6rem;
   margin-bottom: 3rem;
 }
+
+/* landing.html styling */
+
+.landing-heading {
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+}
+
+.landing-heading > h2 {
+  font-weight: normal;
+  margin-bottom: 0.6rem;
+  font-size: 1.7rem;
+}
+
+.landing-heading > h1 {
+  margin-top: 0;
+  font-size: 2.7rem;
+}
+
+.landing-img {
+  display: block;
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  opacity: 0.4;
+}
+
+article {
+  width: 85%;
+  margin: 0 auto;;
+}
+
+article > h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+article > p {
+  font-size: 0.8rem;
+  font-weight: normal;
+  line-height: 1.44rem;
+}
+
+.tutorial {
+  margin: 2.2rem auto 0 auto;
+  width: 250px;
+  height: 200px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.tutorial-title {
+  margin-top: 1rem;
+}
+
+.tutorial-title > h4 {
+  margin: 0.4rem 0;
+}
+
+.red {
+  background-color: #F21346;
+  box-shadow: -8px 10px 20px rgba(242, 19, 70, 0.25);
+}
+
+.green {
+  background-color: #00C689;
+  box-shadow: 0 10px 20px rgba(0, 198, 137, 0.25);
+}
+
+.blue {
+  background-color: #0096F4;
+  box-shadow: 8px 10px 20px rgba(0, 150, 244, 0.25);
+}
+
+/* landing.html CSS grid layout */
+.landing-item-1 {
+  grid-area: header;
+}
+
+.landing-item-2 {
+  grid-area: new-app;
+}
+
+.landing-item-3 {
+  grid-area: lightbulb;
+}
+
+.landing-item-4 {
+  grid-area: own-app;
+}
+
+.landing-item-5 {
+  grid-area: books;
+}
+
+.landing-item-6 {
+  grid-area: short;
+}
+
+.landing-item-7 {
+  grid-area: steps;
+}
+
+.landing-item-8 {
+  grid-area: todo;
+}
+
+.landing-item-9 {
+  grid-area: foodtracker;
+}
+
+.landing-item-10 {
+  grid-area: stencil;
+}
+
+.landing-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  'header header header header header header'
+  'new-app new-app lightbulb lightbulb own-app own-app'
+  'books books short short steps steps'
+  'todo todo foodtracker foodtracker stencil stencil'
+}

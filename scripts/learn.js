@@ -3,7 +3,11 @@ var api;
 var elementID;
 
 addCollapsibleElements();
-loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
+if (localStorage.getItem("src") == undefined) {
+  loadPage('./docs/landing.html', '', 'https://ibm-swift.github.io/Kitura/');
+} else {
+  loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
+}
 setAPIButtonTarget();
 
 function resizeIframe() {
@@ -56,6 +60,10 @@ function loadPage(src, id, api) {
   localStorage.setItem("id", id);
   localStorage.setItem("api", api);
   removeActiveSidebarElement();
-  document.getElementById(id).classList.add('active');
-  document.getElementById('doc-window').setAttribute('src', src);
+  if (id !== "") {
+    document.getElementById(id).classList.add('active');
+  }
+  if (src !== "") {
+    document.getElementById('doc-window').setAttribute('src', src);
+  }
 }
