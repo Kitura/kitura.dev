@@ -316,3 +316,8 @@ article > p {
   'books books short short steps steps'
   'todo todo foodtracker foodtracker stencil stencil'
 }
+
+.copy-label {
+  font-size: 0.7rem;
+  margin-left: 3rem;
+}
