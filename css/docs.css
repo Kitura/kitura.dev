@@ -236,7 +236,7 @@ article > p {
   line-height: 1.44rem;
 }
 
-.tutorial {
+.tutorial, .option {
   margin: 2.2rem auto 0 auto;
   width: 250px;
   height: 200px;
@@ -249,7 +249,7 @@ article > p {
   margin-top: 1rem;
 }
 
-.tutorial-title > h4 {
+.tutorial-title > h4, .option-title {
   margin: 0.4rem 0;
 }
 
@@ -267,6 +267,39 @@ article > p {
   background-color: #0096F4;
   box-shadow: 8px 10px 20px rgba(0, 150, 244, 0.25);
 }
+
+.option {
+  margin-top: 0;
+}
+
+.option.green {
+  margin-top: -4rem;
+}
+
+pre:hover:before {
+  content: 'Double click to copy.';
+  position: absolute;
+  opacity: 0;
+
+  transition: all 0.15s ease;
+  border-radius: 10px;
+}
+
+pre:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+
+    /* customizable */
+    right: 0;
+    top: 0;
+}
+
+.copy-label {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
 
 /* landing.html CSS grid layout */
 .landing-item-1 {
@@ -319,26 +352,54 @@ article > p {
   'todo todo foodtracker foodtracker stencil stencil'
 }
 
-pre:hover:before {
-  content: 'Double click to copy.';
-  position: absolute;
-  opacity: 0;
-
-  transition: all 0.15s ease;
-  border-radius: 10px;
+/* create-server.html CSS grid layout */
+.server-item-1 {
+  grid-area: header;
 }
 
-pre:hover:before {
-    /* needed - do not touch */
-    opacity: 1;
-
-    /* customizable */
-    right: 0;
-    top: 0;
+.server-item-2 {
+  grid-area: new-app;
 }
 
-.copy-label {
-  position: absolute;
-  top: 20px;
-  right: 0;
+.server-item-3 {
+  grid-area: stars1;
+}
+
+.server-item-4 {
+  grid-area: own-app;
+}
+
+.server-item-5 {
+  grid-area: stars2;
+}
+
+.server-item-6 {
+  grid-area: short;
+}
+
+.server-item-7 {
+  grid-area: stars3;
+}
+
+.server-item-8 {
+  grid-area: spm;
+}
+
+.server-item-9 {
+  grid-area: cli;
+}
+
+.server-item-10 {
+  grid-area: app;
+}
+
+.server-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  'header header header header header header'
+  'new-app new-app stars1 stars1 short short'
+  'spm spm own-app own-app app app'
+  'stars2 stars2 cli cli stars3 stars3'
+  ;
 }
