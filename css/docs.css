@@ -129,6 +129,10 @@ td, th {
   width: 80%;
 }
 
+.info > ol {
+  font-size: 0.8rem;
+}
+
 .plain-list {
   list-style-type: none;
 }
