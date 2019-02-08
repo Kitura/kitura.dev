@@ -19,11 +19,22 @@
   </head>
   <body>
     <h1>Installation for Linux</h1>
+    <p>Kitura is tested on Ubuntu 16.04 (LTS) and Ubuntu 18.04 (LTS).</p>
+    <div class="underline"></div>
     <h2><span class="blue-text bold">Required:</span> Install Swift</h2>
-    <p>Kitura is tested on Ubuntu 14.04 (LTS) and Ubuntu 16.04 (LTS).</p>
-    <p>Swift development on Ubuntu Linux requires various Linux system packages.</p>
+    <p>First ensure your <a target="_blank" href="https://help.ubuntu.com/community/SourcesList">source list</a> is up to date by running the following:</p>
     <pre><code class="language-swift">sudo apt-get update</code></pre>
+    <p>Next install the required Linux system packages:</p>
     <pre><code class="language-swift">sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev libpython2.7</code></pre>
+    <p><a target="_blank" href="https://swift.org/download/">Download Swift</a> for the platform you're using.</p>
+    <p>You can then extract files to system root.</p>
+    <div class="info">
+      <p>If you choose a directory other than the system root, you will need to run the following:</p>
+      <pre><code>export PATH=/path/to/Swift/usr/bin:"${PATH}"</code></pre>
+      <p>Where `${PATH}` is the path to your Swift installation.</p>
+    </div>
+    <p>You can verify Swift has been installed successfully by running:</p>
+    <pre><code>swift --version</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text bold">Optional:</span> Install Kitura CLI</h2>
     <h3>Install via npm</h3>
