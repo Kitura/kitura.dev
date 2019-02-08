@@ -16,7 +16,7 @@ function setActiveSidebarElementForParent(id) {
 }
 
 function addCopyFunction() {
-  var codeSamples = document.getElementsByClassName("language-swift");
+  var codeSamples = document.getElementsByTagName("pre");
   for (var x = 0; x < codeSamples.length; x++) {
     codeSamples[x].addEventListener("dblclick", function() {
       const el = document.createElement('textarea');
@@ -29,7 +29,7 @@ function addCopyFunction() {
       const label = document.createElement('label');
       this.appendChild(label);
       label.classList.add("copy-label");
-      label.innerText = "Copied to clipboard";
+      label.innerText = "Copied to clipboard.";
       label.id = "popup-label";
       setTimeout( function() {
         const oldLabel = document.getElementById("popup-label");
