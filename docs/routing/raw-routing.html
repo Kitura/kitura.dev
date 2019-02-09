@@ -54,9 +54,10 @@
     <p>So lets add this method to our POST route:</p>
     <pre><code class="language-swift">router.post("/books") { request, response, next in
     do {
-        try request.read(as: Book.self)
+      try request.read(as: Book.self)
     } catch {
-        Log.error(error.localizedDescription)
+      let _ = response.send(status: .badRequest)
+      Log.error(error.localizedDescription)
     }
     next()
 }</code></pre>
@@ -73,9 +74,10 @@
     <p>To test this route works, we can the `send()` method of the RouterResponse to send the result of `request.read(as: Book.self)`:</p>
     <pre><code class="language-swift">router.post("/books") { request, response, next in
     do {
-        try response.send(request.read(as: Book.self))
+      try response.send(request.read(as: Book.self))
     } catch {
-        Log.error(error.localizedDescription)
+      let _ = response.send(status: .badRequest)
+      Log.error(error.localizedDescription)
     }
     next()
 }</code></pre>
@@ -130,6 +132,7 @@
       books.append(book)
       response.send(book)
     } catch {
+      let _ = response.send(status: .badRequest)
       Log.error(error.localizedDescription)
     }
     next()
