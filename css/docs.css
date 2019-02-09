@@ -211,7 +211,7 @@ td, th {
   font-size: 2.7rem;
 }
 
-.landing-img {
+.landing-img, .option-img {
   display: block;
   height: auto;
   width: 50%;
@@ -243,6 +243,7 @@ article > p {
   color: white;
   text-align: center;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .tutorial-title {
@@ -269,11 +270,23 @@ article > p {
 }
 
 .option {
-  margin-top: 0;
+  margin-top: 1rem;
 }
 
-.option.green {
-  margin-top: -4rem;
+.option-info {
+  margin-top: 2rem;
+}
+
+.stars {
+  margin-top: 3rem;
+}
+
+.stars-down {
+  margin-top: 6rem;
+}
+
+.option-info.server-item-4, .option.green {
+  margin-top: -3rem;
 }
 
 pre:hover:before {
@@ -358,7 +371,7 @@ pre:hover:before {
 }
 
 .server-item-2 {
-  grid-area: new-app;
+  grid-area: spm-info;
 }
 
 .server-item-3 {
@@ -366,7 +379,7 @@ pre:hover:before {
 }
 
 .server-item-4 {
-  grid-area: own-app;
+  grid-area: cli-info;
 }
 
 .server-item-5 {
@@ -374,7 +387,7 @@ pre:hover:before {
 }
 
 .server-item-6 {
-  grid-area: short;
+  grid-area: macos-info;
 }
 
 .server-item-7 {
@@ -398,8 +411,8 @@ pre:hover:before {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
   'header header header header header header'
-  'new-app new-app stars1 stars1 short short'
-  'spm spm own-app own-app app app'
+  'spm-info spm-info stars1 stars1 macos-info macos-info'
+  'spm spm cli-info cli-info app app'
   'stars2 stars2 cli cli stars3 stars3'
   ;
 }
