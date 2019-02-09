@@ -273,20 +273,12 @@ article > p {
   margin-top: 1rem;
 }
 
-.option-info {
-  margin-top: 2rem;
-}
-
 .stars {
-  margin-top: 3rem;
-}
-
-.stars-down {
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 
 .option-info.server-item-4, .option.green {
-  margin-top: -3rem;
+  margin-top: -8rem;
 }
 
 pre:hover:before {
@@ -413,6 +405,5 @@ pre:hover:before {
   'header header header header header header'
   'spm-info spm-info stars1 stars1 macos-info macos-info'
   'spm spm cli-info cli-info app app'
-  'stars2 stars2 cli cli stars3 stars3'
-  ;
+  'stars2 stars2 cli cli stars3 stars3';
 }
