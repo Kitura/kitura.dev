@@ -78,6 +78,11 @@
     <div class="underline"></div>
     <h2>Raw Routing</h2>
     <p class="block-text">Raw routing is where the route handlers were called with RouterRequest and RouterResponse objects with which to handle the client request and build the response, along with a next completion handler. This approach provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
+    <p>The following is an example of a Raw Route:</p>
+    <pre><code class="language-swift">router.get("/") { request, response, next in
+  response.send("Hello world")
+  next()
+}</code></pre>
     <h3>Router Request</h3>
     <p class="block-text">The RouterRequest class is used to interact with incoming HTTP requests to the Router. It contains and allows access to the request’s Headers and Body as well as other properties of the request. It can also perform content negotiation based on the request’s Accept header.</p>
     <h3>Router Response</h3>
@@ -101,6 +106,21 @@ router.get("/") {request, response, next in
     <div class="underline"></div>
     <h2>Codable Routing</h2>
     <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with stuct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
+    <pre><code class="language-swift">func getHandler(completion: ([String]?, RequestError?) -> Void) {
+    completion(["Hello World!"], nil)
+}
+
+router.get("/", handler: getHandler)</code></pre>
+    <div class="info">
+      <p>Any type that conforms to Codable can be used as a parameter in Codable routing.</p>
+      <p>Including your own custom structs and classes:</p>
+      <pre><code class="language-swift">struct Book: Codable {
+  let id: Int
+  let title: String
+  let price: Double
+  let genre: String
+}</code></pre>
+    </div>
     <div class="underline"></div>
     <h2>Conclusion</h2>
     <p class="block-text">Codable routing is a simpler approach to building RESTful APIs, particularly if you are new to REST. Codable routing also takes advantage of the inherent type safety of the Codable protocol provided by Swift. Codable routing will also feel more natural to Swift developers as defining routes is simply just defining functions.</p>
