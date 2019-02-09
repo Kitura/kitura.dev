@@ -19,7 +19,7 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Create a Kitura server</h1>
+    <h1>Create a server with SPM</h1>
     <p>There are several ways to create a Kitura server:</p>
     <ul class="plain-list">
       <li><a href="#create-proj-spm">SPM</a>: The Swift Package Manager is the standard way of creating Swift projects.</li>
@@ -27,7 +27,6 @@
       <li><a href="#create-proj-app">Kitura macOS App:</a> A UI based version of the Kitura CLI. Ideal for those wishing to avoid the terminal.</li>
     </ul>
     <div class="underline"></div>
-    <h2 id="create-proj-spm">Create a server with SPM</h2>
     <p>To work with SPM we need to use the command line.</p>
     <div class="info">
       <p>If you're new to this simply open the Terminal (on mac or Linux) to get started.</p>
@@ -114,32 +113,6 @@ let package = Package(
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <div class="underline"></div>
-    <h2 id="create-proj-cli">Create a server with Kitura CLI</h2>
-    <h3>Step 1: Create a directory</h3>
-    <p>Kitura CLI needs to be run in an empty directory so you will need to create a new directory for your project:</p>
-    <pre><code class="language-swift">mkdir KituraExample && cd KituraExample</code></pre>
-    <div class="underline"></div>
-    <h3>Step 2: Create a Kitura project</h3>
-    <p>Create a Kitura application using the <a href="kitura-cli.html">Kitura CLI</a>:</p>
-    <pre><code class="language-swift">kitura init</code></pre>
-    <p>`kitura init` will create a cloud ready Kitura application in your current directory and also builds your application.</p>
-    <p>The name of your project will be the same as the directory name.</p>
-    <h2>Next steps</h2>
-    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
-    <div class="underline"></div>
-    <h2 id="create-proj-app">Create a server with the Kitura macOS app</h2>
-    <h3>Step 1: Create project</h3>
-    <p>Open the <a href="macos-app.html">Kitura macOS app</a> from your application folder.</p>
-    <p>Hover over the starter tile and click create:</p>
-    <img class="example-image" src="../../assets/preview1.png" alt="">
-    <p>Enter the following for Project Name and Where:</p>
-    <img class="example-image" src="../../assets/preview2.png" alt="">
-    <p>The following guides will assume you've chosen the above destination and name.</p>
-    <p>However you can use whatever destination and name you'd like, just substitute those in throughout the rest of the guides.</p>
-    <p>Once you click create the app will create and build your project. It will also generate you an xcode project.</p>
-    <img class="example-image" src="../../assets/preview3.png" alt="">
-    <h2>Next steps</h2>
-    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
