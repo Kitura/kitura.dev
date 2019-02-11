@@ -8,7 +8,7 @@ if (localStorage.getItem("src") == undefined) {
 } else {
   loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
 }
-setAPIButtonTarget();
+// setAPIButtonTarget();
 
 function resizeIframe() {
   document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.scrollHeight + 'px';
@@ -49,8 +49,7 @@ function removeActiveSidebarElement() {
 function setAPIButtonTarget() {
   for (var x = 0; x < selectables.length; x++) {
     selectables[x].addEventListener("click", function() {
-      var button = document.getElementById('api-button');
-      button.setAttribute('onclick', "window.open('" + localStorage.getItem('api') + "')");
+
     });
   }
 }
@@ -66,4 +65,6 @@ function loadPage(src, id, api) {
   if (src !== "") {
     document.getElementById('doc-window').setAttribute('src', src);
   }
+  var button = document.getElementById('api-button');
+  button.setAttribute('onclick', "window.open('" + localStorage.getItem('api') + "')");
 }
