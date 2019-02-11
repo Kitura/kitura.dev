@@ -211,6 +211,11 @@ td, th {
   font-size: 2.7rem;
 }
 
+.landing-heading > p {
+  font-size: 0.8rem;
+  margin-top: -2rem;
+}
+
 .landing-img, .option-img {
   display: block;
   height: auto;
