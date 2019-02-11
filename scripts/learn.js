@@ -8,7 +8,6 @@ if (localStorage.getItem("src") == undefined) {
 } else {
   loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
 }
-// setAPIButtonTarget();
 
 function resizeIframe() {
   document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.scrollHeight + 'px';
@@ -42,15 +41,6 @@ function removeActiveSidebarElement() {
     if (selectables[j].classList.contains('active')) {
       selectables[j].classList.remove('active');
     }
-  }
-}
-
-// Updates the API Reference button's link destination.
-function setAPIButtonTarget() {
-  for (var x = 0; x < selectables.length; x++) {
-    selectables[x].addEventListener("click", function() {
-
-    });
   }
 }
 
