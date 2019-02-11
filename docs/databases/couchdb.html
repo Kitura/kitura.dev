@@ -20,8 +20,15 @@
   </head>
   <body>
     <h1>Kitura CouchDB</h1>
+    <p><a target="_blank" href="http://couchdb.apache.org/">CouchDB</a> is a NoSQL (or non-relational) database. CouchDB takes a document-oriented approuch to databases.</p>
+    <p>Kitura-CouchDB is a pure Swift client which allows Kitura applications to interact with a CouchDB or <a target="_blank" href="https://www.ibm.com/uk-en/cloud/cloudant">Cloudant</a> database.</p>
     <div class="underline"></div>
     <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our getting started guide</li>
+      <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
+      <li><span class="blue-text">Updated Package.swift:</span> Learn how to update the Package.swift in our guide</li>
+    </ul>
     <div class="underline"></div>
     <h2><span class="blue-text bold">Step 1:</span> Download and install CouchDB</h2>
     <p>Before we can use CouchDB within our server we first need to <a target="_blank" href="http://couchdb.apache.org/#download">Download CouchDB</a>.</p>
@@ -87,7 +94,7 @@
     <p>To retrieve all documents from a CouchDB database we need to use the aptly named `retrieveAll` method within our `getAllHandler`:</p>
     <pre><code class="language-swift">func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
   database.retrieveAll(includeDocuments: true) { (documents, error) in
-    
+
   }
 }</code></pre>
     <div class="underline"></div>
