@@ -82,6 +82,7 @@ Database.default = Database(pool)</code></pre>
     book.save(completion)
     completion(book, nil)
 }</code></pre>
+    <p>TODO: We also need to add @escaping to our handlers - explain why!</p>
     <p>That's all we need to do. With that line any Book data posted to the `/books` end point will be stored in our database.</p>
     <p>All we need to do now is be able to retrieve data from our database.</p>
     <div class="underline"></div>
@@ -142,7 +143,7 @@ Database.default = Database(pool)</code></pre>
     <p>Our data has persisted even though our server has been stopped. This is one of the many perks of using a database.</p>
     <div class="underline"></div>
     <h2>Next steps</h2>
-    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-sessions')" href="../sessions/typesafe-sessions.html#">Add Kitura Sessions:</a></span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('kitura-session')" href="../sessions/kitura-session.html#">Add Kitura Sessions:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>

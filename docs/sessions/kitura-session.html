@@ -96,10 +96,21 @@ router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book
     <pre><code class="language-swift">func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
     completion(session.books, nil)
 }</code></pre>
-    <p>Add that's it. We've now enabled a Kitura Session on our server.</p>
-    <p>We can now test to enusre this works, and the easiest way to do that is using Kitura OpenAPI</p>
+    <p>Add that's it! We've now enabled a Kitura Session on our server.</p>
+    <p>We can now test to ensure this works, and the easiest way to do that is using <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI</a>.</p>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Test our Session</h2>
+    <p>We will be using Kitura OpenAPI to test our sessions but any tool capable of testing APIs, such as <a href="https://www.getpostman.com/">Postman</a>, would work.</p>
+    <div class="info">
+      <p>If you don't know how to test your Codable routes using Kiura OpenAPI then you can follow our <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI Guide</a> to learn how.</p>
+    </div>
+    <p>To use OpenAPI we first need to start our server.</p>
+    <p>Once the server has started open:</p>
+    <p><a target="_blank" href="http://localhost:8080/openapi/ui">http://localhost:8080/openapi/ui</a></p>
+    <p>First we will test the POST route passing in the following data:</p>
+    <pre><code></code></pre>
+    <p>Once we've successfully confirmed the POST route is working correctly we can test the GET route.</p>
+    <p>As we'd expect we should see the same data we posted.</p>
     <div class="underline"></div>
     <!-- <h2>Step 3: Saving/Terminating a session</h2>
     <h2>TODO: Does this need to be it's own step?</h2>
