@@ -22,7 +22,12 @@
   </head>
   <body>
     <h1 id="title">Adding Packages</h1>
+    <p>To add a new dependency to our project we need to edit the `Package.swift` file:</p>
+    <pre><code>open Package.swift</code></pre>
+    <p>Next we need to add the package:
     <pre><code id="package" class="language-swift">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
+    <p>To our list of packages.</p>
+    <p>Finally we need to add the package as a dependency of our application:</p>
     <pre><code id="dependency" class="language-swift">.target(name: "&lt;project-name&gt;", dependencies: "Kitura" , "&lt;dependency-name&gt;"]),</code></pre>
     <div class="underline"></div>
     <h2>Next steps</h2>
