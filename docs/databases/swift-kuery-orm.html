@@ -67,7 +67,7 @@ Database.default = Database(pool)</code></pre>
     <pre><code class="language-swift">do {
     try Book.createTableSync()
 } catch let error {
-    print(error)
+    Log.error(error.localizedDescription)
 }</code></pre>
     <div class="underline"></div>
     <h2><span class="blue-text">Step 4:</span> Save an Object to our database</h2>

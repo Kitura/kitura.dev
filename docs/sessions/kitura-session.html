@@ -48,7 +48,7 @@ final class CheckoutSession: TypeSafeSession {
 
 // Defines the configuration of the user's type: how the cookie is constructed, and how the session is
 // persisted.
-extension MySession {
+extension CheckoutSession {
     static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
     static var store: Store?
 } </code></pre>
@@ -93,8 +93,8 @@ router.post("/cart") { (session: MySessionStruct, book: Book, respondWith: (Book
     <p>Just below the POST route we just added we can add the following:</p>
     <pre><code class="language-swift">router.get("/cart", handler: getSessionHandler)</code></pre>
     <p>Then again below our postSessionHandler handler we can add:</p>
-    <pre><code class="language-swift">func getSessionHandler(session: UserSession, completion: ([User]?, RequestError?) -> Void) -> Void {
-    completion(session.users, nil)
+    <pre><code class="language-swift">func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
+    completion(session.books, nil)
 }</code></pre>
     <p>Add that's it. We've now enabled a Kitura Session on our server.</p>
     <p>We can now test to enusre this works, and the easiest way to do that is using Kitura OpenAPI</p>
