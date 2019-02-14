@@ -36,6 +36,15 @@ function updatePackage(packageName, version) {
     dependencyName = packageName;
   }
 
+  //Add check for KituraStencilTemplateEngine which needs to be named KituraStencil
+  if (dependencyName == "KituraStencilTemplateEngine") {
+    dependencyName = "KituraStencil";
+  }
+  //Add check for KituraCouchDB which needs to be named CouchDB
+  if (dependencyName == "KituraCouchDB") {
+    dependencyName = "CouchDB"
+  }
+  
   var title = document.getElementById('title');
   title.innerText = "Adding " + dependencyName + " To A Kitura App";
 
