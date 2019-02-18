@@ -159,6 +159,57 @@
     <p>This is one of the flaws of using an Array as the data store.</p>
     <p>In the Database Guide we will look to resolve this issue.</p>
     <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Create a GET SINGLE route with Query Parameters</h2>
+    <p>First we need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct TitleQuery: QueryParams {
+  let title: String
+}</code></pre>
+    <p>Now we can create our route handler to handle requests with the query parameters we have defined:</p>
+    <pre><code class="language-swift">router.get("/books/title") { request, response, next in
+  guard let params = request.getQueryParameters(as: BookQuery.self) else {
+    let _ = response.send(status: .badRequest)
+    return
+  }
+  response.send(books.filter( { $0.title == params.title } ))
+  next()
+}</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 5:</span> Create a GET ALL route with Query Parameters</h2>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 6:</span> Create a GET route with optional Query Parameters</h2>
+    <p>Next what if we want to search all books that are of a certain price?</p>
+    <p>For example, we may want to find all of the books that are between £5 and £10.</p>
+    <p>Or only the books that are less than £10?</p>
+    <p>Like before we first need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct PriceQuery: QueryParams {
+  let lowerPrice: Double?
+  let upperPrice: Double?
+}</code></pre>
+    <p>Then we can create our route handler:</p>
+    <pre><code class="language-swift">router.get("/books/price") { request, response, next in
+
+  guard let params = request.getQueryParameters(as: PriceQuery.self) else {
+    let _ = response.send(status: .badRequest)
+    return
+  }
+
+  switch (params.lowerPrice, params.upperPrice) {
+  case (.none, .none):
+    response.send(books)
+    next()
+  case (.some, .none):
+    response.send(books.filter({ params.lowerPrice! < $0.price }))
+    next()
+  case (.none, .some):
+    response.send(books.filter({ $0.price < params.upperPrice! }))
+    next()
+  case (.some, .some):
+    let range = params.lowerPrice!...params.upperPrice!
+    response.send(books.filter({ range.contains($0.price) }))
+    next()
+  }
+}</code></pre>
+    <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
