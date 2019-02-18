@@ -22,7 +22,26 @@
     <h1>Raw Routing</h1>
     <p class="block-text">Raw routing is based on <a target="_blank" href="https://expressjs.com/">express</a> where the route handlers are called with RouterRequest and RouterResponse objects with which to handle the client request and build the response, along with a next completion handler.</p>
     <p class="block-text">Raw routing provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
-    <h2>Prerequisites</h2>
+    <div class="underline"></div>
+    <h2>Contents:</h2>
+    <ol class="plain-list">
+      <h3><li><a href="#prereq">Prerequisites</a></li></h3>
+      <p>This section will inform you of the minimum you need to have setup to follow this guide.</p>
+      <h3><li><a href="#post">Create a basic POST route</a></li></h3>
+      <p>Learn how to send data to a Kitura server using Codable types.</p>
+      <h3><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
+      <p>Learn how to retrieve all data from a Kitura server.</p>
+      <h3><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
+      <p>Learn how to get a single value from a Kitura server.</p>
+      <h3><li><a href="#singlequery">Create a GET SINGLE route with Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve specific data from a Kitura server.</p>
+      <h3><li><a href="#allquery">Create a GET ALL route with Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve a collection of matching data from a Kitura Server.</p>
+      <h3><li><a href="#optionalquery">Create a GET route with optional Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve a subset of data from a Kitura server based on optional parameters.</p>
+    </ol>
+    <div class="underline"></div>
+    <h2 id="prereq">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
     </ul>
@@ -31,7 +50,7 @@
       <p>You can learn how to add logging in our Logging guide.</p>
     </div>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Create a POST route</h2>
+    <h2 id="post"><span class="blue-text">Step 1:</span> Create a POST route</h2>
     <div class="info">
       <p>If you created your project using Kitura CLI or the Kitura macOS app then your project structure may be different.</p>
       <p>The file you will be working with is:</p>
@@ -96,7 +115,7 @@
     <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
     <p>That's it! We've implemented a basic POST route.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Create a GET route</h2>
+    <h2 id="getall"><span class="blue-text">Step 2:</span> Create a GET route</h2>
     <p>We register a GET route in a similar way to the POST route.</p>
     <p>Below the line `router.post("/books")...` add:</p>
     <pre><code class="language-swift">router.get("/books") { request, response, next in
@@ -159,7 +178,7 @@
     <p>This is one of the flaws of using an Array as the data store.</p>
     <p>In the Database Guide we will look to resolve this issue.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Create a GET SINGLE route with Query Parameters</h2>
+    <h2 id="singlequery"><span class="blue-text">Step 4:</span> Create a GET SINGLE route with Query Parameters</h2>
     <p>First we need to create a type that conforms to the QueryParams protocol:</p>
     <pre><code class="language-swift">public struct TitleQuery: QueryParams {
   let title: String
@@ -174,9 +193,9 @@
   next()
 }</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 5:</span> Create a GET ALL route with Query Parameters</h2>
+    <h2 id="allquery"><span class="blue-text">Step 5:</span> Create a GET ALL route with Query Parameters</h2>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 6:</span> Create a GET route with optional Query Parameters</h2>
+    <h2 id="optionalquery"><span class="blue-text">Step 6:</span> Create a GET route with optional Query Parameters</h2>
     <p>Next what if we want to search all books that are of a certain price?</p>
     <p>For example, we may want to find all of the books that are between £5 and £10.</p>
     <p>Or only the books that are less than £10?</p>
