@@ -19,19 +19,19 @@ h1 {
 h2 {
   font-size: 1.55rem;
   font-weight: bold;
-  margin-bottom: 1.8rem;
+  margin: 1.8rem 0;
 }
 
 h3 {
   font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 1.6rem;
+  margin: 1.6rem 0;
 }
 
 h4 {
   font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 1.4rem;
+  margin: 1.4rem 0;
 }
 
 ol, ul {
@@ -45,6 +45,11 @@ ul {
 
 ol {
   list-style-type: decimal;
+}
+
+ol > p {
+  margin-top: -1rem;
+  font-size: 0.8rem;
 }
 
 li {
