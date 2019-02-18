@@ -350,6 +350,17 @@ footer {
 	margin-left: 1rem;
 }
 
+.top-page {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.top-page > a {
+  color: #0780B5;
+  font-size: 0.9rem;
+}
+
 /*
     BETA Stlying
 */
