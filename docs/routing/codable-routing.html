@@ -195,6 +195,7 @@ Kitura.run()</code></pre>
     <p>If everything is working you should see the following output:</p>
     <pre><code class="language-swift">[]%</code></pre>
     <p>Which makes sense as we haven't stored anything on our server yet.</p>
+    <div class="underline"></div>
     <h2><span class="blue-text">Step 6:</span> Store and retrieve data from the server (Optional)</h2>
     <div class="info">
       <p>We will go into greater detail about storing and retrieving data in the Database section.</p>
@@ -224,6 +225,87 @@ Kitura.run()</code></pre>
     <p>Again using Dictionaries isn't a practical way to store your data. Infact it's really not a good idea for an application.</p>
     <p>We use it here simply to demonstrate Codable routing.</p>
     <p>In the Database Guides we will dicuss a better way of storing and retrieving data.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 7:</span> Create a GET single route using QueryParams</h2>
+    <p>First we need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct TitleQuery: QueryParams {
+  let title: String
+}</code></pre>
+    <p>Now we can create our new handler which will setup a route that accepts query params:</p>
+    <pre><code class="language-swift">func getBook(query: BookQuery, completion: (Book?, RequestError?) -> Void) {
+}</code></pre>
+    <p>We can then filter our data using the query we provided:</p>
+    <pre><code class="language-swift">func getSingleQuery(query: BookQuery, completion: (Book?, RequestError?) -> Void) {
+
+  // Convert dictionary to an array
+  let books = bookstore.map { $0 }
+
+  // Check if the books array contains values
+  if books.filter( {$0.title == query.title}).count == 0 {
+
+    // If the array does not contain a value we couldn't find anything with that parameter.
+    completion(nil, RequestError.notFound)
+  } else {
+
+    // If we did find a value we can pass that value through the closure
+    let result = books.filter( {$0.title == query.title})[0]
+    completion(result, nil)
+  }
+}</code></pre>
+    <p>Finally we just need to register a new GET route using the getSingleQuery handler we just created:</p>
+    <pre><code class="language-swift">router.get("/books", handler: getSingleQuery)</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 8:</span> Create a GET all route using QueryParams</h2>
+    <p>Like before we first need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct GenreQuery: QueryParams {
+  let genre: String
+}</code></pre>
+    <p>Then we create our handler:</p>
+    <pre><code class="language-swift">func getAllBooksQuery(query: BookQuery, completion: ([Book]?, RequestError?) -> Void) {
+}</code></pre>
+    <p>Then we can filter our data using the query provide:</p>
+    <pre><code class="language-swift">func getSingleQuery(query: BookQuery, completion: ([Book]?, RequestError?) -> Void) {
+    completion(books.filter( { $0.genre == query.genre } ), nil)
+}</code></pre>
+    <p>That's it! We've added the capability for searching all books based on genre!</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 9:</span> Create a GET all route using QueryParams with optional params</h2>
+    <p>Next what if we want to search all books that are of a certain price?</p>
+    <p>For example, we may want to find all of the books that are between £5 and £10.</p>
+    <p>Or only the books that are less than £10.</p>
+    <p>Like before we first need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct PriceQuery: QueryParams {
+  let lowerPrice: Double?
+  let upperPrice: Double?
+}</code></pre>
+    <p>Then we create our handler:</p>
+    <pre><code class="language-swift">func getAllBooksQuery(query: BookQuery, completion: ([Book]?, RequestError?) -> Void) {
+}</code></pre>
+    <p>Then we can filter our data using the query provide:</p>
+    <pre><code class="language-swift">func getBook(query: PriceQuery, completion: ([Book]?, RequestError?) -> Void) {
+
+  switch (query.lowerPrice, query.upperPrice) {
+
+  //If neither lowerPrice nor upperPrice were provided then respond with all books
+  case (.none, .none):
+    completion(books, nil)
+
+  //If only lowerPrice was provided then respond with all books with higher price
+  case (.some, .none):
+    completion(books.filter( { query.lowerPrice! > $0.price } ), nil)
+
+  //If only upperPrice was provided then respond with all books with lower price
+  case (.none, .some):
+    completion(books.filter( { $0.price < query.upperPrice! } ), nil)
+
+  //If both upperPrice and lowerPrice were provided then respond with all books with a price in that range
+  case (.some, .some):
+    let range = query.lowerPrice!...query.upperPrice!
+    completion(books.filter( { range.contains($0.price) } ), nil)
+  }
+}</code></pre>
+    <p>Now we can query our books based on a range of price.</p>
+    <p>TODO: Explain this more.</p>
     <div class="underline"></div>
     <!-- <p>Currently this route doe</p>
     <p>It's good practice to keep your data models and code logic separate.</p>
