@@ -19,7 +19,26 @@
   <body>
     <h1>Codable Routing</h1>
     <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with stuct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
-    <h2>Prerequisites</h2>
+    <div class="underline"></div>
+    <h2>Contents:</h2>
+    <ol class="plain-list">
+      <h3><li><a href="#prereq">Prerequisites</a></li></h3>
+      <p>This section will inform you of the minimum you need to have setup to follow this guide.</p>
+      <h3><li><a href="#post">Create a basic POST route</a></li></h3>
+      <p>Learn how to send data to a Kitura server using Codable types.</p>
+      <h3><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
+      <p>Learn how to retrieve all data from a Kitura server.</p>
+      <h3><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
+      <p>Learn how to get a single value from a Kitura server.</p>
+      <h3><li><a href="#singlequery">Create a GET SINGLE route with Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve specific data from a Kitura server.</p>
+      <h3><li><a href="#allquery">Create a GET ALL route with Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve a collection of matching data from a Kitura Server.</p>
+      <h3><li><a href="#optionalquery">Create a GET route with optional Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve a subset of data from a Kitura server based on optional parameters.</p>
+    </ol>
+    <div class="underline"></div>
+    <h2 id="prereq">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
     </ul>
@@ -31,7 +50,7 @@
     <p>So if you've ended up here from the Getting Started or Logging sections all commands should be accurate.</p>
     <p>For everyone else, just replace all instances of `MyKituraApp` with the name of your own project.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Create a POST Codable Route</h2>
+    <h2 id="post"><span class="blue-text">Step 1:</span> Create a POST Codable Route</h2>
     <div class="info">
       <p>If you created your project using Kitura CLI or the Kitura macOS app then your project structure may be different.</p>
       <p>The file you will be working with is:</p>
@@ -131,7 +150,7 @@ Kitura.run()</code></pre>
     <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
     <p>We have just posted data, now we need to be able to retrieve the data.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 5:</span> Create a GET Codable Route</h2>
+    <h2 id="getall"><span class="blue-text">Step 5:</span> Create a GET ALL Codable Route</h2>
     <p>We register a GET route in a similar way to the POST route.</p>
     <p>Below the line `router.post("/books", handler: postHandler)` add:</p>
     <pre><code class="language-swift">router.get("/books", handler: getAllHandler)</code></pre>
@@ -226,7 +245,7 @@ Kitura.run()</code></pre>
     <p>We use it here simply to demonstrate Codable routing.</p>
     <p>In the Database Guides we will dicuss a better way of storing and retrieving data.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 7:</span> Create a GET single route using QueryParams</h2>
+    <h2 id="singlequery"><span class="blue-text">Step 7:</span> Create a GET single route using QueryParams</h2>
     <p>First we need to create a type that conforms to the QueryParams protocol:</p>
     <pre><code class="language-swift">public struct TitleQuery: QueryParams {
   let title: String
@@ -253,9 +272,9 @@ Kitura.run()</code></pre>
   }
 }</code></pre>
     <p>Finally we just need to register a new GET route using the getSingleQuery handler we just created:</p>
-    <pre><code class="language-swift">router.get("/books", handler: getSingleQuery)</code></pre>
+    <pre><code class="language-swift">router.get("/books/title", handler: getSingleQuery)</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 8:</span> Create a GET all route using QueryParams</h2>
+    <h2 id="allquery"><span class="blue-text">Step 8:</span> Create a GET all route using QueryParams</h2>
     <p>Like before we first need to create a type that conforms to the QueryParams protocol:</p>
     <pre><code class="language-swift">public struct GenreQuery: QueryParams {
   let genre: String
@@ -269,7 +288,7 @@ Kitura.run()</code></pre>
 }</code></pre>
     <p>That's it! We've added the capability for searching all books based on genre!</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 9:</span> Create a GET all route using QueryParams with optional params</h2>
+    <h2 id="optionalquery"><span class="blue-text">Step 9:</span> Create a GET all route using QueryParams with optional params</h2>
     <p>Next what if we want to search all books that are of a certain price?</p>
     <p>For example, we may want to find all of the books that are between £5 and £10.</p>
     <p>Or only the books that are less than £10.</p>
@@ -282,7 +301,7 @@ Kitura.run()</code></pre>
     <pre><code class="language-swift">func getAllBooksQuery(query: BookQuery, completion: ([Book]?, RequestError?) -> Void) {
 }</code></pre>
     <p>Then we can filter our data using the query provide:</p>
-    <pre><code class="language-swift">func getBook(query: PriceQuery, completion: ([Book]?, RequestError?) -> Void) {
+    <pre><code class="language-swift">func getAllBooksQuery(query: PriceQuery, completion: ([Book]?, RequestError?) -> Void) {
 
   switch (query.lowerPrice, query.upperPrice) {
 
