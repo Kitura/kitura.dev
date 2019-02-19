@@ -142,6 +142,48 @@ Database.default = Database(pool)</code></pre>
     <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]%</code></pre>
     <p>Our data has persisted even though our server has been stopped. This is one of the many perks of using a database.</p>
     <div class="underline"></div>
+    <h2><span class="blue-text">Step 6:</span> Retrieve an Object from your database using Query Parameters</h2>
+    <div class="info">
+      <p>This section assumes you have Query Parameters already integrated with your Codable routes.</p>
+      <p>If you do not, you can learn how to do this in our Codable routing with Query Parameters section.</p>
+    </div>
+    <p>We first need to modify our `getSingleQuery` function, so lets start by removing all the code here so we end up with:</p>
+    <pre><code class="language-swift">func getSingleQuery(query: BookQuery, completion: (Book?, RequestError?) -> Void) {
+}</code></pre>
+    <p>Now we can use the `findAll(matching: QueryParams)` method provided by the ORM passing in our query:</p>
+    <pre><code class="language-swift">func getSingleQuery(query: BookQuery, completion: @escaping  (Book?, RequestError?) -> Void) {
+  Book.findAll(matching: query) { books, error in
+    if let error = error {
+      Log.error(error.localizedDescription)
+    }
+    if let books = books {
+      if books.count != 0 {
+        completion(books[0], nil)
+      } else {
+        completion(nil, RequestError.notFound)
+      }
+    }
+  }
+}</code></pre>
+    <p>Once we have a result from the database following our request, we first check to ensure there were no errors.</p>
+    <p>Once we've confirmed we are error free we can ensure we actually got a value back.</p>
+    <p>Then we can pass the value through to the completion handler.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 7:</span> Retrieve Objects from your database using Query Parameters filters</h2>
+    <p>Query Parameters provide several filter methods that we can make use of, such as:</p>
+    <ul>
+      <li>GreaterThan</li>
+      <li>LowerThan</li>
+      <li>InclusiveRange</li>
+      <li>Ordering</li>
+      <li>Pagination</li>
+    </ul>
+    <p>plus many others.</p>
+    <p>To use these methods we need to modify our QueryParams type:</p>
+    <pre><code class="language-swift">public struct PriceQuery: QueryParams {
+  let priceRange: InclusiveRange<Double>?
+}</code></pre>
+    <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('kitura-session')" href="../sessions/kitura-session.html#">Add Kitura Sessions:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>

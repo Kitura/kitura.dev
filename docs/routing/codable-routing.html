@@ -251,7 +251,7 @@ Kitura.run()</code></pre>
   let title: String
 }</code></pre>
     <p>Now we can create our new handler which will setup a route that accepts query params:</p>
-    <pre><code class="language-swift">func getBook(query: BookQuery, completion: (Book?, RequestError?) -> Void) {
+    <pre><code class="language-swift">func getSingleQuery(query: BookQuery, completion: (Book?, RequestError?) -> Void) {
 }</code></pre>
     <p>We can then filter our data using the query we provided:</p>
     <pre><code class="language-swift">func getSingleQuery(query: BookQuery, completion: (Book?, RequestError?) -> Void) {
