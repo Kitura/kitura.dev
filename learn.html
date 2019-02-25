@@ -33,8 +33,8 @@
             <li id="installation-mac" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/installation-mac.html', 'installation-mac', 'https://ibm-swift.github.io/Kitura/')">Installation for macOS</li>
             <li id="installation-linux" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/installation-linux.html', 'installation-linux', 'https://ibm-swift.github.io/Kitura/')">Installation for Linux</li>
             <li id="create-server" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/create-server.html', 'create-server', 'https://ibm-swift.github.io/Kitura/')">Create a server</li>
-            <li id="update-package" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/update-package.html', 'update-package', 'https://ibm-swift.github.io/Kitura/'); localStorage.setItem('package', '')">Adding Packages</li>
             <li id="style-guide" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/style-guide.html', 'style-guide', 'https://ibm-swift.github.io/Kitura/')">Style Guide</li>
+            <li id="update-package" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/update-package.html', 'update-package', 'https://ibm-swift.github.io/Kitura/'); localStorage.setItem('package', '')">Adding Packages</li>
             <!-- <li id="kitura-cli" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/kitura-cli.html', 'kitura-cli')">Kitura CLI</li>
             <li id="macos-app" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/macos-app.html', 'macos-app')">macOS App</li>
             <li id="spm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/spm.html', 'spm')">SPM</li> -->
@@ -124,10 +124,21 @@
     <div class="docs-item-4 docs-window">
       <iframe id="doc-window" width="100%" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
     </div>
-    <div class="top-page">
+    <div id="top-page" class="top-page">
       <a href="#">Back to top</a>
     </div>
   </section>
   <script type="text/javascript" src="scripts/learn.js"></script>
+  <script type="text/javascript">
+    window.addEventListener('scroll', function() {
+      var target = document.getElementById('top-page');
+      //TODO: Make this perform better
+      if (window.pageYOffset > 500) {
+        target.style.display = "block"
+      } else if (window.pageYOffset < 500) {
+        target.style.display = "none";
+      }
+    }, false);
+  </script>
 </body>
 </html>
