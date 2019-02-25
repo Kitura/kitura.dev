@@ -29,37 +29,85 @@
       <li><a onclick="localStorage.setItem('package', 'Swift-Kuery'); setActiveSidebarElementForParent('swift-kuery')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift Kuery needs adding to the Package.swift file.</li>
     </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Install the PostgreSQL client</h2>
-    <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
-    <h3>macOS</h3>
-    <p>On macOS we can use Homebrew to install Postgres:</p>
-    <pre><code class="language-swift">brew install postgresql</code></pre>
-    <h3>Linux</h3>
-    <p>On Linux we can use `apt-get` to install Postgres:</p>
-    <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
-    <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Create a Postgres Database</h2>
-    <p>Now that we have PostgreSQL installed we can create a database:</p>
-    <pre><code class="language-swift">createdb bookstoredb</code></pre>
-    <p>Then we can open the PostgreSQL command-line interface:</p>
-    <pre><code class="language-swift">psql bookstoredb</code></pre>
-    <p>Finally we can create a table in our database:</p>
-    <pre><code class="language-swift">CREATE TABLE "Titles" (
-    id varchar(100) PRIMARY KEY,
-    title text NOT NULL,
-    price float8 NOT NULL,
-    genre text NOT NULL
-);</code></pre>
-    <p>Now we're ready to connect to our database from our Kitura server.</p>
-    <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Create connection pool of PostgreSQL connections</h2>
-    <p>First we need to import the SwiftKuery and SwiftKueryPostgreSQL packages.</p>
-    <pre><code class="language-swift">import SwiftKuery
+    <section class="tab">
+      <div class="tab-buttons">
+        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'postgres')">PostgreSQL</button>
+        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'mysql')">MySQL</button>
+        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'sqlite')">SQLite</button>
+      </div>
+      <div id="postgres" class="tabcontent">
+        <h2><span class="blue-text">Step 1:</span> Install the PostgreSQL client</h2>
+        <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
+        <h3>macOS</h3>
+        <p>On macOS we can use Homebrew to install Postgres:</p>
+        <pre><code class="language-swift">brew install postgresql</code></pre>
+        <h3>Linux</h3>
+        <p>On Linux we can use `apt-get` to install Postgres:</p>
+        <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
+        <div class="underline"></div>
+        <h2><span class="blue-text">Step 2:</span> Create a Postgres Database</h2>
+        <p>Now that we have PostgreSQL installed we can create a database:</p>
+        <pre><code class="language-swift">createdb bookstoredb</code></pre>
+        <p>Then we can open the PostgreSQL command-line interface:</p>
+        <pre><code class="language-swift">psql bookstoredb</code></pre>
+        <p>Finally we can create a table in our database:</p>
+        <pre><code class="language-swift">CREATE TABLE "Titles" (
+        id varchar(100) PRIMARY KEY,
+        title text NOT NULL,
+        price float8 NOT NULL,
+        genre text NOT NULL
+    );</code></pre>
+        <p>Now we're ready to connect to our database from our Kitura server.</p>
+        <div class="underline"></div>
+        <h2><span class="blue-text">Step 3:</span> Create connection pool of PostgreSQL connections</h2>
+        <p>First we need to import the SwiftKuery and SwiftKueryPostgreSQL packages.</p>
+        <pre><code class="language-swift">import SwiftKuery
 import SwiftKueryPostgreSQL</code></pre>
-    <p>Next we create a connection pool of connections:</p>
-    <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
-    <p>This creates a pool of connections for us to use to make requests to our database.</p>
-    <div class="underline"></div>
+        <p>Next we create a connection pool of connections:</p>
+        <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
+        <p>This creates a pool of connections for us to use to make requests to our database.</p>
+      </div>
+      <div id="mysql" class="tabcontent">
+        <h2><span class="blue-text">Step 1:</span> Install MySQL</h2>
+        <p>To use Swift-Kuery-MySQL you need to first  install MySQL:</p>
+        <h3>macOS</h3>
+        <p>On macOS we can use Homebrew to install Postgres:</p>
+        <pre><code class="language-swift">brew install mysql</code></pre>
+        <p>Then we can start MySQL:</p>
+        <pre><code>mysql.server start</code></pre>
+        <h3>Linux</h3>
+        <p>On Linux we can use `apt-get` to install Postgres:</p>
+        <pre><code class="language-swift">sudo apt-get install mysql-server libmysqlclient-dev pkg-config</code></pre>
+        <p>Then we can start the MySQL service:</p>
+        <pre><code>sudo service mysql start</code></pre>
+        <div class="underline"></div>
+        <h2><span class="blue-text">Step 2:</span> Create a connection to a MySQL database</h2>
+        <p>First we need to import the SwiftKuery and SwiftKueryMySQL packages.</p>
+        <pre><code class="language-swift">import SwiftKuery
+import SwiftKueryMySQL</code></pre>
+        <p>Next we create a connection pool of connections:</p>
+        <pre><code class="language-swift">let pool = MySQLConnection.createPool(host: host, user: user, password: password, database: database, port: port, characterSet: nil, connectionTimeout: 10000, poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
+        <p>This creates a pool of connections for us to use to make requests to our database.</p>
+      </div>
+      <div id="sqlite" class="tabcontent">
+        <h2><span class="blue-text">Step 1:</span> Install SQLite</h2>
+        <p>To use Swift-Kuery-SQLite you need to first  install SQLite:</p>
+        <h3>macOS</h3>
+        <p>On macOS we can use Homebrew to install SQLite:</p>
+        <pre><code class="language-swift">brew install sqlite</code></pre>
+        <h3>Linux</h3>
+        <p>On Linux we can use `apt-get` to install SQLite:</p>
+        <pre><code class="language-swift">sudo apt-get install sqlite3 libsqlite3-dev</code></pre>
+        <div class="underline"></div>
+        <h2><span class="blue-text">Step 2:</span> Create a connection to an SQLite database</h2>
+        <p>First we need to import the SwiftKuery and SwiftKuerySQLite packages.</p>
+        <pre><code class="language-swift">import SwiftKuery
+import SwiftKuerySQLite</code></pre>
+        <p>Next we create a connection pool of connections:</p>
+        <pre><code class="language-swift">let pool = SQLiteConnection.createPool(filename: "myDB.db", poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
+        <p>This creates a pool of connections for us to use to make requests to our database.</p>
+      </div>
+    </section>
     <h2><span class="blue-text">Step 4:</span> Create a class to represent the database table</h2>
     <p>To use SwiftKueryPostgreSQL we need to create a class that matches our table.</p>
     <p>Just below the line `let router = Router()`, add the following:</p>

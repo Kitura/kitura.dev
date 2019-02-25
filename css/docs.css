@@ -315,6 +315,50 @@ pre:hover:before {
   right: 0;
 }
 
+/* Tabbed section styling */
+
+.tab {
+  overflow: hidden;
+  background-color: white;
+  width: 100%;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.tab button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  transition: 0.3s;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #676767;
+  border: 1px solid rgba(103, 103, 103, 0.1);
+  border-bottom: none;
+  border-top-left-radius: 0.55rem;
+  border-top-right-radius: 0.55rem;
+}
+
+.tab button.active, .tab button:hover {
+  background-color: #0780B5;
+  color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+  margin-top: -0.1rem;
+  display: none;
+  border: 1px solid rgba(103, 103, 103, 0.1);
+  padding-left: 0.5rem;
+  border-radius: 0.55rem;
+}
+
 /* landing.html CSS grid layout */
 .landing-item-1 {
   grid-area: header;
