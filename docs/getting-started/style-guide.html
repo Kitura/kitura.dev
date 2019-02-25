@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Kitura Application Style Guide</h1>
+    <p>This guide covers a way of structuring your project code to make future development easier and keep your project files looking clean.</p>
+    <div class="info">
+      <p>If you used the Kitura CLI or Kitura macOS app to create your project then you may already have your project in the structure outlined in this guide.</p>
+    </div>
+    <div class="underline"></div>
+    <h2 id="prereq">Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+    </ul>
+    <div class="underline"></div>
+    <h2>Create Application directory</h2>
+    <p>Within our `Sources` directory we first need to create an `Application` directory:</p>
+    <pre><code>mkdir Sources/Application</code></pre>
+    <p>This is the directory where we will store all of our Application code.</p>
+    <p>Next we will create our Application.swift file:</p>
+    <pre><code>touch Sources/Application/Application.swift</code></pre>
+    <p>Next we need to create our Routes directory:</p>
+    <pre><code>mkdir Sources/Application/Routes</code></pre>
+    <p>This is where we will store all of our route handlers.</p>
+    <div class="underline"></div>
+    <h2>Add code to Application.swift file</h2>
+    <p>We created the Application.swift file but we never actually added any code to it.</p>
+    <p>We will open the Application.swift file in our default text editor:</p>
+    <pre><code>open Sources/Application/Application.swift</code></pre>
+    <div class="info">
+      <p>If you are on macOS and would like to work within an Xcode project then you need to regenerate your Xcode project:</p>
+      <pre><code>swift package generate-xcodeproj</code></pre>
+      <p>You may need to reopen the Xcode project for these changes to take effect.</p>
+    </div>
+    <p>The Application.swift file will be responsible for starting our Kitura server.</p>
+    <p>We can add the following to our Application.swift file:</p>
+    <pre><code class="language-swift">import Kitura
+
+public class App {
+
+  let router = Router()
+
+  public init() {
+
+  }
+
+  public func run() throws {
+    Kitura.addHTTPServer(onPort: 8080, with: router)
+    Kitura.run()
+  }
+}</code></pre>
+    <div class="underline"></div>
+    <h2>Add code main.swift file</h2>
+    <p>Now that we have created our `App` class in our Application.swift file we can use it within the main.swift file:</p>
+    <pre><code class="language-swift">import LoggerAPI
+import HeliumLogger
+import Application
+
+do {
+
+  HeliumLogger.use(LoggerMessageType.info)
+
+  let app = App()
+  try app.run()
+
+} catch let error {
+    Log.error(error.localizedDescription)
+}</code></pre>
+    <p>Now we can start our Kitura server and navigate to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+  </body>
+</html>
