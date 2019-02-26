@@ -63,3 +63,11 @@ function openPlugin(evt, pluginName) {
   document.getElementById(pluginName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+function setIntialTab() {
+  let firstTab = document.getElementById('postgres');
+  let activeButton = document.getElementById('postgres-button');
+
+  firstTab.style.display = "block";
+  activeButton.className += " active";
+}

@@ -29,9 +29,13 @@
       <li><a onclick="localStorage.setItem('package', 'Swift-Kuery'); setActiveSidebarElementForParent('swift-kuery')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift Kuery needs adding to the Package.swift file.</li>
     </ul>
     <div class="underline"></div>
+    <h2><span class="blue-text">Step 1:</span> Install a database plugin</h2>
+    <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
+    <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
+    <p>In this guide we will select `PostgreSQL` and follow the guide from there.</p>
     <section class="tab">
       <div class="tab-buttons">
-        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'postgres')">PostgreSQL</button>
+        <button id="postgres-button" type="button" name="button" class="tablinks" onclick="openPlugin(event, 'postgres')">PostgreSQL</button>
         <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'mysql')">MySQL</button>
         <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'sqlite')">SQLite</button>
       </div>
@@ -459,5 +463,8 @@ import SwiftKuerySQLite</code></pre>
 
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
+    <script type="text/javascript">
+      setIntialTab();
+    </script>
   </body>
 </html>

@@ -321,6 +321,7 @@ pre:hover:before {
   overflow: hidden;
   background-color: white;
   width: 100%;
+  margin-top: 2rem;
 }
 
 .tab-buttons {
