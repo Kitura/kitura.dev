@@ -314,7 +314,7 @@ footer {
 }
 
 .nested-sidebar-item {
-	margin-bottom: 2rem;
+	margin-bottom: 1.5rem;
 	cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */

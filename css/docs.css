@@ -206,6 +206,7 @@ td, th {
 }
 
 .landing-heading > h2 {
+  margin-top: 0;
   font-weight: normal;
   margin-bottom: 0.6rem;
   font-size: 1.7rem;
@@ -213,12 +214,12 @@ td, th {
 
 .landing-heading > h1 {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 2.7rem;
 }
 
 .landing-heading > p {
   font-size: 0.8rem;
-  margin-top: -2rem;
 }
 
 .landing-img, .option-img {
@@ -226,7 +227,7 @@ td, th {
   height: auto;
   width: 50%;
   margin: 0 auto;
-  margin-top: 1rem;
+  margin-top: 4rem;
   opacity: 0.4;
 }
 

@@ -181,8 +181,12 @@ Database.default = Database(pool)</code></pre>
     <p>plus many others.</p>
     <p>To use these methods we need to modify our QueryParams type:</p>
     <pre><code class="language-swift">public struct PriceQuery: QueryParams {
-  let priceRange: InclusiveRange<Double>?
+  let price: InclusiveRange<Double>?
 }</code></pre>
+    <div class="info">
+      <p>The property name in your QueryParams model must correspond to a matching property name in your Codable model.</p>
+      <p>In the example above the InclusiveRange filter is being applied to the `price` property of Book, therefore the property name in the QueryParams model must also be price.</p>
+    </div>
     <div class="underline"></div>
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('kitura-session')" href="../sessions/kitura-session.html#">Add Kitura Sessions:</a></span> Get useful feedback from your server about startup and errors</p>
