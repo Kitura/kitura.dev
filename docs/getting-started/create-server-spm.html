@@ -20,40 +20,40 @@
   </head>
   <body>
     <h1>Create a server with SPM</h1>
+    <h2 id="prereq">Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura macOS app:</span> Follow our instructions for installing the Kitura macOS app.</li>
+    </ul>
+    <div class="underline"></div>
     <p>To work with SPM we need to use the command line.</p>
     <div class="info">
-      <p>If you're new to this simply open the Terminal (on mac or Linux) to get started.</p>
+      <p>If you're new to this simply open the Terminal (on macOS or Linux) to get started.</p>
     </div>
-    <h3><span class="blue-text">Step 1:</span> Create project</h3>
+    <h2><span class="blue-text">Step 1:</span> Create project</h2>
     <p>Create a directory for our project</p>
     <pre><code>mkdir MyKituraApp && cd MyKituraApp</code></pre>
     <div class="info">
       <p>The name of the directory will also be the name of the generated project.</p>
     </div>
-    <p>Initialise the directory as a Swift project:</p>
+    <p>Initialize the directory as a Swift project:</p>
     <pre><code>swift package init --type executable</code></pre>
     <p>SPM creates a Swift project stub. All we need to do is add our project dependencies, like Kitura, to the project.</p>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h3>
-    <p>To add Kitura to our dependencies we need to edit the Package.swift</p>
-    <p>Open Package.swift in your default text editor:</p>
+    <h2><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h2>
+    <p>To add Kitura to our dependencies we need to edit the `Package.swift`</p>
+    <p>Open `Package.swift` in your default text editor:</p>
     <pre><code class="language-swift">open Package.swift</code></pre>
-    <p>Add Kitura to our dependencies so the Package.swift file looks like this:</p>
+    <p>Add Kitura to our dependencies so the `Package.swift` file looks like this:</p>
     <pre><code class="language-swift">// swift-tools-version:4.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "MyKituraApp",
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.6.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "MyKituraApp",
             dependencies: ["Kitura"]),
@@ -65,11 +65,11 @@ let package = Package(
     <p>Now we can build the project to pull down our new dependency:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 3:</span> Add the server code</h3>
+    <h2><span class="blue-text">Step 3:</span> Add the server code</h2>
     <p>Open `main.swift` in our text editor.</p>
     <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
     <div class="info">
-      <p>If you are using a Mac you can work in Xcode instead. To do this you first need to generate an Xcode project:</p>
+      <p>If you are on macOS you can work in Xcode instead. To do this you first need to generate an Xcode project:</p>
       <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
       <p>Then just open the Xcode project that is generated:</p>
       <pre><code class="language-swift">open MyKituraApp.xcodeproj</code></pre>
@@ -81,18 +81,21 @@ let package = Package(
       <p>You may get an error here such as 'No such module Kitura'.</p>
       <p>This is a bug within Xcode, simply build your Xcode project and the error should disappear.</p>
     </div>
-    <p>Now that we have access to Kitura's methods we can create a Router:</p>
+    <p>Now that we have access to Kitura's methods we can create an instance of Router:</p>
     <pre><code class="language-swift">let router = Router()</code></pre>
     <div class="info">
-      <p>Don't worry if you don't know about what a router is, you can learn more about it in our <a href="../routing/routing.html#">What is Routing?</a> guide.</p>
+      <p>Don't worry if you don't know what a Router is, you can learn more in our <a href="../routing/routing.html#">What is Routing?</a> guide.</p>
     </div>
-    <p>Next we need to define a port for our HTTP Server using the router we just created:</p>
+    <p>Next we need to define a port for our HTTP Server using the `router` we just created:</p>
     <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router)</code></pre>
-    <p>Finally we need to ensure our Kitura server can actually run:</p>
+    <p>Finally, we need to start our Kitura server with the using Kitra's `run()` method:</p>
     <pre><code class="language-swift">Kitura.run()</code></pre>
+    <div class="info">
+      <p>The `run()` method never returns, so it should be the last line in your Swift file.</p>
+    </div>
     <p>That's it! We've created a simple Kitura server.</p>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 4:</span> Start the server</h3>
+    <h2><span class="blue-text">Step 4:</span> Start the server</h2>
     <p>Since we've added code to the `main.swift` file we need to recompile the project:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <p>To run the project:</p>
