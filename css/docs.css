@@ -202,24 +202,17 @@ td, th {
 .landing-heading {
   width: 100%;
   text-align: center;
-  margin-top: 0;
-}
-
-.landing-heading > h2 {
-  margin-top: 0;
-  font-weight: normal;
-  margin-bottom: 0.6rem;
-  font-size: 1.7rem;
+  margin-bottom: 3rem;
 }
 
 .landing-heading > h1 {
-  margin-top: 0;
   margin-bottom: 0;
   font-size: 2.7rem;
 }
 
 .landing-heading > p {
   font-size: 0.8rem;
+  margin-top: 1rem;
 }
 
 .landing-img, .option-img {
@@ -229,22 +222,6 @@ td, th {
   margin: 0 auto;
   margin-top: 4rem;
   opacity: 0.4;
-}
-
-article {
-  width: 85%;
-  margin: 0 auto;;
-}
-
-article > h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-article > p {
-  font-size: 0.8rem;
-  font-weight: normal;
-  line-height: 1.44rem;
 }
 
 .tutorial, .option {
@@ -285,11 +262,7 @@ article > p {
 }
 
 .stars {
-  margin-top: 1rem;
-}
-
-.option-info.server-item-4, .option.green {
-  margin-top: -8rem;
+  margin-top: 5rem;
 }
 
 pre:hover:before {
@@ -418,38 +391,26 @@ pre:hover:before {
 }
 
 .server-item-2 {
-  grid-area: spm-info;
-}
-
-.server-item-3 {
   grid-area: stars1;
 }
 
-.server-item-4 {
-  grid-area: cli-info;
-}
-
-.server-item-5 {
+.server-item-3 {
   grid-area: stars2;
 }
 
-.server-item-6 {
-  grid-area: macos-info;
-}
-
-.server-item-7 {
+.server-item-4 {
   grid-area: stars3;
 }
 
-.server-item-8 {
+.server-item-5 {
   grid-area: spm;
 }
 
-.server-item-9 {
+.server-item-6 {
   grid-area: cli;
 }
 
-.server-item-10 {
+.server-item-7 {
   grid-area: app;
 }
 
@@ -458,7 +419,6 @@ pre:hover:before {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
   'header header header header header header'
-  'spm-info spm-info stars1 stars1 macos-info macos-info'
-  'spm spm cli-info cli-info app app'
+  'spm spm stars1 stars1 app app'
   'stars2 stars2 cli cli stars3 stars3';
 }
