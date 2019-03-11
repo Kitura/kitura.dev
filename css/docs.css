@@ -224,7 +224,7 @@ td, th {
   opacity: 0.4;
 }
 
-.tutorial, .option {
+.option {
   margin: 2.2rem auto 0 auto;
   width: 250px;
   height: 200px;
@@ -244,34 +244,13 @@ td, th {
 .option-title > h3 {
   margin: 0;
   padding-top: 0.5rem;
+  color: #0780B5;
 }
 
 .option > p {
   line-height: 1.2rem;
   padding: 0 0.5rem;
-}
-
-.tutorial-title {
-  margin-top: 1rem;
-}
-
-.tutorial-title > h4 {
-  margin: 0.4rem 0;
-}
-
-.red {
-  background-color: #F21346;
-  box-shadow: -8px 10px 20px rgba(242, 19, 70, 0.25);
-}
-
-.green {
-  background-color: #00C689;
-  box-shadow: 0 10px 20px rgba(0, 198, 137, 0.25);
-}
-
-.blue {
-  background-color: #0096F4;
-  box-shadow: 8px 10px 20px rgba(0, 150, 244, 0.25);
+  color: black;
 }
 
 .option {
@@ -380,26 +359,13 @@ pre:hover:before {
   grid-area: steps;
 }
 
-.landing-item-8 {
-  grid-area: todo;
-}
-
-.landing-item-9 {
-  grid-area: foodtracker;
-}
-
-.landing-item-10 {
-  grid-area: stencil;
-}
-
 .landing-grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
   'header header header header header header'
   'new-app new-app lightbulb lightbulb own-app own-app'
-  'books books short short steps steps'
-  'todo todo foodtracker foodtracker stencil stencil'
+  'books books short short steps steps';
 }
 
 /* create-server.html CSS grid layout */
