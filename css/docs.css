@@ -232,13 +232,32 @@ td, th {
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
+  background-color: white;
+}
+
+.option-title {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+}
+
+.option-title > h3 {
+  margin: 0;
+  padding-top: 0.5rem;
+}
+
+.option > p {
+  line-height: 1.2rem;
+  padding: 0 0.5rem;
 }
 
 .tutorial-title {
   margin-top: 1rem;
 }
 
-.tutorial-title > h4, .option-title {
+.tutorial-title > h4 {
   margin: 0.4rem 0;
 }
 
