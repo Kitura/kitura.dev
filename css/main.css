@@ -416,6 +416,176 @@ footer {
   padding: 5px;
   font-size: 0.9em;
 }
+/* Learn styling */
+/* Learn Sytling */
+.docs-sidebar {
+	height: 100vh;
+  width: 20%;
+  background: #FAF8F8;
+  box-shadow: 1px 0 1px #DEDEDE;
+	position: fixed;
+  color: #676767;
+	left: 0;
+}
+
+.docs-title {
+  font-size: 2.44rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2.7rem;
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.docs-title-section {
+  color: #0780B5;
+}
+
+.show {
+  display: block;
+}
+
+.underline {
+  height: 1px;
+  background: #C7C7C7;
+  width: 16rem;
+  margin: 0 auto;
+  opacity: 0.21;
+  margin-bottom: 3.4rem;
+}
+
+.sidebar-nav {
+  width: 13rem;
+  margin: 0 auto;
+}
+
+.sidebar-list {
+  list-style: none;
+  font-size: 1.33rem;
+  font-weight: 500;
+  margin-top: 4rem;
+}
+
+.sidebar-item {
+  margin-bottom: 2rem;
+	cursor: pointer;
+	-webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.nested-sidebar-list {
+	list-style: none;
+	font-size: 1rem;
+	margin-left: 1rem;
+	margin-top: -0.5rem;
+}
+
+.nested-sidebar-item {
+	margin-bottom: 1.5rem;
+	cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.content {
+	display: none;
+}
+.active, .nested-sidebar-item:hover, .sidebar-item:hover {
+  color: #0780B5;
+  font-weight: 800;
+}
+/*
+ Search section styling
+*/
+.search-container {
+  height: 5.1rem;
+  border-right: 1px solid rgba(234, 232, 232, 0.42);
+  border-bottom: 1px solid rgba(234, 232, 232, 0.42);
+}
+.docs-search {
+  width: 90%;
+  height: 90%;
+  border: none;
+  color: #676767;
+  opacity: 0.58;
+  font-size: 1.33rem;
+	padding-left: 2rem;
+	margin-left: 1rem;
+}
+
+.top-page {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.top-page > a {
+  color: #0780B5;
+  font-size: 0.9rem;
+}
+
+/*
+    BETA Stlying
+*/
+.temp-beta {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #676767;
+  opacity: 0.5;
+}
+
+/* Nav section styling */
+
+.docs-nav {
+  height: 5.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(234, 232, 232, 0.42);
+}
+
+.apiref-button {
+  height: 2.66rem;
+  width: 10.88rem;
+  background: #0780B5;
+  color: white;
+  border-radius: 0.55rem;
+  border: none;
+  box-shadow: 1px 2px 2px #DEDEDE;
+  font-size: 1.11rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.nav-item {
+  margin-right: 1.5rem;
+  color: #0780B5;
+  cursor: pointer;
+}
+
 /* Events Styling */
 .events-section {
   display: grid;
