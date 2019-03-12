@@ -574,7 +574,7 @@ footer {
     '. blogs blogs blogs blogs .'
     'footer footer footer footer footer footer';
 }
-/* learn.html CSS grid layout */
+/* old-learn.html CSS grid layout */
 .learn-item-1 {
   grid-area: header;
 }
@@ -603,6 +603,33 @@ footer {
       'community community community community community community'
       'footer footer footer footer footer footer';
 }
+
+/* learn.html CSS grid layout */
+.docs-item-1 {
+  grid-area: sidebar;
+}
+
+.docs-item-2 {
+  grid-area: search;
+}
+
+.docs-item-3 {
+  grid-area: nav;
+}
+
+.docs-item-4 {
+  grid-area: iframe;
+}
+
+.docs-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+	grid-template-rows: 6rem;
+  grid-template-areas:
+      'sidebar search nav'
+      'sidebar iframe iframe';
+}
+
 /* packages.html CSS grid layout */
 .packages-item-1 {
   grid-area: header;
