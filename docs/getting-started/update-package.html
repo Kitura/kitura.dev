@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1 id="title">Importing Dependencies</h1>
+    <p>Kitura is provided as a Swift package which is distributed by the Swift Package Manager (SPM).</p>
+    <p>This guide demonstrates how to add a package to your project to leverage the functionality that package provides.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 1:</span> Add the url to the `Package.swift`</h2>
+    <p>To add a new dependency to our project we need to edit the `Package.swift` file:</p>
+    <pre><code>open Package.swift</code></pre>
+    <p>Next we need to add the package we want to use to our package dependencies:</p>
+    <pre><code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 2:</span> Add the package name to the target dependencies</h2>
+    <p>Finally we need to add the package as a dependency of our application:</p>
+    <pre><code class="language-swift dependency-value">.target(
+  name: "&lt;project-name&gt;",
+  dependencies: ["Kitura", "&lt;dependency-name&gt;"]),</code></pre>
+    <p>The resulting `Package.swift` should look as follows:</p>
+    <pre><code class="language-swift">import PackageDescription
+
+let package = Package(
+  name: "mykituraapp",
+  dependencies: [
+    <code id="kitura">.package(url: "https://github.com/IBM-Swift/Kitura.git", from: "x.x.x"),</code>
+    <code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code>
+  ],
+  targets: [
+  <code class="language-swift dependency-value">.target(
+    name: "&lt;project-name&gt;",
+    dependencies: ["Kitura", "&lt;dependency-name&gt;"]),</code>
+  ]
+)</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 3:</span> Update the project to download new package</h2>
+    <p>Now that we have added the new package to our project we need to update the project.</p>
+    <p>SPM provides a command line interface to do this.</p>
+    <p>So we will open a terminal and run the following:</p>
+    <pre><code>swift package update</code></pre>
+    <div class="info">
+      <p>If you are on macOS and using Xcode you will also need to generate a new Xcode project by running the following:</p>
+      <pre><code>swift package generate-xcodeproj</code></pre>
+    </div>
+    <p>`swift package update` looks at our `Package.swift` file and checks to see if we've added any new packages.</p>
+    <p>It also checks to see if there are any new versions of our existing packages as well.</p>
+    <p>We have now added a new package to our project and are ready to start using this in our app.</p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <script type="text/javascript" src="../../scripts/update-package.js"></script>
+    <!-- <script defer type="text/javascript" src="../../scripts/prism.js"></script> -->
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+  </body>
+</html>

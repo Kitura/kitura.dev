@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Kitura Cache</h1>
+    <div class="underline"></div>
+    <h2>Step 1: Add Kitura Cache to your project</h2>
+    <p>TODO: Link to SPM instructions</p>
+    <p>Import Kitura Cache to your project</p>
+    <pre><code class="language-swift">import KituraCache</code></pre>
+    <div class="underline"></div>
+    <h2>Step 2: Initilise Kitura Cache</h2>
+    <p>You can create an instance of Kitura Cache as follows:</p>
+    <pre><code class="language-swift">let cache = KituraCache()</code></pre>
+    <p>If no arguments are provided, the default cache will be non-expiring and a check will be made every 10 minutes to determine whether any entries need to be removed.</p>
+    <p>TODO: Discuss arguments that can be provided, show examples.</p>
+    <h2>Step 3: Retrieve an entry from the cache</h2>
+    <pre><code class="language-swift">
+let cache = KituraCache()
+...
+if let item = cache.object(forKey: 1) {
+    //Object with key of 1 retrieved from cache.
+    ...
+}
+else {
+    //No object stored in cache with key of 1.
+    ...
+}   </code></pre>
+    <p>TODO: Explain this code!</p>
+    <p>TODO: Provide a better example!</p>
+    <div class="underline"></div>
+    <h2>Step 4: Delete a single entry from the cache</h2>
+    <pre><code class="language-swift">cache.removeObject(forKey: 1)</code></pre>
+    <p>TODO: Explain what this is doing, why and how!</p>
+    <p>TODO: Provide a better example!</p>
+    <div class="underline"></div>
+    <h2>Step 5: Reset the cache and it's statistics</h2>
+    <pre><code class="language-swift">cache.flush()</code></pre>
+    <p>TODO:  Explain what this is doing, why and how!</p>
+    <p>TODO: What are the statistics?</p>
+    <p>TODO: Better example?</p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>

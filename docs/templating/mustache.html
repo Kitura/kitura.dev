@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Mustache</h1>
+    <h2><span class="blue-text">Step 1:</span> Add Kitura-Mustache to your project</h2>
+    <p>In your Package.swift you need to add the following:</p>
+    <pre><code class="language-swift">.package(url: "https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine.git", from: "x.x.x"),</code></pre>
+    <p>Where x.x.x represents the latest version</p>
+    <p>For more information on adding Kitura-Mustache to your project you can view the Readme.</p>
+    <p>Finally you will need to add Kitura-Mustache to your build targets.</p>
+    <p>TODO: So we need to talk about this? Link to Readme instead?</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Build your project</h2>
+    <p>Since you've added a new package to your Package.swift you need to rebuild your project.</p>
+    <p>In a terminal run the following:</p>
+    <pre><code class="language-swift">swift package update</code></pre>
+    <p>If you're on macOS and using Xcode you will also need to generate a new xcode project:</p>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Create template files</h2>
+    <p>For Kitura to make use of templating you need template files to work with.</p>
+    <p>By default Kitura template engines look in a ./Views directory for the template files.</p>
+    <p>In the root of your project, run the following in a terminal:</p>
+    <pre><code class="language-swift">mkdir Views</code></pre>
+    <p>Note: If you're working in Xcode you will need to generate a new Xcode project:</p>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Add Kitura-Mustache to your App code</h2>
+    <p>Import KituraMustache into your project</p>
+    <pre><code class="language-swift">import KituraMustache</code></pre>
+    <p>Add KituraMustache to your router:</p>
+    <pre><code class="language-swift">router.add(templateEngine: MustacheTemplateEngine())</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Render a template</h2>
+    <pre><code class="language-swift">
+      router.get("/hello") { request, response, next in
+        try response.render("Example.mustache", context: ["name": "Kitura!"])
+      }
+    </code></pre>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>

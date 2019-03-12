@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Kitura Redis</h1>
+    <div class="underline"></div>
+    <h2>Prerequisites</h2>
+    <p>To test Kitura-Redis locally you need to install <a href="#">Redis</a>:</p>
+    <pre><code class="language-swift">brew install redis</code></pre>
+    <p>Once Redis is installed you need to start the service.</p>
+    <p>There's two options for starting the Redis service:</p>
+    <p>Start Redis as a background service:</p>
+    <pre><code class="language-swift">brew services start redis</code></pre>
+    <p>Start a single non-background instance:</p>
+    <pre><code class="language-swift">redis-server /usr/local/etc/redis.conf</code></pre>
+    <p>TODO: Other prereqs? Like a server?</p>
+    <div class="underline"></div>
+    <h2>TODO: What else?</h2>
+    <div class="underline"></div>
+    <div class="underline"></div>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>

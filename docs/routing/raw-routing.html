@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Raw Routing</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Raw Routing</h1>
+    <p class="block-text">Raw routing is based on <a target="_blank" href="https://expressjs.com/">express</a> where the route handlers are called with RouterRequest and RouterResponse objects with which to handle the client request and build the response, along with a next completion handler.</p>
+    <p class="block-text">Raw routing provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
+    <div class="underline"></div>
+    <h2>Contents:</h2>
+    <ol class="plain-list">
+      <h3><li><a href="#prereq">Prerequisites</a></li></h3>
+      <p>This section will inform you of the minimum you need to have setup to follow this guide.</p>
+      <h3><li><a href="#post">Create a basic POST route</a></li></h3>
+      <p>Learn how to send data to a Kitura server using Codable types.</p>
+      <h3><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
+      <p>Learn how to retrieve all data from a Kitura server.</p>
+      <h3><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
+      <p>Learn how to get a single value from a Kitura server.</p>
+      <h3><li><a href="#singlequery">Create a GET SINGLE route with Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve specific data from a Kitura server.</p>
+      <h3><li><a href="#allquery">Create a GET ALL route with Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve a collection of matching data from a Kitura Server.</p>
+      <h3><li><a href="#optionalquery">Create a GET route with optional Query Parameters</a></li></h3>
+      <p>Learn how to use Query Parameters to retrieve a subset of data from a Kitura server based on optional parameters.</p>
+    </ol>
+    <div class="underline"></div>
+    <h2 id="prereq">Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+    </ul>
+    <div class="info">
+      <p> We also highly recommend you have logging enabled on your server.</p>
+      <p>You can learn how to add logging in our Logging guide.</p>
+    </div>
+    <div class="underline"></div>
+    <h2 id="post"><span class="blue-text">Step 1:</span> Create a POST route</h2>
+    <div class="info">
+      <p>If you created your project using Kitura CLI or the Kitura macOS app then your project structure may be different.</p>
+      <p>The file you will be working with is:</p>
+      <pre><code class="language-swift">/Sources/Application/Application.swift</code></pre>
+    </div>
+    <p>Open your main.swift file:</p>
+    <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
+    <p>Below the line `let router = Router()` add:</p>
+    <pre><code class="language-swift">router.post("/books") { request, response, next in
+    next()
+}</code></pre>
+    <p>What we've done is register a POST on our router that will handle any POST requests made on "/books".</p>
+    <div class="info">
+      <p>If the values `request`, `repsonse` and `next` are unfamiliar to you then you can learn more about them in our What is Routing? guide.</p>
+    </div>
+    <p>Our POST route will be used to send information about our books to the server and therefore we need a way of reading this data.</p>
+    <p>To do this we can tap into the `read(as:)` method of the RouterRequest class:</p>
+    <pre><code class="language-swift">request.read(as: Book.self)</code></pre>
+    <p>This method takes the body of the request, the data we're posting, and tries to convert it to the Book type.</p>
+    <p>So lets add this method to our POST route:</p>
+    <pre><code class="language-swift">router.post("/books") { request, response, next in
+    do {
+      try request.read(as: Book.self)
+    } catch {
+      let _ = response.send(status: .badRequest)
+      Log.error(error.localizedDescription)
+    }
+    next()
+}</code></pre>
+    <p>The `read(as:)` method can throw so we need to wrap it in a do-catch block.</p>
+    <p>Now our project won't compile as `Book` is a custom type that we haven't defined yet.</p>
+    <p>Below the `let router = Router()` line, add the following:</p>
+    <pre><code class="language-swift">struct Book: Codable {
+    let id: Int         // A unique ID given to each book
+    let title: String
+    let price: Double
+    let genre: String
+}</code></pre>
+    <p></p>
+    <p>To test this route works, we can the `send()` method of the RouterResponse to send the result of `request.read(as: Book.self)`:</p>
+    <pre><code class="language-swift">router.post("/books") { request, response, next in
+    do {
+      try response.send(request.read(as: Book.self))
+    } catch {
+      let _ = response.send(status: .badRequest)
+      Log.error(error.localizedDescription)
+    }
+    next()
+}</code></pre>
+    <p>Now if we start our Kitura server we can use curl to test our route.</p>
+    <p>In a terminal enter the following:</p>
+    <pre><code>curl -X POST \
+  http://localhost:8080/books \
+  -H 'content-type: application/json' \
+  -d '{
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}'</code></pre>
+    <p>We should then see the following printed to the terminal:</p>
+    <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
+    <p>That's it! We've implemented a basic POST route.</p>
+    <div class="underline"></div>
+    <h2 id="getall"><span class="blue-text">Step 2:</span> Create a GET route</h2>
+    <p>We register a GET route in a similar way to the POST route.</p>
+    <p>Below the line `router.post("/books")...` add:</p>
+    <pre><code class="language-swift">router.get("/books") { request, response, next in
+    next()
+}</code></pre>
+    <p>In a GET route we can simply just respond with the data we want.</p>
+    <p>Before we can do this we need a way to store data in our server.</p>
+    <p>To do this we will use an Array.</p>
+    <div class="info">
+      <p>It's worth noting using an Array not good practice. The better solution would be to create a Database to store the data.</p>
+      <p>You can learn how to do this in our Database guide.</p>
+    </div>
+    <p>Just below our `Book` struct add the following:</p>
+    <pre><code class="language-swift">var books: [Book] = []</code></pre>
+    <p>Now we can simply respond with the books array:</p>
+    <pre><code class="language-swift">router.get("/books") { request, response, next in
+  reponse.send(books)
+  next()
+}</code></pre>
+    <p>Now if we need to restart our server.</p>
+    <p>Then if we open: <a href="http://localhost:8080/books">http://localhost:8080/books</a></p>
+    <p>We should see the following in our browser:</p>
+    <pre><code class="language-swift">[]%</code></pre>
+    <p>We get back an empty array as there isn't any data stored on the server yet.</p>
+    <p>That's it! We've now also implemented a simple GET route.</p>
+    <p>Now we need to be able to `get` the data we `post`</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Store and retrieve data from the server (Optional)</h2>
+    <p>We need to modify our POST route to store the data into the array:</p>
+    <pre><code class="language-swift">router.post("/books") { request, response, next in
+    do {
+      let book = try request.read(as: Book.self)
+      books.append(book)
+      response.send(book)
+    } catch {
+      let _ = response.send(status: .badRequest)
+      Log.error(error.localizedDescription)
+    }
+    next()
+}</code></pre>
+    <p>To test we need to restart the Kitura server.</p>
+    <p>Open <a href="http://localhost:8080/books">http://localhost:8080/books</a></p>
+    <p>In the browser you should see:</p>
+    <pre><code class="language-swift">[]</code></pre>
+    <p>An empty array makes sense as we haven't posted any data.</p>
+    <p>In a terminal enter the following:</p>
+    <pre><code>curl -X POST \
+  http://localhost:8080/books \
+  -H 'content-type: application/json' \
+  -d '{
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}'</code></pre>
+    <p>If we refresh the browser we should see:</p>
+    <pre><code>[{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]</code></pre>
+    <p>We can make as many posts as we'd like and our Array would be updated.</p>
+    <p>However if the server is restarted, all data will be lost and we'd have an empty array again.</p>
+    <p>This is one of the flaws of using an Array as the data store.</p>
+    <p>In the Database Guide we will look to resolve this issue.</p>
+    <div class="underline"></div>
+    <h2 id="singlequery"><span class="blue-text">Step 4:</span> Create a GET SINGLE route with Query Parameters</h2>
+    <p>First we need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct TitleQuery: QueryParams {
+  let title: String
+}</code></pre>
+    <p>Now we can create our route handler to handle requests with the query parameters we have defined:</p>
+    <pre><code class="language-swift">router.get("/books/title") { request, response, next in
+  guard let params = request.getQueryParameters(as: BookQuery.self) else {
+    let _ = response.send(status: .badRequest)
+    return
+  }
+  response.send(books.filter( { $0.title == params.title } ))
+  next()
+}</code></pre>
+    <div class="underline"></div>
+    <h2 id="allquery"><span class="blue-text">Step 5:</span> Create a GET ALL route with Query Parameters</h2>
+    <div class="underline"></div>
+    <h2 id="optionalquery"><span class="blue-text">Step 6:</span> Create a GET route with optional Query Parameters</h2>
+    <p>Next what if we want to search all books that are of a certain price?</p>
+    <p>For example, we may want to find all of the books that are between £5 and £10.</p>
+    <p>Or only the books that are less than £10?</p>
+    <p>Like before we first need to create a type that conforms to the QueryParams protocol:</p>
+    <pre><code class="language-swift">public struct PriceQuery: QueryParams {
+  let lowerPrice: Double?
+  let upperPrice: Double?
+}</code></pre>
+    <p>Then we can create our route handler:</p>
+    <pre><code class="language-swift">router.get("/books/price") { request, response, next in
+
+  guard let params = request.getQueryParameters(as: PriceQuery.self) else {
+    let _ = response.send(status: .badRequest)
+    return
+  }
+
+  switch (params.lowerPrice, params.upperPrice) {
+  case (.none, .none):
+    response.send(books)
+    next()
+  case (.some, .none):
+    response.send(books.filter({ params.lowerPrice! < $0.price }))
+    next()
+  case (.none, .some):
+    response.send(books.filter({ $0.price < params.upperPrice! }))
+    next()
+  case (.some, .some):
+    let range = params.lowerPrice!...params.upperPrice!
+    response.send(books.filter({ range.contains($0.price) }))
+    next()
+  }
+}</code></pre>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Hello World with SPM</h1>
+    <p>This guide uses the command line with the Swift Package Manager.</p>
+    <p>If you'd prefer a UI based experience you can follow the <a href="hello-world-app.html">Hello World example using the Kitura macOS app</a>.</p>
+    <p>If you'd prefer to work with the command line with a project created for you then you can follow the <a href="hello-world-cli.html">Hello World example using the Kitura CLI</a>.</p>
+    <h2>Step 1: Create project</h2>
+    <p>Create a directory for your project:</p>
+    <pre><code class="language-swift">mkdir HelloWorld && cd HelloWorld</code></pre>
+    <p>Inialize the directory as a Swift project:</p>
+    <pre><code class="language-swift">swift package init --type executable</code></pre>
+    <div class="underline"></div>
+    <h2>Step 2: Add Kitura to your dependencies</h2>
+    <p>To add Kitura to your dependencies you need to edit the Package.swift</p>
+    <p>Open Package.swift in your default text editor:</p>
+    <pre><code class="language-swift">open Package.swift</code></pre>
+    <p>Add Kitura to your dependencies so your Package.swift looks like this:</p>
+    <pre><code class="language-swift">
+// swift-tools-version:4.2
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "spm-example",
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.5.0")
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "spm-example",
+            dependencies: ["Kitura"]),
+        .testTarget(
+            name: "spm-exampleTests",
+            dependencies: ["spm-example"]),
+    ]
+)
+    </code></pre>
+    <p>Now build your project to pull down your dependencies:</p>
+    <pre><code class="language-swift">swift build</code></pre>
+    <div class="underline"></div>
+    <h2>Step 3: Add the route</h2>
+    <h3>macOS</h3>
+    <p>If you're on a Mac you can create an Xcode project to continue:</p>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
+    <p>Once this command has completed open the Xcode project:</p>
+    <pre><code class="language-swift">open HelloWorld.xcodeproj</code></pre>
+    <p>TODO: Add following instructions</p>
+    <p>TODO: Add image for Scheme change</p>
+    <div class="underline"></div>
+    <h3>Ubuntu Linux</h3>
+    <div class="underline"></div>
+    <p>Now if you go to:</p>
+    <p><a target="_blank" href="http://localhost:8080">localhost:8080</a></p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>

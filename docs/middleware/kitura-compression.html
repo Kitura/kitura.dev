@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Kitura Compression</h1>
+    <div class="underline"></div>
+    <h2>Step 1: Add Kitura Compression to your project</h2>
+    <p>TODO: Link to SPM instructions</p>
+    <p>import Kitura Compression to your project</p>
+    <pre><code class="language-swift">import KituraCompression</code></pre>
+    <div class="underline"></div>
+    <h2>Step 2: Initilise Kitura Compression</h2>
+    <p>Create an instance of Kitura Compression:</p>
+    <pre><code class="language-swift">let compression = Compression()</code></pre>
+    <p>You can also configure Compression with various arguments:</p>
+    <pre><code class="language-swift">public init (threshold: Int = 1024, chunkSize: Int = 16384, compressionLevel: CompressionLevel = CompressionLevel.defaultCompression, compressionStrategy: CompressionStrategy = CompressionStrategy.defaultStrategy, memoryLevel: Int32 = 8)</code></pre>
+    <p>Where:</p>
+    <ul>
+      <li>threshold is the byte threshold for the response body size before compression is considered for the response, defaults to 1024.</li>
+      <li>chunkSize is the size of internal output slab buffer in bytes, defaults to 16384.</li>
+      <li>compressionLevel is the level of zlib compression to apply. The supported values are: .noCompression, .bestSpeed, .bestCompression, .defaultCompression</li>
+      <li>compressionStrategy is used to tune the compression algorithm. The possible values are: .defaultStrategy, .filtered, .huffmanOnly, .rle, .fixed</li>
+      <li>memoryLevel specifies how much memory should be allocated for the internal compression state. The default value is 8.</li>
+    </ul>
+    <div class="underline"></div>
+    <h2>TODO: Usage example?</h2>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>

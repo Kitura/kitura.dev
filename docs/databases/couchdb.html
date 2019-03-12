@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Kitura CouchDB</h1>
+    <p><a target="_blank" href="http://couchdb.apache.org/">CouchDB</a> is a NoSQL (or non-relational) database. CouchDB takes a document-oriented approuch to databases.</p>
+    <p>Kitura-CouchDB is a pure Swift client which allows Kitura applications to interact with a CouchDB or <a target="_blank" href="https://www.ibm.com/uk-en/cloud/cloudant">Cloudant</a> database.</p>
+    <div class="underline"></div>
+    <h2>Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our getting started guide</li>
+      <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
+      <li><a onclick="localStorage.setItem('package', 'Kitura-CouchDB'); setActiveSidebarElementForParent('couchdb')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura CouchDB needs adding to the Package.swift file.</li>
+    </ul>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 1:</span> Download and install CouchDB</h2>
+    <p>Before we can use CouchDB within our server we first need to <a target="_blank" href="http://couchdb.apache.org/#download">Download CouchDB</a>.</p>
+    <p>TODO: Install instructions</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 2:</span> Create CouchDB admin user</h2>
+    <p>Once CouchDB is installed we need to create an admin user.</p>
+    <p>To do this we need to open the CouchDB admin console:</p>
+    <h3>macOS:</h3>
+    <p>Select the CouchDB icon in the menu bar.</p>
+    <p>Then select open admin console from the drop down.</p>
+    <div class="info">
+      <p>If this is your first time opening CouchDB then you'll be greeted with a create admin user screen.</p>
+      <p>If you've used CouchDB then simply log in to the account you wish to use.</p>
+    </div>
+    <p>It is important to remember the creditials we used here as we will need them to interact with the database from our server.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 3:</span> Create CouchDB database</h2>
+    <p>We can create a database directly through the CouchDB admin console.</p>
+    <p>First ensure we're logged in and then select the database icon from the sidebar.</p>
+    <p>Then in the top right click on `Create Database`</p>
+    <p>We'll be asked to provide a name, for our example we will call it: `bookstore`</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 4:</span> Connect to CouchDB database</h2>
+    <p>We first need to define our connection properties for CouchDB:</p>
+    <pre><code class="language-swift">let properties = ConnectionProperties(
+    host: "127.0.0.1",              // http address
+    port: 5984,                     // http port
+    secured: false,                 // https or http
+    username: "&lt;CouchDB-username&gt;", // admin username
+    password: "&lt;CouchDB-password&gt;"  // admin password
+)</code></pre>
+    <p>Now we can use these properties to create our CouchDB connection:</p>
+    <pre><code class="language-swift">let couchDBClient = CouchDBClient(connectionProperties: properties)</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 5:</span> Save to CouchDB database</h2>
+    <p>We first need to create our Document type:</p>
+    <pre><code class="language-swift">struct BookDocument: Document {
+  let _id: String?
+  var _rev: String?
+  var value: Book
+}</code></pre>
+    <p>To save data to our CouchDB database we first need some data to save, this data can be provided by a POST route.</p>
+    <p>So we will need to modify our postHandler to store data in our database:</p>
+    <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+  couchDBClient.retrieveDB("bookstore") { (database, error) in
+    if let database = database {
+      let bookDocument = BookDocument(_id: "0", _rev: nil, value: book)
+      database.create(bookDocument) { (response, error) in
+        guard let error = error else {
+          console.log(error.localizedDescription)
+          completion(nil, error)
+        }
+        if let response = response {
+          console.log("Created document")
+        }
+      }
+    }
+  }
+}</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 6:</span> Retrieve from CouchDB database</h2>
+    <p>To retrieve all documents from a CouchDB database we need to use the aptly named `retrieveAll` method within our `getAllHandler`:</p>
+    <pre><code class="language-swift">func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+  database.retrieveAll(includeDocuments: true) { (documents, error) in
+
+  }
+}</code></pre>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+  </body>
+</html>

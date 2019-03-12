@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Server Side Swift Prerequisites</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Installation for Linux</h1>
+    <p>Kitura is tested on Ubuntu 16.04 (LTS) and Ubuntu 18.04 (LTS).</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Step 1:</span> Install Swift</h2>
+    <p>First ensure your source list is up to date by running the following:</p>
+    <pre><code class="language-swift">sudo apt-get update</code></pre>
+    <p>Next install the required Linux system packages:</p>
+    <pre><code class="language-swift">sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev libpython2.7</code></pre>
+    <p><a target="_blank" href="https://swift.org/download/">Download Swift</a> for the platform you're using.</p>
+    <p>You can then extract files to system root.</p>
+    <div class="info">
+      <p>If you choose a directory other than the system root, you will need to run the following:</p>
+      <pre><code>export PATH=/path/to/Swift/usr/bin:"${PATH}"</code></pre>
+      <p>Where `${PATH}` is the path to your Swift installation.</p>
+    </div>
+    <p>You can verify Swift has been installed successfully by running:</p>
+    <pre><code>swift --version</code></pre>
+    <p>You should see something similar like this:</p>
+    <pre><code>Swift version x.x.x</code></pre>
+    <h2>Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-project')" href="create-project.html#">Create a Kitura server:</a></span> Make use of SPM to create a server.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text bold">Optional:</span> Install Kitura CLI</h2>
+    <h3>Install via npm</h3>
+    <p>For this installation method you need to have npm installed.</p>
+    <p>If you do not have npm installed you can follow the <a target="_blank" href="https://www.npmjs.com/get-npm">npm installation steps</a>.</p>
+    <p>Then run the following in a terminal:</p>
+    <pre><code class="language-swift">npm install -g kitura-cli</code></pre>
+    <p>Verify the Kitura CLI is installed by running the following:</p>
+    <pre><code class="language-swift">kitura --version</code></pre>
+    <p>You should see output similar to this:</p>
+    <pre><code class="language-swift">0.0.12</code></pre>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-project')" href="create-project.html#">Create a Kitura server:</a></span> Make use of the Kitura CLI to create a server.</p>
+    <!-- <p><a href="hello-world-spm.html">Create application using SPM:</a> Create a Hello World Kitura app using Swift Package Manager</p>
+    <p><a href="hello-world-app.html">Create application using macOS app:</a> Create a Hello World Kitura app using the Kitura macOS app</p>
+    <p><a href="hello-world-cli.html">Create application using CLI:</a> Create a Hello World Kitura app using the Kitura Command Line Interface</p> -->
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+  </body>
+</html>

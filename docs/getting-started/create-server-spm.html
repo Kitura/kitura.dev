@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1>Create a server with SPM</h1>
+    <h2 id="prereq">Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura macOS app:</span> Follow our instructions for installing the Kitura macOS app.</li>
+    </ul>
+    <div class="underline"></div>
+    <p>To work with SPM we need to use the command line.</p>
+    <div class="info">
+      <p>If you're new to this simply open the Terminal (on macOS or Linux) to get started.</p>
+    </div>
+    <h2><span class="blue-text">Step 1:</span> Create project</h2>
+    <p>Create a directory for our project</p>
+    <pre><code>mkdir MyKituraApp && cd MyKituraApp</code></pre>
+    <div class="info">
+      <p>The name of the directory will also be the name of the generated project.</p>
+    </div>
+    <p>Initialize the directory as a Swift project:</p>
+    <pre><code>swift package init --type executable</code></pre>
+    <p>SPM creates a Swift project stub. All we need to do is add our project dependencies, like Kitura, to the project.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h2>
+    <p>To add Kitura to our dependencies we need to edit the `Package.swift`</p>
+    <p>Open `Package.swift` in your default text editor:</p>
+    <pre><code class="language-swift">open Package.swift</code></pre>
+    <p>Add Kitura to our dependencies so the `Package.swift` file looks like this:</p>
+    <pre><code class="language-swift">// swift-tools-version:4.2
+
+import PackageDescription
+
+let package = Package(
+    name: "MyKituraApp",
+    dependencies: [
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.6.0")
+    ],
+    targets: [
+        .target(
+            name: "MyKituraApp",
+            dependencies: ["Kitura"]),
+        .testTarget(
+            name: "MyKituraAppTests",
+            dependencies: ["MyKituraApp"]),
+    ]
+)   </code></pre>
+    <p>Now we can build the project to pull down our new dependency:</p>
+    <pre><code class="language-swift">swift build</code></pre>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 3:</span> Add the server code</h2>
+    <p>Open `main.swift` in our text editor.</p>
+    <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
+    <div class="info">
+      <p>If you are on macOS you can work in Xcode instead. To do this you first need to generate an Xcode project:</p>
+      <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
+      <p>Then just open the Xcode project that is generated:</p>
+      <pre><code class="language-swift">open MyKituraApp.xcodeproj</code></pre>
+    </div>
+    <p>Delete the `print("Hello, world!")` line from the file.</p>
+    <p>To make use of the methods in Kitura we first need to import it.</p>
+    <pre><code class="language-swift">import Kitura</code></pre>
+    <div class="info">
+      <p>You may get an error here such as 'No such module Kitura'.</p>
+      <p>This is a bug within Xcode, simply build your Xcode project and the error should disappear.</p>
+    </div>
+    <p>Now that we have access to Kitura's methods we can create an instance of Router:</p>
+    <pre><code class="language-swift">let router = Router()</code></pre>
+    <div class="info">
+      <p>Don't worry if you don't know what a Router is, you can learn more in our <a href="../routing/routing.html#">What is Routing?</a> guide.</p>
+    </div>
+    <p>Next we need to define a port for our HTTP Server using the `router` we just created:</p>
+    <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router)</code></pre>
+    <p>Finally, we need to start our Kitura server with the using Kitra's `run()` method:</p>
+    <pre><code class="language-swift">Kitura.run()</code></pre>
+    <div class="info">
+      <p>The `run()` method never returns, so it should be the last line in your Swift file.</p>
+    </div>
+    <p>That's it! We've created a simple Kitura server.</p>
+    <div class="underline"></div>
+    <h2><span class="blue-text">Step 4:</span> Start the server</h2>
+    <p>Since we've added code to the `main.swift` file we need to recompile the project:</p>
+    <pre><code class="language-swift">swift build</code></pre>
+    <p>To run the project:</p>
+    <pre><code class="language-swift">swift run</code></pre>
+    <div class="info">
+      <p>To run the project in Xcode ensure your build target is set to `My Mac` then simply run the project.</p>
+    </div>
+    <div class="info">
+      <p>You may be prompted to allow the app to accept incoming connections.</p>
+    </div>
+    <p>Navigate to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></p>
+    <p>You should be able to see the Kitura landing page.</p>
+    <div class="underline"></div>
+    <h2>Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <div class="underline"></div>
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+  </body>
+</html>
