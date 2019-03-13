@@ -138,10 +138,12 @@ extension App {
     <p>Just like before we now need to define the handler.</p>
     <p> Inside the app extension add: </p>
     <pre><code class="language-swift">func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
-    guard id < bookStore.count, id >= 0 else {
-        return completion(nil, .notFound)
+    execute {
+        guard id < bookStore.count, id >= 0 else {
+            return completion(nil, .notFound)
+        }
+        completion(bookStore[id], nil)
     }
-    completion(bookStore[id], nil)
 }</code></pre>
     <p>In this completion, we are provided an identifier.</p>
     <p>This is the value following your route and can be either an `Int` or a `String`.</p>
@@ -151,11 +153,11 @@ extension App {
     <p><a href="http://localhost:8080/codable/0" target="_blank">localhost:8080/codable/0</a></p>
     <p>This will make a get request to the server and you should see the first book in JSON format:</p>
     <pre><code class="language-swift">{
-      "id": 0,
-      "title": "A Game of Thrones",
-      "price": 14.99,
-      "genre": "Fantasy"
-  }</code></pre>
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": "Fantasy"
+}</code></pre>
   <p>Post a second book to the server. With Curl this would be:</p>
   <pre><code>curl -X POST \
 http://localhost:8080/codable \
@@ -170,7 +172,7 @@ http://localhost:8080/codable \
     <p><a href="http://localhost:8080/codable/1" target="_blank">localhost:8080/codable/1</a></p>
     <p>This will make a new get request to the server and you should see the second book in JSON format:</p>
     <div class="underline"></div>
-    <p>Your completed CodableRouting.swift should now look as follows:</p>
+    <p>Your completed `CodableRouting.swift` should now look as follows:</p>
 <pre><code class="language-swift">import KituraContracts
 
 func initializeCodableRoutes(app: App) {
@@ -194,10 +196,12 @@ extension App {
         }
     }
     func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
-        guard id < bookStore.count, id >= 0 else {
-            return completion(nil, .notFound)
+        execute {
+            guard id < bookStore.count, id >= 0 else {
+                return completion(nil, .notFound)
+            }
+            completion(bookStore[id], nil)
         }
-        completion(bookStore[id], nil)
     }
 }
 </code></pre>
