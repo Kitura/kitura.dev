@@ -19,7 +19,7 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Create a server with SPM</h1>
+    <h1 class="heading-1">Create a server with SPM</h1>
     <h2 id="prereq">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura macOS app:</span> Follow our instructions for installing the Kitura macOS app.</li>
@@ -29,7 +29,7 @@
     <div class="info">
       <p>If you're new to this simply open the Terminal (on macOS or Linux) to get started.</p>
     </div>
-    <h2><span class="blue-text">Step 1:</span> Create project</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create project</h2>
     <p>Create a directory for our project</p>
     <pre><code>mkdir MyKituraApp && cd MyKituraApp</code></pre>
     <div class="info">
@@ -39,7 +39,7 @@
     <pre><code>swift package init --type executable</code></pre>
     <p>SPM creates a Swift project stub. All we need to do is add our project dependencies, like Kitura, to the project.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h2>
     <p>To add Kitura to our dependencies we need to edit the `Package.swift`</p>
     <p>Open `Package.swift` in your default text editor:</p>
     <pre><code class="language-swift">open Package.swift</code></pre>
@@ -65,7 +65,7 @@ let package = Package(
     <p>Now we can build the project to pull down our new dependency:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Add the server code</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add the server code</h2>
     <p>Open `main.swift` in our text editor.</p>
     <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
     <div class="info">
@@ -95,7 +95,7 @@ let package = Package(
     </div>
     <p>That's it! We've created a simple Kitura server.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Start the server</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Start the server</h2>
     <p>Since we've added code to the `main.swift` file we need to recompile the project:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <p>To run the project:</p>
@@ -109,7 +109,7 @@ let package = Package(
     <p>Navigate to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></p>
     <p>You should be able to see the Kitura landing page.</p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <div class="underline"></div>
     <script type="text/javascript" src="../../scripts/docs.js"></script>

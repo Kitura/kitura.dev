@@ -19,8 +19,8 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Deploy to the Cloud with Kubernetes</h1>
-    <h2>Prerequisites</h2>
+    <h1 class="heading-1">Deploy to the Cloud with Kubernetes</h1>
+    <h2 class="heading-2">Prerequisites</h2>
     <p>Whilst Kitura can be deployed to any Cloud offering we will be using IBM Cloud as an example in this guide.</p>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
@@ -29,15 +29,15 @@
       <li><span class="blue-text">Deployed server to Docker:</span> Learn how to do this by following our Docker guide</li>
     </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Tag your Docker image</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Tag your Docker image</h2>
     <!-- <p>TODO: Do we need to give any intructions about container registries?</p> -->
     <pre><code class="language-swift"> docker tag &ltsource_image&gt:&lttag&gt registry.&ltregion&gt.bluemix.net/&ltmy_namespace&gt/&ltnew_image_repo&gt:&ltnew_tag&gt</code></pre>
     <!-- <p>TODO: Explain command?</p> -->
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Push the Docker image</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Push the Docker image</h2>
     <pre><code class="language-swift"> docker push registry.&ltregion&gt.bluemix.net/&ltmy_namespace&gt/&ltimage_repo&gt:&lttag&gt</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Update Helm charts</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Update Helm charts</h2>
     <p>Edit values.yml inside the charts directory to point at correct registry</p>
     <!-- <p>TODO: Add better instructions here</p> -->
     <p>Initialise cluster with Helm</p>
@@ -45,7 +45,7 @@
     <p>Install via helm</p>
     <pre><code class="language-swift">helm install —name myapp .</code></pre>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p>Coming Soon!</p>
     <!-- <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p> -->

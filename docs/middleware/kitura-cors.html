@@ -19,13 +19,13 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura CORS</h1>
-    <h2>Step 1: Add Kitura CORS to your project</h2>
+    <h1 class="heading-1">Kitura CORS</h1>
+    <h2 class="heading-2">Step 1: Add Kitura CORS to your project</h2>
     <p>TODO: Link to SPM instructions</p>
     <p>Import Kitura CORS to your project:</p>
     <pre><code class="language-swift">import KituraCORS</code></pre>
     <div class="underline"></div>
-    <h2>Step 2: Initilize options for Kitura CORS</h2>
+    <h2 class="heading-2">Step 2: Initilize options for Kitura CORS</h2>
     <p>Kitura CORS needs options to be passed into it's Initilizer.</p>
     <pre><code class="language-swift">public init(options : Options)</code></pre>
     <p>Where possible options are:</p>
@@ -47,15 +47,15 @@
     </ul>
     <p>You can view the <a href="#">CORS documentation</a> for more information about CORS.</p>
     <div class="underline"></div>
-    <h2>Step 3: Initilize Kitura CORS</h2>
+    <h2 class="heading-2">Step 3: Initilize Kitura CORS</h2>
     <p>Create an instance of Kitura CORS:</p>
     <pre><code class="language-swift">let cors = CORS(options: options)</code></pre>
     <p>Which accepts the options you defined in the previous step.</p>
     <div class="underline"></div>
-    <h2>Step 4: Add CORS instance to router</h2>
+    <h2 class="heading-2">Step 4: Add CORS instance to router</h2>
     <pre><code class="language-swift">router.all("/cors", middleware: cors)</code></pre>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
   </body>

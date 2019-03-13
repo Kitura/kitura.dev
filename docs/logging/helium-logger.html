@@ -19,18 +19,18 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>HeliumLogger</h1>
+    <h1 class="heading-1">HeliumLogger</h1>
     <p>Helium Logger is a lightweight Swift logging framework which supports logging to standard output.</p>
     <div class="info">
       <p>If you created your server using `kitura init` or the macOS app then your Kitura Server will already have logging enabled.</p>
     </div>
-    <h2>Prerequisites</h2>
+    <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide.</li>
       <li><a onclick="localStorage.setItem('package', 'HeliumLogger'); setActiveSidebarElementForParent('update-package')" href="../getting-started/update-package.html#">Add Dependency:</a> HeliumLogger needs adding to the `Package.swift` file.</li>
     </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
     <p>To start we need to import LoggerAPI in our code:</p>
     <pre><code class="language-swift">import LoggerAPI</code></pre>
     <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
@@ -40,7 +40,7 @@
     <p>Now we need to import HeliumLogger:</p>
     <pre><code class="language-swift">import HeliumLogger</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
     <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
     <p>Below the line `import HeliumLogger` add:</p>
     <pre><code class="language-swift">HeliumLogger.use()</code></pre>
@@ -63,7 +63,7 @@ Kitura.run()</code></pre>
 [xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
 [xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Set logging level (Optional)</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Set logging level (Optional)</h2>
     <p>HeliumLogger can be customized to change the level of logging.</p>
     <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
 
@@ -89,11 +89,11 @@ Kitura.run()</code></pre>
     <p>You will get logging for `warning` and `error`.</p>
     <!-- <p>TODO: Add instructions for setting logging at runtime?</p> -->
     <!-- <div class="underline"></div>
-    <h2>TODO: Add instructions for adding logging to own application</h2>
+    <h2 class="heading-2">TODO: Add instructions for adding logging to own application</h2>
     <div class="underline"></div>
-    <h2>TODO: Add instructions for further customisation</h2> -->
+    <h2 class="heading-2">TODO: Add instructions for further customisation</h2> -->
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server.</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>

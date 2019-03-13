@@ -19,17 +19,17 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Swift Kuery ORM</h1>
+    <h1 class="heading-1">Swift Kuery ORM</h1>
     <p class="block-text">Swift Kuery ORM is an ORM (Object Relational Mapping) library for Swift built on top of <a target="_blank" href="https://github.com/IBM-Swift/Swift-Kuery">Swift Kuery</a> . Using it allows you to simplify persistence of model objects with your server.</p>
     <p class="block-text">This guide uses Swift Kuery ORM with <a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html">Codable routes</a> however the Swift Kuery ORM also works with <a onclick="setActiveSidebarElementForParent('raw-routing')" href="../routing/raw-routing.html#">Raw Routing</a>.</p>
-    <h2>Prerequisites</h2>
+    <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our getting started guide</li>
       <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
       <li><a onclick="localStorage.setItem('package', 'Swift-Kuery-ORM'); setActiveSidebarElementForParent('swift-kuery-orm')" href="../getting-started/update-package.html#">Update Dependencies:</a> SwiftKueryORM needs adding to the Package.swift file.</li>
     </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Add Swift Kuery ORM to the project</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add Swift Kuery ORM to the project</h2>
     <p>import Swift Kuery ORM to our project:</p>
     <pre><code class="language-swift">import SwiftKueryORM</code></pre>
     <p>To work with the ORM we need to have a Database plugin to use.</p>
@@ -39,30 +39,30 @@
       <p>You can use any database plugin but ensure that it's been added to your Package.swift.</p>
     </div>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Update our Model</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Update our Model</h2>
     <p>The key component of Swift Kuery ORM is the Model protocol.</p>
     <p>All we need to do to make use of the Model protocol is create an extension for our Model:</p>
     <pre><code class="language-swift">extension Book: Model { }</code></pre>
     <p>The Model protocol extends what Codable provides to work with the ORM.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Create a database connection</h2>
-    <h3>Install the PostgreSQL client</h3>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a database connection</h2>
+    <h3 class="heading-3">Install the PostgreSQL client</h3>
     <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
-    <h4>macOS</h4>
+    <h4 class="heading-4">macOS</h4>
     <p>On macOS we can use Homebrew to install Postgres:</p>
     <pre><code class="language-swift">brew install postgresql</code></pre>
-    <h4>Linux</h4>
+    <h4 class="heading-4">Linux</h4>
     <p>On Linux we can use `apt-get` to install Postgres:</p>
     <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
-    <h3>Create a PostgreSQL database</h3>
+    <h3 class="heading-3">Create a PostgreSQL database</h3>
     <p>Now that we have PostgreSQL installed we can create a database:</p>
     <pre><code class="language-swift">createdb bookdb</code></pre>
     <p>Now we're ready to connect to our database from our Kitura server.</p>
-    <h3>Create a PostgreSQL connection pool</h3>
+    <h3 class="heading-3">Create a PostgreSQL connection pool</h3>
     <p>Next we create an instance of a PostgreSQL connection:</p>
     <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
 Database.default = Database(pool)</code></pre>
-    <h3>Create a table in the database</h3>
+    <h3 class="heading-3">Create a table in the database</h3>
     <p></p>
     <pre><code class="language-swift">do {
     try Book.createTableSync()
@@ -70,7 +70,7 @@ Database.default = Database(pool)</code></pre>
     Log.error(error.localizedDescription)
 }</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Save an Object to our database</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Save an Object to our database</h2>
     <div class="info">
       <p>We are no longer using a Dictionary to store data. If you followed the Codable routing guide to get here then make sure you remove all the `bookStore` code.</p>
     </div>
@@ -86,7 +86,7 @@ Database.default = Database(pool)</code></pre>
     <p>That's all we need to do. With that line any Book data posted to the `/books` end point will be stored in our database.</p>
     <p>All we need to do now is be able to retrieve data from our database.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 5:</span> Retrieve an Object from your database</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 5:</span> Retrieve an Object from your database</h2>
     <p>If we want to retrieve all the Book data from our database we use the `findAll` method.</p>
     <p>This will return an array containing the all the books.</p>
     <p>In our handler for getting all the books we can add the following:</p>
@@ -142,7 +142,7 @@ Database.default = Database(pool)</code></pre>
     <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]%</code></pre>
     <p>Our data has persisted even though our server has been stopped. This is one of the many perks of using a database.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 6:</span> Retrieve an Object from your database using Query Parameters</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve an Object from your database using Query Parameters</h2>
     <div class="info">
       <p>This section assumes you have Query Parameters already integrated with your Codable routes.</p>
       <p>If you do not, you can learn how to do this in our Codable routing with Query Parameters section.</p>
@@ -169,7 +169,7 @@ Database.default = Database(pool)</code></pre>
     <p>Once we've confirmed we are error free we can ensure we actually got a value back.</p>
     <p>Then we can pass the value through to the completion handler.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 7:</span> Retrieve Objects from your database using Query Parameters filters</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 7:</span> Retrieve Objects from your database using Query Parameters filters</h2>
     <p>Query Parameters provide several filter methods that we can make use of, such as:</p>
     <ul>
       <li>GreaterThan</li>
@@ -188,7 +188,7 @@ Database.default = Database(pool)</code></pre>
       <p>In the example above the InclusiveRange filter is being applied to the `price` property of Book, therefore the property name in the QueryParams model must also be price.</p>
     </div>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('kitura-session')" href="../sessions/kitura-session.html#">Add Kitura Sessions:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>

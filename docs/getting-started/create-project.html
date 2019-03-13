@@ -19,7 +19,7 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Create a Kitura server</h1>
+    <h1 class="heading-1">Create a Kitura server</h1>
     <p>There are several ways to create a Kitura server:</p>
     <ul class="plain-list">
       <li><a href="#create-proj-spm">SPM</a>: The Swift Package Manager is the standard way of creating Swift projects.</li>
@@ -32,7 +32,7 @@
     <div class="info">
       <p>If you're new to this simply open the Terminal (on mac or Linux) to get started.</p>
     </div>
-    <h3><span class="blue-text">Step 1:</span> Create project</h3>
+    <h3 class="heading-3"><span class="blue-text">Step 1:</span> Create project</h3>
     <p>Create a directory for our project</p>
     <pre><code>mkdir MyKituraApp && cd MyKituraApp</code></pre>
     <div class="info">
@@ -42,7 +42,7 @@
     <pre><code>swift package init --type executable</code></pre>
     <p>SPM creates a Swift project stub. All we need to do is add our project dependencies, like Kitura, to the project.</p>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h3>
+    <h3 class="heading-3"><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h3>
     <p>To add Kitura to our dependencies we need to edit the Package.swift</p>
     <p>Open Package.swift in your default text editor:</p>
     <pre><code class="language-swift">open Package.swift</code></pre>
@@ -73,7 +73,7 @@ let package = Package(
     <p>Now we can build the project to pull down our new dependency:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 3:</span> Add the server code</h3>
+    <h3 class="heading-3"><span class="blue-text">Step 3:</span> Add the server code</h3>
     <p>Open `main.swift` in our text editor.</p>
     <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
     <div class="info">
@@ -97,7 +97,7 @@ let package = Package(
     <pre><code class="language-swift">Kitura.run()</code></pre>
     <p>That's it! We've created a simple Kitura server.</p>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 4:</span> Start the server</h3>
+    <h3 class="heading-3"><span class="blue-text">Step 4:</span> Start the server</h3>
     <p>Since we've added code to the `main.swift` file we need to recompile the project:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <p>To run the project:</p>
@@ -111,24 +111,24 @@ let package = Package(
     <p>Navigate to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></p>
     <p>You should be able to see the Kitura landing page.</p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <div class="underline"></div>
     <h2 id="create-proj-cli">Create a server with Kitura CLI</h2>
-    <h3>Step 1: Create a directory</h3>
+    <h3 class="heading-3">Step 1: Create a directory</h3>
     <p>Kitura CLI needs to be run in an empty directory so you will need to create a new directory for your project:</p>
     <pre><code class="language-swift">mkdir KituraExample && cd KituraExample</code></pre>
     <div class="underline"></div>
-    <h3>Step 2: Create a Kitura project</h3>
+    <h3 class="heading-3">Step 2: Create a Kitura project</h3>
     <p>Create a Kitura application using the <a href="kitura-cli.html">Kitura CLI</a>:</p>
     <pre><code class="language-swift">kitura init</code></pre>
     <p>`kitura init` will create a cloud ready Kitura application in your current directory and also builds your application.</p>
     <p>The name of your project will be the same as the directory name.</p>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
     <div class="underline"></div>
     <h2 id="create-proj-app">Create a server with the Kitura macOS app</h2>
-    <h3>Step 1: Create project</h3>
+    <h3 class="heading-3">Step 1: Create project</h3>
     <p>Open the <a href="macos-app.html">Kitura macOS app</a> from your application folder.</p>
     <p>Hover over the starter tile and click create:</p>
     <img class="example-image" src="../../assets/preview1.png" alt="">
@@ -138,7 +138,7 @@ let package = Package(
     <p>However you can use whatever destination and name you'd like, just substitute those in throughout the rest of the guides.</p>
     <p>Once you click create the app will create and build your project. It will also generate you an xcode project.</p>
     <img class="example-image" src="../../assets/preview3.png" alt="">
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>

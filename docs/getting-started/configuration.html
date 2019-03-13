@@ -19,9 +19,9 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Configuration</h1>
-    <h2>Enabling SSL/TLS</h2>
-    <h3>What is SSL/TLS?</h3>
+    <h1 class="heading-1">Configuration</h1>
+    <h2 class="heading-2">Enabling SSL/TLS</h2>
+    <h3 class="heading-3">What is SSL/TLS?</h3>
     <p>Transport Layer Security (TLS) is a protocol for encrypting data that is sent over the Internet and it can provide three important features:</p>
     <ul>
       <li>data privacy: The data that is exchanged between a server and client is not visible to anyone else;</li>
@@ -30,9 +30,9 @@
     </ul>
     <p>TLS evolved out of Netscape’s Secure Sockets Layer (SSL) protocol in order to fix most of its security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
     <p>To enable TLS, a server needs a certificate and a corresponding secret key. Certificates are files that bind together information about the identity of the owner of a site and the public half of an asymmetric key pair (usually RSA). Certificates are usually digitally signed by a certificate authority (CA) who verifies that the information in the certificate is correct. This creates a chain of certificates between the site owner certificate and a CA certificate and transitive trust. Assuming that we trust the CA, we can trust the validity of the server certificate.</p>
-    <h3>Step 1: Add Blue SSL Service to your project</h3>
+    <h3 class="heading-3">Step 1: Add Blue SSL Service to your project</h3>
     <p>TODO: Link to SPM instructions</p>
-    <h3>Step 2: Generate certificate</h3>
+    <h3 class="heading-3">Step 2: Generate certificate</h3>
     <p>To enable TLS in Kitura, we must first setup our server’s certificate and key pair. The certificate can be either a self-signed certificate or a certificate chain whereby the server certificate is signed by a CA.</p>
     <p>Kitura currently only supports PKCS#12 on macOS, while it supports the following formats on Linux:</p>
     <ul>
@@ -56,17 +56,17 @@ $ openssl req -x509 -sha256 -days 365 -key key.pem -in cert.csr -out certificate
     <pre><code class="language-swift">$ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem</code></pre>
     <p>Place your certificate and key in the /tmp/Creds/Self-Signed folder.</p>
     <div class="underline"></div>
-    <h3>Step 3: Configure Kitura for SSL/TLS</h3>
+    <h3 class="heading-3">Step 3: Configure Kitura for SSL/TLS</h3>
     <p>We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter usingSelfSignedCerts to true.</p>
     <p>Assuming you used the Kitura command-line tools to create your application, edit Sources/Application/Application.swift and add the following code below the import statements:</p>
-    <h4>macOS</h4>
+    <h4 class="heading-4">macOS</h4>
     <pre><code class="language-swift">
 let mySSLConfig =  SSLConfig(withChainFilePath: "/tmp/Creds/Self-Signed/cert.pfx",
                  withPassword: "password",
                  usingSelfSignedCerts: true)
     </code></pre>
     <p>Note, you will also need to modify the password string to be whatever you chose for your password.</p>
-    <h4>Linux</h4>
+    <h4 class="heading-4">Linux</h4>
     <pre><code class="language-swift">
 let myCertPath = "/tmp/Creds/Self-Signed/certificate.pem"
 let myKeyPath = "/tmp/Creds/Self-Signed/key.pem"
@@ -77,7 +77,7 @@ let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
                              usingSelfSignedCerts: true)
     </code></pre>
     <div class="underline"></div>
-    <h3>Step 4: Setup your routes</h3>
+    <h3 class="heading-3">Step 4: Setup your routes</h3>
     <p>Setup a GET Request:</p>
     <pre><code class="language-swift">
 router.get("/") { request, response, next in
@@ -86,13 +86,13 @@ router.get("/") { request, response, next in
 }   </code></pre>
     <p>Pass your SSL configuration into the Kitura.addHTTPServer(...) function:</p>
     <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)</code></pre>
-    <h3>Step 5: Test your application</h3>
+    <h3 class="heading-3">Step 5: Test your application</h3>
     <p>Start your server.</p>
     <p>Open:</p>
     <pre><code class="language-swift">https://localhost:8080</code></pre>
     <p>You should notice the `https` in your URL. This means that the data your application transmits is secure and the server your users are connecting to is authenticated.</p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
   </body>

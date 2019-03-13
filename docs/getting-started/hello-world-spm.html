@@ -19,17 +19,17 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Hello World with SPM</h1>
+    <h1 class="heading-1">Hello World with SPM</h1>
     <p>This guide uses the command line with the Swift Package Manager.</p>
     <p>If you'd prefer a UI based experience you can follow the <a href="hello-world-app.html">Hello World example using the Kitura macOS app</a>.</p>
     <p>If you'd prefer to work with the command line with a project created for you then you can follow the <a href="hello-world-cli.html">Hello World example using the Kitura CLI</a>.</p>
-    <h2>Step 1: Create project</h2>
+    <h2 class="heading-2">Step 1: Create project</h2>
     <p>Create a directory for your project:</p>
     <pre><code class="language-swift">mkdir HelloWorld && cd HelloWorld</code></pre>
     <p>Inialize the directory as a Swift project:</p>
     <pre><code class="language-swift">swift package init --type executable</code></pre>
     <div class="underline"></div>
-    <h2>Step 2: Add Kitura to your dependencies</h2>
+    <h2 class="heading-2">Step 2: Add Kitura to your dependencies</h2>
     <p>To add Kitura to your dependencies you need to edit the Package.swift</p>
     <p>Open Package.swift in your default text editor:</p>
     <pre><code class="language-swift">open Package.swift</code></pre>
@@ -62,8 +62,8 @@ let package = Package(
     <p>Now build your project to pull down your dependencies:</p>
     <pre><code class="language-swift">swift build</code></pre>
     <div class="underline"></div>
-    <h2>Step 3: Add the route</h2>
-    <h3>macOS</h3>
+    <h2 class="heading-2">Step 3: Add the route</h2>
+    <h3 class="heading-3">macOS</h3>
     <p>If you're on a Mac you can create an Xcode project to continue:</p>
     <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
     <p>Once this command has completed open the Xcode project:</p>
@@ -71,12 +71,12 @@ let package = Package(
     <p>TODO: Add following instructions</p>
     <p>TODO: Add image for Scheme change</p>
     <div class="underline"></div>
-    <h3>Ubuntu Linux</h3>
+    <h3 class="heading-3">Ubuntu Linux</h3>
     <div class="underline"></div>
     <p>Now if you go to:</p>
     <p><a target="_blank" href="http://localhost:8080">localhost:8080</a></p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
   </body>

@@ -23,13 +23,13 @@
     <p>Kitura is provided as a Swift package which is distributed by the Swift Package Manager (SPM).</p>
     <p>This guide demonstrates how to add a package to your project to leverage the functionality that package provides.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 1:</span> Add the url to the `Package.swift`</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Add the url to the `Package.swift`</h2>
     <p>To add a new dependency to our project we need to edit the `Package.swift` file:</p>
     <pre><code>open Package.swift</code></pre>
     <p>Next we need to add the package we want to use to our package dependencies:</p>
     <pre><code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 2:</span> Add the package name to the target dependencies</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Add the package name to the target dependencies</h2>
     <p>Finally we need to add the package as a dependency of our application:</p>
     <pre><code class="language-swift dependency-value">.target(
   name: "&lt;project-name&gt;",
@@ -50,7 +50,7 @@ let package = Package(
   ]
 )</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 3:</span> Update the project to download new package</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Update the project to download new package</h2>
     <p>Now that we have added the new package to our project we need to update the project.</p>
     <p>SPM provides a command line interface to do this.</p>
     <p>So we will open a terminal and run the following:</p>
@@ -63,7 +63,7 @@ let package = Package(
     <p>It also checks to see if there are any new versions of our existing packages as well.</p>
     <p>We have now added a new package to our project and are ready to start using this in our app.</p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
     <script type="text/javascript" src="../../scripts/update-package.js"></script>

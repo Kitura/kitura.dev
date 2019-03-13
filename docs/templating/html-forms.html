@@ -19,9 +19,9 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>HTML Forms</h1>
+    <h1 class="heading-1">HTML Forms</h1>
     <div class="underline"></div>
-    <h2>What are HTML forms?</h2>
+    <h2 class="heading-2">What are HTML forms?</h2>
     <p>Webpages use HTML forms to take a user's input and send it as an HTTP request.</p>
     <p>The form data can be sent via a HTTP GET request. In this case, the data gets appended to the url as a query string consisting of “key=value” pairs, separated by the “&” symbol.</p>
     <p>An example of a HTML form GET request:</p>
@@ -37,10 +37,10 @@ Content-Length: 31
 name=Andy&age=&isDeveloper=true</code></pre>
     <p>Use POST whenever you are working with sensitive or personal information.</p>
     <div class="underline"></div>
-    <h2>Prerequisites</h2>
+    <h2 class="heading-2">Prerequisites</h2>
     <p>TODO: Need to have a Kitura project</p>
     <div class="underline"></div>
-    <h2>Step 1: Create the HTML form</h2>
+    <h2 class="heading-2">Step 1: Create the HTML form</h2>
     <p>First you need to create a `public` directory in the root of your project and then navigate to it.</p>
     <p>In a terminal:</p>
     <pre><code class="language-swift">mkdir public</code></pre>
@@ -54,9 +54,9 @@ name=Andy&age=&isDeveloper=true</code></pre>
     <pre><code class="language-swift"><xmp><!DOCTYPE html>
 <html>
 <body>
-<h2>URL Encoded Forms</h2>
+<h2 class="heading-2">URL Encoded Forms</h2>
 
-<h4>Post to Codable route</h4>
+<h4 class="heading-4">Post to Codable route</h4>
 <form action="codable" method="post" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age"><br>
@@ -64,7 +64,7 @@ name=Andy&age=&isDeveloper=true</code></pre>
     <input type="submit" value="Submit">
 </form>
 
-<h4>Get to Codable route</h4>
+<h4 class="heading-4">Get to Codable route</h4>
 <form action="codable" method="get" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age"><br>
@@ -72,7 +72,7 @@ name=Andy&age=&isDeveloper=true</code></pre>
     <input type="submit" value="Submit">
 </form>
 
-<h4>Post to Raw route</h4>
+<h4 class="heading-4">Post to Raw route</h4>
 <form action="raw" method="post" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age"><br>
@@ -80,7 +80,7 @@ name=Andy&age=&isDeveloper=true</code></pre>
     <input type="submit" value="Submit">
 </form>
 
-<h4>Get to Raw route</h4>
+<h4 class="heading-4">Get to Raw route</h4>
 <form action="raw" method="get" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age"><br>
@@ -102,7 +102,7 @@ name=Andy&age=&isDeveloper=true</code></pre>
       <li>isDeveloper: a checkbox, which sends true if checked</li>
     </ul>
     <div class="underline"></div>
-    <h2>Step 2: Create a Static File Server</h2>
+    <h2 class="heading-2">Step 2: Create a Static File Server</h2>
     <p>A static file server is needed to server the HTML page</p>
     <pre><code class="language-swift">router.get("/", middleware: StaticFileServer())</code></pre>
     <p>TODO: Specify start options? Start the server.</p>
@@ -111,7 +111,7 @@ name=Andy&age=&isDeveloper=true</code></pre>
     <p>You should now see the HTML forms.</p>
     <p>These forms will send the input data to the server.</p>
     <div class="underline"></div>
-    <h2>Step 3: Create the form model</h2>
+    <h2 class="heading-2">Step 3: Create the form model</h2>
     <p>HTML forms can make use of <a href="#">Codable Routing</a>.</p>
     <p>First you need to import KitraContracts. TODO: Why?</p>
     <pre><code class="language-swift">import KituraContracts</code></pre>
@@ -126,8 +126,8 @@ struct Form: Codable, QueryParams {
     <p>The struct conforms to Codable so it can be used in Codable routes and also conforms to QueryParams so it can be decoded from the query parameters on a GET request.</p>
     <p>If the form's age or isDeveloper fields are empty, an empty value will be sent with the key (i.e "age=isDeveloper="). In this case, Kitura will decode age to nil and isDeveloper to false.</p>
     <div class="underline"></div>
-    <h2>Step 4: Create the routes</h2>
-    <h3>Codable Routes</h3>
+    <h2 class="heading-2">Step 4: Create the routes</h2>
+    <h3 class="heading-3">Codable Routes</h3>
     <p>Create a POST route:</p>
     <pre><code class="language-swift">router.post("/codable", handler: postFormHandler)</code></pre>
     <p>Add an implementation for the postFormHandler:</p>
@@ -152,7 +152,7 @@ func getFormHandler(user: Form, respondWith: (Form?, RequestError?) -> Void) {
 }   </code></pre>
     <p>TODO: Explain code block?</p>
     <p>Restart your server. TODO: More info.</p>
-    <h3>Raw Routes</h3>
+    <h3 class="heading-3">Raw Routes</h3>
     <p>Create a POST route:</p>
     <pre><code class="language-swift">
 router.post("/raw") { request, response, next in
@@ -183,7 +183,7 @@ router.post("/raw") { request, response, next in
     <p>TODO: Explain Code block?</p>
     <p>Restart your server. TODO: More info.</p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
   </body>

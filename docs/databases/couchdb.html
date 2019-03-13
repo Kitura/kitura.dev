@@ -19,25 +19,25 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura CouchDB</h1>
+    <h1 class="heading-1">Kitura CouchDB</h1>
     <p><a target="_blank" href="http://couchdb.apache.org/">CouchDB</a> is a NoSQL (or non-relational) database. CouchDB takes a document-oriented approuch to databases.</p>
     <p>Kitura-CouchDB is a pure Swift client which allows Kitura applications to interact with a CouchDB or <a target="_blank" href="https://www.ibm.com/uk-en/cloud/cloudant">Cloudant</a> database.</p>
     <div class="underline"></div>
-    <h2>Prerequisites</h2>
+    <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our getting started guide</li>
       <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
       <li><a onclick="localStorage.setItem('package', 'Kitura-CouchDB'); setActiveSidebarElementForParent('couchdb')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura CouchDB needs adding to the Package.swift file.</li>
     </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 1:</span> Download and install CouchDB</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Download and install CouchDB</h2>
     <p>Before we can use CouchDB within our server we first need to <a target="_blank" href="http://couchdb.apache.org/#download">Download CouchDB</a>.</p>
     <p>TODO: Install instructions</p>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 2:</span> Create CouchDB admin user</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create CouchDB admin user</h2>
     <p>Once CouchDB is installed we need to create an admin user.</p>
     <p>To do this we need to open the CouchDB admin console:</p>
-    <h3>macOS:</h3>
+    <h3 class="heading-3">macOS:</h3>
     <p>Select the CouchDB icon in the menu bar.</p>
     <p>Then select open admin console from the drop down.</p>
     <div class="info">
@@ -46,13 +46,13 @@
     </div>
     <p>It is important to remember the creditials we used here as we will need them to interact with the database from our server.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 3:</span> Create CouchDB database</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Create CouchDB database</h2>
     <p>We can create a database directly through the CouchDB admin console.</p>
     <p>First ensure we're logged in and then select the database icon from the sidebar.</p>
     <p>Then in the top right click on `Create Database`</p>
     <p>We'll be asked to provide a name, for our example we will call it: `bookstore`</p>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 4:</span> Connect to CouchDB database</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 4:</span> Connect to CouchDB database</h2>
     <p>We first need to define our connection properties for CouchDB:</p>
     <pre><code class="language-swift">let properties = ConnectionProperties(
     host: "127.0.0.1",              // http address
@@ -64,7 +64,7 @@
     <p>Now we can use these properties to create our CouchDB connection:</p>
     <pre><code class="language-swift">let couchDBClient = CouchDBClient(connectionProperties: properties)</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 5:</span> Save to CouchDB database</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 5:</span> Save to CouchDB database</h2>
     <p>We first need to create our Document type:</p>
     <pre><code class="language-swift">struct BookDocument: Document {
   let _id: String?
@@ -90,7 +90,7 @@
   }
 }</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 6:</span> Retrieve from CouchDB database</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 6:</span> Retrieve from CouchDB database</h2>
     <p>To retrieve all documents from a CouchDB database we need to use the aptly named `retrieveAll` method within our `getAllHandler`:</p>
     <pre><code class="language-swift">func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
   database.retrieveAll(includeDocuments: true) { (documents, error) in
@@ -98,7 +98,7 @@
   }
 }</code></pre>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
     <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
