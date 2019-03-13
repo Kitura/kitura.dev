@@ -36,143 +36,171 @@
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
       <li>Your project is set up as described by our style guide.</p>
-      <li>Your project is assumed to be called `MyKituraApp`. If you used a different name, substitute in your chosen name.</li>
       <li>You have defined a `Book` struct as described in the Codable routing section of "What is routing?"</li>
     </ul>
     <div class="underline"></div>
-    <h2 id="post"><span class="blue-text">Step 1:</span> Create a POST Codable Route</h2>
-    <p>Open your Application.swift file:</p>
-    <pre><code class="language-swift">open Sources/MyKituraApp/Application.swift</code></pre>
-    <p>Inside the `postInit()` function add:</p>
-    <pre><code class="language-swift">router.post("/books", handler: postHandler)</code></pre>
-    <p>What we've done is register a POST on our router that will handle any POST requests made on "/books".</p>
-    <p>This will not compile as we haven't actually implemented the postHandler yet. So lets go ahead and do that.</p>
-    <div class="underline"></div>
-    <h2><span class="blue-text">Step 2:</span> Define the postHandler</h2>
-    <p>The postHandler is a block of code, called a closure, that is executed when a POST request is made to "/books".</p>
-    <p>Underneath the `postInit()` function add the following:</p>
-    <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-    // Point where developer code would interact with the input book.
-    completion(book, nil)
+    <h2 id="post"><span class="blue-text">Step 1:</span> Create an in memory bookstore</h2>
+    <p>If you have already completed Raw routing, you can skip this step</p>
+    <p>Since our route handlers are asynchronous, we will use dispatch to serialize access to our bookstore.
+        This will prevent collisions from multiple threads trying to access the same array.
+         To be able to use `DispatchQueue` on Linux, add the following statement to the start of the file:</p>
+    <pre><code class="language-swift">import Dispatch</code></pre>
+    <p> Inside the `App` class, below `let router = Router()` add: </p>
+    <pre><code class="language-swift">var bookStore: [Book] = []
+let workerQueue = DispatchQueue(label: "worker")</code></pre>
+    <p>At the end of the app class, add a helper function for atomically executing code:</p>
+    <pre><code class="language-swift">func execute(_ block: (() -> Void)) {
+   workerQueue.sync {
+       block()
+   }
 }</code></pre>
-    <p>The result should look similar to this:</p>
-    <pre><code class="language-swift">func postInit() throws {
-    router.post("/books", handler: postHandler)
-}
+    <div class="underline"></div>
+    <h2 id="post"><span class="blue-text">Step 2:</span> Create a CodableRoutes.swift file</h2>
+    <p>Open your `Sources` > `Application` > `Application.swift`</p>
+    <p> Inside the `postInit()` function add: </p>
+    <pre><code class="language-swift">initializeCodableRoutes(app: self)</code></pre>
+    <p>Create a new file called `CodableRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+    <p>Inside this file, add the framework for our routes code:</p>
+    <pre><code class="language-swift">import KituraContracts
 
-func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-    // Point where developer code would interact with the input book.
+func initializeCodableRoutes(app: App) {
+    // Register routes here
+}
+extension App {
+    // Write bookstore and handlers here
+}</code></pre>
+    <div class="underline"></div>
+    <h2 id="post"><span class="blue-text">Step 3:</span> Create a POST Codable Route</h2>
+    <p>Inside the `initializeCodableRoutes` function add:</p>
+    <pre><code class="language-swift">app.router.post("/codable", handler: app.postHandler)</code></pre>
+    <p>What we've done is register a POST on our router that will handle any POST requests made on "/codable".</p>
+    <p>This will not compile as we haven't actually implemented the postHandler yet. So lets go ahead and do that.</p>
+    <p>The postHandler is a block of code, called a closure, that is executed when a POST request is made to "/codable".</p>
+    <p> Inside the app extension add: </p>
+    <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+    execute {
+         bookStore.append(book)
+     }
     completion(book, nil)
 }</code></pre>
     <p>We can now successfully compile the project!</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 3:</span> Test the POST route</h2>
+    <h2><span class="blue-text">Step 4:</span> Test the POST route</h2>
+    <p>With the project now compiling we can start the server.</p>
     <div class="info">
       <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.</p>
       <p>You can add OpenAPI to your server using our OpenAPI guide.</p>
     </div>
-    <p>With the project now compiling we can start the server.</p>
-    <p>Once the server is running open a terminal window and enter the following:</p>
+    <p>To test the route using Curl, open a terminal window and enter the following:</p>
     <pre><code>curl -X POST \
-  http://localhost:8080/books \
+  http://localhost:8080/codable \
   -H 'content-type: application/json' \
   -d '{
     "id": 0,
     "title": "A Game of Thrones",
     "price": 14.99,
-    "genre": Fantasy
+    "genre": "Fantasy"
 }'</code></pre>
-    <p>We can use the cURL command to send a request to our server.</p>
     <p>If your Codable route was created correctly you should see the following:</p>
     <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
-    <p>We have just successfully posted a book to the server and had it returned.
-         In the databases section, we will see how to save this Book from our handler.</p>
+    <p>We have just successfully posted a book to the server and had it returned.</p>
     <div class="underline"></div>
-    <h2 id="getall"><span class="blue-text">Step 4:</span> Create a GET ALL Codable Route</h2>
+    <h2 id="getall"><span class="blue-text">Step 5:</span> Create a GET ALL Codable Route</h2>
     <p>We register a GET route in a similar way to the POST route.</p>
-    <p>Below the line `router.post("/books", handler: postHandler)` add:</p>
-    <pre><code class="language-swift">router.get("/books", handler: getAllHandler)</code></pre>
+    <p>Inside the `initializeCodableRoutes` function add:</p>
+    <pre><code class="language-swift">app.router.get("/codable", handler: app.getAllHandler)</code></pre>
     <p>Just like before we now need to define the handler.</p>
-    <p>Below the `postHandler` function add:</p>
+    <p> Inside the app extension add: </p>
     <pre><code class="language-swift">func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-        let books = [Book(id: 0, title: "Harry Potter", price: 10.99, genre: "Fantasy"),
-                     Book(id: 1, title: "Server Side Swift with Kitura", price: 59.99, genre: "Nonfiction")]
-        completion(books, nil)
-    }</code></pre>
+    execute {
+        completion(bookStore, nil)
+    }
+}</code></pre>
     <p>You may have noticed that the completion here is expecting an array of books.</p>
     <p>That is because our route provides no identifier so we will retrieve all of the books.</p>
     <p>The result of all the changes should look something like this:</p>
-    <pre><code class="language-swift">func postInit() throws {
-        router.post("/books", handler: postHandler)
-        router.get("/books", handler: getAllHandler)
-    }
-    func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-        // Point where developer code would interact with the input book.
-        completion(book, nil)
-    }
-    func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-        let books = [Book(id: 0, title: "Harry Potter", price: 10.99, genre: "Fantasy"),
-                     Book(id: 1, title: "Server Side Swift with Kitura", price: 59.99, genre: "Nonfiction")]
-        completion(books, nil)
-    }
-    </code></pre>
     <p>Now we can restart our server to test our new endpoint.</p>
-    <p>Once the server is running, open your browser at:</p>
-    <p><a href="http://localhost:8080/books" target="_blank">localhost:8080/books</a></p>
-    <p>This will make a get request to the server and you should see our two books in JSON format:</p>
-    <pre><code class="language-swift">[{"id":0,"title":"Harry Potter","price":10.99,"genre":"Fantasy"},{"id":1,"title":"Server Side Swift with Kitura","price":59.99,"genre":"Nonfiction"}]</code></pre>
+    <p>Once the server is running, post a book using the same curl command as above.</p>
+    <p>Open your browser at:</p>
+    <p><a href="http://localhost:8080/codable" target="_blank">localhost:8080/codable</a></p>
+    <p>This will make a get request to the server and you should see the book we posted before:</p>
+    <pre><code class="language-swift">[{
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}]</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 5:</span>Create a GET ONE Codable Route</h2>
+    <h2><span class="blue-text">Step 6:</span>Create a GET ONE Codable Route</h2>
     <p>We register a second GET route in a similar way to our first.</p>
-    <p>Below the line `router.get("/books", handler: getAllHandler)` add:</p>
-    <pre><code class="language-swift">router.get("/books", handler: getOneHandler)</code></pre>
+    <p>Inside the `initializeCodableRoutes` function add:</p>
+    <pre><code class="language-swift">app.router.get("/codable", handler: app.getOneHandler)</code></pre>
     <p>Just like before we now need to define the handler.</p>
-    <p>Below the `getAllHandler` function add:</p>
+    <p> Inside the app extension add: </p>
     <pre><code class="language-swift">func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
-        let books = [Book(id: 0, title: "Harry Potter", price: 10.99, genre: "Fantasy"),
-                     Book(id: 1, title: "Server Side Swift with Kitura", price: 59.99, genre: "Nonfiction")]
-        guard id < books.count, id >= 0 else {
-            return completion(nil, .badRequest)
-        }
-        completion(books[id], nil)
-    }</code></pre>
+    guard id < bookStore.count, id >= 0 else {
+        return completion(nil, .notFound)
+    }
+    completion(bookStore[id], nil)
+}</code></pre>
     <p>In this completion, we are provided an identifier.</p>
     <p>This is the value following your route and can be either an `Int` or a `String`.</p>
     <p>We then use this identifier to return a single `Book.`</p>
-    <p>The result of all the changes should look something like this:</p>
-    <pre><code class="language-swift">func postInit() throws {
-        router.post("/books", handler: postHandler)
-        router.get("/books", handler: getAllHandler)
-        router.get("/books", handler: getOneHandler)
-    }
-    func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-        // Point where developer code would interact with the input book.
-        completion(book, nil)
-    }
-    func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-        let books = [Book(id: 0, title: "Harry Potter", price: 10.99, genre: "Fantasy"),
-                     Book(id: 1, title: "Server Side Swift with Kitura", price: 59.99, genre: "Nonfiction")]
-        completion(books, nil)
-    }
-    func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
-        let books = [Book(id: 0, title: "Harry Potter", price: 10.99, genre: "Fantasy"),
-                     Book(id: 1, title: "Server Side Swift with Kitura", price: 59.99, genre: "Nonfiction")]
-        guard id < books.count, id >= 0 else {
-            return completion(nil, .badRequest)
-        }
-        completion(books[id], nil)
-    }
-    </code></pre>
     <p>Now we can restart our server to test our new endpoint.</p>
     <p>Once the server is running, open your browser at:</p>
-    <p><a href="http://localhost:8080/books/0" target="_blank">localhost:8080/books/0</a></p>
+    <p><a href="http://localhost:8080/codable/0" target="_blank">localhost:8080/codable/0</a></p>
     <p>This will make a get request to the server and you should see the first book in JSON format:</p>
-    <pre><code class="language-swift">{"id":0,"title":"Harry Potter","price":10.99,"genre":"Fantasy"}</code></pre>
+    <pre><code class="language-swift">{
+      "id": 0,
+      "title": "A Game of Thrones",
+      "price": 14.99,
+      "genre": "Fantasy"
+  }</code></pre>
+  <p>Post a second book to the server. With Curl this would be:</p>
+  <pre><code>curl -X POST \
+http://localhost:8080/codable \
+-H 'content-type: application/json' \
+-d '{
+  "id": 0,
+  "title": "Harry Potter",
+  "price": 10.00,
+  "genre": "Fantasy"
+}'</code></pre>
     <p>Then open your browser at:</p>
-    <p><a href="http://localhost:8080/books/1" target="_blank">localhost:8080/books/1</a></p>
+    <p><a href="http://localhost:8080/codable/1" target="_blank">localhost:8080/codable/1</a></p>
     <p>This will make a new get request to the server and you should see the second book in JSON format:</p>
-    <pre><code class="language-swift">{"id":1,"title":"Server Side Swift with Kitura","price":59.99,"genre":"Nonfiction"}</code></pre>
     <div class="underline"></div>
+    <p>Your completed CodableRouting.swift should now look as follows:</p>
+<pre><code class="language-swift">import KituraContracts
+
+func initializeCodableRoutes(app: App) {
+    // Register routes here
+    app.router.post("/codable", handler: app.postHandler)
+    app.router.get("/codable", handler: app.getAllHandler)
+    app.router.get("/codable", handler: app.getOneHandler)
+}
+extension App {
+    // Write bookstore and handlers here
+    func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+        execute {
+            bookStore.append(book)
+        }
+        completion(book, nil)
+    }
+
+    func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+        execute {
+            completion(bookStore, nil)
+        }
+    }
+    func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
+        guard id < bookStore.count, id >= 0 else {
+            return completion(nil, .notFound)
+        }
+        completion(bookStore[id], nil)
+    }
+}
+</code></pre>
     <h2>Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('open-api')" href="open-api.html#">Add Kitura OpenAPI:</a></span> Provides a UI for viewing information about Codable routes.</p>
     <!-- <p><span class="blue-text bold">Add Sessions:</span> Some blurb about Sessions</p>
