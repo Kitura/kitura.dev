@@ -35,7 +35,7 @@
       <p>Learn how to get a single value from a Kitura server.</p>
     </ol>
     <div class="underline"></div>
-    <h2 id="prereq">Prerequisites</h2>
+    <h2 class="heading-2" id="prereq">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide.</li>
       <li>Your project is set up as described by our style guide.</p>
@@ -44,7 +44,7 @@
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create an in-memory bookstore</h2>
     <p>If you have already completed Raw routing, you can skip this step.</p>
-    <p>Since our route handlers are asynchronous, we will use dispatch to serialize access to our bookstore.
+    <p class="block-text">Since our route handlers are asynchronous, we will use dispatch to serialize access to our bookstore.
         This will prevent collisions from multiple threads trying to access the same array.
         To be able to use `DispatchQueue` on Linux, add the following statement to the start of the file:</p>
     <pre><code class="language-swift">import Dispatch</code></pre>
@@ -59,7 +59,7 @@ let workerQueue = DispatchQueue(label: "worker")</code></pre>
 }</code></pre>
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a file to contain the routes</h2>
-    <p>Open your `Sources` > `Application` > `Application.swift`.</p>
+    <p>Open `Sources` > `Application` > `Application.swift`.</p>
     <p> Inside the `postInit()` function add: </p>
     <pre><code class="language-swift">initializeRawRoutes(app: self)</code></pre>
     <p>Create a new file called `RawRoutes.swift` in `Sources` > `Application` > `Routes`.</p>
@@ -197,7 +197,7 @@ response.send(book)
       "price": 10.00,
       "genre": "Fantasy"
     }'</code></pre>
-    <p>Then open your browser at <a href="http://localhost:8080/codable/1" target="_blank">localhost:8080/codable/1</a></p>
+    <p>Then open the browser at <a href="http://localhost:8080/codable/1" target="_blank">localhost:8080/codable/1</a></p>
     <p>This will make a new GET request to the server and you should see the second book in JSON format:</p>
     <p>That's it! We've now also implemented a GET one route.</p>
     <p>We can continue to make POST and GET requests from our bookstore.</p>
