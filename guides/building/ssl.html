@@ -43,9 +43,9 @@
 <section class="guide-content">
   <div class="title-block">
       <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-    <h1>ENABLING SSL/TLS ON YOUR KITURA SERVER</h1>
+    <h1 class="heading-1">ENABLING SSL/TLS ON YOUR KITURA SERVER</h1>
   </div>
-  <h2>SSL/TLS</h2>
+  <h2 class="heading-2">SSL/TLS</h2>
   <p class="sentence">Transport Layer Security (TLS) is a protocol for encrypting data that is sent over the Internet and it can provide three important features:</p>
   <ul>
     <li>data privacy: The data that is exchanged between a server and client is not visible to anyone else;</li>
@@ -54,12 +54,12 @@
   </ul>
   <p class="sentence">TLS evolved out of Netscape’s Secure Sockets Layer (SSL) protocol in order to fix most of its security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
   <p class="sentence">To enable TLS, a server needs a certificate and a corresponding secret key. Certificates are files that bind together information about the identity of the owner of a site and the public half of an asymmetric key pair (usually RSA). Certificates are usually digitally signed by a certificate authority (CA) who verifies that the information in the certificate is correct. This creates a chain of certificates between the site owner certificate and a CA certificate and transitive trust. Assuming that we trust the CA, we can trust the validity of the server certificate.</p>
-  <h2>BlueSSLService Framework</h2>
+  <h2 class="heading-2">BlueSSLService Framework</h2>
   <p class="sentence"><a href="https://github.com/IBM-Swift/BlueSSLService">BlueSSLService</a> is the underlying framework that integrates with Kitura to provide SSL/TLS on macOS and Linux.</p>
   <p class="sentence">BlueSSLService is the first Swift-only framework that integrates with the native security libraries on macOS and Linux. Specifically, BlueSSLService integrates with OpenSSL library on Linux and Apple Secure Transport on macOS.</p>
   <p class="sentence">This is important, because the developer does not need to install any additional packages on their platform of choice. Additionally and more importantly, pre-installed OpenSSL on macOS has been deprecated since OS X v10.7 and later, for binary compatibility reasons. This means that if you require OpenSSL on macOS, you must install your own version of this library and statically link it into your program.</p>
   <p class="sentence">Finally, since BlueSSLService presents a consistent and unified Swift interface for both macOS and Linux, the developer can simply import BlueSSLService (via Kitura) in their application and know that their application will behave correctly on both macOS and Linux.</p>
-  <h2>Generating certificates</h2>
+  <h2 class="heading-2">Generating certificates</h2>
   <p class="sentence">To enable TLS in Kitura, we must first setup our server’s certificate and key pair. The certificate can be either a self-signed certificate or a certificate chain whereby the server certificate is signed by a CA.</p>
   <p class="sentence">Kitura currently only supports PKCS#12 on macOS, while it supports the following formats on Linux:</p>
   <ul>
@@ -83,7 +83,7 @@ $ openssl req -x509 -sha256 -days 365 -key key.pem -in cert.csr -out certificate
   <p class="sentence">You can convert your certificate to PKCS#12 format using:</p>
   <pre><code>$ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in certificate.pem</code></pre>
   <p class="sentence">Place your certificate and key in the /tmp/Creds/Self-Signed folder.</p>
-  <h2>Configuring Kitura for SSL/TLS</h2>
+  <h2 class="heading-2">Configuring Kitura for SSL/TLS</h2>
   <p class="sentence">We are now ready to configure Kitura with our certificate and key and enable TLS on our server. Remember that since this is a self-signed certificate, we must set the parameter usingSelfSignedCerts to true.</p>
   <p class="sentence">Assuming you used the <a href="../kituracli/gettingstarted.html">Kitura command-line tools</a> to create your application, edit Sources/Application/Application.swift and add the following code below the import statements:</p>
   <h3>For macOS</h3>
@@ -112,7 +112,7 @@ router.get("/") { request, response, next in
 }</code></pre>
   <p class="sentence">Pass your SSL configuration into the Kitura.addHTTPServer(...) function:</p>
   <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: mySSLConfig)</code></pre>
-  <h2>Testing the application</h2>
+  <h2 class="heading-2">Testing the application</h2>
   <p class="sentence">Next we build our application using SwiftPM and run the executable. After the executable is running and listening for connections on localhost:8080, you can test out the application by opening a browser on:</p>
   <pre><code class="language-swift">https://localhost:8080</code></pre>
   <p class="sentence">Notice the https in your URL! You are running Kitura with TLS! This means that the data your application transmits is secure and the server your users are connecting to is authenticated.</p>
@@ -120,8 +120,8 @@ router.get("/") { request, response, next in
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

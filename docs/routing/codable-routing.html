@@ -17,18 +17,18 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Codable Routing</h1>
+    <h1 class="heading-1">Codable Routing</h1>
     <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with stuct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
     <div class="underline"></div>
-    <h2>Contents:</h2>
+    <h2 class="heading-2">Contents:</h2>
     <ol class="plain-list">
-      <h3><li><a href="#prereq">Prerequisites</a></li></h3>
+      <h3 class="heading-3"><li><a href="#prereq">Prerequisites</a></li></h3>
       <p>This section will inform you of the minimum you need to have setup to follow this guide.</p>
-      <h3><li><a href="#post">Create a basic POST route</a></li></h3>
+      <h3 class="heading-3"><li><a href="#post">Create a basic POST route</a></li></h3>
       <p>Learn how to send data to a Kitura server using Codable types.</p>
-      <h3><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
+      <h3 class="heading-3"><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
       <p>Learn how to retrieve all data from a Kitura server.</p>
-      <h3><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
+      <h3 class="heading-3"><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
       <p>Learn how to get a single value from a Kitura server.</p>
     </ol>
     <div class="underline"></div>
@@ -39,7 +39,7 @@
       <li>You have defined a `Book` struct as described in the Codable routing section of "What is routing?"</li>
     </ul>
     <div class="underline"></div>
-    <h2 id="post"><span class="blue-text">Step 1:</span> Create an in memory bookstore</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create an in memory bookstore</h2>
     <p>If you have already completed Raw routing, you can skip this step</p>
     <p>Since our route handlers are asynchronous, we will use dispatch to serialize access to our bookstore.
         This will prevent collisions from multiple threads trying to access the same array.
@@ -55,7 +55,7 @@ let workerQueue = DispatchQueue(label: "worker")</code></pre>
    }
 }</code></pre>
     <div class="underline"></div>
-    <h2 id="post"><span class="blue-text">Step 2:</span> Create a CodableRoutes.swift file</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a CodableRoutes.swift file</h2>
     <p>Open your `Sources` > `Application` > `Application.swift`</p>
     <p> Inside the `postInit()` function add: </p>
     <pre><code class="language-swift">initializeCodableRoutes(app: self)</code></pre>
@@ -70,7 +70,7 @@ extension App {
     // Write bookstore and handlers here
 }</code></pre>
     <div class="underline"></div>
-    <h2 id="post"><span class="blue-text">Step 3:</span> Create a POST Codable Route</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a POST Codable Route</h2>
     <p>Inside the `initializeCodableRoutes` function add:</p>
     <pre><code class="language-swift">app.router.post("/codable", handler: app.postHandler)</code></pre>
     <p>What we've done is register a POST on our router that will handle any POST requests made on "/codable".</p>
@@ -85,7 +85,7 @@ extension App {
 }</code></pre>
     <p>We can now successfully compile the project!</p>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 4:</span> Test the POST route</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Test the POST route</h2>
     <p>With the project now compiling we can start the server.</p>
     <div class="info">
       <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.</p>
@@ -105,7 +105,7 @@ extension App {
     <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
     <p>We have just successfully posted a book to the server and had it returned.</p>
     <div class="underline"></div>
-    <h2 id="getall"><span class="blue-text">Step 5:</span> Create a GET ALL Codable Route</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 5: </span>Create a GET ALL Codable Route</h2>
     <p>We register a GET route in a similar way to the POST route.</p>
     <p>Inside the `initializeCodableRoutes` function add:</p>
     <pre><code class="language-swift">app.router.get("/codable", handler: app.getAllHandler)</code></pre>
@@ -131,7 +131,7 @@ extension App {
   "genre": "Fantasy"
 }]</code></pre>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 6:</span>Create a GET ONE Codable Route</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 6:</span> Create a GET ONE Codable Route</h2>
     <p>We register a second GET route in a similar way to our first.</p>
     <p>Inside the `initializeCodableRoutes` function add:</p>
     <pre><code class="language-swift">app.router.get("/codable", handler: app.getOneHandler)</code></pre>
@@ -205,7 +205,7 @@ extension App {
     }
 }
 </code></pre>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('open-api')" href="open-api.html#">Add Kitura OpenAPI:</a></span> Provides a UI for viewing information about Codable routes.</p>
     <!-- <p><span class="blue-text bold">Add Sessions:</span> Some blurb about Sessions</p>
     <p><span class="blue-text bold">Add Authentication:</span> Some blurb about Authentication</p> -->

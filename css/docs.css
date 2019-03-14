@@ -1,3 +1,4 @@
+
 body {
   font-family: IBM Plex Sans, sans-serif;
   font-size: 16px;
@@ -9,26 +10,27 @@ a {
   color: #0780B5;
 }
 
-h1 {
+/* Styling for h1, h2, h3 and h4. Using classes allows us to still use base elements outside of this scope. */
+.heading-1 {
   font-size: 1.94rem;
   font-weight: bold;
   margin-bottom: 2.5rem;
   margin-top: 2rem;
 }
 
-h2 {
+.heading-2 {
   font-size: 1.55rem;
   font-weight: bold;
   margin: 1.8rem 0;
 }
 
-h3 {
+.heading-3 {
   font-size: 1.25rem;
   font-weight: bold;
   margin: 1.6rem 0;
 }
 
-h4 {
+.heading-4 {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 1.4rem 0;

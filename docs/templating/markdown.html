@@ -19,14 +19,14 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Kitura Markdown</h1>
-    <h2>Prerequisites</h2>
+    <h1 class="heading-1">Kitura Markdown</h1>
+    <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
       <li><a onclick="localStorage.setItem('package', 'Kitura-Markdown'); setActiveSidebarElementForParent('markdown')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraMarkdown needs adding to the Package.swift file.</li>
     </ul>
     <div class="underline"></div>
-    <h2><span class="blue-text">Step 1:</span> Add KituraMarkdown to the Kitura App</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add KituraMarkdown to the Kitura App</h2>
     <p>First we need to import the KituraMarkdown package:</p>
     <pre><code class="language-swift">import KituraMarkdown</code></pre>
     <p>Now we can add the KituraMarkdown template engine to our router instance:</p>
@@ -47,7 +47,7 @@
     <p>So in our case KituraMarkdown will take the `book.md` file and render the Markdown in it to be viewed in a browser.</p>
     <p>This obviously will not work as we haven't created our `book.md` file.</p>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 2:</span> Create the template file</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create the template file</h2>
     <p>By default Kitura looks for template files in a `./Views` directory found at the root of the project.</p>
     <div class="info">
       <p>Typically the root of your project is where the `.xcodeproj` directory is.</p>
@@ -66,7 +66,7 @@
       <p>This is to enable Xcode to detect the new directory.</p>
     </div>
     <div class="underline"></div>
-    <h2><span class="blue-text bold">Step 3:</span> Populate the Markdown template file</h2>
+    <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Populate the Markdown template file</h2>
     <p>First we need some Markdown to render.</p>
     <p>So in the book.md file we will add:</p>
     <pre><code>Some example Markdown</code></pre>
@@ -77,7 +77,7 @@
     <pre><code>Some example output</code></pre>
     <p>That's it! We've successfully rendered some Markdown into a browser using KituraMarkdown.</p>
     <div class="underline"></div>
-    <h2>Next steps</h2>
+    <h2 class="heading-2">Next steps</h2>
     <p>Coming Soon!</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>

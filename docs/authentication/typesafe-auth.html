@@ -19,18 +19,18 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1>Type-Safe Authentication</h1>
+    <h1 class="heading-1">Type-Safe Authentication</h1>
     <p class="block-text">Authentication is the process of confirming a user’s identity, usually via a username and password. Authentication ensures that the user is allowed access to the secured system.</p>
     <p class="block-text">This guide uses Kitura credentials with TypeSafeHTTPBasic and Codable routing.</p>
-    <h2>Prerequisites</h2>
+    <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
       <li><span class="blue-text">Codable Model:</span> Learn how to create one in our Codable Routing guide</li>
       <li><span class="blue-text">Kitura OpenAPI:</span> Learn how to add this in our Kitura OpenAPI guide</li>
     </ul>
     <div class="underline"></div>
-    <h2>Type-Safe HTTP Basic</h2>
-    <h3><span class="blue-text">Step 1:</span> Define a TypeSafeHTTPBasic object</h3>
+    <h2 class="heading-2">Type-Safe HTTP Basic</h2>
+    <h3 class="heading-3"><span class="blue-text">Step 1:</span> Define a TypeSafeHTTPBasic object</h3>
     <p>We will declare a struct which conforms to TypeSafeHTTPBasic.</p>
     <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
     <p>Below our Codable model we will add:</p>
@@ -78,7 +78,7 @@ callback(nil)</code></pre>
     public var id: String
 }</code></pre>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 2:</span> Using TypeSafeHTTPBasic in a route</h3>
+    <h3 class="heading-3"><span class="blue-text">Step 2:</span> Using TypeSafeHTTPBasic in a route</h3>
     <p>Underneath our other Codable routes we will add:</p>
     <pre><code class="language-swift">router.get("/basic") { (user: MyBasicAuth, respondWith: (MyBasicAuth?, RequestError?) -> Void) in
     print("authenticated \(user.id) using \(user.provider)")
@@ -86,7 +86,7 @@ callback(nil)</code></pre>
 }</code></pre>
     <p>That's it! We've implemented HTTP basic authentication of a Codable route.</p>
     <div class="underline"></div>
-    <h3><span class="blue-text">Step 3:</span> Test TypeSafeHTTPBasic routes</h3>
+    <h3 class="heading-3"><span class="blue-text">Step 3:</span> Test TypeSafeHTTPBasic routes</h3>
     <p>We need to first start our Kitura server.</p>
     <p>Then navigate to: <a href="http://localhost:8080/basic">http://localhost:8080/basic</a></p>
     <p>Log in with the credentials we defined:</p>
@@ -97,7 +97,7 @@ callback(nil)</code></pre>
     <p>Use a private window if you would like to test incorrect authentication.</p>
     <!-- TODO: Link out to syncing with Database guide. -->
     <div class="underline"></div>
-    <h3>Next steps</h3>
+    <h3 class="heading-3">Next steps</h3>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`stencil`)" href="../templating/stencil.html#">Add a Web Page:</a></span> Get useful feedback from your server about startup and errors</p>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>

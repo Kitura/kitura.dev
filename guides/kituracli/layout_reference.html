@@ -42,11 +42,11 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>SWIFT SERVER GENERATOR PROJECT LAYOUT REFERENCE</h1>
+      <h1 class="heading-1">SWIFT SERVER GENERATOR PROJECT LAYOUT REFERENCE</h1>
     </div>
     <p>Swift Server Generator generates applications in a layout compatible with Swift Package Manager.</p>
     <p>The files that populate the application directory depend on the project type, capabilities and services selected during creation.</p>
-    <h2>Common files</h2>
+    <h2 class="heading-2">Common files</h2>
     <p>The following structure is common to all generated applications:</p>
     <code>
       <pre>
@@ -76,7 +76,7 @@
     <blockquote class="info">
       <p>.swiftservergenerator-project and .yo-rc.json are files used by the generator to know where the root of your project is and what kind of project you have. If you don’t need to do any further modifications after initial project generation (such as using the model generator), use the single shot option.</p>
     </blockquote>
-    <h2>Build files</h2>
+    <h2 class="heading-2">Build files</h2>
     <p>The following are created when the application is built (by swift build):</p>
     <code>
       <pre>
@@ -84,7 +84,7 @@
 ├── .build/                         - Build metadata, libraries and executables
 ├── {application_name}.xcodeproj    - Xcode project file</pre>
     </code>
-    <h2>Scaffolded project</h2>
+    <h2 class="heading-2">Scaffolded project</h2>
     <p>The following subsections apply to the scaffold project type. All scaffolded projects will have the following files included:</p>
     <code>
       <pre>
@@ -198,7 +198,7 @@
 │   ├── localdev-config.json          - IBM Cloud service configuration file
 │   └── mappings.json                 - Service configuration mappings file</pre>
     </code>
-    <h2>CRUD project</h2>
+    <h2 class="heading-2">CRUD project</h2>
     <p>The following section applies to the CRUD project type. CRUD projects will have the following files included:</p>
     <code>
       <pre>
@@ -239,8 +239,8 @@
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

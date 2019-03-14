@@ -21,15 +21,15 @@ function addCollapsibleElements() {
   for (var i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
       var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
+      if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
         for (var j = 0; j < items.length; j++) {
-          if (items[j].style.display === "block" && items[j] !== content) {
-            items[j].style.display = "none";
+          if (items[j].style.maxHeight !== null && items[j] !== content) {
+            items[j].style.maxHeight = null;
           }
         }
-        content.style.display = "block";
+        content.style.maxHeight = content.scrollHeight + "px";
       }
     });
   }
