@@ -43,9 +43,9 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>TYPE-SAFE SESSIONS</h1>
+      <h1 class="heading-1">TYPE-SAFE SESSIONS</h1>
     </div>
-    <h2>Introduction</h2>
+    <h2 class="heading-2">Introduction</h2>
 <p>Kitura 2.4 introduces &quot;Type-safe Middleware&quot;: middlewares that have a structure and data types that you define, that are instantiated and passed to your handler upon a request. Type-Safe Sessions is an implementation of <code>TypeSafeMiddleware</code> that allows an application developer to describe the exact structure and content of a session, in the form of a <code>class</code> conforming to the <code>TypeSafeSession</code> protocol.</p>
 <p>The key feature is in the name: type safety. The previous implementation of KituraSession that can be used alongside &quot;Raw Routing&quot; provides you with a general <code>[String: Any]</code> store, into which any type could be stored and retrieved. This places the burden of type checking on the user: any value retrieved from the session would need a downcast to its expected type, resulting in boilerplate checking and error handling, and the possibility of runtime errors.</p>
 <p>In contrast, <code>TypeSafeSession</code> has been designed to provide the following guarantees:</p>
@@ -54,7 +54,7 @@
 <li>All data in the session can be accessed directly from your class, with strongly typed properties. There is no need to downcast or handle failure.</li>
 <li>All data that can be stored in a session can be persisted, and this is enforced at compile time. A <code>TypeSafeSession</code> is <code>Codable</code>, so all types that are stored in the session must also be <code>Codable</code>.</li>
 </ul>
-<h2>Adding TypeSafeSession to your project</h2>
+<h2 class="heading-2">Adding TypeSafeSession to your project</h2>
 <p>Add <code>Kitura-Session</code> to your <code>Package.swift</code> dependencies:</p>
 <pre><code class="language-swift">    .package(url: &quot;https://github.com/IBM-Swift/Kitura-Session.git&quot;, from: &quot;3.2.0&quot;),
 </code></pre>
@@ -64,7 +64,7 @@
 <p>Regenerate your Xcode project:</p>
 <pre><code class="language-bash">swift package generate-xcodeproj
 </code></pre>
-<h2>Defining a TypeSafeSession</h2>
+<h2 class="heading-2">Defining a TypeSafeSession</h2>
 <p>To create a <code>TypeSafeSession</code>, declare a type that conforms to the <code>TypeSafeSession</code> protocol:</p>
 <pre><code class="language-swift">// Defines the session instance data
 final class MySession: TypeSafeSession {
@@ -119,15 +119,15 @@ router.post(&quot;/cart&quot;) { (session: MySession, book: Book, respondWith: (
     respondWith(book, nil)
 }
 </code></pre>
-<h2>Saving a session</h2>
+<h2 class="heading-2">Saving a session</h2>
 <p>It is necessary to save the session when updates have been made:</p>
 <pre><code class="language-swift">    session.save()
 </code></pre>
-<h2>Terminating a session</h2>
+<h2 class="heading-2">Terminating a session</h2>
 <p>To explicitly terminate a session, removing it from the store, call:</p>
 <pre><code class="language-swift">    session.destroy()
 </code></pre>
-<h2>Handling store failure</h2>
+<h2 class="heading-2">Handling store failure</h2>
 <p>It is possible that the session store could become inaccessible, resulting in a failure to persist or remove sessions from the store. In such cases, an error will be logged for you. However, you can also take additional steps in the case of an error by supplying a callback which takes an <code>Error?</code>:</p>
 <pre><code class="language-swift">router.post(&quot;/cart&quot;) { (session: MySession, book: Book, respondWith: @escaping (Book?, RequestError) -&gt; Void) -&gt; Void in
     session.books.append(book)
@@ -140,7 +140,7 @@ router.post(&quot;/cart&quot;) { (session: MySession, book: Book, respondWith: (
     }
 }
 </code></pre>
-<h2>Automatic saving of sessions</h2>
+<h2 class="heading-2">Automatic saving of sessions</h2>
 <p>If you have declared <code>MySession</code> as a class, it is possible to implement an automatic saving of the session by defining a deinitializer on the class:</p>
 <pre><code class="language-swift">    deinit {
         self.save()
@@ -163,8 +163,8 @@ router.post(&quot;/cart&quot;) { (session: MySession, book: Book, respondWith: (
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

@@ -42,11 +42,11 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>USING TEMPLATE ENGINES WITH KITURA</h1>
+      <h1 class="heading-1">USING TEMPLATE ENGINES WITH KITURA</h1>
     </div>
-    <h2>Why use a template engine in your application?</h2>
+    <h2 class="heading-2">Why use a template engine in your application?</h2>
     <p class="sentence">A template engine allows rendering of documents using static templates. At runtime, template variables are substituted with actual values to generate an HTML file. This means that you have clear separation between your template and data. You can also generate multiple web pages dynamically with a single template!</p>
-    <h2>Kitura template engines</h2>
+    <h2 class="heading-2">Kitura template engines</h2>
     <p class="sentence">Kitura template engines are classes that implement the <span class="highlight">TemplateEngine</span> protocol from the Kitura-TemplateEngine package. Kitura currently supports three template engines, with Stencil being the most commonly used:</p>
     <ul>
       <li>Kitura-StencilTemplateEngine.</li>
@@ -54,7 +54,7 @@
       <li>Kitura-Markdown.</li>
     </ul>
     <p class="sentence">You can provide your own Kitura template engine by implementing the <span class="highlight">TemplateEngine</span> protocol from Kitura-TemplateEngine package.</p>
-    <h2>Setting up</h2>
+    <h2 class="heading-2">Setting up</h2>
     <p class="sentence">See Getting Started for instructions on how to install Kitura’s command-line interface.</p>
     <p class="sentence">To use the template engines we first need to setup a Kitura server. Open a terminal and run the following:</p>
     <p class="sentence">1. Create a directory</p>
@@ -64,7 +64,7 @@
     <p class="sentence">3. Create a Kitura server</p>
     <code>kitura init</code>
     <p class="sentence"><span class="highlight">kitura init</span> downloads, creates and builds a starter Kitura application and will take a couple of minutes to complete. This includes best-practice implementations of health checking and monitoring as well as configuration files to allow easily deployment to a Docker container, a Kubernetes cluster, or the IBM Cloud.</p>
-    <h2>Adding a template engine to your Kitura app</h2>
+    <h2 class="heading-2">Adding a template engine to your Kitura app</h2>
     <p class="sentence">Kitura is a lightweight, modular framework — by default you get basic HTTP functionality, like routing, parameter handling, parsing request body, etc. You can augment Kitura’s out-of-the-box functionality by adding additional packages using the Swift Package Manager, or SPM for short. The <span class="highlight">kitura init</span> command we ran earlier created us a <span class="highlight">Package.swift</span> file and added some of these packages for us already, we need to add two more. The two packages we’d like to add are the template engines we’d like to use:</p>
     <p class="sentence">Kitura-StencilTemplateEngine:</p>
     <code>.package(url: "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git", .upToNextMajor(from: "1.0.0"))</code>
@@ -106,7 +106,7 @@ let package = Package(
       	    .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
         ]
 )</pre></code>
-<h2>Adding your template files to your Kitura app</h2>
+<h2 class="heading-2">Adding your template files to your Kitura app</h2>
 <h3>What are template files?</h3>
     <p class="sentence">Template files are text files that follow the syntax of a template engine. Here is an example of a Mustache template, taken from GRMustache.swift and a Stencil template, taken from Stencil.</p>
     <p class="sentence">Mustache Example:</p>
@@ -157,7 +157,7 @@ Your beard trimmer will arrive on {{format(date)}}.
 Well, on {{format(realDate)}} because of a Martian attack.
 {{/late}}</pre>
     </code>
-    <h2>Registering a template engine with a Router instance</h2>
+    <h2 class="heading-2">Registering a template engine with a Router instance</h2>
     <p class="sentence">We now have everything in place to start writing the code for our implementation of the template engines!</p>
     <p class="sentence">In Xcode open the Application.swift file found in Sources/Application/</p>
     <p class="sentence">The first step we do to do is import our packages so we can make use of the API they provide. Below the line:</p>
@@ -173,7 +173,7 @@ import KituraStencil</code>
     <code>router.add(templateEngine: MustacheTemplateEngine()) <br>
 router.add(templateEngine: StencilTemplateEngine())</code>
     <p class="sentence">We have now registered both of our template engines with a router.</p>
-    <h2>Rendering a template</h2>
+    <h2 class="heading-2">Rendering a template</h2>
     <p class="sentence">We can render a template by calling the response.render(_:context) function, where context is the information the template engine will use to fill out the corresponding template files.</p>
     <p class="sentence">We will start with rendering the Stencil template. Below the line:</p>
     <code>router.add(templateEngine: StencilTemplateEngine())</code>
@@ -332,8 +332,8 @@ Well, on Sep 19, 2016 because of a Martian attack.
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

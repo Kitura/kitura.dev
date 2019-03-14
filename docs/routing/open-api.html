@@ -25,6 +25,7 @@
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
       <li><span class="blue-text">Codable Routes:</span> Learn how to add Codable routes in our Codable Routing guide</li>
+      <li><span class="blue-text">Style Guide:</span> Your project is set up as described by our style guide.</li>
       <li><a onclick="localStorage.setItem('package', 'Kitura-OpenAPI'); setActiveSidebarElementForParent('openapi')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraOpenAPI needs adding to the Package.swift file.</li>
     </ul>
     <div class="underline"></div>
@@ -32,7 +33,7 @@
     <p>First we need to import KituraOpenAPI into our project:</p>
     <pre><code class="language-swift">import KituraOpenAPI</code></pre>
     <p>Next we need to add the KituraOpenAPI end points to our router.</p>
-    <p>Just above the `Kitura.addHTTPServer()` line, add:</p>
+    <p>Inside the `postInit()` function add:</p>
     <pre><code class="language-swift">KituraOpenAPI.addEndpoints(to: router)</code></pre>
     <p>That's all we need to do to enable KituraOpenAPI on our server.</p>
     <div class="info">

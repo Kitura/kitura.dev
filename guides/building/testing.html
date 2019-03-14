@@ -41,12 +41,12 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>TESTING YOUR KITURA APP</h1>
+      <h1 class="heading-1">TESTING YOUR KITURA APP</h1>
     </div>
-    <h2>Setting up the Tests directory</h2>
+    <h2 class="heading-2">Setting up the Tests directory</h2>
     <p>In the root level of your project, create a directory called Tests.</p>
     <p>Inside Tests create a directory for holding your test suite module. It is recommended that it is the same name as the module you wish to test, suffixed with Tests (for example: if you have a module Foo that you would like to test, create a directory FooTests).</p>
-    <h2>Creating Test Cases</h2>
+    <h2 class="heading-2">Creating Test Cases</h2>
     <p>Create a new Swift file in the test suite directory (for example: if you would like to test the Frob feature of your Foo module you might call it FooTests/FrobTests.swift)</p>
     <p>Add import XCTest at the top</p>
     <p>Add a line @testable import <module-name> for each of the modules you want to access in this set of tests. (Note the @testable keyword allows you to call internal methods in your tests)</p>
@@ -60,7 +60,7 @@
     ("testFrobbingTheFoo", testFrobbingTheFoo)
   ]
 }</code></pre>
-    <h2>Creating Test Main (Linux only)</h2>
+    <h2 class="heading-2">Creating Test Main (Linux only)</h2>
     <p>Inside your Tests directory, create a new file called LinuxMain.swift</p>
     <p> In this file import all your test modules. The names of the test modules are the names of your test suite directories (eg: FooTests, which will import any classes defined in Swift files inside the FooTests module).</p>
     <p>Import XCTest as well</p>
@@ -68,9 +68,9 @@
     <pre><code class="language-swift">XCTMain([
    testCase(FrobTests.allTests)
 ])</code></pre>
-    <h2>Run Tests</h2>
+    <h2 class="heading-2">Run Tests</h2>
     <p>In your projects root directory, run the command swift test after having built them using swift build.</p>
-    <h2>Example files:</h2>
+    <h2 class="heading-2">Example files:</h2>
     <p>Tests/FooTests/FrobTests.swift:</p>
     <pre><code class="language-swift">import XCTest
 @testable import Foo
@@ -114,8 +114,8 @@ XCTMain([
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 

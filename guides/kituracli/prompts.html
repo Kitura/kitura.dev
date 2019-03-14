@@ -42,10 +42,10 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>PROMPT REFERENCE</h1>
+      <h1 class="heading-1">PROMPT REFERENCE</h1>
     </div>
     <p>The following sections describe the prompts provided by the application generator.</p>
-    <h2>Application name prompt</h2>
+    <h2 class="heading-2">Application name prompt</h2>
     <p>If you did not supply an application name as an argument, the application generator will ask the name you would like to use for your application:</p>
     <code>What's the name of your application? (currentDirectory)</code>
     <p>The default value is the name of the current working directory.</p>
@@ -58,7 +58,7 @@
       <li>Must not be node_modules</li>
       <li>Must not be favicon.ico</li>
     </ul>
-    <h2>Application directory prompt</h2>
+    <h2 class="heading-2">Application directory prompt</h2>
     <p>The application generator will ask the name of the directory you would like to use for your application:</p>
     <code>Enter the name of the directory to contain the project: (applicationName)</code>
     <p>The default value is the name of the application.</p>
@@ -69,7 +69,7 @@
       <li>Must not contain any of the following characters: /@+%:</li>
       <li>Must not contain characters reserved in URIs</li>
     </ul>
-    <h2>Project type prompt</h2>
+    <h2 class="heading-2">Project type prompt</h2>
     <p>The application generator will ask which type of project you would like to create, offering two options:</p>
     <code>
       <pre>
@@ -79,7 +79,7 @@
     </code>
     <p>The Scaffold a starter option will direct the generator to create a scaffolded application providing boilerplate code and application structure to which your application logic can be added.</p>
     <p>The Generate a CRUD application option will direct the generator to create a CRUD application on top of which a data model can be defined which will automatically be mapped to REST endpoints for create, read and update operations. At present the code for this type of application is not very customizable aside from modifying the data model.</p>
-    <h2>Application pattern prompt</h2>
+    <h2 class="heading-2">Application pattern prompt</h2>
     <p>For scaffolded applications, the application generator will ask which application pattern you want to select, offering three options:</p>
     <code>
       <pre>
@@ -115,7 +115,7 @@
 ◉ Embedded metrics dashboard
 ◉ Docker files</pre>
     </code>
-    <h2>Capabilities prompt</h2>
+    <h2 class="heading-2">Capabilities prompt</h2>
     <p>The application generator will ask which capabilities you want to select.</p>
     <p>For Scaffold project type, the following capabilities are available:</p>
   </section>
@@ -143,7 +143,7 @@
     <li>CRUD project type: all 3 available capabilities are selected by default</li>
     <li>Scaffold project type: defaults depend on application pattern</li>
   </ul>
-  <h2>Services prompt</h2>
+  <h2 class="heading-2">Services prompt</h2>
   <p>For scaffolded applications, the application generator will ask which services you want to select.</p>
   <code>
     <pre>
@@ -159,7 +159,7 @@
   ◯ Alert Notifications
   ◯ Push Notifications</pre>
   </code>
-  <h2>CRUD store prompt</h2>
+  <h2 class="heading-2">CRUD store prompt</h2>
   <p>For CRUD applications, the application generator will ask how you want to store entities:</p>
   <code>
     <pre>
@@ -172,7 +172,7 @@
     <p>The memory data store is volatile and any data added will be lost when the application is stopped. As such, it is only suitable for development purposes.</p>
   </blockquote>
   <p>Selecting Cloudant / CouchDB will add a local CouchDB service for entity storage.</p>
-  <h2>Service configuration prompt</h2>
+  <h2 class="heading-2">Service configuration prompt</h2>
   <p>The application generator will ask you which of the services you selected need to be configured, for example:</p>
   <code>
     <pre>
@@ -186,8 +186,8 @@
     <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

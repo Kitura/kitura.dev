@@ -43,9 +43,9 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>Working with Databases using the ORM</h1>
+      <h1 class="heading-1">Working with Databases using the ORM</h1>
     </div>
-    <h2>Introduction</h2>
+    <h2 class="heading-2">Introduction</h2>
 <p>
     <a href="https://github.com/IBM-Swift/Swift-Kuery-ORM" target="_blank">Swift-Kuery-ORM</a>  is an ORM (Object Relational Mapping)
     library for Swift built on top of <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> .
@@ -55,7 +55,7 @@
     This guide steps you through connecting to a PostgreSQL database,
      creating your model, and persisting it using the ORM.
 </p>
-<h2>Adding Swift-Kuery-ORM and Swift-Kuery-PostgreSQL to your project</h2>
+<h2 class="heading-2">Adding Swift-Kuery-ORM and Swift-Kuery-PostgreSQL to your project</h2>
 <p>If you do not have an existing project, run <code>kitura init</code> in your terminal to generate a new project.</p>
 <p>Edit your <code>Package.swift</code> adding <code>Swift-Kuery-ORM</code> and <code>Swift-Kuery-PostgreSQL</code> to your dependencies and application targets:</p>
 <pre><code class="language-swift">.package(url: &quot;https://github.com/IBM-Swift/Swift-Kuery-ORM.git&quot;, .upToNextMinor(from: &quot;0.3.1&quot;)),
@@ -73,7 +73,7 @@
 import SwiftKueryPostgreSQL
 </code></pre>
 
-<h2>Creating Your PostgreSQL Database</h2>
+<h2 class="heading-2">Creating Your PostgreSQL Database</h2>
 <p>
     You will create a locally running PostgreSQL Database that your server will connect to.
     We recommend you use <a href="https://brew.sh/" target="_blank">Homebrew</a> to set up PostgreSQL on your machine as follows:
@@ -83,7 +83,7 @@ brew services start postgresql
 createdb school
 </code></pre>
 
-<h2>Define Your Model</h2>
+<h2 class="heading-2">Define Your Model</h2>
 
 <p>
     We are going to create a struct to represent the data we will store in the database.
@@ -98,7 +98,7 @@ createdb school
 }
 </code></pre>
 
-<h2>Set up the Database connection</h2>
+<h2 class="heading-2">Set up the Database connection</h2>
 
 <p>
     In the postInit function of your Application.swift file, create your database connection pool:
@@ -127,7 +127,7 @@ SELECT * FROM "Grades";
     This should print the column names of the Grades table with no data (i.e. no rows).
 </p>
 
-<h2>Persisting our Model in the database</h2>
+<h2 class="heading-2">Persisting our Model in the database</h2>
 
 <p>
     We are going to create a set of Codable routes that
@@ -162,7 +162,7 @@ func deleteOneHandler(id: Int, completion: @escaping (RequestError?) -> Void ) {
 }
 </code></pre>
 
-<h2>Accessing the response on the server</h2>
+<h2 class="heading-2">Accessing the response on the server</h2>
 
 <p>
     Because the ORM API matches the Codable routes API,
@@ -180,7 +180,7 @@ func deleteOneHandler(id: Int, completion: @escaping (RequestError?) -> Void ) {
 }
 </code></pre>
 
-<h2>Testing with OpenAPI</h2>
+<h2 class="heading-2">Testing with OpenAPI</h2>
 
 <p>You can test these route using the OpenAPI interface:</p>
 
@@ -201,7 +201,7 @@ func deleteOneHandler(id: Int, completion: @escaping (RequestError?) -> Void ) {
     4. Quit PSQL with: <code>\q</code>
 </p>
 
-<h2>Using Query Parameters with Swift-Kuery-ORM</h2>
+<h2 class="heading-2">Using Query Parameters with Swift-Kuery-ORM</h2>
 
 <p>
 You are now going to create a route that will filter the
@@ -251,8 +251,8 @@ course: History, grade: 90
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

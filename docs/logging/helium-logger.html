@@ -22,11 +22,12 @@
     <h1 class="heading-1">HeliumLogger</h1>
     <p>Helium Logger is a lightweight Swift logging framework which supports logging to standard output.</p>
     <div class="info">
-      <p>If you created your server using `kitura init` or the macOS app then your Kitura Server will already have logging enabled.</p>
+      <p>If you created your server using `kitura init` or the macOS app you can skip to step 3.</p>
     </div>
     <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide.</li>
+      <li><span class="blue-text">Style Guide:</span> Your project is set up as described by our style guide.</li>
       <li><a onclick="localStorage.setItem('package', 'HeliumLogger'); setActiveSidebarElementForParent('update-package')" href="../getting-started/update-package.html#">Add Dependency:</a> HeliumLogger needs adding to the `Package.swift` file.</li>
     </ul>
     <div class="underline"></div>
@@ -42,20 +43,27 @@
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
     <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
-    <p>Below the line `import HeliumLogger` add:</p>
+    <p>Inside `Sources` > `MyKituraApp` > `main.swift` add:</p>
     <pre><code class="language-swift">HeliumLogger.use()</code></pre>
-    <p>Your code should look like this:</p>
-    <pre><code class="language-swift">import Kitura
+    <p>We are going to use our new logger to for errors thrown by our server.</p>
+    <p>Inside the catch block, log the thrown error:</p>
+    <pre><code class="language-swift">
+Log.error(error.localizedDescription)
+</code></pre>
+    <p>Your `main.swift` should look like this:</p>
+    <pre><code class="language-swift">import Foundation
+import Kitura
 import LoggerAPI
 import HeliumLogger
+import Application
 
 HeliumLogger.use()
-
-let router = Router()
-
-
-Kitura.addHTTPServer(onPort: 8080, with: router)
-Kitura.run()</code></pre>
+do {
+    let app = try App()
+    try app.run()
+} catch let error {
+    Log.error(error.localizedDescription)
+}</code></pre>
     <p>Now if you start your server you should see some output:</p>
     <pre><code class="language-swift">
 [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
@@ -63,7 +71,7 @@ Kitura.run()</code></pre>
 [xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
 [xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
     <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Set logging level (Optional)</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Set logging level </h2>
     <p>HeliumLogger can be customized to change the level of logging.</p>
     <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
 
@@ -87,11 +95,16 @@ Kitura.run()</code></pre>
     <p>Similarly if you set a logging level of `warning`:</p>
     <pre><code class="language-swift">HeliumLogger.use(.warning)</code></pre>
     <p>You will get logging for `warning` and `error`.</p>
-    <!-- <p>TODO: Add instructions for setting logging at runtime?</p> -->
-    <!-- <div class="underline"></div>
-    <h2 class="heading-2">TODO: Add instructions for adding logging to own application</h2>
     <div class="underline"></div>
-    <h2 class="heading-2">TODO: Add instructions for further customisation</h2> -->
+    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add logging to your application</h2>
+    <p>Once you have your Logger configured, you can use it within your application.</p>
+    <p>Open your `Sources` > `Application` > `Application.swift` file and ensure LoggerAPI is imported.</p>
+    <pre><code class="language-swift">import LoggerAPI</code></pre>
+    <p>Add a log message to the App's `init()` function:</p>
+    <pre><code class="language-swift">Log.info("Hello World")</code></pre>
+    <p>Restart your server and look through the logs. You should see your message:</p>
+    <pre><code>[2019-03-13T16:23:08.078Z] [INFO] [Application.swift:22 init()] Hello World</code></pre>
+    <p>Your log message is printed along with the time it occured, the log level and the location in your code.</p>
     <div class="underline"></div>
     <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server.</p>

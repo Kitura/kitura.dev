@@ -43,24 +43,24 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>Writing Custom Paths</h1>
+      <h1 class="heading-1">Writing Custom Paths</h1>
     </div>
     <p>When hooking up middleware and handlers to your Kitura server, you can customize your paths using Kitura’s path syntax. This guide assumes familiarity with the concepts of Kitura app and route handler.</p>
-    <h2>Static Paths</h2>
+    <h2 class="heading-2">Static Paths</h2>
     <p>The most basic of paths, static paths, are supported. Simply specify the path as it is when mounting your middleware or handler, like so:</p>
     <pre><code class="language-swift">// handler example
 app.get("/test") { req, res, next in
     try res.send("Hello world").end()
 }</code></pre>
     <p>In this case, the path /test will be matched for /test only.</p>
-    <h2>Paths with Parameter(s)</h2>
+    <h2 class="heading-2">Paths with Parameter(s)</h2>
     <p>Kitura supports parameters in the path for use cases such as performing CRUD operations against an object. Simply tag the parameter using :, like so:</p>
     <pre><code class="language-swift">app.get("/:id") { req, res, next in
     let id = req.parameters["id"] ?? ""
     try res.send("Hello world to user \(id)").end()
 }</code></pre>
     <p>In this case, the path /:id will be for /123 as well as /abc. You can then access the id parameter’s value via req.parameters["id"].</p>
-    <h2>Parameter Modifiers</h2>
+    <h2 class="heading-2">Parameter Modifiers</h2>
     <h3>Zero or One</h3>
     <p>You can specify that a parameter is optional by using the ? operator, like so:</p>
     <pre><code class="language-swift">app.get("/:id?") { req, res, next in
@@ -100,8 +100,8 @@ app.get("/test") { req, res, next in
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>
