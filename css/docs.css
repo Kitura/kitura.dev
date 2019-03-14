@@ -169,7 +169,7 @@ td, th {
 .macos-download-button {
   height: 2.66rem;
   width: 10.88rem;
-  background: #6478C8;
+  background: #0780B5;
   color: white;
   border-radius: 0.55rem;
   border: none;
@@ -204,17 +204,54 @@ td, th {
 .landing-heading {
   width: 100%;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .landing-heading > h1 {
-  margin-bottom: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 2.7rem;
 }
 
+.landing-heading > h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .landing-heading > p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  margin: 0 auto;
   margin-top: 1rem;
+  width: 50%;
+}
+
+.circle-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.circle {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #DEDEDE;
+  margin: 0 0.6rem;
+}
+
+.tutorial {
+  text-align: center;
+}
+
+.tutorial > h3 {
+  color: #0780B5;
+  font-size: 1.2rem;
+}
+
+.tutorial > p {
+  margin-top: -1rem;
+  font-size: 0.9rem;
+  color: #676767;
 }
 
 .landing-img, .option-img {
@@ -366,8 +403,8 @@ pre:hover:before {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
   'header header header header header header'
-  'new-app new-app lightbulb lightbulb own-app own-app'
-  'books books short short steps steps';
+  'books books lightbulb lightbulb steps steps'
+  'new-app new-app short short own-app own-app';
 }
 
 /* create-server.html CSS grid layout */
