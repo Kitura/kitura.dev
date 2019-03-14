@@ -69,10 +69,10 @@ let workerQueue = DispatchQueue(label: "worker")</code></pre>
 }</code></pre>
     <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a POST route</h2>
     <p>Inside the `initializeRawRoutes` function add:</p>
-    <pre><code class="language-swift">router.post("/raw") { request, response, next in
+    <pre><code class="language-swift">app.router.post("/raw") { request, response, next in
     next()
 }</code></pre>
-    <p>What we've done is register a POST on our router that will handle any POST requests made on "/books".</p>
+    <p>What we've done is register a POST on our router that will handle any POST requests made on "/raw".</p>
     <div class="info">
       <p>If the values `request`, `response` and `next` are unfamiliar to you, learn more about them in our "What is Routing?" guide.</p>
     </div>
@@ -178,7 +178,7 @@ response.send(book)
     next()
 }</code></pre>
     <p>Now we need to restart our server and make a POST request using the curl command from step 3.</p>
-    <p>Use a browser to navigate to <a href="http://localhost:8080/codable/0" target="_blank">localhost:8080/codable/0</a></p>
+    <p>Use a browser to navigate to <a href="http://localhost:8080/raw/0" target="_blank">http://localhost:8080/raw/0</a></p>
     <p>This will make a GET request to the server and you should see the first book in JSON format:</p>
     <pre><code>
 {
@@ -189,7 +189,7 @@ response.send(book)
 }</code></pre>
   <p>In Terminal enter the following to post a second book to the server:</p>
   <pre><code>curl -X POST \
-    http://localhost:8080/codable \
+    http://localhost:8080/raw \
     -H 'content-type: application/json' \
     -d '{
       "id": 1,
@@ -197,7 +197,7 @@ response.send(book)
       "price": 10.00,
       "genre": "Fantasy"
     }'</code></pre>
-    <p>Then open the browser at <a href="http://localhost:8080/codable/1" target="_blank">localhost:8080/codable/1</a></p>
+    <p>Then open the browser at <a href="http://localhost:8080/raw/1" target="_blank">http://localhost:8080/raw/1</a></p>
     <p>This will make a new GET request to the server and you should see the second book in JSON format:</p>
     <pre><code>{
     "id": 1,
@@ -209,6 +209,48 @@ response.send(book)
     <p>We can continue to make POST and GET requests from our bookstore.</p>
     <p>However, if the server is restarted, all the data will be lost and we will have an empty array again.</p>
     <p>In the Database Guide we will look to resolve this issue and add persistence.</p>
+    <div class="underline"></div>
+    <p>Your completed `RawRouting.swift` should now look as follows:</p>
+<pre><code class="language-swift">import Dispatch
+
+func initializeRawRoutes(app: App) {
+    // Register routes with handlers here
+    app.router.post("/raw") { request, response, next in
+        do {
+            let book = try request.read(as: Book.self)
+            app.execute {
+                app.bookStore.append(book)
+            }
+            response.send(book)
+        } catch {
+            let _ = response.send(status: .badRequest)
+        }
+        next()
+    }
+
+    app.router.get("/raw") { request, response, next in
+        app.execute {
+            response.send(app.bookStore)
+        }
+        next()
+    }
+
+    app.router.get("/raw/:id") { request, response, next in
+        app.execute {
+            guard let idString = request.parameters["id"],
+                let id = Int(idString),
+                id >= 0,
+                id < app.bookStore.count
+                else {
+                    let _ = response.send(status: .badRequest)
+                    return next()
+            }
+            response.send(app.bookStore[id])
+        }
+        next()
+    }
+}
+</code></pre>
     <div class="underline"></div>
     <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
