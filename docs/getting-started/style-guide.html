@@ -21,15 +21,54 @@
   <body>
     <h1 class="heading-1">Kitura Server Style Guide</h1>
     <p>This guide covers a way of structuring your project code to make future development easier and keep your project files looking clean.</p>
-    <div class="info">
-      <p>If you used the Kitura CLI or Kitura macOS app to create your project then you may already have your project in the structure outlined in this guide.</p>
-    </div>
     <div class="underline"></div>
     <h2 id="prereq">Prerequisites</h2>
     <ul class="plain-list">
       <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
     </ul>
     <div class="underline"></div>
+    <h2 class="heading-2">Recommended Project Structure</h2>
+    <p class="block-text">We recommended you follow the Model-View-Controller (MVC) design pattern for your Kitura project (With Controllers called Routes).
+         An example file structure of a project following this patten would be:</p>
+<pre>
+MyKituraApp
+├── Package.swift
+├── Sources
+│    ├── MyKituraApp
+│    │    └── main.swift
+│    └── Application
+│         ├── Application.swift
+│         ├── Routes
+│         │    └── HealthRoutes.swift
+│         ├── Models
+│         │    └── Book.swift
+│         └── Middlewares
+│              └── CheckoutSession.swift
+├── Views
+│    └── Template.stencil
+├── public
+│    └── Img.jpg
+└── Tests
+</pre>
+     <div class="info">
+       <p>If you used the Kitura CLI or Kitura macOS app to create your project then you should have the majority of this project structure.</p>
+     </div>
+     <p class="block-text">This might seem a bit complex so lets break down what these folders and files are:</p>
+     <ul>
+       <li>Package.swift – Defines packages that your app depends on and their versions</li>
+       <li>main.swift - The file that is run to initialize your app and run your Server</li>
+       <li>Application.swift - Your application that glues everything together</li>
+       <li>Routes – (AKA controllers) defines your app routes and their logic</li>
+       <li>Middlewares – Kitura middlewares which process the incoming requests before handling them down to the routes</li>
+       <li>Models – represents data, implements business logic and handles storage</li>
+       <li>public – contains all static files like images, styles and javascript</li>
+       <li>Views – provides templates which are rendered and served by your routes</li>
+       <li>Tests – Swift tests for your project</li>
+     </ul>
+    <div class="underline"></div>
+    <p class="block-text">Throughout these guide we will assume you have a project set up as described above.
+    If you generated your project using SPM, the following steps will produce the above structure.</p>
+    <p>If you generated your project with the App or CLI, skip ahead to Step 5: Defining a Book model.</p>
     <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create Application directory</h2>
     <p>Within our `Sources` directory we first need to create an `Application` directory:</p>
     <pre><code>mkdir Sources/Application</code></pre>
@@ -52,7 +91,7 @@ let package = Package(
     .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", from: "1.7.1"),
   ],
   targets: [
-    .target(name: "kitinit", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
+    .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
     .target(name: "Application", dependencies: [ "Kitura" ]),
 
     .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
@@ -76,33 +115,50 @@ let package = Package(
 
 public class App {
 
-  let router = Router()
+    let router = Router()
 
-  public init() {
+    public init() throws {
 
-  }
+    }
 
-  public func run() throws {
-    Kitura.addHTTPServer(onPort: 8080, with: router)
-    Kitura.run()
-  }
+    func postInit() throws {
+
+    }
+
+    public func run() throws {
+        try postInit()
+        Kitura.addHTTPServer(onPort: 8080, with: router)
+        Kitura.run()
+    }
 }</code></pre>
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add code main.swift file</h2>
     <p>Now that we have created our `App` class in our Application.swift file we can use it within the main.swift file:</p>
-    <pre><code class="language-swift">import LoggerAPI
-import HeliumLogger
-import Application
+    <pre><code class="language-swift">import Application
 
 do {
-
-  HeliumLogger.use(LoggerMessageType.info)
-
-  let app = App()
+  let app = try App()
   try app.run()
 
 } catch let error {
-    Log.error(error.localizedDescription)
+    // Log error here
+}</code></pre>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 5:</span> Defining a Book model</h2>
+    <p class="block-text">As we are simulating a bookstore in our guides, we are going to need to define a book.
+        The book is a model so the first thing we need to do is create our Models folder:</p>
+        <pre><code>mkdir Sources/Application/Models</code></pre>
+        <p>This is the directory where we will store all of our models.</p>
+        <p>Next we will create our Book.swift file:</p>
+        <pre><code>touch Sources/Application/Models/Book.swift</code></pre>
+        <p>We will open the Book.swift file in our default text editor:</p>
+        <pre><code>open Sources/Application/Models/Book.swift</code></pre>
+        <p>Inside this file we define our Book:</p>
+        <pre><code class="language-swift">struct Book: Codable {
+    let id: Int
+    let title: String
+    let price: Double
+    let genre: String
 }</code></pre>
     <div class="underline"></div>
     <h2 class="heading-2">Next steps</h2>

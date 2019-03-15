@@ -47,7 +47,10 @@ extension App {
     <p>We will add our `postSessionHandler` and `getSessionHandler` later in this guide.</p>
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define a Type-Safe Session</h2>
-    <p>Create a new file called `CheckoutSession.swift` in `Sources` > `Application` > `Models`.</p>
+    <p>Create a new file called `CheckoutSession.swift` in `Sources` > `Application` > `Middlewares`.</p>
+    <div class="info">
+      <p>You may need to create the `Middlewares` folder.</p>
+    </div>
     <p>We can use either a Class or a Struct for TypeSafeMiddleware here but we will use a Class.</p>
     <p>Inside this file, define your `CheckoutSession` class:</p>
     <pre><code class="language-swift">import KituraSession
