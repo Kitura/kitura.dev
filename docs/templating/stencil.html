@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1 class="heading-1">Kitura Stencil</h1>
+    <h2 class="heading-2">Prerequisites</h2>
+    <ul class="plain-list">
+      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+      <li><a onclick="localStorage.setItem('package', 'Kitura-StencilTemplateEngine'); setActiveSidebarElementForParent('stencil')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraStencil needs adding to the Package.swift file.</li>
+    </ul>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a `StencilRoutes.swift` file</h2>
+    <p>Open your `Sources` > `Application` > `Application.swift`</p>
+    <p> Inside the `postInit()` function add: </p>
+    <pre><code class="language-swift">initializeStencilRoutes(app: self)</code></pre>
+    <p>Create a new file called `StencilRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+    <p>Inside this file, add the framework for our routes code:</p>
+    <pre><code class="language-swift">import KituraStencil
+
+func initializeStencilRoutes(app: App) {
+    // register template engine here
+    app.router.get("/stencil") { request, response, next in
+        // render response here
+        next()
+    }
+}</code></pre>
+    <div class="info">
+    <p>Templating is not part of a REST api so it only supported in Raw routes.</p>
+    </div>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add StencilTemplateEngine to our router</h2>
+    <p>We register a stencil temple engine to our router instance:</p>
+    <pre><code class="language-swift">app.router.add(templateEngine: StencilTemplateEngine())</code></pre>
+    <p>The above line of code tells the server on this instance of the router we'd like to use Stencil as the default template engine.</p>
+    <div class="info">
+      <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
+      <p>Kitura then provides APIs to select a default template engine to use.</p>
+    </div>
+    <p>We've just added the Stencil template engine to our router, so now we can use it in a route.</p>
+    <p>Inside our get route, add the following:</p>
+    <pre><code class="language-swift">let book = Book(id: 0, title: "A Game of Thrones", price: 14.99, genre: "fantasy")
+try response.render("book.stencil", with: book)</code></pre>
+    <p>Your completed `StencilRoutes.swift` should now look as follows:</p>
+    <pre><code class="language-swift">import KituraStencil
+
+func initializeStencilRoutes(app: App) {
+    app.router.add(templateEngine: StencilTemplateEngine())
+    app.router.get("/stencil") { request, response, next in
+        let book = Book(id: 0, title: "A Game of Thrones", price: 14.99, genre: "fantasy")
+        try response.render("book.stencil", with: book)
+        next()
+    }
+}</code></pre>
+    <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
+    <p>In our case, the file `book.stencil` template will be populated with the `book` data and then rendered in the browser on `"/book"`.</p>
+    <p>This obviously will not work as we haven't created our `book.stencil` file.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create the template file</h2>
+    <p>By default Kitura looks for template files in a `./Views` directory found at the root of the project.</p>
+    <div class="info">
+      <p>Typically the root of your project is where the `.xcodeproj` directory is.</p>
+    </div>
+    <p>Once we are in the root of our project we can create the directory:</p>
+    <pre><code>mkdir Views</code></pre>
+    <div class="info">
+      <p>If you would prefer you can create your directory using a UI based approach, such as Finder on Mac.</p>
+    </div>
+    <p>Then we need to create our template file within the Views directory.</p>
+    <p>In a terminal run the following:</p>
+    <pre><code class="language-swift">cd Views && touch book.stencil</code></pre>
+    <p>Now we have everything we need to start creating our templates.</p>
+    <p>The last thing we need to do is recreate our Xcode project:</p>
+    <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
+    <p>This is to enable Xcode to pick up the new directory we've just added.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Populate the Stencil template file</h2>
+    <div class="info">
+      <p>Stencil is a templating language that has a lot of powerful features, you can learn about them in the <a target="_blank" href="http://stencil.fuller.li/en/latest/">Stencil guide.</a></p>
+    </div>
+    <p>We first need some template code to populate.</p>
+    <p>Open the `book.stencil` file and add the following:</p>
+    <pre><code class="language-swift">&lt;html&gt;
+  &lt;p&gt; Id:     {{ id }}   &lt;/p&gt;
+  &lt;p&gt; Title: {{ title }} &lt;/p&gt;
+  &lt;p&gt; Price: {{ price }} &lt;/p&gt;
+  &lt;p&gt; Genre: {{ genre }} &lt;/p&gt;
+&lt;/html&gt;</code></pre>
+    <p>Now to test our templating, we first need to start the Kitura server.</p>
+    <p>Then in a browser open: <a target="_blank" href="http://localhost:8080/stencil">http://localhost:8080/stencil</a></p>
+    <p>In the browser we should see:</p>
+    <pre><code class="language-swift">Id: 0
+
+Title: A Game of Thrones
+
+
+Price: 14.99
+
+
+Genre: "fantasy"</code></pre>
+    <p>That's it! We've just rendered a simple data type in the browser using Kitura Stencil.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2">Next steps</h2>
+    <p>Coming Soon!</p>
+    <!-- <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('cloud-foundry')" href="../deploying/cloud-foundry.html#">Deploy your application:</a></span> Get useful feedback from your server about startup and errors</p> -->
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+  </body>
+</html>

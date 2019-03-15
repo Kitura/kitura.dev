@@ -18,9 +18,9 @@ Kitura.io is written in HTML, CSS and JS.
 When editing existing topics you should adhere to the following guidelines, doing so will provide styling for you.
 
 #### Headings
-Use `<h1>` tags for the title of the page.
+Use `<h1 class="heading-1">` tags for the title of the page.
 
-Use `<h2>` tags for headers of sections.
+Use `<h2 class="heading-2">` tags for headers of sections.
 
 Use `<h3>` tags for sub headers.
 
@@ -120,7 +120,7 @@ To create a new guide in HTML use the following skeleton:
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>TITLE_OF_GUIDE</h1>
+      <h1 class="heading-1">TITLE_OF_GUIDE</h1>
     </div>
     /**
       Place your content here!
@@ -129,8 +129,8 @@ To create a new guide in HTML use the following skeleton:
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

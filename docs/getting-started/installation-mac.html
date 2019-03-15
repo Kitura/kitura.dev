@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Server Side Swift Prerequisites</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1 class="heading-1">Installation for macOS</h1>
+    <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Install Xcode</h2>
+    <p>Download and install the latest version of <a target="_blank" href="https://developer.apple.com/xcode/">Xcode</a> from the App Store.</p>
+    <p>To verify your Swift installation, open a Terminal, enter the ‘swift’ command and pass the ‘--version’ flag:</p>
+    <pre><code class="language-swift">swift --version</code></pre>
+    <p>You should see something similar like this:</p>
+    <pre><code class="language-swift">Apple Swift version x.x.x (LLVM ..., Clang ..., Swift ...)</code></pre>
+    <div class="info">
+      <p>If you see an error message, such as ‘swift: command not found’, you will need to install the Xcode Command Line Tools. Within the Terminal type:</p>
+      <pre><code>xcode-select --install</code></pre>
+      <p>Alternatively you can install Command Line Tools within Xcode:</p>
+      <ol>
+        <li>Open Xcode Preferences using the shortcut: `⌘ + ,`</li>
+        <li>Click on the Locations tab.</li>
+        <li>From the Command Line Tools drop down menu ensure the latest version of Xcode is selected.</li>
+      </ol>
+    </div>
+    <h2 class="heading-2">Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-server')" href="create-server-spm.html#">Create a Kitura server:</a></span> Make use of SPM to create a server.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text bold">Optional:</span> Install Kitura CLI</h2>
+    <p class="block-text">The Kitura Command Line Interface (CLI) provides a set of Command Line tools to simplify the creation of simple cloud ready applications. Simple commands allow quick and easy creation of starter Kitura projects without the need of writing any code.</p>
+    <p class="block-text">We provide two ways of installing Kitura CLI, you can either install via Homebrew or npm:</p>
+    <h3 class="heading-3">Install via brew</h3>
+    <div class="info">
+      <p>For this installation you will need to have Homebrew installed.</p>
+      <p>If you do not have Homebrew installed you can follow the <a target="_blank" href="https://docs.brew.sh/Installation">Homebrew installation steps</a></p>
+    </div>
+    <p>Install Kitura’s Homebrew tap to allow ‘brew’ to access Kitura’s package repository:</p>
+    <pre><code class="language-swift">brew tap ibm-swift/kitura</code></pre>
+    <p>Install Kitura’s command-line interface:</p>
+    <pre><code class="language-swift">brew install kitura</code></pre>
+    <p>Verify that Kitura CLI is installed by running:</p>
+    <pre><code class="language-swift">kitura --version</code></pre>
+    <p>If the installation was successful we would see information about the version.</p>
+    <div class="underline"></div>
+    <h3 class="heading-3">Install via npm</h3>
+    <div class="info">
+      <p>For this installation method you need to have npm installed.</p>
+      <p>If you do not have npm installed you can follow the <a target="_blank" href="https://www.npmjs.com/get-npm">npm installation steps</a>.</p>
+    </div>
+    <p>Open a Terminal and run the `npm install` command:</p>
+    <pre><code class="language-swift">npm install -g kitura-cli</code></pre>
+    <p>Verify that Kitura CLI is installed by running:</p>
+    <pre><code class="language-swift">kitura --version</code></pre>
+    <p>If the installation was successful we would see information about the version.</p>
+    <h2 class="heading-2">Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-server')" href="create-server-cli.html#">Create a Kitura server:</a></span> Make use of the Kitura CLI to create a server.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text bold">Optional:</span> Install Kitura macOS app</h2>
+    <p class="block-text">The Kitura macOS app provides a user interface (UI) cover for the Kitura CLI. This option is designed for those who wish to avoid using the command line to create a simple cloud ready Kitura project.</p>
+    <h3 class="heading-3"><span class="blue-text bold">Step 1:</span> Download the macOS app</h3>
+    <p>To download the macOS app click the button below:</p>
+    <button class="macos-download-button" type="button" name="macos-download-button" onclick="window.open('../../Kitura.dmg')">Download</button>
+    <h3 class="heading-3"><span class="blue-text bold">Step 2:</span> Install macOS app</h3>
+    <p>Once the download has completed open `kitura.dmg`.</p>
+    <p>When the User Interface appears drag the Kitura icon into your applications folder:</p>
+    <div class="img-container">
+      <img class="example-image" src="../../assets/macOS-app-download.png" alt="Kitura macOS app install screen">
+    </div>
+    <p>Open the macOS Finder and find Kitura in the Applications folder.</p>
+    <div class="info">
+      <p>When you first launch the app you may need to open it via the following:</p>
+      <ol>
+        <li>Right click on the Kitura application</li>
+        <li>Select Open from the list</li>
+      </ol>
+      <p>You will only need to open the app once this way. In future you can double-click as normal.</p>
+    </div>
+    <p>Upon opening the app you should see the following screen:</p>
+    <div class="img-container">
+      <img class="example-image" src="../../assets/preview1.png" alt="">
+    </div>
+    <h2 class="heading-2">Next steps</h2>
+    <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-server')" href="create-server-app.html#">Create a Kitura server:</a></span> Make use of the macOS app to create a server.</p>
+    <!-- <p><a href="hello-world-spm.html">Create application using SPM:</a> Create a Hello World Kitura app using Swift Package Manager</p>
+    <p><a href="hello-world-app.html">Create application using macOS app:</a> Create a Hello World Kitura app using the Kitura macOS app</p>
+    <p><a href="hello-world-cli.html">Create application using CLI:</a> Create a Hello World Kitura app using the Kitura Command Line Interface</p> -->
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
+  </body>
+</html>

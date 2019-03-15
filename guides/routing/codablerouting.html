@@ -43,9 +43,9 @@
   <section class="guide-content">
     <div class="title-block">
         <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1>CODABLE ROUTING</h1>
+      <h1 class="heading-1">CODABLE ROUTING</h1>
     </div>
-    <h2>Getting started</h2>
+    <h2 class="heading-2">Getting started</h2>
     <p class="sentence">First we need a Kitura server to add our routes to. Kitura has a command-line interface which provides us with utilities for quickly creating a Kitura server.</p>
     <p class="sentence">Once we've installed the Kitura command-line interface, open a terminal window and run the following:</p>
     <p class="sentence">1. Create a directory:</p>
@@ -58,7 +58,7 @@
     <p class="sentence">In a terminal run the following:</p>
     <pre><code class="language-swift">open CodableRouting.xcodeproj</code></pre>
     <p class="sentence">Now we're ready to start coding!</p>
-    <h2>Creating the models</h2>
+    <h2 class="heading-2">Creating the models</h2>
     <p class="sentence">Codable routing works directly with Swift value types, therefore we need to contruct a value type to use. A good example of this is a struct that conforms to <a href="https://developer.apple.com/documentation/swift/codable">Codable</a>:</p>
     <pre><code class="language-swift">struct User: Codable {
     let name: String
@@ -81,7 +81,7 @@
 }</code></pre>
     <p class="sentence">This provides a simple representation of a user that has two properties, a name and an age. In real applications models tend to be more complex, and typically would be made up of various different models.</p>
     <p class="sentence">Now we have a model we can use, next we can create our Codable routes!</p>
-    <h2>Registering a POST route</h2>
+    <h2 class="heading-2">Registering a POST route</h2>
     <p class="sentence">POST requests are used to send data to the server, but the server needs a route registered for the request. That is, the server needs to know what to do when a POST request comes in on a given URI.</p>
     <p class="sentence">So how do we do this?</p>
     <p class="sentence">It can actually be done quite simply:</p>
@@ -163,7 +163,7 @@ func postHandler(user: User, completion: (User?, RequestError?) -> Void ) {
     "age": 99
 }'</code></pre>
     <p class="sentence">In Xcode you should see that an Error is logged in the output.</p>
-    <h2>Registering a GET route</h2>
+    <h2 class="heading-2">Registering a GET route</h2>
     <p class="sentence">GET requests are used to retrieve data from a server. However we have a flaw in our server, it has no way of storing data for us to retrieve.</p>
     <p class="sentence">So lets rectify that.</p>
     <p class="sentence">In Application.swift underneath the line:</p>
@@ -217,14 +217,14 @@ func postHandler(user: User, completion: (User?, RequestError?) -> Void ) {
     <pre><code>[{"name":"Hello World!","age":99}]%</code></pre>
     <p class="sentence">We have now posted data to a server, and then been able to retrieve it without having to write much code!</p>
     <p class="sentence">This guide has shown just how easy it is to implement a Kitura Server with Codable routing!</p>
-    <h2>What next?</h2>
+    <h2 class="heading-2">What next?</h2>
     <p class="sentence">Want to use Codable routing within an iOS app? Check out our <a href="https://github.com/IBM/FoodTrackerBackend">FoodTrackerBackend tutorial!</a></p>
   </section>
   <section class="slack-help">
     <a href="http://slack.kitura.io/">
       <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2>NEED HELP?</h2>
-      <h2>MESSAGE US ON SLACK.</h2>
+      <h2 class="heading-2">NEED HELP?</h2>
+      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
     </a>
   </section>
 </body>

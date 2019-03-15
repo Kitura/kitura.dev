@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <h1 class="heading-1">Kitura CORS</h1>
+    <h2 class="heading-2">Step 1: Add Kitura CORS to your project</h2>
+    <p>TODO: Link to SPM instructions</p>
+    <p>Import Kitura CORS to your project:</p>
+    <pre><code class="language-swift">import KituraCORS</code></pre>
+    <div class="underline"></div>
+    <h2 class="heading-2">Step 2: Initilize options for Kitura CORS</h2>
+    <p>Kitura CORS needs options to be passed into it's Initilizer.</p>
+    <pre><code class="language-swift">public init(options : Options)</code></pre>
+    <p>Where possible options are:</p>
+    <ul>
+      <li>allowedOrigin - an enum that configures the Access-Control-Allow-Origin CORS server response header. Possible values are:
+          <ul>
+            <li>all - all origins are allowed. Access-Control-Allow-Origin will be set to *. This is the default.</li>
+            <li>set - a set of allowed origins.</li>
+            <li>origin - a single allowed origin.</li>
+            <li>regex - a regular expression that defines allowed origins.</li>
+          </ul>
+      </li>
+      <li>credentials - a boolean value that indicates whether to set the Access-Control-Allow-Credentials CORS header. The header is set only if credentials is true, otherwise the header is not passed. Defaults to false.</li>
+      <li>methods - an array of methods to be passed in the Access-Control-Allow-Methods header. The default set of methods to be passed is ["GET","HEAD","PUT","PATCH","POST","DELETE"].</li>
+      <li>allowedHeaders - an array of allowed headers to configure the Access-Control-Allow-Headers CORS header. If not specified, the headers specified in the request's Access-Control-Request-Headers header are passed.</li>
+      <li>maxAge - an integer to set the Access-Control-Allow-Max-Age header. If not set, the header is omitted.</li>
+      <li>exposedHeaders - an array of exposed headers to configure the Access-Control-Expose-Headers header. If not set, the header is omitted.</li>
+      <li>preflightContinue - a boolean indicating whether a CORS preflight request should be passed on to route handlers to further customize the response. Defaults to false, meaning that the CORS middleware will send an appropriate response back to the client immediately.</li>
+    </ul>
+    <p>You can view the <a href="#">CORS documentation</a> for more information about CORS.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2">Step 3: Initilize Kitura CORS</h2>
+    <p>Create an instance of Kitura CORS:</p>
+    <pre><code class="language-swift">let cors = CORS(options: options)</code></pre>
+    <p>Which accepts the options you defined in the previous step.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2">Step 4: Add CORS instance to router</h2>
+    <pre><code class="language-swift">router.all("/cors", middleware: cors)</code></pre>
+    <div class="underline"></div>
+    <h2 class="heading-2">Next steps</h2>
+    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+  </body>
+</html>
