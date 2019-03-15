@@ -50,7 +50,8 @@
     <p>Inside this file, add the framework for our routes code:</p>
     <pre><code class="language-swift">func initializeRawRoutes(app: App) {
     // Register routes with handlers here
-} extension App {
+}
+extension App {
     static var bookStore = [Book]()
 }</code></pre>
     <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST route</h2>
@@ -67,10 +68,10 @@
     <pre><code class="language-swift">do {
     let book = try request.read(as: Book.self)
 } catch {
-    response.send(status: .badRequest)
+    let _ = response.send(status: .badRequest)
 }</code></pre>
     <p>We will now save this book to our bookstore and return it to the user with `send()`:</p>
-    <pre><code class="language-swift">app.bookStore.append(book)
+    <pre><code class="language-swift">App.bookStore.append(book)
 response.send(book)
 </code></pre>
     <p>Your completed POST route should now look as follows:</p>
@@ -106,13 +107,13 @@ response.send(book)
     next()
 }</code></pre>
     <p>In our GET route, we respond with our bookstore.</p>
-<pre><code class="language-swift">response.send(app.bookStore)</code></pre>
+<pre><code class="language-swift">response.send(App.bookStore)</code></pre>
 <p>The completed GET route, should then look as follows:</p>
 <pre><code class="language-swift">app.router.get("/raw") { request, response, next in
-    response.send(app.bookStore)
+    response.send(App.bookStore)
     next()
 }</code></pre>
-    <p>Now we need to restart our server, once it is running we can post a book using the curl command from step 3.</p>
+    <p>Now we need to restart our server, once it is running we can post a book using the curl command from step 2.</p>
     <p>Then if we navigate to <a href="http://localhost:8080/raw" target="_blank">http://localhost:8080/raw</a>, we should see the book we posted:</p>
     <pre><code>{
     "id": 0,
@@ -124,7 +125,7 @@ response.send(book)
     <h2 class="heading-2"><span class="blue-text">Step 4:</span> Create a GET one route</h2>
     <p>When we register a GET one route, rather than a GET all route, we use an `id` parameter.</p>
     <p>Inside the `initializeRawRoutes` function add:</p>
-    <pre><code class="language-swift">router.get("/raw/:id") { request, response, next in
+    <pre><code class="language-swift">app.router.get("/raw/:id") { request, response, next in
     next()
 }</code></pre>
     <p>In this case, the path "/:id" will be for "/123" as well as "/abc".
@@ -132,27 +133,27 @@ response.send(book)
     <pre><code class="language-swift">guard let idString = request.parameters["id"],
     let id = Int(idString),
     id >= 0,
-    id < app.bookStore.count
+    id < App.bookStore.count
 else {
     let _ = response.send(status: .badRequest)
     return next()
 }
-response.send(app.bookStore[id])
+response.send(App.bookStore[id])
 </code></pre>
 <p>Your completed GET with `id` route, should then look as follows:</p>
 <pre><code class="language-swift">app.router.get("/raw/:id") { request, response, next in
     guard let idString = request.parameters["id"],
         let id = Int(idString),
         id >= 0,
-        id < app.bookStore.count
+        id < App.bookStore.count
     else {
         let _ = response.send(status: .badRequest)
         return next()
     }
-    response.send(app.bookStore[id])
+    response.send(App.bookStore[id])
     next()
 }</code></pre>
-    <p>Now we need to restart our server and make a POST request using the curl command from step 3.</p>
+    <p>Now we need to restart our server and make a POST request using the curl command from step 2.</p>
     <p>Use a browser to navigate to <a href="http://localhost:8080/raw/0" target="_blank">http://localhost:8080/raw/0</a></p>
     <p>This will make a GET request to the server and you should see the first book in JSON format:</p>
     <pre><code>

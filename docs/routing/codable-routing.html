@@ -51,7 +51,7 @@ func initializeCodableRoutes(app: App) {
     // Register routes here
 }
 extension App {
-    static var codableStore: [Book] = []
+    static var codableStore = [Book]()
     // Write handlers here
 }</code></pre>
     <p>We have imported the KituraContracts library as it contains the shared type definition for `RequestError` which we will use in the next step.</p>
@@ -101,7 +101,7 @@ extension App {
     <p>You may have noticed that the completion here is expecting an array of books, this is because our route does not provide an identifier, so we retrieve all of the books.</p>
     <p>The result of all the changes should look something like this:</p>
     <p>Now we can restart our server to test our new endpoint.</p>
-    <p>Once the server is running, post a book using the curl command in Step 4.</p>
+    <p>Once the server is running, post a book using the curl command in Step 3.</p>
     <p>Open a browser at:</p>
     <p><a href="http://localhost:8080/codable" target="_blank">localhost:8080/codable</a></p>
     <p>This will make a GET request to the server and we should see the book we posted:</p>
@@ -179,7 +179,7 @@ func initializeCodableRoutes(app: App) {
     app.router.get("/codable", handler: app.getOneHandler)
 }
 extension App {
-    static var codableStore: [Book] = []
+    static var codableStore = [Book]()
 
     func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
         execute {
