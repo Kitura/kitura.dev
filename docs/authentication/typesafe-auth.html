@@ -89,6 +89,7 @@ callback(nil)</code></pre>
 <pre><code class="language-swift">import KituraContracts
 import Credentials
 import CredentialsHTTP
+import LoggerAPI
 
 func initializeTypeSafeAuthRoutes(app: App) {
     app.router.get("/basic", handler: app.protectedGetHandler)
@@ -128,7 +129,7 @@ extension App {
     <div class="underline"></div>
     <h3 class="heading-3"><span class="blue-text">Step 3:</span> Test TypeSafeHTTPBasic routes</h3>
     <p>We need to first start our Kitura server.</p>
-    <p>Then navigate to: <a href="http://localhost:8080/basic">http://localhost:8080/basic</a></p>
+    <p>Then navigate to: <a target="_blank" href="http://localhost:8080/basic">http://localhost:8080/basic</a></p>
     <p>Log in with the credentials we defined:</p>
     <pre><code class="language-swift">User Name: username</code></pre>
     <pre><code class="language-swift">Password: password</code></pre>
