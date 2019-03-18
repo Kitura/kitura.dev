@@ -1,0 +1,28 @@
+{
+  "name": "kitura.io",
+  "version": "1.0.0",
+  "description": "Website for Kitura, a server-side Swift web framework",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IBM-Swift/kitura.io.git"
+  },
+  "author": "David Dunn <dd4dev@gmail.com>",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/IBM-Swift/kitura.io/issues"
+  },
+  "homepage": "https://github.com/IBM-Swift/kitura.io#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

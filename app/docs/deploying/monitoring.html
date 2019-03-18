@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+    </script>
+    <title>Learn - Getting Started</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+  </head>
+  <body>
+    <main>
+      <h1 class="heading-1">Monitor the status of your Server</h1>
+      <div class="info">
+        <p>Depending on how you created your Kitura server you may already have metrics enabled.</p>
+      </div>
+      <div class="underline"></div>
+      <h2 class="heading-2">Swift Metrics</h2>
+      <h3 class="heading-3">What is Swift Metrics?</h3>
+      <p>SwiftMetrics instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API or visually with the included embedded dashboard.</p>
+      <p>SwiftMetrics provides the following built-in data collection sources:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Environment</td>
+            <td>Machine and runtime environment information</td>
+          </tr>
+          <tr>
+            <td>CPU</td>
+            <td>Process and system CPU</td>
+          </tr>
+          <tr>
+            <td>Memory</td>
+            <td>Process and system memory usage</td>
+          </tr>
+          <tr>
+            <td>HTTP</td>
+            <td>HTTP metric information</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="heading-3"><span class="blue-text">Step 1:</span> Adding Swift Metrics to your project</h3>
+      <!-- <p>TODO: Link to SPM install instructions</p> -->
+      <p>Import Swift Metrics to your project</p>
+      <pre><code class="language-swift">import SwiftMetrics</code></pre>
+      <p>You also need to import the Swift Metrics Dashboard</p>
+      <pre><code class="language-swift">import SwiftMetricsDash</code></pre>
+      <h3 class="heading-3"><span class="blue-text">Step 2:</span> Initilize Swift Metrics</h3>
+      <p>Create an instance of Swift Metrics:</p>
+      <pre><code class="language-swift">let sm = try SwiftMetrics()</code></pre>
+      <p>Use this Swift Metrics instance to initilize the dashboard:</p>
+      <pre><code class="language-swift">let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)</code></pre>
+      <p>By default, SwiftMetricsDash will start its own Kitura server and serve the page up under localhost:/swiftmetrics-dash</p>
+      <!-- <p>TODO: Test this!</p> -->
+      <h3 class="heading-3"><span class="blue-text">Step 3:</span> Add Swift Metrics to your router instance</h3>
+      <p>You can pass an existing Router object to SwiftMetricsDash from which to serve the page up on.</p>
+      <p>SwiftMetricsDash will then use whatever server you are using in your existing application:</p>
+      <pre><code class="language-swift">let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)</code></pre>
+      <div class="underline"></div>
+      <h2 class="heading-2">Next steps</h2>
+      <p>Coming Soon!</p>
+    </main>
+    <!-- <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p> -->
+  </body>
+</html>
