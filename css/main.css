@@ -418,7 +418,30 @@ footer {
   font-size: 0.9em;
 }
 /* Learn styling */
-/* Learn Sytling */
+
+.sidebar-item {
+  font-size: 1.65rem;
+}
+
+.nested-sidebar-item {
+  font-size: 1.2rem;
+}
+
+.burger-icon {
+  opacity: 0;
+  position: absolute;
+  top: 1.7rem;
+  left: 0.1rem;
+  padding: 1rem;
+}
+
+.burger-line {
+  height: 0.2rem;
+  width: 2rem;
+  background-color: #676767;
+  margin: 0.3rem 0;
+}
+
 .docs-sidebar {
 	height: 100vh;
   width: 20%;

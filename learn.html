@@ -23,7 +23,7 @@
   </head>
 <body>
   <section class="docs-grid-container">
-    <aside class="docs-item-1 docs-sidebar">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
       <h1 class="docs-title" onclick="loadPage('./docs/landing.html', '', 'https://ibm-swift.github.io/Kitura/')">KITURA <span class="docs-title-section">DOCS</span></h1>
       <div class="underline"></div>
       <nav class="sidebar-nav">
@@ -110,9 +110,14 @@
         </ul>
       </nav>
     </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
     <div class="docs-item-2 search-container">
       <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
-      <div class="temp-beta">
+      <div id="beta" class="temp-beta">
         <h4>Currently in Beta - <a href="./old-learn.html">View old docs</a></h4>
       </div>
     </div>
@@ -121,7 +126,7 @@
       <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
       <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
     </nav>
-    <div class="docs-item-4 docs-window">
+    <div id="doc-container" class="docs-item-4 docs-window">
       <iframe id="doc-window" width="100%" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
     </div>
     <div id="top-page" class="top-page">
@@ -139,6 +144,21 @@
         target.style.display = "none";
       }
     }, false);
+
+    function showSidebar() {
+      var docSidebar = document.getElementById('sidebar');
+      var beta = document.getElementById('beta');
+      var docWindow = document.getElementById('doc-container');
+      if (docSidebar.style.display == 'block') {
+        beta.style.opacity = 1;
+        docSidebar.style.display = 'none';
+        docWindow.style.display = 'block';
+      } else {
+        docWindow.style.display = 'none';
+        beta.style.opacity = 0;
+        docSidebar.style.display = 'block';
+      }
+    }
   </script>
 </body>
 </html>

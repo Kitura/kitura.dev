@@ -10,7 +10,9 @@ if (localStorage.getItem("src") == undefined) {
 }
 
 function resizeIframe() {
-  document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.scrollHeight + 'px';
+  if (document.documentElement.clientWidth > 900) {
+    document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.scrollHeight + 'px';
+  }
 }
 
 
@@ -25,6 +27,14 @@ function addCollapsibleElements() {
       content.style.maxHeight = null;
     } else {
         for (var j = 0; j < items.length; j++) {
+          items[j].addEventListener("click", function() {
+            if (document.documentElement.clientWidth <= 900) {
+              var docSidebar = document.getElementById('sidebar');
+              docSidebar.style.display = 'none';
+              var docWindow = document.getElementById('doc-container');
+              docWindow.style.display = 'block';
+            }
+          })
           if (items[j].style.maxHeight !== null && items[j] !== content) {
             items[j].style.maxHeight = null;
           }

@@ -1,5 +1,5 @@
 html, body {
-  overflow-x: hidden;
+   overflow-x: hidden;
 }
 h1 {
   font-size:2em;
@@ -74,7 +74,65 @@ h4 {
   width: 90%;
   margin: 10px 0
 }
-/* learn.html styling */
+
+.burger-icon {
+  opacity: 1;
+  z-index: 999;
+}
+
+.docs-sidebar {
+  width: 100%;
+  position: absolute;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+
+#doc-container {
+  display: none;
+}
+
+#doc-window {
+  width: 100vw;
+  margin: 0 auto;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+
+.apiref-button {
+  font-size: 1rem;
+}
+
+.burger-icon {
+  display: block;
+}
+
+.docs-grid-container {
+  display: block;
+}
+
+.sidebar-list {
+  text-align: center;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.apiref-button {
+  margin-left: 2rem;
+}
+
+.docs-title {
+  font-size: 1.8rem;
+}
+
+.nav-item {
+  font-size: 0.6rem;
+  margin-right: 1rem;
+  text-align: center;
+}
+
+/* old learn.html styling */
 .learn-grid-container {
   display: block;
 }

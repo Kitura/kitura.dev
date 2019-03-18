@@ -1,0 +1,116 @@
+body {
+  padding: 1rem;
+}
+
+p, li {
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+pre {
+  font-size: 0.6rem;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.heading-1 {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.heading-2 {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.heading-3 {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.heading-4 {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.landing-heading > h1 {
+  font-size: 1.8rem;
+}
+
+.info {
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.block-text {
+  line-height: 1rem;
+}
+
+.landing-grid-container {
+  display: block;
+}
+
+.landing-img, .circle-section {
+  display: none;
+}
+
+.landing-heading > h2 {
+  margin-top: 3rem;
+}
+
+.landing-heading > p {
+  width: 90%;
+  font-size: 0.6rem;
+}
+
+.tutorial {
+  width: 20rem;
+}
+
+.tutorial > p {
+  font-size: 0.6rem;
+}
+
+.tutorial > h3 {
+  font-size: 1rem;
+}
+
+.example-image {
+  width: 35%;
+}
+
+.macos-download-button {
+  display: none;
+}
+
+.server-grid-container {
+  display: block;
+}
+
+.stars {
+  display: none;
+}
+
+pre:hover:before {
+  content: '';
+  position: absolute;
+  opacity: 0;
+
+  transition: all 0.15s ease;
+  border-radius: 10px;
+}
+
+pre:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+
+    /* customizable */
+    right: 0;
+    top: 0;
+}
+
+.openapi-img {
+  width: 80vw;
+  margin: 0;
+}
