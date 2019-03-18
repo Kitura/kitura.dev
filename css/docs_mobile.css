@@ -34,6 +34,10 @@ pre {
   text-align: center;
 }
 
+.landing-heading > h1 {
+  font-size: 1.8rem;
+}
+
 .info {
   margin: 0 auto;
   margin-bottom: 2rem;

@@ -419,10 +419,18 @@ footer {
 }
 /* Learn styling */
 
+.sidebar-item {
+  font-size: 1.65rem;
+}
+
+.nested-sidebar-item {
+  font-size: 1.2rem;
+}
+
 .burger-icon {
   opacity: 0;
   position: absolute;
-  top: 0.1rem;
+  top: 1.7rem;
   left: 0.1rem;
   padding: 1rem;
 }
