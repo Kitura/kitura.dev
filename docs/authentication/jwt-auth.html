@@ -16,13 +16,406 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/docs.css">
+    <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/docs_mobile.css">
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1 class="heading-1">JWT Authentication</h1>
+      <h1 class="heading-1">JSON Web Token Authentication</h1>
+      <p class="block-text">A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can find out more about JWTs at `JWT.io`.</p>
+      <p class="block-text">This guide uses JWT with Swift-JWT to implement Single Sign On (SSO) authentication for your Kitura routes.</p>
+      <h2 class="heading-2">Prerequisites</h2>
+      <ul class="plain-list">
+        <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+        <li><span class="blue-text">Kitura Style Guide:</span> Follow our guide to see how a production ready server should be structed</p>
+        <li><span class="blue-text">Kitura OpenAPI:</span> Learn how to add this in our Kitura OpenAPI guide</li>
+        <li><a onclick="localStorage.setItem('package', 'Swift-JWT'); setActiveSidebarElementForParent('swift-jwt')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift-JWT needs adding to the Package.swift file.</li>
+      </ul>
+      <div class="underline"></div>
+      <h2 class="heading-2">JWT Authentication</h2>
+      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a JWTRoutes.swift file</h2>
+      <p>Open your `Sources` > `Application` > `Application.swift`</p>
+      <p> Inside the `postInit()` function add: </p>
+      <pre><code class="language-swift">initializeJWTRoutes(app: self)</code></pre>
+      <p>Create a new file called `JWTRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+      <p>Inside this file, add the framework for our routes code:</p>
+      <pre><code class="language-swift">import Foundation
+import KituraContracts
+import SwiftJWT
+
+func initializeJWTRoutes(app: App) {
+    app.router.post("/jwtlogin") { request, response, next in
+        // Read credentials and generate JWT here
+        next()
+    }
+
+    app.router.get("/jwtprotected") { request, response, next in
+        // Verify JWT here
+        next()
+    }
+}
+extension App {
+  // Define JWT signer and verifier here
+}</code></pre>
     <div class="underline"></div>
-    <h2 class="heading-2">Next steps</h2>
-    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
-    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
+    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Define your JWTSigner and JWTVerifier</h2>
+
+    <section class="tab">
+      <div class="tab-buttons">
+        <button id="jwt-button" type="button" name="button" class="tablinks" onclick="openPlugin(event, 'hmac')">HMAC</button>
+        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'ecdsa')">ECDSA</button>
+        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'rsa')">RSA</button>
+      </div>
+      <div id="hmac" class="tabcontent">
+          <p class="block-text">You can process JWTs using a Hashed Message Authentication Code (HMAC).
+               This uses a shared symmetric key as a password for both signing and verifying.
+                This is simple and fast but requires a secure method of sending the password to the verifier.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Create your JWTSigner</h2>
+        <p>The `JWTSigner` is used to sign a `JWT` instance and produce a signed JWT string.</p>
+        <p>Inside the App extension, create an HMAC `JWTSigner` by providing a password:</p>
+        <pre><code class="language-swift">static let jwtSigner = JWTSigner.hs256(key: Data("kitura".utf8))</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create your JWTVerifier</h2>
+        <p>The `JWTVerifier` is used to verify a signed JWT string.
+             This ensures the signature was generated using the same password and the JWT has not been changed.</p>
+        <p>Inside the app extension, we create an HMAC `JWTVerifier` by providing the same password as before:</p>
+        <pre><code class="language-swift">static let jwtVerifier = JWTVerifier.hs256(key: Data("kitura".utf8))</code></pre>
+      </div>
+      <div id="ecdsa" class="tabcontent">
+      <p class="block-text">You can process JWTs using Elliptic Curve Digital Signature Algorithm (ECDSA).
+            This uses asymmetric keys with a private key for signing and a public key for verifying.
+            The public key allows anyone to verify a JWT but only the provider can create them.
+            ECDSA is recommended over RSA since it uses smaller keys, requires less processing power and produces smaller signatures.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Create your elliptic curve keys</h2>
+        <p>Elliptic curve keys can be generated through
+             <a href="https://developer.apple.com/account/ios/authkey" rel="noopener" target="_blank">Apple</a>,
+             <a href="https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations#Generating_EC_Keys_and_Parameters" rel="noopener" target="_blank">OpenSSL</a>
+              or using <a href="https://github.com/IBM-Swift/BlueECC#elliptic-curve-private-key" rel="noopener" target="_blank">BlueECC</a>.
+             However for simplicity we will use some keys we generated earlier.</p>
+        <p>Add the following EC PEM Strings you your App extension:<p>
+    <pre><code class="language-swift">static let privateKey = """
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIJX+87WJ7Gh19sohyZnhxZeXYNOcuGv4Q+8MLge4UkaZoAoGCCqGSM49
+AwEHoUQDQgAEikc5m6C2xtDWeeAeT18WElO37zvFOz8p4kAlhvgIHN23XIClNESg
+KVmLgSSq2asqiwdrU5YHbcHFkgdABM1SPA==
+-----END EC PRIVATE KEY-----
+"""
+static let publicKey = """
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEikc5m6C2xtDWeeAeT18WElO37zvF
+Oz8p4kAlhvgIHN23XIClNESgKVmLgSSq2asqiwdrU5YHbcHFkgdABM1SPA==
+-----END PUBLIC KEY-----
+"""</code></pre>
+    <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create your JWTSigner</h2>
+    <p>The `JWTSigner` is used to sign a `JWT` instance and produce a signed JWT string.</p>
+    <p>Inside the App extension, create an ECDSA `JWTSigner` by providing the private key:</p>
+    <pre><code class="language-swift">static let jwtSigner = JWTSigner.es256(privateKey: Data(privateKey.utf8))</code></pre>
+    <div class="info">
+      <p>BlueECC is only available on OS X 10.13 or newer. You will need to handle this within your project.</p>
+    </div>
+    <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create your JWTVerifier</h2>
+    <p>The `JWTVerifier` is used to verify a signed JWT string.
+         This ensures the signature was generated using the corresponding private key and the JWT has not been changed.</p>
+    <p>Inside the app extension, we create an ECDSA `JWTVerifier` by providing the public key:</p>
+    <pre><code class="language-swift">static let jwtVerifier = JWTVerifier.es256(publicKey: Data(publicKey.utf8))</code></pre>
+      </div>
+      <div id="rsa" class="tabcontent">
+          <p class="block-text">You can process JWTs using RSA cryptography.
+                This uses asymmetric keys with a private key for signing and a public key for verifying.
+                The public key allows anyone to verify a JWT but only the provider can create them.
+                ECDSA is recommended over RSA since it uses smaller keys, requires less processing power and produces smaller signatures.</p>
+            <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Create your RSA keys</h2>
+            <p>RSA keys can be generated using openSSL with the following terminal commands:</p>
+            <pre><code>$ ssh-keygen -t rsa -b 2048 -f privateKey.pem</code></pre>
+            <pre><code>$ openssl rsa -in privateKey.pem -pubout -outform PEM -out publicKey.pem</code></pre>
+            <p>However for simplicity we will use some keys we generated earlier.</p>
+            <p>Add the following RSA PEM Strings you your App extension:<p>
+        <pre><code class="language-swift">static let privateKey = """
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAxyebvXKgG7VHTUArwIPLL6uruJuaYTuspaI793JQK/3XIJ1O
+8KRXqWvy2Awo+po1IeKIGioCwD7mVbN2oX9yC8K+VDUJrpxz1Bve+zLZ59x81TO0
+IlgbugjduGBmnKTElL/Y7MbI2SIJheBfxqcvopc5U+j3eVLvl3mTPx5T9i/qutmw
+L7qfk/bOOgV3sMVa/Q9SXE4ZE1737UHUgcBJFp5okqSKBQw6kxZ7HsDSLDIZJRKH
+vW3NiCIrK83JvQp4tYWi4Sb3rDl3TyRlqDM4Ly0YQ6be5IsPfmut8NENDoviyZRd
+ihnN6TuBk3zUfb4MkcO/KUGub37zRQbgB5KQmwIDAQABAoIBAQCal/N8HxOMDq8X
+l12fJm8+RPua5Sb0nXcKaCI2lgUH8RbimVoi0N+/gy1SajYROk1OTWOrM7tI8kqo
+chP/j0e/O1+1TCqE4avEFhKEWlfudSht86G8GzsCsUkzi5l7tSdn9Hh2bGSSsKpF
+wwN12GfQxaTZrvkTs76KjfQwReGVMwPf5D67968Eani+sj02ODYT99sQd0Zs9Jkd
+nqjIkDCeAQYgUUpsut/0mtodwrJlQXGS1DjOSfbUbdXTzQOR6a5uHMCdqNG2Dqrv
+GkzdViwzAfwNz3ntdqn2YVnCPQwdOArrP6iKIPukMC5zckMCdcvoeEOLY+7SwGvB
+srWM7Xj5AoGBAO7OhOOAWoI9RJ2onfrB4xi84cdcnAq+lQij//yC+rTNC4fu7eJp
+MbF9C7P7XicD2xTJgfjddYW7H6yc5t2BChmICXbEv0K0/kebc5MzaZK264u9fxk6
+MToLWReCFYQ5pmqgqeKJ2CV86byDFYVf0cSt4PcpOXfdHQzjA/S5qMslAoGBANV+
+QfTBQe/bkTVRRlY1YcghPZr6sR7cUbyXX0ou8dDdAdSZ1VOwDmIZhnq0/w/HzJQm
+UMw2zjs37y9Mf60xLlvY8bbhU1rlZ8vZr+0xm8K4fYlnt+ONNjv6puYvF5IPKad3
+KvafIOelY8liLqo9gXJYUZGZcxRikiKtZotQJwC/AoGBAN3rz3S3p+SWWTiGJOGN
+4qPvi4XAG0ak20yfU1luwtrYHdoiALFB/qspQIHunA13uNU1efIyo282ePXpDWZU
+73TQhbL4naC5IACdhqcJxRdRo81FuWJRQMPnHdEJ00MAbBV03ssmPFaCIZhM3OgI
+JqE20PP/PGeWdNOv99Ip4qF9AoGAGeGxi0N2g+aBZw5QUZktHn7xIf2sRUp+Wjeb
+pLmmNSTl2OlBVGDujXP8upmApmAZbAhtGSS3wbQZOgmzHMLulNHrE7mjSkyvVaYx
+TrcJ5ARLq8G4KEzxOzo6y4L//4P5D8VBnx5RdeO2Ai7160uDiuIsGVOaAOmmP6/3
+04HHCK8CgYEAuS4wfgKWL9nRInjOjrKd9SSnHFWbmD4PfrbjtNY69R3FqryTmT1e
+9GUyAQTpdIn46LYDczkQJpg8TIN/3yDHb9TErmspsAEDnFHD7Dsxi0LlbPkSdhls
+cQGNrHxp2xvM+LKFW1y3K6XUJhZZSKEVQvR3v4QVxCUxglbGJ5BTNXY=
+-----END RSA PRIVATE KEY-----
+"""
+static let publicKey = """
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxyebvXKgG7VHTUArwIPL
+L6uruJuaYTuspaI793JQK/3XIJ1O8KRXqWvy2Awo+po1IeKIGioCwD7mVbN2oX9y
+C8K+VDUJrpxz1Bve+zLZ59x81TO0IlgbugjduGBmnKTElL/Y7MbI2SIJheBfxqcv
+opc5U+j3eVLvl3mTPx5T9i/qutmwL7qfk/bOOgV3sMVa/Q9SXE4ZE1737UHUgcBJ
+Fp5okqSKBQw6kxZ7HsDSLDIZJRKHvW3NiCIrK83JvQp4tYWi4Sb3rDl3TyRlqDM4
+Ly0YQ6be5IsPfmut8NENDoviyZRdihnN6TuBk3zUfb4MkcO/KUGub37zRQbgB5KQ
+mwIDAQAB
+-----END PUBLIC KEY-----
+"""</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create your JWTSigner</h2>
+        <p>The `JWTSigner` is used to sign a `JWT` instance and produce a signed JWT string.</p>
+        <p>Inside the App extension, create an RSA `JWTSigner` by providing the private key:</p>
+        <pre><code class="language-swift">static let jwtSigner = JWTSigner.rs256(privateKey: Data(privateKey.utf8))</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create your JWTVerifier</h2>
+        <p>The `JWTVerifier` is used to verify a signed JWT string.
+             This ensures the signature was generated using the corresponding private key and the JWT has not been changed.</p>
+        <p>Inside the app extension, we create an RSA `JWTVerifier` by providing the public key:</p>
+        <pre><code class="language-swift">static let jwtVerifier = JWTVerifier.rs256(publicKey: Data(publicKey.utf8))</code></pre>
+      </div>
+    </section>
+    <div class="underline"></div>
+
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Define a UserCredentials Model</h2>
+    <p class="block-text">For the initial authentication, the user will have to provide their username and password.
+         This could be done through basic authentication, the Authorization header or in the body of a POST request.
+         We will go with the body of a Post request and use a model to represent the user credentials.</p>
+         <div class="info">
+           <p>Passwords and signed JWTs must be kept private and should always be exchanged over a secure layer like HTTPS.</p>
+         </div>
+        <p>Create a UserCredentials.swift file in `Sources` > `Application` > `Models`.</p>
+        <p>Inside this file we define our UserCredentials model:</p>
+        <pre><code class="language-swift">struct UserCredentials: Codable {
+    let username: String
+    let password: String
+}</code></pre>
+    <div class="underline"></div>
+
+    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Authenticate the User</h2>
+    <p class="block-text">We need to read the users credentials in our POST route so they can be authenticated.</p>
+    <p>Inside the post route add:</p>
+    <pre><code class="language-swift">let credentials = try request.read(as: UserCredentials.self)
+// Users credentials are authenticated</code></pre>
+    <p>At this stage, you would normally hash the password and verify it against a database.
+        However, for simplicity, we are going to assume the user successfully logged in.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 5:</span> Create the signed JWT</h2>
+    <p class="block-text">A JWT contains claims about the user that we want include in subsequent request.
+         You can specify any information as a claim, however there are "Registered Claims" which have a pre-defined meaning:</p>
+         <ul>
+           <li>iss: The issuer of the token </li>
+           <li>sub: The subject of the token</li>
+           <li>aud: The audience of the token</li>
+           <li>exp: The expiration time which MUST be after the current date/time.</li>
+           <li>nbf: Defines the time before which the JWT MUST NOT be accepted for processing</li>
+           <li>iat: The time the JWT was issued. Can be used to determine the age of the JWT</li>
+           <li>jti: Unique identifier for the JWT. Can be used to prevent the JWT from being replayed.</li>
+         </ul>
+    <p>SwiftJWT comes with a struct representing these Registered Claims which we will use for our example.</p>
+    <p>Beneath the users credentials, initialize the users claims:</p>
+    <pre><code class="language-swift">let myClaims = ClaimsStandardJWT(iss: "Kitura", sub: credentials.username, exp: Date(timeIntervalSinceNow: 3600))</code></pre>
+    <p>These claims tell us users username, that they were authenticated by Kitura and we have set the token to expire in one hour.</p>
+    <p>Beneath our claims we initialize our JWT:</p>
+    <pre><code class="language-swift">var myJWT = JWT(claims: myClaims)</code></pre>
+    <p>We can sign this JWT using the JWTSigner we created in step 2:</p>
+    <pre><code class="language-swift">let signedJWT = try myJWT.sign(using: App.jwtSigner)</code></pre>
+    <p>Finally we return the signed JWT String to the User:</p>
+    <pre><code class="language-swift">response.send(signedJWT)</code></pre>
+    <p>Our completed login route should look as follows:</p>
+    <pre><code class="language-swift">app.router.post("/jwtlogin") { request, response, next in
+    let credentials = try request.read(as: UserCredentials.self)
+    // Users credentials are authenticated
+    let myClaims = ClaimsStandardJWT(iss: "Kitura", sub: credentials.username, exp: Date(timeIntervalSinceNow: 3600))
+    var myJWT = JWT(claims: myClaims)
+    let signedJWT = try myJWT.sign(using: App.signer)
+    response.send(signedJWT)
+    next()
+}</code></pre>
+<div class="underline"></div>
+
+<h2 class="heading-2"><span class="blue-text">Step 6:</span> Test the JWT creation</h2>
+<p>Compile your project and start the server.</p>
+<p>To test the route using curl, open Terminal and enter the following:</p>
+<pre><code>curl -X POST \
+http://localhost:8080/jwtlogin \
+-H 'content-type: application/json' \
+-d '{
+"username": "Joe Bloggs",
+"password": "password"
+}'</code></pre>
+<p>You should be returned a JWT String that is structured `xxxx.yyyy.zzzz`
+     where xxxx is the base64 encoded header, yyyy is the base 64 encoded claims and zzzz is the signature.</p>
+<p>The following is a JWT generated using hs256 and the password "kitura":<p>
+<pre><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJLaXR1cmEiLCJzdWIiOiJKb2UgQmxvZ2dzIiwiZXhwIjoxNTUzMDE4Mjg0LjMyOTcwMTl9.t55WealACtYGCQGS3EQgRQuurmNSBO5fWZqzqJjEIi</code></pre>
+<p>You can decode your JWT string to view the headers and claims at <a href="https://jwt.io/#debugger" rel="noopener" target="_blank">JWT.io</a></p>
+    <div class="underline"></div>
+
+    <h2 class="heading-2"><span class="blue-text">Step 7:</span> Verify a JWT</h2>
+    <p class="block-text">We have created a signed JWT for a user to authenticate themselves.
+         At this stage, the user would attach the JWT string to future requests either using cookies or the Authorization header.
+     When we recieve this JWT string on other routes we need to verify that we signed it and it hasn't been altered.</p>
+     <p>Lets start by reading the JWT string from the Authorization header:</p>
+     <p>Inside the get route, add the following code:</p>
+     <pre><code class="language-swift">let authHeader = request.headers["Authorization"]
+guard let authComponents = authHeader?.components(separatedBy: " "),
+    authComponents.count == 2,
+    authComponents[0] == "Bearer"
+else {
+    let _ = response.send(status: .unauthorized)
+    return try response.end()
+}</code></pre>
+    <p>Our JWT String will be `authComponents[1]. We will verify this string and use it to inialize a JWT.</p>
+    <p>Add the following code to your guard statement, below `authComponents[0] == "Bearer"`:</p>
+    <pre><code class="language-swift">let jwt = try? JWT<ClaimsStandardJWT>(jwtString: authComponents[1], verifier: App.jwtVerifier)</code></pre>
+    <p class="block-text">There we have it. The users JWT for us to use within the route.
+         If we sucessfully initialize the JWT using the jwtVerifier,
+          we know that we signed it in the first place and the contents havent been changed.
+          If the signature isn't verified, we reject the request and return the 401 unauthorized status code.</p>
+    <p>To finish, lets send the decoded JWT back to the user.
+        After the else closure, add the following code:</p>
+    <pre><code class="language-swift">response.send(jwt)</code></pre>
+    <p>Your completed get route should now look as follows:</p>
+    <pre><code class="language-swift">app.router.get("/jwtprotected") { request, response, next in
+    let authHeader = request.headers["Authorization"]
+    guard let authComponents = authHeader?.components(separatedBy: " "),
+        authComponents.count == 2,
+        authComponents[0] == "Bearer",
+        let jwt = try? JWT&lt;ClaimsStandardJWT&gt;(jwtString: authComponents[1], verifier: App.jwtVerifier)
+    else {
+        let _ = response.send(status: .unauthorized)
+        return try response.end()
+    }
+    response.send(jwt)
+    next()
+}</code></pre>
+    <div class="underline"></div>
+
+    <h2 class="heading-2"><span class="blue-text">Step 8:</span> Test the protected Route</h2>
+    <p>To test this, restart your server and send the POST request from Step 6.</p>
+    <p>Copy the returned JWT String and paste it into the following curl request:<p>
+<pre><code>curl -X GET \
+http://localhost:8080/jwtprotected \
+-H 'content-type: application/json' \
+-H 'Authorization: Bearer &lt;Your JWT String here&gt;'</code></pre>
+<p>You should see your JWT with your username returned to you. This should look something like:</p>
+<pre><code>{"claims":{"iss":"Kitura","sub":"Joe Bloggs","exp":574703307.61258602},"header":{"typ":"JWT","alg":"ES256"}}</code></pre>
+<p>Congratulations! You have just created a JWT single sign on system using a Kitura Server.
+     Your completed `JWTRoutes.swift` file for hs256 should look as follows:</p>
+<pre><code class="language-swift">import KituraContracts
+import SwiftJWT
+import Foundation
+
+
+func initializeJWTRoutes(app: App) {
+
+    app.router.post("/jwtlogin") { request, response, next in
+        let credentials = try request.read(as: UserCredentials.self)
+        let myClaims = ClaimsStandardJWT(iss: "Kitura", sub: credentials.username, exp: Date(timeIntervalSinceNow: 3600))
+        var myJWT = JWT(claims: myClaims)
+        let signedJWT = try myJWT.sign(using: App.jwtSigner)
+        response.send(signedJWT)
+        next()
+    }
+
+    app.router.get("/jwtprotected") { request, response, next in
+        let authHeader = request.headers["Authorization"]
+            guard let authComponents = authHeader?.components(separatedBy: " "),
+                authComponents.count == 2,
+                authComponents[0] == "Bearer",
+                let jwt = try? JWT&lt;ClaimsStandardJWT&gt;(jwtString: authComponents[1], verifier: App.jwtVerifier)
+                else {
+                    let _ = response.send(status: .unauthorized)
+                    return try response.end()
+            }
+        response.send(jwt)
+        next()
+    }
+}
+
+extension App {
+    // Example for HMAC signer and verifier
+    static let jwtSigner = JWTSigner.hs256(key: Data("kitura".utf8))
+    static let jwtVerifier = JWTVerifier.hs256(key: Data("kitura".utf8))
+}</code></pre>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 9:</span> JWTs on Codable Routes (Optional)</h2>
+    <p class="block-text">In our example we used raw routing since we wanted to access the request headers.
+         If we want to use JWTs on our codable routes, we need to encapulate this code in a TypeSafeMiddleware.</p>
+    <h2 class="heading-2"><span class="blue-text">Step 9a:</span> Define our TypeSafeJWT middleware.</h2>
+    <p>Create a new file called `TypeSafeJWT.swift` in `Sources` > `Application` > `Middlewares`</p>
+    <p>Inside this file, define `TypeSafeJWT` with the following code:</p>
+<pre><code class="language-swift">import SwiftJWT
+import Kitura
+
+struct TypeSafeJWT&lt;C: Claims&gt;: TypeSafeMiddleware {
+    static func handle(request: RouterRequest, response: RouterResponse, completion: @escaping (TypeSafeJWT<C>?, RequestError?) -> Void) {
+
+    }
+}</code></pre>
+    <p class="block-text">The `handle` function is required for a TypeSafeMiddleware and is where we will interact with the headers.
+    We will the return an instance of TypeSafeJWT on success or a RequestError on failure. The struct is generic so it can be used on any JWT.</p>
+    <p>Within the handler we are interested in the decoded JWT so we add that as a field:</p>
+    <pre><code class="language-swift">let jwt: JWT<C></code></pre>
+    <p>Finally, we initialize our JWT using the same functions as our protected get route.</p>
+    <p>Inside our handle function, add the following:</p>
+    <pre><code class="language-swift">let authHeader = request.headers["Authorization"]
+guard let authComponents = authHeader?.components(separatedBy: " "),
+    authComponents.count == 2,
+    authComponents[0] == "Bearer",
+    let jwt = try? JWT&lt;C&gt;(jwtString: authComponents[1], verifier: App.jwtVerifier)
+else {
+    return completion(nil, .unauthorized)
+}
+completion(TypeSafeJWT(jwt: jwt), nil)</code></pre>
+<p>Your completed `TypeSafeJWT.swift` file should look as follows:</p>
+<pre><code class="language-swift">import SwiftJWT
+import Kitura
+
+struct TypeSafeJWT&lt;C: Claims&gt;: TypeSafeMiddleware {
+    let jwt: JWT&lt;C&gt;
+    static func handle(request: RouterRequest, response: RouterResponse, completion: @escaping (TypeSafeJWT<C>?, RequestError?) -> Void) {
+        let authHeader = request.headers["Authorization"]
+        guard let authComponents = authHeader?.components(separatedBy: " "),
+            authComponents.count == 2,
+            authComponents[0] == "Bearer",
+            let jwt = try? JWT&lt;C&gt;(jwtString: authComponents[1], verifier: App.jwtVerifier)
+        else {
+            return completion(nil, .unauthorized)
+        }
+        completion(TypeSafeJWT(jwt: jwt), nil)
+    }
+}</code></pre>
+<div class="underline"></div>
+
+<h2 class="heading-2"><span class="blue-text">Step 9b:</span> Register TypeSafeJWT on a route.</h2>
+    <p>Back in our `JWTRoutes.swift`, We are going to register a new route using this TypeSafeMiddleware.</p>
+    <p>In your `initializeJWTRoutes` add a new route:</p>
+    <pre><code class="language-swift">app.router.get("/jwtCodable", handler: app.typeSafeHandler)</code></pre>
+    <p>In your app extension, define the typeSafeHandler:</p>
+<pre><code class="language-swift">func typeSafeHandler(typeSafeJWT: TypeSafeJWT&lt;ClaimsStandardJWT&gt;, completion: (JWT&lt;ClaimsStandardJWT>?, RequestError?) -> Void) {
+    completion(typeSafeJWT.jwt, nil)
+}</code></pre>
+    <p>This will run your TypeSafeJWT middleware and on success return the jwt just like out raw route.</p>
+    <div class="underline"></div>
+
+    <h2 class="heading-2"><span class="blue-text">Step 9c:</span> Test the TypeSafeJWT route.</h2>
+    <p>To test this route, restart your server and send the POST request from Step 6.</p>
+    <p>Copy the returned JWT String and paste it into the following curl request:<p>
+<pre><code>curl -X GET \
+http://localhost:8080/jwtCodable \
+-H 'content-type: application/json' \
+-H 'Authorization: Bearer &lt;Your JWT String here&gt;'</code></pre>
+<p>You should see your JWT with your username returned to you. This should look something like:</p>
+<pre><code>{"claims":{"iss":"Kitura","sub":"Joe Bloggs","exp":574703307.61258602},"header":{"typ":"JWT","alg":"ES256"}}</code></pre>
+    <div class="underline"></div>
+    <h3 class="heading-3">Next steps</h3>
+    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`stencil`)" href="../templating/stencil.html#">Add a Web Page:</a></span> Get useful feedback from your server about startup and errors</p>
+    <script type="text/javascript" src="../../scripts/docs.js"></script>
+    <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>
