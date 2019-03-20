@@ -23,7 +23,8 @@
 }
 
 .docs-title {
-  @include sidebar-item('2.8vw', '2.7rem', 'bold', '3vw', '8vw');
+  /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
+  @include sidebar-item('2.8vw', '2.7rem', 'bold', '3vw', '8vw', '10vw');
   text-align: center;
   padding: 0 1rem;
   margin-bottom: 0;
@@ -44,7 +45,8 @@
 }
 
 .sidebar-item {
-  @include sidebar-item('1.2vw', '1rem', '600', '1.7vw', '3vw');
+  /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
+  @include sidebar-item('1.2vw', '1rem', '600', '1.7vw', '3vw', '5vw');
   display: inline-block;
 
   &:first-of-type {
@@ -58,7 +60,8 @@
 }
 
 .nested-sidebar-item {
-  @include sidebar-item('0.9vw', '0', '500', '1.4vw', '2vw');
+  /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
+  @include sidebar-item('0.9vw', '0', '500', '1.4vw', '2vw', '4vw');
   display: table;
   padding: 1rem 0;
   margin-left: 1rem;
