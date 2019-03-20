@@ -146,7 +146,7 @@ body {
   cursor: pointer; }
   @media (max-width: 600px) {
     .nav-item {
-      font-size: 2vw; } }
+      font-size: 2.8vw; } }
 
 .temp-beta {
   width: 100%;
