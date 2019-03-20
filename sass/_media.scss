@@ -1,6 +1,6 @@
 @mixin breakpoint($class) {
   @if $class == 'xl' {
-    @media (min-width: 1800px) {
+    @media (max-width: 1800px) {
       @content;
     }
   }

@@ -103,6 +103,10 @@
   color: $blue-color;
   cursor: pointer;
 
+  @include breakpoint('xl') {
+    font-size: 1vw;
+  }
+
   @include breakpoint('sm') {
     font-size: 2.8vw;
   }
