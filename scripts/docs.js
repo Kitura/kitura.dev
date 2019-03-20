@@ -62,6 +62,8 @@ function openPlugin(evt, pluginName) {
   }
   document.getElementById(pluginName).style.display = "block";
   evt.currentTarget.className += " active";
+
+  parent.document.getElementById('doc-window').style.height = document.body.offsetHeight + 'px';
 }
 
 function setIntialTab() {

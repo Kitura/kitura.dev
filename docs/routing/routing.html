@@ -15,122 +15,123 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/docs.css">
-    <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/docs_mobile.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1 class="heading-1">What is routing?</h1>
-    <p class="block-text">Routing is the way in which requests (the combination of a URL and a HTTP method) are routed to the code that handles them.</p>
-    <p class="block-text">When you navigated to www.kitura.io in your browser you were requesting the HTML file that is located there. The server hosting the files will respond with the requested file, if it exists, and you will see the file rendered in your browser. This means that under the covers there’s a server hosting the files for the Kitura.io website. In this server there is a route defined that states if we receive a GET request on “/” then respond with the home page that we see.</p>
-    <p class="block-text">Here we mentioned a GET request being made on "/" but what does that mean? In the next section we will look at GET, which is an HTTP Method, in more detail.</p>
-    <h2 class="heading-2">REST APIs</h2>
-    <p class="block-text">Representational state transfer (REST) or RESTful APIs are a way of building web services to allow clients and servers to communicate using standard HTTP protocols. Essentially it’s an architectural and design pattern for building an API using HTTP methods, URI paths, and request and response body data.</p>
-    <h3 class="heading-3">HTTP Methods</h3>
-    <p class="block-text">An HTTP method is the part that defines what type of REST API we are calling. For example: A GET request gets a resource from the specified location, hence the name GET.</p>
-    <p class="block-text">Below is a table of the main HTTP methods used in REST, listing their primary usage, what the request body should contain and what response we should expect from a call of that type.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>HTTP Method</th>
-          <th>Usage</th>
-          <th>Request Body</th>
-          <th>Response Body</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GET</td>
-          <td>The GET method is used to retrieve resources only</td>
-          <td>No request body needed</td>
-          <td>Reponds with resource</td>
-        </tr>
-        <tr>
-          <td>POST</td>
-          <td>The POST method is used to create a new resource</td>
-          <td>The resource to be created</td>
-          <td>Reponds with the created resource</td>
-        </tr>
-        <tr>
-          <td>PUT</td>
-          <td>The PUT method updates an existing resource</td>
-          <td>The new version of a resource</td>
-          <td>Responds with the updated resource</td>
-        </tr>
-        <tr>
-          <td>DELETE</td>
-          <td>The DELETE method deletes an existing resource</td>
-          <td>No request body needed</td>
-          <td>No reponse body</td>
-        </tr>
-        <tr>
-          <td>PATCH</td>
-          <td>The PATCH method makes a partial update to a resource</td>
-          <td>The partially updated resource</td>
-          <td>Responds with the updated resource</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3 class="heading-3">URI Paths</h3>
-    <p class="block-text">A URI path is the path upon which this route is linked. That is to say when a request is made to the specified path we know this is the code block to execute. Here is an example:</p>
-    <pre><code class="language-swift">router.get("/hello")</code></pre>
-    <p class="block-text">Above is an example of registering a GET method on the "/hello" path. Let's assume our server is running at localhost:8080, then if I want to make a call to this endpoint I could open http://localhost:8080/hello in my browser and view the response.</p>
-    <p class="block-text">Kitura provides two 'types' of routing, Raw Routing and Codable Routing. Over the next couple of sections we will dicuss them and highlight their differences.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2">Raw Routing</h2>
-    <p class="block-text">Raw routing is where the route handlers were called with RouterRequest and RouterResponse objects with which to handle the client request and build the response, along with a next completion handler. This approach provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
-    <p>The following is an example of a Raw Route:</p>
-    <pre><code class="language-swift">router.get("/") { request, response, next in
-  response.send("Hello world")
-  next()
-}</code></pre>
-    <h3 class="heading-3">Router Request</h3>
-    <p class="block-text">The RouterRequest class is used to interact with incoming HTTP requests to the Router. It contains and allows access to the request’s Headers and Body as well as other properties of the request. It can also perform content negotiation based on the request’s Accept header.</p>
-    <h3 class="heading-3">Router Response</h3>
-    <p class="block-text">The RouterResponse class is used to define and work with the response that will be sent by the Router. It contains and allows access to the HTTP response code (e.g. 404 Not Found), the HTTP Headers and the body of the response. It can also render template files, using a template engine registered to the router.</p>
-    <h3 class="heading-3">Next</h3>
-    <p>In Kitura you can register multiple handlers on a single route.</p>
-    <p>For example:</p>
-    <pre><code class="language-swift">router.get("/") {request, response, next in
-  response.send("Hello from the 1st route!")
-  next()
-}
+    <main>
+      <h1 class="heading-1">What is routing?</h1>
+      <p class="block-text">Routing is the way in which requests (the combination of a URL and a HTTP method) are routed to the code that handles them.</p>
+      <p class="block-text">When you navigated to www.kitura.io in your browser you were requesting the HTML file that is located there. The server hosting the files will respond with the requested file, if it exists, and you will see the file rendered in your browser. This means that under the covers there’s a server hosting the files for the Kitura.io website. In this server there is a route defined that states if we receive a GET request on “/” then respond with the home page that we see.</p>
+      <p class="block-text">Here we mentioned a GET request being made on "/" but what does that mean? In the next section we will look at GET, which is an HTTP Method, in more detail.</p>
+      <h2 class="heading-2">REST APIs</h2>
+      <p class="block-text">Representational state transfer (REST) or RESTful APIs are a way of building web services to allow clients and servers to communicate using standard HTTP protocols. Essentially it’s an architectural and design pattern for building an API using HTTP methods, URI paths, and request and response body data.</p>
+      <h3 class="heading-3">HTTP Methods</h3>
+      <p class="block-text">An HTTP method is the part that defines what type of REST API we are calling. For example: A GET request gets a resource from the specified location, hence the name GET.</p>
+      <p class="block-text">Below is a table of the main HTTP methods used in REST, listing their primary usage, what the request body should contain and what response we should expect from a call of that type.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>HTTP Method</th>
+            <th>Usage</th>
+            <th>Request Body</th>
+            <th>Response Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GET</td>
+            <td>The GET method is used to retrieve resources only</td>
+            <td>No request body needed</td>
+            <td>Reponds with resource</td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>The POST method is used to create a new resource</td>
+            <td>The resource to be created</td>
+            <td>Reponds with the created resource</td>
+          </tr>
+          <tr>
+            <td>PUT</td>
+            <td>The PUT method updates an existing resource</td>
+            <td>The new version of a resource</td>
+            <td>Responds with the updated resource</td>
+          </tr>
+          <tr>
+            <td>DELETE</td>
+            <td>The DELETE method deletes an existing resource</td>
+            <td>No request body needed</td>
+            <td>No reponse body</td>
+          </tr>
+          <tr>
+            <td>PATCH</td>
+            <td>The PATCH method makes a partial update to a resource</td>
+            <td>The partially updated resource</td>
+            <td>Responds with the updated resource</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="heading-3">URI Paths</h3>
+      <p class="block-text">A URI path is the path upon which this route is linked. That is to say when a request is made to the specified path we know this is the code block to execute. Here is an example:</p>
+      <pre><code class="language-swift">router.get("/hello")</code></pre>
+      <p class="block-text">Above is an example of registering a GET method on the "/hello" path. Let's assume our server is running at localhost:8080, then if I want to make a call to this endpoint I could open http://localhost:8080/hello in my browser and view the response.</p>
+      <p class="block-text">Kitura provides two 'types' of routing, Raw Routing and Codable Routing. Over the next couple of sections we will dicuss them and highlight their differences.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2">Raw Routing</h2>
+      <p class="block-text">Raw routing is where the route handlers were called with RouterRequest and RouterResponse objects with which to handle the client request and build the response, along with a next completion handler. This approach provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
+      <p>The following is an example of a Raw Route:</p>
+      <pre><code class="language-swift">router.get("/") { request, response, next in
+    response.send("Hello world")
+    next()
+  }</code></pre>
+      <h3 class="heading-3">Router Request</h3>
+      <p class="block-text">The RouterRequest class is used to interact with incoming HTTP requests to the Router. It contains and allows access to the request’s Headers and Body as well as other properties of the request. It can also perform content negotiation based on the request’s Accept header.</p>
+      <h3 class="heading-3">Router Response</h3>
+      <p class="block-text">The RouterResponse class is used to define and work with the response that will be sent by the Router. It contains and allows access to the HTTP response code (e.g. 404 Not Found), the HTTP Headers and the body of the response. It can also render template files, using a template engine registered to the router.</p>
+      <h3 class="heading-3">Next</h3>
+      <p>In Kitura you can register multiple handlers on a single route.</p>
+      <p>For example:</p>
+      <pre><code class="language-swift">router.get("/") {request, response, next in
+    response.send("Hello from the 1st route!")
+    next()
+  }
 
-router.get("/") {request, response, next in
-  response.send("Hello from the 2nd route!")
-  next()
-}</code></pre>
-    <p>If a request comes into the server on `"/"` then the following would be returned to the client:</p>
-    <pre><code>"Hello from the 1st route!"
-"Hello from the 2nd route!"</code></pre>
-    <p class="block-text">As you can see one route is called immediately after the other and this is made possible because of `next()`. Next is a closure that should be called after all the logic in a handler has successfully completed, this tells the server to go ahead and execute the 'next' handler in the list. It's important to note this should only be called on successful completion, in cases of an error `next()` should not be called.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2">Codable Routing</h2>
-    <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with stuct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
-    <pre><code class="language-swift">func getHandler(completion: ([String]?, RequestError?) -> Void) {
-    completion(["Hello World!"], nil)
-}
+  router.get("/") {request, response, next in
+    response.send("Hello from the 2nd route!")
+    next()
+  }</code></pre>
+      <p>If a request comes into the server on `"/"` then the following would be returned to the client:</p>
+      <pre><code>"Hello from the 1st route!"
+  "Hello from the 2nd route!"</code></pre>
+      <p class="block-text">As you can see one route is called immediately after the other and this is made possible because of `next()`. Next is a closure that should be called after all the logic in a handler has successfully completed, this tells the server to go ahead and execute the 'next' handler in the list. It's important to note this should only be called on successful completion, in cases of an error `next()` should not be called.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2">Codable Routing</h2>
+      <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with stuct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
+      <pre><code class="language-swift">func getHandler(completion: ([String]?, RequestError?) -> Void) {
+      completion(["Hello World!"], nil)
+  }
 
-router.get("/", handler: getHandler)</code></pre>
-    <div class="info">
-      <p>Any type that conforms to Codable can be used as a parameter in Codable routing.</p>
-      <p>Including your own custom structs and classes:</p>
-      <pre><code class="language-swift">struct Book: Codable {
-  let id: Int
-  let title: String
-  let price: Double
-  let genre: String
-}</code></pre>
-    </div>
-    <div class="underline"></div>
-    <h2 class="heading-2">Conclusion</h2>
-    <p class="block-text">Codable routing is a simpler approach to building RESTful APIs, particularly if you are new to REST. Codable routing also takes advantage of the inherent type safety of the Codable protocol provided by Swift. Codable routing will also feel more natural to Swift developers as defining routes is simply just defining functions.</p>
-    <p class="block-text">Raw Routing is more more flexible and provides greater control over your RESTful API implementation but has a much higher learning curve, particularly for those new to REST and server-side coding.</p>
-    <p class="block-text">Codable Routing isn’t suitable for every use case and scenario, so Raw Routing is still available where you need the power and flexibility.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2">Next steps</h2>
-    <p><a href="codable-routing.html"><span class="blue-text bold">Add Codable Routing:</span></a> Get useful feedback from your server about startup and errors</p>
-    <p><a href="raw-routing.html"><span class="blue-text bold">Add Raw Routing:</span></a> Add REST APIs, such as HTTP GET, to your server</p>
+  router.get("/", handler: getHandler)</code></pre>
+      <div class="info">
+        <p>Any type that conforms to Codable can be used as a parameter in Codable routing.</p>
+        <p>Including your own custom structs and classes:</p>
+        <pre><code class="language-swift">struct Book: Codable {
+    let id: Int
+    let title: String
+    let price: Double
+    let genre: String
+  }</code></pre>
+      </div>
+      <div class="underline"></div>
+      <h2 class="heading-2">Conclusion</h2>
+      <p class="block-text">Codable routing is a simpler approach to building RESTful APIs, particularly if you are new to REST. Codable routing also takes advantage of the inherent type safety of the Codable protocol provided by Swift. Codable routing will also feel more natural to Swift developers as defining routes is simply just defining functions.</p>
+      <p class="block-text">Raw Routing is more more flexible and provides greater control over your RESTful API implementation but has a much higher learning curve, particularly for those new to REST and server-side coding.</p>
+      <p class="block-text">Codable Routing isn’t suitable for every use case and scenario, so Raw Routing is still available where you need the power and flexibility.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2">Next steps</h2>
+      <p><a href="codable-routing.html"><span class="blue-text bold">Add Codable Routing:</span></a> Get useful feedback from your server about startup and errors</p>
+      <p><a href="raw-routing.html"><span class="blue-text bold">Add Raw Routing:</span></a> Add REST APIs, such as HTTP GET, to your server</p>
+    </main>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
 </html>

@@ -20,14 +20,14 @@
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
+      <main>
       <h1 class="heading-1">JSON Web Token Authentication</h1>
       <p class="block-text">A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can find out more about JWTs at `JWT.io`.</p>
       <p class="block-text">This guide uses JWT with Swift-JWT to implement Single Sign On (SSO) authentication for your Kitura routes.</p>
       <h2 class="heading-2">Prerequisites</h2>
       <ul class="plain-list">
-        <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
-        <li><span class="blue-text">Kitura Style Guide:</span> Follow our guide to see how a production ready server should be structed</p>
-        <li><span class="blue-text">Kitura OpenAPI:</span> Learn how to add this in our Kitura OpenAPI guide</li>
+        <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide</li>
+        <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structed</li>
         <li><a onclick="localStorage.setItem('package', 'Swift-JWT'); setActiveSidebarElementForParent('swift-jwt')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift-JWT needs adding to the Package.swift file.</li>
       </ul>
       <div class="underline"></div>
@@ -415,6 +415,7 @@ http://localhost:8080/jwtCodable \
     <div class="underline"></div>
     <h3 class="heading-3">Next steps</h3>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`stencil`)" href="../templating/stencil.html#">Add a Web Page:</a></span> Get useful feedback from your server about startup and errors</p>
+</main>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>

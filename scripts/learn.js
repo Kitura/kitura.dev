@@ -10,9 +10,7 @@ if (localStorage.getItem("src") == undefined) {
 }
 
 function resizeIframe() {
-  if (document.documentElement.clientWidth > 900) {
-    document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.scrollHeight + 'px';
-  }
+  document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.offsetHeight + 'px';
 }
 
 

@@ -15,480 +15,480 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/docs.css">
-    <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/docs_mobile.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1 class="heading-1">Swift Kuery</h1>
-    <p class="block-text">Swift-Kuery is a pluggable SQL database driver/SDK abstraction layer. Its main idea is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API.</p>
-    <p class="block-text">This guide uses Swift Kuery with <a onclick="setActiveSidebarElementForParent('raw-routing')" href="../routing/raw-routing.html#">Raw Routing</a> and the <a target="_blank" href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL">Swift Kuery PostgreSQL</a> plugin.</p>
-    <h2 class="heading-2">Prerequisites</h2>
-    <ul class="plain-list">
-      <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
-      <li><span class="blue-text">Logging:</span> Learn how to add logging to your project</li>
-      <li><a onclick="localStorage.setItem('package', 'Swift-Kuery'); setActiveSidebarElementForParent('swift-kuery')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift Kuery needs adding to the Package.swift file.</li>
-    </ul>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create an `KueryRoutes.swift` file</h2>
-    <p>Open your `Sources` > `Application` > `Application.swift`</p>
-    <p> Inside the `postInit()` function add: </p>
-    <pre><code class="language-swift">initializeKueryRoutes(app: self)</code></pre>
-    <p>Create a new file called `KueryRoutes.swift` in `Sources` > `Application` > `Routes`</p>
-    <p>Inside this file, add the framework for our routes code:</p>
-    <pre><code class="language-swift">import LoggerAPI
-// Create connection pool and table here
+    <main>
+      <h1 class="heading-1">Swift Kuery</h1>
+      <p class="block-text">Swift-Kuery is a pluggable SQL database driver/SDK abstraction layer. Its main idea is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API.</p>
+      <p class="block-text">This guide uses Swift Kuery with <a onclick="setActiveSidebarElementForParent('raw-routing')" href="../routing/raw-routing.html#">Raw Routing</a> and the <a target="_blank" href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL">Swift Kuery PostgreSQL</a> plugin.</p>
+      <h2 class="heading-2">Prerequisites</h2>
+      <ul class="plain-list">
+        <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our Getting Started guide</li>
+        <li><span class="blue-text">Logging:</span> Learn how to add logging to your project</li>
+        <li><a onclick="localStorage.setItem('package', 'Swift-Kuery'); setActiveSidebarElementForParent('swift-kuery')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift Kuery needs adding to the Package.swift file.</li>
+      </ul>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create an `KueryRoutes.swift` file</h2>
+      <p>Open your `Sources` > `Application` > `Application.swift`</p>
+      <p> Inside the `postInit()` function add: </p>
+      <pre><code class="language-swift">initializeKueryRoutes(app: self)</code></pre>
+      <p>Create a new file called `KueryRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+      <p>Inside this file, add the framework for our routes code:</p>
+      <pre><code class="language-swift">import LoggerAPI
+  // Create connection pool and table here
 
-func initializeKueryRoutes(app: App) {
+  func initializeKueryRoutes(app: App) {
 
-    app.router.post("/kuery") { request, response, next in
-        // Handle POST here
-        next()
-    }
-    app.router.get("/kuery") { request, response, next in
-        // Handle GET here
-        next()
-    }
-}
-// Write functions here
-</code></pre>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
-    <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
-    <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
-    <p>In this guide we will select `PostgreSQL` and follow the guide from there.</p>
-    <section class="tab">
-      <div class="tab-buttons">
-        <button id="postgres-button" type="button" name="button" class="tablinks" onclick="openPlugin(event, 'postgres')">PostgreSQL</button>
-        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'mysql')">MySQL</button>
-        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'sqlite')">SQLite</button>
-      </div>
-      <div id="postgres" class="tabcontent">
-        <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install the PostgreSQL client</h2>
-        <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
-        <h3 class="heading-3">macOS</h3>
-        <p>On macOS we can use Homebrew to install Postgres:</p>
-        <pre><code class="language-swift">brew install postgresql</code></pre>
-        <h3 class="heading-3">Linux</h3>
-        <p>On Linux we can use `apt-get` to install Postgres:</p>
-        <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a Postgres Database</h2>
-        <p>Now that we have PostgreSQL installed we can create a database:</p>
-        <pre><code class="language-swift">createdb bookstoredb</code></pre>
-        <p>Then we can open the PostgreSQL command-line interface:</p>
-        <pre><code class="language-swift">psql bookstoredb</code></pre>
-        <p>Finally we can create a table in our database:</p>
-        <pre><code>CREATE TABLE "Titles" (
-        id varchar(100) PRIMARY KEY,
-        title text NOT NULL,
-        price float8 NOT NULL,
-        genre text NOT NULL
-    );</code></pre>
-        <p>Enter `\q` in terminal to exit psql.</p>
-        <p>Now we're ready to connect to our database from our Kitura server.</p>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create connection pool of PostgreSQL connections</h2>
-        <p>Add SwiftKuery and SwiftKueryPostgreSQL to your package.swift</p>
-        <p>Inside `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:</p>
-        <pre><code class="language-swift">import SwiftKuery
-import SwiftKueryPostgreSQL</code></pre>
-        <p>Beneath your import statements, create a connection pool of connections:</p>
-        <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
-        <p>This creates a pool of connections for us to use to make requests to our database.</p>
-      </div>
-      <div id="mysql" class="tabcontent">
-        <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install MySQL</h2>
-        <p>To use Swift-Kuery-MySQL you need to first  install MySQL:</p>
-        <h3 class="heading-3">macOS</h3>
-        <p>On macOS we can use Homebrew to install Postgres:</p>
-        <pre><code class="language-swift">brew install mysql</code></pre>
-        <p>Then we can start MySQL:</p>
-        <pre><code>mysql.server start</code></pre>
-        <h3 class="heading-3">Linux</h3>
-        <p>On Linux we can use `apt-get` to install Postgres:</p>
-        <pre><code class="language-swift">sudo apt-get install mysql-server libmysqlclient-dev pkg-config</code></pre>
-        <p>Then we can start the MySQL service:</p>
-        <pre><code>sudo service mysql start</code></pre>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a connection to a MySQL database</h2>
-        <p>First we need to import the SwiftKuery and SwiftKueryMySQL packages.</p>
-        <pre><code class="language-swift">import SwiftKuery
-import SwiftKueryMySQL</code></pre>
-        <p>Next we create a connection pool of connections:</p>
-        <pre><code class="language-swift">let pool = MySQLConnection.createPool(host: host, user: user, password: password, database: database, port: port, characterSet: nil, connectionTimeout: 10000, poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
-        <p>This creates a pool of connections for us to use to make requests to our database.</p>
-      </div>
-      <div id="sqlite" class="tabcontent">
-        <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install SQLite</h2>
-        <p>To use Swift-Kuery-SQLite you need to first  install SQLite:</p>
-        <h3 class="heading-3">macOS</h3>
-        <p>On macOS we can use Homebrew to install SQLite:</p>
-        <pre><code class="language-swift">brew install sqlite</code></pre>
-        <h3 class="heading-3">Linux</h3>
-        <p>On Linux we can use `apt-get` to install SQLite:</p>
-        <pre><code class="language-swift">sudo apt-get install sqlite3 libsqlite3-dev</code></pre>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a connection to an SQLite database</h2>
-        <p>First we need to import the SwiftKuery and SwiftKuerySQLite packages.</p>
-        <pre><code class="language-swift">import SwiftKuery
-import SwiftKuerySQLite</code></pre>
-        <p>Next we create a connection pool of connections:</p>
-        <pre><code class="language-swift">let pool = SQLiteConnection.createPool(filename: "myDB.db", poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
-        <p>This creates a pool of connections for us to use to make requests to our database.</p>
-      </div>
-    </section>
-    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a class to represent the database table</h2>
-    <p>To use SwiftKuery we need to create a class that matches our table.</p>
-    <p>Create a new file called `Titles.swift` in `Sources` > `Application` > `Models`.</p>
-    <p>Inside `Titles.swift`, Define your Titles class:</p>
-    <pre><code class="language-swift">import SwiftKuery
-
-class Titles: Table {
-  let tableName = "Titles"
-  let id = Column("id", Int32.self, primaryKey: true)
-  let title = Column("title", String.self)
-  let price = Column("price", Float.self)
-  let genre = Column("genre", String.self)
-}</code></pre>
-    <p>Our class needs to inherit from `Table` and have fields that match the column names of the table we created in the database.</p>
-    <p>We must also provide the table name as a property.</p>
-    <p>We then need to create an instance of this table to use.</p>
-    <p>Return to `KueryRoutes.swift`. Below your connection pool, add the following:</p>
-    <pre><code class="language-swift">let titles = Titles()</code></pre>
-    <p>Now we're ready to start saving data to our database.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Save data to the database</h2>
-    <p>We need to modify our POST route to save the data:</p>
-    <pre><code class="language-swift">app.router.post("/kuery") { request, response, next in
-  let rows: [[Any]]
-  do {
-      let book = try request.read(as: Book.self)
-      rows = [[book.id, book.title, book.price, book.genre]]
-  } catch {
-      Log.error(error.localizedDescription)
-      return
-  }
-
-  postTitles(rows: rows)
-
-  next()
-}</code></pre>
-    <p>What we're doing here is creating an Array of Arrays that are of type `Any`.</p>
-    <div class="info">
-      <p>We need to use the Any type here as the database fields could be of any type.</p>
-    </div>
-    <p>Then when we read the body data from the POST request we extract the values and add them to the array.</p>
-    <p>Then we pass the `rows` array we've just built into the `postTitles` function.</p>
-    <p>Our project won't compile yet as we haven't defined the `postTitles` function, so we can do that now:</p>
-    <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
-
-}</code></pre>
-    <p>Our project will now compile but nothing will happen as we haven't added any logic to our function.</p>
-    <p>The first thing we need to do is get a connection from the connection pool.</p>
-    <p>To do this we can use the `getConnection` method. We can add this into our POST route:</p>
-    <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
-        return
+      app.router.post("/kuery") { request, response, next in
+          // Handle POST here
+          next()
       }
-      Log.error("Error connecting: \(error)")
-      return
-    }
-  }
-}</code></pre>
-    <p>When we get a connection from the connection pool we need to confirm it's a valid connection.</p>
-    <p>If we don't get a valid connection, we will stop the execution and log an error to the console.</p>
-    <p>Now we can build the query for inserting data into a database.</p>
-    <p>Let's modify our POST route to do this:</p>
-    <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
-        return
+      app.router.get("/kuery") { request, response, next in
+          // Handle GET here
+          next()
       }
-      Log.error("Error connecting: \(error)")
-      return
-    }
-
-    let insertQuery = Insert(into: titles, rows: rows)
   }
-}</code></pre>
-    <p>Next we need to execute the query using the connection we took from the pool:</p>
-    <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
-        return
-      }
-      Log.error("Error connecting: \(error)")
-      return
-    }
+  // Write functions here
+  </code></pre>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
+      <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
+      <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
+      <p>In this guide we will select `PostgreSQL` and follow the guide from there.</p>
+      <section class="tab">
+        <div class="tab-buttons">
+          <button id="postgres-button" type="button" name="button" class="tablinks" onclick="openPlugin(event, 'postgres')">PostgreSQL</button>
+          <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'mysql')">MySQL</button>
+          <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'sqlite')">SQLite</button>
+        </div>
+        <div id="postgres" class="tabcontent">
+          <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install the PostgreSQL client</h2>
+          <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
+          <h3 class="heading-3">macOS</h3>
+          <p>On macOS we can use Homebrew to install Postgres:</p>
+          <pre><code class="language-swift">brew install postgresql</code></pre>
+          <h3 class="heading-3">Linux</h3>
+          <p>On Linux we can use `apt-get` to install Postgres:</p>
+          <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
+          <div class="underline"></div>
+          <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a Postgres Database</h2>
+          <p>Now that we have PostgreSQL installed we can create a database:</p>
+          <pre><code class="language-swift">createdb bookstoredb</code></pre>
+          <p>Then we can open the PostgreSQL command-line interface:</p>
+          <pre><code class="language-swift">psql bookstoredb</code></pre>
+          <p>Finally we can create a table in our database:</p>
+          <pre><code>CREATE TABLE "Titles" (
+          id varchar(100) PRIMARY KEY,
+          title text NOT NULL,
+          price float8 NOT NULL,
+          genre text NOT NULL
+      );</code></pre>
+          <p>Enter `\q` in terminal to exit psql.</p>
+          <p>Now we're ready to connect to our database from our Kitura server.</p>
+          <div class="underline"></div>
+          <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create connection pool of PostgreSQL connections</h2>
+          <p>Add SwiftKuery and SwiftKueryPostgreSQL to your package.swift</p>
+          <p>Inside `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:</p>
+          <pre><code class="language-swift">import SwiftKuery
+  import SwiftKueryPostgreSQL</code></pre>
+          <p>Beneath your import statements, create a connection pool of connections:</p>
+          <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
+          <p>This creates a pool of connections for us to use to make requests to our database.</p>
+        </div>
+        <div id="mysql" class="tabcontent">
+          <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install MySQL</h2>
+          <p>To use Swift-Kuery-MySQL you need to first  install MySQL:</p>
+          <h3 class="heading-3">macOS</h3>
+          <p>On macOS we can use Homebrew to install Postgres:</p>
+          <pre><code class="language-swift">brew install mysql</code></pre>
+          <p>Then we can start MySQL:</p>
+          <pre><code>mysql.server start</code></pre>
+          <h3 class="heading-3">Linux</h3>
+          <p>On Linux we can use `apt-get` to install Postgres:</p>
+          <pre><code class="language-swift">sudo apt-get install mysql-server libmysqlclient-dev pkg-config</code></pre>
+          <p>Then we can start the MySQL service:</p>
+          <pre><code>sudo service mysql start</code></pre>
+          <div class="underline"></div>
+          <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a connection to a MySQL database</h2>
+          <p>First we need to import the SwiftKuery and SwiftKueryMySQL packages.</p>
+          <pre><code class="language-swift">import SwiftKuery
+  import SwiftKueryMySQL</code></pre>
+          <p>Next we create a connection pool of connections:</p>
+          <pre><code class="language-swift">let pool = MySQLConnection.createPool(host: host, user: user, password: password, database: database, port: port, characterSet: nil, connectionTimeout: 10000, poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
+          <p>This creates a pool of connections for us to use to make requests to our database.</p>
+        </div>
+        <div id="sqlite" class="tabcontent">
+          <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install SQLite</h2>
+          <p>To use Swift-Kuery-SQLite you need to first  install SQLite:</p>
+          <h3 class="heading-3">macOS</h3>
+          <p>On macOS we can use Homebrew to install SQLite:</p>
+          <pre><code class="language-swift">brew install sqlite</code></pre>
+          <h3 class="heading-3">Linux</h3>
+          <p>On Linux we can use `apt-get` to install SQLite:</p>
+          <pre><code class="language-swift">sudo apt-get install sqlite3 libsqlite3-dev</code></pre>
+          <div class="underline"></div>
+          <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a connection to an SQLite database</h2>
+          <p>First we need to import the SwiftKuery and SwiftKuerySQLite packages.</p>
+          <pre><code class="language-swift">import SwiftKuery
+  import SwiftKuerySQLite</code></pre>
+          <p>Next we create a connection pool of connections:</p>
+          <pre><code class="language-swift">let pool = SQLiteConnection.createPool(filename: "myDB.db", poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))</code></pre>
+          <p>This creates a pool of connections for us to use to make requests to our database.</p>
+        </div>
+      </section>
+      <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a class to represent the database table</h2>
+      <p>To use SwiftKuery we need to create a class that matches our table.</p>
+      <p>Create a new file called `Titles.swift` in `Sources` > `Application` > `Models`.</p>
+      <p>Inside `Titles.swift`, Define your Titles class:</p>
+      <pre><code class="language-swift">import SwiftKuery
 
-    let insertQuery = Insert(into: titles, rows: rows)
-
-    connection.execute(query: insertQuery) { insertResult in
-      if let error = insertResult.asError {
+  class Titles: Table {
+    let tableName = "Titles"
+    let id = Column("id", Int32.self, primaryKey: true)
+    let title = Column("title", String.self)
+    let price = Column("price", Float.self)
+    let genre = Column("genre", String.self)
+  }</code></pre>
+      <p>Our class needs to inherit from `Table` and have fields that match the column names of the table we created in the database.</p>
+      <p>We must also provide the table name as a property.</p>
+      <p>We then need to create an instance of this table to use.</p>
+      <p>Return to `KueryRoutes.swift`. Below your connection pool, add the following:</p>
+      <pre><code class="language-swift">let titles = Titles()</code></pre>
+      <p>Now we're ready to start saving data to our database.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text">Step 4:</span> Save data to the database</h2>
+      <p>We need to modify our POST route to save the data:</p>
+      <pre><code class="language-swift">app.router.post("/kuery") { request, response, next in
+    let rows: [[Any]]
+    do {
+        let book = try request.read(as: Book.self)
+        rows = [[book.id, book.title, book.price, book.genre]]
+    } catch {
         Log.error(error.localizedDescription)
-      }
+        return
     }
-  }
-}</code></pre>
-    <p>That's it! We've setup our POST route to save data to a database.</p>
-    <p>Next we can test our implementation.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 5 (Optional):</span> Test saving to database</h2>
-    <p>First we need to start our Kitura server.</p>
-    <p>Once the server is running run the following in a terminal:</p>
-    <pre><code>curl -X POST \
-  http://localhost:8080/kuery \
-  -H 'content-type: application/json' \
-  -d '{
-  "id": 0,
-  "title": "A Game of Thrones",
-  "price": 14.99,
-  "genre": "Fantasy"
-}'</code></pre>
-    <p>Then using the PostgreSQL CLI we can query the database to see if our data was stored.</p>
-    <div class="info">
-      <p>You can start the postgreSQL CLI by running the following in a terminal:</p>
-      <pre><code>psql bookstoredb</code></pre>
-    </div>
-    <p>In a terminal which is running the `psql` command run the following:</p>
-    <pre><code>SELECT * FROM "Titles";</code></pre>
-    <p>You should see the following printed in the terminal:</p>
-    <pre><code> id |       title       | price |  genre
-----+-------------------+-------+---------
- 0  | A Game of Thrones | 14.99 | Fantasy
-(1 row)</code></pre>
-    <p>This proves our POST work is working as we'd expect.</p>
-    <p>However the best way to test this would be to actually query the database for the results rather than using the terminal.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve data from the database</h2>
-    <p>We need to modify our GET route to retrieve and respond with the data:</p>
-    <pre><code class="language-swift">app.router.get("/kuery") { request, response, next in
-  getTitles() { resp in
-    response.send(resp)
+
+    postTitles(rows: rows)
+
     next()
-  }
-}</code></pre>
-    <p>What we're doing here is calling an asynchronous `getTitle`.</p>
-    <p>As this call is asynchronous we only call the `response.send(resp)` when `getTitle` has finished executing.</p>
-    <p>Our project won't compile yet as we haven't defined the `getTitles` function, so we can do that now:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+  }</code></pre>
+      <p>What we're doing here is creating an Array of Arrays that are of type `Any`.</p>
+      <div class="info">
+        <p>We need to use the Any type here as the database fields could be of any type.</p>
+      </div>
+      <p>Then when we read the body data from the POST request we extract the values and add them to the array.</p>
+      <p>Then we pass the `rows` array we've just built into the `postTitles` function.</p>
+      <p>Our project won't compile yet as we haven't defined the `postTitles` function, so we can do that now:</p>
+      <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
 
-}</code></pre>
-    <p>Once again our project will now compile but nothing will happen as we haven't added any logic to our function.</p>
-    <p>Just like we did in step 4 we need to get a connection from the connection pool:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
-        return
-      }
-      Log.error("Error connecting: \(error)")
-      return
-    }
-  }
-}</code></pre>
-    <p>Now we can build our query that will query the database for every entry in the "Titles" database:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
-        return
-      }
-      Log.error("Error connecting: \(error)")
-      return
-    }
-    let selectQuery = Select(from: titles)
-  }
-}</code></pre>
-    <p>Like before we can now execute the query using the `execute` method in Connection:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
-        return
-      }
-      Log.error("Error connecting: \(error)")
-      return
-    }
-
-    let selectQuery = Select(from: titles)
-
-    connection.execute(query: selectQuery) { selectResult in
-      guard let resultSet = selectResult.asResultSet else {
-        guard let error = selectResult.asError else {
-          return callback("Error executing query: Unknown Error")
+  }</code></pre>
+      <p>Our project will now compile but nothing will happen as we haven't added any logic to our function.</p>
+      <p>The first thing we need to do is get a connection from the connection pool.</p>
+      <p>To do this we can use the `getConnection` method. We can add this into our POST route:</p>
+      <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
         }
-        return callback("Error executing query: \(error)")
-      }
-    }
-  }
-}</code></pre>
-    <p>Here we check to see if the `selectResult` value is a valid Result set otherwise we log and error and return.</p>
-    <p>Next we need to create a variable that will store the value we respond to the incoming GET request with:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
+        Log.error("Error connecting: \(error)")
         return
       }
-      Log.error("Error connecting: \(error)")
-      return
     }
-
-    let selectQuery = Select(from: titles)
-
-    connection.execute(query: selectQuery) { selectResult in
-      guard let resultSet = selectResult.asResultSet else {
-        guard let error = selectResult.asError else {
-          return callback("Error executing query: Unknown Error")
+  }</code></pre>
+      <p>When we get a connection from the connection pool we need to confirm it's a valid connection.</p>
+      <p>If we don't get a valid connection, we will stop the execution and log an error to the console.</p>
+      <p>Now we can build the query for inserting data into a database.</p>
+      <p>Let's modify our POST route to do this:</p>
+      <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
         }
-        return callback("Error executing query: \(error)")
-      }
-      var resultString = ""
-
-    }
-  }
-}</code></pre>
-    <p>Since we have confirmed we have a valid result set we can get the column titles using the `getColumnTitles` method:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
+        Log.error("Error connecting: \(error)")
         return
       }
-      Log.error("Error connecting: \(error)")
-      return
+
+      let insertQuery = Insert(into: titles, rows: rows)
     }
-
-    let selectQuery = Select(from: titles)
-
-    connection.execute(query: selectQuery) { selectResult in
-      guard let resultSet = selectResult.asResultSet else {
-        guard let error = selectResult.asError else {
-          return callback("Error executing query: Unknown Error")
+  }</code></pre>
+      <p>Next we need to execute the query using the connection we took from the pool:</p>
+      <pre><code class="language-swift">func postTitles(rows: [[Any]]) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
         }
-        return callback("Error executing query: \(error)")
-      }
-      var resultString = ""
-
-      resultSet.getColumnTitles() { colTitles, error in
-          guard let colTitles = colTitles else {
-            guard let error = error else {
-                return callback("Error fetching column titles: Unknown Error")
-            }
-            return callback("Error fetching column titles: \(error)")
-          }
-
-          for title in colTitles {
-            resultString.append("\(title.padding(toLength: 35, withPad: " ", startingAt: 0))")
-          }
-          resultString.append("\n")
-      }
-    }
-  }
-}</code></pre>
-    <p>Once we've called `getColumnTitles` we need to confirm we successfully retrieved the column titles.</p>
-    <p>When we've confirmed that we can loop over each title and use the value to build out our `resultString`.</p>
-    <div class="info">
-      <p>We use the padding method to create a more readable output in the browser.</p>
-      <p>For the same reason we also append a `"\n"` which is a break line.</p>
-    </div>
-    <p>Now that we have the column titles stored, we need to do the same for the row values:</p>
-    <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
-  pool.getConnection() { connection, error in
-    guard let connection = connection else {
-      guard let error = error else {
-        Log.error("Error connecting: Unknown Error")
+        Log.error("Error connecting: \(error)")
         return
       }
-      Log.error("Error connecting: \(error)")
-      return
-    }
 
-    let selectQuery = Select(from: titles)
+      let insertQuery = Insert(into: titles, rows: rows)
 
-    connection.execute(query: selectQuery) { selectResult in
-      guard let resultSet = selectResult.asResultSet else {
-        guard let error = selectResult.asError else {
-          return callback("Error executing query: Unknown Error")
+      connection.execute(query: insertQuery) { insertResult in
+        if let error = insertResult.asError {
+          Log.error(error.localizedDescription)
         }
-        return callback("Error executing query: \(error)")
       }
-      var resultString = ""
+    }
+  }</code></pre>
+      <p>That's it! We've setup our POST route to save data to a database.</p>
+      <p>Next we can test our implementation.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text">Step 5 (Optional):</span> Test saving to database</h2>
+      <p>First we need to start our Kitura server.</p>
+      <p>Once the server is running run the following in a terminal:</p>
+      <pre><code>curl -X POST \
+    http://localhost:8080/kuery \
+    -H 'content-type: application/json' \
+    -d '{
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": "Fantasy"
+  }'</code></pre>
+      <p>Then using the PostgreSQL CLI we can query the database to see if our data was stored.</p>
+      <div class="info">
+        <p>You can start the postgreSQL CLI by running the following in a terminal:</p>
+        <pre><code>psql bookstoredb</code></pre>
+      </div>
+      <p>In a terminal which is running the `psql` command run the following:</p>
+      <pre><code>SELECT * FROM "Titles";</code></pre>
+      <p>You should see the following printed in the terminal:</p>
+      <pre><code> id |       title       | price |  genre
+  ----+-------------------+-------+---------
+   0  | A Game of Thrones | 14.99 | Fantasy
+  (1 row)</code></pre>
+      <p>This proves our POST work is working as we'd expect.</p>
+      <p>However the best way to test this would be to actually query the database for the results rather than using the terminal.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve data from the database</h2>
+      <p>We need to modify our GET route to retrieve and respond with the data:</p>
+      <pre><code class="language-swift">app.router.get("/kuery") { request, response, next in
+    getTitles() { resp in
+      response.send(resp)
+      next()
+    }
+  }</code></pre>
+      <p>What we're doing here is calling an asynchronous `getTitle`.</p>
+      <p>As this call is asynchronous we only call the `response.send(resp)` when `getTitle` has finished executing.</p>
+      <p>Our project won't compile yet as we haven't defined the `getTitles` function, so we can do that now:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
 
-      resultSet.getColumnTitles() { colTitles, error in
-          guard let colTitles = colTitles else {
-            guard let error = error else {
-                return callback("Error fetching column titles: Unknown Error")
-            }
-            return callback("Error fetching column titles: \(error)")
+  }</code></pre>
+      <p>Once again our project will now compile but nothing will happen as we haven't added any logic to our function.</p>
+      <p>Just like we did in step 4 we need to get a connection from the connection pool:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
+        }
+        Log.error("Error connecting: \(error)")
+        return
+      }
+    }
+  }</code></pre>
+      <p>Now we can build our query that will query the database for every entry in the "Titles" database:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
+        }
+        Log.error("Error connecting: \(error)")
+        return
+      }
+      let selectQuery = Select(from: titles)
+    }
+  }</code></pre>
+      <p>Like before we can now execute the query using the `execute` method in Connection:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
+        }
+        Log.error("Error connecting: \(error)")
+        return
+      }
+
+      let selectQuery = Select(from: titles)
+
+      connection.execute(query: selectQuery) { selectResult in
+        guard let resultSet = selectResult.asResultSet else {
+          guard let error = selectResult.asError else {
+            return callback("Error executing query: Unknown Error")
           }
+          return callback("Error executing query: \(error)")
+        }
+      }
+    }
+  }</code></pre>
+      <p>Here we check to see if the `selectResult` value is a valid Result set otherwise we log and error and return.</p>
+      <p>Next we need to create a variable that will store the value we respond to the incoming GET request with:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
+        }
+        Log.error("Error connecting: \(error)")
+        return
+      }
 
-          for title in colTitles {
-            resultString.append("\(title.padding(toLength: 35, withPad: " ", startingAt: 0))")
+      let selectQuery = Select(from: titles)
+
+      connection.execute(query: selectQuery) { selectResult in
+        guard let resultSet = selectResult.asResultSet else {
+          guard let error = selectResult.asError else {
+            return callback("Error executing query: Unknown Error")
           }
-          resultString.append("\n")
+          return callback("Error executing query: \(error)")
+        }
+        var resultString = ""
 
-          resultSet.forEach() { row, error in
-            guard let row = row else {
-              // A null row means we have run out of results unless we encountered an error
-              if let error = error {
-                return callback("Error fetching row: \(error)")
+      }
+    }
+  }</code></pre>
+      <p>Since we have confirmed we have a valid result set we can get the column titles using the `getColumnTitles` method:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
+        }
+        Log.error("Error connecting: \(error)")
+        return
+      }
+
+      let selectQuery = Select(from: titles)
+
+      connection.execute(query: selectQuery) { selectResult in
+        guard let resultSet = selectResult.asResultSet else {
+          guard let error = selectResult.asError else {
+            return callback("Error executing query: Unknown Error")
+          }
+          return callback("Error executing query: \(error)")
+        }
+        var resultString = ""
+
+        resultSet.getColumnTitles() { colTitles, error in
+            guard let colTitles = colTitles else {
+              guard let error = error else {
+                  return callback("Error fetching column titles: Unknown Error")
               }
-              // No error so all rows are processed, make final callback passing result.
-                return callback(resultString)
+              return callback("Error fetching column titles: \(error)")
             }
 
-            for value in row {
-              if let value = value {
-                let valueString = String(describing: value)
-                resultString.append("\(valueString.padding(toLength: 35, withPad: " ", startingAt: 0))")
-              }
+            for title in colTitles {
+              resultString.append("\(title.padding(toLength: 35, withPad: " ", startingAt: 0))")
             }
             resultString.append("\n")
         }
       }
     }
-  }
-}</code></pre>
-    <p>We first call the `forEach()` function on the result set which gives us access to the row and a way to log errors.</p>
-    <p>Next we confirm we have a valid row, if not we log an error.</p>
-    <p>If the row is nil but error is not we assume the loop has completed and call the callback passing in `resultString`</p>
-    <p>Otherwise we loop over each row adding their values to the `resultString`.</p>
-    <div class="info">
-      <p>We use the padding method to create a more readable output in the browser.</p>
-      <p>For the same reason we also append a `"\n"` which is a break line.</p>
-    </div>
-    <p>That's it! We've setup our GET route to retrieve data from a database.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text">Step 7 (Optional):</span> Test retrieving from a database</h2>
-    <div class="info">
-      <p>If you followed Step 6 (Optional): Test saving to database then you can simply start your server and navigate to: <a target="_blank" href="http://localhost:8080/books">http://localhost:8080/books</a></p>
-      <p>You should see the following:</p>
-      <pre><code> id |       title       | price |  genre
-----+-------------------+-------+---------
- 0  | A Game of Thrones | 14.99 | Fantasy
-(1 row)</code></pre>
-    </div>
-    <div class="underline"></div>
-    <h2 class="heading-2">Next steps</h2>
-    <p>Coming Soon!</p>
-    <!-- <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
-    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p> -->
+  }</code></pre>
+      <p>Once we've called `getColumnTitles` we need to confirm we successfully retrieved the column titles.</p>
+      <p>When we've confirmed that we can loop over each title and use the value to build out our `resultString`.</p>
+      <div class="info">
+        <p>We use the padding method to create a more readable output in the browser.</p>
+        <p>For the same reason we also append a `"\n"` which is a break line.</p>
+      </div>
+      <p>Now that we have the column titles stored, we need to do the same for the row values:</p>
+      <pre><code class="language-swift">func getTitles(_ callback: @escaping (String) -> Void ) -> Void {
+    pool.getConnection() { connection, error in
+      guard let connection = connection else {
+        guard let error = error else {
+          Log.error("Error connecting: Unknown Error")
+          return
+        }
+        Log.error("Error connecting: \(error)")
+        return
+      }
 
+      let selectQuery = Select(from: titles)
+
+      connection.execute(query: selectQuery) { selectResult in
+        guard let resultSet = selectResult.asResultSet else {
+          guard let error = selectResult.asError else {
+            return callback("Error executing query: Unknown Error")
+          }
+          return callback("Error executing query: \(error)")
+        }
+        var resultString = ""
+
+        resultSet.getColumnTitles() { colTitles, error in
+            guard let colTitles = colTitles else {
+              guard let error = error else {
+                  return callback("Error fetching column titles: Unknown Error")
+              }
+              return callback("Error fetching column titles: \(error)")
+            }
+
+            for title in colTitles {
+              resultString.append("\(title.padding(toLength: 35, withPad: " ", startingAt: 0))")
+            }
+            resultString.append("\n")
+
+            resultSet.forEach() { row, error in
+              guard let row = row else {
+                // A null row means we have run out of results unless we encountered an error
+                if let error = error {
+                  return callback("Error fetching row: \(error)")
+                }
+                // No error so all rows are processed, make final callback passing result.
+                  return callback(resultString)
+              }
+
+              for value in row {
+                if let value = value {
+                  let valueString = String(describing: value)
+                  resultString.append("\(valueString.padding(toLength: 35, withPad: " ", startingAt: 0))")
+                }
+              }
+              resultString.append("\n")
+          }
+        }
+      }
+    }
+  }</code></pre>
+      <p>We first call the `forEach()` function on the result set which gives us access to the row and a way to log errors.</p>
+      <p>Next we confirm we have a valid row, if not we log an error.</p>
+      <p>If the row is nil but error is not we assume the loop has completed and call the callback passing in `resultString`</p>
+      <p>Otherwise we loop over each row adding their values to the `resultString`.</p>
+      <div class="info">
+        <p>We use the padding method to create a more readable output in the browser.</p>
+        <p>For the same reason we also append a `"\n"` which is a break line.</p>
+      </div>
+      <p>That's it! We've setup our GET route to retrieve data from a database.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text">Step 7 (Optional):</span> Test retrieving from a database</h2>
+      <div class="info">
+        <p>If you followed Step 6 (Optional): Test saving to database then you can simply start your server and navigate to: <a target="_blank" href="http://localhost:8080/books">http://localhost:8080/books</a></p>
+        <p>You should see the following:</p>
+        <pre><code> id |       title       | price |  genre
+  ----+-------------------+-------+---------
+   0  | A Game of Thrones | 14.99 | Fantasy
+  (1 row)</code></pre>
+      </div>
+      <div class="underline"></div>
+      <h2 class="heading-2">Next steps</h2>
+      <p>Coming Soon!</p>
+      <!-- <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+      <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p> -->
+    </main>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
     <script type="text/javascript">

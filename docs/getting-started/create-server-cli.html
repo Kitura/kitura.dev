@@ -15,36 +15,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/docs.css">
-    <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/docs_mobile.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
   <body>
-    <h1 class="heading-1">Create a server with the Kitura CLI</h1>
-    <h2 id="prereq">Prerequisites</h2>
-    <ul class="plain-list">
-      <li><span class="blue-text">Kitura CLI:</span> Follow our instructions for installing the Kitura CLI.</li>
-    </ul>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Create a directory</h2>
-    <p>Kitura CLI needs to be run in an empty directory so you will need to create a new directory for your server:</p>
-    <pre><code class="language-swift">mkdir MyKituraApp && cd MyKituraApp</code></pre>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create a Kitura server</h2>
-    <p>Create a Kitura application using the <a href="kitura-cli.html">Kitura CLI</a>:</p>
-    <pre><code>kitura init</code></pre>
-    <p>`kitura init` will create and build a cloud-ready Kitura application in your current directory.</p>
-    <p>The name of your project will be the same as the directory name.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Start the Kitura server</h2>
-    <p>By default `kitura init` builds our server code so we just need to run the server:</p>
-    <pre><code>swift run</code></pre>
-    <p>Once the terminal output contains:</p>
-    <pre><code>[INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080</code></pre>
-    <p>We can navigate to: <a target="_blank" href="http://localhost:8080">http://localhost:8080</a> to view our server.</p>
-    <div class="underline"></div>
-    <h2 class="heading-2">Next steps</h2>
-    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
+    <main>
+      <h1 class="heading-1">Create a server with the Kitura CLI</h1>
+      <h2 id="prereq">Prerequisites</h2>
+      <ul class="plain-list">
+        <li><span class="blue-text">Kitura CLI:</span> Follow our instructions for installing the Kitura CLI.</li>
+      </ul>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Create a directory</h2>
+      <p>Kitura CLI needs to be run in an empty directory so you will need to create a new directory for your server:</p>
+      <pre><code class="language-swift">mkdir MyKituraApp && cd MyKituraApp</code></pre>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create a Kitura server</h2>
+      <p>Create a Kitura application using the <a href="kitura-cli.html">Kitura CLI</a>:</p>
+      <pre><code>kitura init</code></pre>
+      <p>`kitura init` will create and build a cloud-ready Kitura application in your current directory.</p>
+      <p>The name of your project will be the same as the directory name.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Start the Kitura server</h2>
+      <p>By default `kitura init` builds our server code so we just need to run the server:</p>
+      <pre><code>swift run</code></pre>
+      <p>Once the terminal output contains:</p>
+      <pre><code>[INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080</code></pre>
+      <p>We can navigate to: <a target="_blank" href="http://localhost:8080">http://localhost:8080</a> to view our server.</p>
+      <div class="underline"></div>
+      <h2 class="heading-2">Next steps</h2>
+      <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server</p>
+    </main>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
   </body>
