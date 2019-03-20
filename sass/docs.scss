@@ -6,6 +6,10 @@
 .heading-1 {
   @include heading('3.3vw', '2.5rem', '2rem');
 
+  @include breakpoint('xl') {
+    @include heading('2.6vw', '2.5rem', '2rem');
+  }
+
   @include breakpoint('sm') {
     @include heading('6vw', '2.5rem', '2rem');
   }
@@ -13,6 +17,10 @@
 
 .heading-2 {
   @include heading('2.6vw', '1.8rem', '1.8rem');
+
+  @include breakpoint('xl') {
+    @include heading('1.9vw', '1.8rem', '1.8rem');
+  }
 
   @include breakpoint('sm') {
     @include heading('5.2vw', '1.8rem', '1.8rem');
@@ -22,6 +30,10 @@
 .heading-3 {
   @include heading('1.9vw', '1.6rem', '1.6rem');
 
+  @include breakpoint('xl') {
+    @include heading('1.1vw', '1.6rem', '1.6rem');
+  }
+
   @include breakpoint('sm') {
     @include heading('4.8vw', '1.6rem', '1.6rem');
   }
@@ -29,6 +41,8 @@
 
 .heading-4 {
   @include heading('1.1rem', '1.4rem', '1.4rem');
+
+
 
   @include breakpoint('sm') {
     @include heading('4.4vw', '1.4rem', '1.4rem');
@@ -105,6 +119,10 @@ main {
     line-height: 1.6rem;
     font-size: 1.5vw;
 
+    @include breakpoint('xl') {
+      font-size: 1.2vw;
+    }
+
     @include breakpoint('sm') {
       font-size: 4vw;
       margin: 0.4rem 0;
@@ -120,6 +138,10 @@ ol, ul {
   li {
     margin-bottom: 1rem;
     font-size: 1.6vw;
+
+    @include breakpoint('xl') {
+      font-size: 1.2vw;
+    }
 
     @include breakpoint('sm') {
       font-size: 4vw;
@@ -170,6 +192,10 @@ pre {
 
   code {
     font-size: 1.3vw;
+
+    @include breakpoint('xl') {
+      font-size: 1.2vw;
+    }
 
     @include breakpoint('sm') {
       font-size: 3.6vw;

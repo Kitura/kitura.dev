@@ -45,6 +45,12 @@ body {
   margin-right: 1.5rem;
   cursor: pointer;
 
+  @include breakpoint('xl') {
+    font-size: 1vw;
+    width: 8vw;
+    height: 2.5vw;
+  }
+
   @include breakpoint('sm') {
     font-size: 2vw;
     height: 7vw;

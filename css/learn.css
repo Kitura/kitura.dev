@@ -133,6 +133,11 @@ body {
   font-weight: 600;
   margin-right: 1.5rem;
   cursor: pointer; }
+  @media (max-width: 1800px) {
+    .apiref-button {
+      font-size: 1vw;
+      width: 8vw;
+      height: 2.5vw; } }
   @media (max-width: 600px) {
     .apiref-button {
       font-size: 2vw;
@@ -144,6 +149,9 @@ body {
   margin-right: 1.5rem;
   color: #0780B5;
   cursor: pointer; }
+  @media (max-width: 1800px) {
+    .nav-item {
+      font-size: 1vw; } }
   @media (max-width: 600px) {
     .nav-item {
       font-size: 2.8vw; } }
