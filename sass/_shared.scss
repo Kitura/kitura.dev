@@ -58,7 +58,7 @@ body {
   align-items: center;
 }
 
-@mixin sidebar-item($main-font-size, $margin, $weight, $large-font-size, $medium-font-size) {
+@mixin sidebar-item($main-font-size, $margin, $weight, $large-font-size, $medium-font-size, $small-font-size) {
   font-size: #{$main-font-size};
   margin-top: #{$margin};
   margin-bottom: #{$margin};
@@ -71,6 +71,10 @@ body {
   @include breakpoint('m') {
     text-align: center;
     font-size: #{$medium-font-size};
+  }
+
+  @include breakpoint('sm') {
+    font-size: #{$small-font-size};
   }
 
   &:hover {

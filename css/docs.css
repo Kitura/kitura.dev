@@ -11,24 +11,48 @@ body {
   font-weight: bold;
   margin-top: 2.5rem;
   margin-bottom: 2rem; }
+  @media (max-width: 600px) {
+    .heading-1 {
+      font-size: 6vw;
+      font-weight: bold;
+      margin-top: 2.5rem;
+      margin-bottom: 2rem; } }
 
 .heading-2 {
   font-size: 2.6vw;
   font-weight: bold;
   margin-top: 1.8rem;
   margin-bottom: 1.8rem; }
+  @media (max-width: 600px) {
+    .heading-2 {
+      font-size: 5.2vw;
+      font-weight: bold;
+      margin-top: 1.8rem;
+      margin-bottom: 1.8rem; } }
 
 .heading-3 {
   font-size: 1.9vw;
   font-weight: bold;
   margin-top: 1.6rem;
   margin-bottom: 1.6rem; }
+  @media (max-width: 600px) {
+    .heading-3 {
+      font-size: 4.8vw;
+      font-weight: bold;
+      margin-top: 1.6rem;
+      margin-bottom: 1.6rem; } }
 
 .heading-4 {
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1.4rem;
   margin-bottom: 1.4rem; }
+  @media (max-width: 600px) {
+    .heading-4 {
+      font-size: 4.4vw;
+      font-weight: bold;
+      margin-top: 1.4rem;
+      margin-bottom: 1.4rem; } }
 
 .copy-label {
   position: absolute;
@@ -81,7 +105,7 @@ main {
   max-width: 80vw; }
   @media (max-width: 600px) {
     main {
-      padding: 0 1rem;
+      padding: 1rem 1rem;
       min-width: 90vw; } }
   main p {
     margin: 1rem 0;
@@ -89,7 +113,7 @@ main {
     font-size: 1.5vw; }
     @media (max-width: 600px) {
       main p {
-        font-size: 2.5vw;
+        font-size: 4vw;
         margin: 0.4rem 0; } }
   main a {
     color: #0780B5; }
@@ -97,6 +121,9 @@ main {
 ol li, ul li {
   margin-bottom: 1rem;
   font-size: 1.6vw; }
+  @media (max-width: 600px) {
+    ol li, ul li {
+      font-size: 4vw; } }
 
 .underline {
   height: 1px;
@@ -137,7 +164,7 @@ pre {
     font-size: 1.3vw; }
     @media (max-width: 600px) {
       pre code {
-        font-size: 2.2vw; } }
+        font-size: 3.6vw; } }
   pre:hover:before {
     content: 'Double click to copy.';
     position: absolute;

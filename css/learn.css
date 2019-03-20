@@ -22,6 +22,7 @@ body {
     display: none; } }
 
 .docs-title {
+  /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
   font-size: 2.8vw;
   margin-top: 2.7rem;
   margin-bottom: 2.7rem;
@@ -36,6 +37,9 @@ body {
     .docs-title {
       text-align: center;
       font-size: 8vw; } }
+  @media (max-width: 600px) {
+    .docs-title {
+      font-size: 10vw; } }
   .docs-title:hover {
     cursor: pointer; }
 
@@ -51,6 +55,7 @@ body {
       margin-left: 0; } }
 
 .sidebar-item {
+  /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
   font-size: 1.2vw;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -63,6 +68,9 @@ body {
     .sidebar-item {
       text-align: center;
       font-size: 3vw; } }
+  @media (max-width: 600px) {
+    .sidebar-item {
+      font-size: 5vw; } }
   .sidebar-item:hover {
     cursor: pointer; }
   .sidebar-item:first-of-type {
@@ -72,6 +80,7 @@ body {
     font-weight: 800; }
 
 .nested-sidebar-item {
+  /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
   font-size: 0.9vw;
   margin-top: 0;
   margin-bottom: 0;
@@ -86,6 +95,9 @@ body {
     .nested-sidebar-item {
       text-align: center;
       font-size: 2vw; } }
+  @media (max-width: 600px) {
+    .nested-sidebar-item {
+      font-size: 4vw; } }
   .nested-sidebar-item:hover {
     cursor: pointer; }
   @media (max-width: 940px) {
@@ -134,7 +146,7 @@ body {
   cursor: pointer; }
   @media (max-width: 600px) {
     .nav-item {
-      font-size: 2vw; } }
+      font-size: 2.8vw; } }
 
 .temp-beta {
   width: 100%;
