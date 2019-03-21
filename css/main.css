@@ -732,6 +732,28 @@ button:focus {
 .preview-section > img {
   width: 25%;
 }
+
+.footer {
+  height: 100%;
+}
+
+/* Privacy page styling */
+.privacy-section {
+  /* Calc for 100% of screen height minus the height of the header and footer. */
+  min-height: calc(100vh - 120px - 70px);
+}
+
+.privacy-section > h1 {
+  margin: 3rem 0;
+}
+
+.privacy-section > p {
+  line-height: 1.4rem;
+}
+
+.privacy-section > p > a {
+  color: #00bbe6;
+}
 /* CSS Grid Layouts */
 /* index.html CSS grid layout */
 .index-item-1 {
@@ -937,5 +959,31 @@ button:focus {
       '. download download download download .'
       '. changes changes changes changes .'
       'preview preview preview preview preview preview'
-      'footer footer footer footer footer footer'
+      'footer footer footer footer footer footer';
+}
+
+/* privacy.html CSS grid layout */
+.privacy-item-1 {
+  grid-area: header;
+}
+
+.privacy-item-2 {
+  grid-area: nav;
+}
+
+.privacy-item-3 {
+  grid-area: privacy;
+}
+
+.privacy-item-4 {
+  grid-area: footer;
+}
+
+.privacy-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+      'header header nav nav nav nav'
+      '. privacy privacy privacy privacy .'
+      'footer footer footer footer footer footer';
 }
