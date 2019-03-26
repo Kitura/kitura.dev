@@ -156,11 +156,18 @@
           <pre><code>open Sources/Application/Models/Book.swift</code></pre>
           <p>Inside this file we define our Book:</p>
           <pre><code class="language-swift">struct Book: Codable {
-      let id: Int
-      let title: String
-      let price: Double
-      let genre: String
-  }</code></pre>
+    let id: Int
+    let title: String
+    let price: Double
+    let genre: String
+    
+    init(id: Int, title: String, price: Double, genre: String) {
+        self.id = id
+        self.title = title
+        self.price = price
+        self.genre = genre
+    }
+}</code></pre>
       <div class="underline"></div>
       <h2 class="heading-2">Next steps</h2>
       <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>

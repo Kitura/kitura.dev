@@ -113,14 +113,21 @@
 
   router.get("/", handler: getHandler)</code></pre>
       <div class="info">
-        <p>Any type that conforms to Codable can be used as a parameter in Codable routing.</p>
-        <p>Including your own custom structs and classes:</p>
+        <p>Any type that conforms to Codable can be used as a parameter in Codable routing, including your own custom structs and classes</p>
+        <p>Throughout these guides we will use a Codable Book model:</p>
         <pre><code class="language-swift">struct Book: Codable {
-    let id: Int
-    let title: String
-    let price: Double
-    let genre: String
-  }</code></pre>
+  let id: Int
+  let title: String
+  let price: Double
+  let genre: String
+
+  init(id: Int, title: String, price: Double, genre: String) {
+      self.id = id
+      self.title = title
+      self.price = price
+      self.genre = genre
+  }
+}</code></pre>
       </div>
       <div class="underline"></div>
       <h2 class="heading-2">Conclusion</h2>
