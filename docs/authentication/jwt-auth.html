@@ -8,7 +8,7 @@
       gtag('js', new Date());
       gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
     </script>
-    <title>Learn - Getting Started</title>
+    <title>JSON Web Token Authentication</title>
     <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
       <h1 class="heading-1">JSON Web Token Authentication</h1>
       <p class="block-text">A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can find out more about JWTs at `JWT.IO`.</p>
       <p class="block-text"> <a href="https://github.com/IBM-Swift/Swift-JWT" target="_blank">Swift-JWT</a> is our implementation of JSON Web Token using Swift.
-           It allows you to create sign and verify JWTs on iOS, macOS and Linux using arange of algorithms.
+           It allows you to create sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.
            This guide will demonstrate how to use Swift-JWT to implement Single Sign On (SSO) authentication for your Kitura routes.
            This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.</p>
       <h2 class="heading-2">Prerequisites</h2>
@@ -119,7 +119,7 @@ Oz8p4kAlhvgIHN23XIClNESgKVmLgSSq2asqiwdrU5YHbcHFkgdABM1SPA==
     <pre><code class="language-swift">@available(OSX 10.13, *)
         static let jwtSigner = JWTSigner.es256(privateKey: Data(privateKey.utf8))</code></pre>
     <div class="info">
-        <p>ECDSA algorithms such as `es256` use <a href="https://github.com/IBM-Swift/BlueECC" target="_blank">BlueECC</a>, which is only available on OS X 10.13 or newer.
+        <p>ECDSA algorithms such as `es256` use <a href="https://github.com/IBM-Swift/BlueECC" target="_blank">BlueECC</a>, which is only available on macOS 10.13 or newer.
             When using them you will need to us `@available` to handle cases where the operating system version is not high enough.</p>
     </div>
     <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create your JWTVerifier</h2>
