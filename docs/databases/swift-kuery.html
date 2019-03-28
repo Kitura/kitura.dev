@@ -40,6 +40,12 @@
       <pre><code class="language-swift">initializeKueryRoutes(app: self)</code></pre>
       <p>Create a new file called `KueryRoutes.swift` in `Sources` > `Application` > `Routes`</p>
       <p>Inside this file, add the framework for our routes code:</p>
+      <section class="tab">
+        <div class="tab-buttons">
+            <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'codableTab')">Codable Routes</button>
+            <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'rawTab')">Raw Routes</button>
+        </div>
+        <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">import KituraContracts
 import LoggerAPI
 
@@ -59,7 +65,30 @@ extension App {
         // Handle GET here
     }
 }</code></pre>
-      <div class="underline"></div>
+    </div>
+    <div class="tabcontent" name="rawTab">
+        <pre><code class="language-swift">import LoggerAPI
+
+func initializeKueryRoutes(app: App) {
+
+    app.router.post("/kuery") { request, response, next in
+        guard let book = try? request.read(as: Book.self) else {
+            let _ = response.send(status: .badRequest)
+            return next()
+        }
+        // Handle POST here
+    }
+
+    app.router.get("/kuery") { request, response, next in
+        // Handle GET here
+    }
+}
+extension App {
+    // Create connection pool and initialize BookTable here
+}</code></pre>
+    </div>
+</section>
+
       <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
       <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
       <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
@@ -70,7 +99,7 @@ extension App {
           <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'mysql')">MySQL</button>
           <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'sqlite')">SQLite</button>
         </div>
-        <div id="postgres" class="tabcontent">
+        <div class="tabcontent" name="postgres">
           <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install the PostgreSQL client</h2>
           <p>To use Swift-Kuery-PostgreSQL you need to have the appropiate PostgreSQL C-language client installed.</p>
           <h3 class="heading-3">macOS</h3>
@@ -105,7 +134,7 @@ import SwiftKueryPostgreSQL</code></pre>
 // Create table instance here</code></pre>
           <p>This creates a pool of connections for us to use to make requests to our database.</p>
         </div>
-        <div id="mysql" class="tabcontent">
+        <div class="tabcontent" name="mysql">
           <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install MySQL</h2>
           <p>To use Swift-Kuery-MySQL you need to first  install MySQL:</p>
           <h3 class="heading-3">macOS</h3>
@@ -128,7 +157,7 @@ import SwiftKueryMySQL</code></pre>
 // Create table instance here</code></pre>
           <p>This creates a pool of connections for us to use to make requests to our database.</p>
         </div>
-        <div id="sqlite" class="tabcontent">
+        <div class="tabcontent" name="sqlite">
           <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install SQLite</h2>
           <p>To use Swift-Kuery-SQLite you need to first  install SQLite:</p>
           <h3 class="heading-3">macOS</h3>
@@ -170,13 +199,14 @@ import SwiftKuerySQLite</code></pre>
       <p>Now we're ready to start saving data to our database.</p>
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 4:</span> Save data to the database</h2>
-      <p>Inside our `insertHandler`, we need to convert our book to an Array of Arrays of type `Any`:</p>
+      <p>Inside the handler for our POST route, we need to convert our book to an Array of Arrays of type `Any`:</p>
       <pre><code class="language-swift">let rows = [[book.id, book.title, book.price, book.genre]]
 // Get connection from pool here</code></pre>
       <p>This converts the book that was sent to the route into the format required by Swift-Kuery.
           We need to use the Any type here as the database fields could be of any type.</p>
       <p>To talk to the database, the first thing we need to do is get a connection from the connection pool.</p>
-      <p>To do this we can use the `getConnection` method. We can add this into our `insertHandler` function:</p>
+      <p>To do this we can use the `getConnection` method. We can add this into the handler for our POST route:</p>
+      <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">App.pool.getConnection() { connection, error in
     guard let connection = connection else {
         Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
@@ -184,12 +214,24 @@ import SwiftKuerySQLite</code></pre>
     }
     // Write query and execute it here
 }</code></pre>
+    </div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">App.pool.getConnection() { connection, error in
+    guard let connection = connection else {
+        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+        let _ = response.send(status: .internalServerError)
+        return next()
+    }
+    // Write query and execute it here
+}</code></pre>
+        </div>
       <p>When we get a connection from the connection pool we need to confirm it's a valid connection.</p>
       <p>If we don't get a valid connection, we will stop the execution and log an error to the console.</p>
       <p>Now we can build the query for inserting data into a database.</p>
       <p>Beneath our connection guard closure, add the following code:</p>
       <pre><code class="language-swift">let insertQuery = Insert(into: App.bookTable, rows: rows)</code></pre>
       <p>Beneath our `insertQuery`, we need to execute the query using the connection we took from the pool:</p>
+      <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">connection.execute(query: insertQuery) { insertResult in
     guard insertResult.success else {
         Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
@@ -197,8 +239,21 @@ import SwiftKuerySQLite</code></pre>
     }
     completion(book, nil)
 }</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">connection.execute(query: insertQuery) { insertResult in
+    guard insertResult.success else {
+          Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+          let _ = response.send(status: .internalServerError)
+          return next()
+    }
+    response.send(book)
+    return next()
+}</code></pre>
+</div>
       <p>That's it! We've setup our POST route to save data to a database.
-           Your completed `insertHandler` function should now look as follows:</p>
+           the completed handler for your POST route should now look as follows:</p>
+<div class="tabcontent" name="codableTab">
 <pre><code class="language-swift">func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
     let rows = [[book.id, book.title, book.price, book.genre]]
     App.pool.getConnection() { connection, error in
@@ -216,6 +271,33 @@ import SwiftKuerySQLite</code></pre>
         }
     }
 }</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+<pre><code class="language-swift">app.router.post("/kuery") { request, response, next in
+    guard let book = try? request.read(as: Book.self) else {
+        let _ = response.send(status: .badRequest)
+        return next()
+    }
+    let rows = [[book.id, book.title, book.price, book.genre]]
+    App.pool.getConnection() { connection, error in
+        guard let connection = connection else {
+            Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+            let _ = response.send(status: .internalServerError)
+            return next()
+        }
+        let insertQuery = Insert(into: App.bookTable, rows: rows)
+        connection.execute(query: insertQuery) { insertResult in
+            guard insertResult.success else {
+                Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                let _ = response.send(status: .internalServerError)
+                return next()
+            }
+            response.send(book)
+            return next()
+        }
+    }
+}</code></pre>
+</div>
       <p>Next we can test our implementation.</p>
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 5 (Optional):</span> Test saving to database</h2>
@@ -249,7 +331,8 @@ import SwiftKuerySQLite</code></pre>
       <p>However the best way to test this would be to actually query the database in Swift rather than using the terminal.</p>
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve data from the database</h2>
-      <p>Inside our `selectHandler`, we need to get a connection from the connection pool:</p>
+      <p>Inside the handler for our GET route, we need to get a connection from the connection pool:</p>
+      <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">App.pool.getConnection() { connection, error in
     guard let connection = connection else {
         Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
@@ -257,9 +340,21 @@ import SwiftKuerySQLite</code></pre>
     }
     // Write query and execute it here
 }</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">App.pool.getConnection() { connection, error in
+    guard let connection = connection else {
+        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+        let _ = response.send(status: .internalServerError)
+        return next()
+    }
+    // Write query and execute it here
+}</code></pre>
+</div>
       <p>Now we can build our SELECT query that will query the database for every entry in the "BookTable":</p>
       <pre><code class="language-swift">let selectQuery = Select(from: App.bookTable)</code></pre>
       <p>Like before we can now execute the query using the `execute` method in Connection:</p>
+      <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">connection.execute(query: selectQuery) { selectResult in
     guard let resultSet = selectResult.asResultSet else {
         Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
@@ -267,6 +362,17 @@ import SwiftKuerySQLite</code></pre>
     }
     // Iterate through result set here
 }</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">connection.execute(query: selectQuery) { selectResult in
+    guard let resultSet = selectResult.asResultSet else {
+        Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+        let _ = response.send(status: .internalServerError)
+        return next()
+    }
+    // Iterate through result set here
+}</code></pre>
+</div>
       <p>Here we check to see if the `selectResult` value is a valid Result set otherwise we log and error and return.</p>
       <p>Next we need iterate through our returned rows and convert them to books:</p>
       <pre><code class="language-swift">var books = [Book]()
@@ -275,6 +381,8 @@ resultSet.forEach() { row, error in
 }</code></pre>
       <p>The `forEach` function will return either a `row`, an `error` or `nil` (Meaning there are no more rows).</p>
       <p>Inside the `forEach` callback, we need to handle these three cases:</p>
+
+      <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">guard let row = row else {
     if let error = error {
         Log.error("Error getting row: \(error)")
@@ -285,8 +393,24 @@ resultSet.forEach() { row, error in
     }
 }
 // Convert row to book here</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">guard let row = row else {
+    if let error = error {
+        Log.error("Error getting row: \(error)")
+        let _ = response.send(status: .internalServerError)
+        return next()
+    } else {
+        // All rows have been processed
+        response.send(books)
+        return next()
+    }
+}
+// Convert row to book here</code></pre>
+</div>
 <p>If we get a row back from the database, We need to convert it to a `Book`.</p>
 <p>After the `guard` closure, add the following code:</p>
+<div class="tabcontent" name="codableTab">
 <pre><code class="language-swift">guard let idString = row[0] as? String,
     let id = Int(idString),
     let title = row[1] as? String,
@@ -294,11 +418,27 @@ resultSet.forEach() { row, error in
     let genre = row[3] as? String
 else {
         Log.error("Unable to decode book")
-        return completion(nil, .internalServerError)
+        let _ = response.send(status: .internalServerError)
+        return next()
 }
 books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">guard let idString = row[0] as? String,
+    let id = Int(idString),
+    let title = row[1] as? String,
+    let price = row[2] as? Double,
+    let genre = row[3] as? String
+else {
+    Log.error("Unable to decode book")
+    let _ = response.send(status: .internalServerError)
+    return next()
+}
+books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre>
+</div>
       <p>That's it! We've setup our GET route to retrieve data from a database.</p>
       <p>Our completed `KueryRoutes.swift` file should now look as follows:</p>
+      <div class="tabcontent" name="codableTab">
       <pre><code class="language-swift">import KituraContracts
 import LoggerAPI
 import SwiftKuery
@@ -369,6 +509,87 @@ extension App {
         }
     }
 }</code></pre>
+</div>
+<div class="tabcontent" name="rawTab">
+    <pre><code class="language-swift">import LoggerAPI
+import SwiftKuery
+import SwiftKueryPostgreSQL
+
+func initializeKueryRoutes(app: App) {
+
+    app.router.post("/kuery") { request, response, next in
+        guard let book = try? request.read(as: Book.self) else {
+            let _ = response.send(status: .badRequest)
+            return next()
+        }
+        let rows = [[book.id, book.title, book.price, book.genre]]
+        App.pool.getConnection() { connection, error in
+            guard let connection = connection else {
+                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                let _ = response.send(status: .internalServerError)
+                return next()
+            }
+            let insertQuery = Insert(into: App.bookTable, rows: rows)
+            connection.execute(query: insertQuery) { insertResult in
+                guard insertResult.success else {
+                    Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                    let _ = response.send(status: .internalServerError)
+                    return next()
+                }
+                response.send(book)
+                next()
+            }
+        }
+    }
+
+    app.router.get("/kuery") { request, response, next in
+        App.pool.getConnection() { connection, error in
+            guard let connection = connection else {
+                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                let _ = response.send(status: .internalServerError)
+                return next()
+            }
+            let selectQuery = Select(from: App.bookTable)
+            connection.execute(query: selectQuery) { selectResult in
+                guard let resultSet = selectResult.asResultSet else {
+                    Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+                    let _ = response.send(status: .internalServerError)
+                    return next()
+                }
+                var books = [Book]()
+                resultSet.forEach() { row, error in
+                    guard let row = row else {
+                        if let error = error {
+                            Log.error("Error getting row: \(error)")
+                            let _ = response.send(status: .internalServerError)
+                            return next()
+                        } else {
+                            // All rows have been processed
+                            response.send(books)
+                            return next()
+                        }
+                    }
+                    guard let idString = row[0] as? String,
+                        let id = Int(idString),
+                        let title = row[1] as? String,
+                        let price = row[2] as? Double,
+                        let genre = row[3] as? String
+                        else {
+                            Log.error("Unable to decode book")
+                            let _ = response.send(status: .internalServerError)
+                            return next()
+                    }
+                    books.append(Book(id: id, title: title, price: price, genre: genre))
+                }
+            }
+        }
+    }
+}
+extension App {
+    static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
+    static let bookTable = BookTable()
+}</code></pre>
+</div>
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 7 (Optional):</span> Test retrieving from a database</h2>
       <p>If you followed Step 6 (Optional): Test saving to database then you can simply start your server and navigate to: <a target="_blank" href="http://localhost:8080/kuery">http://localhost:8080/kuery</a></p>

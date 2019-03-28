@@ -51,7 +51,7 @@ function removePopup() {
 }
 
 function openPlugin(evt, pluginName) {
-  var i, tabcontent, tablinks;
+  var i, tabcontent, tablinks, plugins;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -60,7 +60,11 @@ function openPlugin(evt, pluginName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(pluginName).style.display = "block";
+  plugins = document.getElementsByName(pluginName);
+  for (i = 0; i < plugins.length; i++) {
+    plugins[i].style.display = "block";
+  }
+
   evt.currentTarget.className += " active";
 
   parent.document.getElementById('doc-window').style.height = document.body.offsetHeight + 'px';
