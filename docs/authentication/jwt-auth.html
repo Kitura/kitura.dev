@@ -70,11 +70,11 @@ extension App {
 <p>Click on one of the tabs below to see how and why you would use each algorithm.</p>
     <section class="tab">
       <div class="tab-buttons">
-        <button id="jwt-button" type="button" name="button" class="tablinks" onclick="openPlugin(event, 'hmac')">HMAC</button>
-        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'ecdsa')">ECDSA</button>
-        <button type="button" name="button" class="tablinks" onclick="openPlugin(event, 'rsa')">RSA</button>
+        <button id="jwt-button" type="button" name="button" class="tablinks hmac" onclick="openPlugin('hmac', '')">HMAC</button>
+        <button type="button" name="button" class="tablinks ecdsa" onclick="openPlugin('ecdsa', '')">ECDSA</button>
+        <button type="button" name="button" class="tablinks rsa" onclick="openPlugin('rsa', '')">RSA</button>
       </div>
-      <div id="hmac" class="tabcontent">
+      <div class="tabcontent hmac">
           <p class="block-text">You can process JWTs using a Hashed Message Authentication Code (HMAC).
                This uses a shared symmetric key as a password for both signing and verifying.
                 This is simple and fast but requires a secure method of sending the password to the verifier.</p>
@@ -88,7 +88,7 @@ extension App {
         <p>Inside the `App` extension, we create an HMAC `JWTVerifier` by providing the same password as before:</p>
         <pre><code class="language-swift">static let jwtVerifier = JWTVerifier.hs256(key: Data("kitura".utf8))</code></pre>
       </div>
-      <div id="ecdsa" class="tabcontent">
+      <div class="tabcontent ecdsa">
       <p class="block-text">You can process JWTs using Elliptic Curve Digital Signature Algorithm (ECDSA).
             This uses asymmetric keys with a private key for signing and a public key for verifying.
             The public key allows anyone to verify a JWT but only the provider can create them.
@@ -129,7 +129,7 @@ Oz8p4kAlhvgIHN23XIClNESgKVmLgSSq2asqiwdrU5YHbcHFkgdABM1SPA==
     <pre><code class="language-swift">@available(OSX 10.13, *)
         static let jwtVerifier = JWTVerifier.es256(publicKey: Data(publicKey.utf8))</code></pre>
       </div>
-      <div id="rsa" class="tabcontent">
+      <div class="tabcontent rsa">
           <p class="block-text">You can process JWTs using RSA cryptography.
                 This uses asymmetric keys with a private key for signing and a public key for verifying.
                 The public key allows anyone to verify a JWT but only the provider can create them.
@@ -436,5 +436,8 @@ http://localhost:8080/jwtCodable \
 </main>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
+    <script type="text/javascript">
+      setIntialTab('hmac');
+    </script>
   </body>
 </html>
