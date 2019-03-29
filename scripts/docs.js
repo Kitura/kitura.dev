@@ -50,26 +50,46 @@ function removePopup() {
   popup.style.display = "none";
 }
 
-function openPlugin(evt, pluginName) {
+function openPlugin(pluginName, groupName) {
   var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
+
+  tabcontent = document.getElementsByClassName('tabcontent');
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+    if (tabcontent[i].className.includes(groupName)) {
+      tabcontent[i].style.display = "none";
+    }
+    if (tabcontent[i].className.includes(pluginName)) {
+        tabcontent[i].style.display = "block";
+    }
   }
-  tablinks = document.getElementsByClassName("tablinks");
+
+  tablinks = document.getElementsByClassName('tablinks');
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    if (tablinks[i].className.includes(groupName)) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    if (tablinks[i].className.includes(pluginName)) {
+        tablinks[i].className += " active";
+    }
   }
-  document.getElementById(pluginName).style.display = "block";
-  evt.currentTarget.className += " active";
 
   parent.document.getElementById('doc-window').style.height = document.body.offsetHeight + 'px';
 }
 
-function setIntialTab() {
-  let firstTab = document.getElementById('postgres');
-  let activeButton = document.getElementById('postgres-button');
+function setIntialTab(pluginName) {
+  var i, tabcontent, tablinks;
 
-  firstTab.style.display = "block";
-  activeButton.className += " active";
+  tabcontent = document.getElementsByClassName('tabcontent');
+  for (i = 0; i < tabcontent.length; i++) {
+    if (tabcontent[i].className.includes(pluginName)) {
+      tabcontent[i].style.display = "block";
+    }
+  }
+
+  tablinks = document.getElementsByClassName('tablinks');
+    for (i = 0; i < tablinks.length; i++) {
+      if (tablinks[i].className.includes(pluginName)) {
+        tablinks[i].className += " active";
+      }
+    }
 }
