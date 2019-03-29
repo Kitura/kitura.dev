@@ -150,9 +150,9 @@
           The book is a model so the first thing we need to do is create our Models folder:</p>
           <pre><code>mkdir Sources/Application/Models</code></pre>
           <p>This is the directory where we will store all of our models.</p>
-          <p>Next we will create our Book.swift file:</p>
+          <p>Next we will create our `Book.swift` file:</p>
           <pre><code>touch Sources/Application/Models/Book.swift</code></pre>
-          <p>We will open the Book.swift file in our default text editor:</p>
+          <p>We will open the `Book.swift` file in our default text editor:</p>
           <pre><code>open Sources/Application/Models/Book.swift</code></pre>
           <p>Inside this file we define our Book:</p>
           <pre><code class="language-swift">struct Book: Codable {
@@ -160,7 +160,7 @@
     let title: String
     let price: Double
     let genre: String
-    
+
     init(id: Int, title: String, price: Double, genre: String) {
         self.id = id
         self.title = title
