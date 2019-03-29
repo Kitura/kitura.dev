@@ -5,6 +5,7 @@ body {
 .blue-text {
   color: #0780B5; }
 
+/* Code Syntax Highlighting colors */
 /* General docs styling */
 .heading-1 {
   font-size: 3.3vw;
@@ -335,3 +336,19 @@ td, th {
 .landing-item-7, .server-item-7 {
   grid-column: 9/13;
   grid-row: 2/3; }
+
+/* Style code blocks - classes assigned by prism.js  */
+.string {
+  color: #fa454b; }
+
+.function {
+  color: #00a78f; }
+
+.instance {
+  color: #00a78f; }
+
+.keyword {
+  color: #f63bb0; }
+
+.comment {
+  color: green; }
