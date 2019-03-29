@@ -1,6 +1,13 @@
 @import 'shared';
 @import 'media';
 
+/* Code Syntax Highlighting colors */
+$string: rgb(250, 69, 75);
+$function: #00a78f;
+$instance: #00a78f;
+$keyword: rgb(246, 59, 176);
+$comment: green;
+
 /* General docs styling */
 
 .heading-1 {
@@ -355,4 +362,25 @@ td, th {
 
 .landing-item-7, .server-item-7 {
   @include grid-child(9, 13, 2, 3);
+}
+
+/* Style code blocks - classes assigned by prism.js  */
+.string {
+  color: $string;
+}
+
+.function {
+  color: $function;
+}
+
+.instance {
+  color: $instance;
+}
+
+.keyword {
+  color: $keyword;
+}
+
+.comment {
+  color: $comment;
 }
