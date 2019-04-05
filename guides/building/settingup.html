@@ -52,14 +52,10 @@
   <p>Install the Command Line Tools for Xcode:</p>
   <pre><code class="language-swift">xcode-select --install</code></pre>
   <h2 class="heading-2">Ubuntu Linux</h2>
-  <p>Kitura is tested on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS.</p>
+  <p>Kitura is tested on Ubuntu 14.04 LTS (trusty), 16.04 LTS (xenial) and 18.04 LTS (bionic).</p>
   <p>Install the following Linux system packages:</p>
   <pre><code class="language-swift">sudo apt-get update
 sudo apt-get install clang libicu-dev libcurl4-openssl-dev libssl-dev libpython2.7</code></pre>
-  <blockquote class="info">
-    <p>Kitura requires OpenSSL v1.0.x, whereas newer versions of Linux may install OpenSSL v1.1.x. If this occurs, install OpenSSL v1.0.x using:</p>
-    <pre><code class="language-swift">sudo apt-get install libssl1.0-dev</code></pre>
-  </blockquote>
   <p>Download a Swift 4 toolchain from swift.org.</p>
   <p>After extracting the .tar.gz file, update your PATH environment variable so that it includes the extracted tools:</p>
   <pre><code class="language-swift">export PATH={path to uncompressed tar contents}/usr/bin:$PATH</code></pre>
