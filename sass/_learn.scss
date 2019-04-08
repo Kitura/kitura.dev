@@ -70,7 +70,11 @@
     margin: 0 auto;
   }
 
-  &:hover {
+  a {
+    color: $primary-font-color;
+  }
+
+  a:hover {
     color: $blue-color;
     font-weight: 800;
   }
@@ -127,7 +131,7 @@
 body {
   max-width: 100vw;
 }
-.underline {
+.underline-title {
   height: 1px;
   background: $underline-color;
   width: 18vw;

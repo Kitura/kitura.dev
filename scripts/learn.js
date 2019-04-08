@@ -1,20 +1,3 @@
-var selectables = document.getElementsByClassName('selectable');
-var api;
-var elementID;
-
-addCollapsibleElements();
-if (localStorage.getItem("src") == undefined) {
-  loadPage('./docs/landing.html', '', 'https://ibm-swift.github.io/Kitura/');
-} else {
-  loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
-}
-
-function resizeIframe() {
-  document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.offsetHeight + 'px';
-}
-
-
-// Adds a nested element to any element that has the `collapsible` class.
 function addCollapsibleElements() {
   var coll = document.getElementsByClassName('collapsible');
   var items = document.getElementsByClassName('nested-sidebar-list');
@@ -43,26 +26,27 @@ function addCollapsibleElements() {
   }
 }
 
-// Assigns the `active` class to the currently selected sidebar element.
-function removeActiveSidebarElement() {
-  for (var j = 0; j < selectables.length; j++) {
-    if (selectables[j].classList.contains('active')) {
-      selectables[j].classList.remove('active');
-    }
-  }
-}
+addCollapsibleElements();
 
-function loadPage(src, id, api) {
-  localStorage.setItem("src", src);
-  localStorage.setItem("id", id);
-  localStorage.setItem("api", api);
-  removeActiveSidebarElement();
-  if (id !== "") {
-    document.getElementById(id).classList.add('active');
-  }
-  if (src !== "") {
-    document.getElementById('doc-window').setAttribute('src', src);
-  }
-  var button = document.getElementById('api-button');
-  button.setAttribute('onclick', "window.open('" + localStorage.getItem('api') + "')");
-}
+
+// window.addEventListener('scroll', function() {
+//   var target = document.getElementById('top-page');
+//   //TODO: Make this perform better
+//   if (window.pageYOffset > 500) {
+//     target.style.display = "block"
+//   } else if (window.pageYOffset < 500) {
+//     target.style.display = "none";
+//   }
+// }, false);
+//
+// function showSidebar() {
+//   var docSidebar = document.getElementById('sidebar');
+//   var docWindow = document.getElementById('doc-container');
+//   if (docSidebar.style.display == 'block') {
+//     docSidebar.style.display = 'none';
+//     docWindow.style.display = 'block';
+//   } else {
+//     docWindow.style.display = 'none';
+//     docSidebar.style.display = 'block';
+//   }
+// }

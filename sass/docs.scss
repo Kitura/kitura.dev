@@ -1,5 +1,6 @@
 @import 'shared';
 @import 'media';
+@import 'learn';
 
 /* Code Syntax Highlighting colors */
 $string: rgb(250, 69, 75);
@@ -11,6 +12,7 @@ $comment: green;
 /* General docs styling */
 
 .heading-1 {
+  
   @include heading('3.3vw', '2.5rem', '2rem');
 
   @include breakpoint('xl') {
