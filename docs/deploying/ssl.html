@@ -48,7 +48,7 @@
            This creates a chain of certificates between the site owner certificate and a CA certificate and transitive trust.
             Assuming that we trust the CA, we can trust the validity of the server certificate.</p>
        <div class="info">
-          <p class="block-text">If you want to create a CA-signed certificate chain, a useful tool to use is Let’s Encrypt,
+          <p class="block-text">If you want to create a CA-signed certificate chain, a useful tool to use is <a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a>,
            a free, automated and open CA, provided by the Internet Security Research Group (ISRG).</p>
        </div>
       <p>For this guide we will use OpenSSL to generate a self-signed certificate.</p>
@@ -64,23 +64,28 @@
       <pre><code>openssl req -x509 -sha256 -days 365 -key key.pem -in csr.csr -out cert.pem</code></pre>
       <p>Finally we encrypt the key and certificate together using a password. For simplicity we will use "password".</p>
       <pre><code>openssl pkcs12 -export -out cert.pfx -inkey key.pem -in cert.pem</code></pre>
-      <p>The `cert.pfx` file is the one we need to enable SSL on our server.
-         The other files can be deleted so that you don't store any credentials in plaintext.</p>
 <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 2:</span> Setting up your SSL configuration</h2>
       <p>Open your `Sources` > `Application` > `Application.swift`</p>
       <p>We are going to use <a href="https://github.com/IBM-Swift/FileKit" target="_blank">FileKit</a> to access our certificate file.</p>
       <p>This means we need to add FileKit to our import statements:</p>
       <pre><code class="language-swift">import FileKit</code></pre>
-      <p>Now we initialize an `SSLConfig` struct by providing the path to our `cert.pfx` file,
-           the password we used to encrypt the file and setting `usingSelfSignedCerts` to be true.</p>
+      <p>Now we initialize an `SSLConfig` struct. On macOS we use Apple Secure Transport under the covers which requires the path to our `cert.pfx` file and
+           the password we used to encrypt the file. On linux we use OpenSSL under the covers which requires the paths to the certificate and private key PEM files.</p>
+      <p>We use `#if` to check the system version and provide the appropriate requirements to our config. </p>
       <p>Inside the `App` class, add the following code:<p>
-      <pre><code class="language-swift">let sslConfig = SSLConfig(withChainFilePath: FileKit.projectFolder + "/Credentials/cert.pfx",
-                            withPassword: "password",
-                            usingSelfSignedCerts: true)</code></pre>
-      <div class="info">
-        <p class="block-text">In a real project ensure your password is stored as an environment variable.</p>
-      </div>
+      <pre><code class="language-swift">#if os(Linux)
+let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
+                             usingCertificateFile: FileKit.projectFolder + "/Credentials/cert.pem",
+                             withKeyFile: FileKit.projectFolder + "/Credentials/key.pem",
+                             usingSelfSignedCerts: true)
+#else // on macOS
+
+let mySSLConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Credentials/cert.pfx",
+                             withPassword: "password",
+                             usingSelfSignedCerts: true)
+
+#endif</code></pre>
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 3:</span> Configure our Kitura server to use SSL</h2>
       <p>Now we have our SSL configuration, we need to pass it to Kitura when we register server.
@@ -90,7 +95,7 @@
       <p>With the following code:</p>
       <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: sslConfig)</code></pre>
       <p class="block-text">Thats it! Your server will now use TLS to secure exchange data between server and client.</p>
-      <p>To test this start your server and open your browser at:</p>
+      <p>To test this start your server and open your browser at the kitura landing page:</p>
       <p><a href="https://localhost:8080" target="_blank">https://localhost:8080</a></p>
       <div class="info">
       <p class="block-text">At this point your browser might give you a warning that the SSL certificate it is validating is self-signed.
