@@ -116,6 +116,10 @@ body {
     color: #0780B5;
     font-weight: 800; }
 
+.active a {
+  color: #0780B5;
+  font-weight: 800; }
+
 /* Search bar styling */
 .search-container {
   height: 5.1rem;
@@ -188,10 +192,6 @@ body {
   @media (max-width: 940px) {
     .underline-title {
       display: none; } }
-
-.active {
-  color: #0780B5;
-  font-weight: 800; }
 
 .top-page {
   position: fixed;

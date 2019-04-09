@@ -80,6 +80,11 @@
   }
 }
 
+.active a {
+  color: $blue-color;
+  font-weight: 800;
+}
+
 /* Search bar styling */
 
 .search-container {
@@ -141,11 +146,6 @@ body {
   @include breakpoint('m') {
     display: none;
   }
-}
-
-.active {
-  color: $blue-color;
-  font-weight: 800;
 }
 
 .top-page {
