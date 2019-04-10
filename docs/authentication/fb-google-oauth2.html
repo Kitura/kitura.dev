@@ -159,6 +159,24 @@ response.send("Hello \(user.displayName)")</code></pre>
     <div class="info">
         <p class="block-text">The user profile contains information about the user such as how they authenticated, their unique id and their displayName.</p>
     </div>
+    <h2 class="heading-2"><span class="blue-text">Step 8:</span> Testing our OAuth2 authentication system</h2>
+    <p>Now that everything is set up we can test logging in using OAuth2.</p>
+    <p>Start your server and open your browser at:<p>
+    <p><a href="http://localhost:8080/oauth2/protected" target="_blank">http://localhost:8080/oauth2/protected</a></p>
+    <p>We will be sent our unauthorized message since we haven't logged in yet.<p>
+    <p>We authenticate be going to the login route for our plugin:</p>
+    <div class="tabcontent facebookTab">
+        <p><a href="http://localhost:8080/oauth2/facebook" target="_blank">http://localhost:8080/oauth2/facebook</a></p>
+    </div>
+    <div class="tabcontent googleTab">
+        <p><a href="http://localhost:8080/oauth2/google" target="_blank">http://localhost:8080/oauth2/google</a></p>
+    </div>
+    <p>This will send you to the OAuth2 provider who will request you to loggin and provide access to our server.</p>
+    <p>Once you complete this you will be sent back to our server who will redirect you to our "/oauth2/protected" route.</p>
+    <p>This time you will be authenticated and will see a welcome message.</p>
+    <p>As long as your session persists, you can return to <a href="http://localhost:8080/oauth2/protected" target="_blank">http://localhost:8080/oauth2/protected</a> and be allowed access.</p>
+    <p>Congratulations! You have just set up OAuth2 authentication on your Kitura server.</p>
+</div>
     <div class="underline"></div>
     <h2 class="heading-2">Next steps</h2>
     <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`stencil`)" href="../templating/stencil.html#">Add a Web Page:</a></span> Get useful feedback from your server about startup and errors</p>
