@@ -54,6 +54,12 @@ body {
       font-weight: bold;
       margin-top: 1.6rem;
       margin-bottom: 1.6rem; } }
+  @media (max-width: 1150px) {
+    .heading-3 {
+      font-size: 1.6vw;
+      font-weight: bold;
+      margin-top: 1.6rem;
+      margin-bottom: 1.6rem; } }
   @media (max-width: 600px) {
     .heading-3 {
       font-size: 4.8vw;
@@ -128,11 +134,13 @@ main {
       min-width: 90vw; } }
   main p {
     margin: 1rem 0;
-    line-height: 1.6rem;
-    font-size: 1.5vw; }
+    line-height: 1.6rem; }
     @media (max-width: 1800px) {
       main p {
         font-size: 1.2vw; } }
+    @media (max-width: 1150px) {
+      main p {
+        font-size: 1.5vw; } }
     @media (max-width: 600px) {
       main p {
         font-size: 4vw;
