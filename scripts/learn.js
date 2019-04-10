@@ -29,16 +29,16 @@ function addCollapsibleElements() {
 addCollapsibleElements();
 
 
-// window.addEventListener('scroll', function() {
-//   var target = document.getElementById('top-page');
-//   //TODO: Make this perform better
-//   if (window.pageYOffset > 500) {
-//     target.style.display = "block"
-//   } else if (window.pageYOffset < 500) {
-//     target.style.display = "none";
-//   }
-// }, false);
-//
+window.addEventListener('scroll', function() {
+  var target = document.getElementById('top-page');
+  //TODO: Make this perform better
+  if (window.pageYOffset > 500) {
+    target.style.display = "block"
+  } else if (window.pageYOffset < 500) {
+    target.style.display = "none";
+  }
+}, false);
+
 function showSidebar() {
   var docSidebar = document.getElementById('sidebar');
   var docWindow = document.getElementById('doc-container');
