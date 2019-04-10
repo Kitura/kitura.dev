@@ -39,14 +39,14 @@ addCollapsibleElements();
 //   }
 // }, false);
 //
-// function showSidebar() {
-//   var docSidebar = document.getElementById('sidebar');
-//   var docWindow = document.getElementById('doc-container');
-//   if (docSidebar.style.display == 'block') {
-//     docSidebar.style.display = 'none';
-//     docWindow.style.display = 'block';
-//   } else {
-//     docWindow.style.display = 'none';
-//     docSidebar.style.display = 'block';
-//   }
-// }
+function showSidebar() {
+  var docSidebar = document.getElementById('sidebar');
+  var docWindow = document.getElementById('doc-container');
+  if (docSidebar.style.display == 'block') {
+    docSidebar.style.display = 'none';
+    docWindow.style.display = 'block';
+  } else {
+    docWindow.style.display = 'none';
+    docSidebar.style.display = 'block';
+  }
+}
