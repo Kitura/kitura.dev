@@ -11,16 +11,16 @@
   @include breakpoint('m') {
     z-index: 1000;
     width: 100%;
-    position: inherit;
-  }
-}
-
-.docs-window {
-
-  @include breakpoint('m') {
     display: none;
   }
 }
+
+// .docs-window {
+//
+//   @include breakpoint('m') {
+//     display: none;
+//   }
+// }
 
 .docs-title {
   /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
