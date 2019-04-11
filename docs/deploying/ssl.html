@@ -27,31 +27,36 @@
     </ul>
     <p class="block-text">TLS evolved out of Netscape’s Secure Sockets Layer (SSL) protocol in order to fix most of its security flaws.
          The industry still uses the terms somewhat interchangeably for historical reasons.
-          Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
+         Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
+      <p class="block-text">This guide will demonstrate how to enable the TLS protocol directly on your Kitura server. Another way to enable TLS is via an SSL/TLS proxy.
+           In this case an intermediary application between your server and clients performs the encryption and decryption.
+            Some cloud providers offer this service by default so check if that is a more appropriate solution before proceeding with this guide.</p>
       <div class="underline"></div>
       <h2 class="heading-2" id="prereq">Prerequisites</h2>
       <ul class="plain-list">
           <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
           <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
           <li><a onclick="localStorage.setItem('package', 'FileKit'); setActiveSidebarElementForParent('filekit')" href="../getting-started/update-package.html#">Update Dependencies:</a> FileKit needs adding to the `Package.swift` file.</li>
-          <li>Install OpenSSL: In this guide, we will use OpenSSL to generate our self-signed certificate.</li>
       </ul>
+      <h3 class="heading-3">Install OpenSSL</h3>
+      <p>In this guide, we will use OpenSSL to generate our self-signed certificate.</p>
       <p>OpenSSL is included by default on Linux. On MacOS we can install it using Homebrew:</p>
       <pre><code>brew install openssl</code></pre>
-      <p>We then link it so we can use the OpenSSL CLI:</p>
-      <pre><code>ln -s /usr/local/opt/openssl/include/openssl /usr/local/include</code></pre>
       <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create our certificate and key pair.</h2>
+      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create our certificate and key pair</h2>
       <p class="block-text">To enable TLS, a server needs a certificate and a corresponding secret key.
            Certificates are files that bind together information about the identity of the owner of a site and the public half of an asymmetric key pair (usually RSA).
            Certificates are usually digitally signed by a certificate authority (CA) who verifies that the identity information in the certificate is correct.
            This creates a chain of certificates between the site owner certificate and a CA certificate and transitive trust.
             Assuming that we trust the CA, we can trust the validity of the server certificate.</p>
        <div class="info">
-          <p class="block-text">If you want to create a CA-signed certificate chain, a useful tool to use is <a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a>,
-           a free, automated and open CA, provided by the Internet Security Research Group (ISRG).</p>
+          <p class="block-text">
+              If you want to create a CA-signed certificate chain,
+              <a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a> is a Certificate Authority (CA),
+              provided by the non-profit Internet Security Research Group (ISRG) that makes it easy to generate and install free TLS/SSL certificates.
+           </p>
        </div>
-      <p>For this guide we will use OpenSSL to generate a self-signed certificate.</p>
+      <p>In this guide, we will use OpenSSL to generate a self-signed certificate.</p>
       <p>Create a Credentials folder in the root of your project:</p>
       <pre><code>mkdir Credentials && cd Credentials</code></pre>
       <p>Inside this folder we create a 2048 bit RSA private key using OpenSSL:</p>
@@ -59,20 +64,21 @@
       <p>We use this private key to create a certificate:</p>
       <pre><code>openssl req -new -sha256 -key key.pem -out csr.csr</code></pre>
       <p class="block-text">At this stage you provide additional information that will be stored in the certificate.</p>
-      <p class="block-text">These choices are optional except for Common Name which must be the servers hostname. In our case this is "localhost".</p>
+      <p class="block-text">These choices are optional, except for Common Name, which must be the server's hostname. In our case, this is "localhost".</p>
       <p>Next we use OpenSSL to convert the certificate to PEM format:</p>
       <pre><code>openssl req -x509 -sha256 -days 365 -key key.pem -in csr.csr -out cert.pem</code></pre>
       <p>Finally we encrypt the key and certificate together using a password. For simplicity we will use "password".</p>
       <pre><code>openssl pkcs12 -export -out cert.pfx -inkey key.pem -in cert.pem</code></pre>
 <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 2:</span> Setting up your SSL configuration</h2>
-      <p>Open your `Sources` > `Application` > `Application.swift`</p>
+      <p>Now we have created our certificate, we are going to set up our SSL configuration so that it can direct Kitura to the required files.</p>
+      <p>Open your `Sources` > `Application` > `Application.swift` file.</p>
       <p>We are going to use <a href="https://github.com/IBM-Swift/FileKit" target="_blank">FileKit</a> to access our certificate file.</p>
       <p>This means we need to add FileKit to our import statements:</p>
       <pre><code class="language-swift">import FileKit</code></pre>
-      <p>Now we initialize an `SSLConfig` struct. On macOS we use Apple Secure Transport under the covers which requires the path to our `cert.pfx` file and
-           the password we used to encrypt the file. On linux we use OpenSSL under the covers which requires the paths to the certificate and private key PEM files.</p>
-      <p>We use `#if` to check the system version and provide the appropriate requirements to our config. </p>
+      <p>Now we initialize an `SSLConfig` struct. On macOS we use Apple Secure Transport under the covers, which requires the path to our `cert.pfx` file and
+           the password we used to encrypt the file. On Linux we use OpenSSL under the covers, which requires the paths to the certificate and private key PEM files.</p>
+      <p>We use `#if` to check which operating system we're running on and provide the appropriate files to our configuration. </p>
       <p>Inside the `App` class, add the following code:<p>
       <pre><code class="language-swift">#if os(Linux)
 let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
@@ -88,21 +94,20 @@ let mySSLConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Creden
 #endif</code></pre>
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 3:</span> Configure our Kitura server to use SSL</h2>
-      <p>Now we have our SSL configuration, we need to pass it to Kitura when we register server.
-      We do this as part of the `addHTTPServer` function using the `withSSL` parameter.</p>
-      <p>Inside the run function, Replace:</p>
+      <p>Now we have our SSL configuration, we need to pass it to Kitura.
+      We do this as part of the `addHTTPServer` function, using the `withSSL` parameter.</p>
+      <p>Inside the run function, replace:</p>
       <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router)</code></pre>
       <p>With the following code:</p>
       <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: sslConfig)</code></pre>
-      <p class="block-text">Thats it! Your server will now use TLS to secure exchange data between server and client.</p>
-      <p>To test this start your server and open your browser at the kitura landing page:</p>
+      <p>To test this, start your server and open your browser at the kitura landing page:</p>
       <p><a href="https://localhost:8080" target="_blank">https://localhost:8080</a></p>
       <div class="info">
       <p class="block-text">At this point your browser might give you a warning that the SSL certificate it is validating is self-signed.
            Since you are accessing your own server this isn’t a problem at all, and you can simply tell your web-browser to accept the self-signed SSL certificate and continue.
             In general though, your browser should only trust server certificates which are issued by a valid CA.</p>
         </div>
-      <p class="block-text">Notice the https in your URL! You are running Kitura with TLS!
+      <p class="block-text">Notice the https in your URL. You are running Kitura using SSL/TLS!
            This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
 <div class="underline"></div>
       <h2 class="heading-2">Next steps</h2>
