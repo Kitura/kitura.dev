@@ -28,9 +28,11 @@
     <p class="block-text">TLS evolved out of Netscape’s Secure Sockets Layer (SSL) protocol in order to fix most of its security flaws.
          The industry still uses the terms somewhat interchangeably for historical reasons.
          Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
+    <div class="info">
       <p class="block-text">This guide will demonstrate how to enable the TLS protocol directly on your Kitura server. Another way to enable TLS is via an SSL/TLS proxy.
            In this case an intermediary application between your server and clients performs the encryption and decryption.
-            Some cloud providers offer this service by default so check if that is a more appropriate solution before proceeding with this guide.</p>
+           Some cloud providers offer this service by default, which may be a more appropriate solution.</p>
+      </div>
       <div class="underline"></div>
       <h2 class="heading-2" id="prereq">Prerequisites</h2>
       <ul class="plain-list">
@@ -81,13 +83,13 @@
       <p>We use `#if` to check which operating system we're running on and provide the appropriate files to our configuration. </p>
       <p>Inside the `App` class, add the following code:<p>
       <pre><code class="language-swift">#if os(Linux)
-let mySSLConfig =  SSLConfig(withCACertificateDirectory: nil,
+let sslConfig =  SSLConfig(withCACertificateDirectory: nil,
                              usingCertificateFile: FileKit.projectFolder + "/Credentials/cert.pem",
                              withKeyFile: FileKit.projectFolder + "/Credentials/key.pem",
                              usingSelfSignedCerts: true)
 #else // on macOS
 
-let mySSLConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Credentials/cert.pfx",
+let sslConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Credentials/cert.pfx",
                              withPassword: "password",
                              usingSelfSignedCerts: true)
 
@@ -103,9 +105,9 @@ let mySSLConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Creden
       <p>To test this, start your server and open your browser at the kitura landing page:</p>
       <p><a href="https://localhost:8080" target="_blank">https://localhost:8080</a></p>
       <div class="info">
-      <p class="block-text">At this point your browser might give you a warning that the SSL certificate it is validating is self-signed.
-           Since you are accessing your own server this isn’t a problem at all, and you can simply tell your web-browser to accept the self-signed SSL certificate and continue.
-            In general though, your browser should only trust server certificates which are issued by a valid CA.</p>
+      <p class="block-text">At this point your browser might stop you with a warning that the SSL certificate it is validating is self-signed.
+           Since you are accessing your own server this isn’t a problem at all. In the advanced settings, you can tell your web-browser to accept the self-signed SSL certificate and continue.
+           In general though, your browser should only trust server certificates which are issued by a valid CA.</p>
         </div>
       <p class="block-text">Notice the https in your URL. You are running Kitura using SSL/TLS!
            This means that the data your application transmits is secure and the server your users are connecting to is authenticated.
