@@ -43,6 +43,10 @@ $comment: green;
     @include heading('1.1vw', '1.6rem', '1.6rem');
   }
 
+  @include breakpoint('l') {
+    @include heading('1.6vw', '1.6rem', '1.6rem');
+  }
+
   @include breakpoint('sm') {
     @include heading('4.8vw', '1.6rem', '1.6rem');
   }
@@ -126,10 +130,13 @@ main {
   p {
     margin: 1rem 0;
     line-height: 1.6rem;
-    font-size: 1.5vw;
 
     @include breakpoint('xl') {
       font-size: 1.2vw;
+    }
+
+    @include breakpoint('l') {
+      font-size: 1.5vw;
     }
 
     @include breakpoint('sm') {
