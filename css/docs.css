@@ -24,6 +24,9 @@ body {
       width: 100%;
       display: none; } }
 
+.doc-window {
+  max-width: 100%; }
+
 .docs-title {
   /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
   font-size: 2.8vw;

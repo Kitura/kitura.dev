@@ -22,6 +22,10 @@
 //   }
 // }
 
+.doc-window {
+  max-width: 100%;
+}
+
 .docs-title {
   /* Main font-size, margin top and bottom, font weight, large font-size, medium font-size and small font-size */
   @include sidebar-item('2.8vw', '2.7rem', 'bold', '3vw', '8vw', '10vw');
