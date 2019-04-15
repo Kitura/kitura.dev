@@ -40,7 +40,7 @@ $comment: green;
   @include heading('1.9vw', '1.6rem', '1.6rem');
 
   @include breakpoint('xl') {
-    @include heading('1.1vw', '1.6rem', '1.6rem');
+    @include heading('1.5vw', '1.6rem', '1.6rem');
   }
 
   @include breakpoint('l') {
@@ -210,7 +210,7 @@ pre {
     font-size: 1.3vw;
 
     @include breakpoint('xl') {
-      font-size: 1.2vw;
+      font-size: 1vw;
     }
 
     @include breakpoint('sm') {

@@ -320,7 +320,7 @@ body {
   margin-bottom: 1.6rem; }
   @media (max-width: 1800px) {
     .heading-3 {
-      font-size: 1.1vw;
+      font-size: 1.5vw;
       font-weight: bold;
       margin-top: 1.6rem;
       margin-bottom: 1.6rem; } }
@@ -467,7 +467,7 @@ pre {
     font-size: 1.3vw; }
     @media (max-width: 1800px) {
       pre code {
-        font-size: 1.2vw; } }
+        font-size: 1vw; } }
     @media (max-width: 600px) {
       pre code {
         font-size: 3.6vw; } }
