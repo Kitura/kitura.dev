@@ -11,15 +11,19 @@
   @include breakpoint('m') {
     z-index: 1000;
     width: 100%;
-    position: inherit;
+    display: none;
   }
 }
 
-.docs-window {
+// .docs-window {
+//
+//   @include breakpoint('m') {
+//     display: none;
+//   }
+// }
 
-  @include breakpoint('m') {
-    display: none;
-  }
+.docs-window {
+  max-width: 100%;
 }
 
 .docs-title {
@@ -70,10 +74,19 @@
     margin: 0 auto;
   }
 
-  &:hover {
+  a {
+    color: $primary-font-color;
+  }
+
+  a:hover {
     color: $blue-color;
     font-weight: 800;
   }
+}
+
+.active a {
+  color: $blue-color;
+  font-weight: 800;
 }
 
 /* Search bar styling */
@@ -127,7 +140,7 @@
 body {
   max-width: 100vw;
 }
-.underline {
+.underline-title {
   height: 1px;
   background: $underline-color;
   width: 18vw;
@@ -137,11 +150,6 @@ body {
   @include breakpoint('m') {
     display: none;
   }
-}
-
-.active {
-  color: $blue-color;
-  font-weight: 800;
 }
 
 .top-page {

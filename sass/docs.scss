@@ -1,5 +1,6 @@
 @import 'shared';
 @import 'media';
+@import 'learn';
 
 /* Code Syntax Highlighting colors */
 $string: rgb(250, 69, 75);
@@ -11,6 +12,7 @@ $comment: green;
 /* General docs styling */
 
 .heading-1 {
+  
   @include heading('3.3vw', '2.5rem', '2rem');
 
   @include breakpoint('xl') {
@@ -38,7 +40,7 @@ $comment: green;
   @include heading('1.9vw', '1.6rem', '1.6rem');
 
   @include breakpoint('xl') {
-    @include heading('1.1vw', '1.6rem', '1.6rem');
+    @include heading('1.5vw', '1.6rem', '1.6rem');
   }
 
   @include breakpoint('l') {
@@ -208,7 +210,7 @@ pre {
     font-size: 1.3vw;
 
     @include breakpoint('xl') {
-      font-size: 1.2vw;
+      font-size: 1vw;
     }
 
     @include breakpoint('sm') {

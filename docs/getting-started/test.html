@@ -13,9 +13,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Update Dependencies</title>
-    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+    <title>Kitura - Learn</title>
+    <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/dist/docs.css">
@@ -32,7 +32,7 @@
           <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
-          <li class="nested-sidebar-item active"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/update-packages.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
         <ul class="nested-sidebar-list content">
@@ -88,7 +88,7 @@
     <div class="docs-item-2 search-container">
       <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
       <div id="beta" class="temp-beta">
-        <h4>Currently in Beta - <a href="../../old-learn.html">View old docs</a></h4>
+        <h4>Currently in Beta - <a href="../.../../old-learn.html">View old docs</a></h4>
       </div>
     </div>
     <nav class="docs-item-3 docs-nav">
@@ -97,62 +97,13 @@
       <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
-      <main>
-        <h1 class="heading-1" id="title">Importing Dependencies</h1>
-        <p>Kitura is provided as a Swift package which is distributed by the Swift Package Manager (SPM).</p>
-        <p>This guide demonstrates how to add a package to your project to leverage the functionality that package provides.</p>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Add the url to the `Package.swift`</h2>
-        <p>To add a new dependency to our project we need to edit the `Package.swift` file:</p>
-        <pre><code>open Package.swift</code></pre>
-        <p>Next we need to add the package we want to use to our package dependencies:</p>
-        <pre><code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Add the package name to the target dependencies</h2>
-        <p>Finally we need to add the package as a dependency of our application:</p>
-        <pre><code class="language-swift dependency-value">.target(
-      name: "&lt;project-name&gt;",
-      dependencies: ["Kitura", "&lt;dependency-name&gt;"]),</code></pre>
-        <p>The resulting `Package.swift` should look as follows:</p>
-        <pre><code class="language-swift">// swift-tools-version:4.0
-    import PackageDescription
 
-    let package = Package(
-        name: "MyKituraApp",
-        dependencies: [
-          .package(url: "https://github.com/IBM-Swift/Kitura.git", from: "x.x.x"),
-          .package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),
-        ],
-        targets: [
-          .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura"]),
-          .target(name: "Application", dependencies: [ "Kitura", "&lt;dependency-name&gt;"]),
-          .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura"])
-        ]
-    )</code></pre>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Update the project to download new package</h2>
-        <p>Now that we have added the new package to our project we need to update the project.</p>
-        <p>SPM provides a command line interface to do this.</p>
-        <p>So we will open a terminal and run the following:</p>
-        <pre><code>swift package update</code></pre>
-        <div class="info">
-          <p>If you are on macOS and using Xcode you will also need to generate a new Xcode project by running the following:</p>
-          <pre><code>swift package generate-xcodeproj</code></pre>
-        </div>
-        <p>`swift package update` looks at our `Package.swift` file and checks to see if we've added any new packages.</p>
-        <p>It also checks to see if there are any new versions of our existing packages as well.</p>
-        <p>We have now added a new package to our project and are ready to start using this in our app.</p>
-        <div class="underline"></div>
-        <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
-        <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
-      </main>
     </div>
     <div id="top-page" class="top-page">
       <a href="#">Back to top</a>
     </div>
   </section>
-  <script src="../../scripts/learn.js"></script>
-  <script src="../../scripts/prism.js"></script>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+  <script type="text/javascript" src="../../scripts/prism.js"></script>
 </body>
 </html>
