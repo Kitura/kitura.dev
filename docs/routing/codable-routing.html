@@ -128,13 +128,13 @@
         <p>Inside this file, add the framework for our routes code: </p>
         <pre><code class="language-swift">import KituraContracts
 
-    func initializeCodableRoutes(app: App) {
-        // Register routes here
-    }
-    extension App {
-        static var codableStore = [Book]()
-        // Write handlers here
-    }</code></pre>
+func initializeCodableRoutes(app: App) {
+    // Register routes here
+}
+extension App {
+    static var codableStore = [Book]()
+    // Write handlers here
+}</code></pre>
         <p>We have imported the KituraContracts library as it contains the shared type definition for `RequestError` which we will use in the next step.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST Codable Route</h2>
@@ -145,9 +145,9 @@
         <p>The `postHandler` is a block of code, called a closure, that is executed when a POST request is made to "/codable".</p>
         <p> Inside the `App` extension add: </p>
         <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-        App.codableStore.append(book)
-        completion(book, nil)
-    }</code></pre>
+    App.codableStore.append(book)
+    completion(book, nil)
+}</code></pre>
         <p>We can now successfully compile the project!</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Test the POST route</h2>
@@ -158,14 +158,14 @@
         </div>
         <p>To test the route using curl, open Terminal and enter the following:</p>
         <pre><code>curl -X POST \
-      http://localhost:8080/codable \
-      -H 'content-type: application/json' \
-      -d '{
-        "id": 0,
-        "title": "A Game of Thrones",
-        "price": 14.99,
-        "genre": "Fantasy"
-    }'</code></pre>
+  http://localhost:8080/codable \
+  -H 'content-type: application/json' \
+  -d '{
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": "Fantasy"
+}'</code></pre>
         <p>If the Codable route was created correctly we should see the following:</p>
         <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}</code></pre>
         <p>We have just successfully posted a book to the server and had it returned.</p>
@@ -177,8 +177,8 @@
         <p>Just like before we now need to define the handler.</p>
         <p> Inside the `App` extension add: </p>
         <pre><code class="language-swift">func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-        completion(App.codableStore, nil)
-    }</code></pre>
+    completion(App.codableStore, nil)
+}</code></pre>
         <p>You may have noticed that the completion here is expecting an array of books, this is because our route does not provide an identifier, so we retrieve all of the books.</p>
         <p>The result of all the changes should look something like this:</p>
         <p>Now we can restart our server to test our new endpoint.</p>
@@ -187,11 +187,11 @@
         <p><a href="http://localhost:8080/codable" target="_blank">localhost:8080/codable</a></p>
         <p>This will make a GET request to the server and we should see the book we posted:</p>
         <pre><code>[{
-      "id": 0,
-      "title": "A Game of Thrones",
-      "price": 14.99,
-      "genre": "Fantasy"
-    }]</code></pre>
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}]</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Create a GET ONE Codable Route</h2>
         <p>Now we will create another GET route. This time we will register a handler for GET requests on "/codable/&lt;id&gt;" which will allow an identifier, &lt;id&gt; to be sent from the client which will identify the book to return information for.</p>
@@ -200,11 +200,11 @@
         <p>Just like before we now need to define the handler.</p>
         <p> Inside the `App` extension add: </p>
         <pre><code class="language-swift">func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
-        guard id < App.codableStore.count, id >= 0 else {
-            return completion(nil, .notFound)
-        }
-        completion(App.codableStore[id], nil)
-    }</code></pre>
+    guard id < App.codableStore.count, id >= 0 else {
+        return completion(nil, .notFound)
+    }
+    completion(App.codableStore[id], nil)
+}</code></pre>
         <p>In the handler, we are provided with an identifier `id`. This is the value following our route and can be either an `Int` or a `String`, in our example we use `Int`, as our model contains an identifier of type `Int`.
         We then use this identifier to return a single `Book.`</p>
         <p>Now we can restart our server to test our new endpoint.</p>
@@ -212,21 +212,21 @@
         <p><a href="http://localhost:8080/codable/0" target="_blank">localhost:8080/codable/0</a></p>
         <p>This will make a GET request to the server and we should see the first book in JSON format:</p>
         <pre><code>{
-        "id": 0,
-        "title": "A Game of Thrones",
-        "price": 14.99,
-        "genre": "Fantasy"
-    }</code></pre>
+  "id": 0,
+  "title": "A Game of Thrones",
+  "price": 14.99,
+  "genre": "Fantasy"
+}</code></pre>
       <p>Now we will POST a second book to the server:</p>
       <pre><code>curl -X POST \
-    http://localhost:8080/codable \
-    -H 'content-type: application/json' \
-    -d '{
-      "id": 0,
-      "title": "Harry Potter",
-      "price": 10.00,
-      "genre": "Fantasy"
-    }'</code></pre>
+http://localhost:8080/codable \
+-H 'content-type: application/json' \
+-d '{
+  "id": 0,
+  "title": "Harry Potter",
+  "price": 10.00,
+  "genre": "Fantasy"
+}'</code></pre>
         <p>Then open the browser at:</p>
         <p><a href="http://localhost:8080/codable/1" target="_blank">localhost:8080/codable/1</a></p>
         <p>This will make a new GET request to the server and we should see the second book in JSON format:</p>
@@ -246,43 +246,43 @@
         <pre><code class="language-swift">let workerQueue = DispatchQueue(label: "worker")</code></pre>
         <p>At the end of the `App` class, add a helper function for atomically executing code:</p>
         <pre><code class="language-swift">func execute(_ block: (() -> Void)) {
-       workerQueue.sync {
-           block()
-       }
-    }</code></pre>
+    workerQueue.sync {
+        block()
+    }
+}</code></pre>
         <p>Back in `CodableRoutes.swift`, we wrap the code in our handlers with this execute function.</p>
         <p>Your completed `CodableRouting.swift` should now look as follows:</p>
     <pre><code class="language-swift">import KituraContracts
 
-    func initializeCodableRoutes(app: App) {
-        app.router.post("/codable", handler: app.postHandler)
-        app.router.get("/codable", handler: app.getAllHandler)
-        app.router.get("/codable", handler: app.getOneHandler)
+func initializeCodableRoutes(app: App) {
+    app.router.post("/codable", handler: app.postHandler)
+    app.router.get("/codable", handler: app.getAllHandler)
+    app.router.get("/codable", handler: app.getOneHandler)
+}
+extension App {
+    static var codableStore = [Book]()
+
+    func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+        execute {
+            App.codableStore.append(book)
+        }
+        completion(book, nil)
     }
-    extension App {
-        static var codableStore = [Book]()
 
-        func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-            execute {
-                App.codableStore.append(book)
-            }
-            completion(book, nil)
+    func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+        execute {
+            completion(App.codableStore, nil)
         }
-
-        func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-            execute {
-                completion(App.codableStore, nil)
+    }
+    func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
+        execute {
+            guard id < App.codableStore.count, id >= 0 else {
+                return completion(nil, .notFound)
             }
+            completion(App.codableStore[id], nil)
         }
-        func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
-            execute {
-                guard id < App.codableStore.count, id >= 0 else {
-                    return completion(nil, .notFound)
-                }
-                completion(App.codableStore[id], nil)
-            }
-        }
-    }</code></pre>
+    }
+}</code></pre>
     <p>We can continue to make POST and GET requests from our bookstore.</p>
     <p>However, if the server is restarted, all the data will be lost and we will have an empty array again.</p>
     <p>In the Database Guide we will look to resolve this issue and add persistence.</p>
