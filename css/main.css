@@ -681,6 +681,17 @@ button:focus {
 .help-slack {
   background-color: rgb(217, 20, 71);
 }
+
+.help-slack > img {
+  width: 80%;
+  margin-bottom: 1.3rem;
+  margin-top: -4rem;
+}
+
+.help-slack > p {
+  margin-top: -1.9rem;
+}
+
 .help-forums {
   background-color: rgb(237, 82, 63);
 }
