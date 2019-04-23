@@ -207,8 +207,8 @@ footer {
   transform: translateY(1px);
 }
 .slack-button-icon {
-  width: 23px;
-  margin-right: 9px;
+  width: 29%;
+  margin-right: -4px;
 }
 .api-button-icon {
   width: 25px;
