@@ -150,6 +150,11 @@ body {
       font-size: 1vw;
       width: 8vw;
       height: 2.5vw; } }
+  @media (max-width: 940px) {
+    .apiref-button {
+      font-size: 1vw;
+      height: 3vw;
+      width: 10vw; } }
   @media (max-width: 600px) {
     .apiref-button {
       font-size: 2vw;
@@ -530,6 +535,11 @@ td, th {
       font-size: 1vw;
       width: 8vw;
       height: 2.5vw; } }
+  @media (max-width: 940px) {
+    .macos-download-button {
+      font-size: 1vw;
+      height: 3vw;
+      width: 10vw; } }
   @media (max-width: 600px) {
     .macos-download-button {
       font-size: 2vw;

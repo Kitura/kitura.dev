@@ -51,6 +51,12 @@ body {
     height: 2.5vw;
   }
 
+  @include breakpoint('m') {
+    font-size: 1vw;
+    height: 3vw;
+    width: 10vw;
+  }
+
   @include breakpoint('sm') {
     font-size: 2vw;
     height: 7vw;
