@@ -1,679 +1,762 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
-    </script>
-    <title>Swift Kuery Guide</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+		gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Swift Kuery</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/dist/docs.css">
-    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
-  <body>
-    <main>
-      <h1 class="heading-1">Swift Kuery</h1>
-      <p class="block-text"><a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> is a pluggable SQL database driver/SDK abstraction layer.
-           Its main idea is to unify the APIs to the various relational databases,
-            providing a Swifty yet SQL-like API.
-            This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.</p>
-      <h2 class="heading-2">Prerequisites</h2>
-      <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('logging')" href="../logging/logging.html#">Logging:</a> Learn how to add logging to your project.</li>
+<body>
+  <section class="docs-grid-container">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item collapsible">Getting Started</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Logging</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Routing</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Databases</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item active"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Sessions</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Kitura Session</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Authentication</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Type-Safe Credentials</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Web Application</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../templating/templating.html">What is templating?</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Deploying</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/cloud-foundry.html">Cloud Foundry</a></li>
+        </ul>
       </ul>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the Kuery routes</h2>
-      <p>Open your `Sources` > `Application` > `Application.swift`.</p>
-      <p> Inside the `postInit()` function add: </p>
-      <pre><code class="language-swift">initializeKueryRoutes(app: self)</code></pre>
-      <p>Create a new file called `KueryRoutes.swift` in `Sources` > `Application` > `Routes`.</p>
-      <p class="block-text">Inside this file we are going to create two routes.
-           The first will use Swift-Kuery to save a `Book` into a database and the second will retrieve all of the saved books.</p>
-      <div class="info">
-          <p class="block-text">We can use Swift-Kuery within Raw or Codable routes.
-          Selecting one of the options below will update all the code examples in this guide to the chosen routing method.</p>
+    </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="docs-item-2 search-container">
+      <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
+      <div id="beta" class="temp-beta">
+        <h4>Currently in Beta - <a href="../../old-learn.html">View old docs</a></h4>
       </div>
-      <section class="tab">
-        <div class="tab-buttons">
-            <button id="kuery-codable-button" type="button" name="button" class="tablinks codableTab routesGroup" onclick="openPlugin('codableTab', 'routesGroup')">Codable Routes</button>
-            <button type="button" name="button" class="tablinks rawTab routesGroup" onclick="openPlugin('rawTab', 'routesGroup')">Raw Routes</button>
-        </div>
-        </section>
-        <div class="tabcontent codableTab routesGroup">
-      <pre><code class="language-swift">import KituraContracts
-import LoggerAPI
-import Foundation
-
-func initializeKueryRoutes(app: App) {
-    app.router.post("/kuery", handler: app.insertHandler)
-    app.router.get("/kuery", handler: app.selectHandler)
-}
-
-extension App {
-    // Create connection pool and initialize BookTable here
-
-    func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
-        // Handle POST here
-    }
-
-    func selectHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
-        // Handle GET here
-    }
-}</code></pre>
-    <p>Add the above code, for your chosen routing method, to your `KueryRoutes.swift` file.</p>
     </div>
-
-    <div class="tabcontent rawTab routesGroup">
-        <pre><code class="language-swift">import LoggerAPI
-import Foundation
-
-func initializeKueryRoutes(app: App) {
-
-    app.router.post("/kuery") { request, response, next in
-        guard let book = try? request.read(as: Book.self) else {
-            let _ = response.send(status: .badRequest)
-            return next()
-        }
-        // Handle POST here
-    }
-
-    app.router.get("/kuery") { request, response, next in
-        // Handle GET here
-    }
-}
-extension App {
-    // Create connection pool and initialize BookTable here
-}</code></pre>
-    <p>Add the above code, for your chosen routing method, to your `KueryRoutes.swift` file.</p>
-    </div>
-
-      <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
-      <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
-      <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
-      <p>In this guide we will select `PostgreSQL` and follow the guide from there.</p>
-      <section class="tab">
-        <div class="tab-buttons">
-          <button id="postgres-button" type="button" name="button" class="tablinks postgres sqlGroup" onclick="openPlugin('postgres', 'sqlGroup')">PostgreSQL</button>
-          <button type="button" name="button" class="tablinks mysql sqlGroup" onclick="openPlugin('mysql', 'sqlGroup')">MySQL</button>
-          <button type="button" name="button" class="tablinks sqlite sqlGroup" onclick="openPlugin('sqlite', 'sqlGroup')">SQLite</button>
+    <nav class="docs-item-3 docs-nav">
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
+    </nav>
+    <div id="doc-container" class="docs-item-4 docs-window">
+      <main>
+        <h1 class="heading-1">Swift Kuery</h1>
+        <p class="block-text"><a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> is a pluggable SQL database driver/SDK abstraction layer.
+             Its main idea is to unify the APIs to the various relational databases,
+              providing a Swifty yet SQL-like API.
+              This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.</p>
+        <h2 class="heading-2">Prerequisites</h2>
+        <ul class="plain-list">
+            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
+            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
+            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
+            <li><a onclick="setActiveSidebarElementForParent('logging')" href="../logging/logging.html#">Logging:</a> Learn how to add logging to your project.</li>
+        </ul>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the Kuery routes</h2>
+        <p>Open your `Sources` > `Application` > `Application.swift`.</p>
+        <p> Inside the `postInit()` function add: </p>
+        <pre><code class="language-swift">initializeKueryRoutes(app: self)</code></pre>
+        <p>Create a new file called `KueryRoutes.swift` in `Sources` > `Application` > `Routes`.</p>
+        <p class="block-text">Inside this file we are going to create two routes.
+             The first will use Swift-Kuery to save a `Book` into a database and the second will retrieve all of the saved books.</p>
+        <div class="info">
+            <p class="block-text">We can use Swift-Kuery within Raw or Codable routes.
+            Selecting one of the options below will update all the code examples in this guide to the chosen routing method.</p>
         </div>
-        <div class="tabcontent postgres sqlGroup">
-          <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install the PostgreSQL client</h2>
-          <p>To use Swift-Kuery-PostgreSQL you need to have the appropriate PostgreSQL C-language client installed.</p>
-          <h3 class="heading-3">macOS</h3>
-          <p>On macOS we can use Homebrew to install Postgres:</p>
-          <pre><code class="language-swift">brew install postgresql</code></pre>
-          <h3 class="heading-3">Linux</h3>
-          <p>On Linux we can use `apt-get` to install Postgres:</p>
-          <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
-          <div class="underline"></div>
-          <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a Postgres database</h2>
-          <p>Now that we have PostgreSQL installed we can create a database:</p>
-          <pre><code class="language-swift">createdb bookstoredb</code></pre>
-          <p>Then we can open the PostgreSQL command-line interface:</p>
-          <pre><code class="language-swift">psql bookstoredb</code></pre>
-          <p>Finally we can create a table in our database:</p>
-          <pre><code>CREATE TABLE "BookTable" (
-    id varchar(100) PRIMARY KEY,
-    title text NOT NULL,
-    price float8 NOT NULL,
-    genre text NOT NULL
-);</code></pre>
-          <p>Enter `\q` in terminal to exit psql.</p>
-          <p>Now we're ready to connect to our database from our Kitura server.</p>
-          <div class="underline"></div>
-          <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to a PostgreSQL database</h2>
-          <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL" target="_blank">SwiftKueryPostgreSQL</a> to the dependencies in the `Package.swift` file. </p>
-          <p>Inside the file which defines the routes, `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:</p>
-          <pre><code class="language-swift">import SwiftKuery
-import SwiftKueryPostgreSQL</code></pre>
-          <p>Inside the `App` extension, create a connection pool of connections:</p>
-          <pre><code class="language-swift">static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
-static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
-// Create table instance here</code></pre>
-          <p>This creates a pool of connections for us to use to make requests to our database.</p>
-        </div>
-        <div class="tabcontent mysql sqlGroup">
-          <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install MySQL</h2>
-          <p>To use Swift-Kuery-MySQL you need to first  install MySQL:</p>
-          <h3 class="heading-3">macOS</h3>
-          <p>On macOS we can use Homebrew to install MySQL:</p>
-          <pre><code class="language-swift">brew install mysql</code></pre>
-          <p>Then we can start MySQL:</p>
-          <pre><code>mysql.server start</code></pre>
-          <h3 class="heading-3">Linux</h3>
-          <p>On Linux we can use `apt-get` to install MySQL:</p>
-          <pre><code class="language-swift">sudo apt-get install mysql-server libmysqlclient-dev pkg-config</code></pre>
-          <p>Then we can start the MySQL service:</p>
-          <pre><code>sudo service mysql start</code></pre>
-          <div class="underline"></div>
-
-          <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a MySQL database</h2>
-          <p>Now that we have MySQL installed we can open the MySQL command-line interface:</p>
-          <pre><code class="language-swift">mysql -u root</code></pre>
-          <p>Using the MySQL command-line interface, we create a user:</p>
-          <div class="info">
-              <p>You can replace `kitura` and `password` with your own username and password.</p>
+        <section class="tab">
+          <div class="tab-buttons">
+              <button id="kuery-codable-button" type="button" name="button" class="tablinks codableTab routesGroup" onclick="openPlugin('codableTab', 'routesGroup')">Codable Routes</button>
+              <button type="button" name="button" class="tablinks rawTab routesGroup" onclick="openPlugin('rawTab', 'routesGroup')">Raw Routes</button>
           </div>
-          <pre><code class="language-swift">GRANT ALL PRIVILEGES ON *.* TO 'kitura'@'localhost' IDENTIFIED BY 'password';</code></pre>
-          <p>Then we can create a database:</p>
-          <pre><code class="language-swift">CREATE DATABASE bookstoredb;</code></pre>
-          <p>Then we want to use this database:</p>
-          <pre><code class="language-swift">USE bookstoredb;</code></pre>
-          <p>Finally we can create a table in our database:</p>
-      <pre><code>CREATE TABLE BookTable (
-    id VARCHAR(100) not null,
-    title VARCHAR(100) not null,
-    price DOUBLE not null,
-    genre VARCHAR(100) not null,
-    constraint pk_example primary key (id)
-);</code></pre>
-          <p>Enter `\q` in terminal to exit mysql.</p>
-          <p>Now we're ready to connect to our database from our Kitura server.</p>
-          <div class="underline"></div>
+          </section>
+          <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">import KituraContracts
+  import LoggerAPI
+  import Foundation
 
-          <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to a MySQL database</h2>
-          <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/SwiftKueryMySQL" target="_blank">SwiftKueryMySQL</a> to the dependencies in the `Package.swift` file. </p>
-          <p>Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKueryMySQL packages:</p>
-          <pre><code class="language-swift">import SwiftKuery
-import SwiftKueryMySQL</code></pre>
-          <p>Inside the `App` extension, create a connection pool of connections:</p>
-          <pre><code class="language-swift">static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
-static let pool = MySQLConnection.createPool(user: "kitura", password: "password", database: "bookstoredb", poolOptions: poolOptions)
-// Create table instance here</code></pre>
-          <p>This creates a pool of connections for us to use to make requests to our database.</p>
-        </div>
-        <div class="tabcontent sqlite sqlGroup">
-          <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install SQLite</h2>
-          <p>To use Swift-Kuery-SQLite you need to first  install SQLite:</p>
-          <h3 class="heading-3">macOS</h3>
-          <p>On macOS we can use Homebrew to install SQLite:</p>
-          <pre><code class="language-swift">brew install sqlite</code></pre>
-          <h3 class="heading-3">Linux</h3>
-          <p>On Linux we can use `apt-get` to install SQLite:</p>
-          <pre><code class="language-swift">sudo apt-get install sqlite3 libsqlite3-dev</code></pre>
-          <div class="underline"></div>
+  func initializeKueryRoutes(app: App) {
+      app.router.post("/kuery", handler: app.insertHandler)
+      app.router.get("/kuery", handler: app.selectHandler)
+  }
 
-          <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create an SQLite database</h2>
-          <p>Now that we have SQLite installed we can create a database file.</p>
-          <p>In terminal return to your home directory:</p>
-          <pre><code>cd ~</code></pre>
-          <p>Use the SQL command line to create your database:</p>
-          <pre><code class="language-swift">sqlite3 bookstoredb.sqlite</code></pre>
-          <p>Remaining in the command line, create an SQL table:</p>
-      <pre><code>CREATE TABLE BookTable (
-    id varchar(100) primary key,
-    title text,
-    price real,
-    genre text
-);</code></pre>
-          <p>press `Control-d` to exit SQLite.</p>
-          <p>Now we're ready to connect to our database from our Kitura server.</p>
-          <div class="underline"></div>
+  extension App {
+      // Create connection pool and initialize BookTable here
 
-          <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to an SQLite database</h2>
-          <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-SQLite" target="_blank">SwiftKuerySQLite</a> to the dependencies in the `Package.swift` file. </p>
-          <p>Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKuerySQLite packages:</p>
-          <pre><code class="language-swift">import SwiftKuery
-import SwiftKuerySQLite</code></pre>
-          <p>Inside the `App` extension, create a connection pool by passing in the path to your database file:</p>
-          <pre><code class="language-swift">static let path = NSString(string: "~/bookstoredb.sqlite").expandingTildeInPath
-static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
-static let pool = SQLiteConnection.createPool(filename: String(path), poolOptions: poolOptions)
-// Create table instance here</code></pre>
-          <p>This creates a pool of connections for us to use to make requests to our database.</p>
-        </div>
-      </section>
-      <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a class to represent the database table</h2>
-      <p>To use SwiftKuery we need to create a class in Swift that matches our database table.</p>
-      <p>Create a new file called `BookTable.swift` in `Sources` > `Application` > `Models`.</p>
-      <p>Inside `BookTable.swift`, define your `BookTable` class:</p>
-      <pre><code class="language-swift">import SwiftKuery
+      func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+          // Handle POST here
+      }
 
-class BookTable: Table {
-    let tableName = "BookTable"
-    let id = Column("id", Int32.self, primaryKey: true)
-    let title = Column("title", String.self)
-    let price = Column("price", Float.self)
-    let genre = Column("genre", String.self)
-}</code></pre>
-      <p class="block-text">This class represents our `Book` model as an SQL table.
-        It needs to inherit from `Table` and match the column names of the table we created in the database.
-        We must also provide the table name as a property.</p>
-      <p>Return to the `KueryRoutes.swift` file. In the `App` extension, create an instance of this table:</p>
-      <pre><code class="language-swift">static let bookTable = BookTable()</code></pre>
-      <p>Now we're ready to start saving data to our database.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 4:</span> Save data to the database</h2>
-      <p>Now we're going to save a book that is posted to the '/kuery' route into our database.</p>
-      <p class="block-text">Inside the handler for our POST route, we need to convert our book to an Array of Arrays of type `Any`.
-          This converts the book that was sent to the route into the format required by Swift-Kuery.
-          We need to use the `Any` type here as the database fields could be of any type.
-      </p>
-      <pre><code class="language-swift">let rows = [[book.id, book.title, book.price, book.genre]]
-// Get connection from pool here</code></pre>
-      <p>To talk to the database, the first thing we need to do is get a connection from the connection pool.</p>
-      <p>To do this we can use the `getConnection` method. We can add this into the handler for our POST route:</p>
-      <div class="tabcontent codableTab routesGroup">
+      func selectHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
+          // Handle GET here
+      }
+  }</code></pre>
+      <p>Add the above code, for your chosen routing method, to your `KueryRoutes.swift` file.</p>
+      </div>
+
+      <div class="tabcontent rawTab routesGroup">
+          <pre><code class="language-swift">import LoggerAPI
+  import Foundation
+
+  func initializeKueryRoutes(app: App) {
+
+      app.router.post("/kuery") { request, response, next in
+          guard let book = try? request.read(as: Book.self) else {
+              let _ = response.send(status: .badRequest)
+              return next()
+          }
+          // Handle POST here
+      }
+
+      app.router.get("/kuery") { request, response, next in
+          // Handle GET here
+      }
+  }
+  extension App {
+      // Create connection pool and initialize BookTable here
+  }</code></pre>
+      <p>Add the above code, for your chosen routing method, to your `KueryRoutes.swift` file.</p>
+      </div>
+
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
+        <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
+        <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
+        <p>In this guide we will select `PostgreSQL` and follow the guide from there.</p>
+        <section class="tab">
+          <div class="tab-buttons">
+            <button id="postgres-button" type="button" name="button" class="tablinks postgres sqlGroup" onclick="openPlugin('postgres', 'sqlGroup')">PostgreSQL</button>
+            <button type="button" name="button" class="tablinks mysql sqlGroup" onclick="openPlugin('mysql', 'sqlGroup')">MySQL</button>
+            <button type="button" name="button" class="tablinks sqlite sqlGroup" onclick="openPlugin('sqlite', 'sqlGroup')">SQLite</button>
+          </div>
+          <div class="tabcontent postgres sqlGroup">
+            <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install the PostgreSQL client</h2>
+            <p>To use Swift-Kuery-PostgreSQL you need to have the appropriate PostgreSQL C-language client installed.</p>
+            <h3 class="heading-3">macOS</h3>
+            <p>On macOS we can use Homebrew to install Postgres:</p>
+            <pre><code class="language-swift">brew install postgresql</code></pre>
+            <h3 class="heading-3">Linux</h3>
+            <p>On Linux we can use `apt-get` to install Postgres:</p>
+            <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
+            <div class="underline"></div>
+            <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a Postgres database</h2>
+            <p>Now that we have PostgreSQL installed we can create a database:</p>
+            <pre><code class="language-swift">createdb bookstoredb</code></pre>
+            <p>Then we can open the PostgreSQL command-line interface:</p>
+            <pre><code class="language-swift">psql bookstoredb</code></pre>
+            <p>Finally we can create a table in our database:</p>
+            <pre><code>CREATE TABLE "BookTable" (
+      id varchar(100) PRIMARY KEY,
+      title text NOT NULL,
+      price float8 NOT NULL,
+      genre text NOT NULL
+  );</code></pre>
+            <p>Enter `\q` in terminal to exit psql.</p>
+            <p>Now we're ready to connect to our database from our Kitura server.</p>
+            <div class="underline"></div>
+            <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to a PostgreSQL database</h2>
+            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL" target="_blank">SwiftKueryPostgreSQL</a> to the dependencies in the `Package.swift` file. </p>
+            <p>Inside the file which defines the routes, `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:</p>
+            <pre><code class="language-swift">import SwiftKuery
+  import SwiftKueryPostgreSQL</code></pre>
+            <p>Inside the `App` extension, create a connection pool of connections:</p>
+            <pre><code class="language-swift">static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+  static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
+  // Create table instance here</code></pre>
+            <p>This creates a pool of connections for us to use to make requests to our database.</p>
+          </div>
+          <div class="tabcontent mysql sqlGroup">
+            <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install MySQL</h2>
+            <p>To use Swift-Kuery-MySQL you need to first  install MySQL:</p>
+            <h3 class="heading-3">macOS</h3>
+            <p>On macOS we can use Homebrew to install MySQL:</p>
+            <pre><code class="language-swift">brew install mysql</code></pre>
+            <p>Then we can start MySQL:</p>
+            <pre><code>mysql.server start</code></pre>
+            <h3 class="heading-3">Linux</h3>
+            <p>On Linux we can use `apt-get` to install MySQL:</p>
+            <pre><code class="language-swift">sudo apt-get install mysql-server libmysqlclient-dev pkg-config</code></pre>
+            <p>Then we can start the MySQL service:</p>
+            <pre><code>sudo service mysql start</code></pre>
+            <div class="underline"></div>
+
+            <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a MySQL database</h2>
+            <p>Now that we have MySQL installed we can open the MySQL command-line interface:</p>
+            <pre><code class="language-swift">mysql -u root</code></pre>
+            <p>Using the MySQL command-line interface, we create a user:</p>
+            <div class="info">
+                <p>You can replace `kitura` and `password` with your own username and password.</p>
+            </div>
+            <pre><code class="language-swift">GRANT ALL PRIVILEGES ON *.* TO 'kitura'@'localhost' IDENTIFIED BY 'password';</code></pre>
+            <p>Then we can create a database:</p>
+            <pre><code class="language-swift">CREATE DATABASE bookstoredb;</code></pre>
+            <p>Then we want to use this database:</p>
+            <pre><code class="language-swift">USE bookstoredb;</code></pre>
+            <p>Finally we can create a table in our database:</p>
+        <pre><code>CREATE TABLE BookTable (
+      id VARCHAR(100) not null,
+      title VARCHAR(100) not null,
+      price DOUBLE not null,
+      genre VARCHAR(100) not null,
+      constraint pk_example primary key (id)
+  );</code></pre>
+            <p>Enter `\q` in terminal to exit mysql.</p>
+            <p>Now we're ready to connect to our database from our Kitura server.</p>
+            <div class="underline"></div>
+
+            <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to a MySQL database</h2>
+            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/SwiftKueryMySQL" target="_blank">SwiftKueryMySQL</a> to the dependencies in the `Package.swift` file. </p>
+            <p>Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKueryMySQL packages:</p>
+            <pre><code class="language-swift">import SwiftKuery
+  import SwiftKueryMySQL</code></pre>
+            <p>Inside the `App` extension, create a connection pool of connections:</p>
+            <pre><code class="language-swift">static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+  static let pool = MySQLConnection.createPool(user: "kitura", password: "password", database: "bookstoredb", poolOptions: poolOptions)
+  // Create table instance here</code></pre>
+            <p>This creates a pool of connections for us to use to make requests to our database.</p>
+          </div>
+          <div class="tabcontent sqlite sqlGroup">
+            <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install SQLite</h2>
+            <p>To use Swift-Kuery-SQLite you need to first  install SQLite:</p>
+            <h3 class="heading-3">macOS</h3>
+            <p>On macOS we can use Homebrew to install SQLite:</p>
+            <pre><code class="language-swift">brew install sqlite</code></pre>
+            <h3 class="heading-3">Linux</h3>
+            <p>On Linux we can use `apt-get` to install SQLite:</p>
+            <pre><code class="language-swift">sudo apt-get install sqlite3 libsqlite3-dev</code></pre>
+            <div class="underline"></div>
+
+            <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create an SQLite database</h2>
+            <p>Now that we have SQLite installed we can create a database file.</p>
+            <p>In terminal return to your home directory:</p>
+            <pre><code>cd ~</code></pre>
+            <p>Use the SQL command line to create your database:</p>
+            <pre><code class="language-swift">sqlite3 bookstoredb.sqlite</code></pre>
+            <p>Remaining in the command line, create an SQL table:</p>
+        <pre><code>CREATE TABLE BookTable (
+      id varchar(100) primary key,
+      title text,
+      price real,
+      genre text
+  );</code></pre>
+            <p>press `Control-d` to exit SQLite.</p>
+            <p>Now we're ready to connect to our database from our Kitura server.</p>
+            <div class="underline"></div>
+
+            <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to an SQLite database</h2>
+            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-SQLite" target="_blank">SwiftKuerySQLite</a> to the dependencies in the `Package.swift` file. </p>
+            <p>Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKuerySQLite packages:</p>
+            <pre><code class="language-swift">import SwiftKuery
+  import SwiftKuerySQLite</code></pre>
+            <p>Inside the `App` extension, create a connection pool by passing in the path to your database file:</p>
+            <pre><code class="language-swift">static let path = NSString(string: "~/bookstoredb.sqlite").expandingTildeInPath
+  static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+  static let pool = SQLiteConnection.createPool(filename: String(path), poolOptions: poolOptions)
+  // Create table instance here</code></pre>
+            <p>This creates a pool of connections for us to use to make requests to our database.</p>
+          </div>
+        </section>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create a class to represent the database table</h2>
+        <p>To use SwiftKuery we need to create a class in Swift that matches our database table.</p>
+        <p>Create a new file called `BookTable.swift` in `Sources` > `Application` > `Models`.</p>
+        <p>Inside `BookTable.swift`, define your `BookTable` class:</p>
+        <pre><code class="language-swift">import SwiftKuery
+
+  class BookTable: Table {
+      let tableName = "BookTable"
+      let id = Column("id", Int32.self, primaryKey: true)
+      let title = Column("title", String.self)
+      let price = Column("price", Float.self)
+      let genre = Column("genre", String.self)
+  }</code></pre>
+        <p class="block-text">This class represents our `Book` model as an SQL table.
+          It needs to inherit from `Table` and match the column names of the table we created in the database.
+          We must also provide the table name as a property.</p>
+        <p>Return to the `KueryRoutes.swift` file. In the `App` extension, create an instance of this table:</p>
+        <pre><code class="language-swift">static let bookTable = BookTable()</code></pre>
+        <p>Now we're ready to start saving data to our database.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Save data to the database</h2>
+        <p>Now we're going to save a book that is posted to the '/kuery' route into our database.</p>
+        <p class="block-text">Inside the handler for our POST route, we need to convert our book to an Array of Arrays of type `Any`.
+            This converts the book that was sent to the route into the format required by Swift-Kuery.
+            We need to use the `Any` type here as the database fields could be of any type.
+        </p>
+        <pre><code class="language-swift">let rows = [[book.id, book.title, book.price, book.genre]]
+  // Get connection from pool here</code></pre>
+        <p>To talk to the database, the first thing we need to do is get a connection from the connection pool.</p>
+        <p>To do this we can use the `getConnection` method. We can add this into the handler for our POST route:</p>
+        <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">App.pool.getConnection() { connection, error in
+      guard let connection = connection else {
+          Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+          return completion(nil, .internalServerError)
+      }
+      // Write query and execute it here
+  }</code></pre>
+      </div>
+  <div class="tabcontent rawTab routesGroup">
       <pre><code class="language-swift">App.pool.getConnection() { connection, error in
-    guard let connection = connection else {
-        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
-    }
-    // Write query and execute it here
-}</code></pre>
-    </div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">App.pool.getConnection() { connection, error in
-    guard let connection = connection else {
-        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-        let _ = response.send(status: .internalServerError)
-        return next()
-    }
-    // Write query and execute it here
-}</code></pre>
-        </div>
-      <p>When we get a connection from the connection pool we need to confirm it's a valid connection.</p>
-      <p>If we don't get a valid connection, we will stop the execution and log an error to the console.</p>
-      <p>Now we can build the query for inserting data into a database.</p>
-      <p>Beneath our connection guard closure, add the following code:</p>
-      <pre><code class="language-swift">let insertQuery = Insert(into: App.bookTable, rows: rows)</code></pre>
-      <p>Once we have defined our insert query, we need to execute the query using the connection we took from the pool:</p>
-      <div class="tabcontent codableTab routesGroup">
-      <pre><code class="language-swift">connection.execute(query: insertQuery) { insertResult in
-    guard insertResult.success else {
-        Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
-    }
-    completion(book, nil)
-}</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">connection.execute(query: insertQuery) { insertResult in
-    guard insertResult.success else {
-          Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+      guard let connection = connection else {
+          Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
           let _ = response.send(status: .internalServerError)
           return next()
-    }
-    response.send(book)
-    return next()
-}</code></pre>
-</div>
-      <p>That's it! We've setup our POST route to save data to a database.
-           the completed handler for your POST route should now look as follows:</p>
-<div class="tabcontent codableTab routesGroup">
-<pre><code class="language-swift">func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
-    let rows = [[book.id, book.title, book.price, book.genre]]
-    App.pool.getConnection() { connection, error in
-        guard let connection = connection else {
-            Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-            return completion(nil, .internalServerError)
-        }
-        let insertQuery = Insert(into: App.bookTable, rows: rows)
-        connection.execute(query: insertQuery) { insertResult in
-            guard insertResult.success else {
-                Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-                return completion(nil, .internalServerError)
-            }
-            completion(book, nil)
-        }
-    }
-}</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-<pre><code class="language-swift">app.router.post("/kuery") { request, response, next in
-    guard let book = try? request.read(as: Book.self) else {
-        let _ = response.send(status: .badRequest)
-        return next()
-    }
-    let rows = [[book.id, book.title, book.price, book.genre]]
-    App.pool.getConnection() { connection, error in
-        guard let connection = connection else {
-            Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+      }
+      // Write query and execute it here
+  }</code></pre>
+          </div>
+        <p>When we get a connection from the connection pool we need to confirm it's a valid connection.</p>
+        <p>If we don't get a valid connection, we will stop the execution and log an error to the console.</p>
+        <p>Now we can build the query for inserting data into a database.</p>
+        <p>Beneath our connection guard closure, add the following code:</p>
+        <pre><code class="language-swift">let insertQuery = Insert(into: App.bookTable, rows: rows)</code></pre>
+        <p>Once we have defined our insert query, we need to execute the query using the connection we took from the pool:</p>
+        <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">connection.execute(query: insertQuery) { insertResult in
+      guard insertResult.success else {
+          Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+          return completion(nil, .internalServerError)
+      }
+      completion(book, nil)
+  }</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
+      <pre><code class="language-swift">connection.execute(query: insertQuery) { insertResult in
+      guard insertResult.success else {
+            Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
             let _ = response.send(status: .internalServerError)
             return next()
-        }
-        let insertQuery = Insert(into: App.bookTable, rows: rows)
-        connection.execute(query: insertQuery) { insertResult in
-            guard insertResult.success else {
-                Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-                let _ = response.send(status: .internalServerError)
-                return next()
-            }
-            response.send(book)
-            return next()
-        }
-    }
-}</code></pre>
-</div>
-      <p>Next we can test our implementation.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 5 (Optional):</span> Test saving a book to database</h2>
-      <p>First we need to start our Kitura server.</p>
-      <p>Once the server is running run the following in a terminal:</p>
-      <pre><code>curl -X POST \
-    http://localhost:8080/kuery \
-    -H 'content-type: application/json' \
-    -d '{
-    "id": 0,
-    "title": "A Game of Thrones",
-    "price": 14.99,
-    "genre": "Fantasy"
-}'</code></pre>
-    <p>This will make a POST request to the server and we should be returned our book in JSON format:</p>
-    <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}</code></pre>
-    <div class="info">
-      <p>The following steps are for PostgreSQL. The commands will be different if you used a different database.</p>
-    </div>
-      <p>Then using the PostgreSQL CLI we can query the database to see if our data was saved.</p>
-      <p>Start the PostgreSQL CLI for our database by running the following in a terminal:</p>
-      <pre><code>psql bookstoredb</code></pre>
-      <p>In a terminal which is running the `psql` command, run the following:</p>
-      <pre><code>SELECT * FROM "BookTable";</code></pre>
-      <p>You should see the following printed in the terminal:</p>
-      <pre><code> id |       title       | price |  genre
-----+-------------------+-------+---------
- 0  | A Game of Thrones | 14.99 | Fantasy
-(1 row)</code></pre>
-      <p>This shows our POST route is working as we'd expect.</p>
-      <p>A better way to test this, as we're writing Swift code, would be to query the database directly from our server instead of using Terminal.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve data from the database</h2>
-      <p>Now we're going to build a SELECT query that will query the database and return all the entries in our `BookTable`.</p>
-      <p>Inside the handler for our GET route, we need to get a connection from the connection pool:</p>
-      <div class="tabcontent codableTab routesGroup">
+      }
+      response.send(book)
+      return next()
+  }</code></pre>
+  </div>
+        <p>That's it! We've setup our POST route to save data to a database.
+             the completed handler for your POST route should now look as follows:</p>
+  <div class="tabcontent codableTab routesGroup">
+  <pre><code class="language-swift">func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+      let rows = [[book.id, book.title, book.price, book.genre]]
+      App.pool.getConnection() { connection, error in
+          guard let connection = connection else {
+              Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+              return completion(nil, .internalServerError)
+          }
+          let insertQuery = Insert(into: App.bookTable, rows: rows)
+          connection.execute(query: insertQuery) { insertResult in
+              guard insertResult.success else {
+                  Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                  return completion(nil, .internalServerError)
+              }
+              completion(book, nil)
+          }
+      }
+  }</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
+  <pre><code class="language-swift">app.router.post("/kuery") { request, response, next in
+      guard let book = try? request.read(as: Book.self) else {
+          let _ = response.send(status: .badRequest)
+          return next()
+      }
+      let rows = [[book.id, book.title, book.price, book.genre]]
+      App.pool.getConnection() { connection, error in
+          guard let connection = connection else {
+              Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+              let _ = response.send(status: .internalServerError)
+              return next()
+          }
+          let insertQuery = Insert(into: App.bookTable, rows: rows)
+          connection.execute(query: insertQuery) { insertResult in
+              guard insertResult.success else {
+                  Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                  let _ = response.send(status: .internalServerError)
+                  return next()
+              }
+              response.send(book)
+              return next()
+          }
+      }
+  }</code></pre>
+  </div>
+        <p>Next we can test our implementation.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 5 (Optional):</span> Test saving a book to database</h2>
+        <p>First we need to start our Kitura server.</p>
+        <p>Once the server is running run the following in a terminal:</p>
+        <pre><code>curl -X POST \
+      http://localhost:8080/kuery \
+      -H 'content-type: application/json' \
+      -d '{
+      "id": 0,
+      "title": "A Game of Thrones",
+      "price": 14.99,
+      "genre": "Fantasy"
+  }'</code></pre>
+      <p>This will make a POST request to the server and we should be returned our book in JSON format:</p>
+      <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}</code></pre>
+      <div class="info">
+        <p>The following steps are for PostgreSQL. The commands will be different if you used a different database.</p>
+      </div>
+        <p>Then using the PostgreSQL CLI we can query the database to see if our data was saved.</p>
+        <p>Start the PostgreSQL CLI for our database by running the following in a terminal:</p>
+        <pre><code>psql bookstoredb</code></pre>
+        <p>In a terminal which is running the `psql` command, run the following:</p>
+        <pre><code>SELECT * FROM "BookTable";</code></pre>
+        <p>You should see the following printed in the terminal:</p>
+        <pre><code> id |       title       | price |  genre
+  ----+-------------------+-------+---------
+   0  | A Game of Thrones | 14.99 | Fantasy
+  (1 row)</code></pre>
+        <p>This shows our POST route is working as we'd expect.</p>
+        <p>A better way to test this, as we're writing Swift code, would be to query the database directly from our server instead of using Terminal.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve data from the database</h2>
+        <p>Now we're going to build a SELECT query that will query the database and return all the entries in our `BookTable`.</p>
+        <p>Inside the handler for our GET route, we need to get a connection from the connection pool:</p>
+        <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">App.pool.getConnection() { connection, error in
+      guard let connection = connection else {
+          Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+          return completion(nil, .internalServerError)
+      }
+      // Write query and execute it here
+  }</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
       <pre><code class="language-swift">App.pool.getConnection() { connection, error in
-    guard let connection = connection else {
-        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
-    }
-    // Write query and execute it here
-}</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">App.pool.getConnection() { connection, error in
-    guard let connection = connection else {
-        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-        let _ = response.send(status: .internalServerError)
-        return next()
-    }
-    // Write query and execute it here
-}</code></pre>
-</div>
-      <p>Now we can build our SELECT query that will query the database for every entry in the "BookTable":</p>
-      <pre><code class="language-swift">let selectQuery = Select(from: App.bookTable)</code></pre>
-      <p>Like before we can now execute our query using `connection.execute`:</p>
-      <div class="tabcontent codableTab routesGroup">
+      guard let connection = connection else {
+          Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+          let _ = response.send(status: .internalServerError)
+          return next()
+      }
+      // Write query and execute it here
+  }</code></pre>
+  </div>
+        <p>Now we can build our SELECT query that will query the database for every entry in the "BookTable":</p>
+        <pre><code class="language-swift">let selectQuery = Select(from: App.bookTable)</code></pre>
+        <p>Like before we can now execute our query using `connection.execute`:</p>
+        <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">connection.execute(query: selectQuery) { selectResult in
+      guard let resultSet = selectResult.asResultSet else {
+          Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+          return completion(nil, .internalServerError)
+      }
+      // Iterate through result set here
+  }</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
       <pre><code class="language-swift">connection.execute(query: selectQuery) { selectResult in
-    guard let resultSet = selectResult.asResultSet else {
-        Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
-    }
-    // Iterate through result set here
-}</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">connection.execute(query: selectQuery) { selectResult in
-    guard let resultSet = selectResult.asResultSet else {
-        Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
-        let _ = response.send(status: .internalServerError)
-        return next()
-    }
-    // Iterate through result set here
-}</code></pre>
-</div>
-      <p>The query should return a set of results, in the code we use `.asResultSet` to check that the returned value is a valid result set, otherwise we log an error and return.</p>
-      <p>Next we need to iterate through our result set, converting each of the returned database table rows into a book:</p>
-      <pre><code class="language-swift">var books = [Book]()
-resultSet.forEach() { row, error in
-    // Handle callback here
-}</code></pre>
-      <p>The `forEach` function will return either a `row`, an `error` or `nil` (in this case `nil` means that there are no more rows).</p>
-      <p>Inside the `forEach` callback, we need to handle these three cases:</p>
+      guard let resultSet = selectResult.asResultSet else {
+          Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+          let _ = response.send(status: .internalServerError)
+          return next()
+      }
+      // Iterate through result set here
+  }</code></pre>
+  </div>
+        <p>The query should return a set of results, in the code we use `.asResultSet` to check that the returned value is a valid result set, otherwise we log an error and return.</p>
+        <p>Next we need to iterate through our result set, converting each of the returned database table rows into a book:</p>
+        <pre><code class="language-swift">var books = [Book]()
+  resultSet.forEach() { row, error in
+      // Handle callback here
+  }</code></pre>
+        <p>The `forEach` function will return either a `row`, an `error` or `nil` (in this case `nil` means that there are no more rows).</p>
+        <p>Inside the `forEach` callback, we need to handle these three cases:</p>
 
-      <div class="tabcontent codableTab routesGroup">
+        <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">guard let row = row else {
+      if let error = error {
+          Log.error("Error getting row: \(error)")
+          return completion(nil, .internalServerError)
+      } else {
+          // All rows have been processed
+          return completion(books, nil)
+      }
+  }
+  // Convert row to book here</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
       <pre><code class="language-swift">guard let row = row else {
-    if let error = error {
-        Log.error("Error getting row: \(error)")
-        return completion(nil, .internalServerError)
-    } else {
-        // All rows have been processed
-        return completion(books, nil)
-    }
-}
-// Convert row to book here</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">guard let row = row else {
-    if let error = error {
-        Log.error("Error getting row: \(error)")
-        let _ = response.send(status: .internalServerError)
-        return next()
-    } else {
-        // All rows have been processed
-        response.send(books)
-        return next()
-    }
-}
-// Convert row to book here</code></pre>
-</div>
-<p>When we get a row back from the database we need to convert it back into a `Book` model type.</p>
-<p>After the `guard` closure, add the following code:</p>
-<div class="tabcontent codableTab routesGroup">
-<pre><code class="language-swift">guard let idString = row[0] as? String,
-    let id = Int(idString),
-    let title = row[1] as? String,
-    let price = row[2] as? Double,
-    let genre = row[3] as? String
-else {
-    Log.error("Unable to decode book")
-    let _ = response.send(status: .internalServerError)
-    return next()
-}
-books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">guard let idString = row[0] as? String,
-    let id = Int(idString),
-    let title = row[1] as? String,
-    let price = row[2] as? Double,
-    let genre = row[3] as? String
-else {
-    Log.error("Unable to decode book")
-    let _ = response.send(status: .internalServerError)
-    return next()
-}
-books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre>
-</div>
-      <p>That's it! We've enabled our GET route to retrieve data from a database.</p>
-      <p>Our completed `KueryRoutes.swift` file should now look as follows:</p>
+      if let error = error {
+          Log.error("Error getting row: \(error)")
+          let _ = response.send(status: .internalServerError)
+          return next()
+      } else {
+          // All rows have been processed
+          response.send(books)
+          return next()
+      }
+  }
+  // Convert row to book here</code></pre>
+  </div>
+  <p>When we get a row back from the database we need to convert it back into a `Book` model type.</p>
+  <p>After the `guard` closure, add the following code:</p>
+  <div class="tabcontent codableTab routesGroup">
+  <pre><code class="language-swift">guard let idString = row[0] as? String,
+      let id = Int(idString),
+      let title = row[1] as? String,
+      let price = row[2] as? Double,
+      let genre = row[3] as? String
+  else {
+      Log.error("Unable to decode book")
+      let _ = response.send(status: .internalServerError)
+      return next()
+  }
+  books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
+      <pre><code class="language-swift">guard let idString = row[0] as? String,
+      let id = Int(idString),
+      let title = row[1] as? String,
+      let price = row[2] as? Double,
+      let genre = row[3] as? String
+  else {
+      Log.error("Unable to decode book")
+      let _ = response.send(status: .internalServerError)
+      return next()
+  }
+  books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre>
+  </div>
+        <p>That's it! We've enabled our GET route to retrieve data from a database.</p>
+        <p>Our completed `KueryRoutes.swift` file should now look as follows:</p>
 
-      <div class="tabcontent codableTab routesGroup">
-      <pre><code class="language-swift">import KituraContracts
-import LoggerAPI
-import Foundation
-import SwiftKuery
-import SwiftKueryPostgreSQL
+        <div class="tabcontent codableTab routesGroup">
+        <pre><code class="language-swift">import KituraContracts
+  import LoggerAPI
+  import Foundation
+  import SwiftKuery
+  import SwiftKueryPostgreSQL
 
-func initializeKueryRoutes(app: App) {
-    app.router.post("/kuery", handler: app.insertHandler)
-    app.router.get("/kuery", handler: app.selectHandler)
-}
+  func initializeKueryRoutes(app: App) {
+      app.router.post("/kuery", handler: app.insertHandler)
+      app.router.get("/kuery", handler: app.selectHandler)
+  }
 
-extension App {
-    // This will be different if you used a different plugin
-    static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
-    static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
-    static let bookTable = BookTable()
+  extension App {
+      // This will be different if you used a different plugin
+      static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+      static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
+      static let bookTable = BookTable()
 
-    func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
-        let rows = [[book.id, book.title, book.price, book.genre]]
-        App.pool.getConnection() { connection, error in
-            guard let connection = connection else {
-                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-                return completion(nil, .internalServerError)
-            }
-            let insertQuery = Insert(into: App.bookTable, rows: rows)
-            connection.execute(query: insertQuery) { insertResult in
-                guard insertResult.success else {
-                    Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-                    return completion(nil, .internalServerError)
-                }
-                completion(book, nil)
-            }
-        }
-    }
+      func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+          let rows = [[book.id, book.title, book.price, book.genre]]
+          App.pool.getConnection() { connection, error in
+              guard let connection = connection else {
+                  Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                  return completion(nil, .internalServerError)
+              }
+              let insertQuery = Insert(into: App.bookTable, rows: rows)
+              connection.execute(query: insertQuery) { insertResult in
+                  guard insertResult.success else {
+                      Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                      return completion(nil, .internalServerError)
+                  }
+                  completion(book, nil)
+              }
+          }
+      }
 
-    func selectHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
-        App.pool.getConnection() { connection, error in
-            guard let connection = connection else {
-                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-                return completion(nil, .internalServerError)
-            }
-            let selectQuery = Select(from: App.bookTable)
-            connection.execute(query: selectQuery) { selectResult in
-                guard let resultSet = selectResult.asResultSet else {
-                    Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
-                    return completion(nil, .internalServerError)
-                }
-                var books = [Book]()
-                resultSet.forEach() { row, error in
-                    guard let row = row else {
-                        if let error = error {
-                            Log.error("Error getting row: \(error)")
-                            return completion(nil, .internalServerError)
-                        } else {
-                            // All rows have been processed
-                            return completion(books, nil)
-                        }
-                    }
-                    guard let idString = row[0] as? String,
-                        let id = Int(idString),
-                        let title = row[1] as? String,
-                        let price = row[2] as? Double,
-                        let genre = row[3] as? String
-                    else {
-                            Log.error("Unable to decode book")
-                            return completion(nil, .internalServerError)
-                    }
-                    books.append(Book(id: id, title: title, price: price, genre: genre))
-                }
-            }
-        }
-    }
-}</code></pre>
-</div>
-<div class="tabcontent rawTab routesGroup">
-    <pre><code class="language-swift">import LoggerAPI
-import Foundation
-import SwiftKuery
-import SwiftKueryPostgreSQL
+      func selectHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
+          App.pool.getConnection() { connection, error in
+              guard let connection = connection else {
+                  Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                  return completion(nil, .internalServerError)
+              }
+              let selectQuery = Select(from: App.bookTable)
+              connection.execute(query: selectQuery) { selectResult in
+                  guard let resultSet = selectResult.asResultSet else {
+                      Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+                      return completion(nil, .internalServerError)
+                  }
+                  var books = [Book]()
+                  resultSet.forEach() { row, error in
+                      guard let row = row else {
+                          if let error = error {
+                              Log.error("Error getting row: \(error)")
+                              return completion(nil, .internalServerError)
+                          } else {
+                              // All rows have been processed
+                              return completion(books, nil)
+                          }
+                      }
+                      guard let idString = row[0] as? String,
+                          let id = Int(idString),
+                          let title = row[1] as? String,
+                          let price = row[2] as? Double,
+                          let genre = row[3] as? String
+                      else {
+                              Log.error("Unable to decode book")
+                              return completion(nil, .internalServerError)
+                      }
+                      books.append(Book(id: id, title: title, price: price, genre: genre))
+                  }
+              }
+          }
+      }
+  }</code></pre>
+  </div>
+  <div class="tabcontent rawTab routesGroup">
+      <pre><code class="language-swift">import LoggerAPI
+  import Foundation
+  import SwiftKuery
+  import SwiftKueryPostgreSQL
 
-func initializeKueryRoutes(app: App) {
+  func initializeKueryRoutes(app: App) {
 
-    app.router.post("/kuery") { request, response, next in
-        guard let book = try? request.read(as: Book.self) else {
-            let _ = response.send(status: .badRequest)
-            return next()
-        }
-        let rows = [[book.id, book.title, book.price, book.genre]]
-        App.pool.getConnection() { connection, error in
-            guard let connection = connection else {
-                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-                let _ = response.send(status: .internalServerError)
-                return next()
-            }
-            let insertQuery = Insert(into: App.bookTable, rows: rows)
-            connection.execute(query: insertQuery) { insertResult in
-                guard insertResult.success else {
-                    Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-                    let _ = response.send(status: .internalServerError)
-                    return next()
-                }
-                response.send(book)
-                next()
-            }
-        }
-    }
+      app.router.post("/kuery") { request, response, next in
+          guard let book = try? request.read(as: Book.self) else {
+              let _ = response.send(status: .badRequest)
+              return next()
+          }
+          let rows = [[book.id, book.title, book.price, book.genre]]
+          App.pool.getConnection() { connection, error in
+              guard let connection = connection else {
+                  Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                  let _ = response.send(status: .internalServerError)
+                  return next()
+              }
+              let insertQuery = Insert(into: App.bookTable, rows: rows)
+              connection.execute(query: insertQuery) { insertResult in
+                  guard insertResult.success else {
+                      Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                      let _ = response.send(status: .internalServerError)
+                      return next()
+                  }
+                  response.send(book)
+                  next()
+              }
+          }
+      }
 
-    app.router.get("/kuery") { request, response, next in
-        App.pool.getConnection() { connection, error in
-            guard let connection = connection else {
-                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-                let _ = response.send(status: .internalServerError)
-                return next()
-            }
-            let selectQuery = Select(from: App.bookTable)
-            connection.execute(query: selectQuery) { selectResult in
-                guard let resultSet = selectResult.asResultSet else {
-                    Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
-                    let _ = response.send(status: .internalServerError)
-                    return next()
-                }
-                var books = [Book]()
-                resultSet.forEach() { row, error in
-                    guard let row = row else {
-                        if let error = error {
-                            Log.error("Error getting row: \(error)")
-                            let _ = response.send(status: .internalServerError)
-                            return next()
-                        } else {
-                            // All rows have been processed
-                            response.send(books)
-                            return next()
-                        }
-                    }
-                    guard let idString = row[0] as? String,
-                        let id = Int(idString),
-                        let title = row[1] as? String,
-                        let price = row[2] as? Double,
-                        let genre = row[3] as? String
-                        else {
-                            Log.error("Unable to decode book")
-                            let _ = response.send(status: .internalServerError)
-                            return next()
-                    }
-                    books.append(Book(id: id, title: title, price: price, genre: genre))
-                }
-            }
-        }
-    }
-}
-extension App {
-    // This will be different if you used a different plugin
-    static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
-    static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
-    static let bookTable = BookTable()
-}</code></pre>
-</div>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 7 (Optional):</span> Test retrieving the books from a database</h2>
-      <p>If you followed "Step 5: Testing saving to database", then you will have a book in your database, which we can retrieve using the code we wrote in "Step 6: Retrieve data from the database".</p>
-      <p>To do this, start the server and navigate to: <a target="_blank" href="http://localhost:8080/kuery">http://localhost:8080/kuery</a></p>
-      <p class="block-text">This will call GET on the `/kuery` route and we will see the book we posted in Step 5 returned in JSON format.
-           The book data persists even if we restart the Kitura server as it is now stored in a database.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2">Next steps</h2>
-      <p>Coming Soon!</p>
-      <!-- <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
-      <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p> -->
-    </main>
-    <script type="text/javascript" src="../../scripts/docs.js"></script>
-    <script type="text/javascript" src="../../scripts/prism.js"></script>
-    <script type="text/javascript">
-      setIntialTab('postgres');
-      setIntialTab('codableTab');
-    </script>
-  </body>
+      app.router.get("/kuery") { request, response, next in
+          App.pool.getConnection() { connection, error in
+              guard let connection = connection else {
+                  Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                  let _ = response.send(status: .internalServerError)
+                  return next()
+              }
+              let selectQuery = Select(from: App.bookTable)
+              connection.execute(query: selectQuery) { selectResult in
+                  guard let resultSet = selectResult.asResultSet else {
+                      Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+                      let _ = response.send(status: .internalServerError)
+                      return next()
+                  }
+                  var books = [Book]()
+                  resultSet.forEach() { row, error in
+                      guard let row = row else {
+                          if let error = error {
+                              Log.error("Error getting row: \(error)")
+                              let _ = response.send(status: .internalServerError)
+                              return next()
+                          } else {
+                              // All rows have been processed
+                              response.send(books)
+                              return next()
+                          }
+                      }
+                      guard let idString = row[0] as? String,
+                          let id = Int(idString),
+                          let title = row[1] as? String,
+                          let price = row[2] as? Double,
+                          let genre = row[3] as? String
+                          else {
+                              Log.error("Unable to decode book")
+                              let _ = response.send(status: .internalServerError)
+                              return next()
+                      }
+                      books.append(Book(id: id, title: title, price: price, genre: genre))
+                  }
+              }
+          }
+      }
+  }
+  extension App {
+      // This will be different if you used a different plugin
+      static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+      static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
+      static let bookTable = BookTable()
+  }</code></pre>
+  </div>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 7 (Optional):</span> Test retrieving the books from a database</h2>
+        <p>If you followed "Step 5: Testing saving to database", then you will have a book in your database, which we can retrieve using the code we wrote in "Step 6: Retrieve data from the database".</p>
+        <p>To do this, start the server and navigate to: <a target="_blank" href="http://localhost:8080/kuery">http://localhost:8080/kuery</a></p>
+        <p class="block-text">This will call GET on the `/kuery` route and we will see the book we posted in Step 5 returned in JSON format.
+             The book data persists even if we restart the Kitura server as it is now stored in a database.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2">Next steps</h2>
+        <p>Coming Soon!</p>
+        <!-- <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+        <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p> -->
+      </main>
+    </div>
+    <div id="top-page" class="top-page">
+      <a href="#">Back to top</a>
+    </div>
+  </section>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+  <script src="../../scripts/prism.js"></script>
+  <script type="text/javascript">
+    setIntialTab('postgres');
+    setIntialTab('codableTab');
+  </script>
+</body>
 </html>

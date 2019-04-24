@@ -1,5 +1,6 @@
 @import 'shared';
 @import 'media';
+@import 'learn';
 
 /* Code Syntax Highlighting colors */
 $string: rgb(250, 69, 75);
@@ -11,6 +12,7 @@ $comment: green;
 /* General docs styling */
 
 .heading-1 {
+  
   @include heading('3.3vw', '2.5rem', '2rem');
 
   @include breakpoint('xl') {
@@ -38,7 +40,11 @@ $comment: green;
   @include heading('1.9vw', '1.6rem', '1.6rem');
 
   @include breakpoint('xl') {
-    @include heading('1.1vw', '1.6rem', '1.6rem');
+    @include heading('1.5vw', '1.6rem', '1.6rem');
+  }
+
+  @include breakpoint('l') {
+    @include heading('1.6vw', '1.6rem', '1.6rem');
   }
 
   @include breakpoint('sm') {
@@ -124,10 +130,13 @@ main {
   p {
     margin: 1rem 0;
     line-height: 1.6rem;
-    font-size: 1.5vw;
 
     @include breakpoint('xl') {
       font-size: 1.2vw;
+    }
+
+    @include breakpoint('l') {
+      font-size: 1.5vw;
     }
 
     @include breakpoint('sm') {
@@ -201,7 +210,7 @@ pre {
     font-size: 1.3vw;
 
     @include breakpoint('xl') {
-      font-size: 1.2vw;
+      font-size: 1vw;
     }
 
     @include breakpoint('sm') {
@@ -278,20 +287,20 @@ td, th {
   margin-bottom: 6rem;
 
   h1 {
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 2rem;
   }
 
   h2 {
-    font-size: 2.5vw;
+    font-size: 2vw;
     margin-bottom: 0;
   }
 
   p {
     line-height: 1.4rem;
-    font-size: 1.5vw;
+    font-size: 1vw;
     padding: 0 1rem;
   }
 }
@@ -302,7 +311,7 @@ td, th {
 
   h3 {
     color: $blue-color;
-    font-size: 1.6vw;
+    font-size: 1.4vw;
     font-weight: bold;
     margin-bottom: 1rem;
 
@@ -314,7 +323,7 @@ td, th {
   p {
     color: $primary-font-color;
     line-height: 1.4rem;
-    font-size: 1.3vw;
+    font-size: 1vw;
   }
 }
 

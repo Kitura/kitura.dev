@@ -1,116 +1,199 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
-    </script>
-    <title>Learn - Getting Started</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+		gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Helium Logger</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/dist/docs.css">
-    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
-  <body>
-    <main>
-      <h1 class="heading-1">HeliumLogger</h1>
-      <p>Helium Logger is a lightweight Swift logging framework which supports logging to standard output.</p>
-      <div class="info">
-        <p>If you created your server using `kitura init` or the macOS app you can skip to step 3.</p>
-      </div>
-      <h2 class="heading-2">Prerequisites</h2>
-      <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-        <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-        <li><a onclick="localStorage.setItem('package', 'HeliumLogger'); setActiveSidebarElementForParent('update-package')" href="../getting-started/update-package.html#">Add Dependency:</a> HeliumLogger needs adding to the `Package.swift` file.</li>
+<body>
+  <section class="docs-grid-container">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item collapsible">Getting Started</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Logging</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item active"><a href="../logging/helium-logger.html">Helium Logger</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Routing</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Databases</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Sessions</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Kitura Session</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Authentication</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Type-Safe Credentials</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Web Application</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../templating/templating.html">What is templating?</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Deploying</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/cloud-foundry.html">Cloud Foundry</a></li>
+        </ul>
       </ul>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
-      <p>To start we need to import LoggerAPI in our code:</p>
-      <pre><code class="language-swift">import LoggerAPI</code></pre>
-      <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
-      <div class="info">
-        <p>Kitura has LoggerAPI included as a dependency by default, so we do not need to add this to our `Package.swift`</p>
+    </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="docs-item-2 search-container">
+      <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
+      <div id="beta" class="temp-beta">
+        <h4>Currently in Beta - <a href="../../old-learn.html">View old docs</a></h4>
       </div>
-      <p>Now we need to import HeliumLogger:</p>
-      <pre><code class="language-swift">import HeliumLogger</code></pre>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
-      <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
-      <p>Inside `Sources` > `MyKituraApp` > `main.swift` add:</p>
-      <pre><code class="language-swift">HeliumLogger.use()</code></pre>
-      <p>We are going to use our new logger to for errors thrown by our server.</p>
-      <p>Inside the catch block, log the thrown error:</p>
-      <pre><code class="language-swift">
-  Log.error(error.localizedDescription)
-  </code></pre>
-      <p>Your `main.swift` should look like this:</p>
-      <pre><code class="language-swift">import Foundation
-  import Kitura
-  import LoggerAPI
-  import HeliumLogger
-  import Application
+    </div>
+    <nav class="docs-item-3 docs-nav">
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
+    </nav>
+    <div id="doc-container" class="docs-item-4 docs-window">
+      <main>
+        <h1 class="heading-1">HeliumLogger</h1>
+        <p>Helium Logger is a lightweight Swift logging framework which supports logging to standard output.</p>
+        <div class="info">
+          <p>If you created your server using `kitura init` or the macOS app you can skip to step 3.</p>
+        </div>
+        <h2 class="heading-2">Prerequisites</h2>
+        <ul class="plain-list">
+            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
+          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
+          <li><a onclick="localStorage.setItem('package', 'HeliumLogger'); setActiveSidebarElementForParent('update-package')" href="../getting-started/update-package.html#">Add Dependency:</a> HeliumLogger needs adding to the `Package.swift` file.</li>
+        </ul>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
+        <p>To start we need to import LoggerAPI in our code:</p>
+        <pre><code class="language-swift">import LoggerAPI</code></pre>
+        <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
+        <div class="info">
+          <p>Kitura has LoggerAPI included as a dependency by default, so we do not need to add this to our `Package.swift`</p>
+        </div>
+        <p>Now we need to import HeliumLogger:</p>
+        <pre><code class="language-swift">import HeliumLogger</code></pre>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
+        <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
+        <p>Inside `Sources` > `MyKituraApp` > `main.swift` add:</p>
+        <pre><code class="language-swift">HeliumLogger.use()</code></pre>
+        <p>We are going to use our new logger to for errors thrown by our server.</p>
+        <p>Inside the catch block, log the thrown error:</p>
+        <pre><code class="language-swift">
+    Log.error(error.localizedDescription)
+    </code></pre>
+        <p>Your `main.swift` should look like this:</p>
+        <pre><code class="language-swift">import Foundation
+    import Kitura
+    import LoggerAPI
+    import HeliumLogger
+    import Application
 
-  HeliumLogger.use()
-  do {
-      let app = try App()
-      try app.run()
-  } catch let error {
-      Log.error(error.localizedDescription)
-  }</code></pre>
-      <p>Now if you start your server you should see some output:</p>
-      <pre><code class="language-swift">
-  [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
-  [xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
-  [xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
-  [xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 3:</span> Set logging level </h2>
-      <p>HeliumLogger can be customized to change the level of logging.</p>
-      <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
+    HeliumLogger.use()
+    do {
+        let app = try App()
+        try app.run()
+    } catch let error {
+        Log.error(error.localizedDescription)
+    }</code></pre>
+        <p>Now if you start your server you should see some output:</p>
+        <pre><code class="language-swift">
+    [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
+    [xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
+    [xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
+    [xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Set logging level </h2>
+        <p>HeliumLogger can be customized to change the level of logging.</p>
+        <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
 
-      <!-- <p>TODO: Add testing instructions?</p> -->
-      <p>If you'd like to customize the level of logging you can simply pass the level to the `use()` method:</p>
-      <pre><code class="language-swift">HeliumLogger.use(.error)</code></pre>
-      <p>There are several logging levels:</p>
-      <ol>
-        <li>entry</li>
-        <li>exit</li>
-        <li>debug</li>
-        <li>verbose (default)</li>
-        <li>info</li>
-        <li>warning</li>
-        <li>error</li>
-      </ol>
-      <p>Verbose is set by default. Setting a particular logging level also includes all levels above it.</p>
-      <p>For example, if you set a logging level of `verbose`:</p>
-      <pre><code class="language-swift">HeliumLogger.use(.verbose)</code></pre>
-      <p>You will get logging for; `verbose`, `info`, `warning` and `error`.</p>
-      <p>Similarly if you set a logging level of `warning`:</p>
-      <pre><code class="language-swift">HeliumLogger.use(.warning)</code></pre>
-      <p>You will get logging for `warning` and `error`.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add logging to your application</h2>
-      <p>Once you have your Logger configured, you can use it within your application.</p>
-      <p>Open your `Sources` > `Application` > `Application.swift` file and ensure LoggerAPI is imported.</p>
-      <pre><code class="language-swift">import LoggerAPI</code></pre>
-      <p>Add a log message to the App's `init()` function:</p>
-      <pre><code class="language-swift">Log.info("Hello World")</code></pre>
-      <p>Restart your server and look through the logs. You should see your message:</p>
-      <pre><code>[2019-03-13T16:23:08.078Z] [INFO] [Application.swift:22 init()] Hello World</code></pre>
-      <p>Your log message is printed along with the time it occured, the log level and the location in your code.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2">Next steps</h2>
-      <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server.</p>
-    </main>
-    <script type="text/javascript" src="../../scripts/docs.js"></script>
-    <script type="text/javascript" src="../../scripts/prism.js"></script>
-  </body>
+        <!-- <p>TODO: Add testing instructions?</p> -->
+        <p>If you'd like to customize the level of logging you can simply pass the level to the `use()` method:</p>
+        <pre><code class="language-swift">HeliumLogger.use(.error)</code></pre>
+        <p>There are several logging levels:</p>
+        <ol>
+          <li>entry</li>
+          <li>exit</li>
+          <li>debug</li>
+          <li>verbose (default)</li>
+          <li>info</li>
+          <li>warning</li>
+          <li>error</li>
+        </ol>
+        <p>Verbose is set by default. Setting a particular logging level also includes all levels above it.</p>
+        <p>For example, if you set a logging level of `verbose`:</p>
+        <pre><code class="language-swift">HeliumLogger.use(.verbose)</code></pre>
+        <p>You will get logging for; `verbose`, `info`, `warning` and `error`.</p>
+        <p>Similarly if you set a logging level of `warning`:</p>
+        <pre><code class="language-swift">HeliumLogger.use(.warning)</code></pre>
+        <p>You will get logging for `warning` and `error`.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add logging to your application</h2>
+        <p>Once you have your Logger configured, you can use it within your application.</p>
+        <p>Open your `Sources` > `Application` > `Application.swift` file and ensure LoggerAPI is imported.</p>
+        <pre><code class="language-swift">import LoggerAPI</code></pre>
+        <p>Add a log message to the App's `init()` function:</p>
+        <pre><code class="language-swift">Log.info("Hello World")</code></pre>
+        <p>Restart your server and look through the logs. You should see your message:</p>
+        <pre><code>[2019-03-13T16:23:08.078Z] [INFO] [Application.swift:22 init()] Hello World</code></pre>
+        <p>Your log message is printed along with the time it occured, the log level and the location in your code.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2">Next steps</h2>
+        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Add routing:</a></span> Add REST APIs, such as HTTP GET, to your server.</p>
+      </main>
+    </div>
+    <div id="top-page" class="top-page">
+      <a href="#">Back to top</a>
+    </div>
+  </section>
+  <script src="../../scripts/prism.js"></script>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+</body>
 </html>

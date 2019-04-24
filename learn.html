@@ -18,93 +18,66 @@
     <link rel="icon" type="image/png" href="assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/dist/learn.css">
+    <link rel="stylesheet" href="css/dist/docs.css">
   </head>
-<body onresize="resizeIframe()">
+<body>
   <section class="docs-grid-container">
     <aside id="sidebar" class="docs-item-1 docs-sidebar">
-      <h1 class="docs-title" onclick="loadPage('./docs/landing.html', '', 'https://ibm-swift.github.io/Kitura/')">KITURA <span class="blue-text">DOCS</span></h1>
-      <div class="underline"></div>
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li id="installation-mac" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/installation-mac.html#', 'installation-mac', 'https://ibm-swift.github.io/Kitura/')">Installation for macOS</li>
-          <li id="installation-linux" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/installation-linux.html#', 'installation-linux', 'https://ibm-swift.github.io/Kitura/')">Installation for Linux</li>
-          <li id="create-server" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/create-server.html#', 'create-server', 'https://ibm-swift.github.io/Kitura/')">Create a server</li>
-          <li id="style-guide" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/style-guide.html#', 'style-guide', 'https://ibm-swift.github.io/Kitura/')">Style Guide</li>
-          <li id="update-package" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/update-package.html#', 'update-package', 'https://ibm-swift.github.io/Kitura/'); localStorage.setItem('package', '')">Adding Packages</li>
-          <!-- <li id="kitura-cli" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/kitura-cli.html', 'kitura-cli')">Kitura CLI</li>
-          <li id="macos-app" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/macos-app.html', 'macos-app')">macOS App</li>
-          <li id="spm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/spm.html', 'spm')">SPM</li> -->
-          <!-- <li id="hello-world-spm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/hello-world-spm.html', 'hello-world-spm', 'https://ibm-swift.github.io/Kitura/')">Hello World</li> -->
-          <!-- <li id="todo-backend" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/todo-backend.html', 'todo-backend')">To Do List Tutorial</li>
-          <li id="foodtracker" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/foodtracker.html', 'foodtracker')">Food Tracker Tutorial</li> -->
-          <!-- <li id="configuration" class="nested-sidebar-item selectable" onclick="loadPage('./docs/getting-started/configuration.html', 'configuration')">Configuration</li> -->
+          <li class="nested-sidebar-item"><a href="docs/getting-started/installation-mac.html">Installation for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="docs/getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="docs/getting-started/create-server.html">Create a server</a></li>
+          <li class="nested-sidebar-item"><a href="docs/getting-started/style-guide.html">Style Guide</a></li>
+          <li class="nested-sidebar-item"><a href="docs/getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
         <ul class="nested-sidebar-list content">
-          <li id="logging" class="nested-sidebar-item selectable" onclick="loadPage('./docs/logging/logging.html#', 'logging', 'https://ibm-swift.github.io/Kitura/')">What is Logging?</li>
-          <!-- <li id="logger-api" class="nested-sidebar-item selectable" api="https://github.com/IBM-Swift/LoggerAPI/" onclick="loadPage('./docs/logging/logger-api.html', 'logger-api')">Logger API</li> -->
-          <li id="helium-logger" class="nested-sidebar-item selectable" onclick="loadPage('./docs/logging/helium-logger.html#', 'helium-logger', 'https://github.com/IBM-Swift/HeliumLogger/')">Helium Logger</li>
+          <li class="nested-sidebar-item"><a href="docs/logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item"><a href="docs/logging/helium-logger.html">Helium Logger</a></li>
         </ul>
         <li class="sidebar-item collapsible">Routing</li>
         <ul class="nested-sidebar-list content">
-          <li id="routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/routing.html#', 'routing', 'https://ibm-swift.github.io/Kitura/')">What is routing?</li>
-          <li id="codable-routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/codable-routing.html#', 'codable-routing', 'https://ibm-swift.github.io/Kitura/')">Codable routing</li>
-          <li id="raw-routing" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/raw-routing.html#', 'raw-routing', 'https://ibm-swift.github.io/Kitura/')">Raw routing</li>
-          <li id="openapi" class="nested-sidebar-item selectable" onclick="loadPage('./docs/routing/open-api.html#', 'openapi', 'https://ibm-swift.github.io/Kitura/')">OpenAPI</li>
+          <li class="nested-sidebar-item"><a href="docs/routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="docs/routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="docs/routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="docs/routing/open-api.html">OpenAPI</a></li>
         </ul>
-        <!-- <li class="sidebar-item collapsible">Middlewares</li>
-        <ul class="nested-sidebar-list content">
-          <li id="middleware" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/middleware.html', 'middleware')">What is a Middleware?</li>
-          <li id="kitura-cache" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/kitura-cache.html', 'kitura-cache')">Kitura Cache</li>
-          <li id="kitura-compression" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/kitura-compression.html', 'kitura-compression')">Kitura Compression</li>
-          <li id="kitura-cors" class="nested-sidebar-item selectable" onclick="loadPage('./docs/middleware/kitura-cors.html', 'kitura-cors')">Kitura CORS</li>
-        </ul> -->
         <li class="sidebar-item collapsible">Databases</li>
         <ul class="nested-sidebar-list content">
-          <li id="databases" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/databases.html#', 'databases')">What are Databases?</li>
-          <li id="swift-kuery-orm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/swift-kuery-orm.html#', 'swift-kuery-orm', 'https://ibm-swift.github.io/Swift-Kuery-ORM/index.html')">SQL: ORM</li>
-          <li id="swift-kuery" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/swift-kuery.html#', 'swift-kuery', 'https://ibm-swift.github.io/Swift-Kuery-ORM/index.html')">SQL: Kuery</li>
-          <!-- <li id="kuery-postgressql" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/kuery-postgressql.html', 'kuery-postgressql', 'https://ibm-swift.github.io/Swift-Kuery-PostgreSQL/')">PostgreSQL</li> -->
-          <!-- <li id="plugins" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/plugins.html', 'plugins')">Plugins</li> -->
-          <!-- <li id="orm" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/orm.html', 'orm', 'https://ibm-swift.github.io/Swift-Kuery-ORM/')">ORM</li> -->
-          <li id="couchdb" class="nested-sidebar-item selectable" onclick="loadPage('./docs/databases/couchdb.html#', 'couchdb', 'https://ibm-swift.github.io/Kitura-CouchDB/index.html')">NoSQL: CouchDB</li>
-          <!-- <li id="redis" class="nested-sidebar-item selectable" api="http://ibm-swift.github.io/Kitura-redis/" onclick="loadPage('./docs/databases/redis.html', 'redis')">Redis</li> -->
+          <li class="nested-sidebar-item"><a href="docs/databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="docs/databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item"><a href="docs/databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="docs/databases/couchdb.html">NoSQL: CouchDB</a></li>
         </ul>
         <li class="sidebar-item collapsible">Sessions</li>
         <ul class="nested-sidebar-list content">
-          <li id="sessions" class="nested-sidebar-item selectable" onclick="loadPage('./docs/sessions/sessions.html#', 'sessions', 'https://ibm-swift.github.io/Kitura-Session/')">What are Sessions?</li>
-          <li id="kitura-session" class="nested-sidebar-item selectable" onclick="loadPage('./docs/sessions/kitura-session.html#', 'kitura-session', 'https://ibm-swift.github.io/Kitura-Session/')">Kitura Session</li>
-          <!-- <li id="raw-sessions" class="nested-sidebar-item selectable" onclick="loadPage('./docs/sessions/raw-sessions.html', 'raw-sessions', 'https://ibm-swift.github.io/Kitura-Session/')">Sessions: Raw Routing</li> -->
+          <li class="nested-sidebar-item"><a href="docs/sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="docs/sessions/kitura-session.html">Kitura Session</a></li>
         </ul>
         <li class="sidebar-item collapsible">Authentication</li>
         <ul class="nested-sidebar-list content">
-          <li id="authentication" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/authentication.html#', 'authentication', 'https://ibm-swift.github.io/Kitura-Credentials/')">What is Authentication?</li>
-          <li id="typesafe-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/typesafe-auth.html#', 'typesafe-auth', 'https://ibm-swift.github.io/Kitura-Credentials/')">Type-Safe Credentials</li>
-          <li id="jwt-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/jwt-auth.html#', 'jwt-auth', 'https://ibm-swift.github.io/Swift-JWT/')">JSON Web Tokens</li>
-          <!-- <li id="raw-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/raw-auth.html', 'raw-auth', 'https://ibm-swift.github.io/Kitura-Credentials/')">Authentication: Raw Routing</li> -->
-          <!-- <li id="basic-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/basic-auth.html', 'basic-auth')">Basic Auth</li>
-          <li id="fb-google-auth" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/fb-google-auth.html', 'fb-google-auth')">Facebook/Google Auth</li>
-          <li id="fb-google-oauth2" class="nested-sidebar-item selectable" onclick="loadPage('./docs/authentication/fb-google-oauth2.html', 'fb-google-oauth2')">Facebook/Google Oauth2</li> -->
+          <li class="nested-sidebar-item"><a href="docs/authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="docs/authentication/typesafe-auth.html">Type-Safe Credentials</a></li>
+          <li class="nested-sidebar-item"><a href="docs/authentication/jwt-auth.html">JSON Web Tokens</a></li>
         </ul>
         <li class="sidebar-item collapsible">Web Application</li>
         <ul class="nested-sidebar-list content">
-          <li id="templating" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/templating.html#', 'templating')">What is templating?</li>
-          <li id="stencil" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/stencil.html#', 'stencil', 'https://ibm-swift.github.io/Kitura-StencilTemplateEngine/')">Stencil</li>
-          <!-- <li id="mustache" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/mustache.html', 'mustache', 'https://ibm-swift.github.io/Kitura-MustacheTemplateEngine/')">Mustache</li> -->
-          <li id="markdown" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/markdown.html#', 'markdown', 'https://ibm-swift.github.io/Kitura-Markdown/')">Markdown</li>
-          <!-- <li id="static-file-server" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/static-file-server.html', 'static-file-server')">Static File Server</li>
-          <li id="html-forms" class="nested-sidebar-item selectable" onclick="loadPage('./docs/templating/html-forms.html', 'html-forms')">HTML Forms</li> -->
+          <li class="nested-sidebar-item"><a href="docs/templating/templating.html">What is templating?</a></li>
+          <li class="nested-sidebar-item"><a href="docs/templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item"><a href="docs/templating/markdown.html">Markdown</a></li>
         </ul>
         <li class="sidebar-item collapsible">Deploying</li>
         <ul class="nested-sidebar-list content">
-          <li id="monitoring" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/monitoring.html#', 'monitoring', 'https://ibm-swift.github.io/Kitura/')">Monitoring</li>
-          <li id="docker" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/docker.html#', 'docker', 'https://ibm-swift.github.io/Kitura/')">Docker</li>
-          <li id="kubernetes" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/kubernetes.html#', 'kubernetes', 'https://ibm-swift.github.io/Kitura/')">Kubernetes</li>
-          <li id="cloud-foundry" class="nested-sidebar-item selectable" onclick="loadPage('./docs/deploying/cloud-foundry.html#', 'cloud-foundry', 'https://ibm-swift.github.io/Kitura/')">Cloud Foundry</li>
+          <li class="nested-sidebar-item"><a href="docs/deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="docs/deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="docs/deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="docs/deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item"><a href="docs/deploying/cloud-foundry.html">Cloud Foundry</a></li>
         </ul>
-        <!-- <li id="ios-client" class="sidebar-item selectable" onclick="loadPage('./docs/ios-client.html', 'ios-client')">iOS client</li> -->
       </ul>
     </aside>
     <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
@@ -115,7 +88,7 @@
     <div class="docs-item-2 search-container">
       <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
       <div id="beta" class="temp-beta">
-        <h4>Currently in Beta - <a href="./old-learn.html">View old docs</a></h4>
+        <h4>Currently in Beta - <a href="../../old-learn.html">View old docs</a></h4>
       </div>
     </div>
     <nav class="docs-item-3 docs-nav">
@@ -124,35 +97,44 @@
       <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
-      <iframe id="doc-window" width="100%" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
+      <section class="landing-grid-container">
+        <header class="landing-item-1 landing-heading">
+          <h2 class="heading-2">WELCOME TO</h2>
+          <h1 class="heading-1">KITURA <span class="blue-text">DOCS</span></h1>
+          <p class="block-text">Thoughout these guides we will build a complete Kitura server for a simple bookstore. This bookstore application will have routes, database integration, sessions and even authentication. Finally we will deploy our bookstore application onto the cloud using tools such as Docker and Kubernetes</p>
+          <div class="circle-section">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+        </header>
+        <a href="https://github.com/IBM/ToDoBackend" target="_blank" class="landing-item-2 tutorial">
+          <h3 class="heading-3">ToDo List: Building a Swift Backend</h3>
+          <p class="block-text">In this tutorial you will learn about server-side Swift, the Kitura framework, REST APIs, OpenAPI, Docker and Kubernetes. At the end you will have a fully functioning application which passes a provided verification testsuite, running in Kubernetes.</p>
+        </a>
+        <a href="https://www.raywenderlich.com/1079484-kitura-tutorial-getting-started-with-server-side-swift" target="_blank" class="landing-item-3 tutorial margin-top">
+          <h3 class="heading-3">Getting started with server-side Swift</h3>
+          <p class="block-text">Follow a quick tutorial setting up a simple Kitura server. Throughout this tutorial you will learn what RESTful API routing is, how to create a Kitura server using this API and finally how to connect this server to a CouchDB database.</p>
+        </a>
+        <a href="https://www.raywenderlich.com/1032630-kitura-stencil-tutorial-how-to-make-websites-with-swift" target="_blank" class="landing-item-4 tutorial">
+          <h3 class="heading-3">Kitura Stencil: Build a website with Swift</h3>
+          <p class="block-text">In this tutorial you will learn about what templating is, then use the Stencil template engine along side Swift to create a website for the Emoji Journal project.</p>
+        </a>
+        <div class="landing-item-5 landing-img">
+          <img src="../assets/books.png" alt="">
+        </div>
+        <div class="landing-item-6 landing-img">
+          <img src="../assets/lightbulb.png" alt="">
+        </div>
+        <div class="landing-item-7 landing-img">
+          <img src="../assets/steps123.png" alt="">
+        </div>
+      </section>
     </div>
     <div id="top-page" class="top-page">
       <a href="#">Back to top</a>
     </div>
   </section>
   <script type="text/javascript" src="scripts/learn.js"></script>
-  <script type="text/javascript">
-    window.addEventListener('scroll', function() {
-      var target = document.getElementById('top-page');
-      //TODO: Make this perform better
-      if (window.pageYOffset > 500) {
-        target.style.display = "block"
-      } else if (window.pageYOffset < 500) {
-        target.style.display = "none";
-      }
-    }, false);
-
-    function showSidebar() {
-      var docSidebar = document.getElementById('sidebar');
-      var docWindow = document.getElementById('doc-container');
-      if (docSidebar.style.display == 'block') {
-        docSidebar.style.display = 'none';
-        docWindow.style.display = 'block';
-      } else {
-        docWindow.style.display = 'none';
-        docSidebar.style.display = 'block';
-      }
-    }
-  </script>
 </body>
 </html>

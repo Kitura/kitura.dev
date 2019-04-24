@@ -1,87 +1,170 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
-    </script>
-    <title>Learn - Getting Started</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+		gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Kitura Markdown</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/dist/docs.css">
-    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
   </head>
-  <body>
-    <main>
-      <h1 class="heading-1">Kitura Markdown</h1>
-      <h2 class="heading-2">Prerequisites</h2>
-      <ul class="plain-list">
-        <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-        <li><a onclick="localStorage.setItem('package', 'Kitura-Markdown'); setActiveSidebarElementForParent('markdown')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraMarkdown needs adding to the `Package.swift` file.</li>
+<body>
+  <section class="docs-grid-container">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item collapsible">Getting Started</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Logging</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Routing</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Databases</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Sessions</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Kitura Session</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Authentication</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Type-Safe Credentials</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Web Application</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../templating/templating.html">What is templating?</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item active"><a href="../templating/markdown.html">Markdown</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Deploying</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/cloud-foundry.html">Cloud Foundry</a></li>
+        </ul>
       </ul>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add KituraMarkdown to the Kitura App</h2>
-      <p>First we need to import the KituraMarkdown package:</p>
-      <pre><code class="language-swift">import KituraMarkdown</code></pre>
-      <p>Now we can add the KituraMarkdown template engine to our router instance:</p>
-      <p>Below the line `let router = Router()` we will add:</p>
-      <pre><code class="language-swift">router.add(templateEngine: MarkdownTemplateEngine())</code></pre>
-      <p>This tells the server that on this instance of the router we'd like to use KituraMarkdown as a template engine.</p>
-      <div class="info">
-        <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
-        <p>Kitura then provides APIs to select a default template engine to use.</p>
+    </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="docs-item-2 search-container">
+      <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
+      <div id="beta" class="temp-beta">
+        <h4>Currently in Beta - <a href="../../old-learn.html">View old docs</a></h4>
       </div>
-      <p>We've just added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
-      <p>Just below our other registered routes we can create a new route for KituraMarkdown:</p>
-      <pre><code class="language-swift">router.get("/book") { request, response, next in
-      try response.render("book.md", with: [:])
-  }</code></pre>
-      <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
-      <p>However as we are rendering a Markdown file there we don't need to provide any data as it all will be in the Markdown file.</p>
-      <p>So in our case KituraMarkdown will take the `book.md` file and render the Markdown in it to be viewed in a browser.</p>
-      <p>This obviously will not work as we haven't created our `book.md` file.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create the template file</h2>
-      <p>By default Kitura looks for template files in a `./Views` directory found at the root of the project.</p>
-      <div class="info">
-        <p>Typically the root of your project is where the `.xcodeproj` directory is.</p>
-      </div>
-      <p>Once we are in the root of our project we can create the directory:</p>
-      <pre><code>mkdir Views</code></pre>
-      <div class="info">
-        <p>If you would prefer you can create your directory using a UI based approach, such as Finder on Mac.</p>
-      </div>
-      <p>Then we need to create our template file within the Views directory:</p>
-      <pre><code>cd Views && touch book.md</code></pre>
-      <p>Now we have everything we need to start creating our templates.</p>
-      <div class="info">
-        <p>If you are using Xcode and used the command line to create your Views directory you will need to regenerate your Xcode project:</p>
-        <pre><code>swift package generate-xcodeproj</code></pre>
-        <p>This is to enable Xcode to detect the new directory.</p>
-      </div>
-      <div class="underline"></div>
-      <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Populate the Markdown template file</h2>
-      <p>First we need some Markdown to render.</p>
-      <p>So in the book.md file we will add:</p>
-      <pre><code>Some example Markdown</code></pre>
-      <p>Now to test our templating we first need to start the Kitura server.</p>
-      <p>Then in a brower we can open:</p>
-      <p><a target="_blank" href="http://localhost:8080/book">http://localhost:8080/book</a></p>
-      <p>In the browser we should see:</p>
-      <pre><code>Some example output</code></pre>
-      <p>That's it! We've successfully rendered some Markdown into a browser using KituraMarkdown.</p>
-      <div class="underline"></div>
-      <h2 class="heading-2">Next steps</h2>
-      <p>Coming Soon!</p>
-    </main>
-    <script type="text/javascript" src="../../scripts/docs.js"></script>
-    <script type="text/javascript" src="../../scripts/prism.js"></script>
-  </body>
+    </div>
+    <nav class="docs-item-3 docs-nav">
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
+    </nav>
+    <div id="doc-container" class="docs-item-4 docs-window">
+      <main>
+        <h1 class="heading-1">Kitura Markdown</h1>
+        <h2 class="heading-2">Prerequisites</h2>
+        <ul class="plain-list">
+          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
+          <li><a onclick="localStorage.setItem('package', 'Kitura-Markdown'); setActiveSidebarElementForParent('markdown')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraMarkdown needs adding to the `Package.swift` file.</li>
+        </ul>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add KituraMarkdown to the Kitura App</h2>
+        <p>First we need to import the KituraMarkdown package:</p>
+        <pre><code class="language-swift">import KituraMarkdown</code></pre>
+        <p>Now we can add the KituraMarkdown template engine to our router instance:</p>
+        <p>Below the line `let router = Router()` we will add:</p>
+        <pre><code class="language-swift">router.add(templateEngine: MarkdownTemplateEngine())</code></pre>
+        <p>This tells the server that on this instance of the router we'd like to use KituraMarkdown as a template engine.</p>
+        <div class="info">
+          <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
+          <p>Kitura then provides APIs to select a default template engine to use.</p>
+        </div>
+        <p>We've just added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
+        <p>Just below our other registered routes we can create a new route for KituraMarkdown:</p>
+        <pre><code class="language-swift">router.get("/book") { request, response, next in
+        try response.render("book.md", with: [:])
+    }</code></pre>
+        <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
+        <p>However as we are rendering a Markdown file there we don't need to provide any data as it all will be in the Markdown file.</p>
+        <p>So in our case KituraMarkdown will take the `book.md` file and render the Markdown in it to be viewed in a browser.</p>
+        <p>This obviously will not work as we haven't created our `book.md` file.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create the template file</h2>
+        <p>By default Kitura looks for template files in a `./Views` directory found at the root of the project.</p>
+        <div class="info">
+          <p>Typically the root of your project is where the `.xcodeproj` directory is.</p>
+        </div>
+        <p>Once we are in the root of our project we can create the directory:</p>
+        <pre><code>mkdir Views</code></pre>
+        <div class="info">
+          <p>If you would prefer you can create your directory using a UI based approach, such as Finder on Mac.</p>
+        </div>
+        <p>Then we need to create our template file within the Views directory:</p>
+        <pre><code>cd Views && touch book.md</code></pre>
+        <p>Now we have everything we need to start creating our templates.</p>
+        <div class="info">
+          <p>If you are using Xcode and used the command line to create your Views directory you will need to regenerate your Xcode project:</p>
+          <pre><code>swift package generate-xcodeproj</code></pre>
+          <p>This is to enable Xcode to detect the new directory.</p>
+        </div>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Populate the Markdown template file</h2>
+        <p>First we need some Markdown to render.</p>
+        <p>So in the book.md file we will add:</p>
+        <pre><code>Some example Markdown</code></pre>
+        <p>Now to test our templating we first need to start the Kitura server.</p>
+        <p>Then in a brower we can open:</p>
+        <p><a target="_blank" href="http://localhost:8080/book">http://localhost:8080/book</a></p>
+        <p>In the browser we should see:</p>
+        <pre><code>Some example output</code></pre>
+        <p>That's it! We've successfully rendered some Markdown into a browser using KituraMarkdown.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2">Next steps</h2>
+        <p>Coming Soon!</p>
+      </main>
+    </div>
+    <div id="top-page" class="top-page">
+      <a href="#">Back to top</a>
+    </div>
+  </section>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+  <script src="../../scripts/prism.js"></script>
+</body>
 </html>

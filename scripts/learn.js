@@ -1,20 +1,3 @@
-var selectables = document.getElementsByClassName('selectable');
-var api;
-var elementID;
-
-addCollapsibleElements();
-if (localStorage.getItem("src") == undefined) {
-  loadPage('./docs/landing.html', '', 'https://ibm-swift.github.io/Kitura/');
-} else {
-  loadPage(localStorage.getItem("src"), localStorage.getItem("id"), localStorage.getItem("api"));
-}
-
-function resizeIframe() {
-  document.getElementById('doc-window').style.height = document.getElementById('doc-window').contentWindow.document.body.offsetHeight + 'px';
-}
-
-
-// Adds a nested element to any element that has the `collapsible` class.
 function addCollapsibleElements() {
   var coll = document.getElementsByClassName('collapsible');
   var items = document.getElementsByClassName('nested-sidebar-list');
@@ -43,26 +26,109 @@ function addCollapsibleElements() {
   }
 }
 
-// Assigns the `active` class to the currently selected sidebar element.
-function removeActiveSidebarElement() {
-  for (var j = 0; j < selectables.length; j++) {
-    if (selectables[j].classList.contains('active')) {
-      selectables[j].classList.remove('active');
-    }
+addCollapsibleElements();
+
+
+window.addEventListener('scroll', function() {
+  var target = document.getElementById('top-page');
+  //TODO: Make this perform better
+  if (window.pageYOffset > 500) {
+    target.style.display = "block"
+  } else if (window.pageYOffset < 500) {
+    target.style.display = "none";
+  }
+}, false);
+
+function showSidebar() {
+  var docSidebar = document.getElementById('sidebar');
+  var docWindow = document.getElementById('doc-container');
+  if (docSidebar.style.display == 'block') {
+    docSidebar.style.display = 'none';
+    docWindow.style.display = 'block';
+  } else {
+    docWindow.style.display = 'none';
+    docSidebar.style.display = 'block';
   }
 }
 
-function loadPage(src, id, api) {
-  localStorage.setItem("src", src);
-  localStorage.setItem("id", id);
-  localStorage.setItem("api", api);
-  removeActiveSidebarElement();
-  if (id !== "") {
-    document.getElementById(id).classList.add('active');
+addCopyFunction();
+
+function addCopyFunction() {
+  var codeSamples = document.getElementsByTagName("pre");
+  for (var x = 0; x < codeSamples.length; x++) {
+    codeSamples[x].addEventListener("dblclick", function() {
+      const el = document.createElement('textarea');
+      document.body.appendChild(el);
+      el.value = this.textContent;
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
+      const label = document.createElement('label');
+      this.appendChild(label);
+      label.classList.add("copy-label");
+      label.innerText = "Copied to clipboard.";
+      label.id = "popup-label";
+      setTimeout( function() {
+        const oldLabel = document.getElementById("popup-label");
+        oldLabel.parentNode.removeChild(label);
+      }, 2000);
+      console.log(label);
+    });
+
+    codeSamples[x].addEventListener('animationend', function() {
+      console.log("Here");
+      var popup = document.getElementById('popup');
+    });
   }
-  if (src !== "") {
-    document.getElementById('doc-window').setAttribute('src', src);
-  }
-  var button = document.getElementById('api-button');
-  button.setAttribute('onclick', "window.open('" + localStorage.getItem('api') + "')");
 }
+
+function removePopup() {
+  var popup = document.getElementById('popup');
+  popup.style.display = "none";
+}
+
+function openPlugin(pluginName, groupName) {
+  var i, tabcontent, tablinks;
+
+  tabcontent = document.getElementsByClassName('tabcontent');
+  for (i = 0; i < tabcontent.length; i++) {
+    if (tabcontent[i].className.includes(groupName)) {
+      tabcontent[i].style.display = "none";
+    }
+    if (tabcontent[i].className.includes(pluginName)) {
+        tabcontent[i].style.display = "block";
+    }
+  }
+
+  tablinks = document.getElementsByClassName('tablinks');
+  for (i = 0; i < tablinks.length; i++) {
+    if (tablinks[i].className.includes(groupName)) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    if (tablinks[i].className.includes(pluginName)) {
+        tablinks[i].className += " active";
+    }
+  }
+
+  parent.document.getElementById('doc-window').style.height = document.body.offsetHeight + 'px';
+}
+
+function setIntialTab(pluginName) {
+  var i, tabcontent, tablinks;
+
+  tabcontent = document.getElementsByClassName('tabcontent');
+  for (i = 0; i < tabcontent.length; i++) {
+    if (tabcontent[i].className.includes(pluginName)) {
+      tabcontent[i].style.display = "block";
+    }
+  }
+
+  tablinks = document.getElementsByClassName('tablinks');
+    for (i = 0; i < tablinks.length; i++) {
+      if (tablinks[i].className.includes(pluginName)) {
+        tablinks[i].className += " active";
+      }
+    }
+}
+
