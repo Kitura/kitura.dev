@@ -24,7 +24,7 @@
     <p class="block-text">OAuth2 is an authorization framework that enables you to authenticate a user via a trusted third party.
         A brief summary of the protocol flow is as follows:<p>
     <ol>
-        <li>The user wants to log in to server. (E.g. Your Kitura Application)</li>
+        <li>The user wants to log in to a server. (E.g. Your Kitura Application)</li>
         <li>The user is redirected to the OAuth2 provider. (E.g. Facebook/Google)</li>
         <li>The user authenticates with OAuth2 provider and is given a single use access code.</li>
         <li>The user is sent back to the server and provides them with the access code.</li>
@@ -33,8 +33,12 @@
     </ol>
     <p>If you would like a more in-depth explination of OAuth2, you can read <a target="_blank" href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">this guide</a> by DigitalOcean.</p>
     <p class="block-text">Kitura supports OAuth2 authentication using plugins for <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Credentials">Kitura-Credentials</a>.
-         In this guide we are going to use either <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsGoogle">Kitura-CredentialsGoogle</a> or <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook">Kitura-CredentialsFacebook</a>.
-         Because we are using a third party, the user does not need to sign up and we don't need to handle their username and password.</p>
+         In this guide, we can use either the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsGoogle">Kitura-CredentialsGoogle</a> or the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook">Kitura-CredentialsFacebook</a> plugins.
+         Because we are authenticating using a third party, the user does not need to create a new account for our service and we don't need to handle their username and password.</p>
+    <div class="info">
+    <p class="block-text">This guide will show you how to implement the OAuth2 flow for a client accessing the server via a web browser.
+         For a mobile application, the user must authenticate themselves on the device, send the access token to the server and have the token authenticated using a Credentials token plugin.</p>
+    </div>
     <h2 class="heading-2">Prerequisites</h2>
     <ul class="plain-list">
       <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
@@ -122,7 +126,7 @@ let fbCallbackUrl = "http://localhost:8080/oauth2/facebook"
 let fbCredentials = CredentialsFacebook(clientId: fbClientId, clientSecret: fbClientSecret, callbackUrl: fbCallbackUrl)</code></pre>
 </div>
     <div class="tabcontent googleTab">
-<pre><code class="language-swift">let googleClientId = "&lt;Your Google App Secret&gt;"
+<pre><code class="language-swift">let googleClientId = "&lt;Your Google App Id&gt;"
 let googleClientSecret = "&lt;Your Google App Secret&gt;"
 let googleCallbackUrl = "http://localhost:8080/oauth2/google"
 let googleCredentials = CredentialsGoogle(clientId: googleClientId, clientSecret: googleClientSecret, callbackUrl: googleCallbackUrl)</code></pre>
@@ -137,7 +141,7 @@ fbCredMiddleware.register(plugin: fbCredentials)</code></pre>
 <p>When a user hits this route, they will be redirected to the OAuth2 provider.</p>
 <p>When the user is sent back to this route, their access code with be authenticated.</p>
 <p>If they successfully authenticate, they will be redirected to the "successRedirect" we set on our middleware.</p>
-<pre><code class="language-swift">app.router.get("/login/facebook", handler: fbCredMiddleware.authenticate(credentialsType: fbCredentials.name))</code></pre>
+<pre><code class="language-swift">app.router.get("/oauth2/facebook", handler: fbCredMiddleware.authenticate(credentialsType: fbCredentials.name))</code></pre>
     </div>
         <div class="tabcontent googleTab">
     <pre><code class="language-swift">let googleCredMiddleware = Credentials(options: ["successRedirect": "/oauth2/loggedin"])
@@ -146,7 +150,7 @@ googleCredMiddleware.register(plugin: googleCredentials)</code></pre>
 <p>When a user hits this route, they will be redirected to the OAuth2 provider.</p>
 <p>When the user is sent back to this route, their access code with be authenticated.</p>
 <p>If they successfully authenticate, they will be redirected to the "successRedirect" we set on our middleware.</p>
-<pre><code class="language-swift">app.router.get("/login/google", handler: googleCredMiddleware.authenticate(credentialsType: googleCredentials.name))</code></pre>
+<pre><code class="language-swift">app.router.get("/oauth2/google", handler: googleCredMiddleware.authenticate(credentialsType: googleCredentials.name))</code></pre>
     </div>
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 7:</span> Check if a user is logged in</h2>
@@ -159,7 +163,86 @@ response.send("Hello \(user.displayName)")</code></pre>
     <div class="info">
         <p class="block-text">The user profile contains information about the user such as how they authenticated, their unique id and their displayName.</p>
     </div>
-    <h2 class="heading-2"><span class="blue-text">Step 8:</span> Testing our OAuth2 authentication system</h2>
+    <h2 class="heading-2"><span class="blue-text">Step 8:</span> Logging out a user</h2>
+    <p class="block-text">The user will remain logged in as long as their cookie provides a valid `userProfile`.
+         We can logout a user by invalidating the cookie with the session store or by setting the `userProfile` to `nil`.</p>
+    <p>Inside our logout route handler, call the `Credentials` `logOut` function:</p>
+    <div class="tabcontent facebookTab">
+    <pre><code class="language-swift">fbCredMiddleware.logOut(request: request)</code></pre>
+    </div>
+    <div class="tabcontent googleTab">
+    <pre><code class="language-swift">googleCredMiddleware.logOut(request: request)</code></pre>
+    </div>
+    <p>Our completed OAuth2 routes should now look as follows:</p>
+    <div class="tabcontent facebookTab">
+    <pre><code class="language-swift">import Credentials
+import CredentialsFacebook
+import KituraSession
+
+func initializeOAuth2Routes(app: App) {
+
+    let session = Session(secret: "AuthSecret", cookie: [CookieParameter.name("Kitura-Auth-cookie")])
+    app.router.all("/oauth2", middleware: session)
+
+    let fbClientId = "&lt;Your Facebook App ID&gt;"
+    let fbClientSecret = "&lt;Your Facebook App Secret&gt;"
+    let fbCallbackUrl = "http://localhost:8080/oauth2/facebook"
+    let fbCredentials = CredentialsFacebook(clientId: fbClientId, clientSecret: fbClientSecret, callbackUrl: fbCallbackUrl)
+
+    let fbCredMiddleware = Credentials(options: ["successRedirect": "/oauth2/loggedin"])
+    fbCredMiddleware.register(plugin: fbCredentials)
+
+    app.router.get("/oauth2/facebook", handler: fbCredMiddleware.authenticate(credentialsType: fbCredentials.name))
+
+    app.router.get("/oauth2/protected") { request, response, next in
+        guard let user = request.userProfile else {
+            return try response.send("Not authorized to view this route").end()
+        }
+        response.send("Hello \(user.displayName)")
+        next()
+    }
+
+    app.router.get("/oauth2/logout") { request, response, next in
+        fbCredMiddleware.logOut(request: request)
+        next()
+    }
+}</code></pre>
+    </div>
+    <div class="tabcontent googleTab">
+    <pre><code class="language-swift">import Credentials
+import CredentialsGoogle
+import KituraSession
+
+func initializeOAuth2Routes(app: App) {
+
+    let session = Session(secret: "AuthSecret", cookie: [CookieParameter.name("Kitura-Auth-cookie")])
+    app.router.all("/oauth2", middleware: session)
+    
+    let googleClientId = "&lt;Your Google App Id&gt;"
+    let googleClientSecret = "&lt;Your Google App Secret&gt;"
+    let googleCallbackUrl = "http://localhost:8080/oauth2/google"
+    let googleCredentials = CredentialsGoogle(clientId: googleClientId, clientSecret: googleClientSecret, callbackUrl: googleCallbackUrl)
+
+    let googleCredMiddleware = Credentials(options: ["successRedirect": "/oauth2/loggedin"])
+    googleCredMiddleware.register(plugin: googleCredentials)
+
+    app.router.get("/oauth2/google", handler: googleCredMiddleware.authenticate(credentialsType: googleCredentials.name))
+
+    app.router.get("/oauth2/protected") { request, response, next in
+        guard let user = request.userProfile else {
+            return try response.send("Not authorized to view this route").end()
+        }
+        response.send("Hello \(user.displayName)")
+        next()
+    }
+
+    app.router.get("/oauth2/logout") { request, response, next in
+        googleCredMiddleware.logOut(request: request)
+        next()
+    }
+}</code></pre>
+    </div>
+    <h2 class="heading-2"><span class="blue-text">Step 9:</span> Testing our OAuth2 authentication system</h2>
     <p>Now that everything is set up we can test logging in using OAuth2.</p>
     <p>Start your server and open your browser at:<p>
     <p><a href="http://localhost:8080/oauth2/protected" target="_blank">http://localhost:8080/oauth2/protected</a></p>
@@ -171,15 +254,12 @@ response.send("Hello \(user.displayName)")</code></pre>
     <div class="tabcontent googleTab">
         <p><a href="http://localhost:8080/oauth2/google" target="_blank">http://localhost:8080/oauth2/google</a></p>
     </div>
-    <p>This will send you to the OAuth2 provider who will request you to loggin and provide access to our server.</p>
+    <p>This will send you to the OAuth2 provider who will request you to log in and provide access to our server.</p>
     <p>Once you complete this you will be sent back to our server who will redirect you to our "/oauth2/protected" route.</p>
     <p>This time you will be authenticated and will see a welcome message.</p>
     <p>As long as your session persists, you can return to <a href="http://localhost:8080/oauth2/protected" target="_blank">http://localhost:8080/oauth2/protected</a> and be allowed access.</p>
     <p>Congratulations! You have just set up OAuth2 authentication on your Kitura server.</p>
 </div>
-    <div class="underline"></div>
-    <h2 class="heading-2">Next steps</h2>
-    <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`stencil`)" href="../templating/stencil.html#">Add a Web Page:</a></span> Get useful feedback from your server about startup and errors</p>
     </main>
     <script type="text/javascript" src="../../scripts/docs.js"></script>
     <script type="text/javascript" src="../../scripts/prism.js"></script>
