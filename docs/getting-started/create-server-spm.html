@@ -99,12 +99,13 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
+        <h1 class="heading-1">Create a server with Swift Package Manager</h1>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create project</h2>
-        <p>To work with SPM we need to use the command line.</p>
+        <p>To work with Swift Package Manager (SPM) we need to use the command line.</p>
         <div class="info">
           <p>If you're new to this simply open the Terminal (on macOS or Linux) to get started.</p>
         </div>
-        <p>Create a directory for our project</p>
+        <p>Create a directory for our project:</p>
         <pre><code>mkdir MyKituraApp && cd MyKituraApp</code></pre>
         <div class="info">
           <p>The name of the directory will also be the name of the generated project.</p>
@@ -118,24 +119,24 @@
         <p>Open `Package.swift` in your default text editor:</p>
         <pre><code class="language-swift">open Package.swift</code></pre>
         <p>Add Kitura to our dependencies so the `Package.swift` file looks like this:</p>
-        <pre><code class="language-swift">// swift-tools-version:4.2
+        <pre><code class="language-swift">
+// swift-tools-version:4.2
+import PackageDescription
 
-    import PackageDescription
-
-    let package = Package(
-        name: "MyKituraApp",
-        dependencies: [
-            .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.6.0")
-        ],
-        targets: [
-            .target(
-                name: "MyKituraApp",
-                dependencies: ["Kitura"]),
-            .testTarget(
-                name: "MyKituraAppTests",
-                dependencies: ["MyKituraApp"]),
-        ]
-    )   </code></pre>
+let package = Package(
+    name: "MyKituraApp",
+    dependencies: [
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.7.0")
+    ],
+    targets: [
+        .target(
+            name: "MyKituraApp",
+            dependencies: ["Kitura"]),
+        .testTarget(
+            name: "MyKituraAppTests",
+            dependencies: ["MyKituraApp"]),
+    ]
+)   </code></pre>
         <p>Now we can build the project to pull down our new dependency:</p>
         <pre><code class="language-swift">swift build</code></pre>
         <div class="underline"></div>
@@ -149,10 +150,10 @@
           <pre><code class="language-swift">open MyKituraApp.xcodeproj</code></pre>
         </div>
         <p>Delete the `print("Hello, world!")` line from the file.</p>
-        <p>To make use of the methods in Kitura we first need to import it.</p>
+        <p>To make use of the methods in Kitura we need to import the Kitura module:</p>
         <pre><code class="language-swift">import Kitura</code></pre>
         <div class="info">
-          <p>You may get an error here such as 'No such module Kitura'.</p>
+          <p>You may get an error here, such as, 'No such module Kitura'.</p>
           <p>This is a bug within Xcode, simply build your Xcode project and the error should disappear.</p>
         </div>
         <p>Now that we have access to Kitura's methods we can create an instance of Router:</p>
@@ -180,12 +181,12 @@
         <div class="info">
           <p>You may be prompted to allow the app to accept incoming connections.</p>
         </div>
-        <p>Navigate to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></p>
+        <p>Navigate to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a>.</p>
         <p>You should be able to see the Kitura landing page.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text bold">Kitura Style Guide:</span> Learn the recommended structure for a Kitura project</p>
-        <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
+        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a></span> Follow our guide to see how a production ready server should be structured.</p>
+        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('logging')" href="../logging/logging.html#">Logging:</a></span> Learn about logging and how to get feedback from your server.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
