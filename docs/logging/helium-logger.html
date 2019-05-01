@@ -111,12 +111,12 @@
           <li><a onclick="localStorage.setItem('package', 'HeliumLogger'); setActiveSidebarElementForParent('update-package')" href="../getting-started/update-package.html#">Add Dependency:</a> HeliumLogger needs adding to the `Package.swift` file.</li>
         </ul>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add HeliumLogger to project</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add HeliumLogger to the project</h2>
         <p>To start we need to import LoggerAPI in our code:</p>
         <pre><code class="language-swift">import LoggerAPI</code></pre>
         <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
         <div class="info">
-          <p>Kitura has LoggerAPI included as a dependency by default, so we do not need to add this to our `Package.swift`</p>
+          <p>Kitura has LoggerAPI included as a dependency by default, so we do not need to add this to our `Package.swift` file.</p>
         </div>
         <p>Now we need to import HeliumLogger:</p>
         <pre><code class="language-swift">import HeliumLogger</code></pre>
@@ -128,28 +128,29 @@
         <p>We are going to use our new logger to for errors thrown by our server.</p>
         <p>Inside the catch block, log the thrown error:</p>
         <pre><code class="language-swift">
-    Log.error(error.localizedDescription)
+Log.error(error.localizedDescription)
     </code></pre>
         <p>Your `main.swift` should look like this:</p>
-        <pre><code class="language-swift">import Foundation
-    import Kitura
-    import LoggerAPI
-    import HeliumLogger
-    import Application
+        <pre><code class="language-swift">
+import Foundation
+import Kitura
+import LoggerAPI
+import HeliumLogger
+import Application
 
-    HeliumLogger.use()
-    do {
-        let app = try App()
-        try app.run()
-    } catch let error {
-        Log.error(error.localizedDescription)
-    }</code></pre>
+HeliumLogger.use()
+do {
+    let app = try App()
+    try app.run()
+} catch let error {
+    Log.error(error.localizedDescription)
+}</code></pre>
         <p>Now if you start your server you should see some output:</p>
         <pre><code class="language-swift">
-    [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
-    [xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
-    [xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
-    [xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
+[xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
+[xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
+[xxx] [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
+[xxx] [VERBOSE] [HTTPServer.swift:196 listen(on:)] Options for port 8080: maxPendingConnections: 100, allowPortReuse: false</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Set logging level </h2>
         <p>HeliumLogger can be customized to change the level of logging.</p>
@@ -184,10 +185,10 @@
         <pre><code class="language-swift">Log.info("Hello World")</code></pre>
         <p>Restart your server and look through the logs. You should see your message:</p>
         <pre><code>[2019-03-13T16:23:08.078Z] [INFO] [Application.swift:22 init()] Hello World</code></pre>
-        <p>Your log message is printed along with the time it occured, the log level and the location in your code.</p>
+        <p>Your log message is printed along with the time it occurred, the log level and the location in your code.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('routing')" href="../routing/routing.html#">Routing:</a></span> Learn about routing with Kitura.</p>
+        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('routing')" href="../routing/routing.html#">Routing:</a></span> Learn about routing and the two types Kitura supports.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
