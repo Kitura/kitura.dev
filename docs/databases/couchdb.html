@@ -132,29 +132,33 @@
         <p>We'll be asked to provide a name, for our example we will call it: `bookstore`</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Create an CouchRoutes.swift file</h2>
-        <p>Open your `Sources` > `Application` > `Application.swift`</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
-        <pre><code class="language-swift">initializeCouchRoutes(app: self)</code></pre>
-        <p>Create a new file called `CouchRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+        <pre><code class="language-swift">initializeCouchRoutes(app: self)</pre></code>
+        <p>Create a new file, called `CouchRoutes.swift`:</p>
+        <pre><code>touch Sources/Application/Routes/CouchRoutes.swift</code></pre>
+        <p>Open your `CouchRoutes.swift` file:</p>
+        <pre><code>open Sources/Application/CouchRoutes/.swift</code></pre>
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">import KituraContracts
-    import CouchDB
-    import LoggerAPI
+import CouchDB
+import LoggerAPI
 
-    func initializeCouchRoutes(app: App) {
-        // Connect to database here
-        app.router.post("/couch", handler: app.couchSaveHandler)
-        app.router.get("/couch", handler: app.couchFindAllHandler)
+func initializeCouchRoutes(app: App) {
+    // Connect to database here
+    app.router.post("/couch", handler: app.couchSaveHandler)
+    app.router.get("/couch", handler: app.couchFindAllHandler)
+}
+extension App {
+    func couchSaveHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
+        // Save book here
     }
-    extension App {
-        func couchSaveHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
-            // Save book here
-        }
 
-        func couchFindAllHandler(completion: ([Book]?, RequestError?) -> Void) {
-            // Get all books here
-        }
-    }</code></pre>
+    func couchFindAllHandler(completion: ([Book]?, RequestError?) -> Void) {
+        // Get all books here
+    }
+}</code></pre>
         <p>These handlers have the same signatures as our CodableRouting handlers.
         Check out that guide if you would like to learn more.</p>
         <div class="underline"></div>
@@ -166,64 +170,68 @@
         secured: false,                 // https or http
         username: "&lt;CouchDB-username&gt;", // admin username
         password: "&lt;CouchDB-password&gt;"  // admin password
-    )</code></pre>
+)</code></pre>
         <p>Now we can use these properties to create our CouchDB connection:</p>
         <pre><code class="language-swift">static let couchDBClient = CouchDBClient(connectionProperties: properties)</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 6:</span> Define our BookDocument</h2>
-        <p>Create a new file called `BookDocument.swift` in `Sources` > `Application` > `Models`.</p>
-        <p>Inside this file, Define your BookDocument class:</p>
+
+        <p>Create a new file, called `BookDocument.swift`:</p>
+        <pre><code>touch Sources/Application/Models/BookDocument.swift</code></pre>
+        <p>Open your `BookDocument.swift` file:</p>
+        <pre><code>open Sources/Application/Models/BookDocument.swift</code></pre>
+        <p>Inside this file, define your BookDocument class:</p>
         <pre><code class="language-swift">import CouchDB
 
-    struct BookDocument: Document {
-        let _id: String?
-        var _rev: String?
-        var value: Book
-    }</code></pre>
+struct BookDocument: Document {
+    let _id: String?
+    var _rev: String?
+    var value: Book
+}</code></pre>
     <h2 class="heading-2"><span class="blue-text">Step 7:</span> Save our Document to our database</h2>
         <p>To save data to our CouchDB database we first need some data to save, this data can be provided by a POST route.</p>
         <p>So we will need to modify our couchSaveHandler to store data in our database:</p>
         <pre><code class="language-swift">func couchSaveHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
-        App.couchDBClient.retrieveDB("bookstore") { (database, error) in
-            guard let database = database  else {
+    App.couchDBClient.retrieveDB("bookstore") { (database, error) in
+        guard let database = database  else {
+            return completion(nil, .internalServerError)
+        }
+        let bookDocument = BookDocument(_id: String(book.id), _rev: nil, value: book)
+        database.create(bookDocument) { (response, error) in
+            if let error = error {
+                Log.error(error.localizedDescription)
+                return completion(nil, RequestError(httpCode: error.statusCode))
+            }
+            guard response != nil else {
+                Log.error("Unknown CouchDB Error")
                 return completion(nil, .internalServerError)
             }
-            let bookDocument = BookDocument(_id: String(book.id), _rev: nil, value: book)
-            database.create(bookDocument) { (response, error) in
-                if let error = error {
-                    Log.error(error.localizedDescription)
-                    return completion(nil, RequestError(httpCode: error.statusCode))
-                }
-                guard response != nil else {
-                    Log.error("Unknown CouchDB Error")
-                    return completion(nil, .internalServerError)
-                }
-                completion(book, nil)
-            }
+            completion(book, nil)
         }
-    }</code></pre>
+    }
+}</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 8:</span> Retrieve from CouchDB database</h2>
         <p>To retrieve all documents from a CouchDB database we need to use the aptly named `retrieveAll` method within our `couchFindAllHandler`:</p>
         <pre><code class="language-swift">func couchFindAllHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
-        App.couchDBClient.retrieveDB("bookstore") { (database, error) in
-            guard let database = database  else {
+    App.couchDBClient.retrieveDB("bookstore") { (database, error) in
+        guard let database = database  else {
+            return completion(nil, .internalServerError)
+        }
+        database.retrieveAll(includeDocuments: true, callback: { (allDocuments, error) in
+            if let error = error {
+                Log.error(error.localizedDescription)
+                return completion(nil, RequestError(httpCode: error.statusCode))
+            }
+            guard let allDocuments = allDocuments else {
+                Log.error("Unknown CouchDB Error")
                 return completion(nil, .internalServerError)
             }
-            database.retrieveAll(includeDocuments: true, callback: { (allDocuments, error) in
-                if let error = error {
-                    Log.error(error.localizedDescription)
-                    return completion(nil, RequestError(httpCode: error.statusCode))
-                }
-                guard let allDocuments = allDocuments else {
-                    Log.error("Unknown CouchDB Error")
-                    return completion(nil, .internalServerError)
-                }
-                let books = allDocuments.decodeDocuments(ofType: BookDocument.self).map({$0.value})
-                completion(books, nil)
-            })
-        }
-    }</code></pre>
+            let books = allDocuments.decodeDocuments(ofType: BookDocument.self).map({$0.value})
+            completion(books, nil)
+        })
+    }
+}</code></pre>
       </main>
     </div>
     <div id="top-page" class="top-page">
