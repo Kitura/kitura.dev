@@ -119,8 +119,7 @@
         <p>Open your `MyBasicAuth.swift` file:</p>
         <pre><code>open Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
         <p>Inside this file, define your `MyBasicAuth` struct:</p>
-        <pre><code class="language-swift">
-import Credentials
+        <pre><code class="language-swift">import Credentials
 import CredentialsHTTP
 import LoggerAPI
 
@@ -129,13 +128,11 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
 }</code></pre>
         <p>If you're using Xcode it should display the message: Type 'MyBasicAuth' does not conform to protocol 'TypeSafeCredentials'</p>
         <p>Click "Fix" to autogenerate the stubs for `verifyPassword` and `id`:</p>
-        <pre><code class="language-swift">
-public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
+        <pre><code class="language-swift">public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
 
 }
 
-public var id: String
-    </code></pre>
+public var id: String</code></pre>
         <p>Inside MyBasicAuth, add an authentication dictionary:</p>
         <pre><code class="language-swift">public static let authenticate = ["username" : "password"]</code></pre>
         <div class="info">
@@ -144,8 +141,7 @@ public var id: String
         <p>Define verifyPassword:</p>
         <p>The function, verifyPassword, takes a username and password and, on success, returns a `MyBasicAuth` instance.</p>
         <p>We want to check if the password matches the user's stored password. On successful match, we initialize MyBasicAuth with an id equal to username.</p>
-        <pre><code class="language-swift">
-if let storedPassword = authenticate[username], storedPassword == password {
+        <pre><code class="language-swift">if let storedPassword = authenticate[username], storedPassword == password {
     return callback(MyBasicAuth(id: username))
 }
 callback(nil)</code></pre>
@@ -153,8 +149,7 @@ callback(nil)</code></pre>
         <p>We must call the callback closure with either an instance of Self or nil before exiting verifyPassword.</p>
         <p>If we do not, the server will not know to continue and we will recieve a 503 "Service Unavailable" error, when we call the route.</p>
         <p>Our completed struct should now look as follows:</p>
-        <pre><code class="language-swift">
-public struct MyBasicAuth: TypeSafeHTTPBasic {
+        <pre><code class="language-swift">public struct MyBasicAuth: TypeSafeHTTPBasic {
 
     public static let authenticate = ["username" : "password"]
 
@@ -179,8 +174,7 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
     <p>Open your `TypeSafeAuthRoutes.swift` file:</p>
     <pre><code>open Sources/Application/Routes/TypeSafeAuthRoutes.swift</code></pre>
     <p>Inside this file, add the framework for our routes code:</p>
-    <pre><code class="language-swift">
-import KituraContracts
+    <pre><code class="language-swift">import KituraContracts
 import Credentials
 import CredentialsHTTP
 import LoggerAPI
@@ -195,21 +189,18 @@ extension App {
         <div class="underline"></div>
         <h3 class="heading-3"><span class="blue-text">Step 3:</span> Using TypeSafeHTTPBasic in a route</h3>
         <p>Underneath our other Codable routes we will add:</p>
-        <pre><code class="language-swift">
-func protectedGetHandler(user: MyBasicAuth, respondWith: (Book?, RequestError?) -> Void) {
+        <pre><code class="language-swift">func protectedGetHandler(user: MyBasicAuth, respondWith: (Book?, RequestError?) -> Void) {
 
 }</code></pre>
     <p>We have registered MyBasicAuth on our handler by adding it to the signature.</p>
     <p>When the handler is called the middleware and the request is authenticated.</p>
     <p>Within protectedGetHandler, we can then interact with our authenticated user:<p>
-    <pre><code class="language-swift">
-Log.info("authenticated: \(user.id)")
+    <pre><code class="language-swift">Log.info("authenticated: \(user.id)")
 let secretBook = Book(id: 451, title: "1984", price: 9001, genre: "Science Fiction")
 respondWith(secretBook, nil)</code></pre>
         <p>That's it! We've implemented HTTP basic authentication of a Codable route.</p>
         <p>Your completed `TypeSafeAuthRoutes.swift` should now look as follows:</p>
-    <pre><code class="language-swift">
-import KituraContracts
+    <pre><code class="language-swift">import KituraContracts
 import Credentials
 import CredentialsHTTP
 import LoggerAPI
