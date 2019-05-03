@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Kitura Session</title>
+    <title>Kitura Raw Session</title>
     <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
@@ -111,9 +111,8 @@
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create your session routes</h2>
         <p>In this guide we are going to create three Kitura routes:</p>
         <ul>
+            <li><p>A GET route, where we will retrieve the books from out session</p></li>
              <li><p>A POST route, where we store a book in our session</p></li>
-             <li><p>A GET route, where we will retrieve all the books from out session</p></li>
-             <li><p>A DELETE route, where we will delete our session</p></li>
          </ul>
          <p>In this step we will create the framework for our protected and log out routes.</p>
          <p>Firstly, we need to add Kitura-Session to our dependencies as described by the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session#usage">usage section</a> of the README.</p>
@@ -131,6 +130,7 @@ func initializeRawSessionRoutes(app: App) {
         // Get the books from the session here
         next()
     }
+
     app.router.post("/rawsession") { request, response, next in
         // Add books to the session here
         next()
@@ -175,6 +175,7 @@ func initializeRawSessionRoutes(app: App) {
         // Get the books from the session here
         next()
     }
+
     app.router.post("/rawsession") { request, response, next in
         guard let session = request.session else {
             return try response.status(.internalServerError).end()
@@ -204,8 +205,8 @@ func initializeRawSessionRoutes(app: App) {
 }</code></pre>
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add the session POST route</h2>
-    <p>Now we need some books to retrieve. We will do this by adding a book a user has posted into the session.</p>
-    <p>The first thing we need to do is decode the user's book.</p>
+    <p>Now we need some books to retrieve. We will do this by adding a book a that has posted into our route.</p>
+    <p>The first thing we need to do is decode the book.</p>
     <p>We do this by adding the following code to our POST handler:</p>
     <pre><code class="language-swift">let inputBook = try request.read(as: Book.self)</code></pre>
     <p>Next we need to get the books that are currently in the session:<p>
@@ -230,8 +231,71 @@ response.send(inputBook)</code></pre>
     next()
 }</code></pre>
         <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 5:</span> Test our Session</h2>
+        <p>We have now completed the code for our session.
+             This will allow us to add books to our cart and persist them between requests.</p>
+        <p>Our completed `RawSessionRoutes.swift` file should now look as follows:</p>
+        <pre><code class="language-swift">import KituraSession
+
+func initializeRawSessionRoutes(app: App) {
+    let session = Session(secret: "password", cookie: [CookieParameter.name("Raw-cookie")])
+    app.router.all(middleware: session)
+
+    app.router.get("/rawsession") { request, response, next in
+        guard let session = request.session else {
+            return try response.status(.internalServerError).end()
+        }
+        let books: [Book] = session["books"] ?? []
+        response.send(books)
+        next()
+    }
+
+    app.router.post("/rawsession") { request, response, next in
+        guard let session = request.session else {
+            return try response.status(.internalServerError).end()
+        }
+        let inputBook = try request.read(as: Book.self)
+        var books: [Book] = session["books"] ?? []
+        books.append(inputBook)
+        session["books"] = books
+        response.status(.created)
+        response.send(inputBook)
+        next()
+    }
+}</code></pre>
+        <p>To test our POST route, we will send a requests using curl with cookies enabled.</p>
+        <p>Open Terminal and enter the following:</p>
+        <pre><code>curl -X POST \
+http://localhost:8080/rawsession \
+-b cookies.txt -c cookies.txt \
+-H 'content-type: application/json' \
+-d '{
+    "id": 1,
+    "title": "War and Peace",
+    "price": 10.99,
+    "genre": "Historical drama"
+}'</code></pre>
+        <p>If our request was successful, our book will be returned to us:</p>
+        <pre><code>{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}</code></pre>
+        <p>We will also have a cookie that curl has stored in the `cookies.txt` file.</p>
+        <p>To retrieve our book, we make another curl request to our server:</p>
+        <pre><code>curl -X GET \
+http://localhost:8080/rawsession \
+-b cookies.txt -c cookies.txt</code></pre>
+    <p>If the request is successful, it will return the book we just sent to the server.</p>
+    <pre><code>[{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}]</code></pre>
+    <p>The cookie we sent with our request has identifed our session so that our saved book can be returned.</p>
+    <p>Each users making requests to these routes will create their own basket of books.</p>
+    <p>We can demonstrate this by deleting our cookie:</p>
+    <pre><code>rm cookies.txt</code></pre>
+    <p>Followed by making a new GET request:</p>
+    <pre><code>curl -X GET \
+http://localhost:8080/rawsession \
+-b cookies.txt -c cookies.txt</code></pre>
+    <p>This represents a user without a session and so we are returned an empty array:</p>
+    <pre><code>[]</code></pre>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="../authentication/typesafe-auth.html#">Add Authentication:</a></span> Get useful feedback from your server about startup and errors</p>
+         <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="../authentication/typesafe-auth.html#">Authentication:</a></span> Learn about authentication and what Kitura provides.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
