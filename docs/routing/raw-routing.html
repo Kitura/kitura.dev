@@ -160,26 +160,26 @@ response.send(book)
     </code></pre>
         <p>Your completed POST route should now look as follows:</p>
         <pre><code class="language-swift">app.router.post("/raw") { request, response, next in
-        do {
-            let book = try request.read(as: Book.self)
-            App.bookStore.append(book)
-            response.send(book)
-        } catch {
-            let _ = response.send(status: .badRequest)
-        }
-        next()
-    }</code></pre>
+    do {
+        let book = try request.read(as: Book.self)
+        App.bookStore.append(book)
+        response.send(book)
+    } catch {
+        let _ = response.send(status: .badRequest)
+    }
+    next()
+}</code></pre>
         <p>Now if we start our Kitura server we can use curl to test our route.</p>
         <p>In a terminal enter the following:</p>
         <pre><code>curl -X POST \
       http://localhost:8080/raw \
       -H 'content-type: application/json' \
       -d '{
-      "id": 0,
-      "title": "A Game of Thrones",
-      "price": 14.99,
-      "genre": "Fantasy"
-    }'</code></pre>
+            "id": 0,
+            "title": "A Game of Thrones",
+            "price": 14.99,
+            "genre": "Fantasy"
+          }'</code></pre>
         <p>We should then see the following printed to the terminal:</p>
         <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}</code></pre>
         <p>That's it! We've implemented a basic POST route.</p>
@@ -188,33 +188,44 @@ response.send(book)
         <p>We register a GET route in a similar way to the POST route.</p>
         <p>Inside the `initializeRawRoutes` function add:</p>
         <pre><code class="language-swift">app.router.get("/raw") { request, response, next in
-        next()
-    }</code></pre>
+    next()
+}</code></pre>
         <p>In our GET route, we respond with our bookstore.</p>
     <pre><code class="language-swift">response.send(App.bookStore)</code></pre>
     <p>The completed GET route, should then look as follows:</p>
     <pre><code class="language-swift">app.router.get("/raw") { request, response, next in
-        response.send(App.bookStore)
-        next()
-    }</code></pre>
+    response.send(App.bookStore)
+    next()
+}</code></pre>
         <p>Now we need to restart our server, once it is running we can post a book using the curl command from step 2.</p>
         <p>Then if we navigate to <a href="http://localhost:8080/raw" target="_blank">http://localhost:8080/raw</a>, we should see the book we posted:</p>
         <pre><code>{
-        "id": 0,
-        "title": "A Game of Thrones",
-        "price": 14.99,
-        "genre": "Fantasy"
-      }</code></pre>
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": "Fantasy"
+}</code></pre>
         <p>That's it! We've now implemented a simple GET route.</p>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Create a GET one route</h2>
         <p>When we register a GET one route, rather than a GET all route, we use an `id` parameter.</p>
         <p>Inside the `initializeRawRoutes` function add:</p>
         <pre><code class="language-swift">app.router.get("/raw/:id") { request, response, next in
-        next()
-    }</code></pre>
+    next()
+}</code></pre>
         <p>In this case, the path "/:id" will be for "/123" as well as "/abc".
             You can then access the `id` parameter’s value via `request.parameters["id"]`:</p>
         <pre><code class="language-swift">guard let idString = request.parameters["id"],
+    let id = Int(idString),
+    id >= 0,
+    id < App.bookStore.count
+else {
+    let _ = response.send(status: .badRequest)
+    return next()
+}
+response.send(App.bookStore[id])</code></pre>
+    <p>Your completed GET with `id` route, should then look as follows:</p>
+    <pre><code class="language-swift">app.router.get("/raw/:id") { request, response, next in
+    guard let idString = request.parameters["id"],
         let id = Int(idString),
         id >= 0,
         id < App.bookStore.count
@@ -223,48 +234,35 @@ response.send(book)
         return next()
     }
     response.send(App.bookStore[id])
-    </code></pre>
-    <p>Your completed GET with `id` route, should then look as follows:</p>
-    <pre><code class="language-swift">app.router.get("/raw/:id") { request, response, next in
-        guard let idString = request.parameters["id"],
-            let id = Int(idString),
-            id >= 0,
-            id < App.bookStore.count
-        else {
-            let _ = response.send(status: .badRequest)
-            return next()
-        }
-        response.send(App.bookStore[id])
-        next()
-    }</code></pre>
+    next()
+}</code></pre>
         <p>Now we need to restart our server and make a POST request using the curl command from step 2.</p>
         <p>Use a browser to navigate to <a href="http://localhost:8080/raw/0" target="_blank">http://localhost:8080/raw/0</a></p>
         <p>This will make a GET request to the server and you should see the first book in JSON format:</p>
-        <pre><code>
-    {
-          "id": 0,
-          "title": "A Game of Thrones",
-          "price": 14.99,
-          "genre": "Fantasy"
-    }</code></pre>
+        <pre><code>{
+    "id": 0,
+    "title": "A Game of Thrones",
+    "price": 14.99,
+    "genre": "Fantasy"
+}</code></pre>
       <p>In Terminal enter the following to post a second book to the server:</p>
       <pre><code>curl -X POST \
-        http://localhost:8080/raw \
-        -H 'content-type: application/json' \
-        -d '{
+    http://localhost:8080/raw \
+    -H 'content-type: application/json' \
+    -d '{
           "id": 1,
           "title": "Harry Potter",
           "price": 10.00,
           "genre": "Fantasy"
-        }'</code></pre>
+       }'</code></pre>
         <p>Then open the browser at <a href="http://localhost:8080/raw/1" target="_blank">http://localhost:8080/raw/1</a></p>
         <p>This will make a new GET request to the server and you should see the second book in JSON format:</p>
         <pre><code>{
-        "id": 1,
-        "title": "Harry Potter",
-        "price": 10.00,
-        "genre": "Fantasy"
-    }</code></pre>
+    "id": 1,
+    "title": "Harry Potter",
+    "price": 10.00,
+    "genre": "Fantasy"
+}</code></pre>
         <p>That's it! We've now also implemented a GET one route.</p>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Making bookstore thread safe (Optional)</h2>
         <p class="block-text">Kitura route handlers are asynchronous.
@@ -281,51 +279,52 @@ response.send(book)
         <pre><code class="language-swift">let workerQueue = DispatchQueue(label: "worker")</code></pre>
         <p>At the end of the `App` class, add a helper function for atomically executing code:</p>
         <pre><code class="language-swift">func execute(_ block: (() -> Void)) {
-       workerQueue.sync {
-           block()
-       }
-    }</code></pre>
+    workerQueue.sync {
+        block()
+    }
+}</code></pre>
         <p>Back in `RawRoutes.swift`, we wrap the code in our handlers with this execute function.</p>
         <p>Your completed `RawRouting.swift` should now look as follows:</p>
     <pre><code class="language-swift">func initializeRawRoutes(app: App) {
-        app.router.post("/raw") { request, response, next in
-            do {
-                let book = try request.read(as: Book.self)
-                app.execute {
-                    App.bookStore.append(book)
-                }
-                response.send(book)
-            } catch {
-                let _ = response.send(status: .badRequest)
-            }
-            next()
-        }
-
-        app.router.get("/raw") { request, response, next in
+      
+    app.router.post("/raw") { request, response, next in
+        do {
+            let book = try request.read(as: Book.self)
             app.execute {
-                response.send(App.bookStore)
+                App.bookStore.append(book)
             }
-            next()
+            response.send(book)
+        } catch {
+            let _ = response.send(status: .badRequest)
         }
-
-        app.router.get("/raw/:id") { request, response, next in
-            app.execute {
-                guard let idString = request.parameters["id"],
-                    let id = Int(idString),
-                    id >= 0,
-                    id < App.bookStore.count
-                    else {
-                        let _ = response.send(status: .badRequest)
-                        return next()
-                }
-                response.send(App.bookStore[id])
-            }
-            next()
-        }
+        next()
     }
-    extension App {
-        static var bookStore = [Book]()
-    }</code></pre>
+
+    app.router.get("/raw") { request, response, next in
+        app.execute {
+            response.send(App.bookStore)
+        }
+        next()
+    }
+
+    app.router.get("/raw/:id") { request, response, next in
+        app.execute {
+            guard let idString = request.parameters["id"],
+                let id = Int(idString),
+                id >= 0,
+                id < App.bookStore.count
+                else {
+                    let _ = response.send(status: .badRequest)
+                    return next()
+            }
+            response.send(App.bookStore[id])
+        }
+        next()
+    }
+}
+extension App {
+    static var bookStore = [Book]()
+}</code></pre>
     <p>We can continue to make POST and GET requests from our bookstore.</p>
     <p>However, if the server is restarted, all the data will be lost and we will have an empty array again.</p>
     <p>In the Database Guide we will look to resolve this issue and add persistence.</p>

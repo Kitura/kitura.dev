@@ -118,13 +118,13 @@
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">import KituraStencil
 
-    func initializeStencilRoutes(app: App) {
-        // register template engine here
-        app.router.get("/stencil") { request, response, next in
-            // render response here
-            next()
-        }
-    }</code></pre>
+func initializeStencilRoutes(app: App) {
+    // register template engine here
+    app.router.get("/stencil") { request, response, next in
+        // render response here
+        next()
+    }
+}</code></pre>
         <div class="info">
         <p>Templating is not part of a REST api so it only supported in Raw routes.</p>
         </div>
@@ -140,18 +140,18 @@
         <p>We've just added the Stencil template engine to our router, so now we can use it in a route.</p>
         <p>Inside our get route, add the following:</p>
         <pre><code class="language-swift">let book = Book(id: 0, title: "A Game of Thrones", price: 14.99, genre: "fantasy")
-    try response.render("book.stencil", with: book)</code></pre>
+try response.render("book.stencil", with: book)</code></pre>
         <p>Your completed `StencilRoutes.swift` should now look as follows:</p>
         <pre><code class="language-swift">import KituraStencil
 
-    func initializeStencilRoutes(app: App) {
-        app.router.add(templateEngine: StencilTemplateEngine())
-        app.router.get("/stencil") { request, response, next in
-            let book = Book(id: 0, title: "A Game of Thrones", price: 14.99, genre: "fantasy")
-            try response.render("book.stencil", with: book)
-            next()
-        }
-    }</code></pre>
+func initializeStencilRoutes(app: App) {
+    app.router.add(templateEngine: StencilTemplateEngine())
+    app.router.get("/stencil") { request, response, next in
+        let book = Book(id: 0, title: "A Game of Thrones", price: 14.99, genre: "fantasy")
+        try response.render("book.stencil", with: book)
+        next()
+    }
+}</code></pre>
         <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
         <p>In our case, the file `book.stencil` template will be populated with the `book` data and then rendered in the browser on `"/book"`.</p>
         <p>This obviously will not work as we haven't created our `book.stencil` file.</p>
@@ -181,23 +181,21 @@
         <p>We first need some template code to populate.</p>
         <p>Open the `book.stencil` file and add the following:</p>
         <pre><code class="language-swift">&lt;html&gt;
-      &lt;p&gt; Id:     {{ id }}   &lt;/p&gt;
-      &lt;p&gt; Title: {{ title }} &lt;/p&gt;
-      &lt;p&gt; Price: {{ price }} &lt;/p&gt;
-      &lt;p&gt; Genre: {{ genre }} &lt;/p&gt;
-    &lt;/html&gt;</code></pre>
+    &lt;p&gt; Id:     {{ id }}   &lt;/p&gt;
+    &lt;p&gt; Title: {{ title }} &lt;/p&gt;
+    &lt;p&gt; Price: {{ price }} &lt;/p&gt;
+    &lt;p&gt; Genre: {{ genre }} &lt;/p&gt;
+&lt;/html&gt;</code></pre>
         <p>Now to test our templating, we first need to start the Kitura server.</p>
         <p>Then in a browser open: <a target="_blank" href="http://localhost:8080/stencil">http://localhost:8080/stencil</a></p>
         <p>In the browser we should see:</p>
         <pre><code class="language-swift">Id: 0
 
-    Title: A Game of Thrones
+Title: A Game of Thrones
 
+Price: 14.99
 
-    Price: 14.99
-
-
-    Genre: "fantasy"</code></pre>
+Genre: "fantasy"</code></pre>
         <p>That's it! We've just rendered a simple data type in the browser using Kitura Stencil.</p>
       </main>
     </div>
