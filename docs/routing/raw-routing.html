@@ -123,22 +123,26 @@
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a file to contain the routes</h2>
-        <p>Open `Sources` > `Application` > `Application.swift`.</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
         <pre><code class="language-swift">initializeRawRoutes(app: self)</code></pre>
-        <p>Create a new file called `RawRoutes.swift` in `Sources` > `Application` > `Routes`.</p>
+        <p>Create a new file, called `RawRoutes.swift`:</p>
+        <pre><code>touch Sources/Application/Routes/RawRoutes.swift</code></pre>
+        <p>Open your `RawRoutes.swift` file:</p>
+        <pre><code>open Sources/Application/RawRoutes/.swift</code></pre>
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">func initializeRawRoutes(app: App) {
-        // Register routes with handlers here
-    }
-    extension App {
-        static var bookStore = [Book]()
-    }</code></pre>
+    // Register routes with handlers here
+}
+extension App {
+    static var bookStore = [Book]()
+}</code></pre>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST route</h2>
         <p>Inside the `initializeRawRoutes` function add:</p>
         <pre><code class="language-swift">app.router.post("/raw") { request, response, next in
-        next()
-    }</code></pre>
+    next()
+}</code></pre>
         <p>What we've done is register a POST on our router that will handle any POST requests made on "/raw".</p>
         <div class="info">
           <p>If the values `request`, `response` and `next` are unfamiliar to you, learn more about them in our "What is Routing?" guide.</p>
@@ -146,13 +150,13 @@
         <p>The POST route will be used to send information about our books to the server, therefore we need a way of reading this data from the request.</p>
         <p>To do this we will use the `read(as:)` method of the `RouterRequest` class, as this method can throw we wrap it in a do-catch block:</p>
         <pre><code class="language-swift">do {
-        let book = try request.read(as: Book.self)
-    } catch {
-        let _ = response.send(status: .badRequest)
-    }</code></pre>
+    let book = try request.read(as: Book.self)
+} catch {
+    let _ = response.send(status: .badRequest)
+}</code></pre>
         <p>We will now save this book to our bookstore and return it to the user with `send()`:</p>
         <pre><code class="language-swift">App.bookStore.append(book)
-    response.send(book)
+response.send(book)
     </code></pre>
         <p>Your completed POST route should now look as follows:</p>
         <pre><code class="language-swift">app.router.post("/raw") { request, response, next in
@@ -269,7 +273,9 @@
         <div class="info">
           <p>If you have completed the Codable Routing guide, you will already have the execute function.</p>
         </div>
-        <p>`Inside `Application` > `Application.swift`, Add `Dispatch` to our import statements:</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p>Add `Dispatch` to the import statements:</p>
         <pre><code class="language-swift">import Dispatch</code></pre>
         <p>Inside the `App` class, add a `DispatchQueue`: </p>
         <pre><code class="language-swift">let workerQueue = DispatchQueue(label: "worker")</code></pre>

@@ -122,10 +122,14 @@
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a file to contain the routes</h2>
-        <p>Open `Sources` > `Application` > `Application.swift`.</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
         <pre><code class="language-swift">initializeCodableRoutes(app: self)</code></pre>
-        <p>Create a new file called `CodableRoutes.swift` in `Sources` > `Application` > `Routes`.</p>
+        <p>Create a new file, called `CodableRoutes.swift`:</p>
+        <pre><code>touch Sources/Application/Routes/CodableRoutes.swift</code></pre>
+        <p>Open your `CodableRoutes.swift` file:</p>
+        <pre><code>open Sources/Application/CodableRoutes/.swift</code></pre>
         <p>Inside this file, add the framework for our routes code: </p>
         <pre><code class="language-swift">import KituraContracts
 
@@ -241,7 +245,9 @@ http://localhost:8080/codable \
         <div class="info">
           <p>If you have completed the Raw Routing guide, you will already have the execute function.</p>
         </div>
-        <p>`Inside `Application` > `Application.swift`, Add `Dispatch` to our import statements:</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p>Add `Dispatch` to the import statements:</p>
         <pre><code class="language-swift">import Dispatch</code></pre>
         <p>Inside the `App` class, add a `DispatchQueue`: </p>
         <pre><code class="language-swift">let workerQueue = DispatchQueue(label: "worker")</code></pre>
