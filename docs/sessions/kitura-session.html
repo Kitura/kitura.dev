@@ -110,10 +110,14 @@
           <li><a onclick="localStorage.setItem('package', 'Kitura-Session'); setActiveSidebarElementForParent('kitura-session')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura Session needs adding to the `Package.swift` file.</li>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a TypeSafeSessionRoutes.swift file</h2>
-        <p>Open your `Sources` > `Application` > `Application.swift`</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
         <pre><code class="language-swift">initializeTypeSafeSessionRoutes(app: self)</code></pre>
-        <p>Create a new file called `TypeSafeSessionRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+        <p>Create a new file, called `TypeSafeSessionRoutes.swift`:</p>
+        <pre><code>touch Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
+        <p>Open your `TypeSafeSessionRoutes.swift` file:</p>
+        <pre><code>open Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">import KituraContracts
     import KituraSession
@@ -128,7 +132,10 @@
         <p>We will add our `postSessionHandler` and `getSessionHandler` later in this guide.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define a Type-Safe Session</h2>
-        <p>Create a new file called `CheckoutSession.swift` in `Sources` > `Application` > `Middlewares`.</p>
+        <p>Create a new file, called `CheckoutSession.swift`:</p>
+        <pre><code>touch Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
+        <p>Open your `CheckoutSession.swift` file:</p>
+        <pre><code>open Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
         <div class="info">
           <p>You may need to create the `Middlewares` folder.</p>
         </div>
