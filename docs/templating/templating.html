@@ -107,37 +107,37 @@
         <p class="block-text">A Template Engine executes the actual replacement of the variables within the template file. A template engine also transforms the template file into an HTML file which is then sent to the client. Template engines support more than just simply replacing values, they can also handle looping and condtional logic such as for loops and if statements. This makes template engines a good choice for creating HTML files.</p>
         <p class="block-text">A simple example of this is imagine you're creating a website. This website could have 5, 10, 15 or more pages but some things are consistent across these pages. Typically you may want to keep the header and footer the same across all pages but writing out code for the header and footer for each of these pages would be tedious. What happens if you need to change something in the header? You would need to change this on every page of your website. Templating provides a simple solution to this problem. You can create a template file that contains the code for your header and footer but the main content section is determined at runtime using the template engine. An example of this template file using Stencil could look as follows:</p>
         <pre><code>&lt;!DOCTYPE html&gt;
-        &lt;html lang="en" dir="ltr"&gt;
-          &lt;head&gt;
-            &lt;meta charset="utf-8"&gt;
-            &lt;title&gt;An Example of Templating&lt;/title&gt;
-          &lt;/head&gt;
-          &lt;body&gt;
-            &lt;header&gt;
-              &lt;h1&gt;Name&lt;/h1&gt;
-              &lt;nav&gt;
-                &lt;li&gt;Home&lt;/li&gt;
-                &lt;li&gt;About&lt;/li&gt;
-                &lt;li&gt;Contact&lt;/li&gt;
-              &lt;/nav&gt;
-            &lt;/header&gt;
+&lt;html lang="en" dir="ltr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;An Example of Templating&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Name&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;li&gt;Home&lt;/li&gt;
+        &lt;li&gt;About&lt;/li&gt;
+        &lt;li&gt;Contact&lt;/li&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
 
-            &lt;main&gt;
+    &lt;main&gt;
 
-              {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
 
-            &lt;/main&gt;
+    &lt;/main&gt;
 
-            &lt;footer&gt;
-              &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;/p&gt;
-              &lt;nav&gt;
-                &lt;li&gt;Link1&lt;/li&gt;
-                &lt;li&gt;Link2&lt;/li&gt;
-                &lt;li&gt;Link3&lt;/li&gt;
-              &lt;/nav&gt;
-            &lt;/footer&gt;
-          &lt;/body&gt;
-        &lt;/html&gt;</code></pre>
+    &lt;footer&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;/p&gt;
+      &lt;nav&gt;
+        &lt;li&gt;Link1&lt;/li&gt;
+        &lt;li&gt;Link2&lt;/li&gt;
+        &lt;li&gt;Link3&lt;/li&gt;
+      &lt;/nav&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
         <p class="block-text">You could reuse this template file to generate every page on your website, but the code for your header and footer would be in a single location. This was a simple example but illustrates how powerful templating can be when creating web applications.</p>
         <p>Here is a list of Template Engines Kitura works with:</p>
         <ul>

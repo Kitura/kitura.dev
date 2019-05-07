@@ -120,8 +120,8 @@
         <p>We've just added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
         <p>Just below our other registered routes we can create a new route for KituraMarkdown:</p>
         <pre><code class="language-swift">router.get("/book") { request, response, next in
-        try response.render("book.md", with: [:])
-    }</code></pre>
+    try response.render("book.md", with: [:])
+}</code></pre>
         <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
         <p>However as we are rendering a Markdown file there we don't need to provide any data as it all will be in the Markdown file.</p>
         <p>So in our case KituraMarkdown will take the `book.md` file and render the Markdown in it to be viewed in a browser.</p>

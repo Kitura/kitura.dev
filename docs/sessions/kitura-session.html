@@ -110,25 +110,32 @@
           <li><a onclick="localStorage.setItem('package', 'Kitura-Session'); setActiveSidebarElementForParent('kitura-session')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura Session needs adding to the `Package.swift` file.</li>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a TypeSafeSessionRoutes.swift file</h2>
-        <p>Open your `Sources` > `Application` > `Application.swift`</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
         <pre><code class="language-swift">initializeTypeSafeSessionRoutes(app: self)</code></pre>
-        <p>Create a new file called `TypeSafeSessionRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+        <p>Create a new file, called `TypeSafeSessionRoutes.swift`:</p>
+        <pre><code>touch Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
+        <p>Open your `TypeSafeSessionRoutes.swift` file:</p>
+        <pre><code>open Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">import KituraContracts
-    import KituraSession
+import KituraSession
 
-    func initializeTypeSafeSessionRoutes(app: App) {
-        app.router.post("/cart", handler: app.postSessionHandler)
-        app.router.get("/cart", handler: app.getSessionHandler)
-    }
-    extension App {
-        // Define handlers here
-    }</code></pre>
+func initializeTypeSafeSessionRoutes(app: App) {
+    app.router.post("/cart", handler: app.postSessionHandler)
+    app.router.get("/cart", handler: app.getSessionHandler)
+}
+extension App {
+    // Define handlers here
+}</code></pre>
         <p>We will add our `postSessionHandler` and `getSessionHandler` later in this guide.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define a Type-Safe Session</h2>
-        <p>Create a new file called `CheckoutSession.swift` in `Sources` > `Application` > `Middlewares`.</p>
+        <p>Create a new file, called `CheckoutSession.swift`:</p>
+        <pre><code>touch Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
+        <p>Open your `CheckoutSession.swift` file:</p>
+        <pre><code>open Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
         <div class="info">
           <p>You may need to create the `Middlewares` folder.</p>
         </div>
@@ -136,22 +143,22 @@
         <p>Inside this file, define your `CheckoutSession` class:</p>
         <pre><code class="language-swift">import KituraSession
 
-    final class CheckoutSession: TypeSafeSession {
+final class CheckoutSession: TypeSafeSession {
 
-        let sessionId: String                       // Requirement: every session must have an ID
-        var books: [Book]                           // User-defined type, where Book conforms to Codable
+    let sessionId: String                       // Requirement: every session must have an ID
+    var books: [Book]                           // User-defined type, where Book conforms to Codable
 
-        init(sessionId: String) {                   // Requirement: must be able to create a new (empty)
-            self.sessionId = sessionId              // session containing just an ID. Assign a default or
-            books = []                              // empty value for any non-optional properties.
-        }
+    init(sessionId: String) {                   // Requirement: must be able to create a new (empty)
+        self.sessionId = sessionId              // session containing just an ID. Assign a default or
+        books = []                              // empty value for any non-optional properties.
     }
-    // Defines the configuration of the user's type: how the cookie is constructed, and how the session is
-    // persisted.
-    extension CheckoutSession {
-        static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
-        static var store: Store?
-    }</code></pre>
+}
+// Defines the configuration of the user's type: how the cookie is constructed and how
+// the session is persisted.
+extension CheckoutSession {
+    static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
+    static var store: Store?
+}</code></pre>
         <div class="info">
           <p>When using a Class you need to declare it as final.</p>
         </div>
@@ -169,13 +176,13 @@
         <p>Inside the app extension in `TypeSafeSessionRoutes.swift`, we add our `postSessionHandler`:</p>
         <pre><code class="language-swift">func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
 
-    }</code></pre>
+}</code></pre>
     <p>We have registered our TypeSafeSession on our handler by adding it to the signature.</p>
     <p>When the handler is called the middleware is run and our session is created.</p>
     <p>Within postSessionHandler, we can then interact with our session:<p>
     <pre><code class="language-swift">session.books.append(book)
-    session.save()
-    completion(book, nil)</code></pre>
+session.save()
+completion(book, nil)</code></pre>
         <p>What we're doing here is storing the posted Book into the session.</p>
         <p>We use the `append` method as we know `books` is an Array as we defined it as an Array in the CheckoutSession class.</p>
         <p>Then we need to save the session.</p>
@@ -183,27 +190,27 @@
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add session GET route</h2>
         <p>Below our `postSessionHandler` handler add:</p>
         <pre><code class="language-swift">func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
-        completion(session.books, nil)
-    }</code></pre>
+    completion(session.books, nil)
+}</code></pre>
         <p>Add that's it! We've now enabled a Kitura Session on our server.</p>
         <p>Your completed `TypeSafeSessionRoutes.swift` should now look as follows:</p>
     <pre><code class="language-swift">import KituraContracts
-    import KituraSession
+import KituraSession
 
-    func initializeTypeSafeSessionRoutes(app: App) {
-        app.router.post("/cart", handler: app.postSessionHandler)
-        app.router.get("/cart", handler: app.getSessionHandler)
+func initializeTypeSafeSessionRoutes(app: App) {
+    app.router.post("/cart", handler: app.postSessionHandler)
+    app.router.get("/cart", handler: app.getSessionHandler)
+}
+extension App {
+    func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
+        session.books.append(book)
+        session.save()
+        completion(book, nil)
     }
-    extension App {
-        func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
-            session.books.append(book)
-            session.save()
-            completion(book, nil)
-        }
-        func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
-            completion(session.books, nil)
-        }
-    }</code></pre>
+    func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
+        completion(session.books, nil)
+    }
+}</code></pre>
         <p>The easiest way to test that this works is using <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI</a>.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Test our Session</h2>

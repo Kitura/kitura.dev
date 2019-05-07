@@ -116,20 +116,20 @@
       dependencies: ["Kitura", "&lt;dependency-name&gt;"]),</code></pre>
         <p>The resulting `Package.swift` should look as follows:</p>
         <pre><code class="language-swift">// swift-tools-version:4.0
-    import PackageDescription
+import PackageDescription
 
-    let package = Package(
-        name: "MyKituraApp",
-        dependencies: [
-          .package(url: "https://github.com/IBM-Swift/Kitura.git", from: "x.x.x"),
-          .package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),
-        ],
-        targets: [
-          .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura"]),
-          .target(name: "Application", dependencies: [ "Kitura", "&lt;dependency-name&gt;"]),
-          .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura"])
-        ]
-    )</code></pre>
+let package = Package(
+    name: "MyKituraApp",
+    dependencies: [
+        .package(url: "https://github.com/IBM-Swift/Kitura.git", from: "x.x.x"),
+        .package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),
+    ],
+    targets: [
+        .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura"]),
+        .target(name: "Application", dependencies: [ "Kitura", "&lt;dependency-name&gt;"]),
+        .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura"])
+    ]
+)</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Update the project to download new package</h2>
         <p>Now that we have added the new package to our project we need to update the project.</p>

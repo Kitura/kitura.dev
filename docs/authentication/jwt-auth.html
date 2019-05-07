@@ -115,10 +115,15 @@
       <div class="underline"></div>
       <h2 class="heading-2">JWT Authentication</h2>
       <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the JWT routes</h2>
-      <p>Open your `Sources` > `Application` > `Application.swift`</p>
+
+      <p>Firstly, open your `Application.swift` file in your default text editor:</p>
+      <pre><code>open Sources/Application/Application.swift</code></pre>
       <p> Inside the `postInit()` function add: </p>
       <pre><code class="language-swift">initializeJWTRoutes(app: self)</code></pre>
-      <p>Create a new file called `JWTRoutes.swift` in `Sources` > `Application` > `Routes`</p>
+      <p>Create a new file, called `JWTRoutes.swift`:</p>
+      <pre><code>touch Sources/Application/Routes/JWTRoutes.swift</code></pre>
+      <p>Open your `JWTRoutes.swift` file:</p>
+      <pre><code>open Sources/Application/Routes/JWTRoutes.swift</code></pre>
       <p>Inside this file, add the following code:</p>
       <pre><code class="language-swift">import Foundation
 import KituraContracts
@@ -279,7 +284,10 @@ mwIDAQAB
          <div class="info">
            <p>Passwords and signed JWTs must be kept private and should always be exchanged over a secure layer like HTTPS.</p>
          </div>
-        <p>Create a `UserCredentials.swift` file in `Sources` > `Application` > `Models`.</p>
+        <p>Create a new file, called `UserCredentials.swift`:</p>
+        <pre><code>touch Sources/Application/Models/UserCredentials.swift</code></pre>
+        <p>Open your `UserCredentials.swift` file:</p>
+        <pre><code>open Sources/Application/Models/UserCredentials.swift</code></pre>
         <p>Inside this file we define our UserCredentials model:</p>
         <pre><code class="language-swift">struct UserCredentials: Codable {
     let username: String

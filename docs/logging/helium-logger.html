@@ -123,16 +123,16 @@
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
         <p>To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.</p>
-        <p>Inside `Sources` > `MyKituraApp` > `main.swift` add:</p>
+        <p>Open your `main.swift` file:</p>
+        <pre><code>open Sources/MyKituraApp/main.swift</code></pre>
+        <p>Inside your `main.swift` add:</p>
         <pre><code class="language-swift">HeliumLogger.use()</code></pre>
-        <p>We are going to use our new logger to for errors thrown by our server.</p>
+        <p>We are going to use our new logger to log errors thrown by our server.</p>
         <p>Inside the catch block, log the thrown error:</p>
-        <pre><code class="language-swift">
-Log.error(error.localizedDescription)
+        <pre><code class="language-swift">Log.error(error.localizedDescription)
     </code></pre>
         <p>Your `main.swift` should look like this:</p>
-        <pre><code class="language-swift">
-import Foundation
+        <pre><code class="language-swift">import Foundation
 import Kitura
 import LoggerAPI
 import HeliumLogger
@@ -179,7 +179,9 @@ do {
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add logging to your application</h2>
         <p>Once you have your Logger configured, you can use it within your application.</p>
-        <p>Open your `Sources` > `Application` > `Application.swift` file and ensure LoggerAPI is imported.</p>
+        <p>Open your `Application.swift` file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p>Ensure LoggerAPI is imported:</p>
         <pre><code class="language-swift">import LoggerAPI</code></pre>
         <p>Add a log message to the App's `init()` function:</p>
         <pre><code class="language-swift">Log.info("Hello World")</code></pre>
