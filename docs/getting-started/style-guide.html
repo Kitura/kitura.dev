@@ -150,7 +150,7 @@
         <p class="block-text">Throughout these guides we will assume you have a project set up as described above. If you generated your project with the Kitura macOS app or Kitura CLI, skip ahead to Step 5: Defining a Book model.
         If you generated your project using the Swift Package Manager (SPM), the following steps will produce the above structure.</p>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the Application directory</h2>
-        <p>Within our `Sources` directory we are first going to create an `Application` directory:</p>
+        <p>Within our `Sources` directory we will first create an `Application` directory:</p>
         <pre><code>mkdir Sources/Application</code></pre>
         <p>This is the directory where we will store all of our application code. Note, code in the project's `main.swift` file isn't easy to test because you can't import it as a module,
         so to encourage the creation of easily testable code we have minimal code in our `main.swift` file and recommend putting application code in the `Application` directory.</p>
@@ -159,7 +159,7 @@
         <p>Next we need to create our `Routes` directory:</p>
         <pre><code>mkdir Sources/Application/Routes</code></pre>
         <p>This is where we will store all of our route handlers.</p>
-        <p>Next we will rename the directory within `Tests` to ApplicationTests:</p>
+        <p>Next we will rename the directory within `Tests` to `ApplicationTests`:</p>
         <pre><code>mv Tests/MyKituraAppTests/ Tests/ApplicationTests</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Update the Package.swift file</h2>
