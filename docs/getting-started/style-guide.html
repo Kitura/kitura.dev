@@ -152,8 +152,8 @@
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the Application directory</h2>
         <p>Within our `Sources` directory we will first create an `Application` directory:</p>
         <pre><code>mkdir Sources/Application</code></pre>
-        <p>This is the directory where we will store all of our application code. Note, code in the project's `main.swift` file isn't easy to test because you can't import it as a module,
-        so to encourage the creation of easily testable code we have minimal code in our `main.swift` file and recommend putting application code in the `Application` directory.</p>
+        <p>This is the directory where we will store all of our application code. Note, code in the project's `main.swift` file isn't easy to test because you can't import an executable target as a module,
+        so to encourage the creation of easily testable code we have minimal code in our `main.swift` file and recommend putting application code into a separate `Application` directory.</p>
         <p>Next we will create our `Application.swift` file:</p>
         <pre><code>touch Sources/Application/Application.swift</code></pre>
         <p>Next we need to create our `Routes` directory:</p>
@@ -205,8 +205,8 @@ public class App {
     }
 }</code></pre>
         <p>This code creates an instance of Router, which will route incoming requests to the correct endpoints. Within the `run()` method we register
-        our `router` instance to run on port 8080. Kitura will run infinitely after you call the `Kitura.run()` function.</p>
-        <p>The `postInit()` function is where we configure and set up the router, this forms part of our set up because `postInit()` is called from within `run()`.</p>
+        our `router` instance to run on port 8080. The call to `Kitura.run()` does not return immediately - it will block until the server is stopped.</p>
+        <p>The `postInit()` function is where we configure and set up the router, prior to starting the server.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add code to the main.swift file</h2>
         <p>Now that we have created our `App` class in our `Application.swift` file we can use it within our `main.swift` file.</p>
