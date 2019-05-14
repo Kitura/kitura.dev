@@ -100,38 +100,28 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">Kitura CouchDB</h1>
-        <p><a target="_blank" href="http://couchdb.apache.org/">CouchDB</a> is a NoSQL (or non-relational) database. CouchDB takes a document-oriented approuch to databases.</p>
-        <p>Kitura-CouchDB is a pure Swift client which allows Kitura applications to interact with a CouchDB or <a target="_blank" href="https://www.ibm.com/uk-en/cloud/cloudant">Cloudant</a> database.</p>
+        <p><a target="_blank" href="http://couchdb.apache.org/">CouchDB</a> is a NoSQL (or non-relational) database which takes a document-oriented approach to data storage.</p>
+        <p><a target="_blank" href="https://github.com/IBM-Swift/Kitura-CouchDB">Kitura-CouchDB</a> is a pure Swift client which allows Kitura applications to interact with a CouchDB or <a target="_blank" href="https://www.ibm.com/uk-en/cloud/cloudant">Cloudant</a> database.</p>
+        <p>In this guide we’ll demonstrate how to create a CouchDB database, define a CouchDB document, save the document to the database and finally retrieve the document from the database.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Prerequisites</h2>
         <ul class="plain-list">
-          <li><span class="blue-text">Kitura Server:</span> Learn how to create one in our getting started guide</li>
-          <li><span class="blue-text">Routing:</span> Learn how to add routes in our routing guides</li>
-          <li><a onclick="localStorage.setItem('package', 'Kitura-CouchDB'); setActiveSidebarElementForParent('couchdb')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura CouchDB needs adding to the Package.swift file.</li>
+          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our getting started guide.</li>
+          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../routing/routing.html#">Routing:</a> Learn how to add routes in our routing guides.</li>
+          <li><a onclick="localStorage.setItem('package', 'Kitura-CouchDB'); setActiveSidebarElementForParent('couchdb')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura CouchDB needs adding to the `Package.swift` file.</li>
         </ul>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Download and install CouchDB</h2>
-        <p>Before we can use CouchDB within our server we first need to <a target="_blank" href="http://couchdb.apache.org/#download">Download CouchDB</a>.</p>
+        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Install CouchDB and create a database</h2>
+        <p>Before we can use CouchDB within our server we first need to <a target="_blank" href="http://couchdb.apache.org/#download">download and install CouchDB</a>.</p>
+        <p>Next, set up an admin username and password in CouchDB.</p>
+        <p>It is important to remember the credentials used here as we will need them to interact with the database from our server.</p>
+        <p>Next, create a database, in this example we're using the name `bookstore`.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create CouchDB admin user</h2>
-        <p>Once CouchDB is installed we need to create an admin user.</p>
-        <p>To do this we need to open the CouchDB admin console:</p>
-        <h3 class="heading-3">macOS:</h3>
-        <p>Select the CouchDB icon in the menu bar.</p>
-        <p>Then select open admin console from the drop down.</p>
-        <div class="info">
-          <p>If this is your first time opening CouchDB then you'll be greeted with a create admin user screen.</p>
-          <p>If you've used CouchDB then simply log in to the account you wish to use.</p>
-        </div>
-        <p>It is important to remember the creditials we used here as we will need them to interact with the database from our server.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add Kitura-CouchDB to the project</h2>
+        <p>Import CouchDB into our project:</p>
+        <pre><code class="language-swift">import CouchDB</code></pre>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Create CouchDB database</h2>
-        <p>We can create a database directly through the CouchDB admin console.</p>
-        <p>First ensure we're logged in and then select the database icon from the sidebar.</p>
-        <p>Then in the top right click on `Create Database`</p>
-        <p>We'll be asked to provide a name, for our example we will call it: `bookstore`</p>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Create an CouchRoutes.swift file</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Define the CouchDB routes</h2>
         <p>Open your `Application.swift` file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
@@ -140,7 +130,7 @@
         <pre><code>touch Sources/Application/Routes/CouchRoutes.swift</code></pre>
         <p>Open your `CouchRoutes.swift` file:</p>
         <pre><code>open Sources/Application/Routes/CouchRoutes.swift</code></pre>
-        <p>Inside this file, add the framework for our routes code:</p>
+        <p>Inside this file we are going to create two routes. The first route will save a document into the bookstore database and the second will retrieve all of the saved documents from the database.</p>
         <pre><code class="language-swift">import KituraContracts
 import CouchDB
 import LoggerAPI
@@ -159,11 +149,9 @@ extension App {
         // Get all books here
     }
 }</code></pre>
-        <p>These handlers have the same signatures as our CodableRouting handlers.
-        Check out that guide if you would like to learn more.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 5:</span> Connect to CouchDB database</h2>
-        <p>Inside our app extension, we define our connection properties for CouchDB:</p>
+        <h2 class="heading-2"><span class="blue-text bold">Step 4:</span> Connect to CouchDB database</h2>
+        <p>Inside our App extension, we will define our connection properties for CouchDB, substituting in the credentials we defined earlier for the admin username and password:</p>
         <pre><code class="language-swift">static let properties = ConnectionProperties(
         host: "127.0.0.1",              // http address
         port: 5984,                     // http port
@@ -171,16 +159,23 @@ extension App {
         username: "&lt;CouchDB-username&gt;", // admin username
         password: "&lt;CouchDB-password&gt;"  // admin password
 )</code></pre>
-        <p>Now we can use these properties to create our CouchDB connection:</p>
+        <p>Now we can use these connection properties to create our CouchDB client:</p>
         <pre><code class="language-swift">static let couchDBClient = CouchDBClient(connectionProperties: properties)</code></pre>
+        <p>The `CouchDBClient` represents a connection to a CouchDB server. It is initialized with your `ConnectionProperties` and handles the creation, retrieval and deletion of CouchDB databases.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 6:</span> Define our BookDocument</h2>
+        <h2 class="heading-2"><span class="blue-text bold">Step 5:</span> Define a Document</h2>
+
+        <p>CouchDB is a NoSQL database for storing documents. A `Document` is any structure that can be represented as JSON and contains `_id` and `_rev` fields.
+        <ul><li>The `id` field is the unique identifier for the document.</li>
+        <li>The `_rev` field is the revision of the document. It is returned when you make requests and is used to prevent conflicts from multiple users updating the same document.</li></ul></p>
+
+        <p>To define a CouchDB document, all we need to do is create a Swift object and make it conform to the `Document` protocol.</p>
 
         <p>Create a new file, called `BookDocument.swift`:</p>
         <pre><code>touch Sources/Application/Models/BookDocument.swift</code></pre>
         <p>Open your `BookDocument.swift` file:</p>
         <pre><code>open Sources/Application/Models/BookDocument.swift</code></pre>
-        <p>Inside this file, define your BookDocument class:</p>
+        <p>Inside this file, define your `BookDocument` class:</p>
         <pre><code class="language-swift">import CouchDB
 
 struct BookDocument: Document {
@@ -188,9 +183,13 @@ struct BookDocument: Document {
     var _rev: String?
     var value: Book
 }</code></pre>
-    <h2 class="heading-2"><span class="blue-text">Step 7:</span> Save our Document to our database</h2>
-        <p>To save data to our CouchDB database we first need some data to save, this data can be provided by a POST route.</p>
-        <p>So we will need to modify our couchSaveHandler to store data in our database:</p>
+    <h2 class="heading-2"><span class="blue-text">Step 6:</span> Save our document to the database</h2>
+        <p>To save data to our CouchDB database we first need some data to save, this data can be provided via the POST route which we created earlier.</p>
+        <p>We will modify the route handler, `couchSaveHandler`, which we defined earlier so that it can store data in our database:</p>
+        <p>First we need to connect to our `bookstore` database.</p>
+        <p>The `CouchDBClient` represents a connection to the CouchDB server. We use can the `CouchDBClient.retrieveDB()` method passing in our database name to connect to our existing CouchDB database.</p>
+        <p>Next we create a CouchDB document called `bookDocument` using the book which is passed into our POST route.</p>
+        <p>Now we are going to save our book document to the database. We will use the CouchDB `Database` class to make an HTTP request to our database. This class can make CRUD (Create, Retrieve, Update, Delete) requests for our CouchDB `Document`. In this case we will use `create` to save our book document. If the call succeeds we then return the book as JSON, otherwise we return an error.</p>
         <pre><code class="language-swift">func couchSaveHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
     App.couchDBClient.retrieveDB("bookstore") { (database, error) in
         guard let database = database  else {
@@ -211,8 +210,25 @@ struct BookDocument: Document {
     }
 }</code></pre>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 8:</span> Retrieve from CouchDB database</h2>
-        <p>To retrieve all documents from a CouchDB database we need to use the aptly named `retrieveAll` method within our `couchFindAllHandler`:</p>
+        <h2 class="heading-2"><span class="blue-text bold">Step 7:</span> Test saving a document to the database</h2>
+        <p>Now we're going to test our route by passing in a book and checking that it is saved to the database.</p>
+        <p>First we need to start our Kitura server.</p>
+        <p>Once the server is running, open a terminal and run the following:</p>
+        <pre><code>curl -X POST \
+      http://localhost:8080/couch \
+      -H 'content-type: application/json' \
+      -d '{
+      "id": 0,
+      "title": "A Game of Thrones",
+      "price": 14.99,
+      "genre": "Fantasy"
+  }'</code></pre>
+      <p>This will make a POST request to the server and we should be returned our book in JSON format:</p>
+      <pre><code>{"id":0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}</code></pre>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text bold">Step 8:</span> Retrieve the document from the database</h2>
+        <p>Next we're going to retrieve our document from the database. To retrieve all the documents from a CouchDB database we need to use the aptly named `retrieveAll` method.</p>
+        <p>So now let's add that functionality to the route handler we created earlier called `couchFindAllHandler`:</p>
         <pre><code class="language-swift">func couchFindAllHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
     App.couchDBClient.retrieveDB("bookstore") { (database, error) in
         guard let database = database  else {
@@ -232,6 +248,12 @@ struct BookDocument: Document {
         })
     }
 }</code></pre>
+        <p>When we made the call to `retrieveAll` we set the `includeDocuments` parameter to true, this means that each row, or document, returned from the database will have an additional field called "doc" in it which contains the JSON document. These documents can then be decoded to a given Swift type using `decodeDocuments(ofType:)` which is how we're obtaining the `books` value.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text bold">Step 9:</span> Test retrieving documents from the database</h2>
+        <p>If you have followed the guide so far then you will now have a book document in your database, which we can retrieve using the code we just wrote.</p>
+        <p>To do this, start the server and navigate to: <a target="_blank" href="http://localhost:8080/couch">http://localhost:8080/couch.</a></p>
+        <p>This will call GET on the `/couch` route and we will see the book we posted earlier returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
