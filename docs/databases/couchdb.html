@@ -131,17 +131,18 @@
         <pre><code>touch Sources/Application/Routes/CouchRoutes.swift</code></pre>
         <p>Open your `CouchRoutes.swift` file:</p>
         <pre><code>open Sources/Application/Routes/CouchRoutes.swift</code></pre>
-        <p>Inside our file, we will define two routes. The first is where we will save a document into the bookstore database and the second is where we will retrieve all of the saved documents:</p>
+        <p>Inside our file, we will define two routes. In the first route, we will retrieve a book from the user and save it into the bookstore database. In the second route, we will retrieve all of the documents that have been saved to the database.</p>
         <pre><code class="language-swift">import KituraContracts
 import CouchDB
 import LoggerAPI
 
 func initializeCouchRoutes(app: App) {
-    // Connect to database here
     app.router.post("/couch", handler: app.couchSaveHandler)
     app.router.get("/couch", handler: app.couchFindAllHandler)
 }
 extension App {
+    // Define ConnectionProperties and CouchDBClient here
+
     func couchSaveHandler(book: Book, completion: @escaping (BookDocument?, RequestError?) -> Void) {
         // Save book here
     }
@@ -188,10 +189,10 @@ struct BookDocument: Document {
         <p>The `CouchDBClient` represents a connection to a CouchDB server. It is initialized with your `ConnectionProperties` and handles the creation, retrieval and deletion of CouchDB databases.</p>
         <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 6:</span> Save our document to the database</h2>
-        <p>We are going to modify the `couchSaveHandler` we defined earlier to store a document in our database. But first, we need something to store. We will use a book that has been provided via our POST route.</p>
-        <p>Next, we need to connect to our `bookstore` database. We do this using the `CouchDBClient.retrieveDB()` method and passing in our database name.</p>
+        <p>We are going to modify the `couchSaveHandler` we defined earlier to store a document in our database.</p>
+        <p>The first thing we need to do is connect to our `bookstore` database. We achieve this by using the `CouchDBClient.retrieveDB()` method and passing in our database name.</p>
         <p>Inside the `couchSaveHandler` add the following code:</p>
-        <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") {
+        <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") { (database, error) in
     guard let database = database  else {
         return completion(nil, .internalServerError)
     }
@@ -200,7 +201,7 @@ struct BookDocument: Document {
     <div class="info">
         <p>Since the CouchDB functions are asynchronous, we must handle responses inside the function's callback.</p>
     </div>
-        <p>Next we create a CouchDB document called `bookDocument` using the book which is passed into our POST route.</p>
+        <p>Next, we create a CouchDB document called `bookDocument` using the book which is passed into our POST route.</p>
 <pre><code class="language-swift">var bookDocument = BookDocument(_id: String(book.id), _rev: nil, value: book)
 // Create document here</code></pre>
         <p>Now we are going to save our book document to the database.
@@ -251,7 +252,7 @@ struct BookDocument: Document {
         <h2 class="heading-2"><span class="blue-text bold">Step 8:</span> Retrieve the document from the database</h2>
         <p>Similar to our other handler, The first step is to connect to our `bookstore` database.</p>
         <p>Inside the `couchFindAllHandler` add the following code:</p>
-        <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") {
+        <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") { (database, error) in
     guard let database = database  else {
         return completion(nil, .internalServerError)
     }
@@ -262,7 +263,7 @@ struct BookDocument: Document {
     guard let allDocuments = allDocuments else {
         return completion(nil, RequestError(httpCode: error?.statusCode ?? 500))
     }
-    // Decode an return books here
+    // Decode and return books here
 })</code></pre>
 <p>When we made the call to `retrieveAll` we set the `includeDocuments` parameter to true,
      this means that each row returned from the database will have an additional field called "doc" in it which contains the JSON document.
