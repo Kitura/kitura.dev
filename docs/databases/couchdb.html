@@ -142,11 +142,11 @@ func initializeCouchRoutes(app: App) {
     app.router.get("/couch", handler: app.couchFindAllHandler)
 }
 extension App {
-    func couchSaveHandler(book: Book, completion: (BookDocument?, RequestError?) -> Void) {
+    func couchSaveHandler(book: Book, completion: @escaping (BookDocument?, RequestError?) -> Void) {
         // Save book here
     }
 
-    func couchFindAllHandler(completion: ([BookDocument]?, RequestError?) -> Void) {
+    func couchFindAllHandler(completion: @escaping ([BookDocument]?, RequestError?) -> Void) {
         // Get all books here
     }
 }</code></pre>
