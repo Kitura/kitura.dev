@@ -163,7 +163,7 @@ extension App {
         <pre><code>touch Sources/Application/Models/BookDocument.swift</code></pre>
         <p>Open your `BookDocument.swift` file:</p>
         <pre><code>open Sources/Application/Models/BookDocument.swift</code></pre>
-        <p>Inside this file, define your `BookDocument` class:</p>
+        <p>Inside this file, define your `BookDocument`:</p>
         <pre><code class="language-swift">import CouchDB
 
 struct BookDocument: Document {
@@ -251,7 +251,7 @@ struct BookDocument: Document {
       </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 8:</span> Retrieve the document from the database</h2>
-        <p>Similar to our other handler, The first step is to connect to our `bookstore` database.</p>
+        <p>Similar to our other handler, the first step is to connect to our `bookstore` database.</p>
         <p>Inside the `couchFindAllHandler` add the following code:</p>
         <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") { (database, error) in
     guard let database = database  else {
@@ -269,7 +269,7 @@ struct BookDocument: Document {
 <p>When we made the call to `retrieveAll` we set the `includeDocuments` parameter to true,
      this means that each row returned from the database will have an additional field called "doc" in it which contains the JSON document.
       These documents can then be decoded to a given Swift type using `decodeDocuments(ofType:)`.</p>
-        <p>We decode all the documents that match the `BookDocument` model, and return them in the completion:</p>
+        <p>We decode all the documents that match the `BookDocument` type, and return them in the completion:</p>
         <pre><code class="language-swift">let books = allDocuments.decodeDocuments(ofType: BookDocument.self)
 completion(books, nil)</code></pre>
         <p>Your completed GET handler should now look as follows:</p>
