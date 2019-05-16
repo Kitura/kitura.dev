@@ -111,7 +111,7 @@
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a directory for our files</h2>
         <p>The first thing we are going to need is a static file to serve.
              By default the static file server looks in the "public" directory, so let's create that now.</p>
-        <p>From the root directory of your project (where `Package.swift` is located), create the public directory:</p>
+        <p>From the root directory of your project, where `Package.swift` is located, create the public directory:</p>
         <pre><code>mkdir public</code></pre>
         <p>Change into the directory:</p>
         <pre><code>cd public</code></pre>
@@ -134,8 +134,8 @@
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
         <pre><code class="language-swift">router.all("/public", middleware: StaticFileServer())</code></pre>
-        <p>That's it! Now, we will serve any files from the project's `public` directory (Since this is the default path) from the `/public` route on our server.</p>
-        <p>We used public for both the route name and directory name so that the route path and file path match, however these could be set to anything.</p>
+        <p>That's it! Now, we will serve any files from the project's `public` directory (since this is the default path) from the `/public` route on our server.</p>
+        <p>We are using public for both the route and directory, however these could be set to anything.</p>
         <p>For example, if you wanted to serve files from the `assets` folder from the '/internal' route, you could use the following code:</p>
         <pre><code class="language-swift">router.all("/internal", middleware: StaticFileServer(path: "./assets"))</code></pre>
         <div class="underline"></div>
