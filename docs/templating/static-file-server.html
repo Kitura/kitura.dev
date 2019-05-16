@@ -1,28 +1,161 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
-    </script>
-    <title>Learn - Getting Started</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../assets/favicon-16x16.png" sizes="16x16" />
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+		gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/docs.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Static File Server</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
   </head>
-  <body>
-    <h1 class="heading-1">Static File Server</h1>
-    <div class="underline"></div>
-    <h2 class="heading-2">Next steps</h2>
-    <p><span class="blue-text bold">Add logging:</span> Get useful feedback from your server about startup and errors</p>
-    <p><span class="blue-text bold">Add routing:</span> Add REST APIs, such as HTTP GET, to your server</p>
-  </body>
+<body>
+  <section class="docs-grid-container">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item collapsible">Getting Started</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Logging</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Routing</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Databases</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Sessions</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Kitura Session</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Authentication</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Type-Safe Credentials</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/fb-google-oauth2.html">OAuth 2.0 with Facebook/Google</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Web Application</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../templating/templating.html">What is templating?</a></li>
+          <li class="nested-sidebar-item active"><a href="../templating/static-file-server.html">Static File Server</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Deploying</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/cloud-foundry.html">Cloud Foundry</a></li>
+        </ul>
+      </ul>
+    </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="docs-item-2 search-container">
+      <!-- <input class="docs-search" type="text" name="searchInput" placeholder="Search documentation..."> -->
+      <div id="beta" class="temp-beta">
+        <h4>Currently in Beta - <a href="../../old-learn.html">View old docs</a></h4>
+      </div>
+    </div>
+    <nav class="docs-item-3 docs-nav">
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
+    </nav>
+    <div id="doc-container" class="docs-item-4 docs-window">
+      <main>
+        <h1 class="heading-1">Serving static files in Kitura</h1>
+        <p class="block-text">In a web application, we will require resources such as images, HTML files, CSS files, and JavaScript files.
+         These are static files, as they can be delivered to the user without needing to be modified, or generated and can be provided to the user with Kitura's built-in `StaticFileServer` middleware.
+         This guide will show you how to configure and register a static file server on your Kitura server.</p>
+         <div class="info">
+             <p>If you don't have a Kitura server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+         </div>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a directory for our files</h2>
+        <p>The first thing we are going to need is a static file to serve.
+             By default the static file server looks in the "public" directory, so let's create that now.</p>
+        <p>From the root directory of your project, where `Package.swift` is located, create the public directory:</p>
+        <pre><code>mkdir public</code></pre>
+        <p>Change into the directory:</p>
+        <pre><code>cd public</code></pre>
+        <p>Create a new file called `hello.html`:</p>
+        <pre><code>touch hello.html</code></pre>
+        <p>Open this file in your preferred text editor (we will use Xcode):</p>
+        <pre><code>open hello.html -a Xcode.app</code></pre>
+        <p>Inside this file, add the following text:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>In this example, we will serve an HTML file, however, this could be any file type.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Register a static file server on our router</h2>
+        <p>The `StaticFileServer` middleware is built into Kitura. To use it we just need register it on our router.</p>
+        <p>Open your `Application.swift` file in your default text editor (or Xcode if you prefer):</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p> Inside the `postInit()` function add: </p>
+        <pre><code class="language-swift">router.all("/public", middleware: StaticFileServer())</code></pre>
+        <p>That's it! Now, we will serve any files from the project's `public` directory (since this is the default path) from the `/public` route on our server.</p>
+        <p>We are using public for both the route and directory, however these could be set to anything.</p>
+        <p>For example, if you wanted to serve files from the `assets` folder from the '/internal' route, you could use the following code:</p>
+        <pre><code class="language-swift">router.all("/internal", middleware: StaticFileServer(path: "./assets"))</code></pre>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Test serving a static file</h2>
+        <p>To test our static file server, we can view the HTML file we created earlier.</p>
+        <p>We do this by running our server, then opening our browser at:</p>
+        <p><a target="_blank" href="http://localhost:8080/public/hello.html">localhost:8080/public/hello.html</a></p>
+        <p>We should see our HTML document with the "Hello World!" message.</p>
+        <p>The `StaticFileServer` also loads files from subdirectories of the project's `public` directory, so all we need to do is place a file into a subdirectory e.g. `./public/images/picture.png`
+and it will be served at `http://localhost:8080/public/images/picture.png`.</p>
+        <h2 class="heading-2">Next steps</h2>
+            <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="stencil.html#">Stencil:</a></span> Learn how to add Stencil templating to your Kitura application.</p>
+            <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="markdown.html#">Markdown:</a></span> Learn how to add Markdown templating to your Kitura application.</p>
+      </main>
+    </div>
+    <div id="top-page" class="top-page">
+      <a href="#">Back to top</a>
+    </div>
+  </section>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+  <script src="../../scripts/prism.js"></script>
+</body>
 </html>
