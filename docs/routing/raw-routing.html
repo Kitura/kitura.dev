@@ -56,8 +56,8 @@
         <li class="sidebar-item collapsible">Sessions</li>
         <ul class="nested-sidebar-list content">
           <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
-          <li class="nested-sidebar-item"><a href="../sessions/raw-sessions.html">Kitura Raw Session</a></li>
-          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Kitura TypeSafeSession</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Raw Routing Session</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/type-safe-session.html">Codable Routing Session</a></li>
         </ul>
         <li class="sidebar-item collapsible">Authentication</li>
         <ul class="nested-sidebar-list content">
@@ -288,7 +288,7 @@ response.send(App.bookStore[id])</code></pre>
         <p>Back in `RawRoutes.swift`, we wrap the code in our handlers with this execute function.</p>
         <p>Your completed `RawRouting.swift` should now look as follows:</p>
     <pre><code class="language-swift">func initializeRawRoutes(app: App) {
-      
+
     app.router.post("/raw") { request, response, next in
         do {
             let book = try request.read(as: Book.self)
