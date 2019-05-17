@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Kitura Session</title>
+    <title>Raw Routing Session</title>
     <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
@@ -56,7 +56,8 @@
         <li class="sidebar-item collapsible">Sessions</li>
         <ul class="nested-sidebar-list content">
           <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
-          <li class="nested-sidebar-item active"><a href="../sessions/kitura-session.html">Kitura Session</a></li>
+          <li class="nested-sidebar-item active"><a href="../sessions/kitura-session.html">Raw Routing Session</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/type-safe-session.html">Codable Routing Session</a></li>
         </ul>
         <li class="sidebar-item collapsible">Authentication</li>
         <ul class="nested-sidebar-list content">
@@ -68,7 +69,6 @@
         <li class="sidebar-item collapsible">Web Application</li>
         <ul class="nested-sidebar-list content">
           <li class="nested-sidebar-item"><a href="../templating/templating.html">What is templating?</a></li>
-          <li class="nested-sidebar-item"><a href="../templating/static-file-server.html">Static File Server</a></li>
           <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
           <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
         </ul>
@@ -100,136 +100,200 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
-        <h1 class="heading-1">Kitura Session</h1>
+        <h1 class="heading-1">Raw Routing Session</h1>
         <p class="block-text">HTTP is a stateless connection protocol, that is the server can't distinguish one request from another. Sessions and cookies provide HTTP with state, they allow the server to know who is making a specific request and respond accordingly.</p>
-        <p class="block-text">This guide uses Kitura Session with Codable routing leveraging type-safe sessions.</p>
-        <h2 class="heading-2">Prerequisites</h2>
-        <ul class="plain-list">
-            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'Kitura-Session'); setActiveSidebarElementForParent('kitura-session')" href="../getting-started/update-package.html#">Update Dependencies:</a> Kitura Session needs adding to the `Package.swift` file.</li>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a TypeSafeSessionRoutes.swift file</h2>
-        <p>Open your `Application.swift` file:</p>
-        <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
-        <pre><code class="language-swift">initializeTypeSafeSessionRoutes(app: self)</code></pre>
-        <p>Create a new file, called `TypeSafeSessionRoutes.swift`:</p>
-        <pre><code>touch Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
-        <p>Open your `TypeSafeSessionRoutes.swift` file:</p>
-        <pre><code>open Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
-        <p>Inside this file, add the framework for our routes code:</p>
-        <pre><code class="language-swift">import KituraContracts
-import KituraSession
+        <p class="block-text">This guide demonstrates how to use the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session">Kitura Session</a> package to manage user sessions in Kitura with Raw routing.  If you are using Codable routing, follow the guide for <a href="type-safe-session.html">Kitura Session with type-safe sessions</a>.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create your session routes</h2>
+        <p>In this guide we are going to create two Kitura routes:</p>
+        <ul>
+            <li><p>A GET route, where we retrieve the books from our session.</p></li>
+             <li><p>A POST route, where we store a book in our session.</p></li>
+         </ul>
+         <p>We are using <a target="_blank" href="../getting-started/style-guide.html">the Book model from the style guide</a> in our routes, however you could use any codable object.</p>
+         <p>To use Kitura-Session from a server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session#add-dependencies"> add Kitura-Session to our dependencies</a>.</p>
+	        <div class="info">
+	            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+	        </div>
+         <p>Once that is complete, open your `Application.swift` file in your default text editor (or Xcode if you prefer):</p>
+         <pre><code>open Sources/Application/Application.swift</code></pre>
+         <p> Inside the `postInit()` function add: </p>
+         <pre><code class="language-swift">initializeSessionRawRoutes(app: self)</code></pre>
+         <p>Next, create a new file, called `SessionRawRoutes.swift`, to contain the framework for our routes code:</p>
+         <pre><code class="language-swift">import KituraSession
 
-func initializeTypeSafeSessionRoutes(app: App) {
-    app.router.post("/cart", handler: app.postSessionHandler)
-    app.router.get("/cart", handler: app.getSessionHandler)
-}
-extension App {
-    // Define handlers here
+func initializeSessionRawRoutes(app: App) {
+    // Define the Session here
+
+    app.router.get("/session") { request, response, next in
+        // Get the books from the session here
+        next()
+    }
+
+    app.router.post("/session") { request, response, next in
+        // Add books to the session here
+        next()
+    }
 }</code></pre>
-        <p>We will add our `postSessionHandler` and `getSessionHandler` later in this guide.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define a Type-Safe Session</h2>
-        <p>Create a new file, called `CheckoutSession.swift`:</p>
-        <pre><code>touch Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
-        <p>Open your `CheckoutSession.swift` file:</p>
-        <pre><code>open Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
+        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Set up a session</h2>
+        <p class="block-text">We will use a session to persist data between the user's requests.
+            The session will provide the user with a cookie that the user will attach to future requests.
+            That cookie is then linked to a session store, where we keep data we want to be associated with that user's cookie.
+            This allows us to add features such as an online shopping cart, where multiple requests add items to the cart until we are ready to checkout.</p>
+        <p>When we create our session we can configure it with the following parameters:</p>
+        <ul>
+          <li><span class="blue-text">secret:</span> A `String` to be used for session encoding. This is your session's password and should be treated as such.</li>
+          <li><span class="blue-text">cookie:</span> A list of options for the session's cookies. In this example we will use this to set the cookie's name.</li>
+          <li><span class="blue-text">store:</span> A session backing store that implements the `Store` protocol. This determines where session data is persisted. In this example we do not set this, meaning the data is persisted on the server.</li>
+        </ul>
         <div class="info">
-          <p>You may need to create the `Middlewares` folder.</p>
+            <p>For live applications, you should use a persistent store, such as a database, or <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session-Redis">Kitura-Session-Redis</a>.</p>
         </div>
-        <p>We can use either a Class or a Struct for TypeSafeMiddleware here but we will use a Class.</p>
-        <p>Inside this file, define your `CheckoutSession` class:</p>
+        <p>To set up our session, we create a `Session` middleware with our desired parameters.</p>
+        <p>Inside your `initializeSessionRawRoutes`, add the following code:</p>
+        <pre><code class="language-swift">let session = Session(secret: "password", cookie: [CookieParameter.name("Raw-cookie")])</code></pre>
+        <p>Below this line, register the middleware on our router:</p>
+        <pre><code class="language-swift">app.router.all(middleware: session)</code></pre>
+        <p>We should now have access to our session using `request.session`.</p>
+        <p>Add the following `guard` statement to both route handlers to ensure that this is the case:</p>
+        <pre><code class="language-swift">guard let session = request.session else {
+    return try response.status(.internalServerError).end()
+}</code></pre>
+        <p>Our `SessionRawRoutes.swift` file should now look as follows:</p>
         <pre><code class="language-swift">import KituraSession
 
-final class CheckoutSession: TypeSafeSession {
+func initializeSessionRawRoutes(app: App) {
+    let session = Session(secret: "password", cookie: [CookieParameter.name("Raw-cookie")])
+    app.router.all(middleware: session)
 
-    let sessionId: String                       // Requirement: every session must have an ID
-    var books: [Book]                           // User-defined type, where Book conforms to Codable
-
-    init(sessionId: String) {                   // Requirement: must be able to create a new (empty)
-        self.sessionId = sessionId              // session containing just an ID. Assign a default or
-        books = []                              // empty value for any non-optional properties.
+    app.router.get("/session") { request, response, next in
+        guard let session = request.session else {
+            return try response.status(.internalServerError).end()
+        }
+        // Get the books from the session here
+        next()
     }
-}
-// Defines the configuration of the user's type: how the cookie is constructed and how
-// the session is persisted.
-extension CheckoutSession {
-    static let sessionCookie: SessionCookie = SessionCookie(name: "MySession", secret: "Top Secret")
-    static var store: Store?
-}</code></pre>
-        <div class="info">
-          <p>When using a Class you need to declare it as final.</p>
-        </div>
-        <p>The minimum requirements for a type-safe session are:</p>
-        <ul>
-          <li><span class="blue-text">sessionID:</span></li>
-          <li><span class="blue-text">Initiliser:</span> Used to create a new sessionId</li>
-          <li><span class="blue-text">sessionCookie:</span> Defines the name of the cookie and the secret data used to encrypt it</li>
-          <li><span class="blue-text">An optional store:</span> Defines how sessions should be persisted</li>
-        </ul>
-        <p>If store isn't specified then a default in memory store is used.</p>
-        <p>For an example of a persistent store for sessions see Kitura-Session-Redis</p>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add session POST route</h2>
-        <p>Inside the app extension in `TypeSafeSessionRoutes.swift`, we add our `postSessionHandler`:</p>
-        <pre><code class="language-swift">func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
 
-}</code></pre>
-    <p>We have registered our TypeSafeSession on our handler by adding it to the signature.</p>
-    <p>When the handler is called the middleware is run and our session is created.</p>
-    <p>Within postSessionHandler, we can then interact with our session:<p>
-    <pre><code class="language-swift">session.books.append(book)
-session.save()
-completion(book, nil)</code></pre>
-        <p>What we're doing here is storing the posted Book into the session.</p>
-        <p>We use the `append` method as we know `books` is an Array as we defined it as an Array in the CheckoutSession class.</p>
-        <p>Then we need to save the session.</p>
-        <p>Now we can add a route for retrieving the data.</p>
-        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add session GET route</h2>
-        <p>Below our `postSessionHandler` handler add:</p>
-        <pre><code class="language-swift">func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
-    completion(session.books, nil)
-}</code></pre>
-        <p>Add that's it! We've now enabled a Kitura Session on our server.</p>
-        <p>Your completed `TypeSafeSessionRoutes.swift` should now look as follows:</p>
-    <pre><code class="language-swift">import KituraContracts
-import KituraSession
-
-func initializeTypeSafeSessionRoutes(app: App) {
-    app.router.post("/cart", handler: app.postSessionHandler)
-    app.router.get("/cart", handler: app.getSessionHandler)
-}
-extension App {
-    func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
-        session.books.append(book)
-        session.save()
-        completion(book, nil)
-    }
-    func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
-        completion(session.books, nil)
+    app.router.post("/session") { request, response, next in
+        guard let session = request.session else {
+            return try response.status(.internalServerError).end()
+        }
+        // Add books to the session here
+        next()
     }
 }</code></pre>
-        <p>The easiest way to test that this works is using <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI</a>.</p>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add the session GET route</h2>
+    <p>Now we have access to our session, we can use it to persist data.</p>
+    <p>We are going to be persisting the `Book` model from the <a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide</a>, but you can use any `Codable` Swift type.</p>
+    <p>The session is stored as a `[String: Any]` dictionary, however by declaring the expected type, we can directly decode our model from the session.</p>
+    <p>In our case, we decode an array of books by adding the following code to our GET handler:</p>
+    <pre><code class="language-swift">let books: [Book] = session["books"] ?? []</code></pre>
+    <p>This will get all the books stored for the "books" key in our model. If there are no books it returns an empty array.</p>
+    <p>Once we have our books, we send them to the user in the response:</p>
+    <pre><code class="language-swift">response.send(books)</code></pre>
+    <p>Our completed GET route should now look as follows:</p>
+    <pre><code class="language-swift">app.router.get("/session") { request, response, next in
+    guard let session = request.session else {
+        return try response.status(.internalServerError).end()
+    }
+    let books: [Book] = session["books"] ?? []
+    response.send(books)
+    next()
+}</code></pre>
+    <div class="underline"></div>
+    <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add the session POST route</h2>
+    <p>Now we need some books to retrieve. We will do this by adding a book that has been posted into our route.</p>
+    <p>The first thing we need to do is decode the book.</p>
+    <p>We do this by adding the following code to our POST handler:</p>
+    <pre><code class="language-swift">let inputBook = try request.read(as: Book.self)</code></pre>
+    <p>Next we need to get the books that are currently in the session:<p>
+    <pre><code class="language-swift">var books: [Book] = session["books"] ?? []</code></pre>
+    <p>Now we append our new book to the existing books and store it in the session for the "books" key:</p>
+    <pre><code class="language-swift">books.append(inputBook)
+session["books"] = books</code></pre>
+    <p>Finally we respond with the book which we added to the session, to represent a successful request.</p>
+    <pre><code class="language-swift">response.status(.created)
+response.send(inputBook)</code></pre>
+        <p>Our completed POST route should now look as follows:</p>
+        <pre><code class="language-swift">app.router.post("/session") { request, response, next in
+    guard let session = request.session else {
+        return try response.status(.internalServerError).end()
+    }
+    let inputBook = try request.read(as: Book.self)
+    var books: [Book] = session["books"] ?? []
+    books.append(inputBook)
+    session["books"] = books
+    response.status(.created)
+    response.send(inputBook)
+    next()
+}</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Test our Session</h2>
-        <p>We will be using Kitura OpenAPI to test our sessions but any tool capable of testing APIs, such as <a href="https://www.getpostman.com/">Postman</a>, would work.</p>
-        <div class="info">
-          <p>If you don't know how to test your Codable routes using Kiura OpenAPI then you can follow our <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI Guide</a> to learn how.</p>
-        </div>
-        <p>To use OpenAPI we first need to start our server.</p>
-        <p>Once the server has started open:</p>
-        <p><a target="_blank" href="http://localhost:8080/openapi/ui">http://localhost:8080/openapi/ui</a></p>
-        <p>Use OpenAPI to post a books to "/cart"</p>
-        <p>To test the GET, either use OpenAPI or go to <a target="_blank" href="http://localhost:8080/cart">http://localhost:8080/cart</a>.</p>
-        <p>You should see the book you posted. The server is using cookies to make a unique response for your session.</p>
-        <p>You can test this by opening a private window and going to <a target="_blank" href="http://localhost:8080/cart">http://localhost:8080/cart</a>.
-           This will make a new session and the cart will be empty.</p>
-        <div class="underline"></div>
+        <p>We have now completed the code for our session.
+             This will allow us to add books to our cart and persist them between requests.</p>
+        <p>Our completed `SessionRawRoutes.swift` file should now look as follows:</p>
+        <pre><code class="language-swift">import KituraSession
+
+func initializeSessionRawRoutes(app: App) {
+    let session = Session(secret: "password", cookie: [CookieParameter.name("Raw-cookie")])
+    app.router.all(middleware: session)
+
+    app.router.get("/session") { request, response, next in
+        guard let session = request.session else {
+            return try response.status(.internalServerError).end()
+        }
+        let books: [Book] = session["books"] ?? []
+        response.send(books)
+        next()
+    }
+
+    app.router.post("/session") { request, response, next in
+        guard let session = request.session else {
+            return try response.status(.internalServerError).end()
+        }
+        let inputBook = try request.read(as: Book.self)
+        var books: [Book] = session["books"] ?? []
+        books.append(inputBook)
+        session["books"] = books
+        response.status(.created)
+        response.send(inputBook)
+        next()
+    }
+}</code></pre>
+        <p>To test our POST route, we will send a request using curl, with cookies enabled.</p>
+        <p>Open Terminal and enter the following:</p>
+        <pre><code>curl -X POST \
+http://localhost:8080/session \
+-b cookies.txt -c cookies.txt \
+-H 'content-type: application/json' \
+-d '{
+    "id": 1,
+    "title": "War and Peace",
+    "price": 10.99,
+    "genre": "Historical drama"
+}'</code></pre>
+        <p>If our request was successful, our book will be returned to us:</p>
+        <pre><code>{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}</code></pre>
+        <p>We will also have a cookie that curl has stored in the `cookies.txt` file.</p>
+        <p>To retrieve our book, we make another curl request to our server:</p>
+        <pre><code>curl -X GET \
+http://localhost:8080/session \
+-b cookies.txt -c cookies.txt</code></pre>
+    <p>If the request is successful, it will return the book we just sent to the server.</p>
+    <pre><code>[{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}]</code></pre>
+    <p>The cookie we sent with our request has identifed our session, so that our saved book can be returned.</p>
+    <p>Each user making requests to these routes will create their own basket of books.</p>
+    <p>We can demonstrate this by deleting our cookie:</p>
+    <pre><code>rm cookies.txt</code></pre>
+    <p>Followed by making a new GET request:</p>
+    <pre><code>curl -X GET \
+http://localhost:8080/session \
+-b cookies.txt -c cookies.txt</code></pre>
+    <p>This represents a user without a session so we are returned an empty array:</p>
+    <pre><code>[]</code></pre>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="../authentication/typesafe-auth.html#">Authentication:</a></span> Learn about authentication and what Kitura provides.</p>
+         <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="../authentication/typesafe-auth.html#">Authentication:</a></span> Learn about authentication and what Kitura provides.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
