@@ -102,14 +102,13 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">Kitura Markdown</h1>
-        <h2 class="heading-2">Prerequisites</h2>
-        <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'Kitura-Markdown'); setActiveSidebarElementForParent('markdown')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraMarkdown needs adding to the `Package.swift` file.</li>
-        </ul>
-        <div class="underline"></div>
+        <p>To serve a web page generated from <a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"> Markdown templates</a> (.md files) we use <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Markdown"> Kitura-Markdown</a>.</p>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add KituraMarkdown to the Kitura App</h2>
-        <p>First we need to import the KituraMarkdown package:</p>
+        <p>To use Markdown from a server, we first need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Markdown#add-dependencies"> add Kitura-Markdown to our dependencies</a>.</p>
+        <div class="info">
+            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
+        <p>Next, we need to import the KituraMarkdown package:</p>
         <pre><code class="language-swift">import KituraMarkdown</code></pre>
         <p>Now we can add the KituraMarkdown template engine to our router instance:</p>
         <p>Below the line `let router = Router()` we will add:</p>

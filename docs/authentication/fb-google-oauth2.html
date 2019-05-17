@@ -120,11 +120,6 @@
   <p class="block-text">This guide describes how to implement the OAuth 2.0 flow for a client accessing the server via a web browser.<br>
        For a mobile application, the user must authenticate themselves on the device, send the access token to the server and have the token authenticated using a Credentials token plugin. We will not cover the mobile application flow in this guide.</p>
   </div>
-  <h2 class="heading-2">Prerequisites</h2>
-  <ul class="plain-list">
-    <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-    <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-  </ul>
   <div class="underline"></div>
   <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create your third party OAuth 2.0 application</h2>
   <p class="block-text">For this guide we need a third party OAuth 2.0 provider who will authenticate the user.
@@ -163,6 +158,9 @@
        <li><p>A log out route, where we revoke the users credentials</p></li>
    </ul>
   <p>In this step we will create the framework for our protected and log out routes.</p>
+  <div class="info">
+      <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+  </div>
   <p>Firstly, open your `Application.swift` file in your default text editor (or Xcode if you prefer):</p>
   <pre><code>open Sources/Application/Application.swift</code></pre>
   <p> Inside the `postInit()` function add: </p>

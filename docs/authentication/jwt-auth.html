@@ -107,17 +107,14 @@
            It allows you to create sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.
            This guide will demonstrate how to use Swift-JWT to implement Single Sign On (SSO) authentication for your Kitura routes.
            This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.</p>
-      <h2 class="heading-2">Prerequisites</h2>
-      <ul class="plain-list">
-        <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-        <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-        <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-        <li><a onclick="localStorage.setItem('package', 'Swift-JWT'); setActiveSidebarElementForParent('swift-jwt')" href="../getting-started/update-package.html#">Update Dependencies:</a> Swift-JWT needs adding to the `Package.swift` file.</li>
-      </ul>
       <div class="underline"></div>
       <h2 class="heading-2">JWT Authentication</h2>
       <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the JWT routes</h2>
-
+      <p>To use JWTs from a server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Swift-JWT#add-dependencies"> add Swift-JWT to our dependencies</a>.</p>
+      <div class="info">
+          <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+      </div>
+      <p>Once we have added Swift-JWT, we need a file for our JWT routes.</p>
       <p>Firstly, open your `Application.swift` file in your default text editor:</p>
       <pre><code>open Sources/Application/Application.swift</code></pre>
       <p> Inside the `postInit()` function add: </p>

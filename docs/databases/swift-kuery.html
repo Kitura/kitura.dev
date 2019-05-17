@@ -106,15 +106,11 @@
              Its main idea is to unify the APIs to the various relational databases,
               providing a Swifty yet SQL-like API.
               This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.</p>
-        <h2 class="heading-2">Prerequisites</h2>
-        <ul class="plain-list">
-            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-            <li><a onclick="setActiveSidebarElementForParent('logging')" href="../logging/logging.html#">Logging:</a> Learn how to add logging to your project.</li>
-        </ul>
-        <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the Kuery routes</h2>
+        <p>We are going to create a new file in our project for the Kuery routes.</p>
+        <div class="info">
+            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
         <p>Open your `Application.swift` file:</p>
         <pre><code>touch Sources/Application/Application.swift</code></pre>
         <p> Inside the `postInit()` function add: </p>
@@ -184,11 +180,12 @@
   }</code></pre>
       <p>Add the above code, for your chosen routing method, to your `KueryRoutes.swift` file.</p>
       </div>
-
+      <div class="info">
+          <p>The routes in this guide are using the<a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
+        </div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
         <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
         <p>The API to use each plugin is the same but the installation steps differ slightly.</p>
-        <p>In this guide we will select `PostgreSQL` and follow the guide from there.</p>
         <section class="tab">
           <div class="tab-buttons">
             <button id="postgres-button" type="button" name="button" class="tablinks postgres sqlGroup" onclick="openPlugin('postgres', 'sqlGroup')">PostgreSQL</button>
@@ -221,7 +218,7 @@
             <p>Now we're ready to connect to our database from our Kitura server.</p>
             <div class="underline"></div>
             <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to a PostgreSQL database</h2>
-            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL" target="_blank">SwiftKueryPostgreSQL</a> to the dependencies in the `Package.swift` file. </p>
+            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies" target="_blank">SwiftKueryPostgreSQL</a> to the dependencies in the `Package.swift` file. </p>
             <p>Inside the file which defines the routes, `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:</p>
             <pre><code class="language-swift">import SwiftKuery
 import SwiftKueryPostgreSQL</code></pre>
@@ -271,7 +268,7 @@ static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432,
             <div class="underline"></div>
 
             <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to a MySQL database</h2>
-            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/SwiftKueryMySQL" target="_blank">SwiftKueryMySQL</a> to the dependencies in the `Package.swift` file. </p>
+            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/SwiftKueryMySQL#add-dependencies" target="_blank">SwiftKueryMySQL</a> to the dependencies in the `Package.swift` file. </p>
             <p>Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKueryMySQL packages:</p>
             <pre><code class="language-swift">import SwiftKuery
 import SwiftKueryMySQL</code></pre>
@@ -310,7 +307,7 @@ static let pool = MySQLConnection.createPool(user: "kitura", password: "password
             <div class="underline"></div>
 
             <h2 class="heading-2"><span class="blue-text">Step 2c:</span> Create a connection to an SQLite database</h2>
-            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-SQLite" target="_blank">SwiftKuerySQLite</a> to the dependencies in the `Package.swift` file. </p>
+            <p>Add <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a> and <a href="https://github.com/IBM-Swift/Swift-Kuery-SQLite/#add-dependencies" target="_blank">SwiftKuerySQLite</a> to the dependencies in the `Package.swift` file. </p>
             <p>Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKuerySQLite packages:</p>
             <pre><code class="language-swift">import SwiftKuery
 import SwiftKuerySQLite</code></pre>
