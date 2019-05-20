@@ -117,7 +117,7 @@
       name: "&lt;project-name&gt;",
       dependencies: ["Kitura", "&lt;dependency-name&gt;"]),</code></pre>
         <p>The resulting `Package.swift` should look as follows:</p>
-        <pre><code class="language-swift">// swift-tools-version:x.x
+        <pre><code class="language-swift">// swift-tools-version:5.0
 import PackageDescription
 
 let package = Package(
@@ -132,7 +132,7 @@ let package = Package(
         .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura"])
     ]
 )</code></pre>
-        <p>Note, "x.x.x" will reference the Kitura <a target="_blank" href="https://github.com/IBM-Swift/Kitura/releases">release</a> you are using and "x.x" will refer to the minimum version of Swift required to build the package (e.g. 4.0, 4.2, 5.0).</p>
+        <p>Substitute "x.x.x" with the Kitura <a target="_blank" href="https://github.com/IBM-Swift/Kitura/releases">release</a> you are using.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Update the project to download new package</h2>
         <p>Now that we have added the new package to our project we need to update the project.</p>
