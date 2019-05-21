@@ -35,6 +35,9 @@
 }
 
 .sidebar-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   margin-left: 6rem;
   min-height: 100vh;
 
@@ -61,6 +64,11 @@
     color: $blue-color;
     font-weight: 800;
   }
+}
+
+.nested-sidebar-list {
+    margin: 0;
+    padding: 0;
 }
 
 .nested-sidebar-item {
