@@ -127,6 +127,11 @@
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
         <p>In this example, we will serve an HTML file, however, this could be any file type.</p>
+	<div class="info">
+          <p>If you are using Xcode and used the command line to create your public directory you will need to regenerate your Xcode project:</p>
+          <pre><code>swift package generate-xcodeproj</code></pre>
+          <p>This is to enable Xcode to detect the new directory.</p>
+	</div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Register a static file server on our router</h2>
         <p>The `StaticFileServer` middleware is built into Kitura. To use it we just need register it on our router.</p>
