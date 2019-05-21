@@ -103,27 +103,27 @@
       <main>
         <h1 class="heading-1">Swift Kuery ORM</h1>
         <p class="block-text"><a href="https://github.com/IBM-Swift/Swift-Kuery-ORM" target="_blank">Swift-Kuery-ORM</a> is an ORM (Object Relational Mapping) library for Swift built on top of <a target="_blank" href="https://github.com/IBM-Swift/Swift-Kuery">Swift Kuery</a>, using it allows you to simplify the persistence of model objects with your server.</p>
-        <p class="block-text">In this guide we will show you how to save and retrieve a `Codable` Swift model from a database (in this case PostgreSQL) using the ORM.<p/>
+        <p class="block-text">In this guide we will show you how to save and retrieve a <strong>Codable<strong> Swift model from a database (in this case PostgreSQL) using the ORM.<p/>
         <p class="block-text">This guide uses the ORM with <a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html">codable routes</a>, however, the ORM also works with Kitura's <a onclick="setActiveSidebarElementForParent('raw-routing')" href="../routing/raw-routing.html#">raw routing</a>.</p>
         <div class="info">
-          <p>Support for nested `Codable` types (models, structs, arrays etc.) is not currently available in the ORM. Support for simple nesting will be added prior to releasing V1.0, more complex nesting will be added for V2.0.</p>
+          <p>Support for nested <strong>Codable</strong> types (models, structs, arrays etc.) is not currently available in the ORM. Support for simple nesting will be added prior to releasing V1.0, more complex nesting will be added for V2.0.</p>
         </div>
         <h2 class="heading-2">Prerequisites</h2>
         <ul class="plain-list">
             <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
           <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
           <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'Swift-Kuery-ORM'); setActiveSidebarElementForParent('swift-kuery-orm')" href="../getting-started/update-package.html#">Update Dependencies:</a> SwiftKueryORM needs adding to the `Package.swift` file.</li>
+          <li><a onclick="localStorage.setItem('package', 'Swift-Kuery-ORM'); setActiveSidebarElementForParent('swift-kuery-orm')" href="../getting-started/update-package.html#">Update Dependencies:</a> SwiftKueryORM needs adding to the <strong>Package.swift</strong> file.</li>
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Define the ORM routes</h2>
-        <p>Open your `Application.swift` file:</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
+        <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">initializeORMRoutes(app: self)</code></pre>
-        <p>Create a new file called `ORMRoutes.swift` to define the ORM routes in:</p>
+        <p>Create a new file called <strong>ORMRoutes.swift</strong> to define the ORM routes in:</p>
         <pre><code>touch Sources/Application/Routes/ORMRoutes.swift</code></pre>
-        <p>Open the `ORMRoutes.swift` file:</p>
+        <p>Open the <strong>ORMRoutes.swift</strong> file:</p>
         <pre><code>open Sources/Application/Routes/ORMRoutes.swift</code></pre>
         <p>Inside this file we will add the code for our ORM routes:</p>
         <pre><code class="language-swift">import KituraContracts
@@ -160,10 +160,10 @@ extension App {
         </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Update our Model</h2>
-        <p>The key component of the ORM is the `Model` protocol which extends what `Codable` provides. In order to use the ORM, we need to make `Book` conform to the `Model` protocol.</p>
+        <p>The key component of the ORM is the <strong>Model</strong> protocol which extends what <strong>Codable</strong> provides. In order to use the ORM, we need to make <strong>Book</strong> conform to the <strong>Model</strong> protocol.</p>
         <p>We do this using an extension beneath our import statements:</p>
         <pre><code class="language-swift">extension Book: Model { }</code></pre>
-        <p>Now that your `Book` struct conforms to `Model`, after you have set up your database connection pool and created a database table, you automatically have access to a slew of convenience functions for your object.</p>
+        <p>Now that your <strong>Book</strong> struct conforms to <strong>Model</strong>, after you have set up your database connection pool and created a database table, you automatically have access to a slew of convenience functions for your object.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Create a database connection</h2>
         <h3 class="heading-3">Install the PostgreSQL client</h3>
@@ -172,18 +172,18 @@ extension App {
         <p>On macOS we can use Homebrew to install Postgres:</p>
         <pre><code class="language-swift">brew install postgresql</code></pre>
         <h4 class="heading-4">Linux</h4>
-        <p>On Linux we can use `apt-get` to install Postgres:</p>
+        <p>On Linux we can use <strong>apt-get</strong> to install Postgres:</p>
         <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
         <h3 class="heading-3">Create a PostgreSQL database</h3>
         <p>Now that we have PostgreSQL installed we can create a database:</p>
         <pre><code class="language-swift">createdb bookdb</code></pre>
         <p>Now we're ready to connect to our database from our Kitura server.</p>
         <h3 class="heading-3">Create a PostgreSQL connection pool</h3>
-        <p>Inside `initializeORMRoutes`, create a PostgreSQL connection pool:</p>
+        <p>Inside <strong>initializeORMRoutes</strong>, create a PostgreSQL connection pool:</p>
         <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
 Database.default = Database(pool)</code></pre>
-        <h3 class="heading-3">Create a `Book` table</h3>
-        <p>Inside `initializeORMRoutes`, create a table in the SQL database that represents our `Book` model:</p>
+        <h3 class="heading-3">Create a <strong>Book</strong> table</h3>
+        <p>Inside <strong>initializeORMRoutes</strong>, create a table in the SQL database that represents our <strong>Book</strong> model:</p>
         <pre><code class="language-swift">do {
     try Book.createTableSync()
 } catch {
@@ -195,25 +195,25 @@ SELECT * FROM "Book";</code></pre>
         <p>This should print the column names of the Book table with no data (i.e. no rows).</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Save an object to the database</h2>
-        <p>Now if we want to save a new `Book` object to our database we use the `save()` method.</p>
+        <p>Now if we want to save a new <strong>Book</strong> object to our database we use the <strong>save()</strong> method.</p>
         <p>In our handler for the POST route we add the following:</p>
         <pre><code class="language-swift">book.save(completion)</code></pre>
-        <p>Because we are passing our `completion` closure to an asynchronous function, we need to make `completion` escaping:</p>
+        <p>Because we are passing our <strong>completion</strong> closure to an asynchronous function, we need to make <strong>completion</strong> escaping:</p>
         <pre><code class="language-swift">completion: @escaping (Book?, RequestError?)</code></pre>
         <p>The POST handler should look similar to this:</p>
         <pre><code class="language-swift">
 func saveHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
     book.save(completion)
 }</code></pre>
-        <p>That's all we need to do, with that one line of code any book data posted to the `/orm` endpoint will be stored in the Book table in our database.</p>
+        <p>That's all we need to do, with that one line of code any book data posted to the <strong>/orm</strong> endpoint will be stored in the Book table in our database.</p>
         <p>Next we will show how easy it is to retrieve our book data from the database.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 6:</span> Retrieve all the books from the database</h2>
-        <p>Next we will retrieve all the data from the book table in our database, to do this we use the `findAll` method.</p>
-        <p>The `findAll` method returns an array containing all the books.</p>
-        <p>In our `findAllHandler` add the following code:</p>
+        <p>Next we will retrieve all the data from the book table in our database, to do this we use the <strong>findAll</strong> method.</p>
+        <p>The <strong>findAll</strong> method returns an array containing all the books.</p>
+        <p>In our <strong>findAllHandler</strong> add the following code:</p>
         <pre><code class="language-swift">Book.findAll(completion)</code></pre>
-        <p>As with the `saveHandler`, again we must make the `completion` escaping:</p>
+        <p>As with the <strong>saveHandler</strong>, again we must make the <strong>completion</strong> escaping:</p>
         <pre><code class="language-swift">completion: @escaping ([Book]?, RequestError?)</code></pre>
         <p>The GET handler should look similar to this:</p>
         <pre><code class="language-swift">func findAllHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
@@ -245,11 +245,11 @@ func saveHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Voi
         <p>Now you can restart your Kitura server and the book data will persist in the database. This is one of the many advantages of using a database.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 7:</span> Retrieve a single book from the database</h2>
-        <p>If we want to retrieve a single book from our database, we use the `find(id:)` method.</p>
-        <p>This will return a single object with the provided `id`.</p>
-        <p>In our `findOneHandler` add the following code:</p>
+        <p>If we want to retrieve a single book from our database, we use the <strong>find(id:)</strong> method.</p>
+        <p>This will return a single object with the provided <strong>id</strong>.</p>
+        <p>In our <strong>findOneHandler</strong> add the following code:</p>
         <pre><code class="language-swift">Book.find(id: id, completion)</code></pre>
-        <p>As with our previous handler, we must make the `completion` escaping:</p>
+        <p>As with our previous handler, we must make the <strong>completion</strong> escaping:</p>
         <pre><code class="language-swift">completion: @escaping (Book?, RequestError?)</code></pre>
         <p>The GET one handler should look similar to this:</p>
         <pre><code class="language-swift">
@@ -258,8 +258,8 @@ func findOneHandler(id: Int, completion: @escaping (Book?, RequestError?) -> Voi
 }</code></pre>
         <p>Test this out by opening your browser at:</p>
         <p><a href="http://localhost:8080/orm/0" target="_blank">localhost:8080/orm/0</a></p>
-        <p>This will make a get request to the server for a book with an `id` of 0, so it should return the book we posted previously.</p>
-        <p>Your completed routes file, `ORMRoutes.swift`, should look as follows:</p>
+        <p>This will make a get request to the server for a book with an <strong>id</strong> of 0, so it should return the book we posted previously.</p>
+        <p>Your completed routes file, <strong>ORMRoutes.swift</strong>, should look as follows:</p>
     <pre><code class="language-swift">import KituraContracts
 import SwiftKueryORM
 import SwiftKueryPostgreSQL

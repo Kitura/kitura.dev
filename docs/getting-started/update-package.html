@@ -105,8 +105,8 @@
         <p>Kitura is provided as a Swift package which is distributed by the Swift Package Manager (SPM).</p>
         <p>This guide demonstrates how to add a package to your project to leverage the functionality that package provides.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Add the url to the `Package.swift`</h2>
-        <p>To add a new dependency to our project we need to edit the `Package.swift` file:</p>
+        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Add the url to the <strong>Package.swift</strong></h2>
+        <p>To add a new dependency to our project we need to edit the <strong>Package.swift</strong> file:</p>
         <pre><code>open Package.swift</code></pre>
         <p>Next we need to add the package we want to use to our package dependencies:</p>
         <pre><code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
@@ -116,7 +116,7 @@
         <pre><code class="language-swift dependency-value">.target(
       name: "&lt;project-name&gt;",
       dependencies: ["Kitura", "&lt;dependency-name&gt;"]),</code></pre>
-        <p>The resulting `Package.swift` should look as follows:</p>
+        <p>The resulting <strong>Package.swift</strong> should look as follows:</p>
         <pre><code class="language-swift">// swift-tools-version:5.0
 import PackageDescription
 
@@ -143,7 +143,7 @@ let package = Package(
           <p>If you are on macOS and using Xcode you will also need to generate a new Xcode project by running the following:</p>
           <pre><code>swift package generate-xcodeproj</code></pre>
         </div>
-        <p>`swift package update` looks at our `Package.swift` file and checks to see if we've added any new packages.</p>
+        <p><strong>swift package update</strong> looks at our <strong>Package.swift</strong> file and checks to see if we've added any new packages.</p>
         <p>It also checks to see if there are any new versions of our existing packages as well.</p>
         <p>We have now added a new package to our project and are ready to start using this in our application.</p>
         <div class="underline"></div>

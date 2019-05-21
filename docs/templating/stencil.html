@@ -105,17 +105,17 @@
         <h2 class="heading-2">Prerequisites</h2>
         <ul class="plain-list">
           <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'Kitura-StencilTemplateEngine'); setActiveSidebarElementForParent('stencil')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraStencil needs adding to the `Package.swift` file.</li>
+          <li><a onclick="localStorage.setItem('package', 'Kitura-StencilTemplateEngine'); setActiveSidebarElementForParent('stencil')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraStencil needs adding to the <strong>Package.swift</strong> file.</li>
         </ul>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a `StencilRoutes.swift` file</h2>
-        <p>Open your `Application.swift` file:</p>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a <strong>StencilRoutes.swift</strong> file</h2>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
+        <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">initializeStencilRoutes(app: self)</code></pre>
-        <p>Create a new file, called `StencilRoutes.swift`:</p>
+        <p>Create a new file, called <strong>StencilRoutes.swift</strong>:</p>
         <pre><code>touch Sources/Application/Routes/StencilRoutes.swift</code></pre>
-        <p>Open your `StencilRoutes.swift` file:</p>
+        <p>Open your <strong>StencilRoutes.swift</strong> file:</p>
         <pre><code>open Sources/Application/Routes/StencilRoutes.swift</code></pre>
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">import KituraStencil
@@ -143,7 +143,7 @@ func initializeStencilRoutes(app: App) {
         <p>Inside our get route, add the following:</p>
         <pre><code class="language-swift">let book = Book(id: 0, title: "A Game of Thrones", price: 14.99, genre: "fantasy")
 try response.render("book.stencil", with: book)</code></pre>
-        <p>Your completed `StencilRoutes.swift` should now look as follows:</p>
+        <p>Your completed <strong>StencilRoutes.swift</strong> should now look as follows:</p>
         <pre><code class="language-swift">import KituraStencil
 
 func initializeStencilRoutes(app: App) {
@@ -154,14 +154,14 @@ func initializeStencilRoutes(app: App) {
         next()
     }
 }</code></pre>
-        <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
-        <p>In our case, the file `book.stencil` template will be populated with the `book` data and then rendered in the browser on `"/book"`.</p>
-        <p>This obviously will not work as we haven't created our `book.stencil` file.</p>
+        <p>The <strong>response.render()</strong> method attempts to populate the provided template file with the provided data.</p>
+        <p>In our case, the file <strong>book.stencil</strong> template will be populated with the <strong>book</strong> data and then rendered in the browser on <strong>"/book"</strong>.</p>
+        <p>This obviously will not work as we haven't created our <strong>book.stencil</strong> file.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create the template file</h2>
-        <p>By default Kitura looks for template files in a `./Views` directory found at the root of the project.</p>
+        <p>By default Kitura looks for template files in a <strong>./Views</strong> directory found at the root of the project.</p>
         <div class="info">
-          <p>Typically the root of your project is where the `.xcodeproj` directory is.</p>
+          <p>Typically the root of your project is where the <strong>.xcodeproj</strong> directory is.</p>
         </div>
         <p>Once we are in the root of our project we can create the directory:</p>
         <pre><code>mkdir Views</code></pre>
@@ -181,7 +181,7 @@ func initializeStencilRoutes(app: App) {
           <p>Stencil is a templating language that has a lot of powerful features, you can learn about them in the <a target="_blank" href="http://stencil.fuller.li/en/latest/">Stencil guide.</a></p>
         </div>
         <p>We first need some template code to populate.</p>
-        <p>Open the `book.stencil` file and add the following:</p>
+        <p>Open the <strong>book.stencil</strong> file and add the following:</p>
         <pre><code class="language-swift">&lt;html&gt;
     &lt;p&gt; Id:     {{ id }}   &lt;/p&gt;
     &lt;p&gt; Title: {{ title }} &lt;/p&gt;

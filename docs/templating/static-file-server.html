@@ -102,7 +102,7 @@
       <main>
         <h1 class="heading-1">Serving static files in Kitura</h1>
         <p class="block-text">In a web application, we will require resources such as images, HTML files, CSS files, and JavaScript files.
-         These are static files, as they can be delivered to the user without needing to be modified, or generated and can be provided to the user with Kitura's built-in `StaticFileServer` middleware.
+         These are static files, as they can be delivered to the user without needing to be modified, or generated and can be provided to the user with Kitura's built-in <strong>StaticFileServer</strong> middleware.
          This guide will show you how to configure and register a static file server on your Kitura server.</p>
          <div class="info">
              <p>If you don't have a Kitura server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
@@ -111,11 +111,11 @@
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a directory for our files</h2>
         <p>The first thing we are going to need is a static file to serve.
              By default the static file server looks in the "public" directory, so let's create that now.</p>
-        <p>From the root directory of your project, where `Package.swift` is located, create the public directory:</p>
+        <p>From the root directory of your project, where <strong>Package.swift</strong> is located, create the public directory:</p>
         <pre><code>mkdir public</code></pre>
         <p>Change into the directory:</p>
         <pre><code>cd public</code></pre>
-        <p>Create a new file called `hello.html`:</p>
+        <p>Create a new file called <strong>hello.html</strong>:</p>
         <pre><code>touch hello.html</code></pre>
         <p>Open this file in your preferred text editor (we will use Xcode):</p>
         <pre><code>open hello.html -a Xcode.app</code></pre>
@@ -134,14 +134,14 @@
 	</div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Register a static file server on our router</h2>
-        <p>The `StaticFileServer` middleware is built into Kitura. To use it we just need register it on our router.</p>
-        <p>Open your `Application.swift` file in your default text editor (or Xcode if you prefer):</p>
+        <p>The <strong>StaticFileServer</strong> middleware is built into Kitura. To use it we just need register it on our router.</p>
+        <p>Open your <strong>Application.swift</strong> file in your default text editor (or Xcode if you prefer):</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
+        <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">router.all("/public", middleware: StaticFileServer())</code></pre>
-        <p>That's it! Now, we will serve any files from the project's `public` directory (since this is the default path) from the `/public` route on our server.</p>
+        <p>That's it! Now, we will serve any files from the project's <strong>public</strong> directory (since this is the default path) from the <strong>/public</strong> route on our server.</p>
         <p>We are using public for both the route and directory, however these could be set to anything.</p>
-        <p>For example, if you wanted to serve files from the `assets` folder from the '/internal' route, you could use the following code:</p>
+        <p>For example, if you wanted to serve files from the <strong>assets</strong> folder from the '/internal' route, you could use the following code:</p>
         <pre><code class="language-swift">router.all("/internal", middleware: StaticFileServer(path: "./assets"))</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Test serving a static file</h2>
@@ -149,8 +149,8 @@
         <p>We do this by running our server, then opening our browser at:</p>
         <p><a target="_blank" href="http://localhost:8080/public/hello.html">localhost:8080/public/hello.html</a></p>
         <p>We should see our HTML document with the "Hello World!" message.</p>
-        <p>The `StaticFileServer` also loads files from subdirectories of the project's `public` directory, so all we need to do is place a file into a subdirectory e.g. `./public/images/picture.png`
-and it will be served at `http://localhost:8080/public/images/picture.png`.</p>
+        <p>The <strong>StaticFileServer</strong> also loads files from subdirectories of the project's <strong>public</strong> directory, so all we need to do is place a file into a subdirectory e.g. <strong>./public/images/picture.png</strong>
+and it will be served at <strong>http://localhost:8080/public/images/picture.png</strong>.</p>
         <h2 class="heading-2">Next steps</h2>
             <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="stencil.html#">Stencil:</a></span> Learn how to add Stencil templating to your Kitura application.</p>
             <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="markdown.html#">Markdown:</a></span> Learn how to add Markdown templating to your Kitura application.</p>
