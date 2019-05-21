@@ -108,7 +108,7 @@
         <p class="block-text">In this guide, we will show you how to set up Codable routes on your server.
              We will store a Swift object that is sent via a POST request. We will then return that object when a user sends a GET request.</p>
         <div class="info">
-          <p>If you don't have a Kitura server set up, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+          <p>If you don't have a Kitura server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
         </div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a file to contain the routes</h2>
         <p>We are going to create a new file, where we will define the routes for this guide. </p>
@@ -244,7 +244,7 @@ http://localhost:8080/codable \
             If threads from different routes try to change the same object at the same time they will crash.
             To prevent these collisions in our example, we can serialize access to the `codableStore`.</p>
         <div class="info">
-          <p>If you have completed the Raw Routing guide, you will already have the execute function.</p>
+          <p>If you have completed the <a href="../routing/raw-routing.html" target="_blank">Raw Routing guide</a>, you will already have the execute function.</p>
         </div>
         <p>Open your `Application.swift` file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
