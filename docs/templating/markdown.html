@@ -113,7 +113,7 @@
         <pre><code class="language-swift">import KituraMarkdown</code></pre>
         <p>Now we can add the KituraMarkdown template engine to our router instance:</p>
         <p>Below the line `let router = Router()` we will add:</p>
-        <pre><code class="language-swift">router.add(templateEngine: MarkdownTemplateEngine())</code></pre>
+        <pre><code class="language-swift">router.add(templateEngine: KituraMarkdown())</code></pre>
         <p>This tells the server that on this instance of the router we'd like to use KituraMarkdown as a template engine.</p>
         <div class="info">
           <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
@@ -122,7 +122,7 @@
         <p>We've just added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
         <p>Just below our other registered routes we can create a new route for KituraMarkdown:</p>
         <pre><code class="language-swift">router.get("/book") { request, response, next in
-    try response.render("book.md", with: [:])
+    try response.render("book.md", context: [:])
 }</code></pre>
         <p>The `response.render()` method attempts to populate the provided template file with the provided data.</p>
         <p>However as we are rendering a Markdown file there we don't need to provide any data as it all will be in the Markdown file.</p>
@@ -151,12 +151,24 @@
         <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Populate the Markdown template file</h2>
         <p>First we need some Markdown to render.</p>
         <p>So in the book.md file we will add:</p>
-        <pre><code>Some example Markdown</code></pre>
+        <pre><code># Books Header
+
+Description with **bold** text
+
+* Book1
+* Book2</code></pre>
         <p>Now to test our templating we first need to start the Kitura server.</p>
         <p>Then in a brower we can open:</p>
         <p><a target="_blank" href="http://localhost:8080/book">http://localhost:8080/book</a></p>
         <p>In the browser we should see:</p>
-        <pre><code>Some example output</code></pre>
+        <br>
+        <h1 class="heading-1">Books Header</h1>
+        <p>Description with <strong>bold</strong> text</p>
+        <ul>
+            <li>Book1</li>
+            <li>Book2</li>
+        </ul>
+        <br>
         <p>That's it! We've successfully rendered some Markdown into a browser using KituraMarkdown.</p>
         <div class="underline"></div>
       </main>
