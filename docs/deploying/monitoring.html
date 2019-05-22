@@ -106,10 +106,9 @@
           <p>Depending on how you created your Kitura server you may already have metrics enabled.</p>
         </div>
         <div class="underline"></div>
-        <h2 class="heading-2">Swift Metrics</h2>
-        <h3 class="heading-3">What is Swift Metrics?</h3>
-        <p>SwiftMetrics instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API or visually with the included embedded dashboard.</p>
-        <p>SwiftMetrics provides the following built-in data collection sources:</p>
+        <h2 class="heading-2">What is Application Metrics for Swift?</h2>
+        <p> <a href="https://github.com/RuntimeTools/SwiftMetrics" target="_blank">Application Metrics for Swift</a> instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API, or visually with the included embedded dashboard.</p>
+        <p>Application Metrics for Swift provides the following built-in data collection sources:</p>
         <table>
           <thead>
             <tr>
@@ -130,27 +129,46 @@
               <td>Memory</td>
               <td>Process and system memory usage</td>
             </tr>
+
+            <tr>
+              <td>Latency</td>
+              <td>Dispatch Queue latency</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Importing <strong>SwiftMetricsKitura</strong> adds the following collection source:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
             <tr>
               <td>HTTP</td>
               <td>HTTP metric information</td>
             </tr>
           </tbody>
         </table>
-        <h3 class="heading-3"><span class="blue-text">Step 1:</span> Adding Swift Metrics to your project</h3>
-        <!-- <p>TODO: Link to SPM install instructions</p> -->
-        <p>Import Swift Metrics to your project</p>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add Application Metrics for Swift to your project</h2>
+        <p>To use Application Metrics for Swift from your server, we need to <a target="_blank" href="https://github.com/RuntimeTools/SwiftMetrics#installation"> add SwiftMetrics to our dependencies</a>.</p>
+        <div class="info">
+            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
+        <p>Import Application Metrics for Swift into your project:</p>
         <pre><code class="language-swift">import SwiftMetrics</code></pre>
-        <p>You also need to import the Swift Metrics Dashboard</p>
+        <p>You also need to import the Application Metrics for Swift Dashboard:</p>
         <pre><code class="language-swift">import SwiftMetricsDash</code></pre>
-        <h3 class="heading-3"><span class="blue-text">Step 2:</span> Initilize Swift Metrics</h3>
-        <p>Create an instance of Swift Metrics:</p>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Initialize Application Metrics for Swift</h2>
+        <p>Create an instance of <strong>SwiftMetrics</strong>:</p>
         <pre><code class="language-swift">let sm = try SwiftMetrics()</code></pre>
-        <p>Use this Swift Metrics instance to initilize the dashboard:</p>
+        <p>Use this <strong>SwiftMetrics</strong> instance to initialize the dashboard:</p>
         <pre><code class="language-swift">let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)</code></pre>
-        <p>By default, SwiftMetricsDash will start its own Kitura server and serve the page up under localhost:/swiftmetrics-dash</p>
+        <p>By default, the Application Metrics for Swift Dashboard will start its own Kitura server and serve the page up under <a href="http://localhost:8080/swiftmetrics-dash" target="_blank">localhost:8080/swiftmetrics-dash</a>.</p>
         <!-- <p>TODO: Test this!</p> -->
-        <h3 class="heading-3"><span class="blue-text">Step 3:</span> Add Swift Metrics to your router instance</h3>
-        <p>You can pass an existing Router object to SwiftMetricsDash from which to serve the page up on.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add Application Metrics for Swift to your router instance</h2>
+        <p>You can pass an existing <strong>Router</strong> object to <strong>SwiftMetricsDash</strong> from which to serve the page up on.</p>
         <p>SwiftMetricsDash will then use whatever server you are using in your existing application:</p>
         <pre><code class="language-swift">let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)</code></pre>
       </main>
