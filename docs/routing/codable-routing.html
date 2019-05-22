@@ -102,28 +102,16 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">Codable Routing</h1>
-        <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with struct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
-        <!-- <div class="underline"></div>
-        <h2 class="heading-2">Contents:</h2>
-        <ol class="plain-list">
-          <h3 class="heading-3"><li><a href="#prereq">Prerequisites</a></li></h3>
-          <p>This section will inform you of the minimum you need to have setup to follow this guide.</p>
-          <h3 class="heading-3"><li><a href="#post">Create a basic POST route</a></li></h3>
-          <p>Learn how to send data to a Kitura server using Codable types.</p>
-          <h3 class="heading-3"><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
-          <p>Learn how to retrieve all data from a Kitura server.</p>
-          <h3 class="heading-3"><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
-          <p>Learn how to get a single value from a Kitura server.</p>
-        </ol> -->
-        <div class="underline"></div>
-        <h2 class="heading-2" id="prereq">Prerequisites</h2>
-        <ul class="plain-list">
-            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-            <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-        </ul>
-        <div class="underline"></div>
+        <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code;
+             they take struct or class types as parameters, and respond with struct or class types via a completion handler.
+              The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
+        <p class="block-text">In this guide, we will show you how to set up Codable routes on your server.
+             We will store a Swift object that is sent via a POST request. We will then return that object when a user sends a GET request.</p>
+        <div class="info">
+          <p>If you don't have a Kitura server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a file to contain the routes</h2>
+        <p>We are going to create a new file, where we will define the routes for this guide. </p>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the <strong>postInit()</strong> function add: </p>
@@ -142,26 +130,36 @@ extension App {
     static var codableStore = [Book]()
     // Write handlers here
 }</code></pre>
-        <p>We have imported the KituraContracts library as it contains the shared type definition for <strong>RequestError</strong> which we will use in the next step.</p>
+        <p>This code contains two sections. The first is the <strong>initializeCodableRoutes</strong> function.
+            This will be run after the application has been initialized and is where we register routes on our router.
+            The second is the <strong>App</strong> extension. This is where we write the logic to handle requests.</p>
+        <p>We also have a <strong>codableStore</strong> where we will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
+        <p>Finally, we have imported the KituraContracts library, which is pulled in with Kitura, as it contains the shared type definition for <strong>RequestError</strong> which we will use in the next step.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST Codable Route</h2>
+        <p>We will now create a POST route that will recieve a Codable type and store it in our <strong>codableStore</strong>.</p>
         <p>Inside the <strong>initializeCodableRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.post("/codable", handler: app.postHandler)</code></pre>
-        <p>What we've done is register a POST on our router that will handle any POST requests made on "/codable".</p>
-        <p>This will not compile as we haven't actually implemented the <strong>postHandler</strong> yet, so let's go ahead and do that.</p>
+        <p>This code will register a POST endpoint on our router that will handle any POST requests made to "/codable".</p>
+        <p>This will not compile as we haven't actually implemented the `postHandler` yet, so let's go ahead and do that.</p>
         <p>The <strong>postHandler</strong> is a block of code, called a closure, that is executed when a POST request is made to "/codable".</p>
         <p> Inside the <strong>App</strong> extension add: </p>
         <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
     App.codableStore.append(book)
     completion(book, nil)
 }</code></pre>
+        <p>Here the postHandler accepts an object of type `Book` and responds using an asynchronous completion handler.
+             The handler then stores the received book in the `codableStore` and returns the book in the completion to indicate success.</p>
+        <div class="info">
+            <p>The input parameter and the response parameter in the completion handler can be any Swift type, as long as it conforms to Codable.</p>
+        </div>
         <p>We can now successfully compile the project!</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Test the POST route</h2>
         <p>With the project now compiling we can start the server.</p>
         <div class="info">
-          <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.</p>
-          <p>You can add OpenAPI to your server using our OpenAPI guide.</p>
+          <p>Kitura has support for OpenAPI which makes testing Codable routes easy and provides a UI for testing.
+             You can add OpenAPI to your server using our <a target="_blank" href="https://www.kitura.io/docs/routing/open-api.html"> OpenAPI guide</a>.</p>
         </div>
         <p>To test the route using curl, open Terminal and enter the following:</p>
         <pre><code>curl -X POST \
@@ -241,12 +239,12 @@ http://localhost:8080/codable \
         <pre><code>{"id": 1,"title":"Harry Potter","price":10.00,"genre":"Fantasy"}</code></pre>
         <div class="underline"></div>
 
-        <h2 class="heading-2"><span class="blue-text">Step 6:</span> Making codableStore thread safe (Optional)</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 6:</span> Adding thread safety (Optional)</h2>
         <p class="block-text">Kitura route handlers are asynchronous.
-            If threads from multiple routes access the same object at the same time they will crash.
-            To prevent these collisions, we will serialize access to the <strong>codableStore</strong>.</p>
+            If threads from different routes try to change the same object at the same time they will crash.
+            To prevent these collisions in our example, we can serialize access to the <strong>codableStore</strong>.</p>
         <div class="info">
-          <p>If you have completed the Raw Routing guide, you will already have the execute function.</p>
+          <p>If you have completed the <a href="../routing/raw-routing.html" target="_blank">Raw Routing guide</a>, you will already have the execute function.</p>
         </div>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>

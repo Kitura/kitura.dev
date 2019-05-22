@@ -102,19 +102,17 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">Kitura OpenAPI</h1>
-        <p class="block-text">Kitura-OpenAPI is a library which makes it easy to add <a target="_blank" href="https://www.openapis.org">OpenAPI</a>, also known as Swagger, support to your Codable routing-based Kitura application.</p>
-        <p>In this guide we show you how easy it is to host both an automatically generated OpenAPI definition of your application on the endpoint <strong>/openapi</strong>, and the Swagger UI tool on the endpoint <strong>/openapi/ui</strong>. We also
+        <p class="block-text"><a target="_blank" href="https://github.com/IBM-Swift/Kitura-OpenAPI">Kitura-OpenAPI</a> is a library which makes it easy to add <a target="_blank" href="https://www.openapis.org">OpenAPI</a>, also known as Swagger, support to your Codable routing-based Kitura application.</p>
+        <p>In this guide we show you how to host both an automatically generated OpenAPI definition of your application on the endpoint <strong>"/openapi"</strong>, and the Swagger UI tool on the endpoint <strong>"/openapi/ui"</strong>. We also
         demonstrate how simple this makes testing your routes!</p>
         <h2 class="heading-2">Prerequisites</h2>
         <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Codable Routes:</a> Learn how to add Codable routes in our Codable Routing guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'Kitura-OpenAPI'); setActiveSidebarElementForParent('openapi')" href="../getting-started/update-package.html#">Update Dependencies:</a> KituraOpenAPI needs adding to the <strong>Package.swift</strong> file.</li>
+          <li><a onclick="setActiveSidebarElementForParent('codable-routing')" href="../routing/codable-routing.html#">Codable Routes:</a> Follow the Codable Routing guide to create endpoints to test with OpenAPI.</li>
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add Kitura OpenAPI to your project</h2>
-        <p>First we need to import KituraOpenAPI into our project.</p>
+        <p>First we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-OpenAPI#getting-started"> add OpenAPI to our dependencies</a>.</p>
+        <p>Next, we need to import KituraOpenAPI into our project.</p>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p>Add the import statement for the KituraOpenAPI package:</p>

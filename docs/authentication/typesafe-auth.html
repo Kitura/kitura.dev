@@ -103,18 +103,14 @@
       <main>
         <h1 class="heading-1">Type-Safe Authentication</h1>
         <p class="block-text">Authentication is the process of confirming a user’s identity, usually via a username and password. Authentication ensures that the user is allowed access to the secured system.</p>
-        <p class="block-text">This guide uses Kitura credentials with TypeSafeHTTPBasic and Codable routing.</p>
-        <h2 class="heading-2">Prerequisites</h2>
-        <ul class="plain-list">
-            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI:</a> Learn how to add this in our Kitura OpenAPI guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'CredentialsHTTP'); setActiveSidebarElementForParent('CredentialsHTTP')" href="../getting-started/update-package.html#">Update Dependencies:</a> CredentialsHTTP needs adding to the <strong>Package.swift</strong> file.</li>
-        </ul>
+        <p class="block-text">In this guide, we use <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP"> Kitura-CredentialsHTTP</a> to add HTTP basic authentication to Codable routes.</p>
         <div class="underline"></div>
-        <h2 class="heading-2">Type-Safe HTTP Basic</h2>
-        <h3 class="heading-3"><span class="blue-text">Step 1:</span> Define a TypeSafeHTTPBasic object</h3>
-        <p>We will declare a struct which conforms to TypeSafeHTTPBasic.</p>
+        <h3 class="heading-3"><span class="blue-text">Step 1:</span> Define a type safe middleware</h3>
+        <p>To add basic authentication to our server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP"> add Kitura-CredentialsHTTP to our dependencies</a>.</p>
+        <div class="info">
+            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
+        <p>Next, we will define a TypeSafeMiddleware which conforms to TypeSafeHTTPBasic.</p>
         <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
         <p>Create a new file, called <strong>MyBasicAuth.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
@@ -140,7 +136,6 @@ public var id: String</code></pre>
         <div class="info">
           <p>In a real project, never store passwords in plain text!</p>
         </div>
-        <p>Define verifyPassword:</p>
         <p>The function, verifyPassword, takes a username and password and, on success, returns a <strong>MyBasicAuth</strong> instance.</p>
         <p>We want to check if the password matches the user's stored password. On successful match, we initialize MyBasicAuth with an id equal to username.</p>
         <pre><code class="language-swift">if let storedPassword = authenticate[username], storedPassword == password {
@@ -194,7 +189,10 @@ extension App {
         <pre><code class="language-swift">func protectedGetHandler(user: MyBasicAuth, respondWith: (Book?, RequestError?) -> Void) {
 
 }</code></pre>
-    <p>We have registered MyBasicAuth on our handler by adding it to the signature.</p>
+    <div class="info">
+      <p>This route is returning the<a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p></p>
+    </div>
+    <p>We have registered `MyBasicAuth` on our handler by adding it to the signature.</p>
     <p>When the handler is called the middleware and the request is authenticated.</p>
     <p>Within protectedGetHandler, we can then interact with our authenticated user:<p>
     <pre><code class="language-swift">Log.info("authenticated: \(user.id)")

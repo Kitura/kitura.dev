@@ -108,15 +108,11 @@
         <div class="info">
           <p>Support for nested <strong>Codable</strong> types (models, structs, arrays etc.) is not currently available in the ORM. Support for simple nesting will be added prior to releasing V1.0, more complex nesting will be added for V2.0.</p>
         </div>
-        <h2 class="heading-2">Prerequisites</h2>
-        <ul class="plain-list">
-            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'Swift-Kuery-ORM'); setActiveSidebarElementForParent('swift-kuery-orm')" href="../getting-started/update-package.html#">Update Dependencies:</a> SwiftKueryORM needs adding to the <strong>Package.swift</strong> file.</li>
-        </ul>
-        <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Define the ORM routes</h2>
+        <p>We are going to create a new file in our project for the ORM routes.</p>
+        <div class="info">
+            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the <strong>postInit()</strong> function add: </p>
@@ -147,17 +143,17 @@ extension App {
         // Get one book here
     }
 }</code></pre>
-        <p>We have defined three routes on our router, one to handle POST requests and two to handle GET requests made on the "/orm" endpoint.</p>
+        <p>We have defined three routes on the "/orm" endpoint. One to handle POST requests, one to handle GET requests with an identifier and one to handle GET requests without an identifier.</p>
+        <p>The routes in this guide are using the<a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add the ORM to the project's dependencies</h2>
-        <p>Import the ORM library into the project:</p>
-        <pre><code class="language-swift">import SwiftKueryORM</code></pre>
-        <p>To work with the ORM we need to have a database plugin to use.</p>
-        <p>In this example we will be using <a>SwiftKueryPostgreSQL</a>:</p>
-        <pre><code class="language-swift">import SwiftKueryPostgreSQL</code></pre>
         <div class="info">
           <p>You can use any of the other database plugins supported by <a href="https://github.com/IBM-Swift/Swift-Kuery" target="_blank">Swift-Kuery</a>, however, the rest of this guide is written to work with the <a href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL" target="_blank">Swift-Kuery-PostgreSQL</a> plugin.</p>
         </div>
+        <p>To use the ORM, we need to <a target="_blank" href="https://github.com/IBM-Swift/Swift-Kuery-ORM#update-your-packageswift-file"> add Swift-Kuery-ORM</a> and <a target="_blank" href="https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies"> add Swift-Kuery-PostgreSQL</a> to your dependencies.</p>
+        <p>Next, we import the ORM library and our chosen plugin to the project:</p>
+        <pre><code class="language-swift">import SwiftKueryORM
+import SwiftKueryPostgreSQL</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Update our Model</h2>
         <p>The key component of the ORM is the <strong>Model</strong> protocol which extends what <strong>Codable</strong> provides. In order to use the ORM, we need to make <strong>Book</strong> conform to the <strong>Model</strong> protocol.</p>

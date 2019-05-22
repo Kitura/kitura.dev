@@ -104,27 +104,21 @@
         <h1 class="heading-1">Raw Routing</h1>
         <p class="block-text">Raw routing is based on the <a target="_blank" href="https://expressjs.com/">Express</a> framework for Node.js where the route handlers are called with <strong>RouterRequest</strong> and <strong>RouterResponse</strong> objects, which respectively handle the client request and build the response, along with a <strong>next</strong> completion handler.</p>
         <p class="block-text">Raw routing provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
-        <!-- <div class="underline"></div>
-        <h2 class="heading-2">Contents:</h2>
-        <ol class="plain-list">
-          <h3 class="heading-3"><li><a href="#prereq">Prerequisites</a></li></h3>
-          <p>This section will inform you of the minimum you need to have setup to follow this guide.</p>
-          <h3 class="heading-3"><li><a href="#post">Create a basic POST route</a></li></h3>
-          <p>Learn how to send data to a Kitura server using Codable types.</p>
-          <h3 class="heading-3"><li><a href="#getall">Create a basic GET ALL route</a></li></h3>
-          <p>Learn how to retrieve all data from a Kitura server.</p>
-          <h3 class="heading-3"><li><a href="#step3">Create a basic GET SINGLE route</a></li></h3>
-          <p>Learn how to get a single value from a Kitura server.</p>
-        </ol> -->
+        <p class="block-text">In this guide, we will show you how to set up Raw routes on your server.
+             We will store a Swift object that is sent via a POST request. We will then return that object when a user sends a GET request.</p>
+        <div class="info">
+          <p>If you don't have a Kitura server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+        </div>
         <div class="underline"></div>
-        <h2 class="heading-2" id="prereq">Prerequisites</h2>
+        <!-- <h2 class="heading-2" id="prereq">Prerequisites</h2>
         <ul class="plain-list">
             <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
             <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
             <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
         </ul>
-        <div class="underline"></div>
+        <div class="underline"></div> -->
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a file to contain the routes</h2>
+        <p>We are going to create a new file, where we will define the routes for this guide. </p>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the <strong>postInit()</strong> function add: </p>
@@ -140,6 +134,9 @@
 extension App {
     static var bookStore = [Book]()
 }</code></pre>
+<p>This code contains two sections. The first is the `initializeRawRoutes` function.
+    This will be run after the application has been initialized and is where we register routes on our router.
+    The second is the `App` extension. This is where we define a `bookStore` which will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST route</h2>
         <p>Inside the <strong>initializeRawRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.post("/raw") { request, response, next in

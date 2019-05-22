@@ -102,31 +102,26 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">HeliumLogger</h1>
-        <p>Helium Logger is a lightweight Swift logging framework which supports logging to standard output.</p>
+        <p><a target="_blank" href="https://github.com/IBM-Swift/HeliumLogger"> Helium Logger</a> is a lightweight Swift logging framework which supports logging to standard output.</p>
+        <p>In this guide we are going to show you how to add Helium Logger to a Kitura server, log messages using the logger and set the level of logging that should be displayed.</p>
         <div class="info">
-          <p>If you created your server using <strong>kitura init</strong> or the macOS app you can skip to step 3.</p>
+          <p>If you don't have a Kitura server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
         </div>
-        <h2 class="heading-2">Prerequisites</h2>
-        <ul class="plain-list">
-            <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="localStorage.setItem('package', 'HeliumLogger'); setActiveSidebarElementForParent('update-package')" href="../getting-started/update-package.html#">Add Dependency:</a> HeliumLogger needs adding to the <strong>Package.swift</strong> file.</li>
-        </ul>
-        <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add HeliumLogger to the project</h2>
-        <p>To start we need to import LoggerAPI in our code:</p>
-        <pre><code class="language-swift">import LoggerAPI</code></pre>
-        <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers.</p>
+        <p>If you created your server using the CLI or the macOS app, your project will have HeliumLogger by default. In this case, we can skip to step 3.</p>
+        <p>Otherwise, we need to <a target="_blank" href="https://github.com/IBM-Swift/HeliumLogger#add-dependencies"> add HeliumLogger to our dependencies</a>.</p>
+        <p>We then need to import `LoggerAPI` and `HeliumLogger` inside our project.</p>
+        <p>Open your `main.swift` file:</p>
+        <pre><code>open Sources/MyKituraApp/main.swift</code></pre>
+        <p>At the top of the file, add `LoggerAPI` and `HeliumLogger` to our import statements:</p>
+        <pre><code class="language-swift">import LoggerAPI
+import HeliumLogger</code></pre>
         <div class="info">
-          <p>Kitura has LoggerAPI included as a dependency by default, so we do not need to add this to our <strong>Package.swift</strong> file.</p>
+          <p>LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers. HeliumLogger has LoggerAPI included as a dependency, so we do not need to add this to our <strong>Package.swift</strong> file.</p>
         </div>
-        <p>Now we need to import HeliumLogger:</p>
-        <pre><code class="language-swift">import HeliumLogger</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add logging code to the server</h2>
         <p>To use the default settings for HeliumLogger we just need to call the <strong>use()</strong> method in HeliumLogger.</p>
-        <p>Open your <strong>main.swift</strong> file:</p>
-        <pre><code>open Sources/MyKituraApp/main.swift</code></pre>
         <p>Inside your <strong>main.swift</strong> add:</p>
         <pre><code class="language-swift">HeliumLogger.use()</code></pre>
         <p>We are going to use our new logger to log errors thrown by our server.</p>
