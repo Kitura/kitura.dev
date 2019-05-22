@@ -27,7 +27,7 @@
       <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
           <li class="nested-sidebar-item active"><a href="../getting-started/create-server.html">Create a server</a></li>
@@ -109,7 +109,7 @@
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Create project</h2>
         <p>Open Kitura from the Applications folder.</p>
-        <p>Hover over the Starter tile and click `Create`:</p>
+        <p>Hover over the Starter tile and click <strong>Create</strong>:</p>
         <img class="example-image" src="../../assets/preview1.png" alt="">
         <p>Enter the following for Project Name and Where:</p>
         <img class="example-image" src="../../assets/preview2.png" alt="">
@@ -117,8 +117,11 @@
           <p>The following guides will assume you've chosen the above destination and name.</p>
           <p>However you can use whatever destination and name you'd like, just substitute those in throughout the rest of the guides.</p>
         </div>
-        <p>Once you click `Create` the app will create and build your project. It will also generate you an Xcode project.</p>
+        <p>Once you click <strong>Create</strong> the app will create and build your project. It will also generate you an Xcode project.</p>
         <img class="example-image" src="../../assets/preview3.png" alt="">
+        <div class="info">
+          <p>The generated project contains a Swift 5.0 <strong>Package.swift</strong> file.</p>
+        </div>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
           <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('routing')" href="../routing/routing.html#">Routing:</a></span> Learn about routing and the two types Kitura supports.</p>

@@ -73,7 +73,7 @@
           <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
         </ul>
         <li class="sidebar-item collapsible">Deploying</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
           <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
           <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
@@ -120,7 +120,7 @@
       <ul class="plain-list">
           <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
           <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="localStorage.setItem('package', 'FileKit'); setActiveSidebarElementForParent('filekit')" href="../getting-started/update-package.html#">Update Dependencies:</a> FileKit needs adding to the `Package.swift` file.</li>
+          <li><a onclick="localStorage.setItem('package', 'FileKit'); setActiveSidebarElementForParent('filekit')" href="../getting-started/update-package.html#">Update Dependencies:</a> FileKit needs adding to the <strong>Package.swift</strong> file.</li>
       </ul>
       <h3 class="heading-3">Install OpenSSL</h3>
       <p>In this guide, we will use OpenSSL to generate our self-signed certificate.</p>
@@ -156,15 +156,15 @@
 <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 2:</span> Setting up your SSL configuration</h2>
       <p>Now we have created our certificate, we are going to set up our SSL configuration so that it can direct Kitura to the required files.</p>
-      <p>Open your `Application.swift` file:</p>
+      <p>Open your <strong>Application.swift</strong> file:</p>
       <pre><code>open Sources/Application/Application.swift</code></pre>
       <p>We are going to use <a href="https://github.com/IBM-Swift/FileKit" target="_blank">FileKit</a> to access our certificate file.</p>
       <p>This means we need to add FileKit to our import statements:</p>
       <pre><code class="language-swift">import FileKit</code></pre>
-      <p>Now we initialize an `SSLConfig` struct. On macOS we use Apple Secure Transport under the covers, which requires the path to our `cert.pfx` file and
+      <p>Now we initialize an <strong>SSLConfig</strong> struct. On macOS we use Apple Secure Transport under the covers, which requires the path to our <strong>cert.pfx</strong> file and
            the password we used to encrypt the file. On Linux we use OpenSSL under the covers, which requires the paths to the certificate and private key PEM files.</p>
-      <p>We use `#if` to check which operating system we're running on and provide the appropriate files to our configuration. </p>
-      <p>Inside the `App` class, add the following code:<p>
+      <p>We use <strong>#if</strong> to check which operating system we're running on and provide the appropriate files to our configuration. </p>
+      <p>Inside the <strong>App</strong> class, add the following code:<p>
       <pre><code class="language-swift">#if os(Linux)
 let sslConfig =  SSLConfig(withCACertificateDirectory: nil,
                              usingCertificateFile: FileKit.projectFolder + "/Credentials/cert.pem",
@@ -180,7 +180,7 @@ let sslConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Credenti
       <div class="underline"></div>
       <h2 class="heading-2"><span class="blue-text">Step 3:</span> Configure our Kitura server to use SSL</h2>
       <p>Now we have our SSL configuration, we need to pass it to Kitura.
-      We do this as part of the `addHTTPServer` function, using the `withSSL` parameter.</p>
+      We do this as part of the <strong>addHTTPServer</strong> function, using the <strong>withSSL</strong> parameter.</p>
       <p>Inside the run function, replace:</p>
       <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router)</code></pre>
       <p>With the following code:</p>

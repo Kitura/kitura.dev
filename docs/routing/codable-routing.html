@@ -40,7 +40,7 @@
           <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
         </ul>
         <li class="sidebar-item collapsible">Routing</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
           <li class="nested-sidebar-item active"><a href="../routing/codable-routing.html">Codable routing</a></li>
           <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
@@ -112,13 +112,13 @@
         </div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a file to contain the routes</h2>
         <p>We are going to create a new file, where we will define the routes for this guide. </p>
-        <p>Open your `Application.swift` file:</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
+        <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">initializeCodableRoutes(app: self)</code></pre>
-        <p>Create a new file, called `CodableRoutes.swift`:</p>
+        <p>Create a new file, called <strong>CodableRoutes.swift</strong>:</p>
         <pre><code>touch Sources/Application/Routes/CodableRoutes.swift</code></pre>
-        <p>Open your `CodableRoutes.swift` file:</p>
+        <p>Open your <strong>CodableRoutes.swift</strong> file:</p>
         <pre><code>open Sources/Application/Routes/CodableRoutes.swift</code></pre>
         <p>Inside this file, add the framework for our routes code: </p>
         <pre><code class="language-swift">import KituraContracts
@@ -130,20 +130,20 @@ extension App {
     static var codableStore = [Book]()
     // Write handlers here
 }</code></pre>
-        <p>This code contains two sections. The first is the `initializeCodableRoutes` function.
+        <p>This code contains two sections. The first is the <strong>initializeCodableRoutes</strong> function.
             This will be run after the application has been initialized and is where we register routes on our router.
-            The second is the `App` extension. This is where we write the logic to handle requests.</p>
-        <p>We also have a `codableStore` where we will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
-        <p>Finally, we have imported the KituraContracts library, which is pulled in with Kitura, as it contains the shared type definition for `RequestError` which we will use in the next step.</p>
+            The second is the <strong>App</strong> extension. This is where we write the logic to handle requests.</p>
+        <p>We also have a <strong>codableStore</strong> where we will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
+        <p>Finally, we have imported the KituraContracts library, which is pulled in with Kitura, as it contains the shared type definition for <strong>RequestError</strong> which we will use in the next step.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST Codable Route</h2>
-        <p>We will now create a POST route that will recieve a Codable type and store it in our `codableStore`.</p>
-        <p>Inside the `initializeCodableRoutes` function add:</p>
+        <p>We will now create a POST route that will recieve a Codable type and store it in our <strong>codableStore</strong>.</p>
+        <p>Inside the <strong>initializeCodableRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.post("/codable", handler: app.postHandler)</code></pre>
         <p>This code will register a POST endpoint on our router that will handle any POST requests made to "/codable".</p>
         <p>This will not compile as we haven't actually implemented the `postHandler` yet, so let's go ahead and do that.</p>
-        <p>The `postHandler` is a block of code, called a closure, that is executed when a POST request is made to "/codable".</p>
-        <p> Inside the `App` extension add: </p>
+        <p>The <strong>postHandler</strong> is a block of code, called a closure, that is executed when a POST request is made to "/codable".</p>
+        <p> Inside the <strong>App</strong> extension add: </p>
         <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
     App.codableStore.append(book)
     completion(book, nil)
@@ -178,10 +178,10 @@ extension App {
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4: </span>Create a GET ALL Codable Route</h2>
         <p>We register a GET route in a similar way to the POST route.</p>
-        <p>Inside the `initializeCodableRoutes` function add:</p>
+        <p>Inside the <strong>initializeCodableRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.get("/codable", handler: app.getAllHandler)</code></pre>
         <p>Just like before we now need to define the handler.</p>
-        <p> Inside the `App` extension add: </p>
+        <p> Inside the <strong>App</strong> extension add: </p>
         <pre><code class="language-swift">func getAllHandler(completion: ([Book]?, RequestError?) -> Void) {
     completion(App.codableStore, nil)
 }</code></pre>
@@ -201,18 +201,18 @@ extension App {
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Create a GET ONE Codable Route</h2>
         <p>Now we will create another GET route. This time we will register a handler for GET requests on "/codable/&lt;id&gt;" which will allow an identifier, &lt;id&gt; to be sent from the client which will identify the book to return information for.</p>
-        <p>Inside the `initializeCodableRoutes` function add:</p>
+        <p>Inside the <strong>initializeCodableRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.get("/codable", handler: app.getOneHandler)</code></pre>
         <p>Just like before we now need to define the handler.</p>
-        <p> Inside the `App` extension add: </p>
+        <p> Inside the <strong>App</strong> extension add: </p>
         <pre><code class="language-swift">func getOneHandler(id: Int, completion: (Book?, RequestError?) -> Void) {
     guard id < App.codableStore.count, id >= 0 else {
         return completion(nil, .notFound)
     }
     completion(App.codableStore[id], nil)
 }</code></pre>
-        <p>In the handler, we are provided with an identifier `id`. This is the value following our route and can be either an `Int` or a `String`, in our example we use `Int`, as our model contains an identifier of type `Int`.
-        We then use this identifier to return a single `Book.`</p>
+        <p>In the handler, we are provided with an identifier <strong>id</strong>. This is the value following our route and can be either an <strong>Int</strong> or a <strong>String</strong>, in our example we use <strong>Int</strong>, as our model contains an identifier of type <strong>Int</strong>.
+        We then use this identifier to return a single <strong>Book.</strong></p>
         <p>Now we can restart our server to test our new endpoint.</p>
         <p>Once the server is running, open the browser at:</p>
         <p><a href="http://localhost:8080/codable/0" target="_blank">localhost:8080/codable/0</a></p>
@@ -242,24 +242,24 @@ http://localhost:8080/codable \
         <h2 class="heading-2"><span class="blue-text">Step 6:</span> Adding thread safety (Optional)</h2>
         <p class="block-text">Kitura route handlers are asynchronous.
             If threads from different routes try to change the same object at the same time they will crash.
-            To prevent these collisions in our example, we can serialize access to the `codableStore`.</p>
+            To prevent these collisions in our example, we can serialize access to the <strong>codableStore</strong>.</p>
         <div class="info">
           <p>If you have completed the <a href="../routing/raw-routing.html" target="_blank">Raw Routing guide</a>, you will already have the execute function.</p>
         </div>
-        <p>Open your `Application.swift` file:</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p>Add `Dispatch` to the import statements:</p>
+        <p>Add <strong>Dispatch</strong> to the import statements:</p>
         <pre><code class="language-swift">import Dispatch</code></pre>
-        <p>Inside the `App` class, add a `DispatchQueue`: </p>
+        <p>Inside the <strong>App</strong> class, add a <strong>DispatchQueue</strong>: </p>
         <pre><code class="language-swift">let workerQueue = DispatchQueue(label: "worker")</code></pre>
-        <p>At the end of the `App` class, add a helper function for atomically executing code:</p>
+        <p>At the end of the <strong>App</strong> class, add a helper function for atomically executing code:</p>
         <pre><code class="language-swift">func execute(_ block: (() -> Void)) {
     workerQueue.sync {
         block()
     }
 }</code></pre>
-        <p>Back in `CodableRoutes.swift`, we wrap the code in our handlers with this execute function.</p>
-        <p>Your completed `CodableRouting.swift` should now look as follows:</p>
+        <p>Back in <strong>CodableRoutes.swift</strong>, we wrap the code in our handlers with this execute function.</p>
+        <p>Your completed <strong>CodableRouting.swift</strong> should now look as follows:</p>
     <pre><code class="language-swift">import KituraContracts
 
 func initializeCodableRoutes(app: App) {

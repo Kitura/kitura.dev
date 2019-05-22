@@ -40,7 +40,7 @@
           <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
         </ul>
         <li class="sidebar-item collapsible">Routing</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
           <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
           <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
@@ -103,7 +103,7 @@
       <main>
         <h1 class="heading-1">Kitura OpenAPI</h1>
         <p class="block-text"><a target="_blank" href="https://github.com/IBM-Swift/Kitura-OpenAPI">Kitura-OpenAPI</a> is a library which makes it easy to add <a target="_blank" href="https://www.openapis.org">OpenAPI</a>, also known as Swagger, support to your Codable routing-based Kitura application.</p>
-        <p>In this guide we show you how to host both an automatically generated OpenAPI definition of your application on the endpoint `/openapi`, and the Swagger UI tool on the endpoint `/openapi/ui`. We also
+        <p>In this guide we show you how to host both an automatically generated OpenAPI definition of your application on the endpoint <strong>"/openapi"</strong>, and the Swagger UI tool on the endpoint <strong>"/openapi/ui"</strong>. We also
         demonstrate how simple this makes testing your routes!</p>
         <h2 class="heading-2">Prerequisites</h2>
         <ul class="plain-list">
@@ -113,16 +113,16 @@
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Add Kitura OpenAPI to your project</h2>
         <p>First we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-OpenAPI#getting-started"> add OpenAPI to our dependencies</a>.</p>
         <p>Next, we need to import KituraOpenAPI into our project.</p>
-        <p>Open your `Application.swift` file:</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
         <p>Add the import statement for the KituraOpenAPI package:</p>
         <pre><code class="language-swift">import KituraOpenAPI</code></pre>
         <p>Next we need to add the KituraOpenAPI endpoints to our router.</p>
-        <p>Inside the `postInit()` function add:</p>
+        <p>Inside the <strong>postInit()</strong> function add:</p>
         <pre><code class="language-swift">KituraOpenAPI.addEndpoints(to: router)</code></pre>
         <p>That's all we need to do to enable KituraOpenAPI on our server.</p>
         <div class="info">
-          <p>By default, KituraOpenAPI is served on the `"/openapi"` and `"/openapi/ui"` paths.</p>
+          <p>By default, KituraOpenAPI is served on the <strong>"/openapi"</strong> and <strong>"/openapi/ui"</strong> paths.</p>
         </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> View the OpenAPI UI</h2>
@@ -135,20 +135,20 @@
         </div>
         <p>Kitura OpenAPI provides a UI in which we can view our Codable routes and models.</p>
         <p>We can view any of our routes simply by clicking on them.</p>
-        <p>Let's start by clicking on the `GET` button:</p>
+        <p>Let's start by clicking on the <strong>GET</strong> button:</p>
         <div class="img-container">
           <img class="openapi-img" src="../../assets/OpenAPI-UI-GET.png" alt="Kitura OpenAPI example GET route">
         </div>
         <p>We can see here the parameters section is empty, as we'd expect because GET routes typically only retrieve data.</p>
-        <p>However we can see an example of the response we should be getting from the GET route on `"/books"`.</p>
+        <p>However we can see an example of the response we should be getting from the GET route on <strong>"/books"</strong>.</p>
         <div class="info">
           <p>As this is a GetAll route it's an array of JSON objects that match our Book model.</p>
         </div>
-        <p>Next we can view the POST route by clicking the `POST` button:</p>
+        <p>Next we can view the POST route by clicking the <strong>POST</strong> button:</p>
         <div class="img-container">
           <img class="openapi-img" src="../../assets/OpenAPI-UI-POST.png" alt="Kitura OpenAPI example GET route">
         </div>
-        <p>We can see from this screen what input the `POST` on `"/books"` is expecting, and OpenAPI even provides an example.</p>
+        <p>We can see from this screen what input the <strong>POST</strong> on <strong>"/books"</strong> is expecting, and OpenAPI even provides an example.</p>
         <p>Information regarding the parameter type is also provided, application/json in our case.</p>
         <p>As well as being able to view the expected input we can also view the expected response.</p>
         <div class="info">
@@ -158,7 +158,7 @@
         <p>In the next sections we will look at how we can test our Codable routes.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Test a POST route</h2>
-        <p>We can test the POST route by clicking the `POST` button, then clicking the `Try it out` button in the top right:</p>
+        <p>We can test the POST route by clicking the <strong>POST</strong> button, then clicking the <strong>Try it out</strong> button in the top right:</p>
         <div class="img-container">
           <img class="openapi-img" src="../../assets/OpenAPI-UI-POST-Try.png" alt="Kitura OpenAPI example GET route">
         </div>
@@ -182,7 +182,7 @@
         <p>Now that we've posted some data, we can test retrieving the data.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Test a GET route</h2>
-        <p>To test our GET route we need to click on the `GET` button and then click `Try it out` in the top right corner.</p>
+        <p>To test our GET route we need to click on the <strong>GET</strong> button and then click <strong>Try it out</strong> in the top right corner.</p>
         <p>We should see the following:</p>
         <div class="img-container">
           <img class="openapi-img" src="../../assets/OpenAPI-UI-GET-Try.png" alt="Kitura OpenAPI example GET route">
@@ -194,7 +194,7 @@
         <p>This should look somewhat familiar as it's similiar to the result of our POST test.</p>
         <p>We're provided with the Curl command which we could execute in a terminal.</p>
         <p>The response body is slightly different, it is an array of JSON objects which is what we'd expect from the GetAll route.</p>
-        <p>The status code is also different, we have a value of 200 which means `Success`.</p>
+        <p>The status code is also different, we have a value of 200 which means <strong>Success</strong>.</p>
         <!-- <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Optional:</span> Configure OpenAPI serving path</h2>
         <p>By default Kitura OpenAPI is served on the `"/openapi"` and `"/openapi/ui"` paths.</p>

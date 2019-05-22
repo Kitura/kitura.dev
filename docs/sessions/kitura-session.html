@@ -54,7 +54,7 @@
           <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
         </ul>
         <li class="sidebar-item collapsible">Sessions</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
           <li class="nested-sidebar-item active"><a href="../sessions/kitura-session.html">Raw Routing Session</a></li>
           <li class="nested-sidebar-item"><a href="../sessions/type-safe-session.html">Codable Routing Session</a></li>
@@ -69,6 +69,7 @@
         <li class="sidebar-item collapsible">Web Application</li>
         <ul class="nested-sidebar-list content">
           <li class="nested-sidebar-item"><a href="../templating/templating.html">What is templating?</a></li>
+	  <li class="nested-sidebar-item"><a href="../templating/static-file-server.html">Static File Server</a></li>
           <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
           <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
         </ul>
@@ -114,11 +115,11 @@
 	        <div class="info">
 	            <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
 	        </div>
-         <p>Once that is complete, open your `Application.swift` file in your default text editor (or Xcode if you prefer):</p>
+         <p>Once that is complete, open your <strong>Application.swift</strong> file in your default text editor (or Xcode if you prefer):</p>
          <pre><code>open Sources/Application/Application.swift</code></pre>
-         <p> Inside the `postInit()` function add: </p>
+         <p> Inside the <strong>postInit()</strong> function add: </p>
          <pre><code class="language-swift">initializeSessionRawRoutes(app: self)</code></pre>
-         <p>Next, create a new file, called `SessionRawRoutes.swift`, to contain the framework for our routes code:</p>
+         <p>Next, create a new file, called <strong>SessionRawRoutes.swift</strong>, to contain the framework for our routes code:</p>
          <pre><code class="language-swift">import KituraSession
 
 func initializeSessionRawRoutes(app: App) {
@@ -142,24 +143,24 @@ func initializeSessionRawRoutes(app: App) {
             This allows us to add features such as an online shopping cart, where multiple requests add items to the cart until we are ready to checkout.</p>
         <p>When we create our session we can configure it with the following parameters:</p>
         <ul>
-          <li><span class="blue-text">secret:</span> A `String` to be used for session encoding. This is your session's password and should be treated as such.</li>
+          <li><span class="blue-text">secret:</span> A <strong>String</strong> to be used for session encoding. This is your session's password and should be treated as such.</li>
           <li><span class="blue-text">cookie:</span> A list of options for the session's cookies. In this example we will use this to set the cookie's name.</li>
-          <li><span class="blue-text">store:</span> A session backing store that implements the `Store` protocol. This determines where session data is persisted. In this example we do not set this, meaning the data is persisted on the server.</li>
+          <li><span class="blue-text">store:</span> A session backing store that implements the <strong>Store</strong> protocol. This determines where session data is persisted. In this example we do not set this, meaning the data is persisted on the server.</li>
         </ul>
         <div class="info">
             <p>For live applications, you should use a persistent store, such as a database, or <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session-Redis">Kitura-Session-Redis</a>.</p>
         </div>
-        <p>To set up our session, we create a `Session` middleware with our desired parameters.</p>
-        <p>Inside your `initializeSessionRawRoutes`, add the following code:</p>
+        <p>To set up our session, we create a <strong>Session</strong> middleware with our desired parameters.</p>
+        <p>Inside your <strong>initializeSessionRawRoutes</strong>, add the following code:</p>
         <pre><code class="language-swift">let session = Session(secret: "password", cookie: [CookieParameter.name("Raw-cookie")])</code></pre>
         <p>Below this line, register the middleware on our router:</p>
         <pre><code class="language-swift">app.router.all(middleware: session)</code></pre>
-        <p>We should now have access to our session using `request.session`.</p>
-        <p>Add the following `guard` statement to both route handlers to ensure that this is the case:</p>
+        <p>We should now have access to our session using <strong>request.session</strong>.</p>
+        <p>Add the following <strong>guard</strong> statement to both route handlers to ensure that this is the case:</p>
         <pre><code class="language-swift">guard let session = request.session else {
     return try response.status(.internalServerError).end()
 }</code></pre>
-        <p>Our `SessionRawRoutes.swift` file should now look as follows:</p>
+        <p>Our <strong>SessionRawRoutes.swift</strong> file should now look as follows:</p>
         <pre><code class="language-swift">import KituraSession
 
 func initializeSessionRawRoutes(app: App) {
@@ -185,8 +186,8 @@ func initializeSessionRawRoutes(app: App) {
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add the session GET route</h2>
     <p>Now we have access to our session, we can use it to persist data.</p>
-    <p>We are going to be persisting the `Book` model from the <a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide</a>, but you can use any `Codable` Swift type.</p>
-    <p>The session is stored as a `[String: Any]` dictionary, however by declaring the expected type, we can directly decode our model from the session.</p>
+    <p>We are going to be persisting the <strong>Book</strong> model from the <a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide</a>, but you can use any <strong>Codable</strong> Swift type.</p>
+    <p>The session is stored as a <strong>[String: Any]</strong> dictionary, however by declaring the expected type, we can directly decode our model from the session.</p>
     <p>In our case, we decode an array of books by adding the following code to our GET handler:</p>
     <pre><code class="language-swift">let books: [Book] = session["books"] ?? []</code></pre>
     <p>This will get all the books stored for the "books" key in our model. If there are no books it returns an empty array.</p>
@@ -232,7 +233,7 @@ response.send(inputBook)</code></pre>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Test our Session</h2>
         <p>We have now completed the code for our session.
              This will allow us to add books to our cart and persist them between requests.</p>
-        <p>Our completed `SessionRawRoutes.swift` file should now look as follows:</p>
+        <p>Our completed <strong>SessionRawRoutes.swift</strong> file should now look as follows:</p>
         <pre><code class="language-swift">import KituraSession
 
 func initializeSessionRawRoutes(app: App) {
@@ -275,7 +276,7 @@ http://localhost:8080/session \
 }'</code></pre>
         <p>If our request was successful, our book will be returned to us:</p>
         <pre><code>{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}</code></pre>
-        <p>We will also have a cookie that curl has stored in the `cookies.txt` file.</p>
+        <p>We will also have a cookie that curl has stored in the <strong>cookies.txt</strong> file.</p>
         <p>To retrieve our book, we make another curl request to our server:</p>
         <pre><code>curl -X GET \
 http://localhost:8080/session \

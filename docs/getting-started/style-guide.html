@@ -27,7 +27,7 @@
       <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
@@ -152,20 +152,20 @@
         <p class="block-text">Throughout these guides we will assume you have a project set up as described above. If you generated your project with the Kitura macOS app or Kitura CLI, skip ahead to Step 5: Defining a Book model.
         If you generated your project using the Swift Package Manager (SPM), the following steps will produce the above structure.</p>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create the Application directory</h2>
-        <p>Within our `Sources` directory we will first create an `Application` directory:</p>
+        <p>Within our <strong>Sources</strong> directory we will first create an <strong>Application</strong> directory:</p>
         <pre><code>mkdir Sources/Application</code></pre>
-        <p>This is the directory where we will store all of our application code. Note, code in the project's `main.swift` file isn't easy to test because you can't import an executable target as a module,
-        so to encourage the creation of easily testable code we have minimal code in our `main.swift` file and recommend putting application code into a separate `Application` directory.</p>
-        <p>Next we will create our `Application.swift` file:</p>
+        <p>This is the directory where we will store all of our application code. Note, code in the project's <strong>main.swift</strong> file isn't easy to test because you can't import an executable target as a module,
+        so to encourage the creation of easily testable code we have minimal code in our <strong>main.swift</strong> file and recommend putting application code into a separate <strong>Application</strong> directory.</p>
+        <p>Next we will create our <strong>Application.swift</strong> file:</p>
         <pre><code>touch Sources/Application/Application.swift</code></pre>
-        <p>Next we need to create our `Routes` directory:</p>
+        <p>Next we need to create our <strong>Routes</strong> directory:</p>
         <pre><code>mkdir Sources/Application/Routes</code></pre>
         <p>This is where we will store all of our route handlers.</p>
-        <p>Next we will rename the directory within `Tests` to `ApplicationTests`:</p>
+        <p>Next we will rename the directory within <strong>Tests</strong> to <strong>ApplicationTests</strong>:</p>
         <pre><code>mv Tests/MyKituraAppTests/ Tests/ApplicationTests</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Update the Package.swift file</h2>
-        <p>Next we need to configure the targets within our `Package.swift` file to add in `Application` as a dependency so that we can build our new project structure: </p>
+        <p>Next we need to configure the targets within our <strong>Package.swift</strong> file to add in <strong>Application</strong> as a dependency so that we can build our new project structure: </p>
         <pre><code class="language-swift">targets: [
     .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura"]),
     .target(name: "Application", dependencies: [ "Kitura" ]),
@@ -181,11 +181,11 @@
         </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add code to the Application.swift file</h2>
-        <p>Earlier, we created the `Application.swift` file but we didn't add any code to it.</p>
-        <p>Open the `Application.swift` file in our default text editor:</p>
+        <p>Earlier, we created the <strong>Application.swift</strong> file but we didn't add any code to it.</p>
+        <p>Open the <strong>Application.swift</strong> file in our default text editor:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p>The `Application.swift` file will be responsible for starting our Kitura server.</p>
-        <p>Add the following code to the `Application.swift` file:</p>
+        <p>The <strong>Application.swift</strong> file will be responsible for starting our Kitura server.</p>
+        <p>Add the following code to the <strong>Application.swift</strong> file:</p>
         <pre><code class="language-swift">import Kitura
 
 public class App {
@@ -206,13 +206,13 @@ public class App {
         Kitura.run()
     }
 }</code></pre>
-        <p>This code creates an instance of Router, which will route incoming requests to the correct endpoints. Within the `run()` method we register
-        our `router` instance to run on port 8080. The call to `Kitura.run()` does not return immediately - it will block until the server is stopped.</p>
-        <p>The `postInit()` function is where we configure and set up the router, prior to starting the server.</p>
+        <p>This code creates an instance of Router, which will route incoming requests to the correct endpoints. Within the <strong>run()</strong> method we register
+        our <strong>router</strong> instance to run on port 8080. The call to <strong>Kitura.run()</strong> does not return immediately - it will block until the server is stopped.</p>
+        <p>The <strong>postInit()</strong> function is where we configure and set up the router, prior to starting the server.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add code to the main.swift file</h2>
-        <p>Now that we have created our `App` class in our `Application.swift` file we can use it within our `main.swift` file.</p>
-        <p>Open the `main.swift` file in your editor:</p>
+        <p>Now that we have created our <strong>App</strong> class in our <strong>Application.swift</strong> file we can use it within our <strong>main.swift</strong> file.</p>
+        <p>Open the <strong>main.swift</strong> file in your editor:</p>
         <pre><code>open Sources/MyKituraApp/main.swift</code></pre>
         <p>Replace the existing code with the following:</p>
         <pre><code class="language-swift">import Application
@@ -224,16 +224,16 @@ do {
 } catch let error {
     print(error.localizedDescription)
 }</code></pre>
-        <p>This code will create an `App` instance and run it.</p>
+        <p>This code will create an <strong>App</strong> instance and run it.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Defining a Book model</h2>
         <p class="block-text">As we are simulating a bookstore in our guides, we are going to need to define a book.
             The book is a model so the first thing we need to do is create our Models folder:</p>
             <pre><code>mkdir Sources/Application/Models</code></pre>
             <p>This is the directory where we will store all of our models.</p>
-            <p>Next we will create our `Book.swift` file:</p>
+            <p>Next we will create our <strong>Book.swift</strong> file:</p>
             <pre><code>touch Sources/Application/Models/Book.swift</code></pre>
-            <p>We will open the `Book.swift` file in our default text editor:</p>
+            <p>We will open the <strong>Book.swift</strong> file in our default text editor:</p>
             <pre><code>open Sources/Application/Models/Book.swift</code></pre>
             <p>Inside this file we define our Book:</p>
             <pre><code class="language-swift">struct Book: Codable {

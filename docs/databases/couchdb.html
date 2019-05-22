@@ -47,7 +47,7 @@
           <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
         </ul>
         <li class="sidebar-item collapsible">Databases</li>
-        <ul class="nested-sidebar-list content">
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../databases/databases.html">What are Databases?</a></li>
           <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
           <li class="nested-sidebar-item"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
@@ -111,7 +111,7 @@
         <ol>
              <li><p><a target="_blank" href="http://couchdb.apache.org/#download">Download and install CouchDB</a>.</p></li>
              <li><p>Set up an admin username and password in CouchDB.</p></li>
-             <li><p>Create a database. (In this example we're using the name `bookstore`.)</p></li>
+             <li><p>Create a database. (In this example we're using the name <strong>bookstore</strong>.)</p></li>
         </ol>
         <div class="info">
           <p>It is important to remember the database name and credentials, as we will need them later on in the guide.</p>
@@ -125,13 +125,13 @@
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Define the CouchDB routes</h2>
         <p>Next, we are going to create a file in our project for the CouchDB routes.</p>
-        <p>Open your `Application.swift` file:</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
+        <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">initializeCouchRoutes(app: self)</pre></code>
-        <p>Create a new file, called `CouchRoutes.swift`:</p>
+        <p>Create a new file, called <strong>CouchRoutes.swift</strong>:</p>
         <pre><code>touch Sources/Application/Routes/CouchRoutes.swift</code></pre>
-        <p>Open your `CouchRoutes.swift` file:</p>
+        <p>Open your <strong>CouchRoutes.swift</strong> file:</p>
         <pre><code>open Sources/Application/Routes/CouchRoutes.swift</code></pre>
         <p>Inside our file, we will define two routes. In the first route, we will retrieve a book from the user and save it into the bookstore database. In the second route, we will retrieve all of the documents that have been saved to the database.</p>
         <pre><code class="language-swift">import KituraContracts
@@ -155,17 +155,17 @@ extension App {
 }</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 4:</span> Define a Document</h2>
-        <p>CouchDB is a NoSQL database for storing documents. A `Document` is any structure that can be represented as JSON and contains `_id` and `_rev` fields.
-        <ul><li>The `id` field is the unique identifier for the document.</li>
-        <li>The `_rev` field is the revision of the document. It is returned when you make requests and is used to prevent conflicts from multiple users updating the same document.</li></ul></p>
+        <p>CouchDB is a NoSQL database for storing documents. A <strong>Document</strong> is any structure that can be represented as JSON and contains <strong>_id</strong> and <strong>_rev</strong> fields.
+        <ul><li>The <strong>id</strong> field is the unique identifier for the document.</li>
+        <li>The <strong>_rev</strong> field is the revision of the document. It is returned when you make requests and is used to prevent conflicts from multiple users updating the same document.</li></ul></p>
 
-        <p>To define a CouchDB document, all we need to do is create a Swift object and make it conform to the `Document` protocol.</p>
+        <p>To define a CouchDB document, all we need to do is create a Swift object and make it conform to the <strong>Document</strong> protocol.</p>
 
-        <p>Create a new file, called `BookDocument.swift`:</p>
+        <p>Create a new file, called <strong>BookDocument.swift</strong>:</p>
         <pre><code>touch Sources/Application/Models/BookDocument.swift</code></pre>
-        <p>Open your `BookDocument.swift` file:</p>
+        <p>Open your <strong>BookDocument.swift</strong> file:</p>
         <pre><code>open Sources/Application/Models/BookDocument.swift</code></pre>
-        <p>Inside this file, define your `BookDocument`:</p>
+        <p>Inside this file, define your <strong>BookDocument</strong>:</p>
         <pre><code class="language-swift">import CouchDB
 
 struct BookDocument: Document {
@@ -187,12 +187,12 @@ struct BookDocument: Document {
 )</code></pre>
         <p>Now we can use these connection properties to create our CouchDB client:</p>
         <pre><code class="language-swift">static let couchDBClient = CouchDBClient(connectionProperties: properties)</code></pre>
-        <p>The `CouchDBClient` represents a connection to a CouchDB server. It is initialized with your `ConnectionProperties` and handles the creation, retrieval and deletion of CouchDB databases.</p>
+        <p>The <strong>CouchDBClient</strong> represents a connection to a CouchDB server. It is initialized with your <strong>ConnectionProperties</strong> and handles the creation, retrieval and deletion of CouchDB databases.</p>
         <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 6:</span> Save our document to the database</h2>
-        <p>We are going to modify the `couchSaveHandler` we defined earlier to store a document in our database.</p>
-        <p>The first thing we need to do is connect to our `bookstore` database. We achieve this by using the `CouchDBClient.retrieveDB()` method and passing in our database name.</p>
-        <p>Inside the `couchSaveHandler` add the following code:</p>
+        <p>We are going to modify the <strong>couchSaveHandler</strong> we defined earlier to store a document in our database.</p>
+        <p>The first thing we need to do is connect to our <strong>bookstore</strong> database. We achieve this by using the <strong>CouchDBClient.retrieveDB()</strong> method and passing in our database name.</p>
+        <p>Inside the <strong>couchSaveHandler</strong> add the following code:</p>
         <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") { (database, error) in
     guard let database = database  else {
         return completion(nil, .internalServerError)
@@ -203,9 +203,9 @@ struct BookDocument: Document {
         <p>Since the CouchDB functions are asynchronous, we must handle responses inside the function's callback.</p>
     </div>
         <p>Now we are going to save our book document to the database.
-           We will use the CouchDB `Database` class to make an HTTP request to our database.
-           This class can make CRUD (Create, Retrieve, Update, Delete) requests for our CouchDB `Document`.
-           In this case we will use `create` to save our book document.
+           We will use the CouchDB <strong>Database</strong> class to make an HTTP request to our database.
+           This class can make CRUD (Create, Retrieve, Update, Delete) requests for our CouchDB <strong>Document</strong>.
+           In this case we will use <strong>create</strong> to save our book document.
            If the call succeeds we then return the book document with it's updated id and revision, otherwise we return an error.</p>
 <pre><code class="language-swift">database.create(bookDocument) { (response, error) in
     guard let response = response else {
@@ -253,25 +253,25 @@ struct BookDocument: Document {
       </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 8:</span> Retrieve the document from the database</h2>
-        <p>Similar to our other handler, the first step is to connect to our `bookstore` database.</p>
-        <p>Inside the `couchFindAllHandler` add the following code:</p>
+        <p>Similar to our other handler, the first step is to connect to our <strong>bookstore</strong> database.</p>
+        <p>Inside the <strong>couchFindAllHandler</strong> add the following code:</p>
         <pre><code class="language-swift">App.couchDBClient.retrieveDB("bookstore") { (database, error) in
     guard let database = database  else {
         return completion(nil, .internalServerError)
     }
     // Retrieve documents here
 }</code></pre>
-        <p>Next we're going to retrieve our document from the database. To retrieve all the documents from a CouchDB database we need to use the aptly named `retrieveAll` method.</p>
+        <p>Next we're going to retrieve our document from the database. To retrieve all the documents from a CouchDB database we need to use the aptly named <strong>retrieveAll</strong> method.</p>
 <pre><code class="language-swift">database.retrieveAll(includeDocuments: true, callback: { (allDocuments, error) in
     guard let allDocuments = allDocuments else {
         return completion(nil, RequestError(httpCode: error?.statusCode ?? 500))
     }
     // Decode and return books here
 })</code></pre>
-<p>When we made the call to `retrieveAll` we set the `includeDocuments` parameter to true,
+<p>When we made the call to <strong>retrieveAll</strong> we set the <strong>includeDocuments</strong> parameter to true,
      this means that each row returned from the database will have an additional field called "doc" in it which contains the JSON document.
-      These documents can then be decoded to a given Swift type using `decodeDocuments(ofType:)`.</p>
-        <p>We decode all the documents that match the `BookDocument` type, and return them in the completion:</p>
+      These documents can then be decoded to a given Swift type using <strong>decodeDocuments(ofType:)</strong>.</p>
+        <p>We decode all the documents that match the <strong>BookDocument</strong> type, and return them in the completion:</p>
         <pre><code class="language-swift">let books = allDocuments.decodeDocuments(ofType: BookDocument.self)
 completion(books, nil)</code></pre>
         <p>Your completed GET handler should now look as follows:</p>
@@ -294,7 +294,7 @@ completion(books, nil)</code></pre>
         <h2 class="heading-2"><span class="blue-text bold">Step 9:</span> Test retrieving documents from the database</h2>
         <p>If you have followed the guide so far then you will now have a book document in your database, which we can retrieve using the code we just wrote.</p>
         <p>To do this, start the server and navigate to: <a target="_blank" href="http://localhost:8080/couch">http://localhost:8080/couch.</a></p>
-        <p>This will call GET on the `/couch` route and we will see the book we posted earlier returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.</p>
+        <p>This will call GET on the <strong>/couch</strong> route and we will see the book we posted earlier returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
