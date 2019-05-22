@@ -134,7 +134,7 @@ extension App {
             This will be run after the application has been initialized and is where we register routes on our router.
             The second is the `App` extension. This is where we write the logic to handle requests.</p>
         <p>We also have a `codableStore` where we will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
-        <p>Finally, we have imported the KituraContracts library as it contains the shared type definition for `RequestError` which we will use in the next step.</p>
+        <p>Finally, we have imported the KituraContracts library, which is pulled in with Kitura, as it contains the shared type definition for `RequestError` which we will use in the next step.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST Codable Route</h2>
         <p>We will now create a POST route that will recieve a Codable type and store it in our `codableStore`.</p>
