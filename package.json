@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/IBM-Swift/kitura.io#readme",
   "dependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0",
-    "gulp-clean-css": "^4.0.0",
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
     "gulp-sass": "^4.0.2"
   }
 }
