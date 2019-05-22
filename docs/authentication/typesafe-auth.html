@@ -109,18 +109,18 @@
             <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
           <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Book Model:</a> Define a Book model, as described in Step 5 of the Style Guide.</li>
           <li><a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI:</a> Learn how to add this in our Kitura OpenAPI guide.</li>
-          <li><a onclick="localStorage.setItem('package', 'CredentialsHTTP'); setActiveSidebarElementForParent('CredentialsHTTP')" href="../getting-started/update-package.html#">Update Dependencies:</a> CredentialsHTTP needs adding to the `Package.swift` file.</li>
+          <li><a onclick="localStorage.setItem('package', 'CredentialsHTTP'); setActiveSidebarElementForParent('CredentialsHTTP')" href="../getting-started/update-package.html#">Update Dependencies:</a> CredentialsHTTP needs adding to the <strong>Package.swift</strong> file.</li>
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2">Type-Safe HTTP Basic</h2>
         <h3 class="heading-3"><span class="blue-text">Step 1:</span> Define a TypeSafeHTTPBasic object</h3>
         <p>We will declare a struct which conforms to TypeSafeHTTPBasic.</p>
         <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
-        <p>Create a new file, called `MyBasicAuth.swift`:</p>
+        <p>Create a new file, called <strong>MyBasicAuth.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
-        <p>Open your `MyBasicAuth.swift` file:</p>
+        <p>Open your <strong>MyBasicAuth.swift</strong> file:</p>
         <pre><code>open Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
-        <p>Inside this file, define your `MyBasicAuth` struct:</p>
+        <p>Inside this file, define your <strong>MyBasicAuth</strong> struct:</p>
         <pre><code class="language-swift">import Credentials
 import CredentialsHTTP
 import LoggerAPI
@@ -129,7 +129,7 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
 
 }</code></pre>
         <p>If you're using Xcode it should display the message: Type 'MyBasicAuth' does not conform to protocol 'TypeSafeCredentials'</p>
-        <p>Click "Fix" to autogenerate the stubs for `verifyPassword` and `id`:</p>
+        <p>Click "Fix" to autogenerate the stubs for <strong>verifyPassword</strong> and <strong>id</strong>:</p>
         <pre><code class="language-swift">public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
 
 }
@@ -141,7 +141,7 @@ public var id: String</code></pre>
           <p>In a real project, never store passwords in plain text!</p>
         </div>
         <p>Define verifyPassword:</p>
-        <p>The function, verifyPassword, takes a username and password and, on success, returns a `MyBasicAuth` instance.</p>
+        <p>The function, verifyPassword, takes a username and password and, on success, returns a <strong>MyBasicAuth</strong> instance.</p>
         <p>We want to check if the password matches the user's stored password. On successful match, we initialize MyBasicAuth with an id equal to username.</p>
         <pre><code class="language-swift">if let storedPassword = authenticate[username], storedPassword == password {
     return callback(MyBasicAuth(id: username))
@@ -167,13 +167,13 @@ callback(nil)</code></pre>
     <div class="underline"></div>
     <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a TypeSafeAuthRoutes.swift file</h2>
 
-    <p>Firstly, open your `Application.swift` file in your default text editor:</p>
+    <p>Firstly, open your <strong>Application.swift</strong> file in your default text editor:</p>
     <pre><code>open Sources/Application/Application.swift</code></pre>
-    <p> Inside the `postInit()` function add: </p>
+    <p> Inside the <strong>postInit()</strong> function add: </p>
     <pre><code class="language-swift">initializeTypeSafeAuthRoutes(app: self)</code></pre>
-    <p>Next, create a new file, called `TypeSafeAuthRoutes.swift`, to contain the code for our routes:</p>
+    <p>Next, create a new file, called <strong>TypeSafeAuthRoutes.swift</strong>, to contain the code for our routes:</p>
     <pre><code>touch Sources/Application/Routes/TypeSafeAuthRoutes.swift</code></pre>
-    <p>Open your `TypeSafeAuthRoutes.swift` file:</p>
+    <p>Open your <strong>TypeSafeAuthRoutes.swift</strong> file:</p>
     <pre><code>open Sources/Application/Routes/TypeSafeAuthRoutes.swift</code></pre>
     <p>Inside this file, add the framework for our routes code:</p>
     <pre><code class="language-swift">import KituraContracts
@@ -201,7 +201,7 @@ extension App {
 let secretBook = Book(id: 451, title: "1984", price: 9001, genre: "Science Fiction")
 respondWith(secretBook, nil)</code></pre>
         <p>That's it! We've implemented HTTP basic authentication of a Codable route.</p>
-        <p>Your completed `TypeSafeAuthRoutes.swift` should now look as follows:</p>
+        <p>Your completed <strong>TypeSafeAuthRoutes.swift</strong> should now look as follows:</p>
     <pre><code class="language-swift">import KituraContracts
 import Credentials
 import CredentialsHTTP

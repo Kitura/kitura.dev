@@ -116,14 +116,14 @@
             <div class="info">
                 <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
             </div>
-         <p>Once that is complete, open your `Application.swift` file in your default text editor (or Xcode if you prefer):</p>
-        <p>Open your `Application.swift` file:</p>
+         <p>Once that is complete, open your <strong>Application.swift</strong> file in your default text editor (or Xcode if you prefer):</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
-        <p> Inside the `postInit()` function add: </p>
+        <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">initializeTypeSafeSessionRoutes(app: self)</code></pre>
-        <p>Create a new file, called `TypeSafeSessionRoutes.swift`:</p>
+        <p>Create a new file, called <strong>TypeSafeSessionRoutes.swift</strong>:</p>
         <pre><code>touch Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
-        <p>Open your `TypeSafeSessionRoutes.swift` file:</p>
+        <p>Open your <strong>TypeSafeSessionRoutes.swift</strong> file:</p>
         <pre><code>open Sources/Application/Routes/TypeSafeSessionRoutes.swift</code></pre>
         <p>Inside this file, add the framework for our routes code:</p>
         <pre><code class="language-swift">import KituraContracts
@@ -136,18 +136,18 @@ func initializeTypeSafeSessionRoutes(app: App) {
 extension App {
     // Define handlers here
 }</code></pre>
-        <p>We will add our `postSessionHandler` and `getSessionHandler` later in this guide.</p>
+        <p>We will add our <strong>postSessionHandler</strong> and <strong>getSessionHandler</strong> later in this guide.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define a Type-Safe Session</h2>
-        <p>Create a new file, called `CheckoutSession.swift`:</p>
+        <p>Create a new file, called <strong>CheckoutSession.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
-        <p>Open your `CheckoutSession.swift` file:</p>
+        <p>Open your <strong>CheckoutSession.swift</strong> file:</p>
         <pre><code>open Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
         <div class="info">
-          <p>You may need to create the `Middlewares` folder.</p>
+          <p>You may need to create the <strong>Middlewares</strong> folder.</p>
         </div>
         <p>We can use either a Class or a Struct for TypeSafeMiddleware here but we will use a Class.</p>
-        <p>Inside this file, define your `CheckoutSession` class:</p>
+        <p>Inside this file, define your <strong>CheckoutSession</strong> class:</p>
         <pre><code class="language-swift">import KituraSession
 
 final class CheckoutSession: TypeSafeSession {
@@ -180,7 +180,7 @@ extension CheckoutSession {
         <p>For an example of a persistent store for sessions see Kitura-Session-Redis</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add session POST route</h2>
-        <p>Inside the app extension in `TypeSafeSessionRoutes.swift`, we add our `postSessionHandler`:</p>
+        <p>Inside the app extension in <strong>TypeSafeSessionRoutes.swift</strong>, we add our <strong>postSessionHandler</strong>:</p>
         <pre><code class="language-swift">func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
 
 }</code></pre>
@@ -191,16 +191,16 @@ extension CheckoutSession {
 session.save()
 completion(book, nil)</code></pre>
         <p>What we're doing here is storing the posted Book into the session.</p>
-        <p>We use the `append` method as we know `books` is an Array as we defined it as an Array in the CheckoutSession class.</p>
+        <p>We use the <strong>append</strong> method as we know <strong>books</strong> is an Array as we defined it as an Array in the CheckoutSession class.</p>
         <p>Then we need to save the session.</p>
         <p>Now we can add a route for retrieving the data.</p>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add session GET route</h2>
-        <p>Below our `postSessionHandler` handler add:</p>
+        <p>Below our </strong>postSessionHandler</strong> handler add:</p>
         <pre><code class="language-swift">func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
     completion(session.books, nil)
 }</code></pre>
         <p>Add that's it! We've now enabled a Kitura Session on our server.</p>
-        <p>Your completed `TypeSafeSessionRoutes.swift` should now look as follows:</p>
+        <p>Your completed </strong>TypeSafeSessionRoutes.swift</strong> should now look as follows:</p>
     <pre><code class="language-swift">import KituraContracts
 import KituraSession
 

@@ -181,10 +181,10 @@ router.get("/") { request, response, next in
     response.send("Hello from the 2nd route!")
     next()
 }</code></pre>
-        <p>If a request comes into the server on `"/"` then the following would be returned to the client:</p>
+        <p>If a request comes into the server on <strong>"/"</strong> then the following would be returned to the client:</p>
         <pre><code>"Hello from the 1st route!"
 "Hello from the 2nd route!"</code></pre>
-        <p class="block-text">As you can see one route is called immediately after the other and this is made possible because of `next()`. Next is a closure that should be called after all the logic in a handler has successfully completed, this tells the server to go ahead and execute the 'next' handler in the list. It's important to note this should only be called on successful completion, in cases of an error `next()` should not be called.</p>
+        <p class="block-text">As you can see one route is called immediately after the other and this is made possible because of <strong>next()</strong>. Next is a closure that should be called after all the logic in a handler has successfully completed, this tells the server to go ahead and execute the 'next' handler in the list. It's important to note this should only be called on successful completion, in cases of an error <strong>next()</strong> should not be called.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Codable Routing</h2>
         <p class="block-text">Codable routing is where the router handlers are just normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with stuct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
