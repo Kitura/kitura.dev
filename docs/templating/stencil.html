@@ -104,7 +104,7 @@
         <h1 class="heading-1">Kitura Stencil</h1>
         <p>To implement <a target="_blank" href="https://github.com/stencilproject/Stencil"> Stencil templating</a> with a Kitura server, we use <a target="_blank" href="https://github.com/IBM-Swift/Kitura-StencilTemplateEngine"> Kitura-StencilTemplateEngine</a>.
              This package makes it easy to to create an HTML page with integrated Swift variables.</p>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a `StencilRoutes.swift` file</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create your Stencil routes</h2>
         <p>To use Stencil from a server, we first need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-StencilTemplateEngine#add-dependencies"> add Kitura-StencilTemplateEngine to our dependencies</a>.</p>
         <div class="info">
             <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
@@ -132,7 +132,7 @@ func initializeStencilRoutes(app: App) {
         <p>Templating is not part of a REST api so it only supported in Raw routes.</p>
         </div>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add StencilTemplateEngine to our router</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add a Stencil template engine</h2>
         <p>We register a stencil temple engine to our router instance:</p>
         <pre><code class="language-swift">app.router.add(templateEngine: StencilTemplateEngine())</code></pre>
         <p>The above line of code tells the server on this instance of the router we'd like to use Stencil as the default template engine.</p>
@@ -159,7 +159,7 @@ func initializeStencilRoutes(app: App) {
         <p>In our case, the file <strong>book.stencil</strong> template will be populated with the <strong>book</strong> data and then rendered in the browser on <strong>"/book"</strong>.</p>
         <p>This obviously will not work as we haven't created our <strong>book.stencil</strong> file.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create the template file</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Create the template file</h2>
         <p>By default Kitura looks for template files in a <strong>./Views</strong> directory found at the root of the project.</p>
         <div class="info">
           <p>Typically the root of your project is where the <strong>.xcodeproj</strong> directory is.</p>
@@ -177,7 +177,7 @@ func initializeStencilRoutes(app: App) {
         <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
         <p>This is to enable Xcode to pick up the new directory we've just added.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Populate the Stencil template file</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Populate the Stencil template file</h2>
         <div class="info">
           <p>Stencil is a templating language that has a lot of powerful features, you can learn about them in the <a target="_blank" href="http://stencil.fuller.li/en/latest/">Stencil guide.</a></p>
         </div>

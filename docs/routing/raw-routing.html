@@ -134,9 +134,9 @@
 extension App {
     static var bookStore = [Book]()
 }</code></pre>
-<p>This code contains two sections. The first is the `initializeRawRoutes` function.
+<p>This code contains two sections. The first is the <strong>initializeRawRoutes</strong> function.
     This will be run after the application has been initialized and is where we register routes on our router.
-    The second is the `App` extension. This is where we define a `bookStore` which will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
+    The second is the <strong>App</strong> extension. This is where we define a <strong>bookStore</strong> which will store an array of objects. We will use the <a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create a POST route</h2>
         <p>Inside the <strong>initializeRawRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.post("/raw") { request, response, next in
@@ -144,7 +144,7 @@ extension App {
 }</code></pre>
         <p>What we've done is register a POST on our router that will handle any POST requests made on "/raw".</p>
         <div class="info">
-          <p>If the values <strong>request</strong>, <strong>response</strong> and <strong>next</strong> are unfamiliar to you, learn more about them in our "What is Routing?" guide.</p>
+          <p>If the values <strong>request</strong>, <strong>response</strong> and <strong>next</strong> are unfamiliar to you, learn more about them in our <a target="_blank" href="https://www.kitura.io/docs/routing/routing.html">What is Routing?</a> guide.</p>
         </div>
         <p>The POST route will be used to send information about our books to the server, therefore we need a way of reading this data from the request.</p>
         <p>To do this we will use the <strong>read(as:)</strong> method of the <strong>RouterRequest</strong> class, as this method can throw we wrap it in a do-catch block:</p>
@@ -268,7 +268,7 @@ response.send(App.bookStore[id])</code></pre>
             If multiple route threads access the same object at the same time they will crash.
             To prevent these collisions, we will serialize access to the <strong>rawStore</strong>.</p>
         <div class="info">
-          <p>If you have completed the Codable Routing guide, you will already have the execute function.</p>
+          <p>If you have completed the <a target="_blank" href="https://www.kitura.io/docs/routing/codable-routing.html">Codable Routing guide</a>, you will already have the execute function.</p>
         </div>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>

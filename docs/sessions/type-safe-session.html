@@ -105,7 +105,7 @@
         <p class="block-text">HTTP is a stateless connection protocol, that is the server can't distinguish one request from another. Sessions and cookies provide HTTP with state, they allow the server to know who is making a specific request and respond accordingly.</p>
         <p class="block-text">This guide uses <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session"> Kitura-Session</a> with Codable routing leveraging type-safe sessions. If you want to use sessions with raw routing, check out the <a href="kitura-session.html"> Kitura Session with raw routing guide</a>.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create a TypeSafeSessionRoutes.swift file</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create your session routes</h2>
         <p>In this guide we are going to create two Kitura routes:</p>
         <ul>
             <li><p>A GET route, where we retrieve the books from our session.</p></li>
@@ -138,7 +138,9 @@ extension App {
 }</code></pre>
         <p>We will add our <strong>postSessionHandler</strong> and <strong>getSessionHandler</strong> later in this guide.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define a Type-Safe Session</h2>
+        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define your Session</h2>
+        <p>To use sessions with Codable routes, we need to model the structure of what we will store in the session.
+           We do this by defining a Swift type that conforms to the <strong>TypeSafeSession</strong> protocol.</p>
         <p>Create a new file, called <strong>CheckoutSession.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
         <p>Open your <strong>CheckoutSession.swift</strong> file:</p>
@@ -146,7 +148,7 @@ extension App {
         <div class="info">
           <p>You may need to create the <strong>Middlewares</strong> folder.</p>
         </div>
-        <p>We can use either a Class or a Struct for TypeSafeMiddleware here but we will use a Class.</p>
+        <p>We can use either a class or a struct for <strong>TypeSafeMiddleware</strong> here but we will use a Class.</p>
         <p>Inside this file, define your <strong>CheckoutSession</strong> class:</p>
         <pre><code class="language-swift">import KituraSession
 
@@ -167,17 +169,21 @@ extension CheckoutSession {
     static var store: Store?
 }</code></pre>
         <div class="info">
-          <p>When using a Class you need to declare it as final.</p>
+          <p>When using a class you need to declare it as final.</p>
         </div>
         <p>The minimum requirements for a type-safe session are:</p>
         <ul>
-          <li><span class="blue-text">sessionID:</span></li>
-          <li><span class="blue-text">Initiliser:</span> Used to create a new sessionId</li>
-          <li><span class="blue-text">sessionCookie:</span> Defines the name of the cookie and the secret data used to encrypt it</li>
-          <li><span class="blue-text">An optional store:</span> Defines how sessions should be persisted</li>
+          <li><p>sessionID: An identifier that is unique to the session</p></li>
+          <li><p>Initilizer:</span> Used to create a new session from a sessionId</p></li>
+          <li><p>sessionCookie:</span> Defines the name of the cookie and the secret data used to encrypt it</p></li>
+          <li><p>An optional store:</span> Defines how sessions should be persisted</p></li>
         </ul>
-        <p>If store isn't specified then a default in memory store is used.</p>
-        <p>For an example of a persistent store for sessions see Kitura-Session-Redis</p>
+        <p>With our class, we have created a session that will store an array of books,
+           via a cookie called "MySession" and using "Top Secret" as the password to encrypt that cookie.
+           Since we didn't specify a store a default in memory store is used.</p>
+        <div class="info">
+            <p>For an example of a persistent store for sessions see <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session-Redis">Kitura-Session-Redis</a></p>
+        </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add session POST route</h2>
         <p>Inside the app extension in <strong>TypeSafeSessionRoutes.swift</strong>, we add our <strong>postSessionHandler</strong>:</p>
