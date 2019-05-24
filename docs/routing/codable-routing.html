@@ -141,15 +141,15 @@ extension App {
         <p>Inside the <strong>initializeCodableRoutes</strong> function add:</p>
         <pre><code class="language-swift">app.router.post("/codable", handler: app.postHandler)</code></pre>
         <p>This code will register a POST endpoint on our router that will handle any POST requests made to "/codable".</p>
-        <p>This will not compile as we haven't actually implemented the `postHandler` yet, so let's go ahead and do that.</p>
+        <p>This will not compile as we haven't actually implemented the <strong>postHandler</strong> yet, so let's go ahead and do that.</p>
         <p>The <strong>postHandler</strong> is a block of code, called a closure, that is executed when a POST request is made to "/codable".</p>
         <p> Inside the <strong>App</strong> extension add: </p>
         <pre><code class="language-swift">func postHandler(book: Book, completion: (Book?, RequestError?) -> Void) {
     App.codableStore.append(book)
     completion(book, nil)
 }</code></pre>
-        <p>Here the postHandler accepts an object of type `Book` and responds using an asynchronous completion handler.
-             The handler then stores the received book in the `codableStore` and returns the book in the completion to indicate success.</p>
+        <p>Here the postHandler accepts an object of type <strong>Book</strong> and responds using an asynchronous completion handler.
+             The handler then stores the received book in the <strong>codableStore</strong> and returns the book in the completion to indicate success.</p>
         <div class="info">
             <p>The input parameter and the response parameter in the completion handler can be any Swift type, as long as it conforms to Codable.</p>
         </div>
@@ -186,7 +186,6 @@ extension App {
     completion(App.codableStore, nil)
 }</code></pre>
         <p>You may have noticed that the completion here is expecting an array of books, this is because our route does not provide an identifier, so we retrieve all of the books.</p>
-        <p>The result of all the changes should look something like this:</p>
         <p>Now we can restart our server to test our new endpoint.</p>
         <p>Once the server is running, post a book using the curl command in Step 3.</p>
         <p>Open a browser at:</p>
