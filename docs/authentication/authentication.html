@@ -62,7 +62,7 @@
         <li class="sidebar-item collapsible">Authentication</li>
         <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item active"><a href="../authentication/authentication.html">What is Authentication?</a></li>
-          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Type-Safe Credentials</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Basic Authentication</a></li>
           <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
           <li class="nested-sidebar-item"><a href="../authentication/fb-google-oauth2.html">OAuth 2.0 with Facebook/Google</a></li>
         </ul>
@@ -102,22 +102,39 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">What is Authentication?</h1>
-        <p class="block-text">Authentication is the process of confirming a user’s identity, usually via a username and password. Authentication ensures that the user is allowed access to the secured system.</p>
+        <p class="block-text">Authentication is the process of confirming a user’s identity.
+             The user provides credentials, such as an username and password, and these credentials are verified to confirm the user is who they claim to be.
+             Once a user is authenticated, you can provide personalized content, or authorize them to access resources that are not available to everyone.</p>
         <p class="block-text">Authentication is all around us, anyone who has an account online has to step through authentication procedures each time they login. Even handheld devices use authentication, such as a passcode, or Touch ID and even Face ID. In each case the aim is the same: Is this person who they claim to be?</p>
         <p class="block-text">Kitura supports various types of authentication:</p>
+        <h2 class="heading-2">Basic access authentication</h2>
+        <p>The "Basic" HTTP authentication scheme is defined in <a target="_blank" href="https://tools.ietf.org/html/rfc7617">RFC 7617</a> and transmits credentials as user ID/password pairs, encoded using base64.
+        The username and password are passed in plain text via the HTTP authorization header meaning this authentication scheme must be used with HTTPS.</p>
+        <pre><code>Authorization: Basic &lt;credentials&gt;</code></pre>
+        <p>This is the simplest authentication scheme, however it requires the user to authenticate their credentials with every request and no additional information about the user may be provided during authentication.</p>
+        <p>Kitura supports basic authentication via the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP">Kitura-CredentialsHTTP</a> library.</p>
+        <h2 class="heading-2">JSON web tokens</h2>
+        <p>A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+        You can use a JWT to implement a Single Sign On system, whereby a user logs in once and each subsequent request will include the JWT.
+        This allows the user to access routes, services, and resources that are permitted with that token, without having to authenticate each time.</p>
+        <p>Kitura supports JWTs via the <a target="_blank" href="https://github.com/IBM-Swift/Swift-JWT">Swift-JWT</a> library.</p>
+        <h2 class="heading-2">OAuth 2.0 authentication</h2>
+        <p class="block-text"><a target="_blank" href="https://oauth.net/2/">OAuth 2.0</a> is an authorization framework that enables you to authenticate a user via a trusted third party such as Google or Facebook.
+            Because the authentication is delegated to a trusted provider, the user does not have to create/provide a credentials to your service.
+             Once a user is authenticated, they are kept logged in with cookies via a session.
+        <p>
+        <p>Kitura currently supports OAuth 2.0 with the following services:</p>
         <ul>
-          <li>Authentication with HTTP Basic</li>
-          <li>Authentication with Facebook</li>
-          <li>Authentication with GitHub</li>
-          <li>Authentication with Google</li>
-          <li>Authentication with Dropbox</li>
-          <li>Authentication with Twitter</li>
+          <li>Facebook with <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook">Kitura-CredentialsFacebook</a></li>
+          <li>Github with <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsGitHub">Kitura-CredentialsGithub</a></li>
+          <li>Google with <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsGoogle">Kitura-CredentialsGoogle</a></li>
+          <li>Twitter with <a target="_blank" href="https://github.com/jacobvanorder/Kitura-CredentialsTwitter">Kitura-CredentialsTwitter</a> (Third party implemented)</li>
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="typesafe-auth.html#">Type-Safe Authentication:</a></span> Learn how to add type-safe authentication to your Kitura routes.</p>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="jwt-auth.html#">JSON Web Token Authentication:</a></span> Learn how to use JWTs to implement single sign-on authentication on your Kitura routes.</p>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="fb-google-oauth2.html#">OAuth 2.0 Authentication:</a></span> Learn how to add OAuth 2.0 authentication with Facebook or Google to your Kitura routes.</p>
+        <p><a href="https://www.kitura.io/docs/authentication/typesafe-auth.html">Basic authentication guide:</a> Learn how to add basic access authentication to codable routes.</p>
+        <p><a href="https://www.kitura.io/docs/authentication/typesafe-auth.html">JSON web tokens guide:</a> Learn how to use JWTs to implement single sign-on authentication on your Kitura routes.</p>
+        <p><a href="https://www.kitura.io/docs/authentication/fb-google-oauth2.html">OAuth 2.0 Authentication:</a> Learn how to add OAuth 2.0 authentication with Facebook or Google to your Kitura routes.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
