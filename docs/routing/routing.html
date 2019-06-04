@@ -160,8 +160,8 @@
         <pre><code class="language-swift">router.get("/hello")</code></pre>
         <p class="block-text">Above is an example of registering a GET method on the <strong>"/hello"</strong> path. Let's assume our server is running at <strong>localhost:8080</strong>, then if I want to make a call to this endpoint I could open <strong>http://localhost:8080/hello</strong> in my browser and view the response.</p>
         <h3 class="heading-3">Route handler</h3>
-        <p class="block-text">Each route has a route handler. This is a closure or function that is executed when a request is made to the route's path. The route handlers contain the developers logic for how to process incoming requests and what response should be sent.</p>
-        <p class="block-text">Kitura provides two 'types' of routing, Raw Routing and Codable Routing. Over the next couple of sections we will dicuss them and highlight their differences.</p>
+        <p class="block-text">Each route has a route handler. This is a closure or function that is executed when a request is made to the route's path. The route handlers contain the developer's logic for how to process incoming requests and what response should be sent.</p>
+        <p class="block-text">Kitura provides two 'types' of routing, Raw Routing and Codable Routing. Over the next couple of sections we will discuss them and highlight their differences.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Raw Routing</h2>
         <p class="block-text">Raw routing is where the route handlers were called with <strong>RouterRequest</strong> and <strong>RouterResponse</strong> objects with which to handle the client request and build the response, along with a next completion handler. This approach provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.</p>
@@ -175,10 +175,10 @@
         <h3 class="heading-3">Router Response</h3>
         <p class="block-text">The <strong>RouterResponse</strong> class is used to define and work with the response that will be sent by the router. It contains and allows access to the HTTP response code (e.g. 404 Not Found), the HTTP headers and the body of the response. It can also render template files, using a template engine registered to the router.</p>
         <h3 class="heading-3">Next</h3>
-        <p>In Kitura, multiple handlers can be registered on a single route. The handlers can alter the request/response before passing them to the next handler allowing for the creation of middleware.</p>
-        <p>Once a handler is finished, they call the next handler using the <strong>next()</strong> closure. If there are no more handlers, the router will send the response.
+        <p>In Kitura, multiple handlers can be registered on a single route. The handlers can alter the request or response before passing them to the next handler. By having the <strong>next</strong> closure, we can register a handler that acts as a middleware and is called before your routes.</p>
+        <p>Once a handler is finished, it calls the next handler using the <strong>next()</strong> closure. If there are no more handlers, the router will send the response.
            If there was an error and you do not want to call the next handler, you can call <strong>request.end()</strong> to send back the response immediately.
-           Because the route handlers are asynchronous, you must call <strong>next()</strong> or <strong>request.end()</strong> once and only once.</p>
+           You must call <strong>next()</strong> or <strong>request.end()</strong> once, and only once, in each route handler because the route handlers are asynchronous.</p>
         <p>For example:</p>
         <pre><code class="language-swift">router.get("/") { request, response, next in
     response.send("Hello from the 1st route!")
@@ -192,10 +192,10 @@ router.get("/") { request, response, next in
         <p>If a request comes into the server on <strong>"/"</strong> then the following would be returned to the client:</p>
         <pre><code>"Hello from the 1st route!"
 "Hello from the 2nd route!"</code></pre>
-        <p class="block-text">As you can see one route is called immediately after the other and this is made possible because of <strong>next()</strong>.</p>
+        <p class="block-text">As you can see one route is called immediately after the other, this is made possible because of <strong>next()</strong>.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Codable Routing</h2>
-        <p class="block-text">Codable routing is where the router handlers are like normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with struct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).</p>
+        <p class="block-text">Codable routing is where the route handlers are like normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with struct or class types via a completion handler. The only requirement is that those types conform to the <strong>Codable</strong> protocol introduced in Swift 4 (hence the name).</p>
         <pre><code class="language-swift">func getHandler(completion: ([String]?, RequestError?) -> Void) {
     completion(["Hello World!"], nil)
 }
