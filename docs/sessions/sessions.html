@@ -103,13 +103,13 @@
       <main>
         <h1 class="heading-1">What are Sessions?</h1>
         <p class="block-text">A session is server-side storage of information that will be persisted through a user's interaction with the application.
-            When you first visit the server, you are provided a cookie with a unique session id.
+            When you first visit the server, you are provided with a cookie with a unique session id.
             The user presents this cookie with future requests so that the server can identify that the requests have come from the same user.
             Information associated with that session id can then be used to respond to the request.
-            For example, you could persist the users name, whether they are logged in and their a shopping basket inside a session.
+            For example, you could persist the user's name, whether they are logged in, and their shopping basket inside a session.
         Kitura implements sessions using the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session">Kitura-Session</a> library.</p>
         <p class="block-text">A session, unlike a database, is intended to be temporary. If it is not updated or if the session is ended, such as a user logging out, then it is cleared.</p>
-        <p class="block-text">Sessions are not the same as authentication, although they are often used together. Authentication is verifying a users credentials to identify who they are. A session is checking that the current request is from the same user as a previous request. You can learn more about authentication in our <a target="_blank" href="../authentication/authentication.html">What is Authentication?</a> guide.</p>
+        <p class="block-text">Sessions are not the same as authentication, although they are often used together. Authentication is used to verify a user's credentials to identify who they are. A session is used to check that the current request is from the same user as a previous request. You can learn more about authentication in our <a target="_blank" href="../authentication/authentication.html">What is Authentication?</a> guide.</p>
         <p class="block-text"></p>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
