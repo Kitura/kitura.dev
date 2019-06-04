@@ -102,19 +102,19 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">What are Web Applications?</h1>
-        <p>A web application is a client-server program, which the client runs in a web browsers.
+        <p>A web application is a client-server program, which the client runs in a web browser.
         The server processes incoming requests and determines what should be returned to the user.
-        The client browser then renders the response, which is usually HTML, CSS and Javascript, to present the information in a human readable format.</p>
-        <p>Kitura supports being used as the server for a web application, providing the following features:</p>
+        The client browser then renders the response, which is usually HTML, CSS and JavaScript, to present the information in a human readable format.</p>
+        <p>Kitura supports being used as the server for a web application, and provides the following features:</p>
         <h2 class="heading-2">Serving static files</h2>
-        <p>If you want to provide a file to the user that will not change based on the state of the server, you can use Kitura's build is static file server middleware.
-        This will return the file that is stored at the requested url. This is useful for providing images, javascript, CSS files or a static HTML webpage.</p>
+        <p>If you want to provide a file to the user that will not change based on the state of the server, you can use Kitura's built-in static file server middleware.
+        This will return the file that is stored at the requested URL. This is useful for providing images, CSS files, JavaScript files, or a static HTML webpage.</p>
         <h2 class="heading-2">Templating</h2>
         <p class="block-text">Templating is the process of creating template files that are reusable and populated at runtime using a Template Engine with values determined by your application logic.</p>
         <p>Template files are files that contain placeholder values, such as:</p>
         <pre><code>{{ yourVariableName }}</code></pre>
         <p class="block-text">It is these placeholder values that are replaced by the Template Engine.</p>
-        <p class="block-text">A Template Engine executes the actual replacement of the variables within the template file. A template engine also transforms the template file into an HTML file which is then sent to the client. Template engines support more than just simply replacing values, they can also handle looping and condtional logic such as for loops and if statements. This makes template engines a good choice for creating HTML files.</p>
+        <p class="block-text">A Template Engine executes the actual replacement of the variables within the template file. A template engine also transforms the template file into an HTML file which is then sent to the client. Template engines support more than just simply replacing values, they can also handle looping and conditional logic such as for loops and if statements. This makes template engines a good choice for creating HTML files.</p>
         <p class="block-text">A simple example of this is imagine you're creating a website. This website could have 5, 10, 15 or more pages but some things are consistent across these pages. Typically you may want to keep the header and footer the same across all pages but writing out code for the header and footer for each of these pages would be tedious. What happens if you need to change something in the header? You would need to change this on every page of your website. Templating provides a simple solution to this problem. You can create a template file that contains the code for your header and footer but the main content section is determined at runtime using the template engine. An example of this template file using Stencil could look as follows:</p>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en" dir="ltr"&gt;
@@ -148,16 +148,15 @@
     &lt;/footer&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        <p class="block-text">You could reuse this template file to generate every page on your website, but the code for your header and footer would be in a single location. This was a simple example but illustrates how powerful templating can be when creating web applications.</p>
+        <p class="block-text">You could reuse this template file to generate every page on your website, but the code for your header and footer would be in a single location. This is a simple example but it illustrates how powerful templating can be when creating web applications.</p>
         <p>Here is a list of Template Engines Kitura works with:</p>
         <ul>
-          <li>Stencil</li>
-          <li>Mustache</li>
-          <li>Kitura Markdown</li>
+          <li><a target="_blank" href="https://github.com/stencilproject/Stencil">Stencil</a> using the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-StencilTemplateEngine">Kitura-StencilTemplateEngine</a> plugin.</li>
+          <li><a target="_blank" href="https://daringfireball.net/projects/markdown/">Markdown</a> using the <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Markdown">Kitura-Markdown</a> plugin.</li>
         </ul>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-            <p><a href="static-fil-server.html">StaticFileServer:</a> Learn how to server static files from a Kitura server.</p>
+            <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="static-file-server.html#">StaticFileServer:</a></span> Learn how to serve static files from a Kitura server.</p>
             <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="stencil.html#">Stencil:</a></span> Learn how to add Stencil templating to your Kitura application.</p>
             <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent(`templating`)" href="markdown.html#">Markdown:</a></span> Learn how to add Markdown templating to your Kitura application.</p>
       </main>
