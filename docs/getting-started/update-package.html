@@ -105,11 +105,12 @@
         <p>Kitura is provided as a Swift package which is distributed by the Swift Package Manager (SPM).</p>
         <p>This guide demonstrates how to add a package to your project to leverage the functionality that package provides.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Add the url to the <strong>Package.swift</strong></h2>
+        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Add the URL to the <strong>Package.swift</strong></h2>
         <p>To add a new dependency to our project we need to edit the <strong>Package.swift</strong> file:</p>
         <pre><code>open Package.swift</code></pre>
         <p>Next we need to add the package we want to use to our package dependencies:</p>
         <pre><code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
+        <p>Note that <strong>from: “x.y.z”</strong> is shorthand for <strong>.upToNextMajor(from: “x.y.z”))</strong>, and will result in obtaining the package at the most recent tag of major release x.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Add the package name to the target dependencies</h2>
         <p>Finally we need to add the package as a dependency of our application:</p>
