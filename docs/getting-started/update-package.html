@@ -110,7 +110,7 @@
         <pre><code>open Package.swift</code></pre>
         <p>Next we need to add the package we want to use to our package dependencies:</p>
         <pre><code class="language-swift package-value">.package(url: "&lt;Link to github repo&gt;", from: "&lt;latest-version&gt;"),</code></pre>
-        <p>Note that <strong>from: “x.y.z”</strong> is shorthand for <strong>.upToNextMajor(from: “x.y.z”))</strong>, and will result in obtaining the package at the most recent tag of major release x.</p>
+        <p>Note that <strong>from: “x.y.z”</strong> is shorthand for <strong>.upToNextMajor(from: “x.y.z”))</strong>, and will result in obtaining the most recent tag of the package with major version x.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Add the package name to the target dependencies</h2>
         <p>Finally we need to add the package as a dependency of our application:</p>
