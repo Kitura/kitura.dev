@@ -108,6 +108,7 @@
         <div class="underline"></div>
         <h2 class="heading-2">What is Application Metrics for Swift?</h2>
         <p> <a href="https://github.com/RuntimeTools/SwiftMetrics" target="_blank">Application Metrics for Swift</a> instruments the Swift runtime for performance monitoring. The monitoring data is provided back to the user either programatically via an API, or visually with the included embedded dashboard.</p>
+        <p>This guide will show you how to set up the embedded dashboard to view monitoring data, and then goes on to describe how to provide a <a href="https://prometheus.io" target="_blank">Prometheus</a> endpoint and how to use the REST API to collect metrics from your running Swift application.</p>
         <p>Application Metrics for Swift provides the following built-in data collection sources:</p>
         <table>
           <thead>
@@ -131,21 +132,6 @@
             </tr>
 
             <tr>
-              <td>Latency</td>
-              <td>Dispatch Queue latency</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>Importing <strong>SwiftMetricsKitura</strong> adds the following collection source:</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Source</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
               <td>HTTP</td>
               <td>HTTP metric information</td>
             </tr>
@@ -165,12 +151,42 @@
         <pre><code class="language-swift">let sm = try SwiftMetrics()</code></pre>
         <p>Use this <strong>SwiftMetrics</strong> instance to initialize the dashboard:</p>
         <pre><code class="language-swift">let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)</code></pre>
-        <p>By default, the Application Metrics for Swift Dashboard will start its own Kitura server and serve the page up under <a href="http://localhost:8080/swiftmetrics-dash" target="_blank">localhost:8080/swiftmetrics-dash</a>.</p>
-        <!-- <p>TODO: Test this!</p> -->
+        <p>If we use the above constructor, the Application Metrics for Swift Dashboard will start its own Kitura server and serve the page up under <a href="http://localhost:8080/swiftmetrics-dash" target="_blank">localhost:8080/swiftmetrics-dash</a>. If we only want to use the dashboard then using this constructor is fine, but if we also add, for example, Prometheus support in the same way the last one created will block the other from displaying.</p>
+        <p>Next we will show you how to create and pass a Router object to the Application Metrics for Swift constructor so that multiple types of monitoring can coexist on the same Kitura server.</p>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add Application Metrics for Swift to your router instance</h2>
-        <p>You can pass an existing <strong>Router</strong> object to <strong>SwiftMetricsDash</strong> from which to serve the page up on.</p>
+        <p>You can pass an existing <strong>Router</strong> object to <strong>SwiftMetricsDash</strong> from which to serve the page up on. If you don't have a <strong>Router</strong> object you can create one as follows:</p>
+        <pre><code class="language-swift">var router = Router()</code></pre>
         <p>SwiftMetricsDash will then use whatever server you are using in your existing application:</p>
-        <pre><code class="language-swift">let _ = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)</code></pre>
+        <pre><code class="language-swift">let smd = try SwiftMetricsDash(swiftMetricsInstance: sm, endpoint: router)</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add Prometheus support</h2>
+        <p>To use Application Metrics for Swift to provide a <a href="https://prometheus.io" target="_blank">Prometheus</a> endpoint, you must include the <strong>SwiftMetricsPrometheus</strong> module in your application:</p>
+        <pre><code class="language-swift">import SwiftMetrics
+import SwiftMetricsPrometheus</pre></code>
+        <p>As above, we need to create an instance of <strong>SwiftMetrics</strong>:</p>
+        <pre><code>let sm = try SwiftMetrics()</code></pre>
+        <p>Use this <strong>SwiftMetrics</strong> instance and your <strong>Router</strong> object to initialize Prometheus:</p>
+        <pre><code>let smp = try SwiftMetricsPrometheus(swiftMetricsInstance: sm, endpoint: router)</code></pre>
+        <p>By default, <strong>SwiftMetricsPrometheus</strong> will provide the Prometheus endpoint under <a href="http://localhost:8080/metrics" target="_blank">localhost:8080/metrics</a>.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 5:</span> Add REST API support</h2>
+        <p>The <a href="https://github.com/RuntimeTools/SwiftMetrics/blob/master/REST-API.md" target="_blank">Application Metrics for Swift REST API</a> enables the collection of metrics from the running Swift application. The API context root will be the server's default endpoint plus "/swiftmetrics" e.g. <a href="http://localhost:8080/swiftmetrics" target="_blank">localhost:8080/swiftmetrics</a>.</p>
+        <p>To enable the REST API in your program, you must include the <strong>SwiftMetricsREST</strong> module in your application:</p>
+        <pre><code class="language-swift">import SwiftMetrics
+import SwiftMetricsREST</pre></code>
+        <p>As above, we need to create an instance of <strong>SwiftMetrics</strong>:</p>
+        <pre><code>let sm = try SwiftMetrics()</code></pre>
+        <p>Use this <strong>SwiftMetrics</strong> instance and your <strong>Router</strong> object to initialize your REST API:</p>
+        <pre><code>let smr = try SwiftMetricsREST(swiftMetricsInstance: sm, endpoint: router)</code></pre>
+        <p>Metrics are accumulated in a <strong>collection</strong>. The start time of the metrics accumulation is from either, creation of the collection <strong>POST &lt;context_root&gt;/api/v1/collections</strong>, or, from the time of a clear request <strong>PUT &lt;context_root&gt;/api/v1/collection/{id}</strong>.
+        <p>First you need to create a new metrics collection. Metrics are recorded from the point of the creation of the collection. To create a collection you can use curl as follows:
+        <pre><code>curl -X POST http://localhost:8080/swiftmetrics/api/v1/collections</pre></code>
+        <p>This will return the URI for your collection:</p>
+        <pre><code>"uri" : "collections\/0"</pre></code>
+        <p>Metrics can now be retrieved from the collection at whatever intervals you choose using <strong>GET</strong> as follows:</p>
+        <pre><code>curl -X GET http://localhost:8080/swiftmetrics/api/v1/collections/0</pre></code>
+        <p>Metrics are returned in JSON format for processing. You can use <strong>PUT</strong> to clear the metrics if required.</p>
+        <p>Metrics can be deleted using <strong>DELETE</strong> as follows:</p>
+        <pre><code>curl -X DELETE http://localhost:8080/swiftmetrics/api/v1/collections/0</pre></code>
+        <p>For more information about how to use the REST API and the available collection operations see the <a href="https://github.com/RuntimeTools/SwiftMetrics/blob/master/REST-API.md" target="_blank">documentation</a>.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
