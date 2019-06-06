@@ -116,12 +116,6 @@
            Some cloud providers offer this service by default, which may be a more appropriate solution.</p>
       </div>
       <div class="underline"></div>
-      <h2 class="heading-2" id="prereq">Prerequisites</h2>
-      <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a> Follow our guide to see how a production ready server should be structured.</li>
-          <li><a onclick="localStorage.setItem('package', 'FileKit'); setActiveSidebarElementForParent('filekit')" href="../getting-started/update-package.html#">Update Dependencies:</a> FileKit needs adding to the <strong>Package.swift</strong> file.</li>
-      </ul>
       <h3 class="heading-3">Install OpenSSL</h3>
       <p>In this guide, we will use OpenSSL to generate our self-signed certificate.</p>
       <p>OpenSSL is included by default on Linux. On MacOS we can install it using Homebrew:</p>
@@ -141,6 +135,9 @@
            </p>
        </div>
       <p>In this guide, we will use OpenSSL to generate a self-signed certificate.</p>
+      <div class="info">
+          <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
+      </div>
       <p>Create a Credentials folder in the root of your project:</p>
       <pre><code>mkdir Credentials && cd Credentials</code></pre>
       <p>Inside this folder we create a 2048 bit RSA private key using OpenSSL:</p>
@@ -158,8 +155,8 @@
       <p>Now we have created our certificate, we are going to set up our SSL configuration so that it can direct Kitura to the required files.</p>
       <p>Open your <strong>Application.swift</strong> file:</p>
       <pre><code>open Sources/Application/Application.swift</code></pre>
-      <p>We are going to use <a href="https://github.com/IBM-Swift/FileKit" target="_blank">FileKit</a> to access our certificate file.</p>
-      <p>This means we need to add FileKit to our import statements:</p>
+      <p>We are going to use <a href="https://github.com/IBM-Swift/FileKit" target="_blank">FileKit</a> to access our certificate file, so we need to <a target="_blank" href="https://github.com/IBM-Swift/FileKit#add-dependencies"> add FileKit to our dependencies</a>.</p>
+      <p>We also need to add <strong>FileKit</strong> to our import statements:</p>
       <pre><code class="language-swift">import FileKit</code></pre>
       <p>Now we initialize an <strong>SSLConfig</strong> struct. On macOS we use Apple Secure Transport under the covers, which requires the path to our <strong>cert.pfx</strong> file and
            the password we used to encrypt the file. On Linux we use OpenSSL under the covers, which requires the paths to the certificate and private key PEM files.</p>
