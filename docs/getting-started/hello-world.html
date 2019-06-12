@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Create a Server with the Kitura macOS app</title>
+    <title>Create a Server with SPM</title>
     <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
@@ -30,8 +30,8 @@
         <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
-          <li class="nested-sidebar-item active"><a href="../getting-started/create-server.html">Create a server</a></li>
+          <li class="nested-sidebar-item active"><a href="../getting-started/hello-world.html">Hello World</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
@@ -102,31 +102,67 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
-        <h1 class="heading-1">Create a server with the Kitura macOS</h1>
-        <h2 class="heading-2" id="prereq">Prerequisites</h2>
-        <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('installation-mac')" href="../getting-started/installation-mac.html#install-macos-app">Kitura macOS app:</a> Follow our instructions for installing the Kitura macOS app.</li>
-        </ul>
+        <h1 class="heading-1">Hello world example</h1>
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create project</h2>
+        <p>First create a directory for our project, which will also serve as the project's name:</p>
+        <pre><code>mkdir HelloKitura && cd HelloKitura</code></pre>
+        <p>Initialize the directory as a Swift project:</p>
+        <pre><code>swift package init --type executable</code></pre>
+        <p>Swift Package Manager (SPM) creates a Swift project stub. All we need to do is add our project dependencies, like Kitura, to the project.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Create project</h2>
-        <p>Open Kitura from the Applications folder.</p>
-        <p>Hover over the Starter tile and click <strong>Create</strong>:</p>
-        <img class="example-image" src="../../assets/preview1.png" alt="">
-        <p>Enter the following for Project Name and Where:</p>
-        <img class="example-image" src="../../assets/preview2.png" alt="">
-        <div class="info">
-          <p>The following guides will assume you've chosen the above destination and name.</p>
-          <p>However you can use whatever destination and name you'd like, just substitute those in throughout the rest of the guides.</p>
-        </div>
-        <p>Once you click <strong>Create</strong> the app will create and build your project. It will also generate you an Xcode project.</p>
-        <img class="example-image" src="../../assets/preview3.png" alt="">
-        <div class="info">
-          <p>The generated project contains a Swift 5.0 <strong>Package.swift</strong> file.</p>
-        </div>
-        <div class="underline"></div>
-        <h2 class="heading-2">Next steps</h2>
-          <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('routing')" href="../routing/routing.html#">Routing:</a></span> Learn about routing and the two types Kitura supports.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h2>
+        <p>To add Kitura to our dependencies we need to edit the <strong>Package.swift</strong> file.</p>
+        <p>Open <strong>Package.swift</strong> in your default text editor:</p>
+        <pre><code class="language-swift">open Package.swift</code></pre>
+        <p>Add Kitura to our dependencies so the <strong>Package.swift</strong> file looks like this:</p>
+        <pre><code class="language-swift">// swift-tools-version:5.0
+import PackageDescription
 
+let package = Package(
+    name: "HelloKitura",
+    dependencies: [
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.7.0")
+    ],
+    targets: [
+        .target(
+            name: "HelloKitura",
+            dependencies: ["Kitura"]),
+        .testTarget(
+            name: "HelloKituraTests",
+            dependencies: ["HelloKitura"]),
+    ]
+)</code></pre>
+        <p>Now we can build the project to pull down our new dependency:</p>
+        <pre><code class="language-swift">swift build</code></pre>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add the server code</h2>
+        <p>Open <strong>main.swift</strong> in our text editor:</p>
+        <pre><code class="language-swift">open Sources/HelloKitura/main.swift</code></pre>
+        <p>Replace the contents of the file with the following code:</p>
+        <pre><code class="language-swift">import Kitura
+
+let router = Router()
+
+router.get("/") { request, response, next in
+    response.send("Hello world!")
+    next()
+}
+
+Kitura.addHTTPServer(onPort: 8080, with: router)
+Kitura.run()</pre></code>
+        <p>The code above is the simplest Kitura application we can create. This application starts a server and listens on port 8080 for connections. The application responds with “Hello World!” when requests are made to the root URL (/).
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Start the server</h2>
+        <p>Run the project:</p>
+        <pre><code class="language-swift">swift run</code></pre>
+        <p>Open your web browser at <a target="_blank" href="http://localhost:8080">http://localhost:8080</a>.</p>
+        <p>You should see the following in your browser:</p>
+        <pre><code>"Hello, World!"</code></pre>
+        <p>Congratulations! You have just created your first server-side Swift application using Kitura.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 5:</span> Where to next?</h2>
+        <p>In this simple Kitura application all of our Swift code is contained in a single <strong>main.swift</strong> file. It is not what you'd get if you use either the Kitura macOS app, or, the Kitura Command Line Interface to create your server, as these both generate scaffolding for your application.</p>
+        <p>In practice it's preferable to structure your project code in more than one file, so now you've tried using Kitura perhaps you'd like to checkout out our <a href="../getting-started/style-guide.html">Style Guide</a> and then explore our other guides!</p>
+        <div class="underline"></div>
       </main>
     </div>
     <div id="top-page" class="top-page">
