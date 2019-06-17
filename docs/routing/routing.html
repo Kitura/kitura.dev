@@ -162,6 +162,7 @@
         <p class="block-text">Above is an example of registering a GET method on the <strong>"/hello"</strong> path. Let's assume our server is running at <strong>localhost:8080</strong>, then if I want to make a call to this endpoint I could open <strong>http://localhost:8080/hello</strong> in my browser and view the response.</p>
         <h3 class="heading-3">Route handler</h3>
         <p class="block-text">Each route has a route handler. This is a closure or function that is executed when a request is made to the route's path. The route handlers contain the developer's logic for how to process incoming requests and what response should be sent.</p>
+	<p class="block-text">If multiple route handlers match the path, they will be executed in the order that they are registered on the router. This is important when using middlewares, since they should normally be executed before the other handlers.</p>
         <p class="block-text">Kitura provides two 'types' of routing, Raw Routing and Codable Routing. Over the next couple of sections we will discuss them and highlight their differences.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Raw Routing</h2>
