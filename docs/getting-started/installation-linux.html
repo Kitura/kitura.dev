@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Installation for Linux</title>
+    <title>Install Swift for Linux</title>
     <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
     <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
@@ -27,12 +27,12 @@
       <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
-        <ul class="nested-sidebar-list content" style="max-height: 250px;">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item active"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+        <ul class="nested-sidebar-list content" style="max-height: 400px;">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item active"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -102,10 +102,9 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
-        <h1 class="heading-1">Installation for Linux</h1>
+        <h1 class="heading-1">Install Swift for Linux</h1>
         <p>Kitura is tested on Ubuntu 14.04 LTS (trusty), 16.04 LTS (xenial) and 18.04 LTS (bionic).</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Install Swift</h2>
         <p>First ensure your source list is up to date by running the following:</p>
         <pre><code class="language-swift">sudo apt-get update</code></pre>
         <p>Next install the required Linux system packages:</p>
@@ -121,22 +120,9 @@
         <pre><code>swift --version</code></pre>
         <p>You should see something similar like this:</p>
         <pre><code>Swift version x.x.x</code></pre>
-        <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-server')" href="create-server-spm.html#">Create a Kitura server:</a></span> Make use of SPM to create a server.</p>
-        <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Optional:</span> Install Kitura CLI</h2>
-        <h3 class="heading-3">Install via npm</h3>
-        <p>For this installation method you need to have npm installed.</p>
-        <p>If you do not have npm installed you can follow the <a target="_blank" href="https://www.npmjs.com/get-npm">npm installation steps</a>.</p>
-        <p>Then run the following in a terminal:</p>
-        <pre><code class="language-swift">npm install -g kitura-cli</code></pre>
-        <p>Verify the Kitura CLI is installed by running the following:</p>
-        <pre><code class="language-swift">kitura --version</code></pre>
-        <p>You should see output similar to this:</p>
-        <pre><code class="language-swift">0.0.12</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-server')" href="create-server-cli.html#">Create a Kitura server:</a></span> Make use of the Kitura CLI to create a server.</p>
+        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('hello-world')" href="hello-world.html#">Create a Kitura server:</a></span> Create a simple <string>"Hello World"</string> Kitura server.</p>
         <!-- <p><a href="hello-world-spm.html">Create application using SPM:</a> Create a Hello World Kitura app using Swift Package Manager</p>
         <p><a href="hello-world-app.html">Create application using macOS app:</a> Create a Hello World Kitura app using the Kitura macOS app</p>
         <p><a href="hello-world-cli.html">Create application using CLI:</a> Create a Hello World Kitura app using the Kitura Command Line Interface</p> -->

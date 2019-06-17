@@ -27,12 +27,12 @@
       <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
-        <ul class="nested-sidebar-list content" style="max-height: 250px;">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+        <ul class="nested-sidebar-list content" style="max-height: 400px;">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item active"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -103,6 +103,48 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">Create a server with Swift Package Manager</h1>
+        <p class="block-text">Swift Package Manager (SPM) is included by default with Swift and we will use it to create a new Kitura project from scratch.</p>
+        <h2 class="heading-2">Recommended Project Structure</h2>
+        <p class="block-text">We recommend you follow the Model-View-Controller (MVC) design pattern for your Kitura project (with controllers in our case called routes).
+             An example file structure for a project following this patten is:</p>
+    <pre>
+    MyKituraApp
+    ├── Package.swift
+    ├── Sources
+    │    ├── MyKituraApp
+    │    │    └── main.swift
+    │    └── Application
+    │         ├── Application.swift
+    │         ├── Routes
+    │         │    └── HealthRoutes.swift
+    │         ├── Models
+    │         │    └── Book.swift
+    │         └── Middlewares
+    │              └── CheckoutSession.swift
+    ├── Views
+    │    └── Template.stencil
+    ├── public
+    │    └── Img.jpg
+    └── Tests
+         └── ApplicationTests
+    </pre>
+         <div class="info">
+           <p>We will not create this entire project structure now. Instead we will add folders when they are needed in the relevant guide.</p>
+         </div>
+         <p class="block-text">This might seem a bit complex, so let's break down what these folders and files are:</p>
+         <ul>
+           <li>Package.swift – defines packages that your app depends on and their versions</li>
+           <li>main.swift - the file that is run to initialize your app and start your server</li>
+           <li>Application.swift - the application that glues everything together</li>
+           <li>Routes – (also known as controllers) defines your app routes and their logic</li>
+           <li>Middlewares – Kitura middlewares which process the incoming requests before handing them down to the routes</li>
+           <li>Models – represents data, implements business logic and handles storage</li>
+           <li>public – contains all the static files like images, styles and javascript</li>
+           <li>Views – provides templates which are rendered and served by your routes</li>
+           <li>Tests – contains the Swift tests for your project</li>
+         </ul>
+        <p class="block-text">In this guide we will use the Swift Package Manager (SPM), to create a new project with the above structure.</p>
+        <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create project</h2>
         <p>To work with Swift Package Manager (SPM) we need to use the command line.</p>
         <div class="info">
@@ -117,7 +159,20 @@
         <pre><code>swift package init --type executable</code></pre>
         <p>SPM creates a Swift project stub. All we need to do is add our project dependencies, like Kitura, to the project.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add Kitura to our dependencies</h2>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Create the Application directory</h2>
+        <p>Within our <strong>Sources</strong> directory we will first create an <strong>Application</strong> directory:</p>
+        <pre><code>mkdir Sources/Application</code></pre>
+        <p>This is the directory where we will store all of our application code. Note, code in the project's <strong>main.swift</strong> file isn't easy to test because you can't import an executable target as a module,
+        so to encourage the creation of easily testable code we have minimal code in our <strong>main.swift</strong> file and recommend putting application code into a separate <strong>Application</strong> directory.</p>
+        <p>Next we will create our <strong>Application.swift</strong> file:</p>
+        <pre><code>touch Sources/Application/Application.swift</code></pre>
+        <p>Next we need to create our <strong>Routes</strong> directory:</p>
+        <pre><code>mkdir Sources/Application/Routes</code></pre>
+        <p>This is where we will store all of our route handlers.</p>
+        <p>Next we will rename the directory within <strong>Tests</strong> to <strong>ApplicationTests</strong>:</p>
+        <pre><code>mv Tests/MyKituraAppTests/ Tests/ApplicationTests</code></pre>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add Kitura to our dependencies</h2>
         <p>To add Kitura to our dependencies we need to edit the <strong>Package.swift</strong> file.</p>
         <p>Open <strong>Package.swift</strong> in your default text editor:</p>
         <pre><code class="language-swift">open Package.swift</code></pre>
@@ -128,55 +183,67 @@ import PackageDescription
 let package = Package(
     name: "MyKituraApp",
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Kitura", from: "x.x.x")
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "y.y.y")
     ],
     targets: [
-        .target(
-            name: "MyKituraApp",
-            dependencies: ["Kitura"]),
-        .testTarget(
-            name: "MyKituraAppTests",
-            dependencies: ["MyKituraApp"]),
+        .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura"]),
+        .target(name: "Application", dependencies: [ "Kitura" ]),
+
+        .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura" ])
     ]
 )</code></pre>
-        <p>Substitute "x.x.x" with the latest Kitura <a target="_blank" href="https://github.com/IBM-Swift/Kitura/releases">release</a> and "x.x" with the minimum version of Swift required to build the package (e.g. 4.0, 4.2, 5.0).</p>
+        <p>Substitute "y.y.y" with the latest Kitura <a target="_blank" href="https://github.com/IBM-Swift/Kitura/releases">release</a> and "x.x" with the minimum version of Swift required to build the package (e.g. 4.0, 4.2, 5.0).</p>
         <p>Now we can build the project to pull down our new dependency:</p>
         <pre><code class="language-swift">swift build</code></pre>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add the server code</h2>
-        <p>Open <strong>main.swift</strong> in our text editor:</p>
-        <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
-        <div class="info">
-          <p>If you are on macOS you can work in Xcode instead. To do this you first need to generate an Xcode project:</p>
-          <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
-          <p>Then just open the Xcode project that is generated:</p>
-          <pre><code class="language-swift">open MyKituraApp.xcodeproj</code></pre>
-        </div>
-        <p>Delete the <strong>print("Hello, world!")</strong> line from the file.</p>
-        <p>To make use of the methods in Kitura we need to import the Kitura module:</p>
-        <pre><code class="language-swift">import Kitura</code></pre>
-        <div class="info">
-          <p>You may get an error here, such as, 'No such module Kitura'.</p>
-          <p>This is a bug within Xcode, simply build your Xcode project and the error should disappear.</p>
-        </div>
-        <p>Now that we have access to Kitura's methods we can create an instance of Router:</p>
-        <pre><code class="language-swift">let router = Router()</code></pre>
-        <div class="info">
-          <p>Don't worry if you don't know what a Router is, you can learn more in our <a href="../routing/routing.html#">What is Routing?</a> guide.</p>
-        </div>
-        <p>Next we need to define a port for our HTTP Server using the <strong>router</strong> we just created:</p>
-        <pre><code class="language-swift">Kitura.addHTTPServer(onPort: 8080, with: router)</code></pre>
-        <p>Finally, we need to start our Kitura server using Kitura's <strong>run()</strong> method:</p>
-        <pre><code class="language-swift">Kitura.run()</code></pre>
-        <div class="info">
-          <p>The <strong>run()</strong> method never returns, so it should be the last line in your Swift file.</p>
-        </div>
-        <p>That's it! We've created a simple Kitura server.</p>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Add code to the Application.swift file</h2>
+        <p>Earlier, we created the <strong>Application.swift</strong> file but we didn't add any code to it.</p>
+        <p>Open the <strong>Application.swift</strong> file in our default text editor:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p>The <strong>Application.swift</strong> file will be responsible for starting our Kitura server.</p>
+        <p>Add the following code to the <strong>Application.swift</strong> file:</p>
+        <pre><code class="language-swift">import Kitura
+
+public class App {
+
+    let router = Router()
+
+    public init() throws {
+
+    }
+
+    func postInit() throws {
+
+    }
+
+    public func run() throws {
+        try postInit()
+        Kitura.addHTTPServer(onPort: 8080, with: router)
+        Kitura.run()
+    }
+}</code></pre>
+        <p>This code creates an instance of Router, which will route incoming requests to the correct endpoints. Within the <strong>run()</strong> method we register
+        our <strong>router</strong> instance to run on port 8080. The call to <strong>Kitura.run()</strong> does not return immediately - it will block until the server is stopped.</p>
+        <p>The <strong>postInit()</strong> function is where we configure and set up the router, prior to starting the server.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Start the server</h2>
-        <p>Since we've added code to the <strong>main.swift</strong> file we need to recompile the project:</p>
-        <pre><code class="language-swift">swift build</code></pre>
-        <p>To run the project:</p>
+        <h2 class="heading-2"><span class="blue-text">Step 5:</span> Add code to the main.swift file</h2>
+        <p>Now that we have created our <strong>App</strong> class in our <strong>Application.swift</strong> file we can use it within our <strong>main.swift</strong> file.</p>
+        <p>Open the <strong>main.swift</strong> file in your editor:</p>
+        <pre><code>open Sources/MyKituraApp/main.swift</code></pre>
+        <p>Replace the existing code with the following:</p>
+        <pre><code class="language-swift">import Application
+
+do {
+let app = try App()
+try app.run()
+
+} catch let error {
+print(error.localizedDescription)
+}</code></pre>
+        <p>This code will create an <strong>App</strong> instance and run it.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 6:</span> Start the server</h2>
+        <p>To start our project we need to run our Swift executable:</p>
         <pre><code class="language-swift">swift run</code></pre>
         <div class="info">
           <p>To run the project in Xcode ensure your build target is set to <strong>My Mac</strong> then simply run the project.</p>
@@ -188,7 +255,7 @@ let package = Package(
         <p>You should be able to see the Kitura landing page.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a></span> Follow our guide to see how a production ready server should be structured.</p>
+        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('logging')" href="../logging/logging.html#">Logging:</a></span> Learn how to add logging to your Kitura server.</p>
         <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('routing')" href="../routing/routing.html#">Routing:</a></span> Learn about routing and the two types Kitura supports.</p>
       </main>
     </div>
