@@ -234,11 +234,10 @@ public class App {
         <pre><code class="language-swift">import Application
 
 do {
-let app = try App()
-try app.run()
-
+    let app = try App()
+    try app.run()
 } catch let error {
-print(error.localizedDescription)
+    print(error.localizedDescription)
 }</code></pre>
         <p>This code will create an <strong>App</strong> instance and run it.</p>
         <div class="underline"></div>
