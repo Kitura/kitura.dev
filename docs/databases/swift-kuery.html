@@ -113,7 +113,7 @@
             <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
         </div>
         <p>Open your <strong>Application.swift</strong> file:</p>
-        <pre><code>touch Sources/Application/Application.swift</code></pre>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
         <p> Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">initializeKueryRoutes(app: self)</code></pre>
         <p>Create a new file called <strong>KueryRoutes.swift</strong>:</p>
@@ -201,7 +201,8 @@
             <pre><code class="language-swift">brew install postgresql</code></pre>
             <h3 class="heading-3">Linux</h3>
             <p>On Linux we can use <strong>apt-get</strong> to install Postgres:</p>
-            <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
+            <pre><code class="language-swift">sudo apt install postgresql postgresql-contrib</code></pre>
+            <p>Linux requires that you <a target="_blank" href="http://postgresguide.com/setup/users.html">create a postgresql user</a>.</p>
             <div class="underline"></div>
             <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a Postgres database</h2>
             <p>Now that we have PostgreSQL installed we can create a database:</p>
@@ -228,6 +229,9 @@ import SwiftKueryPostgreSQL</code></pre>
 static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
 // Create table instance here</code></pre>
             <p>This creates a pool of connections for us to use to make requests to our database.</p>
+            <div class="info">
+                <p>If you are on Linux, you must provide your username and password in the options for <strong>PostgreSQLConnection.createPool()</strong>.</p>
+            </div>
           </div>
           <div class="tabcontent mysql sqlGroup">
             <h2 class="heading-2"><span class="blue-text">Step 2a:</span> Install MySQL</h2>
@@ -242,6 +246,8 @@ static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432,
             <pre><code class="language-swift">sudo apt-get install mysql-server libmysqlclient-dev pkg-config</code></pre>
             <p>Then we can start the MySQL service:</p>
             <pre><code>sudo service mysql start</code></pre>
+            <p>We can view the default user/password for MySQL with the following command:</p>
+            <pre><code>sudo cat /etc/mysql/debian.cnf</code></pre>
             <div class="underline"></div>
 
             <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a MySQL database</h2>
@@ -593,7 +599,7 @@ books.append(Book(id: id, title: title, price: price, genre: genre))</code></pre
 import LoggerAPI
 import Foundation
 import SwiftKuery
-import SwiftKueryPostgreSQL
+import SwiftKueryPostgreSQL // This will be different if you did not use PostgreSQL
 
 func initializeKueryRoutes(app: App) {
     app.router.post("/kuery", handler: app.insertHandler)
@@ -601,8 +607,8 @@ func initializeKueryRoutes(app: App) {
 }
 
 extension App {
-    // This will be different if you used a different plugin
     static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+    // The createPool() will be different if you used a plugin other than PostgreSQL
     static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
     static let bookTable = BookTable()
 
@@ -667,7 +673,7 @@ extension App {
       <pre><code class="language-swift">import LoggerAPI
   import Foundation
   import SwiftKuery
-  import SwiftKueryPostgreSQL
+  import SwiftKueryPostgreSQL // This will be different if you did not use PostgreSQL
 
   func initializeKueryRoutes(app: App) {
 
@@ -740,8 +746,8 @@ extension App {
       }
   }
   extension App {
-      // This will be different if you used a different plugin
       static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+      // The createPool() will be different if you used a plugin other than PostgreSQL
       static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
       static let bookTable = BookTable()
   }</code></pre>

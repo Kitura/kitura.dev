@@ -170,7 +170,8 @@ import SwiftKueryPostgreSQL</code></pre>
         <pre><code class="language-swift">brew install postgresql</code></pre>
         <h4 class="heading-4">Linux</h4>
         <p>On Linux we can use <strong>apt-get</strong> to install Postgres:</p>
-        <pre><code class="language-swift">sudo apt-get install libpq-dev</code></pre>
+        <pre><code class="language-swift">sudo apt install postgresql postgresql-contrib</code></pre>
+        <p>Linux requires that you <a target="_blank" href="http://postgresguide.com/setup/users.html">create a postgresql user</a>.</p>
         <h3 class="heading-3">Create a PostgreSQL database</h3>
         <p>Now that we have PostgreSQL installed we can create a database:</p>
         <pre><code class="language-swift">createdb bookdb</code></pre>
@@ -179,6 +180,9 @@ import SwiftKueryPostgreSQL</code></pre>
         <p>Inside <strong>initializeORMRoutes</strong>, create a PostgreSQL connection pool:</p>
         <pre><code class="language-swift">let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookdb")], poolOptions: ConnectionPoolOptions(initialCapacity: 10, maxCapacity: 50))
 Database.default = Database(pool)</code></pre>
+        <div class="info">
+            <p>If you are on Linux, you must provide your username and password in the options for <strong>PostgreSQLConnection.createPool()</strong>.</p>
+        </div>
         <h3 class="heading-3">Create a <strong>Book</strong> table</h3>
         <p>Inside <strong>initializeORMRoutes</strong>, create a table in the SQL database that represents our <strong>Book</strong> model:</p>
         <pre><code class="language-swift">do {
@@ -233,12 +237,12 @@ func saveHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Voi
         "genre": "Fantasy"
     }'</code></pre>
         <p>You should see the following output:</p>
-        <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}%</code></pre>
+        <pre><code>{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}</code></pre>
         <p>Next we will retrieve our book data.</p>
         <p>Open your browser at:</p>
         <p><a href="http://localhost:8080/orm" target="_blank">localhost:8080/orm</a></p>
         <p>This will make a get request to the server and you should see the book we posted before:</p>
-        <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]%</code></pre>
+        <pre><code>[{"id": 0,"title":"A Game of Thrones","price":14.99,"genre":"Fantasy"}]</code></pre>
         <p>Now you can restart your Kitura server and the book data will persist in the database. This is one of the many advantages of using a database.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 7:</span> Retrieve a single book from the database</h2>
