@@ -109,7 +109,7 @@
           <p>If you're new to this simply open the Terminal (on macOS or Linux) to get started.</p>
         </div>
         <p>Create a directory for our project:</p>
-        <pre><code>mkdir MyKituraApp && cd MyKituraApp</code></pre>
+        <pre><code>mkdir HelloKitura && cd HelloKitura</code></pre>
         <div class="info">
           <p>The name of the directory will also be the name of the generated project.</p>
         </div>
@@ -126,17 +126,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "MyKituraApp",
+    name: "HelloKitura",
     dependencies: [
         .package(url: "https://github.com/IBM-Swift/Kitura", from: "x.x.x")
     ],
     targets: [
         .target(
-            name: "MyKituraApp",
+            name: "HelloKitura",
             dependencies: ["Kitura"]),
         .testTarget(
-            name: "MyKituraAppTests",
-            dependencies: ["MyKituraApp"]),
+            name: "HelloKituraTests",
+            dependencies: ["HelloKitura"]),
     ]
 )</code></pre>
         <p>Substitute "x.x.x" with the latest Kitura <a target="_blank" href="https://github.com/IBM-Swift/Kitura/releases">release</a> and "x.x" with the minimum version of Swift required to build the package (e.g. 4.0, 4.2, 5.0).</p>
@@ -145,12 +145,12 @@ let package = Package(
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 3:</span> Add the server code</h2>
         <p>Open <strong>main.swift</strong> in our text editor:</p>
-        <pre><code class="language-swift">open Sources/MyKituraApp/main.swift</code></pre>
+        <pre><code class="language-swift">open Sources/HelloKitura/main.swift</code></pre>
         <div class="info">
           <p>If you are on macOS you can work in Xcode instead. To do this you first need to generate an Xcode project:</p>
           <pre><code class="language-swift">swift package generate-xcodeproj</code></pre>
           <p>Then just open the Xcode project that is generated:</p>
-          <pre><code class="language-swift">open MyKituraApp.xcodeproj</code></pre>
+          <pre><code class="language-swift">open HelloKitura.xcodeproj</code></pre>
         </div>
         <p>Delete the <strong>print("Hello, world!")</strong> line from the file.</p>
         <p>To make use of the methods in Kitura we need to import the Kitura module:</p>
@@ -188,8 +188,7 @@ let package = Package(
         <p>You should be able to see the Kitura landing page.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
-        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('style-guide')" href="../getting-started/style-guide.html#">Kitura Style Guide:</a></span> Follow our guide to see how a production ready server should be structured.</p>
-        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('routing')" href="../routing/routing.html#">Routing:</a></span> Learn about routing and the two types Kitura supports.</p>
+        <p><span class="blue-text"><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Create a Server:</a></span> Create a Kitura server with scaffolding for a full application.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
