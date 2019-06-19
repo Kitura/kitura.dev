@@ -113,6 +113,8 @@
         </div>
         <p>Next, we will define a <strong>TypeSafeMiddleware</strong> which conforms to <strong>TypeSafeHTTPBasic</strong>.</p>
         <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
+        <p>If you don't already have one, create a <strong>Middlewares</strong> folder:</p>
+        <pre><code>mkdir Sources/Application/Middlewares</code></pre>
         <p>Create a new file, called <strong>MyBasicAuth.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
         <p>Open your <strong>MyBasicAuth.swift</strong> file:</p>

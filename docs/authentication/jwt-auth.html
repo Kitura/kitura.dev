@@ -449,7 +449,12 @@ extension App {
          If we want to use JWTs on our codable routes, we need to encapulate the verification and creation of the users JWT in a <strong>TypeSafeMiddleware</strong>.
      We can then register our <strong>TypeSafeMiddleware</strong> on a Codable route to authenticate the user and access their claims.</p>
     <h2 class="heading-2"><span class="blue-text">Step 9a:</span> Define our type safe middleware.</h2>
-    <p>Create a new file called <strong>TypeSafeJWT.swift</strong> in <strong>Sources</strong> > <strong>Application</strong> > <strong>Middlewares</strong></p>
+    <p>If you don't already have one, create a <strong>Middlewares</strong> folder:</p>
+    <pre><code>mkdir Sources/Application/Middlewares</code></pre>
+    <p>Create a new file, called <strong>TypeSafeJWT.swift</strong>:</p>
+    <pre><code>touch Sources/Application/Middlewares/TypeSafeJWT.swift</code></pre>
+    <p>Open your <strong>TypeSafeJWT.swift</strong> file:</p>
+    <pre><code>open Sources/Application/Middlewares/TypeSafeJWT.swift</code></pre>
     <p>Inside this file, define <strong>TypeSafeJWT</strong> with the following code:</p>
 <pre><code class="language-swift">import SwiftJWT
 import Kitura
