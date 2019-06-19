@@ -107,6 +107,9 @@
         The server processes incoming requests and determines what should be returned to the user.
         The client browser then renders the response, which is usually HTML, CSS and JavaScript, to present the information in a human readable format.</p>
         <p>Kitura supports being used as the server for a web application, and provides the following features:</p>
+        <div class="info">
+            <p>Since web applications are a non-RESTful API, we will need Raw routing to use these features.</p>
+        </div>
         <h2 class="heading-2">Serving static files</h2>
         <p>If you want to provide a file to the user that will not change based on the state of the server, you can use Kitura's built-in static file server middleware.
         This will return the file that is stored at the requested URL. This is useful for providing images, CSS files, JavaScript files, or a static HTML webpage.</p>

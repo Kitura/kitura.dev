@@ -110,6 +110,8 @@
         <div class="info">
             <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
         </div>
+        <p>Next, we need to import the Stencil package:</p>
+        <pre><code class="language-swift">import Stencil</code></pre>
         <p>Next, we need a file for our Stencil routes.</p>
         <p>Open your <strong>Application.swift</strong> file:</p>
         <pre><code>open Sources/Application/Application.swift</code></pre>
@@ -129,17 +131,16 @@ func initializeStencilRoutes(app: App) {
         next()
     }
 }</code></pre>
-        <div class="info">
-        <p>Templating is not part of a REST api so it only supported in Raw routes.</p>
-        </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add a Stencil template engine</h2>
-        <p>We register a stencil temple engine to our router instance:</p>
+        <p>Next we'll register a Stencil temple engine to our router instance.</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p>Inside the <strong>postInit()</strong> function, below the line where we define the router, add: </p>
         <pre><code class="language-swift">app.router.add(templateEngine: StencilTemplateEngine())</code></pre>
-        <p>The above line of code tells the server on this instance of the router we'd like to use Stencil as the default template engine.</p>
+        <p>The above line of code tells the server that on this instance of the router we'd like to use the Stencil template engine.</p>
         <div class="info">
-          <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
-          <p>Kitura then provides APIs to select a default template engine to use.</p>
+          <p>Kitura supports multiple template engines being registered to a single instance of a router. By default each templating engine will handle files in the <strong>./Views</strong> directory that match the file extension it supports.</p>
         </div>
         <p>We've just added the Stencil template engine to our router, so now we can use it in a route.</p>
         <p>Inside our get route, add the following:</p>
