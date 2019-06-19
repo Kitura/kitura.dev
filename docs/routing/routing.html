@@ -202,9 +202,18 @@ router.get("/") { request, response, next in
 }
 
 router.get("/", handler: getHandler)</code></pre>
-        <div class="info" id="bookmodel">
-          <p>Any type that conforms to <strong>Codable</strong> can be used as a parameter in Codable routing, including custom structs and classes. Throughout these guides, we will use the following <strong>Book</strong> model:</p>
-          <pre><code class="language-swift">struct Book: Codable {
+        <h2 class="heading-3" id="bookmodel"> Codable model</h2>
+        <p class="block-text">Any type that conforms to <strong>Codable</strong> can be used as a parameter in Codable routing, including custom structs and classes.
+            As we are simulating a bookstore in our guides, we are going to need to define a book.
+            The book is a model so the first thing we need to do is create our Models folder:</p>
+            <pre><code>mkdir Sources/Application/Models</code></pre>
+            <p>This is the directory where we will store all of our models.</p>
+            <p>Next we will create our <strong>Book.swift</strong> file:</p>
+            <pre><code>touch Sources/Application/Models/Book.swift</code></pre>
+            <p>We will open the <strong>Book.swift</strong> file in our default text editor:</p>
+            <pre><code>open Sources/Application/Models/Book.swift</code></pre>
+            <p>Inside this file we define our Book:</p>
+            <pre><code class="language-swift">struct Book: Codable {
     let id: Int
     let title: String
     let price: Double
@@ -217,7 +226,6 @@ router.get("/", handler: getHandler)</code></pre>
         self.genre = genre
     }
 }</code></pre>
-        </div>
         <div class="underline"></div>
         <h2 class="heading-2">Conclusion</h2>
         <p class="block-text">Codable routing provides a simple approach to building RESTful APIs. It adds compile-time type safety, creates cleaner code and can automatically generate an <a target="_blank" href="https://swagger.io/docs/specification/about/">OpenAPI specification</a>. If you are building a <a target="_blank" href="https://samnewman.io/patterns/architectural/bff/">Backend For Frontend (BFF)</a> for an iOS app, you should probably use Codable routing.</p>
