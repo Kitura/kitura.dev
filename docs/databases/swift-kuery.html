@@ -337,7 +337,7 @@ class BookTable: Table {
     let price = Column("price", Float.self)
     let genre = Column("genre", String.self)
 }</code></pre>
-        <p class="block-text">This class represents our <strong>Book</strong> model as an SQL table.
+        <p class="block-text">The <strong>BookTable</strong> class represents our <strong>Book</strong> model as an SQL table.
           It needs to inherit from <strong>Table</strong> and match the column names of the table we created in the database.
           We must also provide the table name as a property.</p>
         <p>Return to the <strong>KueryRoutes.swift</strong> file. In the <strong>App</strong> extension, create an instance of this table:</p>

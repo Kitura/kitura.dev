@@ -107,12 +107,14 @@
         <p class="block-text">In this guide, we use <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP"> Kitura-CredentialsHTTP</a> to add HTTP basic authentication to Codable routes.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Define the authentication middleware</h2>
-        <p>To add basic authentication to our server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP"> add Kitura-CredentialsHTTP to our dependencies</a>.</p>
+        <p>To add basic authentication to our server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP#add-dependencies"> add Kitura-CredentialsHTTP to our dependencies</a>.</p>
         <div class="info">
             <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
         </div>
         <p>Next, we will define a <strong>TypeSafeMiddleware</strong> which conforms to <strong>TypeSafeHTTPBasic</strong>.</p>
         <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
+        <p>If you don't already have one, create a <strong>Middlewares</strong> folder:</p>
+        <pre><code>mkdir Sources/Application/Middlewares</code></pre>
         <p>Create a new file, called <strong>MyBasicAuth.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
         <p>Open your <strong>MyBasicAuth.swift</strong> file:</p>
