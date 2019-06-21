@@ -120,7 +120,11 @@
          <pre><code>open Sources/Application/Application.swift</code></pre>
          <p> Inside the <strong>postInit()</strong> function add: </p>
          <pre><code class="language-swift">initializeSessionRawRoutes(app: self)</code></pre>
-         <p>Next, create a new file, called <strong>SessionRawRoutes.swift</strong>, to contain the framework for our routes code:</p>
+         <p>Create a new file called <strong>SessionRawRoutes.swift</strong> to define the session routes in:</p>
+         <pre><code>touch Sources/Application/Routes/SessionRawRoutes.swift</code></pre>
+         <p>Open the <strong>SessionRawRoutes.swift</strong> file:</p>
+         <pre><code>open Sources/Application/Routes/SessionRawRoutes.swift</code></pre>
+         <p>Inside this file we will add the code for our session routes:</p>
          <pre><code class="language-swift">import KituraSession
 
 func initializeSessionRawRoutes(app: App) {
