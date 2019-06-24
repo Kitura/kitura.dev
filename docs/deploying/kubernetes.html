@@ -102,31 +102,91 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
-        <h1 class="heading-1">Deploy to the Cloud with Kubernetes</h1>
-        <h2 class="heading-2">Prerequisites</h2>
-        <p>Whilst Kitura can be deployed to any Cloud offering we will be using IBM Cloud as an example in this guide.</p>
-        <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><span class="blue-text">IBM Cloud Account:</span> Learn how to sign up for free</li>
-          <li><span class="blue-text">A free cluster on IBM Cloud:</span> Learn how to create your free cluster</li>
-          <li><span class="blue-text">Deployed server to Docker:</span> Learn how to do this by following our Docker guide</li>
-        </ul>
+        <h1 class="heading-1">Deploying with Kubernetes</h1>
+        <p>Kubernetes is a platform for managing containerized applications and services. Kubernetes allows you to automate the deployment, scaling and management of your containerized applications.</p>
+        <p>With Kubernetes you can deploy your application to any cloud provider, but for this guide we will be using IBM Cloud as an example.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Tag your Docker image</h2>
-        <!-- <p>TODO: Do we need to give any intructions about container registries?</p> -->
-        <pre><code class="language-swift"> docker tag &ltsource_image&gt:&lttag&gt registry.&ltregion&gt.bluemix.net/&ltmy_namespace&gt/&ltnew_image_repo&gt:&ltnew_tag&gt</code></pre>
-        <!-- <p>TODO: Explain command?</p> -->
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span>Create Cluster on IBM Cloud</h2>
+        <p>Before we can create a Kubernetes Cluster on IBM Cloud we need to <a href="https://cloud.ibm.com/registration" target="_blank">create an IBM Cloud account</a>.</p>
+        <p>Once we have an IBM Cloud account we can create a Kubernetes cluster by visting the <a href="https://cloud.ibm.com/catalog?category=containers" target="_blank">IBM Cloud Catalog</a>.</p>
+        <p>Below is the config we need:</p>
+        <img width="80%" src="../../assets/create-cluster.png">
+        <p>Ensure the <strong>Free plan</strong> option is selected and the cluster name is <strong>bookapp-cluster</strong></p>
+        <div class="info">
+          <p>Set Geography and Metro to whatever is local to you.</p>
+        </div>
+        <p>Creating a cluster takes several minutes so grab a tea/coffee in the meantime!</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Push the Docker image</h2>
-        <pre><code class="language-swift"> docker push registry.&ltregion&gt.bluemix.net/&ltmy_namespace&gt/&ltimage_repo&gt:&lttag&gt</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Configure Cluster Config</h2>
+        <p>Now that we have our cluster we need to provide access to it via the CLI.</p>
+        <p>Download the required CLI tools using the Kitura CLI:</p>
+        <code><pre>kitura idt</pre></code>
+        <div class="info">
+          <p>If you don't have the Kitura CLI installed you can also install the idt tools with the following command:</p>
+          <code><pre>curl -sL https://ibm.biz/idt-installer | bash</pre></code>
+        </div>
+        <p>Now we can log into IBM Cloud on the command line:</p>
+        <code><pre>ibmcloud login -a cloud.ibm.com -r eu-gb -g default</pre></code>
+        <p>Once we have logged in we need to get our cluster config file:</p>
+        <code><pre>ibmcloud ks cluster-config --cluster bookapp-cluster</pre></code>
+        <p>This command outputs an export command to the terminal. We need to copy and paste that command and run it.</p>
+        <p>Then we can verify we can connect to our cluster by running:</p>
+        <code><pre>kubectl get nodes</pre></code>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Update Helm charts</h2>
-        <p>Edit values.yml inside the charts directory to point at correct registry</p>
-        <!-- <p>TODO: Add better instructions here</p> -->
-        <p>Initialise cluster with Helm</p>
-        <pre><code class="language-swift">helm init</code></pre>
-        <p>Install via helm</p>
-        <pre><code class="language-swift">helm install —name myapp .</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Update Helm chart</h2>
+        <p>Helm is a package manager for Kubernetes applications. Helm allows you to define templates for your Kubernetes manifest files and a <strong>values.yaml</strong> which is used to populate those templates.</p>
+        <div class=info>
+          <p>If you created your application using the CLI or the macOS app then you should already have a Helm chart provided.</p>
+          <p>If not then you can follow the <a href="https://helm.sh/docs/using_helm/#quickstart-guide">Helm docs</a> to create your own chart</p>
+        </div>
+        <p>The Helm chart provided with the Kitura CLI and macOS is configured out of the box for the application.</p>
+        <p>All we need to do is update the <strong>values.yaml</strong> to point at the location of our Docker container:</p>
+        <code><pre>
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+revisionHistoryLimit: 1
+image:
+  repository: icr.io/my-bookstore/bookbackend
+  tag: v1.0.0
+  pullPolicy: Always
+  resources:
+    requests:
+      cpu: 200m
+      memory: 300Mi
+livenessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+service:
+  name: swift
+  type: NodePort
+  servicePort: 8080
+hpa:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+    cpu:
+      targetAverageUtilization: 70
+    memory:
+      targetAverageUtilization: 70
+base:
+  enabled: false
+  replicaCount: 1
+  image:
+    tag : v0.9.9
+  weight: 100
+istio:
+  enabled: false
+  weight: 100
+        </pre></code>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Deploy Application</h2>
+        <p>First we need to install Tiller into our cluster:</p>
+        <code><pre>helm init</pre></code>
+        <p>Tiller is the in-cluster component of Helm. It interacts directly with the Kubernetes API server to install, upgrade, query, and remove Kubernetes resources. It also stores the objects that represent releases.</p>
+        <p>Finally we can deploy our application using Helm install:</p>
+        <code><pre>helm install —name bookstore-app .</pre></code>
       </main>
     </div>
     <div id="top-page" class="top-page">
