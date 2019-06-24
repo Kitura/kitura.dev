@@ -190,11 +190,12 @@ istio:
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 4:</span> View Deployed Application</h2>
         <p>To veiw our application running on IBM Cloud we need the Public/external URL and the exposed NodePort.</p>
-        <p>To get the Public URL:</p>
+        <h3 class="heading-3">Get Public URL:</h3>
         <code><pre>ibmcloud cs workers bookapp-cluster</pre></code>
-        <p>To get the NodePort:</p>
+        <h3 class="heading-3">Get NodePort:</h3>
+        <p>First we get a list of all of the running services:</p>
         <code><pre>kubectl get services</pre></code>
-        <p>Note the name of our service!</p>
+        <p>Then we get the NodePort of our service:</p>
         <code><pre>kubectl describe service bookstore-app-service</pre></code>
         <p>Then in a browser we can navigate to:</p>
         <code><pre>http://&lt;public-url&gt;:&lt;NodePort&gt;</pre></code>
