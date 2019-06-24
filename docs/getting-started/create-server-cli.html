@@ -27,12 +27,12 @@
       <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
-        <ul class="nested-sidebar-list content" style="max-height: 250px;">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+        <ul class="nested-sidebar-list content" style="max-height: 400px;">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item active"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -103,25 +103,46 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">Create a server with the Kitura CLI</h1>
-        <h2 class="heading-2" id="prereq">Prerequisites</h2>
-        <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('installation-mac')" href="../getting-started/installation-mac.html#install-kitura-cli">Kitura CLI:</a> Follow our instructions for installing the Kitura CLI.</li>
-        </ul>
+        <p>The Kitura command-line interface (CLI) allows you to quickly generate a Kitura project.</p>
+        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Installing the CLI</h2>
+        <h3 class="heading-3">Install via brew (macOS)</h3>
+        <div class="info">
+          <p>For this installation you will need to have Homebrew installed.</p>
+          <p>If you do not have Homebrew installed you can follow the <a target="_blank" href="https://docs.brew.sh/Installation">Homebrew installation steps</a></p>
+        </div>
+        <p>Install Kitura’s Homebrew tap to allow ‘brew’ to access Kitura’s package repository:</p>
+        <pre><code class="language-swift">brew tap ibm-swift/kitura</code></pre>
+        <p>Install Kitura’s command-line interface:</p>
+        <pre><code class="language-swift">brew install kitura</code></pre>
+        <p>Verify that Kitura CLI is installed by running:</p>
+        <pre><code class="language-swift">kitura --version</code></pre>
+        <p>If the installation was successful we would see information about the version.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Create a directory</h2>
+        <h3 class="heading-3">Install via npm (macOS or Linux)</h3>
+        <div class="info">
+          <p>For this installation method you need to have npm installed.</p>
+          <p>If you do not have npm installed you can follow the <a target="_blank" href="https://www.npmjs.com/get-npm">npm installation steps</a>.</p>
+        </div>
+        <p>Open a Terminal and run the <strong>npm install</strong> command:</p>
+        <pre><code class="language-swift">npm install -g kitura-cli</code></pre>
+        <p>Verify that Kitura CLI is installed by running:</p>
+        <pre><code class="language-swift">kitura --version</code></pre>
+        <p>If the installation was successful we would see information about the version.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create a directory</h2>
         <p>Kitura CLI needs to be run in an empty directory so you will need to create a new directory for your server:</p>
         <pre><code class="language-swift">mkdir MyKituraApp && cd MyKituraApp</code></pre>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create a Kitura server</h2>
+        <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Create a Kitura server</h2>
         <p>Create a Kitura application using the Kitura CLI</a>:</p>
         <pre><code>kitura init</code></pre>
-        <p><strong>kitura init</strong> will create and build a cloud-ready Kitura application in your current directory.</p>
+        <p><strong>kitura init</strong> will create a cloud-ready Kitura application in your current directory.</p>
         <p>The name of your project will be the same as the directory name.</p>
         <div class="info">
           <p>The generated project contains a Swift 5.0 <strong>Package.swift</strong> file.</p>
         </div>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Start the Kitura server</h2>
+        <h2 class="heading-2"><span class="blue-text bold">Step 4:</span> Start the Kitura server</h2>
         <p>By default <strong>kitura init</strong> builds our server code so we just need to run the server:</p>
         <pre><code>swift run</code></pre>
         <p>Once the terminal output contains:</p>

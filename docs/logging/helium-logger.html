@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -143,7 +143,7 @@ do {
 } catch let error {
     Log.error(error.localizedDescription)
 }</code></pre>
-        <p>Now if you start your server you should see some output:</p>
+        <p>Now if you start your server you should see some logging output. This should look something like:</p>
         <pre><code class="language-swift">
 [xxx] [VERBOSE] [Kitura.swift:118 run()] Starting Kitura framework...
 [xxx] [VERBOSE] [Kitura.swift:135 start()] Starting an HTTP Server on port 8080...
@@ -155,8 +155,9 @@ do {
         <p>This means you can decide how much information you'd like to be logged, based on importance.</p>
 
         <!-- <p>TODO: Add testing instructions?</p> -->
-        <p>If you'd like to customize the level of logging you can simply pass the level to the <strong>use()</strong> method:</p>
-        <pre><code class="language-swift">HeliumLogger.use(.error)</code></pre>
+        <p>If you'd like to customize the level of logging you can simply pass the level to the <strong>use()</strong> method.</p>
+        <p>Inside your <strong>main.swift</strong> file, set the logging level:</p>
+        <pre><code class="language-swift">HeliumLogger.use(.debug)</code></pre>
         <p>There are several logging levels:</p>
         <ol>
           <li>entry</li>
@@ -167,7 +168,7 @@ do {
           <li>warning</li>
           <li>error</li>
         </ol>
-        <p>Verbose is set by default. Setting a particular logging level also includes all levels above it.</p>
+        <p>Verbose is set by default. Setting a particular logging level also includes all levels below that.</p>
         <p>For example, if you set a logging level of <strong>verbose</strong>:</p>
         <pre><code class="language-swift">HeliumLogger.use(.verbose)</code></pre>
         <p>You will get logging for; <strong>verbose</strong>, <strong>info</strong>, <strong>warning</strong> and <strong>error</strong>.</p>

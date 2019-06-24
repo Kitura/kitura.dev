@@ -27,12 +27,12 @@
       <div class="underline-title"></div>
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
-        <ul class="nested-sidebar-list content" style="max-height: 250px;">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+        <ul class="nested-sidebar-list content" style="max-height: 400px;">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item active"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -102,13 +102,32 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
-        <h1 class="heading-1">Create a server with the Kitura macOS</h1>
-        <h2 class="heading-2" id="prereq">Prerequisites</h2>
-        <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('installation-mac')" href="../getting-started/installation-mac.html#install-macos-app">Kitura macOS app:</a> Follow our instructions for installing the Kitura macOS app.</li>
-        </ul>
+        <h1 class="heading-1">Create a server with the Kitura macOS app</h1>
+        <p class="block-text">The Kitura macOS app provides a user interface (UI) cover for the Kitura CLI. This option is designed for those who wish to avoid using the command line to create a simple cloud ready Kitura project.</p>
+        <h3 class="heading-3"><span class="blue-text bold">Step 1:</span> Download the macOS app</h3>
+        <p>To download the macOS app click the button below:</p>
+        <button class="macos-download-button" type="button" name="macos-download-button" onclick="window.open('../../Kitura.dmg')">Download</button>
+        <h3 class="heading-3"><span class="blue-text bold">Step 2:</span> Install macOS app</h3>
+        <p>Once the download has completed open <strong>kitura.dmg</strong>.</p>
+        <p>When the User Interface appears drag the Kitura icon into your applications folder:</p>
+        <div class="img-container">
+          <img class="example-image" src="../../assets/macOS-app-download.png" alt="Kitura macOS app install screen">
+        </div>
+        <p>Open the macOS Finder and find Kitura in the Applications folder.</p>
+        <div class="info">
+          <p>When you first launch the app you may need to open it via the following:</p>
+          <ol>
+            <li>Right click on the Kitura application</li>
+            <li>Select Open from the list</li>
+          </ol>
+          <p>You will only need to open the app once this way. In future you can double-click as normal.</p>
+        </div>
+        <p>Upon opening the app you should see the following screen:</p>
+        <div class="img-container">
+          <img src="../../assets/preview1.png" alt="">
+        </div>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text bold">Step 1:</span> Create project</h2>
+        <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Create project</h2>
         <p>Open Kitura from the Applications folder.</p>
         <p>Hover over the Starter tile and click <strong>Create</strong>:</p>
         <img class="example-image" src="../../assets/preview1.png" alt="">
