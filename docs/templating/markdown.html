@@ -122,43 +122,43 @@
         </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Configure KituraMarkdown</h2>
-        <p>By default KituraMarkdown will just render our Markdown to their corresponding HTML elements without allowing us to set any HTML properties, such as the configuration found in the <strong>&lt;head&gt;</strong> tag.</p>
-        <p>We can provide an HTML wrapper template for our rendered Markdown using MarkdownOptions.</p>
-        <p>Inside the <strong>postInit()</strong> function we add:</p>
+        <p>By default KituraMarkdown will render our Markdown to their corresponding HTML elements without allowing us to set any HTML properties, such as the configuration found in the <strong>&lt;head&gt;</strong> tag.</p>
+        <p>To provide this configuration we can provide a HTML wrapper template for our rendered Markdown using MarkdownOptions.</p>
+        <p>Inside the <strong>postInit()</strong> function add:</p>
         <pre><code class="language-swift">let markdownOptions = MarkdownOptions(pageTemplate: "default")</code></pre>
-        <p>We have selected the default template which provides the following HTML wrapper:</p>
-        <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=\"en\"&gt;
-  &lt;head&gt;
-    &lt;meta charset=\"UTF-8\"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div&gt;
-      &lt;snippetInsertLocation&gt;&lt;/snippetInsertLocation&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-        </code></pre>
-        <p>During the rendering of the Markdown file, the rendered string replaces the <strong>&lt;snippetInsertLocation&gt;&lt;/snippetInsertLocation&gt;</strong> tag.</p>
-        <div class="info">
-          <p>Here we used a default template however you can provide your own template using the MarkdownOptions:</p>
-          <pre><code class="language-swift">let markdownOptions = MarkdownOptions(pageTemplate: """
-&lt;!DOCTYPE html&gt;
-&lt;html lang=\"en\"&gt;
-    &lt;head&gt;
+        <div class=info>
+            <p>We have selected the default template which provides the following HTML wrapper:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html lang=\"en\"&gt;
+      &lt;head&gt;
         &lt;meta charset=\"UTF-8\"&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
         &lt;div&gt;
-            &lt;h1&gt;My Page Title&lt;/h1&gt;
+          &lt;snippetInsertLocation&gt;&lt;/snippetInsertLocation&gt;
         &lt;/div&gt;
-        &lt;div&gt;
-            &lt;snippetInsertLocation&gt;&lt;/snippetInsertLocation&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-""")</code></pre>
+      &lt;/body&gt;
+    &lt;/html&gt;
+            </code></pre>
+            <p>Alternatively you can provide your own template using the MarkdownOptions:</p>
+            <pre><code class="language-swift">let markdownOptions = MarkdownOptions(pageTemplate: """
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang=\"en\"&gt;
+      &lt;head&gt;
+          &lt;meta charset=\"UTF-8\"&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+          &lt;div&gt;
+              &lt;h1&gt;My Page Title&lt;/h1&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+              &lt;snippetInsertLocation&gt;&lt;/snippetInsertLocation&gt;
+          &lt;/div&gt;
+      &lt;/body&gt;
+  &lt;/html&gt;
+  """)</code></pre>
         </div>
+        <p>During the rendering of the Markdown file, our rendered Markdown content replaces the <strong>&lt;snippetInsertLocation&gt;&lt;/snippetInsertLocation&gt;</strong> tag.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Create the template file</h2>
         <p>By default, Kitura looks for template files in a <strong>./Views</strong> directory found at the root of the project.</p>
