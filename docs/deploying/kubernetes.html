@@ -187,6 +187,18 @@ istio:
         <p>Tiller is the in-cluster component of Helm. It interacts directly with the Kubernetes API server to install, upgrade, query, and remove Kubernetes resources. It also stores the objects that represent releases.</p>
         <p>Finally we can deploy our application using Helm install:</p>
         <code><pre>helm install —name bookstore-app .</pre></code>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> View Deployed Application</h2>
+        <p>To veiw our application running on IBM Cloud we need the Public/external URL and the exposed NodePort.</p>
+        <p>To get the Public URL:</p>
+        <code><pre>ibmcloud cs workers bookapp-cluster</pre></code>
+        <p>To get the NodePort:</p>
+        <code><pre>kubectl get services</pre></code>
+        <p>Note the name of our service!</p>
+        <code><pre>kubectl describe service bookstore-app-service</pre></code>
+        <p>Then in a browser we can navigate to:</p>
+        <code><pre>http://&lt;public-url&gt;:&lt;NodePort&gt;</pre></code>
+        <p>We should now see our application running on IBM Cloud!</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
