@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -112,7 +112,7 @@
             <li><p>A GET route, where we retrieve the books from our session.</p></li>
              <li><p>A POST route, where we store a book in our session.</p></li>
          </ul>
-         <p>We are using <a target="_blank" href="../getting-started/style-guide.html">the Book model from the style guide</a> in our routes, however you could use any codable object.</p>
+         <p>We are using <a target="_blank" href="../routing/routing.html#bookmodel">the Book model from the routing guide</a> in our routes, however you could use any codable object.</p>
          <p>To use Kitura-Session from a server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-Session#add-dependencies"> add Kitura-Session to our dependencies</a>.</p>
             <div class="info">
                 <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
@@ -142,13 +142,12 @@ extension App {
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Define your Session</h2>
         <p>To use sessions with Codable routes, we need to model the structure of what we will store in the session.
            We do this by defining a Swift type that conforms to the <strong>TypeSafeSession</strong> protocol.</p>
+        <p>If you don't already have one, create a <strong>Middlewares</strong> folder:</p>
+        <pre><code>mkdir Sources/Application/Middlewares</code></pre>
         <p>Create a new file, called <strong>CheckoutSession.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
         <p>Open your <strong>CheckoutSession.swift</strong> file:</p>
         <pre><code>open Sources/Application/Middlewares/CheckoutSession.swift</code></pre>
-        <div class="info">
-          <p>You may need to create the <strong>Middlewares</strong> folder.</p>
-        </div>
         <p>We can use either a class or a struct for <strong>TypeSafeMiddleware</strong> here but we will use a Class.</p>
         <p>Inside this file, define your <strong>CheckoutSession</strong> class:</p>
         <pre><code class="language-swift">import KituraSession
@@ -225,21 +224,41 @@ extension App {
         completion(session.books, nil)
     }
 }</code></pre>
-        <p>The easiest way to test that this works is using <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI</a>.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 5:</span> Test our Session</h2>
-        <p>We will be using Kitura OpenAPI to test our sessions but any tool capable of testing APIs, such as <a href="https://www.getpostman.com/">Postman</a>, would work.</p>
-        <div class="info">
-          <p>If you don't know how to test your Codable routes using Kiura OpenAPI then you can follow our <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI Guide</a> to learn how.</p>
-        </div>
-        <p>To use OpenAPI we first need to start our server.</p>
-        <p>Once the server has started open:</p>
-        <p><a target="_blank" href="http://localhost:8080/openapi/ui">http://localhost:8080/openapi/ui</a></p>
-        <p>Use OpenAPI to post a books to "/cart"</p>
-        <p>To test the GET, either use OpenAPI or go to <a target="_blank" href="http://localhost:8080/cart">http://localhost:8080/cart</a>.</p>
-        <p>You should see the book you posted. The server is using cookies to make a unique response for your session.</p>
-        <p>You can test this by opening a private window and going to <a target="_blank" href="http://localhost:8080/cart">http://localhost:8080/cart</a>.
-           This will make a new session and the cart will be empty.</p>
+        <p>An easy way to test our our session is using <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI</a>.
+        You can follow our <a onclick="setActiveSidebarElementForParent('openapi')" href="../routing/open-api.html#">Kitura OpenAPI Guide</a> to learn how to set up OpenAPI and use the interface for testing.</p>
+        <p>Alternatively, we can test our routes by sending a request using curl, with cookies enabled.</p>
+        <p>Open Terminal and enter the following:</p>
+        <pre><code>curl -X POST \
+http://localhost:8080/cart \
+-b cookies.txt -c cookies.txt \
+-H 'content-type: application/json' \
+-d '{
+    "id": 1,
+    "title": "War and Peace",
+    "price": 10.99,
+    "genre": "Historical drama"
+}'</code></pre>
+        <p>If our request was successful, our book will be returned to us:</p>
+        <pre><code>{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}</code></pre>
+        <p>We will also have a cookie that curl has stored in the <strong>cookies.txt</strong> file.</p>
+        <p>To retrieve our book, we make another curl request to our server:</p>
+        <pre><code>curl -X GET \
+http://localhost:8080/cart \
+-b cookies.txt -c cookies.txt</code></pre>
+    <p>If the request is successful, it will return the book we just sent to the server.</p>
+    <pre><code>[{"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}]</code></pre>
+    <p>The cookie we sent with our request has identifed our session, so that our saved book can be returned.</p>
+    <p>Each user making requests to these routes will create their own basket of books.</p>
+    <p>We can demonstrate this by deleting our cookie:</p>
+    <pre><code>rm cookies.txt</code></pre>
+    <p>Followed by making a new GET request:</p>
+    <pre><code>curl -X GET \
+http://localhost:8080/cart \
+-b cookies.txt -c cookies.txt</code></pre>
+    <p>This represents a user without a session so we are returned an empty array:</p>
+    <pre><code>[]</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2">Next steps</h2>
         <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('typesafe-auth')" href="../authentication/typesafe-auth.html#">Authentication:</a></span> Learn about authentication and what Kitura provides.</p>

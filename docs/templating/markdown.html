@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -111,13 +111,13 @@
         </div>
         <p>Next, we need to import the KituraMarkdown package:</p>
         <pre><code class="language-swift">import KituraMarkdown</code></pre>
-        <p>Now we can add the KituraMarkdown template engine to our router instance:</p>
-        <p>Below the line <strong>let router = Router()</strong> we will add:</p>
+        <p>Open your <strong>Application.swift</strong> file:</p>
+        <pre><code>open Sources/Application/Application.swift</code></pre>
+        <p>Inside the <strong>postInit()</strong> function add: </p>
         <pre><code class="language-swift">router.add(templateEngine: KituraMarkdown())</code></pre>
-        <p>This tells the server that on this instance of the router we'd like to use KituraMarkdown as a template engine.</p>
+        <p>This tells the server that on this instance of the router we'd like to use the KituraMarkdown template engine.</p>
         <div class="info">
-          <p>Kitura is capable of having numerous template engines registered to a single instance of a router.</p>
-          <p>Kitura then provides APIs to select a default template engine to use.</p>
+          <p>Kitura supports multiple template engines being registered to a single instance of a router. By default each templating engine will handle files in the <strong>./Views</strong> directory that match the file extension it supports.</p>
         </div>
         <p>We've just added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
         <p>Just below our other registered routes we can create a new route for KituraMarkdown:</p>
@@ -125,12 +125,12 @@
     try response.render("book.md", context: [:])
 }</code></pre>
         <p>The <strong>response.render()</strong> method attempts to populate the provided template file with the provided data.</p>
-        <p>However as we are rendering a Markdown file there we don't need to provide any data as it all will be in the Markdown file.</p>
+        <p>However, as we are rendering a Markdown file the <strong>context</strong> parameter is ignored.</p>
         <p>So in our case KituraMarkdown will take the <strong>book.md</strong> file and render the Markdown in it to be viewed in a browser.</p>
         <p>This obviously will not work as we haven't created our <strong>book.md</strong> file.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 2:</span> Create the template file</h2>
-        <p>By default Kitura looks for template files in a <strong>./Views</strong> directory found at the root of the project.</p>
+        <p>By default, Kitura looks for template files in a <strong>./Views</strong> directory found at the root of the project.</p>
         <div class="info">
           <p>Typically the root of your project is where the <strong>.xcodeproj</strong> directory is.</p>
         </div>
@@ -150,7 +150,7 @@
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 3:</span> Populate the Markdown template file</h2>
         <p>First we need some Markdown to render.</p>
-        <p>So in the book.md file we will add:</p>
+        <p>So in the <strong>book.md</strong> file we will add:</p>
         <pre><code># Books Header
 
 Description with **bold** text

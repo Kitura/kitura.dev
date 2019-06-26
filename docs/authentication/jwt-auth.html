@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -281,7 +281,7 @@ mwIDAQAB
          This could be achieved with basic authentication, the Authorization header or in the body of a POST request.
          In this guide we will pass the username and password in the body of a POST request and use a model to represent this.</p>
          <div class="info">
-           <p>Passwords and signed JWTs must be kept private and should always be exchanged over a secure layer like HTTPS.</p>
+           <p>Passwords and JWTs with sensitive data must be kept private and should always be exchanged over a secure layer like HTTPS.</p>
          </div>
         <p>Create a new file, called <strong>UserCredentials.swift</strong>:</p>
         <pre><code>touch Sources/Application/Models/UserCredentials.swift</code></pre>
@@ -330,7 +330,7 @@ mwIDAQAB
     // Users credentials are authenticated
     let myClaims = ClaimsStandardJWT(iss: "Kitura", sub: credentials.username, exp: Date(timeIntervalSinceNow: 3600))
     var myJWT = JWT(claims: myClaims)
-    let signedJWT = try myJWT.sign(using: App.signer)
+    let signedJWT = try myJWT.sign(using: App.jwtSigner)
     response.send(signedJWT)
     next()
 }</code></pre>
@@ -348,7 +348,7 @@ mwIDAQAB
 }'</code></pre>
 <p>You should be returned a JWT string that is structured <strong>xxxx.yyyy.zzzz</strong>
      where xxxx is the base64 encoded header, yyyy is the base 64 encoded claims and zzzz is the signature.</p>
-<p>Below is an example JWT, generated using <strong>HS256</strong> and the password "kitura":<p>
+<p>Below is an example JWT, generated using <strong>HS256</strong> with the password "kitura". The one returned by your curl request will have different values but the same structure.<p>
 <pre><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJLaXR1cmEiLCJzdWIiOiJKb2UgQmxvZ2dzIiwiZXhwIjoxNTUzMDE4Mjg0LjMyOTcwMTl9.t55WealACtYGCQGS3EQgRQuurmNSBO5fWZqzqJjEIi</code></pre>
 <p>We can decode the JWT string using the debugger at <a href="https://jwt.io/#debugger" rel="noopener" target="_blank">JWT.IO</a> which allows us view the headers and claims.</p>
     <div class="underline"></div>
@@ -449,7 +449,12 @@ extension App {
          If we want to use JWTs on our codable routes, we need to encapulate the verification and creation of the users JWT in a <strong>TypeSafeMiddleware</strong>.
      We can then register our <strong>TypeSafeMiddleware</strong> on a Codable route to authenticate the user and access their claims.</p>
     <h2 class="heading-2"><span class="blue-text">Step 9a:</span> Define our type safe middleware.</h2>
-    <p>Create a new file called <strong>TypeSafeJWT.swift</strong> in <strong>Sources</strong> > <strong>Application</strong> > <strong>Middlewares</strong></p>
+    <p>If you don't already have one, create a <strong>Middlewares</strong> folder:</p>
+    <pre><code>mkdir Sources/Application/Middlewares</code></pre>
+    <p>Create a new file, called <strong>TypeSafeJWT.swift</strong>:</p>
+    <pre><code>touch Sources/Application/Middlewares/TypeSafeJWT.swift</code></pre>
+    <p>Open your <strong>TypeSafeJWT.swift</strong> file:</p>
+    <pre><code>open Sources/Application/Middlewares/TypeSafeJWT.swift</code></pre>
     <p>Inside this file, define <strong>TypeSafeJWT</strong> with the following code:</p>
 <pre><code class="language-swift">import SwiftJWT
 import Kitura

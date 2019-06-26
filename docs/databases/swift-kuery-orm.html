@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -145,7 +145,7 @@ extension App {
     }
 }</code></pre>
         <p>We have defined three routes on the "/orm" endpoint. One to handle POST requests, one to handle GET requests with an identifier and one to handle GET requests without an identifier.</p>
-        <p>The routes in this guide are using the<a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
+        <p>The routes in this guide are using the<a target="_blank" href="../routing/routing.html#bookmodel"> Book model from the routing guide</a>, however you could use any Codable type.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Add the ORM to the project's dependencies</h2>
         <div class="info">
@@ -169,9 +169,9 @@ import SwiftKueryPostgreSQL</code></pre>
         <p>On macOS we can use Homebrew to install Postgres:</p>
         <pre><code class="language-swift">brew install postgresql</code></pre>
         <h4 class="heading-4">Linux</h4>
-        <p>On Linux we can use <strong>apt-get</strong> to install Postgres:</p>
+        <p>On Linux we can use <strong>apt</strong> to install PostgreSQL:</p>
         <pre><code class="language-swift">sudo apt install postgresql postgresql-contrib</code></pre>
-        <p>Linux requires that you <a target="_blank" href="http://postgresguide.com/setup/users.html">create a postgresql user</a>.</p>
+        <p>Linux requires that you <a target="_blank" href="http://postgresguide.com/setup/users.html">create a PostgreSQL user</a>.</p>
         <h3 class="heading-3">Create a PostgreSQL database</h3>
         <p>Now that we have PostgreSQL installed we can create a database:</p>
         <pre><code class="language-swift">createdb bookdb</code></pre>

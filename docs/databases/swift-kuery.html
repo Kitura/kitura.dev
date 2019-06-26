@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+          
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -182,7 +182,7 @@
       <p>Add the above code, for your chosen routing method, to your <strong>KueryRoutes.swift</strong> file.</p>
       </div>
       <div class="info">
-          <p>The routes in this guide are using the<a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p>
+          <p>The routes in this guide are using the<a target="_blank" href="../routing/routing.html#bookmodel"> Book model from the routing guide</a>, however you could use any Codable type.</p>
         </div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Install a database plugin</h2>
         <p>Kitura has built in support for PostgreSQL, MySQL and SQLite.</p>
@@ -200,11 +200,11 @@
             <p>On macOS we can use Homebrew to install Postgres:</p>
             <pre><code class="language-swift">brew install postgresql</code></pre>
             <h3 class="heading-3">Linux</h3>
-            <p>On Linux we can use <strong>apt-get</strong> to install Postgres:</p>
+            <p>On Linux we can use <strong>apt</strong> to install PostgreSQL:</p>
             <pre><code class="language-swift">sudo apt install postgresql postgresql-contrib</code></pre>
-            <p>Linux requires that you <a target="_blank" href="http://postgresguide.com/setup/users.html">create a postgresql user</a>.</p>
+            <p>Linux requires that you <a target="_blank" href="http://postgresguide.com/setup/users.html">create a PostgreSQL user</a>.</p>
             <div class="underline"></div>
-            <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a Postgres database</h2>
+            <h2 class="heading-2"><span class="blue-text">Step 2b:</span> Create a PostgreSQL database</h2>
             <p>Now that we have PostgreSQL installed we can create a database:</p>
             <pre><code class="language-swift">createdb bookstoredb</code></pre>
             <p>Then we can open the PostgreSQL command-line interface:</p>
@@ -343,7 +343,7 @@ class BookTable: Table {
     let price = Column("price", Float.self)
     let genre = Column("genre", String.self)
 }</code></pre>
-        <p class="block-text">This class represents our <strong>Book</strong> model as an SQL table.
+        <p class="block-text">The <strong>BookTable</strong> class represents our <strong>Book</strong> model as an SQL table.
           It needs to inherit from <strong>Table</strong> and match the column names of the table we created in the database.
           We must also provide the table name as a property.</p>
         <p>Return to the <strong>KueryRoutes.swift</strong> file. In the <strong>App</strong> extension, create an instance of this table:</p>

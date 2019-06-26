@@ -28,11 +28,11 @@
       <ul class="sidebar-list">
         <li class="sidebar-item collapsible">Getting Started</li>
         <ul class="nested-sidebar-list content">
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Installation for macOS</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Installation for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
           <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
-          <li class="nested-sidebar-item"><a href="../getting-started/style-guide.html">Style Guide</a></li>
+
           <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
         </ul>
         <li class="sidebar-item collapsible">Logging</li>
@@ -107,12 +107,14 @@
         <p class="block-text">In this guide, we use <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP"> Kitura-CredentialsHTTP</a> to add HTTP basic authentication to Codable routes.</p>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 1:</span> Define the authentication middleware</h2>
-        <p>To add basic authentication to our server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP"> add Kitura-CredentialsHTTP to our dependencies</a>.</p>
+        <p>To add basic authentication to our server, we need to <a target="_blank" href="https://github.com/IBM-Swift/Kitura-CredentialsHTTP#add-dependencies"> add Kitura-CredentialsHTTP to our dependencies</a>.</p>
         <div class="info">
             <p>If you don't have a server, follow our <a target="_blank" href="https://www.kitura.io/docs/getting-started/create-server.html"> Create a server</a> guide.</p>
         </div>
         <p>Next, we will define a <strong>TypeSafeMiddleware</strong> which conforms to <strong>TypeSafeHTTPBasic</strong>.</p>
         <p>This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.</p>
+        <p>If you don't already have one, create a <strong>Middlewares</strong> folder:</p>
+        <pre><code>mkdir Sources/Application/Middlewares</code></pre>
         <p>Create a new file, called <strong>MyBasicAuth.swift</strong>:</p>
         <pre><code>touch Sources/Application/Middlewares/MyBasicAuth.swift</code></pre>
         <p>Open your <strong>MyBasicAuth.swift</strong> file:</p>
@@ -192,7 +194,7 @@ extension App {
 
 }</code></pre>
     <div class="info">
-      <p>This route is returning the<a target="_blank" href="https://www.kitura.io/docs/getting-started/style-guide.html"> Book model from the style guide</a>, however you could use any Codable type.</p></p>
+      <p>This route is returning the<a target="_blank" href="../routing/routing.html#bookmodel"> Book model from the routing guide</a>, however you could use any Codable type.</p></p>
     </div>
     <p>We have registered <strong>MyBasicAuth</strong> on our handler by adding it to the signature.</p>
     <p>When the handler is called the middleware and the request is authenticated.</p>
