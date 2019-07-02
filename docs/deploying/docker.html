@@ -115,8 +115,8 @@
             the Docker images for application compilation and runtime are separated into a build image and a run image.
             The <strong>kitura init</strong> command supports this two step build process by generating two Dockerfiles for your Kitura project:
         <ul>
-          <li><strong>Dockerfile-tools</strong> supports the compilation step</li>
-          <li><strong>Dockerfile</strong> supports the building of the Docker image to run your Kitura application</li>
+          <li><strong>Dockerfile-tools:</strong>  building this Dockerfile produces a Docker image containing everything needed to compile your Kitura application. Running the image will compile your Kitura application.</li>
+          <li><strong>Dockerfile:</strong> building this Dockerfile produces a Docker image containing your compiled application. Running the image will run your application.</li>
         </ul>
         </p>
         <p>We first need to build the compile image:</p>
