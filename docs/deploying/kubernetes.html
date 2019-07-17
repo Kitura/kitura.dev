@@ -102,31 +102,85 @@
     </nav>
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
-        <h1 class="heading-1">Deploy to the Cloud with Kubernetes</h1>
-        <h2 class="heading-2">Prerequisites</h2>
-        <p>Whilst Kitura can be deployed to any Cloud offering we will be using IBM Cloud as an example in this guide.</p>
-        <ul class="plain-list">
-          <li><a onclick="setActiveSidebarElementForParent('create-server')" href="../getting-started/create-server.html#">Kitura Server:</a> Learn how to create one in our Getting Started guide.</li>
-          <li><span class="blue-text">IBM Cloud Account:</span> Learn how to sign up for free</li>
-          <li><span class="blue-text">A free cluster on IBM Cloud:</span> Learn how to create your free cluster</li>
-          <li><span class="blue-text">Deployed server to Docker:</span> Learn how to do this by following our Docker guide</li>
-        </ul>
+        <h1 class="heading-1">Deploying with Kubernetes</h1>
+        <p>Kubernetes is a platform which allows you to automate the deployment, scaling and management of your containerized applications.</p>
+        <p>You can deploy your Kitura application to any Kubernetes cluster. In this guide we will use the Kubernetes Service on IBM Cloud.</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Tag your Docker image</h2>
-        <!-- <p>TODO: Do we need to give any intructions about container registries?</p> -->
-        <pre><code class="language-swift"> docker tag &ltsource_image&gt:&lttag&gt registry.&ltregion&gt.bluemix.net/&ltmy_namespace&gt/&ltnew_image_repo&gt:&ltnew_tag&gt</code></pre>
-        <!-- <p>TODO: Explain command?</p> -->
+        <h2 class="heading-2"><span class="blue-text">Step 1:</span> Create Cluster on IBM Cloud</h2>
+        <p>Before we can create a Kubernetes Cluster on IBM Cloud we need to <a href="https://cloud.ibm.com/registration" target="_blank">create an IBM Cloud account</a>.</p>
+        <p>Once we have an IBM Cloud account, we can create a Kubernetes cluster by visiting the <a href="https://cloud.ibm.com/catalog?category=containers" target="_blank">IBM Cloud Catalog</a>.
+        The link will take you to the Containers page, select <strong>Kubernetes Service</strong> and click <strong>Create</strong>.</p>
+        <p>When you create the new cluster, ensure the <strong>Free</strong> plan option is selected, and the cluster name, for the purposes of this example, is <strong>myapp-cluster</strong>.</p>
+        <div class="info">
+          <p>Set Geography and Metro to whatever is local to you and click the <strong>Create cluster</strong> button.</p>
+        </div>
+        <p>Creating a cluster takes several minutes, so grab a tea or coffee in the meantime!</p>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Push the Docker image</h2>
-        <pre><code class="language-swift"> docker push registry.&ltregion&gt.bluemix.net/&ltmy_namespace&gt/&ltimage_repo&gt:&lttag&gt</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 2:</span> Gain access to your Cluster</h2>
+        <p>Now that we have created our Kubernetes cluster we need to gain access to it, to do this we need to install the IBM Cloud CLI tools.</p>
+        <p>Download the required CLI tools using the Kitura CLI:</p>
+        <code><pre>kitura idt</pre></code>
+        <div class="info">
+          <p>If you don't have the Kitura CLI installed, we can also install the required CLI tools with the following command:</p>
+          <code><pre>curl -sL https://ibm.biz/idt-installer | bash</pre></code>
+        </div>
+        <p>In order to log into IBM Cloud via the command line we will need to know some information about our cluster.
+        To find these values, <a href="https://cloud.ibm.com/kubernetes/clusters" target="_blank">view your cluster in the IBM Cloud</a>, select <strong>...</strong> and choose the menu option<strong> Connect via CLI</strong>.</p>
+        <p>Follow the instructions to log into IBM Cloud, download the kubeconfig files for your cluster, set up the KUBECONFIG environment variable, and verify <strong>kubectl</strong> can communicate with your cluster.</p>
+        <p>We should now be able to use <strong>kubectl</strong> to manage our cluster.</p>
+        <div class="info">
+          <p>Note: The latest stable version of <strong>kubectl</strong> is installed with the base IBM Cloud CLI. However, to work with our cluster, you need the Kubernetes CLI major.minor version that matches the Kubernetes cluster major.minor version that you are using.</p>
+          <p>Check that the version of your client <strong>kubectl</strong> CLI matches the version of the cluster API server by running:</p>
+          <pre><code>kubectl version --short</pre></code>
+          <p>If the client <strong>kubectl</strong> version needs updating follow these <a href="https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install" target="_blank">install instructions</a>. If you install a new version of the <strong>kubectl</strong> client you need to rerun the configuration steps above (downloading the kubeconfig files and setting up your KUBECONFIG environment variables).</p>
+        </div>
         <div class="underline"></div>
-        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Update Helm charts</h2>
-        <p>Edit values.yml inside the charts directory to point at correct registry</p>
-        <!-- <p>TODO: Add better instructions here</p> -->
-        <p>Initialise cluster with Helm</p>
-        <pre><code class="language-swift">helm init</code></pre>
-        <p>Install via helm</p>
-        <pre><code class="language-swift">helm install —name myapp .</code></pre>
+        <h2 class="heading-2"><span class="blue-text">Step 3:</span> Push your Docker image</h2>
+        <p>If you followed our <a target="_blank" href="https://www.kitura.io/docs/deploying/docker.html"> Docker guide</a>, you will have created a runtime Docker image which contains your compiled Kitura application, and the necessary Swift runtime libraries. If you haven't already, tag it appropriately for the registry you are using and push it.
+        If you are yet to choose a registry and have no specific requirements, we suggest you try <a href="https://hub.docker.com" target="_blank">Docker Hub</a>.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 4:</span> Update Helm Chart</h2>
+        <p>Helm is a package manager for Kubernetes applications. Helm charts are packages that contain enough information to install Kubernetes resources into a Kubernetes cluster.
+          Charts contain a <strong>Chart.yaml</strong> file along with templates, default values (defined in <strong>values.yaml</strong>) and dependencies.</p>
+        <div class=info>
+          <p>If you created your application using the Kitura CLI or the macOS app then you should already have a Helm chart provided.</p>
+          <p>If not then you can follow the <a href="https://helm.sh/docs/using_helm/#quickstart-guide">Helm docs</a> to create your own chart.</p>
+        </div>
+        <p>The Helm chart provided with the Kitura CLI and macOS is configured out of the box for the application.</p>
+        <p>All we need to do is edit the <strong>repository</strong> and <strong>tag</strong> variables in the <strong>values.yaml</strong> file in our <strong>/chart/&ltyour-appname&gt</strong> directory, to point at the location and tag for our Docker image:</p>
+        <pre><code>
+image:
+    repository: registry-1.docker.io/&ltyour-namespace&gt/myapp-run
+    tag: v1.0.0
+        </pre></code>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 5:</span> Deploy Application</h2>
+        <p>Helm is comprised of two parts: Helm (the client) and Tiller (the server). To begin working with Helm run:</p>
+        <code><pre>helm init</pre></code>
+        <p>This will install Tiller into our running Kubernetes cluster and set up any necessary local configuration.</p>
+        <p>Tiller runs inside your Kubernetes cluster, and manages releases of your charts. Tiller needs access to the Kubernetes API to be able to do this. Most cloud providers, including IBM Cloud, enable a feature called Role-Based Access Control (RBAC)
+           - these policies are used for the management of your cluster, they allow you to specify which types of actions are permitted depending on the user and their role.
+         By default, in an RBAC-enabled Kubernetes cluster, Tiller will not be permitted to carry out these operations, so we need to create a service account for Tiller with the right roles and permissions to access resources.</p>
+
+         <p>Bitnami has a great guide outlining how to do this, follow <a href="https://docs.bitnami.com/kubernetes/how-to/configure-rbac-in-your-kubernetes-cluster/" target="_blank">Use Case 2: Enable Helm In Your Cluster</a> to configure RBAC in your Kubernetes cluster.</p>
+
+        <p>To deploy our application using Helm install, run the following from the <strong>/chart/&ltyour-appname&gt</strong> directory, using <strong>--name</strong> to specify the name:</p>
+        <code><pre>helm install --name bookstore-app .</pre></code>
+        <p>You may have to wait a few minutes for it to be available, but your application should now be deployed to your Kubernetes cluster.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2"><span class="blue-text">Step 6:</span> View Deployed Application</h2>
+        <p>To view our application running on IBM Cloud, we need to find the public IP of the worker node it has been deployed to, and the port that our application has been deployed to (also known as the NodePort).</p>
+        <h3 class="heading-3">Get the Public IP:</h3>
+        <p>We can use the following command to find the Public IP for our application:</p>
+        <code><pre>ibmcloud cs workers myapp-cluster</pre></code>
+        <h3 class="heading-3">Get the NodePort:</h3>
+        <p>First, we get a list of all the running services:</p>
+        <code><pre>kubectl get services</pre></code>
+        <p>We can find our service name in the list of running services and use this to get the NodePort of our service:</p>
+        <code><pre>kubectl describe service bookstore-app-service</pre></code>
+        <p>Then in a browser we can navigate to:</p>
+        <code><pre>http://&lt;Public-IP&gt;:&lt;NodePort&gt;</pre></code>
+        <p>Congratulations! We should now see our application running on IBM Cloud!</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
