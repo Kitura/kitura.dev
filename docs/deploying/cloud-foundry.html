@@ -112,20 +112,31 @@
 applications:
 - name: MYAPP
 </pre></code></p>
-        <p>If you're deploying to the default swift buildpack on IBM Cloud, you also need to supply the command required to run your application, for example:</p>
+        <p>If you're deploying to the default Swift buildpack on IBM Cloud, you also need to supply the command required to run your application, for example:</p>
         <pre><code>
   command: "'MYAPP'"
         </pre></code>
         <p>Although you can deploy applications without a manifest, manifests provide consistency and reproducibility across deployments. You can also specify <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html">additional application attributes</a> within your manifest.</p>
         <p>We are going to use the Cloud Foundry command line interface, so first we need to <a href="https://github.com/cloudfoundry/cli#downloads">install the Cloud Foundry CLI</a>.</p>
+        <p>If you are using IBM Cloud, it is recommended that you deploy to Cloud Foundry using the IBM Cloud CLI tools.</p>
+        <p>Download the required CLI tools using the Kitura CLI:</p>
+        <code><pre>kitura idt</pre></code>
+        <div class="info">
+          <p>If you don't have the Kitura CLI installed, you can also install the required CLI tools with the following command:</p>
+          <code><pre>curl -sL https://ibm.biz/idt-installer | bash</pre></code>
+        </div>
        <div class="underline"></div>
         <h2 class="heading-2">Step 2: Set URL target</h2>
-        <p>To push your application, you first need to consult your cloud operator to find the URL you need to target. If you are on IBM Cloud, you can look in the <a href="https://cloud.ibm.com/docs/cf-cli-plugin?topic=cf-cli-plugin-cf-cli-plugin">Cloud Foundry CLI documentation for the cf api command</a> to locate the Cloud Foundry API endpoint for your region.</p>
+        <p>To push your application, you first need to consult your cloud operator to find the URL you need to target. If you are on IBM Cloud, you can look in the <a href="https://cloud.ibm.com/docs/cf-cli-plugin?topic=cf-cli-plugin-cf-cli-plugin">IBM Cloud Foundry CLI documentation for the cf api command</a> to locate the Cloud Foundry API endpoint for your region.</p>
         <p>You can set it in the command line like this:</p>
         <pre><code>cf login -a &ltAPI endpoint&gt</code></pre>
         <p>For example, if your IBM Cloud account is in the <strong>eu-gb</strong> region this would be:
         <pre><code>cf login -a api.eu-gb.cf.cloud.ibm.com</pre></code>
         <p>You’ll also need to provide your username and password when prompted.</p>
+        <div class="info">
+          <p>If you are deploying to the IBM Cloud, it is recommended that you use the IBM Cloud CLI. To do this all you need to do is add the <strong>ibmcloud</strong> prefix to the <strong>cf</strong> commands throughout this guide, for example:</p>
+          <code><pre>ibmcloud cf login -a &ltAPI endpoint&gt</pre></code>
+        </div>
         <div class="underline"></div>
         <h2 class="heading-2">Step 3: Set target organisation</h2>
         <p>If you are on IBM Cloud, you can find your organisation and space by logging into IBM Cloud and going into <strong>Manage > Account > Cloud Foundry orgs</strong>. If you are on the Lite/free tier an organisation will have already been created in your account, the organisation name is the <strong>name</strong> listed on this page, in my case it's my email address.</p>
