@@ -107,16 +107,20 @@
         <p>This guide will show you how to deploy your Kitura application to a <a href="https://www.cloudfoundry.org" >Cloud Foundry</a> based cloud environment. The guide assumes you already have an environment to deploy to. If not, you can sign up to <a href="https://www.ibm.com/cloud/free/">IBM Cloud</a> for free and use it to host your Cloud Foundry apps.
         <h2 class="heading-2">Step 1: Create a manifest.yml file</h2>
         <p>If you used the Kitura CLI, or macOS app, to create your Kitura project, your generated Kitura project will already contain a <strong>manifest.yml</strong> file which you can use to deploy your application. </p>
-        <p>If you created your Kitura application from scratch, create a <strong>manifest.yml</strong> file in the root directory of your application. Once you have created the file, add the following to your file, replacing <strong>MYAPP</strong> with the name of your application:</p>
+        <p>If you created your Kitura application from scratch, create a <strong>manifest.yml</strong> file in the root directory of your application. Once you have created the file, add the following to your file, replacing <strong>MYAPP</strong> with the name of your application.</p>
         <pre><code>---
 applications:
 - name: MYAPP
+</pre></code></p>
+        <p>If you're deploying to the default swift buildpack on IBM Cloud, you also need to supply the command required to run your application, for example:</p>
+        <pre><code>
+  command: "'MYAPP'"
         </pre></code>
         <p>Although you can deploy applications without a manifest, manifests provide consistency and reproducibility across deployments. You can also specify <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html">additional application attributes</a> within your manifest.</p>
         <p>We are going to use the Cloud Foundry command line interface, so first we need to <a href="https://github.com/cloudfoundry/cli#downloads">install the Cloud Foundry CLI</a>.</p>
        <div class="underline"></div>
         <h2 class="heading-2">Step 2: Set URL target</h2>
-        <p>To push your application, you first need to consult your cloud operator to find the URL you need to target. If you are on IBM Cloud you can look in the <a href="https://cloud.ibm.com/docs/cf-cli-plugin?topic=cf-cli-plugin-cf-cli-plugin">Cloud Foundry CLI documentation for the cf api command</a> to locate the Cloud Foundry API endpoint for your region.</p>
+        <p>To push your application, you first need to consult your cloud operator to find the URL you need to target. If you are on IBM Cloud, you can look in the <a href="https://cloud.ibm.com/docs/cf-cli-plugin?topic=cf-cli-plugin-cf-cli-plugin">Cloud Foundry CLI documentation for the cf api command</a> to locate the Cloud Foundry API endpoint for your region.</p>
         <p>You can set it in the command line like this:</p>
         <pre><code>cf login -a &ltAPI endpoint&gt</code></pre>
         <p>For example, if your IBM Cloud account is in the <strong>eu-gb</strong> region this would be:
@@ -124,7 +128,7 @@ applications:
         <p>You’ll also need to provide your username and password when prompted.</p>
         <div class="underline"></div>
         <h2 class="heading-2">Step 3: Set target organisation</h2>
-        <p>If you are on IBM Cloud you can find your organisation and space by logging into IBM Cloud and going into <strong>Manage > Account > Cloud Foundry orgs</strong>. If you are on the Lite/free tier an organisation will have already been created in your account, the organisation name is the <strong>name</strong> listed on this page, in my case it's my email address.</p>
+        <p>If you are on IBM Cloud, you can find your organisation and space by logging into IBM Cloud and going into <strong>Manage > Account > Cloud Foundry orgs</strong>. If you are on the Lite/free tier an organisation will have already been created in your account, the organisation name is the <strong>name</strong> listed on this page, in my case it's my email address.</p>
         <p>To find the associated spaces within the organisation, click <strong>...</strong> (next to your organisation) and select <strong>Spaces</strong>. If there are no spaces listed, click <strong>Add a space</strong> to create one, specifying your choice of name (e.g. dev) and region. Make sure that you locate your space in the same region as your API endpoint!</p>
         <p>Set target:</p>
         <pre><code class="language-swift">cf target -o &ltorganisation&gt -s &ltspace&gt</code></pre>
