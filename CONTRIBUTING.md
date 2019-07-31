@@ -84,63 +84,117 @@ However if you'd like to write a guide but would prefer not to use HTML, get in 
 
 To create a new guide in HTML use the following skeleton:
 ```
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<head>
-  <title>Learn - TITLE_OF_PAGE</title>
-  <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="../../scripts/prism.js"></script>
-  <link rel="stylesheet" href="../../css/reset.css">
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/guides.css">
-  <link rel="stylesheet" media="screen and (max-width: 900px)" href="../../css/mobile_guides.css">
-</head>
-
-<header>
-  <div class="header-container">
-    <div class="header-main">
-      <a class="home-link" href="../../index.html">
-        <img class="header-logo" src="../../assets/kitura-logo.png" alt="Kitura logo">
-        <h1 class="header-title">KITURA</h1>
-      </a>
-    </div>
-    <nav class="header-nav">
-      <a class="header-link active-nav" href="../../learn.html">LEARN</a>
-      <a class="header-link" href="../../packages.html">CONTRIBUTE</a>
-      <a class="header-link" href="../../events.html">MEET</a>
-      <a class="header-link" href="../../help.html">SUPPORT</a>
-    </nav>
-  </div>
-</header>
+		gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>TITLE OF YOUR GUIDE HERE</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
+  </head>
 <body>
-  <section class="guide-content">
-    <div class="title-block">
-        <img width="480px" src="../../assets/Kitura.svg" alt="Kitura Logo">
-      <h1 class="heading-1">TITLE_OF_GUIDE</h1>
-    </div>
-    /**
-      Place your content here!
-    */
-  </section>
-  <section class="slack-help">
-    <a href="http://slack.kitura.io/">
-      <img width="80px" src="../../assets/slack-icon.png" alt="Slack icon">
-      <h2 class="heading-2">NEED HELP?</h2>
-      <h2 class="heading-2">MESSAGE US ON SLACK.</h2>
-    </a>
-  </section>
-</body>
+  <section class="docs-grid-container">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item collapsible">Getting Started</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
 
-<footer>
-  <nav class="footer-nav">
-    <a class="footer-link" href="https://forums.swift.org/c/related-projects/kitura">FORUMS</a>
-    <a class="footer-link" href="https://github.com/IBM-Swift/Kitura"><img class="footer-logo" src="../../assets/Kitura-White.svg" alt="Kitura logo"></a>
-    <a class="footer-link" href="https://developer.ibm.com/swift/blogs/">BLOGS</a>
-  </nav>
-</footer>
+          <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Logging</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Routing</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Databases</li>
+        <ul class="nested-sidebar-list content" style="max-height: 250px;">
+          <li class="nested-sidebar-item active"><a href="../databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Sessions</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Raw Routing Session</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/type-safe-session.html">Codable Routing Session</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Authentication</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Basic Authentication</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/fb-google-oauth2.html">OAuth 2.0 with Facebook/Google</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Web Application</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../templating/templating.html">What are Web Applications?</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/static-file-server.html">Static File Server</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Deploying</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/cloud-foundry.html">Cloud Foundry</a></li>
+        </ul>
+      </ul>
+    </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="docs-item-2 search-container">
+    </div>
+    <nav class="docs-item-3 docs-nav">
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
+    </nav>
+    <div id="doc-container" class="docs-item-4 docs-window">
+      <main>
+        <h1 class="heading-1">Title of your guide here</h1>
+        <p class="block-text">Overview of your guide here</p>
+        <h2 class="heading-2">Sub section of your guide here</h2>
+        <p class="block-text">Describe your guide here</p>
+      </main>
+    </div>
+    <div id="top-page" class="top-page">
+      <a href="#">Back to top</a>
+    </div>
+  </section>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+</body>
 </html>
 ```
