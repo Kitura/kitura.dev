@@ -74,6 +74,11 @@
           <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
           <li class="nested-sidebar-item active"><a href="../templating/markdown.html">Markdown</a></li>
         </ul>
+        <li class="sidebar-item collapsible">WebSockets</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../websockets/websockets.html">What are WebSockets?</a></li>
+          <li class="nested-sidebar-item"><a href="../websockets/kiturawebsockets.html">Kitura WebSocket Echo Server</a></li>
+        </ul>
         <li class="sidebar-item collapsible">Deploying</li>
         <ul class="nested-sidebar-list content">
           <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
@@ -197,7 +202,7 @@ Description with **bold** text
           <p>You will notice a <strong>context</strong> parameter is required, however as Markdown files provide all the context this value is ignored, so we simply pass in an empty context.</p>
         </div>
         <p>The <strong>response.render()</strong> method attempts to populate the template file with the provided data.</p>
-        <p>So in our case KituraMarkdown will take the <strong>book.md</strong> file and render the Markdown in it to be viewed in a browser.</p>     
+        <p>So in our case KituraMarkdown will take the <strong>book.md</strong> file and render the Markdown in it to be viewed in a browser.</p>
         <p>Now to test our templating we first need to start the Kitura server.</p>
         <p>Then in a brower we can open:</p>
         <p><a target="_blank" href="http://localhost:8080/book">http://localhost:8080/book</a></p>
