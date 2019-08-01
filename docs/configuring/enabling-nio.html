@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73924704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+		gtag('config', 'UA-73924704-2', { 'anonymize_ip': true });
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Enabling SwiftNIO</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png" sizes="16x16" />
+    <link href=“https://fonts.googleapis.com/css?family=IBM+Plex+Sans” rel=“stylesheet”>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/dist/docs.css">
+  </head>
+<body>
+  <section class="docs-grid-container">
+    <aside id="sidebar" class="docs-item-1 docs-sidebar">
+      <h1 class="docs-title"><a href="/index.html">KITURA <span class="blue-text">DOCS</span></a></h1>
+      <div class="underline-title"></div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item collapsible">Getting Started</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-mac.html">Install Swift for macOS</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/installation-linux.html">Install Swift for Linux</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/hello-world.html">Hello World</a></li>
+          <li class="nested-sidebar-item"><a href="../getting-started/create-server.html">Create a server</a></li>
+
+          <li class="nested-sidebar-item"><a href="../getting-started/update-package.html">Adding Packages</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Logging</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../logging/logging.html">What is Logging?</a></li>
+          <li class="nested-sidebar-item"><a href="../logging/helium-logger.html">Helium Logger</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Routing</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../routing/routing.html">What is routing?</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/codable-routing.html">Codable routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/raw-routing.html">Raw routing</a></li>
+          <li class="nested-sidebar-item"><a href="../routing/open-api.html">OpenAPI</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Databases</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../databases/databases.html">What are Databases?</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery-orm.html">SQL: ORM</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/swift-kuery.html">SQL: Kuery</a></li>
+          <li class="nested-sidebar-item"><a href="../databases/couchdb.html">NoSQL: CouchDB</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Sessions</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../sessions/sessions.html">What are Sessions?</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/kitura-session.html">Raw Routing Session</a></li>
+          <li class="nested-sidebar-item"><a href="../sessions/type-safe-session.html">Codable Routing Session</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Authentication</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../authentication/authentication.html">What is Authentication?</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/typesafe-auth.html">Basic Authentication</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/jwt-auth.html">JSON Web Tokens</a></li>
+          <li class="nested-sidebar-item"><a href="../authentication/fb-google-oauth2.html">OAuth 2.0 with Facebook/Google</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Web Application</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../templating/templating.html">What are Web Applications?</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/static-file-server.html">Static File Server</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
+          <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
+        </ul>
+        <li class="sidebar-item collapsible">Deploying</li>
+        <ul class="nested-sidebar-list content" style="max-height: 400px;">
+          <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/ssl.html">Enabling SSL/TLS</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/docker.html">Docker</a></li>
+          <li class="nested-sidebar-item"><a href="../deploying/kubernetes.html">Kubernetes</a></li>
+          <li class="nested-sidebar-item active"><a href="../deploying/cloud-foundry.html">Cloud Foundry</a></li>
+          <li class="nested-sidebar-item active"><a href="../configuring/enabling-nio.html">Enabling SwiftNIO</a></li>
+        </ul>
+      </ul>
+    </aside>
+    <div id="burgerIcon" class="burger-icon" onclick="showSidebar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="docs-item-2 search-container">
+    </div>
+    <nav class="docs-item-3 docs-nav">
+      <button id="api-button" class="apiref-button" type="button" name="button" onclick="window.open('https://ibm-swift.github.io/Kitura/')">API Reference</button>
+      <a class="nav-item" target="_blank" href="http://slack.kitura.io/">Need help?</a>
+      <a class="nav-item" target="_blank" href="https://github.com/IBM-Swift/kitura.io/issues">Found an issue?</a>
+    </nav>
+    <div id="doc-container" class="docs-item-4 docs-window">
+      <main>
+        <h1 class="heading-1">Enabling SwiftNIO</h1>
+        <p>In February 2018, Apple announced <a href="https://github.com/apple/swift-nio">SwiftNIO</a> — a new cross-platform, asynchronous, event-driven networking framework for building servers and clients in Swift. SwiftNIO has the potential to provide all the low-level socket-handling and HTTP protocol support in Kitura, and hence could replace the current <a href="https://github.com/IBM-Swift/Kitura-net">Kitura-net</a> and <a href="https://github.com/IBM-Swift/BlueSocket">BlueSocket</a> libraries which underpin Kitura today. The Kitura team released <a href="https://github.com/IBM-Swift/Kitura-NIO">Kitura-NIO</a>, a Kitura interface to SwiftNIO in May 2018.</p>
+        <p>Kitura-NIO has been designed to be API-compatible with the current Kitura-net API, though the underlying implementation uses SwiftNIO.</p>
+        <p>The major reason behind the decision to keep the API compatible with Kitura-net was API stability. We wanted Kitura users to experiment with Kitura-NIO, without needing to make any code changes to their Kitura applications.</p>
+        <p>Kitura-NIO fully supports HTTP and HTTPS, both servers and clients. It also has IPv6 support. A SwiftNIO based implementation of Kitura-WebSocket (<a href="https://github.com/IBM-Swift/Kitura-WebSocket-NIO">Kitura-WebSocket-NIO</a>) was released in April 2019, as part of <a href="https://developer.ibm.com/swift/2019/04/17/announcing-kitura-2-7-and-more/">Kitura 2.7</a>.</p>
+        <p>It is our intent to make Kitura-NIO the default networking stack in a future release of Kitura.</p>
+        <div class="underline"></div>
+        <h2 class="heading-2">Using Kitura-NIO</h2>
+        <p>With Kitura 2.5 and future releases, to run on top of Kitura-NIO (instead of the current default Kitura-net) all you need to do is set an environment variable called <strong>KITURA_NIO</strong> before building your Kitura application:</p>
+        <pre><code>export KITURA_NIO=1 && swift build
+</pre></code>
+        <p>Note, there is no need to set anything at runtime, choosing your underlying networking can only be done when you build your application.</p>
+        <p>If you have already built your Kitura application using Kitura-net and want to switch to using <strong>KITURA_NIO</strong>, you need to update the package before building:<p>
+        <pre><code>export KITURA_NIO=1 && swift package update && swift build
+</pre></code>
+        <p>Using the environment variable we make sure that only one out of Kitura-NIO and Kitura-Net is linked into your application's binary.</p>
+        <p>Please note that though Kitura-NIO has its own GitHub repository, the package name is KituraNet. This is because Kitura-NIO and Kitura-net are expected to provide identical APIs, therefore it makes sense if they share the package name too.</p>
+      </main>
+    </div>
+    <div id="top-page" class="top-page">
+      <a href="#">Back to top</a>
+    </div>
+  </section>
+  <script type="text/javascript" src="../../scripts/learn.js"></script>
+</body>
+</html>
