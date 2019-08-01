@@ -122,7 +122,7 @@
         </div>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text">Step 2:</span> Configure KituraMarkdown</h2>
-        <p>By default KituraMarkdown will render our Markdown to their corresponding HTML elements without allowing us to set any HTML properties, such as the configuration found in the <strong>&lt;head&gt;</strong> tag.</p>
+        <p>We may wish to provide a custom configuration for these properties, for example, to configure the contents of the <strong>&lt;head&gt;</strong> tag. To do this we can provide a HTML wrapper template for our rendered Markdown using MarkdownOptions.</p>
         <p>To provide this configuration we can provide a HTML wrapper template for our rendered Markdown using MarkdownOptions.</p>
         <p>Inside the <strong>postInit()</strong> function add:</p>
         <pre><code class="language-swift">let markdownOptions = MarkdownOptions(pageTemplate: "default")</code></pre>
@@ -140,7 +140,7 @@
       &lt;/body&gt;
     &lt;/html&gt;
             </code></pre>
-            <p>Alternatively you can provide your own template using the MarkdownOptions:</p>
+            <p>Alternatively you can provide your own template using MarkdownOptions:</p>
             <pre><code class="language-swift">let markdownOptions = MarkdownOptions(pageTemplate: """
   &lt;!DOCTYPE html&gt;
   &lt;html lang=\"en\"&gt;
@@ -188,15 +188,15 @@ Description with **bold** text
 * Book2</code></pre>
         <div class="underline"></div>
         <h2 class="heading-2"><span class="blue-text bold">Step 4:</span> Render the Markdown</h2>
-        <p>We've just added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
+        <p>We've added the KituraMarkdown template engine to our router, so now we can use it in a route.</p>
         <p>Just below our other registered routes we can create a new route for KituraMarkdown:</p>
         <pre><code class="language-swift">router.get("/book") { request, response, next in
     try response.render("book.md", context: [:], options: markdownOptions))
 }</code></pre>
         <div class="info">
-          <p>You will notice a <strong>context</strong> parameter is required however as Markdown files provide all the context this value is ignored so we simply pass in an empty context.</p>
+          <p>You will notice a <strong>context</strong> parameter is required, however as Markdown files provide all the context this value is ignored, so we simply pass in an empty context.</p>
         </div>
-        <p>The <strong>response.render()</strong> method attempts to populate the provided template file with the provided data.</p>
+        <p>The <strong>response.render()</strong> method attempts to populate the template file with the provided data.</p>
         <p>So in our case KituraMarkdown will take the <strong>book.md</strong> file and render the Markdown in it to be viewed in a browser.</p>     
         <p>Now to test our templating we first need to start the Kitura server.</p>
         <p>Then in a brower we can open:</p>
