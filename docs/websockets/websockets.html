@@ -77,7 +77,7 @@
         <li class="sidebar-item collapsible">WebSockets</li>
         <ul class="nested-sidebar-list content" style="max-height: 250px;">
           <li class="nested-sidebar-item active"><a href="../websockets/websockets.html">What are WebSockets?</a></li>
-          <li class="nested-sidebar-item"><a href="../websockets/kiturawebsockets.html">Kitura WebSocket Echo Server</a></li>
+          <li class="nested-sidebar-item"><a href="../websockets/kiturawebsockets.html">Kitura-WebSocket Echo Server</a></li>
         </ul>
         <li class="sidebar-item collapsible">Deploying</li>
         <ul class="nested-sidebar-list content">
@@ -108,11 +108,15 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">What are WebSockets?</h1>
-        <p class="block-text">In the early days of the web, a client and server relationship was viewed as following a single direction of workflow, the client would send a request to the server and the server would repsond to the client with the data requested.  However, as time progressed, this relationship evolved into one that became bidirectional, with both the client and server sending and receiving data to and from each other.</p>
-        <p class="block-text">WebSockets were created as a way of providing a low latency persistent connection that is bidirectional between a client and a server.  They are low latency as there is no need to send lots of headers that typical HTTP requests consist of.  A WebSocket connection is created with a WebSocket handshake, this involves the client sending an initial HTTP request including an 'Upgrade' header to which, if the server supports the protocol, it agrees with the request and sends back its own 'Upgrade' in response.  After a successful handshake, there is a switch to the WebSocket protocol 'ws', after this point either client or server can send and receive as much data as they like.</p>
-        <p class="block-text">WebSockets send data using a frame-based messaging system that helps reduce the amount of non-payload data that is transferred.   Data is transferred as messages that consist of one or more frames containing the payload.  Each frame is prefixed with 4-12 bytes of data about the payload so that it can be reconstructed properly.  This is useful as the server or client can transfer as much data as they like without all the header overheads that come with traditional HTTP requests.</p>
+        <p class="block-text">In the early days of the web, a client and server relationship was viewed as following a <strong>single direction</strong> of workflow, the client would send a <strong>request</strong> to the server and the server would <strong>repsond</strong> to the client with the data requested.  However, as time progressed, this relationship evolved into one that became <strong>bidirectional</strong>, with both the client and server sending and receiving data to and from each other.</p>
+        <p class="block-text"><strong>WebSockets</strong> were created as a way of providing a low latency persistent connection that is bidirectional between a client and a server.  They are <strong>low latency</strong> as there is no need to send lots of headers that typical HTTP requests consist of.  A WebSocket connection is created with a <strong>WebSocket handshake</strong>, this involves the client sending an initial HTTP request including an <strong>'Upgrade'</strong> header to which, if the server supports the protocol, it agrees with the request and sends back its own 'Upgrade' in response.  After a successful handshake, there is a switch to the WebSocket protocol <strong>'ws'</strong>, after this point either client or server can send and receive as much data as they like.</p>
+        <div class="option img">
+          <img src="../../assets/websocket.png" alt="">
+        </div>
+        <p class="block-text">WebSockets send data using a <strong>frame-based messaging</strong> system that helps reduce the amount of non-payload data that is transferred.   Data is transferred as messages that consist of one or more frames containing the payload.  Each frame is prefixed with 4-12 bytes of data about the payload so that it can be <strong>reconstructed</strong> properly.  This is useful as the server or client can transfer as much data as they like <strong>without all the header overheads</strong> that come with traditional HTTP requests.</p>
         <h2 class="heading-2">Next steps</h2>
-        <p class="block-text"><a href="https://github.com/IBM-Swift/Swift-Kuery-ORM" target="_blank">Click here</a> to learn about Kitura-Websockets and how to use them.</p>
+        <p class="block-text">Learn about <a href="https://github.com/IBM-Swift/Kitura-WebSocket" target="_blank">Kitura-WebSocket</a> and <a href="https://github.com/IBM-Swift/Kitura-WebSocket-NIO" target="_blank">Kitura-WebSocket-NIO</a> and how to use them.</p>
+        <p><span class="blue-text bold"><a onclick="setActiveSidebarElementForParent('websockets')" href="../websockets/kiturawebsockets.html#">Try out</a></span> creating a simple Echo Server using Kitura-WebSocket.</p>
       </main>
     </div>
     <div id="top-page" class="top-page">
