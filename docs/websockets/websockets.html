@@ -108,7 +108,7 @@
     <div id="doc-container" class="docs-item-4 docs-window">
       <main>
         <h1 class="heading-1">What are WebSockets?</h1>
-        <p class="block-text">In the early days of the web, a client and server relationship was viewed as following a single direction of workflow, the client would send a request to the server and the server would respond to the client with the data requested.  However, as time progressed, this relationship evolved into one that became idirectional, with both the client and server sending and receiving data to and from each other.</p>
+        <p class="block-text">In the early days of the web, a client and server relationship was viewed as following a single direction of workflow, the client would send a request to the server and the server would respond to the client with the data requested.  However, as time progressed, this relationship evolved into one that became bidirectional, with both the client and server sending and receiving data to and from each other.</p>
         <p class="block-text">WebSockets were created as a way of providing a low latency persistent connection that is bidirectional between a client and a server.  They are low latency as there is no need to send lots of headers that typical HTTP requests consist of.  A WebSocket connection is created with a WebSocket handshake, this involves the client sending an initial HTTP request including an Upgrade' header to which, if the server supports the protocol, it agrees with the request and sends back its own 'Upgrade' header in response.  After a successful handshake, the established connection uses the WebSocket protocol 'ws'.</p>
         <div class="option img">
           <img src="../../assets/websocket.png" alt="">
