@@ -74,6 +74,11 @@
           <li class="nested-sidebar-item"><a href="../templating/stencil.html">Stencil</a></li>
           <li class="nested-sidebar-item"><a href="../templating/markdown.html">Markdown</a></li>
         </ul>
+        <li class="sidebar-item collapsible">WebSockets</li>
+        <ul class="nested-sidebar-list content">
+          <li class="nested-sidebar-item"><a href="../websockets/websockets.html">What are WebSockets?</a></li>
+          <li class="nested-sidebar-item"><a href="../websockets/echo-server.html">Echo Server</a></li>
+        </ul>
         <li class="sidebar-item collapsible">Deploying</li>
         <ul class="nested-sidebar-list content">
           <li class="nested-sidebar-item"><a href="../deploying/monitoring.html">Monitoring</a></li>
@@ -119,6 +124,15 @@
 </pre></code>
         <p>Using the environment variable we make sure that only one out of Kitura-NIO and Kitura-Net is linked into your application's binary.</p>
         <p>Please note that though Kitura-NIO has its own GitHub repository, the package name is KituraNet. This is because Kitura-NIO and Kitura-net are expected to provide identical APIs, therefore it makes sense if they share the package name too.</p>
+        <a name="NIO_WebSocket"></a>
+        <h2 class="heading-2"><span class="black-text">Using Kitura WebSocket NIO</h2>
+        <p><a href="https://github.com/IBM-Swift/Kitura-WebSocket-NIO">Kitura WebSocket NIO</a> and <a href="https://github.com/IBM-Swift/Kitura-WebSocket">Kitura WebSocket</a> have seperate GitHub repositories, but an identical API.  The underlying code, however is different in how it functions, so it is often helpful to include this snippet of code in your <strong>Package.swift</strong> file so that the correct package is used:</p>
+        <pre><code class="language-swift">// Use alternate implementation of Kitura-WebSocket while building in NIO mode
+if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {
+    dependencies.append(.package(url:  "https://github.com/IBM-Swift/Kitura-WebSocket-NIO.git", from: "2.0.0"))
+} else {
+    dependencies.append(.package(url: "https://github.com/IBM-Swift/Kitura-WebSocket.git", from: "2.0.0"))
+}</code></pre>
       </main>
     </div>
     <div id="top-page" class="top-page">
@@ -126,5 +140,6 @@
     </div>
   </section>
   <script type="text/javascript" src="../../scripts/learn.js"></script>
+  <script src="../../scripts/prism.js"></script>
 </body>
 </html>
