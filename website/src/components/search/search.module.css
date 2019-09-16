@@ -1,0 +1,81 @@
+/* Search Section Styling */
+.dropdown {
+  width: 25%;
+  margin-right: 50px;
+  position: relative;
+  z-index: 99;
+}
+
+.active-input {
+  width: 205px;
+  height: 37.5px;
+  float: right;
+  border-radius: 15px;
+  border: none;
+  background: #F8F8F8;
+  padding: 0 10px;
+  font-size: 0.7rem;
+}
+
+.dropdown-content {
+  background-color: #F8F8F8;
+  position: absolute;
+  top: 60px;
+  max-height: 50vh;
+  min-width: 300px;
+  overflow: auto;
+  border-radius: 0 0 15px 15px;
+}
+
+.dropdown-content-hide {
+  display: none;
+}
+
+.results-table {
+  height: 100%;
+}
+.search-row {
+  min-height: 50px;
+  width: 100%;
+  border-bottom: 1px solid white;
+}
+
+.search-row:hover {
+  background-color: #E8E8E8
+}
+
+.search-cell {
+  min-width: 180px;
+  padding: 1rem 0 1rem 5%;
+  color: #0096F4;
+  font-size: 0.8rem;
+}
+
+.type-cell {
+  min-width: 80px;
+  font-size: 0.8rem;
+  padding: 1rem 2.5% 1rem 2.5%;
+  box-sizing: border-box;
+}
+
+.search-row > a {
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdown {
+    width: 50%;
+    margin-right: 25px;
+  }
+
+  .active-input {
+      width: 150px;
+  }
+
+  .dropdown-content {
+    max-width: 150px;
+    right: -10px;
+  }
+}

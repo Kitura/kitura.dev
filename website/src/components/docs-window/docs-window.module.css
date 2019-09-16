@@ -1,0 +1,83 @@
+.learn-container {
+  width: calc(100% - 300px);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 5% 1fr 15% 1fr 5%;
+  grid-template-rows: 25% 70%;
+}
+
+.learn-welcome {
+  grid-column: 2/5;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+}
+
+.using-docs {
+  grid-column: 2/3;
+  line-height: 1.8;
+}
+
+.using-docs > p {
+  margin-bottom: 1.5rem;
+}
+
+.using-docs > h3, .tutorial-section > h3  {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.main-heading {
+  font-size: 2.5rem;
+  margin: 0.3rem 0 0.5rem 0;
+}
+
+.sub-heading {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.heading-text {
+  font-size: 0.8rem;
+}
+
+.blue-text {
+  color: #0096F4;
+}
+
+.tutorial-section {
+  grid-column: 4/5;
+}
+
+.tutorials {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.tutorial {
+  width: 40%;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.tutorial:nth-child(1) {
+  border-right: 1px solid #70707020;
+}
+.tutorial:nth-child(3) {
+  border-right: 1px solid #70707020;
+  border-top: 1px solid #70707020;
+}
+.tutorial:nth-child(4) {
+  border-top: 1px solid #70707020;
+}
+
+.tutorial > a {
+  text-decoration: none;
+}
+
+.tutorial > a > h4 {
+  color: #0096F4;
+  margin-bottom: 1rem;
+}

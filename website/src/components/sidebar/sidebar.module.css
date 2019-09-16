@@ -1,0 +1,55 @@
+.sidebar {
+    width: 300px;
+    background-color: #faf8f8;
+    min-height: Calc(100vh - 75px);
+    margin-top: 4px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.docs-section {
+    font-weight: 600;
+    padding: 2rem 0 0 2rem;
+}
+
+.sidebar-parent-item {
+    font-size: 1rem;
+}
+
+.sidebar-parent-item:hover {
+    cursor: pointer;
+}
+
+.docs-section a {
+    font-size: 0.8rem;
+}
+
+.nested-docs-section {
+    margin-left: 1rem;
+}
+
+.sidebar-item {
+    margin: 0.8rem 0;
+}
+.sidebar-link {
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.sidebar-link:hover, .active-link:hover {
+    color: #0096F4;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        width: 50%;
+    }
+
+    .docs-section {
+        font-size: 1rem;
+    }
+    
+    .sidebar-link {
+        font-size: 0.8rem;
+    }
+}

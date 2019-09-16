@@ -1,0 +1,43 @@
+.large-button, .small-button {
+  background: #0096F4;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 3px 4px rgba(0, 150, 244, 0.4);
+  font-family: IBM Plex Sans, sans-serif;
+}
+
+.large-button {
+  height: 56.25px;
+  width: 225px;
+  font-size: 26px;
+}
+
+.small-button {
+  height: 47.25px;
+  width: 170px;
+  font-size: 20px;
+}
+
+.large-button:focus, .small-button:focus {
+  outline: 0;
+}
+
+.large-button:hover, .small-button:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .large-button {
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+  }
+
+  .small-button {
+    height: 35px;
+    width: 150px;
+    font-size: 18px;
+  }
+}

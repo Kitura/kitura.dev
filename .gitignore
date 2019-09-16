@@ -1,3 +1,11 @@
 .DS_Store
 _site
 node_modules
+
+# Gatsby create files
+.cache/
+public/
+
+# Lock files
+yarn.lock
+package-lock.json
