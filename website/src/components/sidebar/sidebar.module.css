@@ -42,7 +42,11 @@
 
 @media only screen and (max-width: 600px) {
     .sidebar {
-        width: 50%;
+        width: 50vw;
+        margin-top: 75px;
+        position: fixed;
+        overflow-y: auto;
+        z-index: 1;
     }
 
     .docs-section {

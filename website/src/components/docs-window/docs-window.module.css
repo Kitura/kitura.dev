@@ -81,3 +81,13 @@
   color: #0096F4;
   margin-bottom: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .learn-container {
+    width: 90vw;
+    display: block;
+    margin: 0 auto;
+    margin-top: 75px;
+    padding: 2rem 2.5vw 2rem 2.5vw;
+  }
+}

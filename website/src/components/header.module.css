@@ -63,6 +63,13 @@
 
 
 @media only screen and (max-width: 600px) {
+    .header {
+        position: fixed;
+        width: 100vw;
+        background-color: white;
+        z-index: 9999;
+    }
+
     .logo-section {
         width: 50%;
         margin-left: 25px;

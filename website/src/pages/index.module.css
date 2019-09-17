@@ -184,7 +184,9 @@
 
 /* Mobile Styling */
 @media only screen and (max-width: 600px) {
-
+    .landing-section {
+        padding-top: 75px;
+    }
     .landing-content {
         font-size: 2rem;
         margin: 3rem 0;

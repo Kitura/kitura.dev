@@ -122,9 +122,11 @@
 
 @media only screen and (max-width: 600px) {
   .docs-window-mobile {
-    width: 50%;
-    box-sizing: border-box;
-    padding: 1rem 0 0 2rem;
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 75px;
+    padding: 2rem 2.5vw 2rem 2.5vw;
+    display: block;
 
     h1 {
       font-size: 2rem;
@@ -159,6 +161,86 @@
     p {
       line-height: 24px;
       margin: 1rem 0;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 2rem;
+  
+      li {
+        margin: 0.6rem 0;
+      }
+    }
+  
+    ol {
+      margin: 1rem 0;
+  
+      li {
+        margin: 0.6rem 0;
+      }
+    }
+  
+    hr {
+      margin: 3rem 0;
+      border: 0.5px solid #70707080;
+  
+    }
+  
+    a {
+      color: #0096F4;
+      text-decoration: none;
+    }
+  
+    pre {
+      position: relative;
+      height: auto;
+      background: #f4f2f2;
+      margin-bottom: 1.5rem;
+      border-radius: .55rem;
+      box-shadow: 1px 2px 2px #dedede;
+      display: flex;
+      align-items: center;
+      padding: 1rem 0 1rem 2rem;
+      font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      overflow-x: auto;
+      overflow-y: hidden;
+      cursor: pointer;
+    }
+  
+    blockquote {
+      background-color: #0096F420;
+      padding: 3%;
+      border-left: #0096F4 4px solid;
+  
+      pre {
+        width: 80%;
+      }
+    }
+  
+    table {
+      margin: 0 auto;
+      margin-bottom: 3rem;
+      width: 90%;
+    }
+    thead {
+      background-color: #0096F420;
+      height: 10rem;
+    }
+  
+    th {
+      padding: 1rem 0;
+      font-weight: 700;
+    }
+    td, th {
+      border: 1px solid grey;
+    }
+  
+    td:first-child {
+      color: #0096F4;
+      font-weight: 600;
+    }
+    td {
+      padding: .6rem .2rem;
     }
   }
 }

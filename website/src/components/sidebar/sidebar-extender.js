@@ -28,10 +28,12 @@ const SidebarExtender = () => {
 
       docsWindow.animate([
         {
-          transform: "translateX(0)"
+          transform: "translateX(0)",
+          transform: "width: 50%"
         },
         {
-          transform: "translateX(calc(-50vw))"
+          transform: "translateX(calc(-50vw))",
+          transform: "width: 100%"
         }
       ], animationTimings)
     } else {
@@ -46,10 +48,12 @@ const SidebarExtender = () => {
 
       docsWindow.animate([
         {
-          transform: "translateX(calc(-50vw))"
+          transform: "translateX(calc(-50vw))",
+          transform: "width: 100%"
         },
         {
-          transform: "translateX(0)"
+          transform: "translateX(0)",
+          transform: "width: 50%"
         }
       ], animationTimings)
     }
