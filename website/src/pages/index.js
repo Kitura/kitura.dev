@@ -18,7 +18,7 @@ function indexPage({
     <section className={styles.landingSection}>
       <SlantingGraphic type={"main"} />
       <section className={styles.ctaSection}>
-        <p className={styles.landingContent} dangerouslySetInnerHTML={{ __html: landing.nodes[0].html }}></p>
+        <div className={styles.landingContent} dangerouslySetInnerHTML={{ __html: landing.nodes[0].html }}></div>
         <Button 
           size="large" 
           text="Get Started"
@@ -34,7 +34,7 @@ function indexPage({
       {/* Welcome to Kitura section */}
       <article className={styles.welcomeContent}>
         <h2>{welcomeIntro.nodes[0].frontmatter.title}</h2>
-        <p dangerouslySetInnerHTML={{ __html: welcomeIntro.nodes[0].html }}></p>
+        <div dangerouslySetInnerHTML={{ __html: welcomeIntro.nodes[0].html }}></div>
       </article>
       {/* Why Kitura section */}
       <article className={styles.marketingSection}>
