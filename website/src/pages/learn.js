@@ -10,9 +10,7 @@ function learnPage({
   data,
   location
 }) {
-  const isMobile = window.innerWidth < 600;
   
-  if (isMobile){
     return (
       <Layout>
         <section style={{display: "flex"}}>
@@ -22,18 +20,7 @@ function learnPage({
         </section>
       </Layout>
     )
-  } else {
-    return (
-      <Layout>
-        <section style={{display: "flex"}}>
-          <Sidebar activeList={location.state} data={data.docsList}/>
-          <DocsWindow />
-        </section>
-      </Layout>
-    )
-  }
 }
-
 export default learnPage;
 
 export const docsQuery = graphql`

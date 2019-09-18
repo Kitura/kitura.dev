@@ -11,28 +11,15 @@ export default function Template({
     location
 }) {
     const { docs, docsList } = data;
-    const isMobile = window.innerWidth < 600;
-
-    if (isMobile) {
       return (
         <Layout>
           <section style={{display: "flex"}}>
             <Sidebar activeList={location.state} data={docsList} />
-            <div id="docs-window" className="docs-window-mobile" dangerouslySetInnerHTML={{__html: docs.html}}></div>
+            <div id="docs-window" className="docs-window" dangerouslySetInnerHTML={{__html: docs.html}}></div>
             <SidebarExtender />
           </section>
         </Layout>
       )
-    } else {
-        return (
-          <Layout>
-            <section style={{display: "flex"}}>
-              <Sidebar activeList={location.state} data={docsList} />
-              <div className="docs-window" dangerouslySetInnerHTML={{__html: docs.html}}></div>
-            </section>
-          </Layout>
-        )
-    } 
 }
 
 export const docsQuery = graphql`
