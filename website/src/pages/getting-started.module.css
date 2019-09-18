@@ -34,3 +34,10 @@
   text-decoration: none;
   color: #0096F4;
 }
+
+@media only screen and (max-width: 600px) {
+  .page-section {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+}

@@ -16,7 +16,6 @@ const SidebarExtender = () => {
       iterations: 1
     };
     if (isExpanded) {
-      // sidebar.style.transform = "translateX(-800px)"
       sidebar.animate([
         {
           transform: "translateX(0)"
