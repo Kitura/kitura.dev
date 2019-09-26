@@ -16,7 +16,7 @@ To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github
 
 > If you don't have a server, follow our Create a server guide.
 
-Once we have added the packages, we need a file for our JWT routes.
+Once we have added Kitura-CredentialsJWT, we need a file for our JWT routes.
 
 Firstly, open your Application.swift file in your default text editor:
 
@@ -212,7 +212,7 @@ So far, we have created a signed JWT, which allows a user to authenticate themse
 
 From here we will use the CredentialsJWT plugin for authenticating the user with the earlier received token.
 
-Inside the scope of the app function, after the POST function, add the following to the file:
+After the POST function, add the following to the file:
 
 ```swift
 let jwtCredentials = CredentialsJWT<ClaimsStandardJWT>(verifier: App.jwtVerifier)
@@ -304,7 +304,7 @@ extension App {
 
 ##Step 9: Using custom claims (Optional)
 
-You may want to use your own set of custom claims for your JWT.  For this to happen, we need to specify the subject and UserProfileDelegate options.
+You may want to use your own set of custom claims for your JWT.  For this to work, we need to specify the subject and UserProfileDelegate options.
 
 First we will create our claims structure, in our JWTRoutes.swift file:
 
@@ -316,7 +316,7 @@ struct MyClaims: Claims {
 }
 ```
 
-Now we need to edit our UserCredentials model to contain these additional values, so go into your UserCredentials.swift file and add values we need to add to our model:
+Now we need to edit our UserCredentials model to contain these additional values, so go into your UserCredentials.swift file and add these values to your model:
 
 ```swift
 struct UserCredentials: Codable {
@@ -415,7 +415,7 @@ In our example we used raw routing since we chose to pass the user credentials v
 
 In the JWTRoutesFile.swift we are going to create a new route for a TypeSafeJWT.
 
-In the function initializeJWTRoutes, declare the verifier for the TyoeSafeJWT (this example is using the hs256 algorithm):
+In the function initializeJWTRoutes, declare the verifier for the TypeSafeJWT (this example is using the hs256 algorithm):
 
 ```swift
 TypeSafeJWT.verifier = .hs256(key: Data("kitura".utf8))
@@ -444,7 +444,7 @@ http://localhost:8080/jwtcodable \
 -H 'Authorization: Bearer <Your JWT string here>'
 ```
 
-We should see your JWT with your username returned to you. This should look something like:
+You should see your JWT claims returned to you. This should look something like:
 
 ```
 {"claims":{"iss":"Kitura","sub":"Joe Bloggs","exp":574703307.61258602},"header":{"typ":"JWT","alg":"HS256"}}
