@@ -67,6 +67,13 @@
       link: /docs/web/stencil
     - title: Markdown
       link: /docs/web/markdown
+- title: Client
+  id: client
+  items:
+    - title: What is a client?
+      link: /docs/client/client
+    - title: iOS Client
+      link: /docs/client/iOSClient
 - title: Deploying
   id: deploying
   items:
