@@ -12,7 +12,7 @@ A JSON Web Token (JWT) defines a compact and self-contained way for securely tra
 
 ##Step 1: Create the JWT routes
 
-To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) to our dependencies.
+To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT#add-dependencies) to our dependencies.
 
 > If you don't have a server, follow our Create a server guide.
 
