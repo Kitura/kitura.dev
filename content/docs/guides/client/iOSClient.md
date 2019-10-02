@@ -7,6 +7,8 @@ title: iOS Client
 
 In this guide we are going to create a simple iOS application that uses a KituraKit client to interact with a Kitura server.  The app we are going to make will be simple and holds a list of fruit that you can scroll through.  Upon selecting a desired fruit, we will send a GET request to a server that will return the price of the selected fruit.
 
+**This guide requires you use Xcode 11.**
+
 ---
 
 ##Setting up your server
@@ -15,19 +17,9 @@ If you don't have a server, follow our Create a Server guide.
 
 Kitura and KituraKit send and receive instances of Swift types directly. These types (aka models) can be shared between the client and server.
 
-Firstly, we need to create a Fruit model.  Create a new file, called Fruit.swift:
+Firstly, we need to create a Fruit model.  Create a folder, if you haven't already, called Models, inside your Application folder, by doing File > New > Group.  Within your Models folder, create a new file called Fruit.swift, by doing File > New > File and selecting Swift as the type of file.
 
-```
-touch Sources/Application/Models/Fruit.swift
-```
-
-Open your Fruit.swift file:
-
-```
-open Sources/Application/Models/Fruit.swift
-```
-
-The only requirement for a model is that it conforms to the Codable protocol:
+Open your Fruit.swift file and create your Fruit model.  The only requirement for a model is that it conforms to the Codable protocol:
 
 ```swift
 public struct Fruit: Codable {
@@ -40,31 +32,13 @@ public struct Fruit: Codable {
 }
 ```
 
-We need to add a file for our fruit routes.  Open your Application.swift file in your default text editor:
-
-```
-open Sources/Application/Application.swift
-```
-
-Inside the postInit() function add:
+We need to add a file for our fruit routes.  Open your Application.swift file and inside the postInit() function add:
 
 ```swift
 initializeFruitRoutes(app: self)
 ```
 
-Create a new file, called FruitRoutes.swift:
-
-```
-touch Sources/Application/Routes/FruitRoutes.swift
-```
-
-Open your FruitRoutes.swift file:
-
-```swift
-open Sources/Application/Routes/FruitRoutes.swift
-```
-
-Inside this file, add the following code:
+Create a new file, called FruitRoutes.swift in your Routes folder and inside this file, add the following code:
 
 ```swift
 import Foundation
@@ -173,7 +147,7 @@ Finally, click on the Button and drag it into the ViewController class after the
 
 ###Adding functionality
 
-Firstly, open the info.plist file in your preferred text editor and add this anywhere in the first dictionary declaration:
+Firstly, open the info.plist file in your default text editor and add this anywhere in the first dictionary declaration:
 ```
 <key>NSAppTransportSecurity</key>
 <dict>
@@ -182,11 +156,9 @@ Firstly, open the info.plist file in your preferred text editor and add this any
 </dict>
 ```
 
-Now we can begin adding functionality to our app, we need to copy and paste the Fruit.swift file that we created earlier in our server, into a new Fruit.swift file:
+Next, we need to create another Fruit model.  Create a Fruit.swift file in your FruitApp folder, open your file and create your Fruit model:
 
 ```swift
-import Foundation
-
 public struct Fruit: Codable {
     public let name: String
     public let price: Double
