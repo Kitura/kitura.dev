@@ -293,8 +293,6 @@ import Dispatch
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var itemName: UIPickerView!
     @IBOutlet weak var priceButton: UIButton!
 
