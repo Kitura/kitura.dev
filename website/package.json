@@ -17,5 +17,8 @@
     "react": "^16.8.6",
     "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
   }
 }
