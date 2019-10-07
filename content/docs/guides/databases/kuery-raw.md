@@ -1,9 +1,9 @@
 ---
-path: "/docs/databases/kuery"
+path: "/docs/databases/kuery-raw"
 title: Add Swift Kuery to your app
 ---
 
-# Swift Kuery with Codable routing
+# Swift Kuery with Raw routing
 
 [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) is a pluggable SQL database driver/SDK abstraction layer. Its main idea is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API. This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.
 
@@ -34,32 +34,30 @@ touch Sources/Application/Routes/KueryRoutes.swift
 
 Inside this file we are going to create two routes. The first will use Swift-Kuery to save a **Book** into a database and the second will retrieve all of the saved books.
 
+Add the above code, for your chosen routing method, to your **KueryRoutes.swift** file.
+
 ```swift
-import KituraContracts
 import LoggerAPI
 import Foundation
 
 func initializeKueryRoutes(app: App) {
-    app.router.post("/kuery", handler: app.insertHandler)
-    app.router.get("/kuery", handler: app.selectHandler)
-}
 
-extension App {
-    // Create connection pool and initialize BookTable here
-
-    func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+    app.router.post("/kuery") { request, response, next in
+        guard let book = try? request.read(as: Book.self) else {
+            let _ = response.send(status: .badRequest)
+            return next()
+        }
         // Handle POST here
     }
 
-    func selectHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
+    app.router.get("/kuery") { request, response, next in
         // Handle GET here
     }
 }
+extension App {
+    // Create connection pool and initialize BookTable here
+}
 ```
-
-Add the above code, for your chosen routing method, to your **KueryRoutes.swift** file.
-
->The routes in this guide are using the [Book model from the routing guide](../routing/routing.html#bookmodel), however you could use any Codable type.
 
 ---
 
@@ -122,8 +120,8 @@ Now we're going to save a book that is posted to the '/kuery' route into our dat
 Inside the handler for our POST route, we need to convert our book to an Array of Arrays of type **Any**. This converts the book that was sent to the route into the format required by Swift-Kuery. We need to use the **Any** type here as the database fields could be of any type.
 
 ```swift
-let rows = [[book.id, book.title, book.price, book.genre]]
-// Get connection from pool here
+    let rows = [[book.id, book.title, book.price, book.genre]]
+    // Get connection from pool here
 ```
 
 To talk to the database, the first thing we need to do is get a connection from the connection pool.
@@ -132,11 +130,12 @@ To do this we can use the **getConnection** method. We can add this into the han
 
 ```swift
 App.pool.getConnection() { connection, error in
-    guard let connection = connection else {
-        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
-    }
-    // Write query and execute it here
+        guard let connection = connection else {
+            Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+            let _ = response.send(status: .internalServerError)
+            return next()
+        }
+        // Write query and execute it here
 }
 ```
 
@@ -153,32 +152,41 @@ let insertQuery = Insert(into: App.bookTable, rows: rows)
 Once we have defined our insert query, we need to execute the query using the connection we took from the pool:
 
 ```swift
-    connection.execute(query: insertQuery) { insertResult in
-        guard insertResult.success else {
-            Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-            return completion(nil, .internalServerError)
-        }
-        completion(book, nil)
+connection.execute(query: insertQuery) { insertResult in
+    guard insertResult.success else {
+        Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+        let _ = response.send(status: .internalServerError)
+        return next()
     }
+    response.send(book)
+    return next()
+}
 ```
 
 That's it! We've setup our POST route to save data to a database. the completed handler for your POST route should now look as follows:
 
 ```swift
-func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
+app.router.post("/kuery") { request, response, next in
+    guard let book = try? request.read(as: Book.self) else {
+        let _ = response.send(status: .badRequest)
+        return next()
+    }
     let rows = [[book.id, book.title, book.price, book.genre]]
     App.pool.getConnection() { connection, error in
         guard let connection = connection else {
             Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-            return completion(nil, .internalServerError)
+            let _ = response.send(status: .internalServerError)
+            return next()
         }
         let insertQuery = Insert(into: App.bookTable, rows: rows)
         connection.execute(query: insertQuery) { insertResult in
             guard insertResult.success else {
                 Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-                return completion(nil, .internalServerError)
+                let _ = response.send(status: .internalServerError)
+                return next()
             }
-            completion(book, nil)
+            response.send(book)
+            return next()
         }
     }
 }
@@ -245,12 +253,13 @@ Inside the handler for our GET route, we need to get a connection from the conne
 
 ```swift
 App.pool.getConnection() { connection, error in
-    guard let connection = connection else {
-        Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
-    }
-    // Write query and execute it here
-}
+      guard let connection = connection else {
+          Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+          let _ = response.send(status: .internalServerError)
+          return next()
+      }
+      // Write query and execute it here
+  }
 ```
 
 Now we can build our SELECT query that will query the database for every entry in the "BookTable":
@@ -263,7 +272,8 @@ Like before we can now execute our query using **connection.execute**:
 connection.execute(query: selectQuery) { selectResult in
     guard let resultSet = selectResult.asResultSet else {
         Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
-        return completion(nil, .internalServerError)
+        let _ = response.send(status: .internalServerError)
+        return next()
     }
     // Iterate through result set here
 }
@@ -285,21 +295,22 @@ Inside the **forEach** callback, we need to handle these three cases:
 
 ```swift
 guard let row = row else {
-    if let error = error {
-        Log.error("Error getting row: \(error)")
-        return completion(nil, .internalServerError)
-    } else {
-        // All rows have been processed
-        return completion(books, nil)
-    }
-}
-// Convert row to book here
+      if let error = error {
+          Log.error("Error getting row: \(error)")
+          let _ = response.send(status: .internalServerError)
+          return next()
+      } else {
+          // All rows have been processed
+          response.send(books)
+          return next()
+      }
+  }
+  // Convert row to book here
 ```
 
 When we get a row back from the database we need to convert it back into a **Book** model type.
 
 After the **guard** closure, add the following code:
-
 
 ```swift
 guard let idString = row[0] as? String,
@@ -307,12 +318,12 @@ guard let idString = row[0] as? String,
       let title = row[1] as? String,
       let price = row[2] as? Double,
       let genre = row[3] as? String
-else {
+  else {
       Log.error("Unable to decode book")
       let _ = response.send(status: .internalServerError)
       return next()
-}
-books.append(Book(id: id, title: title, price: price, genre: genre))
+  }
+  books.append(Book(id: id, title: title, price: price, genre: genre))
 ```
 
 That's it! We've enabled our GET route to retrieve data from a database.
@@ -320,79 +331,87 @@ That's it! We've enabled our GET route to retrieve data from a database.
 Our completed **KueryRoutes.swift** file should now look as follows:
 
 ```swift
-import KituraContracts
 import LoggerAPI
-import Foundation
-import SwiftKuery
-import SwiftKueryPostgreSQL // This will be different if you did not use PostgreSQL
+  import Foundation
+  import SwiftKuery
+  import SwiftKueryPostgreSQL // This will be different if you did not use PostgreSQL
 
-func initializeKueryRoutes(app: App) {
-    app.router.post("/kuery", handler: app.insertHandler)
-    app.router.get("/kuery", handler: app.selectHandler)
-}
+  func initializeKueryRoutes(app: App) {
 
-extension App {
-    static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
-    // The createPool() will be different if you used a plugin other than PostgreSQL
-    static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
-    static let bookTable = BookTable()
+      app.router.post("/kuery") { request, response, next in
+          guard let book = try? request.read(as: Book.self) else {
+              let _ = response.send(status: .badRequest)
+              return next()
+          }
+          let rows = [[book.id, book.title, book.price, book.genre]]
+          App.pool.getConnection() { connection, error in
+              guard let connection = connection else {
+                  Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                  let _ = response.send(status: .internalServerError)
+                  return next()
+              }
+              let insertQuery = Insert(into: App.bookTable, rows: rows)
+              connection.execute(query: insertQuery) { insertResult in
+                  guard insertResult.success else {
+                      Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
+                      let _ = response.send(status: .internalServerError)
+                      return next()
+                  }
+                  response.send(book)
+                  next()
+              }
+          }
+      }
 
-    func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> Void) {
-        let rows = [[book.id, book.title, book.price, book.genre]]
-        App.pool.getConnection() { connection, error in
-            guard let connection = connection else {
-                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-                return completion(nil, .internalServerError)
-            }
-            let insertQuery = Insert(into: App.bookTable, rows: rows)
-            connection.execute(query: insertQuery) { insertResult in
-                guard insertResult.success else {
-                    Log.error("Error executing query: \(insertResult.asError?.localizedDescription ?? "Unknown Error")")
-                    return completion(nil, .internalServerError)
-                }
-                completion(book, nil)
-            }
-        }
-    }
-
-    func selectHandler(completion: @escaping ([Book]?, RequestError?) -> Void) {
-        App.pool.getConnection() { connection, error in
-            guard let connection = connection else {
-                Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
-                return completion(nil, .internalServerError)
-            }
-            let selectQuery = Select(from: App.bookTable)
-            connection.execute(query: selectQuery) { selectResult in
-                guard let resultSet = selectResult.asResultSet else {
-                    Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
-                    return completion(nil, .internalServerError)
-                }
-                var books = [Book]()
-                resultSet.forEach() { row, error in
-                    guard let row = row else {
-                        if let error = error {
-                            Log.error("Error getting row: \(error)")
-                            return completion(nil, .internalServerError)
-                        } else {
-                            // All rows have been processed
-                            return completion(books, nil)
-                        }
-                    }
-                    guard let idString = row[0] as? String,
-                        let id = Int(idString),
-                        let title = row[1] as? String,
-                        let price = row[2] as? Double,
-                        let genre = row[3] as? String
-                    else {
-                        Log.error("Unable to decode book")
-                        return completion(nil, .internalServerError)
-                    }
-                    books.append(Book(id: id, title: title, price: price, genre: genre))
-                }
-            }
-        }
-    }
-}
+      app.router.get("/kuery") { request, response, next in
+          App.pool.getConnection() { connection, error in
+              guard let connection = connection else {
+                  Log.error("Error connecting: \(error?.localizedDescription ?? "Unknown Error")")
+                  let _ = response.send(status: .internalServerError)
+                  return next()
+              }
+              let selectQuery = Select(from: App.bookTable)
+              connection.execute(query: selectQuery) { selectResult in
+                  guard let resultSet = selectResult.asResultSet else {
+                      Log.error("Error connecting: \(selectResult.asError?.localizedDescription ?? "Unknown Error")")
+                      let _ = response.send(status: .internalServerError)
+                      return next()
+                  }
+                  var books = [Book]()
+                  resultSet.forEach() { row, error in
+                      guard let row = row else {
+                          if let error = error {
+                              Log.error("Error getting row: \(error)")
+                              let _ = response.send(status: .internalServerError)
+                              return next()
+                          } else {
+                              // All rows have been processed
+                              response.send(books)
+                              return next()
+                          }
+                      }
+                      guard let idString = row[0] as? String,
+                          let id = Int(idString),
+                          let title = row[1] as? String,
+                          let price = row[2] as? Double,
+                          let genre = row[3] as? String
+                          else {
+                              Log.error("Unable to decode book")
+                              let _ = response.send(status: .internalServerError)
+                              return next()
+                      }
+                      books.append(Book(id: id, title: title, price: price, genre: genre))
+                  }
+              }
+          }
+      }
+  }
+  extension App {
+      static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
+      // The createPool() will be different if you used a plugin other than PostgreSQL
+      static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
+      static let bookTable = BookTable()
+  }
 ```
 
 ---

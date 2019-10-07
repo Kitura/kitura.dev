@@ -34,8 +34,10 @@
       link: /docs/databases/what-are-databases
     - title: SQL - ORM
       link: /docs/databases/orm
-    - title: SQL - Kuery
+    - title: SQL - Kuery with Codable Routing
       link: /docs/databases/kuery
+    - title: SQL - Kuery with Raw Routing
+      link: /docs/databases/kuery-raw
     - title: NoSQL - CouchDB
       link: /docs/databases/couchdb
 - title: Sessions
@@ -56,7 +58,7 @@
       link: /docs/authentication/basic-authentication
     - title: JSON Web Tokens
       link: /docs/authentication/jwt
-    - title: OAuth 2.0 with Facebook/Google
+    - title: OAuth 2.0 with Google/Facebook
       link: /docs/authentication/oauth2
 - title: Web Applications
   id: web-applications
