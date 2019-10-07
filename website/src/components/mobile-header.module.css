@@ -1,0 +1,57 @@
+.header {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+      display: flex;
+      height: 75px;
+      position: fixed;
+      width: 100vw;
+      background-color: white;
+      align-items: center;
+      box-shadow: 0 2.5px 4px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+  }
+
+  .home-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+  }
+
+  .header-image {
+    width: 60px;
+  }
+
+  .logo-section {
+      width: 50%;
+      margin-left: 25px;
+  }
+
+  .home-link > h1 {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+  }
+
+  .header-nav {
+    width: 55%;
+  }
+
+  .search-section {
+      width: 50%;
+      margin-right: 25px;
+  }
+
+  .search-section > input {
+      width: 150px;
+  }
+}

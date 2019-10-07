@@ -8,12 +8,14 @@ function GetStartedPage({
 }) {
     return (
         <Layout>
+            <section className={styles.pageSection}>
             {data.allMarkdownRemark.nodes.map((node, index) => (
-              <>
-                <div className={styles.main} dangerouslySetInnerHTML={{ __html: node.html }}></div>
-                <div className={(index === data.allMarkdownRemark.nodes.length - 1) ? styles.hide : styles.underline }></div>
-              </>
+                <>
+                    <div className={styles.main} dangerouslySetInnerHTML={{ __html: node.html }}></div>
+                    <div className={(index === data.allMarkdownRemark.nodes.length - 1) ? styles.hide : styles.underline }></div>
+                </>
             ))}
+            </ section>
         </Layout>
     )
 }

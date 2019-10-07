@@ -5,8 +5,10 @@
       link: /docs/getting-started/installation
     - title: Hello World
       link: /docs/getting-started/hello-world
-    - title: Create a Server
-      link: /docs/getting-started/create-server
+    - title: Create a Server using Kitura CLI
+      link: /docs/getting-started/create-server-cli
+    - title: Create a Server using SPM
+      link: /docs/getting-started/create-server-spm
 - title: Logging
   id: logging
   items:
@@ -32,8 +34,10 @@
       link: /docs/databases/what-are-databases
     - title: SQL - ORM
       link: /docs/databases/orm
-    - title: SQL - Kuery
+    - title: SQL - Kuery with Codable Routing
       link: /docs/databases/kuery
+    - title: SQL - Kuery with Raw Routing
+      link: /docs/databases/kuery-raw
     - title: NoSQL - CouchDB
       link: /docs/databases/couchdb
 - title: Sessions
@@ -54,7 +58,7 @@
       link: /docs/authentication/basic-authentication
     - title: JSON Web Tokens
       link: /docs/authentication/jwt
-    - title: OAuth 2.0 with Facebook/Google
+    - title: OAuth 2.0 with Google/Facebook
       link: /docs/authentication/oauth2
 - title: Web Applications
   id: web-applications
@@ -74,6 +78,13 @@
       link: /docs/client/client
     - title: iOS Client
       link: /docs/client/iOSClient
+- title: WebSockets
+  id: websockets
+  items:
+    - title: What are WebSockets?
+      link: /docs/websockets/websockets
+    - title: Echo Server
+      link: /docs/websockets/echo-server
 - title: Deploying
   id: deploying
   items:
@@ -87,3 +98,8 @@
       link: /docs/deploying/kubernetes
     - title: Cloud Foundry
       link: /docs/deploying/cloud-foundry
+- title: Configuring
+  id: configuring
+  items:
+    - title: Enabling SwiftNIO
+      link: /docs/configuring/swiftnio

@@ -60,27 +60,8 @@
     color: #0096F4;
 }
 
-
-
 @media only screen and (max-width: 600px) {
     .header {
-        position: fixed;
-        width: 100vw;
-        background-color: white;
-        z-index: 9999;
-    }
-
-    .logo-section {
-        width: 50%;
-        margin-left: 25px;
-    }
-
-    .search-section {
-        width: 50%;
-        margin-right: 25px;
-    }
-
-    .search-section > input {
-        width: 150px;
+        display: none;
     }
 }

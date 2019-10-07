@@ -1,14 +1,21 @@
-.burgerIcon {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  padding: 0.5em;
-  cursor: pointer;
+.burger-icon {
+  display: none;
 }
 
-.line {
-  width: 15px;
-  height: 2px;
-  margin-bottom: 3px;
-  background-color: black;
+@media only screen and (max-width: 600px) {
+  .burger-icon {
+    display: block;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    padding: 0.5em;
+    cursor: pointer;
+  }
+  
+  .line {
+    width: 15px;
+    height: 2px;
+    margin-bottom: 3px;
+    background-color: black;
+  }
 }
