@@ -5,7 +5,7 @@ title: What is a client?
 
 #What is a client?
 
-A client is a computer hardware device or software that is capable of obtaining information and applications from a server, granted that there is a suitable framework in place.  In the context of Kitura, this could be a simple command line interface, an iOS application or even another micro service that interacts with a server.  Usually the client initiates with a request and the server responds appropriately, whether that is a simple GET request for receiving information, or a POST request for transferring data from the client to the server.
+A client is a computer hardware device or software that is capable of obtaining information and applications from a server, granted that there is a suitable framework in place.  In the context of Kitura, this could be a simple command line interface, an iOS application or even another micro service that interacts with a server.  Usually the client initiates with a request and the server responds appropriately, whether that is a simple `GET` request for receiving information, or a `POST` request for transferring data from the client to the server.
 
 ---
 

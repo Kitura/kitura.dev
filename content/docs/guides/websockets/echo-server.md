@@ -30,7 +30,7 @@ touch main.swift
 
 ## Step 2: Setting up the Server
 
-Add the following content to your **Package.swift** file, replacing "x.x.x" with the latest releases of [Kitura](https://github.com/IBM-Swift/Kitura/releases), [HeliumLogger](https://github.com/IBM-Swift/HeliumLogger/releases), [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket/releases) and [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO/releases):
+Add the following content to your `Package.swift` file, replacing "x.x.x" with the latest releases of [Kitura](https://github.com/IBM-Swift/Kitura/releases), [HeliumLogger](https://github.com/IBM-Swift/HeliumLogger/releases), [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket/releases) and [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO/releases):
 ```swift
 import PackageDescription
 
@@ -58,7 +58,7 @@ if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {
 
 >[This code snippet](../configuring/enabling-nio.html#NIO_WebSocket) allows either [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) or [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) packages to be used.
 
-Add the following to your **ChatService.swift** file:
+Add the following to your `ChatService.swift` file:
 
 ```swift
 import Foundation
@@ -104,7 +104,7 @@ Lastly, the received function, which receives text messages, simply echoes the m
 
 It should be noted that all of these functions can be invoked from many threads simultaneously. In real applications, one should add locking around the access of non-thread safe artifacts of the application such as the connections Dictionary in this very simplistic example.
 
-Add the following to your **main.swift** file:
+Add the following to your `main.swift` file:
 ```swift
 import Foundation
 
@@ -135,9 +135,9 @@ do {
 }
 ```
 
-The **HeliumLogger** is set up to log info, warning, and error type messages.
+The `HeliumLogger` is set up to log info, warning, and error type messages.
 
-The ChatService defined in the **ChatService.swift** file is registered on the path chat.
+The ChatService defined in the `ChatService.swift` file is registered on the path chat.
 
 An HTTP server is created and setup to listen on port 8080.
 
@@ -156,7 +156,7 @@ cd EchoClient
 touch package.json
 touch chat.js
 ```
-Add the following content to your **package.json** file:
+Add the following content to your `package.json` file:
 ```json
 {
   "name": "chat",
@@ -170,7 +170,7 @@ Add the following content to your **package.json** file:
   }
 }
 ```
-Then add the following content to your **chat.js** file:
+Then add the following content to your `chat.js` file:
 ```javascript
 /* main file of Simple Chat Server Client */
 

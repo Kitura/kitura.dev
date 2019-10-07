@@ -7,7 +7,7 @@ title: What is routing?
 
 Routing is the way in which requests (the combination of a URL and a HTTP method) are routed to the code that handles them.
 
-When you navigated to www.kitura.io in your browser you were requesting the HTML file that is located there. The server hosting the files will respond with the requested file, if it exists, and you will see the file rendered in your browser. This means that under the covers there’s a server hosting the files for the kitura.io website. In this server there is a route defined that states if we receive a GET request on "/" then respond with the home page.
+When you navigated to [www.kitura.io](https://www.kitura.io) in your browser you were requesting the HTML file that is located there. The server hosting the files will respond with the requested file, if it exists, and you will see the file rendered in your browser. This means that under the covers there’s a server hosting the files for the kitura.io website. In this server there is a route defined that states if we receive a GET request on "/" then respond with the home page.
 
 Here we mentioned a GET request being made on "/" but what does that mean? In the next section we will look at GET, which is an HTTP Method, in more detail.
 
@@ -39,7 +39,7 @@ A URI path is the path upon which this route is linked. That is to say when a re
 router.get("/hello")
 ```
 
-Above is an example of registering a GET method on the "/hello" path. Let's assume our server is running at localhost:8080, then if I want to make a call to this endpoint I could open http://localhost:8080/hello in my browser and view the response.
+Above is an example of registering a GET method on the `"/hello"` path. Let's assume our server is running at localhost:8080, then if I want to make a call to this endpoint I could open http://localhost:8080/hello in my browser and view the response.
 
 ###Route handler
 
@@ -53,7 +53,7 @@ Kitura provides two 'types' of routing, Raw Routing and Codable Routing. Over th
 
 ##Raw Routing
 
-Raw routing is where the route handlers were called with RouterRequest and RouterResponse objects with which to handle the client request and build the response, along with a next completion handler. This approach provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.
+Raw routing is where the route handlers were called with `RouterRequest` and `RouterResponse` objects with which to handle the client request and build the response, along with a next completion handler. This approach provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.
 
 The following is an example of a Raw Route:
 
@@ -66,17 +66,17 @@ router.get("/") { request, response, next in
 
 ###Router Request
 
-The RouterRequest class is used to interact with incoming HTTP requests to the router. It contains and allows access to the request’s headers and body as well as other properties of the request. It can also perform content negotiation based on the request’s Accept header.
+The `RouterRequest` class is used to interact with incoming HTTP requests to the router. It contains and allows access to the request’s headers and body as well as other properties of the request. It can also perform content negotiation based on the request’s `Accept` header.
 
 ###Router Response
 
-The RouterResponse class is used to define and work with the response that will be sent by the router. It contains and allows access to the HTTP response code (e.g. 404 Not Found), the HTTP headers and the body of the response. It can also render template files, using a template engine registered to the router.
+The `RouterResponse` class is used to define and work with the response that will be sent by the router. It contains and allows access to the HTTP response code (e.g. 404 Not Found), the HTTP headers and the body of the response. It can also render template files, using a template engine registered to the router.
 
 ###Next
 
-In Kitura, multiple handlers can be registered on a single route. The handlers can alter the request or response before passing them to the next handler. By having the next closure, we can register a handler that acts as a middleware and is called before your routes.
+In Kitura, multiple handlers can be registered on a single route. The handlers can alter the request or response before passing them to the next handler. By having the `next` closure, we can register a handler that acts as a middleware and is called before your routes.
 
-Once a handler is finished, it calls the next handler using the next() closure. If there are no more handlers, the router will send the response. If there was an error and you do not want to call the next handler, you can call request.end() to send back the response immediately. You must call next() or request.end() once, and only once, in each route handler because the route handlers are asynchronous.
+Once a handler is finished, it calls the next handler using the `next()` closure. If there are no more handlers, the router will send the response. If there was an error and you do not want to call the next handler, you can call `request.end()` to send back the response immediately. You must call `next()` or `request.end()` once, and only once, in each route handler because the route handlers are asynchronous.
 
 For example:
 
@@ -99,13 +99,13 @@ If a request comes into the server on "/" then the following would be returned t
 "Hello from the 2nd route!"
 ```
 
-As you can see one route is called immediately after the other, this is made possible because of next().
+As you can see one route is called immediately after the other, this is made possible because of `next()`.
 
 ---
 
 ##Codable Routing
 
-Codable routing is where the route handlers are like normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with struct or class types via a completion handler. The only requirement is that those types conform to the Codable protocol introduced in Swift 4 (hence the name).
+Codable routing is where the route handlers are like normal functions you might define elsewhere in your code; they take struct or class types as parameters, and respond with struct or class types via a completion handler. The only requirement is that those types conform to the `Codable` protocol introduced in Swift 4 (hence the name).
 
 ```swift
 func getHandler(completion: ([String]?, RequestError?) -> Void) {
@@ -117,7 +117,7 @@ router.get("/", handler: getHandler)
 
 ###Codable model
 
-Any type that conforms to Codable can be used as a parameter in Codable routing, including custom structs and classes. As we are simulating a bookstore in our guides, we are going to need to define a book. The book is a model so the first thing we need to do is create our Models folder:
+Any type that conforms to `Codable` can be used as a parameter in Codable routing, including custom structs and classes. As we are simulating a bookstore in our guides, we are going to need to define a book. The book is a model so the first thing we need to do is create our Models folder:
 
 ```
 mkdir Sources/Application/Models
@@ -125,13 +125,13 @@ mkdir Sources/Application/Models
 
 This is the directory where we will store all of our models.
 
-Next we will create our Book.swift file:
+Next we will create our `Book.swift` file:
 
 ```
 touch Sources/Application/Models/Book.swift
 ```
 
-We will open the Book.swift file in our default text editor:
+We will open the `Book.swift` file in our default text editor:
 
 ```
 open Sources/Application/Models/Book.swift
@@ -159,7 +159,12 @@ struct Book: Codable {
 
 ##Conclusion
 
-Codable routing provides a simple approach to building RESTful APIs. It adds compile-time type safety, creates cleaner code and can automatically generate an OpenAPI specification. If you are building a Backend For Frontend (BFF) for an iOS app, you should probably use Codable routing.
+Codable routing provides a simple approach to building RESTful APIs. It adds compile-time type safety, creates cleaner code and can automatically generate an [OpenAPI specification](https://swagger.io/docs/specification/about/). If you are building a [Backend For Frontend (BFF)](https://samnewman.io/patterns/architectural/bff/) for an iOS app, you should probably use Codable routing.
 
 Raw routing is more flexible and provides greater control over your route handler implementation but does not have the same inherent type safety. If you are creating a non-RESTful API, such as a web application, then you will need to use Raw routing.
 
+##Next steps
+
+[Add Codable Routing](./codable-routing): Use Kitura's Codable routing to define routes on your server.
+
+[Add Raw Routing](./raw-routing): Use Kitura's Raw routing to define routes on your server.

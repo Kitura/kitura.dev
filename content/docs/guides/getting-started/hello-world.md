@@ -5,7 +5,7 @@ title: Create a simple Hello World application
 
 #Create a simple Hello World application
 
-This quick tutorial will take you through creating a simple Hello World example with Kitura. 
+This quick tutorial will take you through creating a simple Hello World example with Kitura.
 
 ---
 
@@ -29,15 +29,15 @@ Swift Package Manager (SPM) creates a Swift project stub. All we need to do is a
 
 ##Step 2: Add Kitura to our dependencies
 
-To add Kitura to our dependencies we need to edit the Package.swift file.
+To add Kitura to our dependencies we need to edit the `Package.swift` file.
 
-Open Package.swift in your default text editor:
+Open `Package.swift` in your default text editor:
 
 ```
 open Package.swift
 ```
 
-Add Kitura to our dependencies so the Package.swift file looks like this:
+Add Kitura to our dependencies so the `Package.swift` file looks like this:
 
 ```swift
 // swift-tools-version:5.0
@@ -69,7 +69,7 @@ swift build
 
 ##Step 3: Add the server code
 
-Open main.swift in our text editor:
+Open `main.swift` in our text editor:
 
 ```
 open Sources/HelloKitura/main.swift
@@ -112,3 +112,11 @@ You should see the following in your browser:
 ```
 
 Congratulations! You have just created your first server-side Swift application using Kitura.
+
+---
+
+##Next steps
+
+In this simple Kitura application all of our Swift code is contained in a single `main.swift` file.
+
+In practice it's preferable to structure your project code in more than one file. To generate scaffolding for a more complex application checkout our [Create a Server](./create-server-cli) Guide and then explore our other guides!

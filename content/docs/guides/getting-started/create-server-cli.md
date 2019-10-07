@@ -35,7 +35,7 @@ If the installation was successful we would see information about the version.
 
 >For this installation method you need to have npm installed.  If you do not have npm installed you can follow the [npm installation steps](https://www.npmjs.com/get-npm).
 
-Open a Terminal and run the **npm install** command:
+Open a Terminal and run the `npm install` command:
 ```
 npm install -g kitura-cli
 ```
@@ -65,17 +65,17 @@ Create a Kitura application using the Kitura CLI:
 kitura init
 ```
 
-**kitura init** will create a cloud-ready Kitura application in your current directory.
+`kitura init` will create a cloud-ready Kitura application in your current directory.
 
 The name of your project will be the same as the directory name.
 
->The generated project contains a Swift 5.0 **Package.swift** file.
+>The generated project contains a Swift 5.0 `Package.swift` file.
 
 ---
 
 ## Step 4: Start the Kitura server
 
-By default **kitura init** builds our server code so we just need to run the server:
+By default `kitura init` builds our server code so we just need to run the server:
 ```
 swift run
 ```
@@ -90,4 +90,4 @@ We can navigate to: [http://localhost:8080](http://localhost:8080) to view our s
 
 ## Next steps
 
-[Routing:](../routing/routing.html#) Learn about routing and the two types Kitura supports.
+[Routing:](../routing/what-is-routing) Learn about routing and the two types Kitura supports.
