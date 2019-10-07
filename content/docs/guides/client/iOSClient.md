@@ -137,7 +137,7 @@ You will notice that an .xcworkspace file has been generated, from now on we wil
 
 Open FruitApp.xcworkspace in Xcode and navigate to the Main.storyboard file, click on this file and you should see a blank iPhone screen.  At the top right of the Xcode window you should see a plus symbol on a button, this is the library for the user interface.  Click on this button and add a label, picker view and button individually so that it looks like this:
 
-![User interface image](../../../src/images/iOSImage1.png)
+![iOS UI iamge](../../../images/iOSImage1.png)
 
 Once you have set up your interface, in the top bar, click Editor > Assistant so that your Xcode has the Main.storyboard and ViewController.swift file showing.
 
@@ -317,8 +317,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
 ##Test your app
 
-Now everything is set up, run your server project and your iOS project to test your app!  This is an example of what your app should look like when returning a fruit price:
-
-![Final look of app](../../../../website/src/images/iOSImage5.png)
+Now everything is set up, run your server project and your iOS project to test your app!
 
 You have now successfully created a front end in iOS using a KituraKit client and a corresponding back end on a server using Kitura!
