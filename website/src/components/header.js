@@ -5,7 +5,7 @@ import styles from "./header.module.css";
 
 import Search from "./search";
 
-import kituraLogo from "../images/Kitura.svg";
+import kituraLogo from "../../../content/images/Kitura.svg";
 
 const Header = () => {
   return (

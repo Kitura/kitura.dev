@@ -57,7 +57,7 @@ localhost:8080/openapi/ui
 
 You should see a screen similar to the following:
 
-<div class="img-container">![Kitura OpenAPI routes list](../../../../website/src/images/OpenAPI-UI-Overview.png)</div>
+<div class="img-container">![Kitura OpenAPI routes list](../../../images/OpenAPI-UI-Overview.png)</div>
 
 Kitura OpenAPI provides a UI in which we can view our Codable routes and models.
 
@@ -65,7 +65,7 @@ We can view any of our routes simply by clicking on them.
 
 Let's start by clicking on the **GET** button:
 
-![Kitura OpenAPI example GET route](../../../../website/src/images/OpenAPI-UI-GET.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-GET.png)
 
 We can see here the parameters section is empty, as we'd expect because GET routes typically only retrieve data.
 
@@ -75,7 +75,7 @@ As this is a GetAll route it's an array of JSON objects that match our Book mode
 
 Next we can view the POST route by clicking the **POST** button:
 
-![Kitura OpenAPI example GET route](../../../../website/src/images/OpenAPI-UI-POST.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-POST.png)
 
 We can see from this screen what input the **POST** on **"/books"** is expecting, and OpenAPI even provides an example.
 
@@ -95,19 +95,19 @@ In the next sections we will look at how we can test our Codable routes.
 
 We can test the POST route by clicking the **POST** button, then clicking the **Try it out** button in the top right:
 
-![Kitura OpenAPI example GET route](../../../../website/OpenAPI-UI-POST-Try.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-POST-Try.png)
 
 Kitura OpenAPI provides an editable value for us to POST some custom data.
 
 Let's populate the field with some meaningful data:
 
-![Kitura OpenAPI example GET route](../../../../website/src/images/OpenAPI-UI-POST-Try-Data.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-POST-Try-Data.png)
 
 Now that we have some data that we want to post, we can click execute.
 
 Once that's complete we should see the following:
 
-![Kitura OpenAPI example GET route](../../../../website/src/images/OpenAPI-UI-POST-Execute.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-POST-Execute.png)
 
 At the top of this responses section Kitura OpenAPI provides us with the Curl command to excute via the command line.
 
@@ -129,11 +129,11 @@ To test our GET route we need to click on the **GET** button and then click **Tr
 
 We should see the following:
 
-![Kitura OpenAPI example GET route](../../../../website/src/images/OpenAPI-UI-GET-Try.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-GET-Try.png)
 
 As this is a GET route we don't need to provide any data therefore we can just click execute:
 
-![Kitura OpenAPI example GET route](../../../../website/src/images/OpenAPI-UI-GET-Execute.png)
+![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-GET-Execute.png)
 
 This should look somewhat familiar as it's similiar to the result of our POST test.
 
