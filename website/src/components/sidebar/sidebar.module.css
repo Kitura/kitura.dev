@@ -4,40 +4,31 @@
     min-height: Calc(100vh - 75px);
     margin-top: 4px;
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem 0 0 2rem;
+    box-sizing: border-box;
 }
 
-.docs-section {
-    font-weight: 600;
-    padding: 2rem 0 0 2rem;
+.sidebar-section {
+    margin-bottom: 1rem;
 }
 
 .sidebar-parent-item {
-    font-size: 1rem;
-}
-
-.sidebar-parent-item:hover {
     cursor: pointer;
 }
 
-.docs-section a {
-    font-size: 0.8rem;
-}
-
-.nested-docs-section {
+.nested-sidebar-section {
+    margin-top: 0.8rem;
     margin-left: 1rem;
 }
 
-.sidebar-item {
-    margin: 0.8rem 0;
-}
-.sidebar-link {
-    text-decoration: none;
-    font-size: 1rem;
+.nested-sidebar-item {
+    padding: 0.5rem 0;
 }
 
-.sidebar-link:hover, .active-link:hover {
-    color: #0096F4;
-    cursor: pointer;
+.sidebar-link {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 600px) {
