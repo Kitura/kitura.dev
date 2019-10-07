@@ -5,8 +5,10 @@
       link: /docs/getting-started/installation
     - title: Hello World
       link: /docs/getting-started/hello-world
-    - title: Create a Server
-      link: /docs/getting-started/create-server
+    - title: Create a Server using Kitura CLI
+      link: /docs/getting-started/create-server-cli
+    - title: Create a Server using SPM
+      link: /docs/getting-started/create-server-spm
 - title: Logging
   id: logging
   items:
@@ -67,6 +69,13 @@
       link: /docs/web/stencil
     - title: Markdown
       link: /docs/web/markdown
+- title: WebSockets
+  id: websockets
+  items:
+    - title: What are WebSockets?
+      link: /docs/websockets/websockets
+    - title: Echo Server
+      link: /docs/websockets/echo-server
 - title: Deploying
   id: deploying
   items:
@@ -80,3 +89,8 @@
       link: /docs/deploying/kubernetes
     - title: Cloud Foundry
       link: /docs/deploying/cloud-foundry
+- title: Configuring
+  id: configuring
+  items:
+    - title: Enabling SwiftNIO
+      link: /docs/configuring/swiftnio
