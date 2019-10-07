@@ -6,17 +6,17 @@ title: JSON Web Token Authentication
 #JSON Web Token Authentication
 A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can find out more about JWTs at [JWT.IO](https://jwt.io/).
 
-[Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) is our implementation of JSON Web Token using Swift. It allows you to create sign and verify JWTs on iOS, macOS and Linux using a range of algorithms. This guide will demonstrate how to use Swift-JWT to implement Single Sign On (SSO) authentication for your Kitura routes. This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.
+[Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) is our implementation of JSON Web Token using Swift. It allows you to create, sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.  [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) is a JWT plugin to use with the existing Kitura-Credentials package that offers both Codable and Raw routing methods for easily authenticating JWTs. This guide will demonstrate how to use Swift-JWT and Kitura-CredentialsJWT to implement Single Sign On (SSO) authentication for your Kitura routes. This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.
 
 ---
 
 ##Step 1: Create the JWT routes
 
-To use JWTs from a server, we need to add [Swift-JWT to our dependencies](https://github.com/IBM-Swift/Swift-JWT#add-dependencies).
+To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) to our dependencies.
 
 > If you don't have a server, follow our Create a server guide.
 
-Once we have added Swift-JWT, we need a file for our JWT routes.
+Once we have added Kitura-CredentialsJWT, we need a file for our JWT routes.
 
 Firstly, open your Application.swift file in your default text editor:
 
@@ -47,16 +47,11 @@ Inside this file, add the following code:
 ```swift
 import Foundation
 import KituraContracts
-import SwiftJWT
+import CredentialsJWT
 
 func initializeJWTRoutes(app: App) {
     app.router.post("/jwtlogin") { request, response, next in
         // Read credentials and generate JWT here
-        next()
-    }
-
-    app.router.get("/jwtprotected") { request, response, next in
-        // Verify JWT here
         next()
     }
 }
@@ -65,7 +60,7 @@ extension App {
 }
 ```
 
-This code imports our requires modules, sets up the framework for a routes page and defines the two raw routes that we will use in our guide.
+This code imports our required modules, sets up the framework for a routes page and defines the two raw routes that we will use in our guide.
 
 ---
 
@@ -79,7 +74,7 @@ The algorithms are as follows:
 - [ECDSA](./jwt-ecdsa)
 - [RSA](./jwt-rsa)
 
-> Follow one of the links above to configure your signing and verifying algorithm before continuing with the rest of this guide. 
+> Follow one of the links above to configure your signing and verifying algorithm before continuing with the rest of this guide.
 
 ---
 
@@ -212,58 +207,31 @@ We can decode the JWT string using the debugger at JWT.IO which allows us view t
 ---
 
 ##Step 7: Verify a JWT
+
 So far, we have created a signed JWT, which allows a user to authenticate themselves. At this stage, the user would attach the JWT string to future requests either using cookies or the Authorization header. When we receive this JWT string on other routes, we need to verify that we signed it and it hasn't been altered.
 
-Let's start by reading the JWT string from the Authorization header of the request. The JWT string will be contained within the second component of the header, so we validate that there are only two components within the header and that the first contains the string "Bearer".
+From here we will use the CredentialsJWT plugin for authenticating the user with the earlier received token.
 
-Inside the GET route, add the following code:
-
-```swift
-let authHeader = request.headers["Authorization"]
-guard let authComponents = authHeader?.components(separatedBy: " "),
-    authComponents.count == 2,
-    authComponents[0] == "Bearer"
-else {
-    let _ = response.send(status: .unauthorized)
-    return try response.end()
-}
-```
-
-The JWT string will be authComponents[1], so we will verify this string and use it to initialize a JWT.
-
-Add the following code to your guard statement, below authComponents[0] == "Bearer":
+After the POST function, add the following to the file:
 
 ```swift
-let jwt = try? JWT<ClaimsStandardJWT>(jwtString: authComponents[1], verifier: App.jwtVerifier)
-```
-
-There we have it, the user's JWT is now available for us to use within our route. If we successfully initialized the JWT using the jwtVerifier, we know that we signed it in the first place and the contents haven't been changed. If the signature isn't verified, we reject the request and return the 401 unauthorized status code.
-
-To finish, let's send the decoded JWT back to the user.
-
-After the else closure, add the following code:
-
-```swift
-response.send(jwt)
-```
-
-Your completed GET route should now look as follows:
-
-```swift
+let jwtCredentials = CredentialsJWT<ClaimsStandardJWT>(verifier: App.jwtVerifier)
+let authenticationMiddleware = Credentials()
+authenticationMiddleware.register(plugin: jwtCredentials)
+app.router.get("/jwtprotected", middleware: authenticationMiddleware)
 app.router.get("/jwtprotected") { request, response, next in
-    let authHeader = request.headers["Authorization"]
-    guard let authComponents = authHeader?.components(separatedBy: " "),
-        authComponents.count == 2,
-        authComponents[0] == "Bearer",
-        let jwt = try? JWT<ClaimsStandardJWT>(jwtString: authComponents[1], verifier: App.jwtVerifier)
-    else {
-        let _ = response.send(status: .unauthorized)
-        return try response.end()
-    }
-    response.send(jwt)
-    next()
-}
+        guard let userProfile = request.userProfile else {
+                Log.verbose("Failed raw token authentication")
+                response.status(.unauthorized)
+                try response.end()
+                return
+            }
+        response.send("\(userProfile.id)\n")
+            next()
+        }
 ```
+
+Let's break these lines down individually. The first line creates a CredentialsJWT instance with the default options using the built in ClaimsStandardJWT claims from the Swift-JWT package.  The second line creates the middleware instance using the Credentials package that we can register plugins to.  The third line registers the created CredentialsJWT instance to the created middleware instance and the line after adds a GET route to the router that allows an authentication request to take place.  The final line is the declaration of the function that will verify the JWT we send, if the request is authorized, then the response sent is the `id` field of your JWT.
 
 ---
 
@@ -276,169 +244,194 @@ Copy the returned JWT string and paste it into the following curl request:
 ```
 curl -X GET \
 http://localhost:8080/jwtprotected \
--H 'content-type: application/json' \
+-H 'X-Token-Type: JWT' \
 -H 'Authorization: Bearer <Your JWT string here>'
 ```
 
-You should see your JWT with your username returned to you. This should look something like:
+You should see your username returned to you. This should look something like:
 
 ```
-{"claims":{"iss":"Kitura","sub":"Joe Bloggs","exp":574703307.61258602},"header":{"typ":"JWT","alg":"ES256"}}
+Joe Bloggs
 ```
 
 Congratulations! We have just created a JWT single sign on system using a Kitura Server. Your completed JWTRoutes.swift file for HS256 should look as follows:
 
 ```swift
-import KituraContracts
-import SwiftJWT
 import Foundation
-
+import KituraContracts
+import CredentialsJWT
+import SwiftJWT
+import Credentials
+import LoggerAPI
 
 func initializeJWTRoutes(app: App) {
 
     app.router.post("/jwtlogin") { request, response, next in
         let credentials = try request.read(as: UserCredentials.self)
+        // Users credentials are authenticated
         let myClaims = ClaimsStandardJWT(iss: "Kitura", sub: credentials.username, exp: Date(timeIntervalSinceNow: 3600))
         var myJWT = JWT(claims: myClaims)
         let signedJWT = try myJWT.sign(using: App.jwtSigner)
-        response.send(signedJWT)
+        response.send(signedJWT + "\n")
         next()
     }
 
+    let jwtCredentials = CredentialsJWT<ClaimsStandardJWT>(verifier: App.jwtVerifier)
+    let authenticationMiddleware = Credentials()
+    authenticationMiddleware.register(plugin: jwtCredentials)
+    app.router.get("/jwtprotected", middleware: authenticationMiddleware)
     app.router.get("/jwtprotected") { request, response, next in
-        let authHeader = request.headers["Authorization"]
-            guard let authComponents = authHeader?.components(separatedBy: " "),
-                authComponents.count == 2,
-                authComponents[0] == "Bearer",
-                let jwt = try? JWT<ClaimsStandardJWT>(jwtString: authComponents[1], verifier: App.jwtVerifier)
-                else {
-                    let _ = response.send(status: .unauthorized)
-                    return try response.end()
+        guard let userProfile = request.userProfile else {
+                Log.verbose("Failed raw token authentication")
+                response.status(.unauthorized)
+                try response.end()
+                return
             }
-        response.send(jwt)
-        next()
-    }
+        response.send("\(userProfile.id)\n")
+            next()
+        }
 }
 
 extension App {
-    // Example for HMAC signer and verifier
+    // Define JWT signer and verifier here
     static let jwtSigner = JWTSigner.hs256(key: Data("kitura".utf8))
     static let jwtVerifier = JWTVerifier.hs256(key: Data("kitura".utf8))
 }
+
 ```
 
 ---
 
-##Step 9: JWTs on Codable Routes (Optional)
+##Step 9: Using custom claims (Optional)
 
-In our example we used raw routing since we chose to pass the user credentials via the request headers. If we want to use JWTs on our codable routes, we need to encapulate the verification and creation of the users JWT in a TypeSafeMiddleware. We can then register our TypeSafeMiddleware on a Codable route to authenticate the user and access their claims.
+You may want to use your own set of custom claims for your JWT.  For this to work, we need to specify the subject and UserProfileDelegate options.
 
----
+First we will create our claims structure, in our JWTRoutes.swift file:
 
-###Step 9a: Define our type safe middleware.
-
-If you don't already have one, create a Middlewares folder:
-
-```
-mkdir Sources/Application/Middlewares
-```
-
-Create a new file, called TypeSafeJWT.swift:
-
-```
-touch Sources/Application/Middlewares/TypeSafeJWT.swift
+```swift
+struct MyClaims: Claims {
+  let id: String
+  let fullName: String
+  let email: String
+}
 ```
 
-Open your TypeSafeJWT.swift file:
+Now we need to edit our UserCredentials model to contain these additional values, so go into your UserCredentials.swift file and add these values to your model:
+
+```swift
+struct UserCredentials: Codable {
+    let username: String
+    let password: String
+    let email: String
+    let fullName: String
+}
+```
+
+>For simplicity, in this example, the id will have the same value as the username.
+
+We need to rewrite our JWT generation so that it creates a JWT with the correct claims:
+
+```swift
+app.router.post("/jwtlogin") { request, response, next in
+    let credentials = try request.read(as: UserCredentials.self)
+    // Users credentials are authenticated
+    let myClaims = MyClaims(id: credentials.username, fullName: credentials.fullName, email: credentials.email)
+    var myJWT = JWT(claims: myClaims)
+    let signedJWT = try myJWT.sign(using: App.jwtSigner)
+    response.send(signedJWT)
+    next()
+}
+```
+
+Let's test our newly created route!
 
 ```
-open Sources/Application/Middlewares/TypeSafeJWT.swift
+curl -X POST \
+    http://localhost:8080/jwtlogin \
+    -H 'content-type: application/json' \
+    -d '{
+    "username": "JoeBloggs312",
+    "password": "password",
+    "email": "joebloggs@email.com",
+    "fullName": "Joe Kitura Bloggs"
+}'
 ```
 
-Inside this file, define TypeSafeJWT with the following code:
+None of these claims are part of the ClaimsStandardJWT claims and the subject claim is not present, therefore we need to use the UserProfileDelegate and update it with our custom claims.
 
-```
-import SwiftJWT
-import Kitura
+After our POST route:
 
-struct TypeSafeJWT<C: Claims>: TypeSafeMiddleware {
-    static func handle(request: RouterRequest, response: RouterResponse, completion: @escaping (TypeSafeJWT?, RequestError?) -> Void) {
-
+```swift
+struct MyDelegate: UserProfileDelegate {
+    func update(userProfile: UserProfile, from dictionary: [String:Any]) {
+        // `userProfile.id` already contains `id`
+        userProfile.displayName = dictionary["fullName"]! as! String
+        let email = UserProfile.UserProfileEmail(value: dictionary["email"]! as! String, type: "home")
+        userProfile.emails = [email]
     }
 }
 ```
 
-The TypeSafeMiddleware protocol requires us to implement the handle function. This function is where we will interact with the request headers; we then return an instance of TypeSafeJWT on success, or a RequestError on failure. The TypeSafeJWT struct is generic so it can be used on any JWT.
-
-Within the handler we are interested in the decoded JWT so we add that as a field:
+Then we need to declare our instance of CredentialsJWT with our newly defined options, as well as setting the subject claim to id:
 
 ```swift
-let jwt: JWT<C>
+let jwtCredentials = CredentialsJWT<MyClaims>(verifier: App.jwtVerifier, options: [CredentialsJWTOptions.subject: "id", CredentialsJWTOptions.userProfileDelegate: MyDelegate.self])
 ```
 
-Finally, we initialize our JWT using the same functions as Step 7 for our protected GET route.
-
-Inside our handle function, add the following:
+Finally we create our middleware and register our plugin to it, the same as we have done earlier:
 
 ```swift
-let authHeader = request.headers["Authorization"]
-guard let authComponents = authHeader?.components(separatedBy: " "),
-    authComponents.count == 2,
-    authComponents[0] == "Bearer",
-    let jwt = try? JWT<C>(jwtString: authComponents[1], verifier: App.jwtVerifier)
-else {
-    return completion(nil, .unauthorized)
-}
-completion(TypeSafeJWT(jwt: jwt), nil)
-```
-
-Your completed TypeSafeJWT.swift file should look as follows:
-
-```swift
-import SwiftJWT
-import Kitura
-
-struct TypeSafeJWT<C: Claims>: TypeSafeMiddleware {
-    let jwt: JWT<C>
-    static func handle(request: RouterRequest, response: RouterResponse, completion: @escaping (TypeSafeJWT?, RequestError?) -> Void) {
-        let authHeader = request.headers["Authorization"]
-        guard let authComponents = authHeader?.components(separatedBy: " "),
-            authComponents.count == 2,
-            authComponents[0] == "Bearer",
-            let jwt = try? JWT<C>(jwtString: authComponents[1], verifier: App.jwtVerifier)
-        else {
-            return completion(nil, .unauthorized)
+let authenticationMiddleware = Credentials()
+authenticationMiddleware.register(plugin: jwtCredentials)
+app.router.get("/jwtprotected", middleware: authenticationMiddleware)
+app.router.get("/jwtprotected") { request, response, next in
+    guard let userProfile = request.userProfile else {
+            Log.verbose("Failed raw token authentication")
+            response.status(.unauthorized)
+            try response.end()
+            return
         }
-        completion(TypeSafeJWT(jwt: jwt), nil)
+    response.send("\(userProfile.id)\n")
+        next()
     }
+```
+
+Using the same terminal commands as earlier, you can test your JWT generation and authentication:
+
+```
+curl -X GET \
+http://localhost:8080/jwtprotected \
+-H 'X-Token-Type: JWT' \
+-H 'Authorization: Bearer <Your JWT string here>'
+```
+
+Congratulations! You are now using your own set of custom claims to generate a JWT and authenticate a user!
+
+##Step 10: JWTs on Codable Routes (Optional)
+
+In our example we used raw routing since we chose to pass the user credentials via the request headers. If we want to use JWTs on our codable routes, we need to encapsulate the verification and creation of the users JWT in a TypeSafeMiddleware. We can then register our TypeSafeMiddleware on a Codable route to authenticate the user and access their claims.
+
+###Step 10a: Register TypeSafeJWT on a route.
+
+In the JWTRoutesFile.swift we are going to create a new route for a TypeSafeJWT.
+
+In the function initializeJWTRoutes, declare the verifier for the TypeSafeJWT (this example is using the HS256 algorithm):
+
+```swift
+TypeSafeJWT.verifier = .hs256(key: Data("kitura".utf8))
+```
+
+We will then add the codable route handler, the handler will only be invoked if the JWT can be successfully verified, and contains the required claims.
+
+```swift
+app.router.get("/jwtcodable") {  (jwt: JWT<ClaimsStandardJWT>, respondWith: (JWT<ClaimsStandardJWT>?, RequestError?) -> Void) in
+     respondWith(jwt, nil)
 }
 ```
 
 ---
 
-###Step 9b: Register TypeSafeJWT on a route.
-
-Back in our routes file, JWTRoutes.swift, we are going to register a new route using our TypeSafeMiddleware.
-
-In the function initializeJWTRoutes, add a new route called "/jwtCodable"
-
-```swift
-app.router.get("/jwtCodable", handler: app.typeSafeHandler)
-```
-
-In your App extension, define the typeSafeHandler:
-
-```swift
-func typeSafeHandler(typeSafeJWT: TypeSafeJWT<ClaimsStandardJWT>, completion: (JWT<ClaimsStandardJWT>?, RequestError?) -> Void) {
-    completion(typeSafeJWT.jwt, nil)
-}
-```
-
-This function will run the middleware, TypeSafeJWT, and if it succeeds it will return the JWT instance, just as we did in our raw routing example above.
-
----
-
-###Step 9c: Test the new Codable route
+###Step 10b: Test the new Codable route
 
 To test this route, restart your server and send the POST request from Step 6.
 
@@ -446,13 +439,13 @@ Copy the returned JWT string and paste it into the following curl request:
 
 ```
 curl -X GET \
-http://localhost:8080/jwtCodable \
--H 'content-type: application/json' \
+http://localhost:8080/jwtcodable \
+-H 'X-Token-Type: JWT' \
 -H 'Authorization: Bearer <Your JWT string here>'
 ```
 
-We should see your JWT with your username returned to you. This should look something like:
+You should see your JWT claims returned to you. This should look something like:
 
 ```
-{"claims":{"iss":"Kitura","sub":"Joe Bloggs","exp":574703307.61258602},"header":{"typ":"JWT","alg":"ES256"}}
+{"claims":{"iss":"Kitura","sub":"Joe Bloggs","exp":574703307.61258602},"header":{"typ":"JWT","alg":"HS256"}}
 ```
