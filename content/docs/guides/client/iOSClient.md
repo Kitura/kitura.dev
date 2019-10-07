@@ -7,15 +7,17 @@ title: iOS Client
 
 In this guide we are going to create a simple iOS application that uses a KituraKit client to interact with a Kitura server.  The app we are going to make will be simple and holds a list of fruit that you can scroll through.  Upon selecting a desired fruit, we will send a GET request to a server that will return the price of the selected fruit.
 
-**This guide requires you use Xcode 11.**
+**This guide requires Xcode 11.**
 
 ---
 
 ##Setting up your server
 
-If you don't have a server, follow our Create a Server guide.
+If you don't have a server, follow our [Create a Server](../getting-started/create-server-cli) guide.
 
 Kitura and KituraKit send and receive instances of Swift types directly. These types (aka models) can be shared between the client and server.
+
+We're going to do our development inside Xcode, so let's open your server project in Xcode.
 
 Firstly, we need to create a Fruit model.  Create a folder, if you haven't already, called Models, inside your Application folder, by doing File > New > Group.  Within your Models folder, create a new file called Fruit.swift, by doing File > New > File and selecting Swift as the type of file.
 
@@ -67,7 +69,7 @@ fruitDict = ["Apple": 0.35,
                "Grapefruit": 0.64]
 ```
 
-After we have done this, we will register a GET route on the router to the "/fruit" path.  We will want this to take the fruit name as a String, to get the corresponding value and return the Fruit object containing both the fruit name and its price.  Add this code after the dictionary:
+After we have done this, we will register a GET route on the router to the "/fruit" path.  We will want this to take the the name of the fruit, as a String, get the corresponding value and return the Fruit object containing both the fruit name and its price.  Add this code after the dictionary:
 
 ```swift
 app.router.get("/fruit") { (fruitName: String, completion: (Fruit?, RequestError?) -> Void) in
@@ -107,7 +109,7 @@ func initializeFruitRoutes(app: App) {
 
 ##Setting up your iOS app
 
-Open Xcode and select File > New > Project and select new iOS Single View App.  Name the product name FruitApp, enter your organization identifier as your name and select Storyboard as the option for your user interface.  Select the directory where you would like your app to be situated, then click create.
+Open Xcode, and select File > New > Project and select new iOS Single View App.  Name the product name FruitApp, enter your organization identifier as your name and select Storyboard as the option for your user interface.  Select the directory where you would like your app to be situated, then click create.
 
 ###Adding KituraKit using CocoaPods
 
@@ -199,7 +201,7 @@ self.itemName.dataSource = self
 pickerData = ["Apple", "Banana", "Orange", "Pear", "Watermelon", "Mango", "Pineapple", "Lemon", "Kiwi", "Grapefruit"]
 ```
 
-In order to get the selected value from the UIPickerView, we have to include several functions. after the viewDidLoad() function, add:
+In order to get the selected value from the UIPickerView, we have to include several functions. After the viewDidLoad() function, add:
 
 ```swift
 func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -238,7 +240,7 @@ client.get("/fruit", identifier: valueSelected) { (returnedFruit: Fruit?, error:
 }
 ```
 
-With the returned fruit, we will create an alert that will tell the user how much one of their selected fruit costs
+With the returned fruit, we will create an alert that will tell the user how much one of their selected fruit costs:
 
 ```swift
 let alert = UIAlertController(title: "Fruit price:", message: "\(returnedFruit!.name)s cost £\(returnedFruit!.price) each", preferredStyle: UIAlertController.Style.alert)

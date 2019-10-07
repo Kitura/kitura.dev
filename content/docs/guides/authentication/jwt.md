@@ -6,7 +6,7 @@ title: JSON Web Token Authentication
 #JSON Web Token Authentication
 A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can find out more about JWTs at [JWT.IO](https://jwt.io/).
 
-[Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) is our implementation of JSON Web Token using Swift. It allows you to create, sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.  [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) is a JWT plugin to use with the existing Kitura-Credentials package. This guide will demonstrate how to use Swift-JWT and Kitura-CredentialsJWT to implement Single Sign On (SSO) authentication for your Kitura routes. This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.
+[Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) is our implementation of JSON Web Token using Swift. It allows you to create, sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.  [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) is a JWT plugin to use with the existing Kitura-Credentials package that offers both Codable and Raw routing methods for easily authenticating JWTs. This guide will demonstrate how to use Swift-JWT and Kitura-CredentialsJWT to implement Single Sign On (SSO) authentication for your Kitura routes. This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.
 
 ---
 
@@ -231,7 +231,7 @@ app.router.get("/jwtprotected") { request, response, next in
         }
 ```
 
-Let's break these lines down individually. The first line creates a CredentialsJWT instance with the default options using the built in ClaimsStandardJWT claims from the Swift-JWT package.  The second line creates the middleware instance using the Credentials package that we can register plugins to.  The third line registers the created CredentialsJWT instance to the created middleware instance and the line after adds a GET route to the router that allows an authentication request to take place.  The final line is the declaration of the function that will verify the JWT we send, if the request is authorized, then the response sent is the id field of your JWT.
+Let's break these lines down individually. The first line creates a CredentialsJWT instance with the default options using the built in ClaimsStandardJWT claims from the Swift-JWT package.  The second line creates the middleware instance using the Credentials package that we can register plugins to.  The third line registers the created CredentialsJWT instance to the created middleware instance and the line after adds a GET route to the router that allows an authentication request to take place.  The final line is the declaration of the function that will verify the JWT we send, if the request is authorized, then the response sent is the `id` field of your JWT.
 
 ---
 
@@ -327,7 +327,7 @@ struct UserCredentials: Codable {
 }
 ```
 
-> For simplicity, we will have the id be the same value as the username in this example.
+>For simplicity, in this example, the id will have the same value as the username.
 
 We need to rewrite our JWT generation so that it creates a JWT with the correct claims:
 
@@ -415,7 +415,7 @@ In our example we used raw routing since we chose to pass the user credentials v
 
 In the JWTRoutesFile.swift we are going to create a new route for a TypeSafeJWT.
 
-In the function initializeJWTRoutes, declare the verifier for the TypeSafeJWT (this example is using the hs256 algorithm):
+In the function initializeJWTRoutes, declare the verifier for the TypeSafeJWT (this example is using the HS256 algorithm):
 
 ```swift
 TypeSafeJWT.verifier = .hs256(key: Data("kitura".utf8))

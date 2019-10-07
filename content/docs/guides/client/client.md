@@ -15,7 +15,7 @@ A client is a computer hardware device or software that is capable of obtaining 
 
 ##SwiftyRequest
 
-[SwiftyRequest](https://github.com/IBM-Swift/SwiftyRequest) is an HTTP client built for swift.
+[SwiftyRequest](https://github.com/IBM-Swift/SwiftyRequest) is an HTTP client built for Swift.
 
 ---
 ##Next Steps:
