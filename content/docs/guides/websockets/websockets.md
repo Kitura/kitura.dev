@@ -9,7 +9,7 @@ In the early days of the web, a client and server relationship was viewed as fol
 
 WebSockets were created as a way of providing a low latency persistent connection that is bidirectional between a client and a server. They are low latency as there is no need to send lots of headers that typical HTTP requests consist of. A WebSocket connection is created with a WebSocket handshake, this involves the client sending an initial HTTP request including an Upgrade' header to which, if the server supports the protocol, it agrees with the request and sends back its own 'Upgrade' header in response. After a successful handshake, the established connection uses the WebSocket protocol 'ws'.
 
-![WebSocket picture](../../../../website/src/images/websocket.png)
+![Websocket Picture](../../../images/websocket.png)
 
 WebSockets send data using a frame-based messaging system that helps reduce the amount of non-payload data that is transferred. Data is transferred as messages that consist of one or more frames containing the payload. Each frame is prefixed with 4-12 bytes of data about the payload so that it can be reconstructed properly. This is useful as the server or client can transfer as much data as they like without all the header overheads that come with traditional HTTP requests.
 
