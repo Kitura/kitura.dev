@@ -5,13 +5,13 @@ title: Raw Routing
 
 #Raw Routing
 
-Raw routing is based on the Express framework for Node.js where the route handlers are called with RouterRequest and RouterResponse objects, which respectively handle the client request and build the response, along with a next completion handler.
+Raw routing is based on the [Express](https://expressjs.com) framework for Node.js where the route handlers are called with `RouterRequest` and `RouterResponse` objects, which respectively handle the client request and build the response, along with a `next` completion handler.
 
 Raw routing provides great flexibility and control, but requires you to understand the structure of requests, how to interpret HTTP request headers correctly, how to verify data, and to manually carry out things like JSON parsing.
 
 In this guide, we will show you how to set up Raw routes on your server. We will store a Swift object that is sent via a POST request. We will then return that object when a user sends a GET request.
 
-> If you don't have a Kitura server, follow our Create a server guide.
+> If you don't have a Kitura server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
 ---
 
@@ -19,25 +19,25 @@ In this guide, we will show you how to set up Raw routes on your server. We will
 
 We are going to create a new file, where we will define the routes for this guide.
 
-Open your Application.swift file:
+Open your `Application.swift` file:
 
 ```
 open Sources/Application/Application.swift
 ```
 
-Inside the postInit() function add:
+Inside the `postInit()` function add:
 
 ```swift
 initializeRawRoutes(app: self)
 ```
 
-Create a new file, called RawRoutes.swift:
+Create a new file, called `RawRoutes.swift`:
 
 ```
 touch Sources/Application/Routes/RawRoutes.swift
 ```
 
-Open your RawRoutes.swift file:
+Open your `RawRoutes.swift` file:
 
 ```
 open Sources/Application/Routes/RawRoutes.swift
@@ -54,13 +54,13 @@ extension App {
 }
 ```
 
-This code contains two sections. The first is the initializeRawRoutes function. This will be run after the application has been initialized and is where we register routes on our router. The second is the App extension. This is where we define a bookStore which will store an array of objects. We will use the Book model from the routing guide, however you could use any Codable type.
+This code contains two sections. The first is the `initializeRawRoutes` function. This will be run after the application has been initialized and is where we register routes on our router. The second is the `App` extension. This is where we define a `bookStore` which will store an array of objects. We will use the [Book model from the routing guide](./what-is-routing#bookmodel), however you could use any Codable type.
 
 ---
 
 ##Step 2: Create a POST route
 
-Inside the initializeRawRoutes function add:
+Inside the `initializeRawRoutes` function add:
 
 ```swift
 app.router.post("/raw") { request, response, next in
@@ -70,11 +70,11 @@ app.router.post("/raw") { request, response, next in
 
 What we've done is register a POST on our router that will handle any POST requests made on "/raw".
 
-> If the values request, response and next are unfamiliar to you, learn more about them in our What is Routing? guide.
+> If the values `request`, `response` and `next` are unfamiliar to you, learn more about them in our [What is Routing?](./what-is-routing) guide.
 
 The POST route will be used to send information about our books to the server, therefore we need a way of reading this data from the request.
 
-To do this we will use the read(as:) method of the RouterRequest class, as this method can throw we wrap it in a do-catch block:
+To do this we will use the `read(as:)` method of the `RouterRequest` class, as this method can throw we wrap it in a do-catch block:
 
 ```swift
 do {
@@ -84,7 +84,7 @@ do {
 }
 ```
 
-We will now save this book to our bookstore and return it to the user with send():
+We will now save this book to our bookstore and return it to the user with `send()`:
 
 ```swift
 App.bookStore.append(book)
@@ -136,7 +136,7 @@ That's it! We've implemented a basic POST route.
 
 We register a GET route in a similar way to the POST route.
 
-Inside the initializeRawRoutes function add:
+Inside the `initializeRawRoutes` function add:
 
 ```swift
 app.router.get("/raw") { request, response, next in
@@ -180,7 +180,7 @@ That's it! We've now implemented a simple GET route.
 
 When we register a GET one route, rather than a GET all route, we use an id parameter.
 
-Inside the initializeRawRoutes function add:
+Inside the `initializeRawRoutes` function add:
 
 ```swift
 app.router.get("/raw/:id") { request, response, next in
@@ -188,7 +188,7 @@ app.router.get("/raw/:id") { request, response, next in
 }
 ```
 
-In this case, the path "/:id" will be for "/123" as well as "/abc". You can then access the id parameter’s value via request.parameters["id"]:
+In this case, the path "/:id" will be for "/123" as well as "/abc". You can then access the id parameter’s value via `request.parameters["id"]`:
 
 ```swift
 guard let idString = request.parameters["id"],
@@ -202,7 +202,7 @@ else {
 response.send(App.bookStore[id])
 ```
 
-Your completed GET with id route, should then look as follows:
+Your completed GET with `id` route, should then look as follows:
 
 ```swift
 app.router.get("/raw/:id") { request, response, next in
@@ -248,35 +248,48 @@ curl -X POST \
        }'
 ```
 
+Then open the browser at http://localhost:8080/raw/1
+
+This will make a new GET request to the server and you should see the second book in JSON format:
+
+```
+{
+    "id": 1,
+    "title": "Harry Potter",
+    "price": 10.00,
+    "genre": "Fantasy"
+}
+```
+
 That's it! We've now also implemented a GET one route.
 
 ---
 
 ##Step 5: Making bookstore thread safe (Optional)
 
-Kitura route handlers are asynchronous. If multiple route threads access the same object at the same time they will crash. To prevent these collisions, we will serialize access to the rawStore.
+Kitura route handlers are asynchronous. If multiple route threads access the same object at the same time they will crash. To prevent these collisions, we will serialize access to the `rawStore`.
 
-> If you have completed the Codable Routing guide, you will already have the execute function.
+> If you have completed the [Codable Routing guide](./codable-routing), you will already have the execute function.
 
-Open your Application.swift file:
+Open your `Application.swift` file:
 
 ```
 open Sources/Application/Application.swift
 ```
 
-Add Dispatch to the import statements:
+Add `Dispatch` to the import statements:
 
 ```swift
 import Dispatch
 ```
 
-Inside the App class, add a DispatchQueue:
+Inside the `App` class, add a `DispatchQueue`:
 
 ```swift
 let workerQueue = DispatchQueue(label: "worker")
 ```
 
-At the end of the App class, add a helper function for atomically executing code:
+At the end of the `App` class, add a helper function for atomically executing code:
 
 ```swift
 func execute(_ block: (() -> Void)) {
@@ -286,9 +299,9 @@ func execute(_ block: (() -> Void)) {
 }
 ```
 
-Back in RawRoutes.swift, we wrap the code in our handlers with this execute function.
+Back in `RawRoutes.swift`, we wrap the code in our handlers with this execute function.
 
-Your completed RawRouting.swift should now look as follows:
+Your completed `RawRouting.swift` should now look as follows:
 
 ```swift
 func initializeRawRoutes(app: App) {
@@ -339,3 +352,6 @@ However, if the server is restarted, all the data will be lost and we will have 
 
 In the Database Guide we will look to resolve this issue and add persistence.
 
+##Next steps
+
+[Databases](../databases/what-are-databases): Learn about databases and the database providers Kitura supports.

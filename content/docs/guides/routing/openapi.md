@@ -7,7 +7,7 @@ title: Add OpenAPI to your app
 
 [Kitura-OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI) is a library which makes it easy to add [OpenAPI](https://www.openapis.org), also known as Swagger, support to your Codable routing-based Kitura application.
 
-In this guide we show you how to host both an automatically generated OpenAPI definition of your application on the endpoint **"/openapi"**, and the Swagger UI tool on the endpoint **"/openapi/ui"**. We also demonstrate how simple this makes testing your routes!
+In this guide we show you how to host both an automatically generated OpenAPI definition of your application on the endpoint `"/openapi"`, and the Swagger UI tool on the endpoint `"/openapi/ui"`. We also demonstrate how simple this makes testing your routes!
 
 ---
 
@@ -23,7 +23,7 @@ First we need to [add OpenAPI to our dependencies](https://github.com/IBM-Swift/
 
 Next, we need to import KituraOpenAPI into our project.
 
-Open your **Application.swift** file:
+Open your `Application.swift` file:
 ```
 open Sources/Application/Application.swift
 ```
@@ -35,14 +35,14 @@ import KituraOpenAPI
 
 Next we need to add the KituraOpenAPI endpoints to our router.
 
-Inside the **postInit()** function add:
+Inside the `postInit()` function add:
 ```swift
 KituraOpenAPI.addEndpoints(to: router)
 ```
 
 That's all we need to do to enable KituraOpenAPI on our server.
 
->By default, KituraOpenAPI is served on the **"/openapi"** and **"/openapi/ui"** paths.
+>By default, KituraOpenAPI is served on the `"/openapi"` and `"/openapi/ui"` paths.
 
 ---
 
@@ -57,33 +57,33 @@ localhost:8080/openapi/ui
 
 You should see a screen similar to the following:
 
-<div class="img-container">![Kitura OpenAPI routes list](../../../images/OpenAPI-UI-Overview.png)</div>
+![Kitura OpenAPI routes list](../../../images/OpenAPI-UI-Overview.png)
 
 Kitura OpenAPI provides a UI in which we can view our Codable routes and models.
 
 We can view any of our routes simply by clicking on them.
 
-Let's start by clicking on the **GET** button:
+Let's start by clicking on the `GET` button:
 
 ![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-GET.png)
 
 We can see here the parameters section is empty, as we'd expect because GET routes typically only retrieve data.
 
-However we can see an example of the response we should be getting from the GET route on **"/books"**.
+However we can see an example of the response we should be getting from the GET route on `"/books"`.
 
-As this is a GetAll route it's an array of JSON objects that match our Book model.
+>As this is a GetAll route it's an array of JSON objects that match our Book model.
 
-Next we can view the POST route by clicking the **POST** button:
+Next we can view the POST route by clicking the `POST` button:
 
 ![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-POST.png)
 
-We can see from this screen what input the **POST** on **"/books"** is expecting, and OpenAPI even provides an example.
+We can see from this screen what input the `POST` on `"/books"` is expecting, and OpenAPI even provides an example.
 
 Information regarding the parameter type is also provided, application/json in our case.
 
 As well as being able to view the expected input we can also view the expected response.
 
-POST routes typically respond with the data that was posted, so in this case the expected request input is the same as the response.
+>POST routes typically respond with the data that was posted, so in this case the expected request input is the same as the response.
 
 Kitura OpenAPI also allows us to test our Codable routes in a very simple way.
 
@@ -93,7 +93,7 @@ In the next sections we will look at how we can test our Codable routes.
 
 ## Step 3: Test a POST route
 
-We can test the POST route by clicking the **POST** button, then clicking the **Try it out** button in the top right:
+We can test the POST route by clicking the `POST` button, then clicking the `Try it out` button in the top right:
 
 ![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-POST-Try.png)
 
@@ -125,13 +125,13 @@ Now that we've posted some data, we can test retrieving the data.
 
 ## Step 4: Test a GET route
 
-To test our GET route we need to click on the **GET** button and then click **Try it out** in the top right corner.
+To test our GET route we need to click on the `GET` button and then click `Try it out` in the top right corner.
 
 We should see the following:
 
 ![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-GET-Try.png)
 
-As this is a GET route we don't need to provide any data therefore we can just click execute:
+As this is a `GET` route we don't need to provide any data therefore we can just click execute:
 
 ![Kitura OpenAPI example GET route](../../../images/OpenAPI-UI-GET-Execute.png)
 
@@ -139,9 +139,9 @@ This should look somewhat familiar as it's similiar to the result of our POST te
 
 We're provided with the Curl command which we could execute in a terminal.
 
-The response body is slightly different, it is an array of JSON objects which is what we'd expect from the GetAll route.
+The response body is slightly different, it is an array of JSON objects which is what we'd expect from the `GetAll` route.
 
-The status code is also different, we have a value of 200 which means **Success**.
+The status code is also different, we have a value of 200 which means `Success`.
 
 ---
 

@@ -5,11 +5,11 @@ title: HeliumLogger
 
 #HeliumLogger
 
-Helium Logger is a lightweight Swift logging framework which supports logging to standard output.
+[Helium Logger](https://github.com/IBM-Swift/HeliumLogger) is a lightweight Swift logging framework which supports logging to standard output.
 
 In this guide we are going to show you how to add Helium Logger to a Kitura server, log messages using the logger and set the level of logging that should be displayed.
 
-> If you don't have a Kitura server, follow our Create a server guide.
+> If you don't have a Kitura server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
 ---
 
@@ -17,32 +17,32 @@ In this guide we are going to show you how to add Helium Logger to a Kitura serv
 
 If you created your server using the CLI or the macOS app, your project will have HeliumLogger by default. In this case, we can skip to step 3.
 
-Otherwise, we need to add HeliumLogger to our dependencies.
+Otherwise, we need to [add HeliumLogger to our dependencies](https://github.com/IBM-Swift/HeliumLogger#add-dependencies).
 
-We then need to import LoggerAPI and HeliumLogger inside our project.
+We then need to import `LoggerAPI` and `HeliumLogger` inside our project.
 
-Open your main.swift file:
+Open your `main.swift` file:
 
 ```
 open Sources/MyKituraApp/main.swift
 ```
 
-At the top of the file, add LoggerAPI and HeliumLogger to our import statements:
+At the top of the file, add `LoggerAPI` and `HeliumLogger` to our import statements:
 
 ```swift
 import LoggerAPI
 import HeliumLogger
 ```
 
-> LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers. HeliumLogger has LoggerAPI included as a dependency, so we do not need to add this to our Package.swift file.
+> LoggerAPI is a logger protocol that provides a common logging interface for different kinds of loggers. HeliumLogger has LoggerAPI included as a dependency, so we do not need to add this to our `Package.swift` file.
 
 ---
 
 ##Step 2: Add logging code to the server
 
-To use the default settings for HeliumLogger we just need to call the use() method in HeliumLogger.
+To use the default settings for HeliumLogger we just need to call the `use()` method in HeliumLogger.
 
-Inside your main.swift add:
+Inside your `main.swift` add:
 
 ```swift
 HeliumLogger.use()
@@ -56,7 +56,7 @@ Inside the catch block, log the thrown error:
 Log.error(error.localizedDescription)
 ```
 
-Your main.swift should look like this:
+Your `main.swift` should look like this:
 
 ```swift
 import Foundation
@@ -91,9 +91,9 @@ HeliumLogger can be customized to change the level of logging.
 
 This means you can decide how much information you'd like to be logged, based on importance.
 
-If you'd like to customize the level of logging you can simply pass the level to the use() method.
+If you'd like to customize the level of logging you can simply pass the level to the `use()` method.
 
-Inside your main.swift file, set the logging level:
+Inside your `main.swift` file, set the logging level:
 
 ```swift
 HeliumLogger.use(.debug)
@@ -111,21 +111,21 @@ There are several logging levels:
 
 Verbose is set by default. Setting a particular logging level also includes all levels below that.
 
-For example, if you set a logging level of verbose:
+For example, if you set a logging level of `verbose`:
 
 ```swift
 HeliumLogger.use(.verbose)
 ```
 
-You will get logging for; verbose, info, warning and error.
+You will get logging for; `verbose`, `info`, `warning` and `error`.
 
-Similarly if you set a logging level of warning:
+Similarly if you set a logging level of `warning`:
 
 ```swift
 HeliumLogger.use(.warning)
 ```
 
-You will get logging for warning and error.
+You will get logging for `warning` and `error`.
 
 ---
 
@@ -133,7 +133,7 @@ You will get logging for warning and error.
 
 Once you have your Logger configured, you can use it within your application.
 
-Open your Application.swift file:
+Open your `Application.swift` file:
 
 ```
 open Sources/Application/Application.swift
@@ -145,7 +145,7 @@ Ensure LoggerAPI is imported:
 import LoggerAPI
 ```
 
-Add a log message to the App's init() function:
+Add a log message to the App's `init()` function:
 
 ```swift
 Log.info("Hello World")
@@ -159,3 +159,6 @@ Restart your server and look through the logs. You should see your message:
 
 Your log message is printed along with the time it occurred, the log level and the location in your code.
 
+##Next steps
+
+[Routing](../routing/what-is-routing): Learn about routing and the two types Kitura supports.

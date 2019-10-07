@@ -19,13 +19,13 @@ It is our intent to make Kitura-NIO the default networking stack in a future rel
 
 ## Using Kitura-NIO
 
-With Kitura 2.5 and future releases, to run on top of Kitura-NIO (instead of the current default Kitura-net) all you need to do is set an environment variable called **KITURA_NIO** before building your Kitura application:
+With Kitura 2.5 and future releases, to run on top of Kitura-NIO (instead of the current default Kitura-net) all you need to do is set an environment variable called `KITURA_NIO` before building your Kitura application:
 ```
 export KITURA_NIO=1 && swift build
 ```
 Note, there is no need to set anything at runtime, choosing your underlying networking can only be done when you build your application.
 
-If you have already built your Kitura application using Kitura-net and want to switch to using **KITURA_NIO**, you need to update the package before building:
+If you have already built your Kitura application using Kitura-net and want to switch to using `KITURA_NIO`, you need to update the package before building:
 ```
 export KITURA_NIO=1 && swift package update && swift build
 ```
@@ -37,7 +37,7 @@ Please note that though Kitura-NIO has its own GitHub repository, the package na
 
 ## Using Kitura WebSocket NIO
 
-[Kitura WebSocket NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) and [Kitura WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) have seperate GitHub repositories, but an identical API. The underlying code, however is different in how it functions, so it is often helpful to include this snippet of code in your **Package.swift** file so that the correct package is used:
+[Kitura WebSocket NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) and [Kitura WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) have seperate GitHub repositories, but an identical API. The underlying code, however is different in how it functions, so it is often helpful to include this snippet of code in your `Package.swift` file so that the correct package is used:
 ```swift
 // Use alternate implementation of Kitura-WebSocket while building in NIO mode
 if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {

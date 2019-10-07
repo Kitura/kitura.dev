@@ -4,15 +4,15 @@ title: Installation
 ---
 #Installation
 
-To use Kitura, you first need to install Swift. You can install Swift on MacOS and/or Linux. 
+To use Kitura, you first need to install Swift. You can install Swift on MacOS and/or Linux.
 
-Kitura works on both MacOS and Linux, so choose whichever platform you prefer. 
+Kitura works on both MacOS and Linux, so choose whichever platform you prefer.
 
 ---
 
 ##Install Swift on MacOS
 
-Download and install the latest version of Xcode from the App Store.
+Download and install the latest version of [Xcode](https://developer.apple.com/xcode/) from the App Store.
 
 To verify your Swift installation, open a Terminal, enter the ‘swift’ command and pass the ‘--version’ flag:
 
@@ -76,3 +76,9 @@ You should see something similar like this:
 Swift version x.x.x
 ```
 
+---
+
+## Next steps
+[Hello World](./hello-world): Create a simple "Hello World" Kitura server.
+
+[Create a Server](./create-server-cli): Create a Kitura server with scaffolding for a full application.
