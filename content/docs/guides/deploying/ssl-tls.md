@@ -27,7 +27,7 @@ TLS evolved out of Netscape’s Secure Sockets Layer (SSL) protocol in order to 
 
 To enable TLS, a server needs a certificate and a corresponding secret key. Certificates are files that bind together information about the identity of the owner of a site and the public half of an asymmetric key pair (usually RSA). Certificates are usually digitally signed by a certificate authority (CA) who verifies that the identity information in the certificate is correct. This creates a chain of certificates between the site owner certificate and a CA certificate and transitive trust. Assuming that we trust the CA, we can trust the validity of the server certificate.
 
-> If you want to create a CA-signed certificate chain, Let’s Encrypt is a Certificate Authority (CA), provided by the non-profit Internet Security Research Group (ISRG) that makes it easy to generate and install free TLS/SSL certificates.
+> If you want to create a CA-signed certificate chain, [Let’s Encrypt](https://letsencrypt.org) is a Certificate Authority (CA), provided by the non-profit Internet Security Research Group (ISRG) that makes it easy to generate and install free TLS/SSL certificates.
 
 In this guide, we will use OpenSSL to generate a self-signed certificate.
 
@@ -71,25 +71,25 @@ openssl pkcs12 -export -out cert.pfx -inkey key.pem -in cert.pem
 
 Now we have created our certificate, we are going to set up our SSL configuration so that it can direct Kitura to the required files.
 
-Open your Application.swift file:
+Open your `Application.swift` file:
 
 ```
 open Sources/Application/Application.swift
 ```
 
-We are going to use FileKit to access our certificate file, so we need to add FileKit to our dependencies.
+We are going to use [FileKit](https://github.com/IBM-Swift/FileKit) to access our certificate file, so we need to [add FileKit to our dependencies](https://github.com/IBM-Swift/FileKit#add-dependencies).
 
-We also need to add FileKit to our import statements:
+We also need to add `FileKit` to our import statements:
 
 ```swift
 import FileKit
 ```
 
-Now we initialize an SSLConfig struct. On macOS we use Apple Secure Transport under the covers, which requires the path to our cert.pfx file and the password we used to encrypt the file. On Linux we use OpenSSL under the covers, which requires the paths to the certificate and private key PEM files.
+Now we initialize an `SSLConfig` struct. On macOS we use Apple Secure Transport under the covers, which requires the path to our `cert.pfx` file and the password we used to encrypt the file. On Linux we use OpenSSL under the covers, which requires the paths to the certificate and private key PEM files.
 
-We use #if to check which operating system we're running on and provide the appropriate files to our configuration.
+We use `#if` to check which operating system we're running on and provide the appropriate files to our configuration.
 
-Inside the App class, add the following code:
+Inside the `App` class, add the following code:
 
 ```swift
 #if os(Linux)
@@ -110,7 +110,7 @@ let sslConfig =  SSLConfig(withChainFilePath: FileKit.projectFolder + "/Credenti
 
 ##Step 3: Configure our Kitura server to use SSL
 
-Now we have our SSL configuration, we need to pass it to Kitura. We do this as part of the addHTTPServer function, using the withSSL parameter.
+Now we have our SSL configuration, we need to pass it to Kitura. We do this as part of the `addHTTPServer` function, using the `withSSL` parameter.
 
 Inside the run function, replace:
 

@@ -13,13 +13,13 @@ You can deploy your Kitura application to any Kubernetes cluster. In this guide 
 
 ##Step 1: Create Cluster on IBM Cloud
 
-Before we can create a Kubernetes Cluster on IBM Cloud we need to create an IBM Cloud account.
+Before we can create a Kubernetes Cluster on IBM Cloud we need to [create an IBM Cloud account](https://cloud.ibm.com/registration).
 
-Once we have an IBM Cloud account, we can create a Kubernetes cluster by visiting the IBM Cloud Catalog. The link will take you to the Containers page, select Kubernetes Service and click Create.
+Once we have an IBM Cloud account, we can create a Kubernetes cluster by visiting the [IBM Cloud Catalog](https://cloud.ibm.com/catalog?category=containers). The link will take you to the Containers page, select `Kubernetes Service` and click `Create`.
 
-When you create the new cluster, ensure the Free plan option is selected, and the cluster name, for the purposes of this example, is myapp-cluster.
+When you create the new cluster, ensure the `Free` plan option is selected, and the cluster name, for the purposes of this example, is `myapp-cluster`.
 
-> Set Geography and Metro to whatever is local to you and click the Create cluster button.
+> Set Geography and Metro to whatever is local to you and click the `Create cluster` button.
 
 Creating a cluster takes several minutes, so grab a tea or coffee in the meantime!
 
@@ -40,43 +40,43 @@ kitura idt
 > curl -sL https://ibm.biz/idt-installer | bash
 > ```
 
-In order to log into IBM Cloud via the command line we will need to know some information about our cluster. To find these values, view your cluster in the IBM Cloud, select ... and choose the menu option Connect via CLI.
+In order to log into IBM Cloud via the command line we will need to know some information about our cluster. To find these values, [view your cluster in the IBM Cloud](https://cloud.ibm.com/kubernetes/clusters), select ... and choose the menu option `Connect via CLI`.
 
-Follow the instructions to log into IBM Cloud, download the kubeconfig files for your cluster, set up the KUBECONFIG environment variable, and verify kubectl can communicate with your cluster.
+Follow the instructions to log into IBM Cloud, download the kubeconfig files for your cluster, set up the KUBECONFIG environment variable, and verify `kubectl` can communicate with your cluster.
 
-We should now be able to use kubectl to manage our cluster.
+We should now be able to use `kubectl` to manage our cluster.
 
-> Note: The latest stable version of kubectl is installed with the base IBM Cloud CLI. However, to work with our cluster, you need the Kubernetes CLI major.minor version that matches the Kubernetes cluster major.minor version that you are using.
-> Check that the version of your client kubectl CLI matches the version of the cluster API server by running:
+> Note: The latest stable version of `kubectl` is installed with the base IBM Cloud CLI. However, to work with our cluster, you need the Kubernetes CLI major.minor version that matches the Kubernetes cluster major.minor version that you are using.
+> Check that the version of your client `kubectl` CLI matches the version of the cluster API server by running:
 > ```
 > kubectl version --short
 > ```
-> If the client kubectl version needs updating follow these install instructions. If you install a new version of the kubectl client you need to rerun the configuration steps above (downloading the kubeconfig files and setting up your KUBECONFIG environment variables).
+> If the client `kubectl` version needs updating follow these [install instructions](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install). If you install a new version of the kubectl client you need to rerun the configuration steps above (downloading the kubeconfig files and setting up your KUBECONFIG environment variables).
 
 ---
 
 ##Step 3: Push your Docker image
 
-If you followed our Docker guide, you will have created a runtime Docker image which contains your compiled Kitura application, and the necessary Swift runtime libraries. If you haven't already, tag it appropriately for the registry you are using and push it. If you are yet to choose a registry and have no specific requirements, we suggest you try Docker Hub.
+If you followed our [Docker guide](./docker), you will have created a runtime Docker image which contains your compiled Kitura application, and the necessary Swift runtime libraries. If you haven't already, tag it appropriately for the registry you are using and push it. If you are yet to choose a registry and have no specific requirements, we suggest you try [Docker Hub](https://hub.docker.com).
 
 ---
 
 ##Step 4: Update Helm Chart
 
-Helm is a package manager for Kubernetes applications. Helm charts are packages that contain enough information to install Kubernetes resources into a Kubernetes cluster. Charts contain a Chart.yaml file along with templates, default values (defined in values.yaml) and dependencies.
+Helm is a package manager for Kubernetes applications. Helm charts are packages that contain enough information to install Kubernetes resources into a Kubernetes cluster. Charts contain a `Chart.yaml` file along with templates, default values (defined in `values.yaml`) and dependencies.
 
 > If you created your application using the Kitura CLI or the macOS app then you should already have a Helm chart provided.
-> If not then you can follow the Helm docs to create your own chart.
+> If not then you can follow the [Helm docs](https://helm.sh/docs/using_helm/#quickstart-guide) to create your own chart.
 
 The Helm chart provided with the Kitura CLI and macOS is configured out of the box for the application.
 
-All we need to do is edit the repository and tag variables in the values.yaml file in our /chart/<your-appname> directory, to point at the location and tag for our Docker image:
+All we need to do is edit the `repository` and `tag` variables in the `values.yaml` file in our `/chart/<your-appname>` directory, to point at the location and tag for our Docker image:
 
 ```
 image:
     repository: registry-1.docker.io/<your-namespace>/myapp-run
     tag: v1.0.0
-        
+
 ```
 
 ---
@@ -93,9 +93,9 @@ This will install Tiller into our running Kubernetes cluster and set up any nece
 
 Tiller runs inside your Kubernetes cluster, and manages releases of your charts. Tiller needs access to the Kubernetes API to be able to do this. Most cloud providers, including IBM Cloud, enable a feature called Role-Based Access Control (RBAC) - these policies are used for the management of your cluster, they allow you to specify which types of actions are permitted depending on the user and their role. By default, in an RBAC-enabled Kubernetes cluster, Tiller will not be permitted to carry out these operations, so we need to create a service account for Tiller with the right roles and permissions to access resources.
 
-Bitnami has a great guide outlining how to do this, follow Use Case 2: Enable Helm In Your Cluster to configure RBAC in your Kubernetes cluster.
+Bitnami has a great guide outlining how to do this, follow [Use Case 2: Enable Helm In Your Cluster](https://docs.bitnami.com/kubernetes/how-to/configure-rbac-in-your-kubernetes-cluster/) to configure RBAC in your Kubernetes cluster.
 
-To deploy our application using Helm install, run the following from the /chart/<your-appname> directory, using --name to specify the name:
+To deploy our application using Helm install, run the following from the `/chart/<your-appname>` directory, using `--name` to specify the name:
 
 ```
 helm install --name bookstore-app .
@@ -138,4 +138,3 @@ http://<Public-IP>:<NodePort>
 ```
 
 Congratulations! We should now see our application running on IBM Cloud!
-
