@@ -67,6 +67,10 @@
     text-decoration: none;
   }
 
+  .language-text {
+    font-weight: 600;
+  }
+
   pre {
     position: relative;
     height: auto;
@@ -81,6 +85,10 @@
     overflow-x: auto;
     overflow-y: hidden;
     cursor: pointer;
+
+    .language-text {
+      font-weight: 400;
+    }
   }
 
   blockquote {
