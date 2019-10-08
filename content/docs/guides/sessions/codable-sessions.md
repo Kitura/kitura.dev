@@ -7,7 +7,7 @@ title: Codable Routing Session
 
 HTTP is a stateless connection protocol, that is the server can't distinguish one request from another. Sessions and cookies provide HTTP with state, they allow the server to know who is making a specific request and respond accordingly.
 
-This guide uses Kitura-Session with Codable routing leveraging type-safe sessions. If you want to use sessions with raw routing, check out the Kitura Session with raw routing guide.
+This guide uses [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) with Codable routing leveraging type-safe sessions. If you want to use sessions with raw routing, check out the [Kitura Session with raw routing guide](./raw-session).
 
 ---
 
@@ -19,33 +19,33 @@ In this guide we are going to create two Kitura routes:
 
 - A POST route, where we store a book in our session.
 
-We are using the Book model from the routing guide in our routes, however you could use any codable object.
+We are using [the Book model from the routing guide](../routing/what-is-routing#bookmodel) in our routes, however you could use any codable object.
 
-To use Kitura-Session from a server, we need to add Kitura-Session to our dependencies.
+To use Kitura-Session from a server, we need to [add Kitura-Session to our dependencies](https://github.com/IBM-Swift/Kitura-Session#add-dependencies).
 
-> If you don't have a server, follow our Create a server guide.
+> If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
-Once that is complete, open your Application.swift file in your default text editor (or Xcode if you prefer):
+Once that is complete, open your `Application.swift` file in your default text editor (or Xcode if you prefer):
 
-Open your Application.swift file:
+Open your `Application.swift` file:
 
 ```
 open Sources/Application/Application.swift
 ```
 
-Inside the postInit() function add:
+Inside the `postInit()` function add:
 
 ```swift
 initializeTypeSafeSessionRoutes(app: self)
 ```
 
-Create a new file, called TypeSafeSessionRoutes.swift:
+Create a new file, called `TypeSafeSessionRoutes.swift`:
 
 ```
 touch Sources/Application/Routes/TypeSafeSessionRoutes.swift
 ```
 
-Open your TypeSafeSessionRoutes.swift file:
+Open your `TypeSafeSessionRoutes.swift` file:
 
 ```
 open Sources/Application/Routes/TypeSafeSessionRoutes.swift
@@ -66,35 +66,35 @@ extension App {
 }
 ```
 
-We will add our postSessionHandler and getSessionHandler later in this guide.
+We will add our `postSessionHandler` and `getSessionHandler` later in this guide.
 
 ---
 
 ##Step 2: Define your Session
 
-To use sessions with Codable routes, we need to model the structure of what we will store in the session. We do this by defining a Swift type that conforms to the TypeSafeSession protocol.
+To use sessions with Codable routes, we need to model the structure of what we will store in the session. We do this by defining a Swift type that conforms to the `TypeSafeSession` protocol.
 
-If you don't already have one, create a Middlewares folder:
+If you don't already have one, create a `Middlewares` folder:
 
 ```
 mkdir Sources/Application/Middlewares
 ```
 
-Create a new file, called CheckoutSession.swift:
+Create a new file, called `CheckoutSession.swift`:
 
 ```
 touch Sources/Application/Middlewares/CheckoutSession.swift
 ```
 
-Open your CheckoutSession.swift file:
+Open your `CheckoutSession.swift` file:
 
 ```
 open Sources/Application/Middlewares/CheckoutSession.swift
 ```
 
-We can use either a class or a struct for TypeSafeMiddleware here but we will use a Class.
+We can use either a class or a struct for `TypeSafeMiddleware` here but we will use a Class.
 
-Inside this file, define your CheckoutSession class:
+Inside this file, define your `CheckoutSession` class:
 
 ```swift
 import KituraSession
@@ -128,13 +128,13 @@ The minimum requirements for a type-safe session are:
 
 With our class, we have created a session that will store an array of books, via a cookie called "MySession" and using "Top Secret" as the password to encrypt that cookie. Since we didn't specify a store a default in memory store is used.
 
-> For an example of a persistent store for sessions see Kitura-Session-Redis
+> For an example of a persistent store for sessions see [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis)
 
 ---
 
 ##Step 3: Add session POST route
 
-Inside the app extension in TypeSafeSessionRoutes.swift, we add our postSessionHandler:
+Inside the app extension in `TypeSafeSessionRoutes.swift`, we add our `postSessionHandler`:
 
 ```swift
 func postSessionHandler(session: CheckoutSession, book: Book, completion: (Book?, RequestError?) -> Void) {
@@ -146,7 +146,7 @@ We have registered our TypeSafeSession on our handler by adding it to the signat
 
 When the handler is called the middleware is run and our session is created.
 
-Within postSessionHandler, we can then interact with our session:
+Within `postSessionHandler`, we can then interact with our session:
 
 ```swift
 session.books.append(book)
@@ -156,7 +156,7 @@ completion(book, nil)
 
 What we're doing here is storing the posted Book into the session.
 
-We use the append method as we know books is an Array as we defined it as an Array in the CheckoutSession class.
+We use the `append` method as we know `books` is an Array as we defined it as an Array in the CheckoutSession class.
 
 Then we need to save the session.
 
@@ -166,7 +166,7 @@ Now we can add a route for retrieving the data.
 
 ##Step 4: Add session GET route
 
-Below our postSessionHandler handler add:
+Below our `postSessionHandler` handler add:
 
 ```swift
 func getSessionHandler(session: CheckoutSession, completion: ([Book]?, RequestError?) -> Void) -> Void {
@@ -202,7 +202,7 @@ extension App {
 
 ##Step 5: Test our Session
 
-An easy way to test our our session is using Kitura OpenAPI. You can follow our Kitura OpenAPI Guide to learn how to set up OpenAPI and use the interface for testing.
+An easy way to test our our session is using [Kitura OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI). You can follow our [Kitura OpenAPI Guide](../routing/kitura-openapi) to learn how to set up OpenAPI and use the interface for testing.
 
 Alternatively, we can test our routes by sending a request using curl, with cookies enabled.
 
@@ -227,7 +227,7 @@ If our request was successful, our book will be returned to us:
 {"id":1,"title":"War and Peace","price":10.99,"genre":"Historical drama"}
 ```
 
-We will also have a cookie that curl has stored in the cookies.txt file.
+We will also have a cookie that curl has stored in the `cookies.txt` file.
 
 To retrieve our book, we make another curl request to our server:
 
@@ -266,3 +266,7 @@ This represents a user without a session so we are returned an empty array:
 ```
 []
 ```
+
+##Next steps
+
+[Authentication](../authentication/what-is-authentication): Learn about authentication and what Kitura provides.
