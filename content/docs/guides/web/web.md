@@ -11,7 +11,7 @@ Kitura supports being used as the server for a web application, and provides the
 
 > Since web applications are a non-RESTful API, we will need Raw routing to use these features.
 
---- 
+---
 
 ##Serving static files
 
@@ -72,6 +72,14 @@ You could reuse this template file to generate every page on your website, but t
 
 Here is a list of Template Engines Kitura works with:
 
-- Stencil using the Kitura-StencilTemplateEngine plugin.
+- [Stencil](https://github.com/stencilproject/Stencil) using the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) plugin.
 
-- Markdown using the Kitura-Markdown plugin.
+- [Markdown](https://daringfireball.net/projects/markdown/) using the [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown) plugin.
+
+##Next steps
+
+[StaticFileServer](./static-file-server): Learn how to serve static files from a Kitura server.
+
+[Stencil](./stencil): Learn how to add Stencil templating to your Kitura application.
+
+[Markdown](./markdown): Learn how to add Markdown templating to your Kitura application.
