@@ -154,7 +154,7 @@ Now to test our templating we first need to start the Kitura server.
 
 Then in a brower we can open:
 
-http://localhost:8080/book
+<a href="http://localhost:8080/book" target="blank">localhost:8080/book</a>
 
 In the browser we should see:
 

@@ -293,6 +293,6 @@ func couchFindAllHandler(completion: @escaping ([BookDocument]?, RequestError?) 
 
 If you have followed the guide so far then you will now have a book document in your database, which we can retrieve using the code we just wrote.
 
-To do this, start the server and navigate to: http://localhost:8080/couch.
+To do this, start the server and navigate to: <a href="http://localhost:8080/couch" target="blank">localhost:8080/couch</a>.
 
 This will call GET on the `/couch` route and we will see the book we posted earlier returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.

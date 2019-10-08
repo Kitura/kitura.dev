@@ -11,7 +11,7 @@ title: Add Swift Kuery to your app
 
 ## Step 1: Create the Kuery routes
 
-We are going to create a new file in our project for the Kuery routes.  In this guide we will be using Codable routing, however, there will be links to Raw routing versions of code beneath code snippets where routing differs.
+We are going to create a new file in our project for the Kuery routes.  The routes defined in this guide are examples of Codable routes. The equivalent definitions for raw routes can be found using the links below each code segment.
 
 >If you don't have a server, follow our [Create a server](https://www.kitura.io/docs/getting-started/create-server-cli.html) guide.
 
@@ -58,10 +58,11 @@ extension App {
     }
 }
 ```
-[Raw routing version](./kuery1)
+
+<a href="/docs/databases/kuery1" target="blank"> See the above code as a raw route.</a>
 
 
->The routes in this guide are using the [Book model from the routing guide](../routing/routing.html#bookmodel), however you could use any Codable type.
+>The routes in this guide are using the [Book model from the routing guide](../routing/what-is-routing#bookmodel), however you could use any Codable type.
 
 ---
 
@@ -76,8 +77,6 @@ The algorithms are as follows:
 - [PostgreSQL](./kuery-postgresql)
 - [MySQL](./kuery-mysql)
 - [SQLite](./kuery-sqlite)
-
-> Follow one of the links above to configure your signing and verifying algorithm before continuing with the rest of this guide.
 
 ---
 
@@ -142,7 +141,7 @@ App.pool.getConnection() { connection, error in
 }
 ```
 
-[Raw routing version](./kuery2)
+<a href="/docs/databases/kuery2" target="blank"> See the above code as a raw route.</a>
 
 When we get a connection from the connection pool we need to confirm it's a valid connection.
 
@@ -166,7 +165,7 @@ Once we have defined our insert query, we need to execute the query using the co
     }
 ```
 
-[Raw routing version](./kuery3)
+<a href="/docs/databases/kuery3" target="blank"> See the above code as a raw route.</a>
 
 That's it! We've setup our POST route to save data to a database. the completed handler for your POST route should now look as follows:
 
@@ -190,7 +189,7 @@ func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> V
 }
 ```
 
-[Raw routing version](./kuery4)
+<a href="/docs/databases/kuery4" target="blank"> See the above code as a raw route.</a>
 
 Next we can test our implementation.
 
@@ -261,7 +260,7 @@ App.pool.getConnection() { connection, error in
 }
 ```
 
-[Raw routing version](./kuery5)
+<a href="/docs/databases/kuery5" target="blank"> See the above code as a raw route.</a>
 
 Now we can build our SELECT query that will query the database for every entry in the "BookTable":
 ```
@@ -279,7 +278,7 @@ connection.execute(query: selectQuery) { selectResult in
 }
 ```
 
-[Raw routing version](./kuery6)
+<a href="/docs/databases/kuery6" target="blank"> See the above code as a raw route.</a>
 
 The query should return a set of results, in the code we use `.asResultSet` to check that the returned value is a valid result set, otherwise we log an error and return.
 
@@ -308,7 +307,7 @@ guard let row = row else {
 // Convert row to book here
 ```
 
-[Raw routing version](./kuery7)
+<a href="/docs/databases/kuery7" target="blank"> See the above code as a raw route.</a>
 
 When we get a row back from the database we need to convert it back into a `Book` model type.
 
@@ -409,7 +408,7 @@ extension App {
 }
 ```
 
-[Raw routing version](./kuery8)
+<a href="/docs/databases/kuery8" target="blank"> See the above code as a raw route.</a>
 
 ---
 
@@ -417,6 +416,6 @@ extension App {
 
 If you followed "Step 5: Testing saving to database", then you will have a book in your database, which we can retrieve using the code we wrote in "Step 6: Retrieve data from the database".
 
-To do this, start the server and navigate to: [http://localhost:8080/kuery](http://localhost:8080/kuery)
+To do this, start the server and navigate to: <a href="http://localhost:8080/kuery" target="blank">localhost:8080/kuery</a>
 
 This will call GET on the `/kuery` route and we will see the book we posted in Step 5 returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.

@@ -235,7 +235,7 @@ Now that everything is set up we can test logging in using OAuth 2.0.
 
 Start your server and open your browser at:
 
-[http://localhost:8080/oauth2/protected](http://localhost:8080/oauth2/protected)
+<a href="http://localhost:8080/oauth2/protected" target="blank">localhost:8080/oauth2/protected</a>
 
 We will be sent our unauthorized message since we haven't logged in yet.
 
@@ -243,12 +243,14 @@ We authenticate by going to the login route for our plugin:
 
 [http://localhost:8080/oauth2/google](http://localhost:8080/oauth2/google)
 
+<a href="http://localhost:8080/oauth2/google" target="blank">localhost:8080/oauth2/google</a>
+
 This will send you to the OAuth 2.0 provider who will request that you log in and provide access to our server.
 
 Once you complete this you will be sent back to our server which will redirect you to our "/oauth2/protected" route.
 
 This time you will be authenticated and will see a welcome message.
 
-As long as your session persists, you can return to [http://localhost:8080/oauth2/protected](http://localhost:8080/oauth2/protected) and will be allowed access.
+As long as your session persists, you can return to <a href="http://localhost:8080/oauth2/protected" target="blank">localhost:8080/oauth2/protected</a> and will be allowed access.
 
 Congratulations! You have just set up OAuth 2.0 authentication on your Kitura server.

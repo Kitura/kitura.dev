@@ -94,11 +94,11 @@ To test our static file server, we can view the HTML file we created earlier.
 
 We do this by running our server, then opening our browser at:
 
-http://localhost:8080/public/hello.html
+<a href="http://localhost:8080/public/hello.html" target="blank">localhost:8080/public/hello.html</a>
 
 We should see our HTML document with the "Hello World!" message.
 
-The `StaticFileServer` also loads files from subdirectories of the project's `public` directory, so all we need to do is place a file into a subdirectory e.g. `./public/images/picture.png` and it will be served at http://localhost:8080/public/images/picture.png.
+The `StaticFileServer` also loads files from subdirectories of the project's `public` directory, so all we need to do is place a file into a subdirectory e.g. `./public/images/picture.png` and it will be served at <a href="http://localhost:8080/public/picture.png" target="blank">localhost:8080/public/picture.png</a>.
 
 ---
 

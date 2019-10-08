@@ -206,7 +206,7 @@ extension App {
 
 We need to first start our Kitura server.
 
-Then navigate to: http://localhost:8080/basic
+Then navigate to: <a href="http://localhost:808/basic" target="blank">localhost:8080/basic</a>
 
 Log in with the credentials we defined:
 

@@ -84,7 +84,7 @@ Once the terminal output contains:
 ```
 [INFO] [HTTPServer.swift:195 listen(on:)] Listening on port 8080
 ```
-We can navigate to: [http://localhost:8080](http://localhost:8080) to view our server.
+We can navigate to: <a href="http://localhost:8080" target="blank">localhost:8080</a> to view our server.
 
 ---
 

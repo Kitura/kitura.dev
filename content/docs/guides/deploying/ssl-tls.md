@@ -126,7 +126,7 @@ Kitura.addHTTPServer(onPort: 8080, with: router, withSSL: sslConfig)
 
 To test this, start your server and open your browser at the Kitura landing page:
 
-https://localhost:8080
+<a href="https://localhost:8080" target="blank">localhost:8080</a>
 
 > At this point your browser might stop you with a warning that the SSL certificate it is validating is self-signed. Since you are accessing your own server this isn’t a problem at all. In the advanced settings, you can tell your web-browser to accept the self-signed SSL certificate and continue. In general though, your browser should only trust server certificates which are issued by a valid CA.
 

@@ -78,4 +78,4 @@ The above Docker run command uses the `-p` flag to publish port 8080 to the host
 docker container ps -a
 ```
 
-Since we exposed our ports, we should then be able to navigate to: http://localhost:8080 to view our server.
+Since we exposed our ports, we should then be able to navigate to: <a href="http://localhost:8080" target="blank">localhost:8080</a> to view our server.

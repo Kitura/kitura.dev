@@ -261,7 +261,7 @@ Next we will retrieve our book data.
 
 Open your browser at:
 
-http://localhost:8080/orm
+<a href="http://localhost:8080/orm" target="blank">localhost:8080/orm</a>
 
 This will make a get request to the server and you should see the book we posted before:
 
@@ -301,7 +301,7 @@ func findOneHandler(id: Int, completion: @escaping (Book?, RequestError?) -> Voi
 
 Test this out by opening your browser at:
 
-http://localhost:8080/orm/0
+<a href="http://localhost:8080/orm/0" target="blank">localhost:8080/orm/0</a>
 
 This will make a get request to the server for a book with an `id` of 0, so it should return the book we posted previously.
 

@@ -46,7 +46,7 @@ import PackageDescription
 let package = Package(
     name: "HelloKitura",
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.7.0")
+        .package(url: "https://github.com/IBM-Swift/Kitura", from: "2.8.0")
     ],
     targets: [
         .target(
@@ -103,7 +103,7 @@ Run the project:
 swift run
 ```
 
-Open your web browser at http://localhost:8080.
+Open your web browser at <a href="http://localhost:8080" target="blank">localhost:8080</a>.
 
 You should see the following in your browser:
 

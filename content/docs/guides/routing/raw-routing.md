@@ -161,7 +161,7 @@ app.router.get("/raw") { request, response, next in
 
 Now we need to restart our server, once it is running we can post a book using the curl command from step 2.
 
-Then if we navigate to http://localhost:8080/raw, we should see the book we posted:
+Then if we navigate to <a href="http://localhost:8080/raw" target="blank">localhost:8080/raw</a>, we should see the book we posted:
 
 ```
 {
@@ -221,7 +221,7 @@ app.router.get("/raw/:id") { request, response, next in
 
 Now we need to restart our server and make a POST request using the curl command from step 2.
 
-Use a browser to navigate to http://localhost:8080/raw/0
+Use a browser to navigate to <a href="http://localhost:8080/raw/0" target="blank">localhost:8080/raw/0</a>
 
 This will make a GET request to the server and you should see the first book in JSON format:
 
@@ -248,7 +248,7 @@ curl -X POST \
        }'
 ```
 
-Then open the browser at http://localhost:8080/raw/1
+Then open the browser at <a href="http://localhost:8080/raw/1" target="blank">localhost:8080/raw/1</a>
 
 This will make a new GET request to the server and you should see the second book in JSON format:
 

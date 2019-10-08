@@ -33,26 +33,26 @@ SPM creates a Swift project stub. All we need to do is add our project dependenc
 
 ## Step 2: Create the Application directory
 
-Within our **Sources** directory we will first create an **Application** directory:
+Within our `Sources` directory we will first create an `Application` directory:
 ```
 mkdir Sources/Application
 ```
 
-This is the directory where we will store all of our application code. Note, code in the project's **main.swift** file isn't easy to test because you can't import an executable target as a module, so to encourage the creation of easily testable code we have minimal code in our **main.swift** file and recommend putting application code into a separate **Application** directory.
+This is the directory where we will store all of our application code. Note, code in the project's `main.swift` file isn't easy to test because you can't import an executable target as a module, so to encourage the creation of easily testable code we have minimal code in our `main.swift` file and recommend putting application code into a separate `Application` directory.
 
-Next we will create our **Application.swift** file:
+Next we will create our `Application.swift` file:
 ```
 touch Sources/Application/Application.swift
 ```
 
-Next we need to create our **Routes** directory:
+Next we need to create our `Routes` directory:
 ```
 mkdir Sources/Application/Routes
 ```
 
 This is where we will store all of our route handlers.
 
-Next we will rename the directory within **Tests** to **ApplicationTests**:
+Next we will rename the directory within `Tests` to `ApplicationTests`:
 ```
 mv Tests/MyKituraAppTests/ Tests/ApplicationTests
 ```
@@ -61,14 +61,14 @@ mv Tests/MyKituraAppTests/ Tests/ApplicationTests
 
 ## Step 3: Add Kitura to our dependencies
 
-To add Kitura to our dependencies we need to edit the **Package.swift** file.
+To add Kitura to our dependencies we need to edit the `Package.swift` file.
 
-Open **Package.swift** in your default text editor:
+Open `Package.swift` in your default text editor:
 ```
 open Package.swift
 ```
 
-Add Kitura to our dependencies so the **Package.swift** file looks like this:
+Add Kitura to our dependencies so the `Package.swift` file looks like this:
 ```swift
 // swift-tools-version:x.x
 import PackageDescription
@@ -93,16 +93,16 @@ Substitute "y.y.y" with the latest Kitura [release](https://github.com/IBM-Swift
 
 ## Step 4: Add code to the Application.swift file
 
-Earlier, we created the **Application.swift** file but we didn't add any code to it.
+Earlier, we created the `Application.swift` file but we didn't add any code to it.
 
-Open the **Application.swift** file in our default text editor:
+Open the `Application.swift` file in our default text editor:
 ```
 open Sources/Application/Application.swift
 ```
 
-The **Application.swift** file will be responsible for starting our Kitura server.
+The `Application.swift` file will be responsible for starting our Kitura server.
 
-Add the following code to the **Application.swift** file:
+Add the following code to the `Application.swift` file:
 ```swift
 import Kitura
 
@@ -126,17 +126,17 @@ public class App {
 }
 ```
 
-This code creates an instance of Router, which will route incoming requests to the correct endpoints. Within the **run()** method we register our **router** instance to run on port 8080\. The call to **Kitura.run()** does not return immediately - it will block until the server is stopped.
+This code creates an instance of Router, which will route incoming requests to the correct endpoints. Within the `run()` method we register our `router` instance to run on port 8080\. The call to `Kitura.run()` does not return immediately - it will block until the server is stopped.
 
-The **postInit()** function is where we configure and set up the router, prior to starting the server.
+The `postInit()` function is where we configure and set up the router, prior to starting the server.
 
 ---
 
 ## Step 5: Add code to the main.swift file
 
-Now that we have created our **App** class in our **Application.swift** file we can use it within our **main.swift** file.
+Now that we have created our `App` class in our `Application.swift` file we can use it within our `main.swift` file.
 
-Open the **main.swift** file in your editor:
+Open the `main.swift` file in your editor:
 ```
 open Sources/MyKituraApp/main.swift
 ```
@@ -152,7 +152,7 @@ do {
     print(error.localizedDescription)
 }
 ```
-This code will create an **App** instance and run it.
+This code will create an `App` instance and run it.
 
 ---
 
@@ -163,9 +163,9 @@ To start our project we need to run our Swift executable:
 swift run
 ```
 
->To run the project in Xcode ensure your build target is set to **My Mac** then simply run the project.  You may be prompted to allow the app to accept incoming connections.
+>To run the project in Xcode ensure your build target is set to `My Mac` then simply run the project.  You may be prompted to allow the app to accept incoming connections.
 
-Navigate to [http://localhost:8080](http://localhost:8080).
+Navigate to <a href="http://localhost:8080" target="blank">localhost:8080</a>.
 
 You should be able to see the Kitura landing page.
 

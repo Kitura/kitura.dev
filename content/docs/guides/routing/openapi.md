@@ -50,10 +50,7 @@ That's all we need to do to enable KituraOpenAPI on our server.
 
 We need to start our Kitura server first.
 
-Once the server has started, navigate to:
-```
-localhost:8080/openapi/ui
-```
+Once the server has started, navigate to: <a href="http://localhost:8080/openapi/ui" target="blank">localhost:8080/openapi/ui</a>
 
 You should see a screen similar to the following:
 

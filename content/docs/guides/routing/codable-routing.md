@@ -154,7 +154,7 @@ Once the server is running, post a book using the curl command in Step 3.
 
 Open a browser at:
 
-[localhost:8080/codable](localhost:8080/codable)
+<a href="http://localhost:8080/codable" target="blank">localhost:8080/codable</a>
 
 This will make a GET request to the server and we should see the book we posted:
 
@@ -198,7 +198,7 @@ Now we can restart our server to test our new endpoint.
 
 Once the server is running, open the browser at:
 
-[localhost:8080/codable/0](localhost:8080/codable/0)
+<a href="http://localhost:8080/codable/0" target="blank">localhost:8080/codable/0</a>
 
 This will make a GET request to the server and we should see the first book in JSON format:
 
@@ -227,7 +227,7 @@ http://localhost:8080/codable \
 
 Then open the browser at:
 
-[localhost:8080/codable/1](localhost:8080/codable/1)
+<a href="http://localhost:8080/codable/1" target="blank">localhost:8080/codable/1</a>
 
 This will make a new GET request to the server and we should see the second book in JSON format:
 

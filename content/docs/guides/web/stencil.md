@@ -166,7 +166,7 @@ Open the `book.stencil` file and add the following:
 
 Now to test our templating, we first need to start the Kitura server.
 
-Then in a browser open: http://localhost:8080/stencil
+Then in a browser open: <a href="http://localhost:8080/stencil" target="blank">localhost:8080/stencil</a>
 
 In the browser we should see:
 

@@ -58,7 +58,7 @@ Use this `SwiftMetrics` instance to initialize the dashboard:
 let smd = try SwiftMetricsDash(swiftMetricsInstance : sm)
 ```
 
-When you initialize a `SwiftMetricsDash` with just a `SwiftMetrics` instance, a Kitura server will be started that will serve the dashboard at http://localhost:8080/swiftmetrics-dash. If we only want to use a single interface, such as the dashboard, then this is fine. However if we add a second, for example a Prometheus endpoint, they will try to create servers on the same port and will conflict with each other.
+When you initialize a `SwiftMetricsDash` with just a `SwiftMetrics` instance, a Kitura server will be started that will serve the dashboard at <a href="http://localhost:8080/swiftmetrics-dash" target="blank">localhost:8080/swiftmetrics-dash</a>. If we only want to use a single interface, such as the dashboard, then this is fine. However if we add a second, for example a Prometheus endpoint, they will try to create servers on the same port and will conflict with each other.
 
 Next we will show you how to create and pass a `Router` object to the initializer, so that multiple types of monitoring can coexist.
 
@@ -87,7 +87,7 @@ Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()
 ```
 
-Once the server is running, go to http://localhost:8080/swiftmetrics-dash.
+Once the server is running, go to <a href="http://localhost:8080/swiftmetrics-dash" target="blank">localhost:8080/swiftmetrics-dash</a>.
 
 ---
 
@@ -112,13 +112,13 @@ Use this `SwiftMetrics` instance and your `Router` object to initialize Promethe
 let smp = try SwiftMetricsPrometheus(swiftMetricsInstance: sm, endpoint: router)
 ```
 
-By default, `SwiftMetricsPrometheus` will provide the Prometheus endpoint under http://localhost:8080/metrics.
+By default, `SwiftMetricsPrometheus` will provide the Prometheus endpoint under <a href="http://localhost:8080/metrics" target="blank">localhost:8080/metrics</a>.
 
 ---
 
 ##Step 5: Add REST API support
 
-The [Application Metrics for Swift REST API](https://github.com/RuntimeTools/SwiftMetrics/blob/master/REST-API.md) enables the collection of metrics from the running Swift application. The API context root will be the server's default endpoint plus `"/swiftmetrics"` e.g. http://localhost:8080/swiftmetrics.
+The [Application Metrics for Swift REST API](https://github.com/RuntimeTools/SwiftMetrics/blob/master/REST-API.md) enables the collection of metrics from the running Swift application. The API context root will be the server's default endpoint plus `"/swiftmetrics"` e.g. <a href="http://localhost:8080/swiftmetrics" target="blank">localhost:8080/swiftmetrics</a>.
 
 To enable the REST API in your program, you must include the `SwiftMetricsREST` module in your application:
 
