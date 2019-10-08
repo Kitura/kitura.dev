@@ -7,39 +7,39 @@ title: HTTP Basic Authentication with Codable routes
 
 Authentication is the process of confirming a user’s identity, usually via a username and password. Authentication ensures that the user is allowed access to the secured system.
 
-In this guide, we use Kitura-CredentialsHTTP to add HTTP basic authentication to Codable routes.
+In this guide, we use [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP) to add HTTP basic authentication to Codable routes.
 
 ---
 
 ##Step 1: Define the authentication middleware
 
-To add basic authentication to our server, we need to add Kitura-CredentialsHTTP to our dependencies.
+To add basic authentication to our server, we need to [add Kitura-CredentialsHTTP to our dependencies](https://github.com/IBM-Swift/Kitura-CredentialsHTTP#add-dependencies).
 
-> If you don't have a server, follow our Create a server guide.
+> If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
-Next, we will define a TypeSafeMiddleware which conforms to TypeSafeHTTPBasic.
+Next, we will define a `TypeSafeMiddleware` which conforms to `TypeSafeHTTPBasic`.
 
 This will be initialized when our route is successfully authenticated and we will be able to access the authenticated user's id within our Codable route.
 
-If you don't already have one, create a Middlewares folder:
+If you don't already have one, create a `Middlewares` folder:
 
 ```
 mkdir Sources/Application/Middlewares
 ```
 
-Create a new file, called MyBasicAuth.swift:
+Create a new file, called `MyBasicAuth.swift`:
 
 ```
 touch Sources/Application/Middlewares/MyBasicAuth.swift
 ```
 
-Open your MyBasicAuth.swift file:
+Open your `MyBasicAuth.swift` file:
 
 ```
 open Sources/Application/Middlewares/MyBasicAuth.swift
 ```
 
-Inside this file, define your MyBasicAuth struct:
+Inside this file, define your `MyBasicAuth` struct:
 
 ```swift
 import Credentials
@@ -53,7 +53,7 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
 
 If you're using Xcode it should display the message: Type 'MyBasicAuth' does not conform to protocol 'TypeSafeCredentials'
 
-Click "Fix" to autogenerate the stubs for verifyPassword and id:
+Click "Fix" to autogenerate the stubs for `verifyPassword` and `id`:
 
 ```swift
 public static func verifyPassword(username: String, password: String, callback: @escaping (MyBasicAuth?) -> Void) {
@@ -71,7 +71,7 @@ public static let authenticate = ["username" : "password"]
 
 > In a real project, never store passwords in plain text!
 
-The function, verifyPassword, takes a username and password and, on success, returns a MyBasicAuth instance.
+The function, verifyPassword, takes a username and password and, on success, returns a `MyBasicAuth` instance.
 
 We want to check if the password matches the user's stored password. On successful match, we initialize MyBasicAuth with an id equal to username.
 
@@ -110,25 +110,25 @@ public struct MyBasicAuth: TypeSafeHTTPBasic {
 
 ##Step 2: Create your authentication routes
 
-Firstly, open your Application.swift file in your default text editor:
+Firstly, open your `Application.swift` file in your default text editor:
 
 ```
 open Sources/Application/Application.swift
 ```
 
-Inside the postInit() function add:
+Inside the `postInit()` function add:
 
 ```swift
 initializeTypeSafeAuthRoutes(app: self)
 ```
 
-Next, create a new file, called TypeSafeAuthRoutes.swift, to contain the code for our routes:
+Next, create a new file, called `TypeSafeAuthRoutes.swift`, to contain the code for our routes:
 
 ```
 touch Sources/Application/Routes/TypeSafeAuthRoutes.swift
 ```
 
-Open your TypeSafeAuthRoutes.swift file:
+Open your `TypeSafeAuthRoutes.swift` file:
 
 ```
 open Sources/Application/Routes/TypeSafeAuthRoutes.swift
@@ -150,7 +150,7 @@ extension App {
 }
 ```
 
-In this guide, we will have a single route GET route. This route will only return a book to a user who has authenticated using HTTP basic authentication.
+In this guide, we will have a single route `GET` route. This route will only return a book to a user who has authenticated using HTTP basic authentication.
 
 ---
 
@@ -164,13 +164,13 @@ func protectedGetHandler(user: MyBasicAuth, respondWith: (Book?, RequestError?) 
 }
 ```
 
-> This route is returning the Book model from the routing guide, however you could use any Codable type.
+> This route is returning the [Book model from the routing guide](../routing/what-is-routing#bookmodel), however you could use any Codable type.
 
-We have registered MyBasicAuth on our handler by adding it to the signature.
+We have registered `MyBasicAuth` on our handler by adding it to the signature.
 
 When the handler is called the middleware and the request is authenticated.
 
-Within protectedGetHandler, we can then interact with our authenticated user:
+Within `protectedGetHandler`, we can then interact with our authenticated user:
 
 ```swift
 Log.info("authenticated: \(user.id)")
@@ -180,7 +180,7 @@ respondWith(secretBook, nil)
 
 That's it! We've implemented HTTP basic authentication of a Codable route.
 
-Your completed TypeSafeAuthRoutes.swift should now look as follows:
+Your completed `TypeSafeAuthRoutes.swift` should now look as follows:
 
 ```swift
 import KituraContracts
@@ -228,5 +228,4 @@ Use a private window if you would like to test incorrect authentication.
 
 ##Next steps
 
-Web Application: Learn about web applications and what Kitura provides.
-
+[Web Application](../web/what-is-templating): Learn about web applications and what Kitura provides.

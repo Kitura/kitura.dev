@@ -12,31 +12,31 @@ A JSON Web Token (JWT) defines a compact and self-contained way for securely tra
 
 ##Step 1: Create the JWT routes
 
-To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) to our dependencies.
+To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT#add-dependencies) to our dependencies.
 
-> If you don't have a server, follow our Create a server guide.
+> If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
 Once we have added Kitura-CredentialsJWT, we need a file for our JWT routes.
 
-Firstly, open your Application.swift file in your default text editor:
+Firstly, open your `Application.swift` file in your default text editor:
 
 ```
 open Sources/Application/Application.swift
 ```
 
-Inside the postInit() function add:
+Inside the `postInit()` function add:
 
 ```swift
 initializeJWTRoutes(app: self)
 ```
 
-Create a new file, called JWTRoutes.swift:
+Create a new file, called `JWTRoutes.swift`:
 
 ```
 touch Sources/Application/Routes/JWTRoutes.swift
 ```
 
-Open your JWTRoutes.swift file:
+Open your `JWTRoutes.swift` file:
 
 ```swift
 open Sources/Application/Routes/JWTRoutes.swift
@@ -66,7 +66,7 @@ This code imports our required modules, sets up the framework for a routes page 
 
 ##Step 2: Set up your signing and verifying algorithm
 
-Swift-JWT supports multiple algorithms for signing and verifying JWTs as defined by RFC7518. This is implemented by creating a JWTSigner and JWTVerifier struct with a required credentials.
+Swift-JWT supports multiple algorithms for signing and verifying JWTs as defined by RFC7518. This is implemented by creating a `JWTSigner` and `JWTVerifier` struct with a required credentials.
 
 The algorithms are as follows:
 
@@ -80,23 +80,23 @@ The algorithms are as follows:
 
 ##Step 3: Define a model to represent the user's credentials
 
-For the initial authentication, the user will have to provide their username and password. This could be achieved with basic authentication, the Authorization header or in the body of a POST request. In this guide we will pass the username and password in the body of a POST request and use a model to represent this.
+For the initial authentication, the user will have to provide their username and password. This could be achieved with basic authentication, the `Authorization` header or in the body of a `POST` request. In this guide we will pass the username and password in the body of a `POST` request and use a model to represent this.
 
 > Passwords and JWTs with sensitive data must be kept private and should always be exchanged over a secure layer like HTTPS.
 
-Create a new file, called UserCredentials.swift:
+Create a new file, called `UserCredentials.swift`:
 
 ```
 touch Sources/Application/Models/UserCredentials.swift
 ```
 
-Open your UserCredentials.swift file:
+Open your `UserCredentials.swift` file:
 
 ```
 open Sources/Application/Models/UserCredentials.swift
 ```
 
-Inside this file we define our UserCredentials model:
+Inside this file we define our `UserCredentials` model:
 
 ```swift
 struct UserCredentials: Codable {
@@ -109,9 +109,9 @@ struct UserCredentials: Codable {
 
 ##Step 4: Authenticate the User
 
-We need to read the user's credentials in our POST route so they can be authenticated.
+We need to read the user's credentials in our `POST` route so they can be authenticated.
 
-Inside the POST route add:
+Inside the `POST` route add:
 
 ```swift
 let credentials = try request.read(as: UserCredentials.self)
@@ -126,23 +126,23 @@ At this stage, you would normally hash the password and verify it against a data
 
 A JWT contains claims about the user that we want include in subsequent requests. You can specify any information as a claim, however there are "Registered Claims" which have a pre-defined meaning:
 
-- iss: The issuer of the token.
-- sub: The subject of the token.
-- aud: The audience of the token.
-- exp: The expiration time which MUST be after the current date/time.
-- nbf: Defines the time before which the JWT MUST NOT be accepted for processing.
-- iat: The time the JWT was issued. Can be used to determine the age of the JWT.
-- jti: Unique identifier for the JWT. Can be used to prevent the JWT from being replayed.
+- `iss`: The issuer of the token.
+- `sub`: The subject of the token.
+- `aud`: The audience of the token.
+- `exp`: The expiration time which MUST be after the current date/time.
+- `nbf`: Defines the time before which the JWT MUST NOT be accepted for processing.
+- `iat`: The time the JWT was issued. Can be used to determine the age of the JWT.
+- `jti`: Unique identifier for the JWT. Can be used to prevent the JWT from being replayed.
 
 Swift-JWT comes with a struct representing these Registered Claims which we will use for our example.
 
-Inside the POST route, beneath the code where we authenticated the user, initialize the user's claims:
+Inside the `POST` route, beneath the code where we authenticated the user, initialize the user's claims:
 
 ```swift
 let myClaims = ClaimsStandardJWT(iss: "Kitura", sub: credentials.username, exp: Date(timeIntervalSinceNow: 3600))
 ```
 
-The claims information tells us the username which is the subject of the token, that they were authenticated by Kitura and that the token will expire in one hour.
+The claims information tells us the username which is the `subject` of the token, that they were authenticated by Kitura and that the token will expire in one hour.
 
 Next, we will initialize our JWT:
 
@@ -150,7 +150,7 @@ Next, we will initialize our JWT:
 var myJWT = JWT(claims: myClaims)
 ```
 
-We can sign this JWT using the JWTSigner we created in step 2:
+We can sign this JWT using the `JWTSigner` we created in step 2:
 
 ```swift
 let signedJWT = try myJWT.sign(using: App.jwtSigner)
@@ -196,23 +196,23 @@ curl -X POST \
 
 You should be returned a JWT string that is structured xxxx.yyyy.zzzz where xxxx is the base64 encoded header, yyyy is the base 64 encoded claims and zzzz is the signature.
 
-Below is an example JWT, generated using HS256 with the password "kitura". The one returned by your curl request will have different values but the same structure.
+Below is an example JWT, generated using `HS256` with the password "kitura". The one returned by your curl request will have different values but the same structure.
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJLaXR1cmEiLCJzdWIiOiJKb2UgQmxvZ2dzIiwiZXhwIjoxNTUzMDE4Mjg0LjMyOTcwMTl9.t55WealACtYGCQGS3EQgRQuurmNSBO5fWZqzqJjEIi
 ```
 
-We can decode the JWT string using the debugger at JWT.IO which allows us view the headers and claims.
+We can decode the JWT string using the debugger at [jwt.io](https://jwt.io) which allows us view the headers and claims.
 
 ---
 
 ##Step 7: Verify a JWT
 
-So far, we have created a signed JWT, which allows a user to authenticate themselves. At this stage, the user would attach the JWT string to future requests either using cookies or the Authorization header. When we receive this JWT string on other routes, we need to verify that we signed it and it hasn't been altered.
+So far, we have created a signed JWT, which allows a user to authenticate themselves. At this stage, the user would attach the JWT string to future requests either using cookies or the `Authorization` header. When we receive this JWT string on other routes, we need to verify that we signed it and it hasn't been altered.
 
 From here we will use the CredentialsJWT plugin for authenticating the user with the earlier received token.
 
-After the POST function, add the following to the file:
+After the `POST` function, add the following to the file:
 
 ```swift
 let jwtCredentials = CredentialsJWT<ClaimsStandardJWT>(verifier: App.jwtVerifier)
@@ -231,13 +231,13 @@ app.router.get("/jwtprotected") { request, response, next in
         }
 ```
 
-Let's break these lines down individually. The first line creates a CredentialsJWT instance with the default options using the built in ClaimsStandardJWT claims from the Swift-JWT package.  The second line creates the middleware instance using the Credentials package that we can register plugins to.  The third line registers the created CredentialsJWT instance to the created middleware instance and the line after adds a GET route to the router that allows an authentication request to take place.  The final line is the declaration of the function that will verify the JWT we send, if the request is authorized, then the response sent is the `id` field of your JWT.
+Let's break these lines down individually. The first line creates a CredentialsJWT instance with the default options using the built in `ClaimsStandardJWT` claims from the Swift-JWT package.  The second line creates the middleware instance using the Credentials package that we can register plugins to.  The third line registers the created CredentialsJWT instance to the created middleware instance and the line after adds a `GET` route to the router that allows an `authentication` request to take place.  The final line is the declaration of the function that will verify the JWT we send, if the request is authorized, then the response sent is the `id` field of your JWT.
 
 ---
 
 ##Step 8: Test the protected Route
 
-To test this, restart your server and send the POST request from Step 6.
+To test this, restart your server and send the `POST` request from Step 6.
 
 Copy the returned JWT string and paste it into the following curl request:
 
@@ -254,7 +254,7 @@ You should see your username returned to you. This should look something like:
 Joe Bloggs
 ```
 
-Congratulations! We have just created a JWT single sign on system using a Kitura Server. Your completed JWTRoutes.swift file for HS256 should look as follows:
+Congratulations! We have just created a JWT single sign on system using a Kitura Server. Your completed `JWTRoutes.swift` file for `HS256` should look as follows:
 
 ```swift
 import Foundation
@@ -304,9 +304,9 @@ extension App {
 
 ##Step 9: Using custom claims (Optional)
 
-You may want to use your own set of custom claims for your JWT.  For this to work, we need to specify the subject and UserProfileDelegate options.
+You may want to use your own set of custom claims for your JWT.  For this to work, we need to specify the `subject` and `UserProfileDelegate` options.
 
-First we will create our claims structure, in our JWTRoutes.swift file:
+First we will create our claims structure, in our `JWTRoutes.swift` file:
 
 ```swift
 struct MyClaims: Claims {
@@ -316,7 +316,7 @@ struct MyClaims: Claims {
 }
 ```
 
-Now we need to edit our UserCredentials model to contain these additional values, so go into your UserCredentials.swift file and add these values to your model:
+Now we need to edit our `UserCredentials` model to contain these additional values, so go into your `UserCredentials.swift` file and add these values to your model:
 
 ```swift
 struct UserCredentials: Codable {
@@ -357,9 +357,9 @@ curl -X POST \
 }'
 ```
 
-None of these claims are part of the ClaimsStandardJWT claims and the subject claim is not present, therefore we need to use the UserProfileDelegate and update it with our custom claims.
+None of these claims are part of the `ClaimsStandardJWT` claims and the `subject` claim is not present, therefore we need to use the `UserProfileDelegate` and update it with our custom claims.
 
-After our POST route:
+After our `POST` route, add:
 
 ```swift
 struct MyDelegate: UserProfileDelegate {
@@ -372,7 +372,7 @@ struct MyDelegate: UserProfileDelegate {
 }
 ```
 
-Then we need to declare our instance of CredentialsJWT with our newly defined options, as well as setting the subject claim to id:
+Then we need to declare our instance of CredentialsJWT with our newly defined options, as well as setting the `subject` claim to `id`:
 
 ```swift
 let jwtCredentials = CredentialsJWT<MyClaims>(verifier: App.jwtVerifier, options: [CredentialsJWTOptions.subject: "id", CredentialsJWTOptions.userProfileDelegate: MyDelegate.self])
@@ -409,13 +409,13 @@ Congratulations! You are now using your own set of custom claims to generate a J
 
 ##Step 10: JWTs on Codable Routes (Optional)
 
-In our example we used raw routing since we chose to pass the user credentials via the request headers. If we want to use JWTs on our codable routes, we need to encapsulate the verification and creation of the users JWT in a TypeSafeMiddleware. We can then register our TypeSafeMiddleware on a Codable route to authenticate the user and access their claims.
+In our example we used raw routing since we chose to pass the user credentials via the request headers. If we want to use JWTs on our codable routes, we need to encapsulate the verification and creation of the users JWT in a `TypeSafeMiddleware`.
 
 ###Step 10a: Register TypeSafeJWT on a route.
 
-In the JWTRoutesFile.swift we are going to create a new route for a TypeSafeJWT.
+In the `JWTRoutesFile.swift` we are going to create a new route for a `TypeSafeJWT`.
 
-In the function initializeJWTRoutes, declare the verifier for the TypeSafeJWT (this example is using the HS256 algorithm):
+In the function `initializeJWTRoutes`, declare the verifier for the `TypeSafeJWT` (this example is using the `HS256` algorithm):
 
 ```swift
 TypeSafeJWT.verifier = .hs256(key: Data("kitura".utf8))
@@ -433,7 +433,7 @@ app.router.get("/jwtcodable") {  (jwt: JWT<ClaimsStandardJWT>, respondWith: (JWT
 
 ###Step 10b: Test the new Codable route
 
-To test this route, restart your server and send the POST request from Step 6.
+To test this route, restart your server and send the `POST` request from Step 6.
 
 Copy the returned JWT string and paste it into the following curl request:
 

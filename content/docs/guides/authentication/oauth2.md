@@ -36,7 +36,7 @@ For this guide we need a third party OAuth 2.0 provider who will authenticate th
 
 *  Follow the Google [Setting up OAuth 2.0](https://support.google.com/cloud/answer/6158849?hl=en) guide.
 
-*  Once you have created your client ID, add **http://localhost:8080/oauth2/google** to your authorized redirect URIs.
+*  Once you have created your client ID, add http://localhost:8080/oauth2/google to your authorized redirect URIs.
 
 *  Note down the client ID and client secret. We will need them later.
 
@@ -48,7 +48,7 @@ For this guide we need a third party OAuth 2.0 provider who will authenticate th
 
 *  From the dashboard, add the Facebook login product.
 
-*  Inside Facebook login settings, add **http://localhost:8080/oauth2/facebook** to the Valid OAuth Redirect URIs.
+*  Inside Facebook login settings, add http://localhost:8080/oauth2/facebook to the Valid OAuth Redirect URIs.
 
 *  Inside the App settings, note down the App ID and App Secret. We will need them later.
 
@@ -68,19 +68,19 @@ In this step we will create the framework for our protected and log out routes.
 
 >If you don't have a server, follow our [Create a server](https://www.kitura.io/docs/getting-started/create-server.html) guide.
 
-Firstly, open your **Application.swift** file in your default text editor (or Xcode if you prefer):
+Firstly, open your `Application.swift` file in your default text editor (or Xcode if you prefer):
 ```
 open Sources/Application/Application.swift
 ```
-Inside the **postInit()** function add:
+Inside the `postInit()` function add:
 ```swift
 initializeOAuth2Routes(app: self)
 ```
-Next, create a new file, called **OAuth2Routes.swift**, to contain the framework for our routes code:
+Next, create a new file, called `OAuth2Routes.swift`, to contain the framework for our routes code:
 ```
 touch Sources/Application/Routes/OAuth2Routes.swift
 ```
-Open your **OAuth2Routes.swift** file:
+Open your `OAuth2Routes.swift` file:
 ```
 open Sources/Application/Routes/OAuth2Routes.swift
 ```
@@ -106,9 +106,9 @@ func initializeOAuth2Routes(app: App) {
 
 ## Step 3: Import dependencies
 
-Add [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials), [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle) and [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) to the dependencies in the **Package.swift** file.
+Add [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials), [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle) and [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) to the dependencies in the `Package.swift` file.
 
-Inside the file which defines the routes, **OAuth2Routes.swift**, import Credentials, CredentialsGoogle and KituraSession:
+Inside the file which defines the routes, `OAuth2Routes.swift`, import Credentials, CredentialsGoogle and KituraSession:
 ```swift
 import Credentials
 import CredentialsGoogle
@@ -131,7 +131,7 @@ app.router.all("/oauth2", middleware: session)
 
 We need to initialize an instance of our Credentials plugin using the id and secret from the OAuth 2.0 application we created in step 1.
 
-We add the following code to our **initializeOAuth2Routes** function, substituting in our own id and secret:
+We add the following code to our `initializeOAuth2Routes` function, substituting in our own id and secret:
 
 ```swift
 let googleClientId = "<Your Google Client Id>"
@@ -144,14 +144,14 @@ let googleCredentials = CredentialsGoogle(clientId: googleClientId, clientSecret
 
 ## Step 6: Register your Credentials plugin
 
-We need to register our plugin credentials to a **Credentials** middleware.
+We need to register our plugin credentials to a `Credentials` middleware.
 
 ```swift
 let googleCredMiddleware = Credentials(options: ["successRedirect": "/oauth2/protected"])
 googleCredMiddleware.register(plugin: googleCredentials)
 ```
 
-Next, we need to register our **Credentials** middleware on our login route.
+Next, we need to register our `Credentials` middleware on our login route.
 
 When a user hits this route, they will be redirected to the OAuth 2.0 provider.
 
@@ -166,9 +166,9 @@ app.router.get("/oauth2/google", handler: googleCredMiddleware.authenticate(cred
 
 ## Step 7: Check if a user is logged in
 
-Once a user successfully authenticates, they will have a **userProfile** attached to all their requests via the session we set up in step 4.
+Once a user successfully authenticates, they will have a `userProfile` attached to all their requests via the session we set up in step 4.
 
-Inside our **oauth2/protected** route, we want to check if they have logged in using the **userProfile**.
+Inside our `oauth2/protected` route, we want to check if they have logged in using the `userProfile`.
 ```swift
 guard let user = request.userProfile else {
     return try response.send("Not authorized to view this route").end()
@@ -182,9 +182,9 @@ response.send("Hello \(user.displayName)")
 
 ## Step 8: Logging out a user
 
-The user will remain logged in as long as their cookie provides a valid **userProfile**. We can log out a user by invalidating the cookie with the session store or by setting the **userProfile** to **nil**.
+The user will remain logged in as long as their cookie provides a valid `userProfile`. We can log out a user by invalidating the cookie with the session store or by setting the `userProfile` to `nil`.
 
-Inside our logout route handler, call the **Credentials.logOut** function:
+Inside our logout route handler, call the `Credentials.logOut` function:
 
 ```swift
 googleCredMiddleware.logOut(request: request)

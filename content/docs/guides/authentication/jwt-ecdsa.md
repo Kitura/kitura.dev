@@ -11,11 +11,11 @@ You can process JWTs using Elliptic Curve Digital Signature Algorithm (ECDSA). T
 
 ##Step 1: Create your elliptic curve keys
 
-Elliptic curve keys can be generated through Apple, OpenSSL or using BlueECC.
+Elliptic curve keys can be generated through [Apple](https://developer.apple.com/account/ios/authkey), [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations#Generating_EC_Keys_and_Parameters) or using [BlueECC](https://github.com/IBM-Swift/BlueECC#elliptic-curve-private-key).
 
 For simplicity you can use the following pre-generated keys.
 
-Add the following EC PEM strings (Or strings you have generated) to your App extension:
+Add the following EC PEM strings (Or strings you have generated) to your `App` extension:
 
 ```swift
 static let privateKey = """
@@ -37,24 +37,24 @@ Oz8p4kAlhvgIHN23XIClNESgKVmLgSSq2asqiwdrU5YHbcHFkgdABM1SPA==
 
 ##Step 2: Create your JWTSigner
 
-The JWTSigner is used to sign a JWT instance and produce a signed JWT string.
+The `JWTSigner` is used to sign a `JWT` instance and produce a signed JWT string.
 
-Inside the App extension, create an ECDSA JWTSigner by providing the private key:
+Inside the `App` extension, create an ECDSA `JWTSigner` by providing the private key:
 
 ```swift
 @available(OSX 10.13, *)
 static let jwtSigner = JWTSigner.es256(privateKey: Data(privateKey.utf8))
 ```
 
-> ECDSA algorithms such as es256 use BlueECC, which is only available on macOS 10.13 or newer. When using them you will need to us @available to handle cases where the operating system version is not high enough.
+> ECDSA algorithms such as `es256` use [BlueECC](https://github.com/IBM-Swift/BlueECC), which is only available on macOS 10.13 or newer. When using them you will need to us `@available` to handle cases where the operating system version is not high enough.
 
 ---
 
 ##Step 3: Create your JWTVerifier
 
-The JWTVerifier is used to verify a signed JWT string. This ensures the signature was generated using the corresponding private key and the JWT has not been changed.
+The `JWTVerifier` is used to verify a signed JWT string. This ensures the signature was generated using the corresponding private key and the JWT has not been changed.
 
-Inside the App extension, we create an ECDSA JWTVerifier by providing the public key:
+Inside the `App` extension, we create an ECDSA `JWTVerifier` by providing the public key:
 
 ```swift
 @available(OSX 10.13, *)

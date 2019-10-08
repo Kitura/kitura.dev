@@ -23,7 +23,7 @@ openssl rsa -in privateKey.pem -pubout -outform PEM -out publicKey.pem
 
 For simplicity you can use the following pre-generated keys.
 
-Add the following RSA PEM strings (Or the ones you generated) to your App extension:
+Add the following RSA PEM strings (Or the ones you generated) to your `App` extension:
 
 ```swift
 static let privateKey = """
@@ -72,9 +72,9 @@ mwIDAQAB
 
 ##Step 2: Create your JWTSigner
 
-The JWTSigner is used to sign a JWT instance and produce a signed JWT string.
+The `JWTSigner` is used to sign a `JWT` instance and produce a signed JWT string.
 
-Inside the App extension, create an RSA JWTSigner by providing the private key:
+Inside the `App` extension, create an RSA `JWTSigner` by providing the private key:
 
 ```swift
 static let jwtSigner = JWTSigner.rs256(privateKey: Data(privateKey.utf8))
@@ -84,9 +84,9 @@ static let jwtSigner = JWTSigner.rs256(privateKey: Data(privateKey.utf8))
 
 ##Step 3: Create your JWTVerifier
 
-The JWTVerifier is used to verify a signed JWT string. This ensures the signature was generated using the corresponding private key and the JWT has not been changed.
+The `JWTVerifier` is used to verify a signed JWT string. This ensures the signature was generated using the corresponding private key and the JWT has not been changed.
 
-Inside the App extension, we create an RSA JWTVerifier by providing the public key:
+Inside the `App` extension, we create an RSA `JWTVerifier` by providing the public key:
 
 ```swift
 static let jwtVerifier = JWTVerifier.rs256(publicKey: Data(publicKey.utf8))

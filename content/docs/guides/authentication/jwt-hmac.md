@@ -11,9 +11,9 @@ You can process JWTs using a Hashed Message Authentication Code (HMAC). This use
 
 ##Step 1: Create your JWTSigner
 
-The JWTSigner is used to sign a JWT instance and produce a signed JWT string.
+The `JWTSigner` is used to sign a `JWT` instance and produce a signed JWT string.
 
-Inside the App extension, create an HMAC JWTSigner by providing a password:
+Inside the `App` extension, create an HMAC `JWTSigner` by providing a password:
 
 ```swift
 static let jwtSigner = JWTSigner.hs256(key: Data("kitura".utf8))
@@ -23,9 +23,9 @@ static let jwtSigner = JWTSigner.hs256(key: Data("kitura".utf8))
 
 ##Step 2: Create your JWTVerifier
 
-The JWTVerifier is used to verify a signed JWT string. This ensures the signature was generated using the same password and the JWT has not been changed.
+The `JWTVerifier` is used to verify a signed JWT string. This ensures the signature was generated using the same password and the JWT has not been changed.
 
-Inside the App extension, we create an HMAC JWTVerifier by providing the same password as before:
+Inside the `App` extension, we create an HMAC `JWTVerifier` by providing the same password as before:
 
 ```swift
 static let jwtVerifier = JWTVerifier.hs256(key: Data("kitura".utf8))
