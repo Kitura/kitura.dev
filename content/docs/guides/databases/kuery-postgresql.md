@@ -20,7 +20,7 @@ brew install postgresql
 
 ### Linux
 
-On Linux we can use **apt** to install PostgreSQL:
+On Linux we can use `apt` to install PostgreSQL:
 ```
 sudo apt install postgresql postgresql-contrib
 ```
@@ -47,7 +47,7 @@ CREATE TABLE "BookTable" (
       genre text NOT NULL
 );
 ```
-Enter **\q** in terminal to exit psql.
+Enter `\q` in terminal to exit psql.
 
 Now we're ready to connect to our database from our Kitura server.
 
@@ -57,13 +57,13 @@ Now we're ready to connect to our database from our Kitura server.
 
 Add [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery#update-your-packageswift-file) and [SwiftKueryPostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies) to the dependencies in the `Package.swift` file.
 
-Inside the file which defines the routes, **KueryRoutes.swift**, import SwiftKuery and SwiftKueryPostgreSQL:
+Inside the file which defines the routes, `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:
 ```swift
 import SwiftKuery
 import SwiftKueryPostgreSQL
 ```
 
-Inside the **App** extension, create a connection pool of connections:
+Inside the `App` extension, create a connection pool of connections:
 ```swift
 static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
 static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432, options: [.databaseName("bookstoredb")], poolOptions: poolOptions)
@@ -72,6 +72,6 @@ static let pool = PostgreSQLConnection.createPool(host: "localhost", port: 5432,
 
 This creates a pool of connections for us to use to make requests to our database.
 
->If you are on Linux, you must provide your username and password in the options for **PostgreSQLConnection.createPool()**.
+>If you are on Linux, you must provide your username and password in the options for `PostgreSQLConnection.createPool()`.
 
 Now you can return to the [Swift-Kuery](./kuery#step-2-install-a-database-plugin) guide.

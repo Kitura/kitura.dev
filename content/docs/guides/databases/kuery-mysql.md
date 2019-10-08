@@ -23,7 +23,7 @@ mysql.server start
 ```
 ### Linux
 
-On Linux we can use **apt-get** to install MySQL:
+On Linux we can use `apt-get` to install MySQL:
 ```
 sudo apt-get install mysql-server libmysqlclient-dev pkg-config
 ```
@@ -46,7 +46,7 @@ mysql -u root
 ```
 Using the MySQL command-line interface, we create a user:
 
->You can replace **kitura** and **password** with your own username and password.
+>You can replace `kitura` and `password` with your own username and password.
 
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'kitura'@'localhost' IDENTIFIED BY 'password';
@@ -70,7 +70,7 @@ CREATE TABLE BookTable (
       constraint pk_example primary key (id)
 );
 ```
-Enter **\q** in terminal to exit mysql.
+Enter `\q` in terminal to exit mysql.
 
 Now we're ready to connect to our database from our Kitura server.
 
@@ -80,13 +80,13 @@ Now we're ready to connect to our database from our Kitura server.
 
 Add [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery#update-your-packageswift-file) and [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL#add-dependencies) to the dependencies in the `Package.swift` file.
 
-Inside the file which defines the routes, **KueryRoutes.swift**, import the SwiftKuery and SwiftKueryMySQL packages:
+Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKueryMySQL packages:
 ```swift
 import SwiftKuery
 import SwiftKueryMySQL
 ```
 
-Inside the **App** extension, create a connection pool of connections:
+Inside the `App` extension, create a connection pool of connections:
 ```swift
     static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
     static let pool = MySQLConnection.createPool(user: "kitura", password: "password", database: "bookstoredb", poolOptions: poolOptions)

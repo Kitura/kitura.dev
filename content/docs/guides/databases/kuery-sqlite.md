@@ -19,7 +19,7 @@ brew install sqlite
 ```
 ### Linux
 
-On Linux we can use **apt-get** to install SQLite:
+On Linux we can use `apt-get` to install SQLite:
 ```
 sudo apt-get install sqlite3 libsqlite3-dev
 ```
@@ -48,7 +48,7 @@ CREATE TABLE BookTable (
 );
 ```
 
-press **Control-d** to exit SQLite.
+press `Control-d` to exit SQLite.
 
 Now we're ready to connect to our database from our Kitura server.
 
@@ -58,12 +58,12 @@ Now we're ready to connect to our database from our Kitura server.
 
 Add [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery#update-your-packageswift-file) and [SwiftKuerySQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite/#add-dependencies) to the dependencies in the `Package.swift` file.
 
-Inside the file which defines the routes, **KueryRoutes.swift**, import the SwiftKuery and SwiftKuerySQLite packages:
+Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKuerySQLite packages:
 ```swift
 import SwiftKuery
 import SwiftKuerySQLite
 ```
-Inside the **App** extension, create a connection pool by passing in the path to your database file:
+Inside the `App` extension, create a connection pool by passing in the path to your database file:
 ```swift
 static let path = NSString(string: "~/bookstoredb.sqlite").expandingTildeInPath
 static let poolOptions = ConnectionPoolOptions(initialCapacity: 1, maxCapacity: 5)
