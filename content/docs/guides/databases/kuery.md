@@ -3,7 +3,7 @@ path: "/docs/databases/kuery"
 title: Add Swift Kuery to your app
 ---
 
-# Swift Kuery with Codable routing
+# Swift Kuery
 
 [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) is a pluggable SQL database driver/SDK abstraction layer. Its main idea is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API. This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.
 
@@ -11,28 +11,30 @@ title: Add Swift Kuery to your app
 
 ## Step 1: Create the Kuery routes
 
-We are going to create a new file in our project for the Kuery routes.
+We are going to create a new file in our project for the Kuery routes.  In this guide we will be using Codable routing, however, there will be links to Raw routing versions of code beneath code snippets where routing differs.
 
 >If you don't have a server, follow our [Create a server](https://www.kitura.io/docs/getting-started/create-server-cli.html) guide.
 
-Open your **Application.swift** file:
+Open your `Application.swift` file:
 ```
 open Sources/Application/Application.swift
 ```
-Inside the **postInit()** function add:
+Inside the `postInit()` function add:
 ```swift
 initializeKueryRoutes(app: self)
 ```
-Create a new file called **KueryRoutes.swift**:
+Create a new file called `KueryRoutes.swift`:
 ```
 touch Sources/Application/Routes/KueryRoutes.swift
 ```
-Open the **KueryRoutes.swift** file:
+Open the `KueryRoutes.swift` file:
 ```swift
 touch Sources/Application/Routes/KueryRoutes.swift
 ```
 
-Inside this file we are going to create two routes. The first will use Swift-Kuery to save a **Book** into a database and the second will retrieve all of the saved books.
+Inside this file we are going to create two routes. The first will use Swift-Kuery to save a `Book` into a database and the second will retrieve all of the saved books.
+
+Add the following code to your `KueryRoutes.swift` file.
 
 ```swift
 import KituraContracts
@@ -56,8 +58,8 @@ extension App {
     }
 }
 ```
+[Raw routing version](./kuery1)
 
-Add the above code, for your chosen routing method, to your **KueryRoutes.swift** file.
 
 >The routes in this guide are using the [Book model from the routing guide](../routing/routing.html#bookmodel), however you could use any Codable type.
 
@@ -83,15 +85,15 @@ The algorithms are as follows:
 
 To use SwiftKuery we need to create a class in Swift that matches our database table.
 
-Create a new file called **BookTable.swift**:
+Create a new file called `BookTable.swift`:
 ```
 touch Sources/Application/Models/BookTable.swift
 ```
-Open the **BookTable.swift** file:
+Open the `BookTable.swift` file:
 ```
 open Sources/Application/Models/BookTable.swift
 ```
-Inside **BookTable.swift**, define your **BookTable** class:
+Inside `BookTable.swift`, define your `BookTable` class:
 ```swift
 import SwiftKuery
 
@@ -104,9 +106,9 @@ class BookTable: Table {
 }
 ```
 
-The **BookTable** class represents our **Book** model as an SQL table. It needs to inherit from **Table** and match the column names of the table we created in the database. We must also provide the table name as a property.
+The `BookTable` class represents our `Book` model as an SQL table. It needs to inherit from `Table` and match the column names of the table we created in the database. We must also provide the table name as a property.
 
-Return to the **KueryRoutes.swift** file. In the **App** extension, create an instance of this table:
+Return to the `KueryRoutes.swift` file. In the `App` extension, create an instance of this table:
 
 ```swift
 static let bookTable = BookTable()
@@ -119,7 +121,7 @@ Now we're ready to start saving data to our database.
 
 Now we're going to save a book that is posted to the '/kuery' route into our database.
 
-Inside the handler for our POST route, we need to convert our book to an Array of Arrays of type **Any**. This converts the book that was sent to the route into the format required by Swift-Kuery. We need to use the **Any** type here as the database fields could be of any type.
+Inside the handler for our POST route, we need to convert our book to an Array of Arrays of type `Any`. This converts the book that was sent to the route into the format required by Swift-Kuery. We need to use the `Any` type here as the database fields could be of any type.
 
 ```swift
 let rows = [[book.id, book.title, book.price, book.genre]]
@@ -128,7 +130,7 @@ let rows = [[book.id, book.title, book.price, book.genre]]
 
 To talk to the database, the first thing we need to do is get a connection from the connection pool.
 
-To do this we can use the **getConnection** method. We can add this into the handler for our POST route:
+To do this we can use the `getConnection` method. We can add this into the handler for our POST route:
 
 ```swift
 App.pool.getConnection() { connection, error in
@@ -139,6 +141,8 @@ App.pool.getConnection() { connection, error in
     // Write query and execute it here
 }
 ```
+
+[Raw routing version](./kuery2)
 
 When we get a connection from the connection pool we need to confirm it's a valid connection.
 
@@ -162,6 +166,8 @@ Once we have defined our insert query, we need to execute the query using the co
     }
 ```
 
+[Raw routing version](./kuery3)
+
 That's it! We've setup our POST route to save data to a database. the completed handler for your POST route should now look as follows:
 
 ```swift
@@ -183,6 +189,8 @@ func insertHandler(book: Book, completion: @escaping (Book?, RequestError?) -> V
     }
 }
 ```
+
+[Raw routing version](./kuery4)
 
 Next we can test our implementation.
 
@@ -219,7 +227,7 @@ Start the PostgreSQL CLI for our database by running the following in a terminal
 psql bookstoredb
 ```
 
-In a terminal which is running the **psql** command, run the following:
+In a terminal which is running the `psql` command, run the following:
 ```
     SELECT * FROM "BookTable";
 ```
@@ -239,7 +247,7 @@ A better way to test this, as we're writing Swift code, would be to query the da
 
 ## Step 6: Retrieve data from the database
 
-Now we're going to build a SELECT query that will query the database and return all the entries in our **BookTable**.
+Now we're going to build a SELECT query that will query the database and return all the entries in our `BookTable`.
 
 Inside the handler for our GET route, we need to get a connection from the connection pool:
 
@@ -253,11 +261,13 @@ App.pool.getConnection() { connection, error in
 }
 ```
 
+[Raw routing version](./kuery5)
+
 Now we can build our SELECT query that will query the database for every entry in the "BookTable":
 ```
 let selectQuery = Select(from: App.bookTable)
 ```
-Like before we can now execute our query using **connection.execute**:
+Like before we can now execute our query using `connection.execute`:
 
 ```swift
 connection.execute(query: selectQuery) { selectResult in
@@ -269,7 +279,9 @@ connection.execute(query: selectQuery) { selectResult in
 }
 ```
 
-The query should return a set of results, in the code we use **.asResultSet** to check that the returned value is a valid result set, otherwise we log an error and return.
+[Raw routing version](./kuery6)
+
+The query should return a set of results, in the code we use `.asResultSet` to check that the returned value is a valid result set, otherwise we log an error and return.
 
 Next we need to iterate through our result set, converting each of the returned database table rows into a book:
 ```swift
@@ -279,9 +291,9 @@ resultSet.forEach() { row, error in
 }
 ```
 
-The **forEach** function will return either a **row**, an **error** or **nil** (in this case **nil** means that there are no more rows).
+The `forEach` function will return either a `row`, an `error` or `nil` (in this case `nil` means that there are no more rows).
 
-Inside the **forEach** callback, we need to handle these three cases:
+Inside the `forEach` callback, we need to handle these three cases:
 
 ```swift
 guard let row = row else {
@@ -296,9 +308,11 @@ guard let row = row else {
 // Convert row to book here
 ```
 
-When we get a row back from the database we need to convert it back into a **Book** model type.
+[Raw routing version](./kuery7)
 
-After the **guard** closure, add the following code:
+When we get a row back from the database we need to convert it back into a `Book` model type.
+
+After the `guard` closure, add the following code:
 
 
 ```swift
@@ -317,7 +331,7 @@ books.append(Book(id: id, title: title, price: price, genre: genre))
 
 That's it! We've enabled our GET route to retrieve data from a database.
 
-Our completed **KueryRoutes.swift** file should now look as follows:
+Our completed `KueryRoutes.swift` file should now look as follows:
 
 ```swift
 import KituraContracts
@@ -395,6 +409,8 @@ extension App {
 }
 ```
 
+[Raw routing version](./kuery8)
+
 ---
 
 ## Step 7 (Optional): Test retrieving the books from a database
@@ -403,4 +419,4 @@ If you followed "Step 5: Testing saving to database", then you will have a book 
 
 To do this, start the server and navigate to: [http://localhost:8080/kuery](http://localhost:8080/kuery)
 
-This will call GET on the **/kuery** route and we will see the book we posted in Step 5 returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.
+This will call GET on the `/kuery` route and we will see the book we posted in Step 5 returned in JSON format. The book data persists even if we restart the Kitura server as it is now stored in a database.

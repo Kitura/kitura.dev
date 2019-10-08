@@ -34,10 +34,8 @@
       link: /docs/databases/what-are-databases
     - title: SQL - ORM
       link: /docs/databases/orm
-    - title: SQL - Kuery with Codable Routing
+    - title: SQL - Kuery
       link: /docs/databases/kuery
-    - title: SQL - Kuery with Raw Routing
-      link: /docs/databases/kuery-raw
     - title: NoSQL - CouchDB
       link: /docs/databases/couchdb
 - title: Sessions
