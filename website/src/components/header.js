@@ -13,18 +13,18 @@ const Header = () => {
       <div className={styles.logoSection}>
           <Link className={styles.homeLink} to="/">
               <img className={styles.headerImage} src={kituraLogo} alt="Kitura Logo"></img>
-              <h1>KITURA</h1> 
+              <h1>KITURA</h1>
           </Link>
-      </div>         
-      <nav className={styles.headerNav}> 
+      </div>
+      <nav className={styles.headerNav}>
           <a className={styles.navLink} href="https://github.com/IBM-Swift/Kitura" target="_blank" rel="noopener noreferrer">GitHub</a>
-      
-          <Link className={styles.navLink} to="/learn">Learn</Link> 
-      
-          <a className={styles.navLink} href="https://ibm-swift.github.io/Kitura/">API</a>
-      
+
+          <Link className={styles.navLink} to="/learn">Learn</Link>
+
+          <a className={styles.navLink} href="/docs/api/packages">API</a>
+
           <Link className={styles.navLink} to="/news">News</Link>
-      
+
           {/* <Link className={styles.navLink} to="/community">Community</Link> */}
       </nav>
       <Search />

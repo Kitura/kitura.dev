@@ -13,6 +13,12 @@ title: Kitura Packages
  - [Sessions](#sessions)
  - [Credentials](#credentials)
  - [Templating](#templating)
+ - [Backend Drivers](#backend-drivers)
+ - [Logging](#logging)
+ - [Middleware](#middleware)
+ - [Sample Apps](#sample-apps)
+ - [Infrastructure](#infrastructure)
+ - [Misc](#misc)
 
  ### Core
 
@@ -73,3 +79,58 @@ title: Kitura Packages
  | [KituraKit-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) | Template engine for Kitura that uses Stencil based templates. | [API](https://ibm-swift.github.io/Kitura-StencilTemplateEngine/) |
  | [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown) | Template engine for Kitura that uses Markdown based templates. | [API](https://ibm-swift.github.io/Kitura-Markdown/) |
  | [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) | Template engine for Kitura that uses Mustache based templates. | [API](https://ibm-swift.github.io/Kitura-MustacheTemplateEngine/) |
+
+ ### Backend Drivers
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB)      | Allows Kitura to interact with CouchDB databases.  | [API](https://ibm-swift.github.io/Kitura-CouchDB/) |
+ | [Kitura-Redis](https://github.com/IBM-Swift/Kitura-Redis) | Library for interacting with a Redis database. | [API](https://ibm-swift.github.io/Kitura-Redis/) |
+
+ ### Logging
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [LoggerAPI](https://github.com/IBM-Swift/LoggerAPI)      | Logger protocol for differing kinds of loggers.  | [API](https://ibm-swift.github.io/LoggerAPI/) |
+ | [HeliumLogger](https://github.com/IBM-Swift/HeliumLogger) | A lightweight Swift logging framework. | [API](https://ibm-swift.github.io/HeliumLogger/) |
+
+ ### Middleware
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Kitura-Cache](https://github.com/IBM-Swift/Kitura-Cache)      | In-memory, thread safe cache that allows object storage against a unique Hashable key.  | [API](https://ibm-swift.github.io/Kitura-Cache/) |
+ | [Kitura-Compression](https://github.com/IBM-Swift/Kitura-Compression) | Kitura compression middleware. | [API](https://ibm-swift.github.io/Kitura-Compression/) |
+ | [Kitura-CORS](https://github.com/IBM-Swift/Kitura-CORS) | Kitura CORS middleware. | [API](https://ibm-swift.github.io/Kitura-CORS/) |
+
+ ### Sample Apps
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Kitura-Sample](https://github.com/IBM-Swift/Kitura-Sample)      | Sample application demonstrating Kitura and IBM Swift features.  | No API available |
+ | [iOSSampleKituraKit](https://github.com/IBM-Swift/iOSSampleKituraKit) | Sample application demonstrating Kitura and the KituraKit client library. | No API available |
+ | [Kubernetes-Kitura-Sample](https://github.com/IBM-Swift/Kubernetes-Kitura-Sample) | Demonstration application using Kubernetes. | No API available |
+
+ ### Infrastructure
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Kitura-Net](https://github.com/IBM-Swift/Kitura-Net)      | Logic for sending and receiving HTTP requests.  | [API](https://ibm-swift.github.io/Kitura-Net/) |
+ | [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO) | Logic for sending and receiving HTTP requests using Apple's SwiftNIO framework. | [API](https://ibm-swift.github.io/Kitura-NIO/) |
+ | [Kitura Contracts](https://github.com/IBM-Swift/KituraContracts) | Type definitions shared by client and server. | [API](https://ibm-swift.github.io/KituraContracts/) |
+ | [BlueSocket](https://github.com/IBM-Swift/BlueSocket)      | Socket framework for Swift.  | No API available |
+ | [BlueSSLService](https://github.com/IBM-Swift/BlueSSLService) | SSL/TLS add-in framework for BlueSocket. | No API available |
+ | [BlueCryptor](https://github.com/IBM-Swift/BlueCryptor) | Cross-platform cryptography library. | No API available |
+ | [BlueSignals](https://github.com/IBM-Swift/BlueSignals) | Generic cross-platform signal handler. | No API available |
+ | [BlueRSA](https://github.com/IBM-Swift/BlueCryptor) | Cross-platform RSA wrapper library. | No API available |
+
+ ### Misc
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Swift-SMTP](https://github.com/IBM-Swift/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://ibm-swift.github.io/Swift-SMTP/) |
+ | [swift-html-entities](https://github.com/IBM-Swift/swift-html-entities) | Pure Swift HTML encode and decode utility tool. | [API](https://ibm-swift.github.io/swift-html-entities/) |
+ | [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) | An implementation of JSON Web Tokens in Swift. | [API](https://ibm-swift.github.io/Swift-JWT/) |
+ | [Swift-SMTP](https://github.com/IBM-Swift/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://ibm-swift.github.io/Swift-SMTP/) |
+ | [TypeDecoder](https://github.com/IBM-Swift/TypeDecoder) | Allows inspection of native and complex types. | [API](https://ibm-swift.github.io/TypeDecoder/) |
+ | [Configuration](https://github.com/IBM-Swift/Configuration) | Manages applications configurations. | [API](https://ibm-swift.github.io/Configuration/) |
+ | [FileKit](https://github.com/IBM-Swift/FileKit) | Utility for resolving common paths. | [API](https://ibm-swift.github.io/FileKit/) |
