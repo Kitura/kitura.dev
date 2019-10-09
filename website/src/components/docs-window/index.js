@@ -18,33 +18,33 @@ const DocsWindow = () => {
       <article className={styles.tutorialSection}>
         <h3>Kitura <span className={styles.blueText}>Tutorials</span></h3>
         <section className={styles.tutorials}>
+        <article className={styles.tutorial}>
+          <a href="https://github.com/IBM/ToDoBackend">
+            <h4>ToDo Backend Tutorial</h4>
+            <p>Learn about server-side Swift, REST APIs, OpenAPI, Docker and Kubernetes whilst creating a ToDo list backend.</p>
+          </a>
+        </article>
+        <article className={styles.tutorial}>
+          <a href="https://www.raywenderlich.com/1030830-the-openapi-spec-and-kitura-getting-started">
+            <h4>The OpenAPI Spec and Kitura: Getting Started</h4>
+            <p>Start using the OpenAPI spec with the Swagger API and Kitura to generate an SDK for your iOS app.</p>
+          </a>
+        </article>
+        <article className={styles.tutorial}>
+          <a href="https://www.raywenderlich.com/1032630-kitura-stencil-tutorial-how-to-make-websites-with-swift">
+            <h4>Kitura Stencil Tutorial: How to make Websites with Swift</h4>
+            <p>Find out about templating, then use the Stencil template engine alongside Swift to create a website for the Emoji Journal project.</p>
+          </a>
+        </article>
           <article className={styles.tutorial}>
-            <a href="https://github.com/IBM/FoodTrackerBackend">
-              <h4>Foodtracker Backend</h4>
-              <p>We are announcing the release of Kitura 2.6. Click here to read more about what is new in Kitura!</p>
-            </a>
-          </article>
-          <article className={styles.tutorial}>
-            <a href="https://github.com/IBM/ToDoBackend">
-              <h4>ToDo Backend Tutorial</h4>
-              <p>We are announcing the release of Kitura 2.6. Click here to read more about what is new in Kitura!</p>
-            </a>
-          </article>
-          <article className={styles.tutorial}>
-            <a href="https://www.raywenderlich.com/1032630-kitura-stencil-tutorial-how-to-make-websites-with-swift">
-              <h4>Kitura Stencil Tutorial: How to make Websites with Swift</h4>
-              <p>We are announcing the release of Kitura 2.6. Click here to read more about what is new in Kitura!</p>
-            </a>
-          </article>
-          <article className={styles.tutorial}>
-            <a href="https://www.raywenderlich.com/1030830-the-openapi-spec-and-kitura-getting-started">
-              <h4>The OpenAPI Spec and Kitura: Getting Started</h4>
-              <p>We are announcing the release of Kitura 2.6. Click here to read more about what is new in Kitura!</p>
+            <a href="https://github.com/IBM/Kitura-SOS-Workshop">
+              <h4>Kitura SOS Workshop</h4>
+              <p>Develop a cloud native SOS Kitura application using WebSockets.</p>
             </a>
           </article>
         </section>
       </article>
-    </section>  
+    </section>
   )
 }
 

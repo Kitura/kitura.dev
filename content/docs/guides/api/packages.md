@@ -26,8 +26,7 @@ title: Kitura Packages
  | ----------- | ----------- | ------- |
  | [Kitura](https://github.com/IBM-Swift/Kitura)      | Core Kitura package.       | [API](https://ibm-swift.github.io/Kitura/) |
  | [KituraKit](https://github.com/IBM-Swift/KituraKit) | Client side library for using Codable routes with Kitura. | [API](https://ibm-swift.github.io/KituraKit/) |
- | [Kitura-Websocket](https://github.com/IBM-Swift/Kitura-Websocket) | Provides socket support to Kitura based servers. | [API](https://ibm-swift.github.io/Kitura-websocket/) |
- | [REPO](https://github.com/IBM-Swift/REPO) | Desc | [API](https://ibm-swift.github.io/REPO/) |
+ | [Kitura-Websocket](https://github.com/IBM-Swift/Kitura-Websocket) | Provides socket support to Kitura based servers. | [API](https://ibm-swift.github.io/Kitura-WebSocket/) |
 
  ### Cloud
 
@@ -56,7 +55,7 @@ title: Kitura Packages
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
  | [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session)      | Framework for managing user sessions on a Kitura server.    | [API](https://ibm-swift.github.io/Kitura-Session/) |
- | [Kitura-Session-Redis](https://github.com/IBM-Swift/KituraKit) | Kitura-Session store using Redis as the backing store. | [API](https://ibm-swift.github.io/Kitura-Session-Redis/) |
+ | [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) | Kitura-Session store using Redis as the backing store. | [API](https://ibm-swift.github.io/Kitura-Session-Redis/) |
 
  ### Credentials
 
@@ -68,8 +67,8 @@ title: Kitura Packages
  | [Kitura-CredentialsGitHub](https://github.com/IBM-Swift/Kitura-CredentialsGitHub)  | Plugin for the Credentials framework that authenticates using GitHub. | [API](https://ibm-swift.github.io/Kitura-CredentialsGitHub/) |
  | [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP)  | Plugin for the Credentials framework that authenticates using HTTP Basic and Digest. | [API](https://ibm-swift.github.io/Kitura-CredentialsHTTP/) |
  | [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT)  | Plugin for the Credentials framework that authenticates using JSON Web Tokens. | [API](https://ibm-swift.github.io/Kitura-CredentialsJWT/) |
- | [Kitura-CredentialsDropbox](https://github.com/IBM-Swift/Kitura-CredentialsDropbox)  | Plugin for the Credentials framework that authenticates using a Dropbox OAuth2 token. | No API available |
- | [Kitura-CredentialsTwitter](https://github.com/IBM-Swift/Kitura-CredentialsTwitter)  | Plugin for the Credentials framework that authenticates using the Twitter OAuth web login. | No API available |
+ | [Kitura-CredentialsDropbox](https://github.com/crspybits/CredentialsDropbox)  | Plugin for the Credentials framework that authenticates using a Dropbox OAuth2 token. | No API available |
+ | [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter)  | Plugin for the Credentials framework that authenticates using the Twitter OAuth web login. | No API available |
 
  ### Templating
 
@@ -85,7 +84,7 @@ title: Kitura Packages
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
  | [Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB)      | Allows Kitura to interact with CouchDB databases.  | [API](https://ibm-swift.github.io/Kitura-CouchDB/) |
- | [Kitura-Redis](https://github.com/IBM-Swift/Kitura-Redis) | Library for interacting with a Redis database. | [API](https://ibm-swift.github.io/Kitura-Redis/) |
+ | [Kitura-Redis](https://github.com/IBM-Swift/Kitura-Redis) | Library for interacting with a Redis database. | [API](https://ibm-swift.github.io/Kitura-redis/) |
 
  ### Logging
 
@@ -114,7 +113,7 @@ title: Kitura Packages
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-Net](https://github.com/IBM-Swift/Kitura-Net)      | Logic for sending and receiving HTTP requests.  | [API](https://ibm-swift.github.io/Kitura-Net/) |
+ | [Kitura-Net](https://github.com/IBM-Swift/Kitura-Net)      | Logic for sending and receiving HTTP requests.  | [API](https://ibm-swift.github.io/Kitura-net/) |
  | [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO) | Logic for sending and receiving HTTP requests using Apple's SwiftNIO framework. | [API](https://ibm-swift.github.io/Kitura-NIO/) |
  | [Kitura Contracts](https://github.com/IBM-Swift/KituraContracts) | Type definitions shared by client and server. | [API](https://ibm-swift.github.io/KituraContracts/) |
  | [BlueSocket](https://github.com/IBM-Swift/BlueSocket)      | Socket framework for Swift.  | No API available |
@@ -130,7 +129,6 @@ title: Kitura Packages
  | [Swift-SMTP](https://github.com/IBM-Swift/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://ibm-swift.github.io/Swift-SMTP/) |
  | [swift-html-entities](https://github.com/IBM-Swift/swift-html-entities) | Pure Swift HTML encode and decode utility tool. | [API](https://ibm-swift.github.io/swift-html-entities/) |
  | [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) | An implementation of JSON Web Tokens in Swift. | [API](https://ibm-swift.github.io/Swift-JWT/) |
- | [Swift-SMTP](https://github.com/IBM-Swift/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://ibm-swift.github.io/Swift-SMTP/) |
  | [TypeDecoder](https://github.com/IBM-Swift/TypeDecoder) | Allows inspection of native and complex types. | [API](https://ibm-swift.github.io/TypeDecoder/) |
- | [Configuration](https://github.com/IBM-Swift/Configuration) | Manages applications configurations. | [API](https://ibm-swift.github.io/Configuration/) |
+ | [Configuration](https://github.com/IBM-Swift/Configuration) | Manages application configurations. | [API](https://ibm-swift.github.io/Configuration/) |
  | [FileKit](https://github.com/IBM-Swift/FileKit) | Utility for resolving common paths. | [API](https://ibm-swift.github.io/FileKit/) |

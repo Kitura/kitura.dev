@@ -13,7 +13,7 @@ Content on this site is licensed under the Apache Licence, Version 2.0.
 
 ## Changing an existing guide
 
-Kitura.io is written in markdown.
+Kitura.io is written in Markdown.
 
 When editing existing topics you should adhere to the following guidelines, doing so will provide styling for you.
 
@@ -31,22 +31,17 @@ Use --- to separate sections.
 There is no tag needed for writing normal text.
 
 ### Code Examples
-Swift code blocks should be wrapped in:
-```
-```swift enter code here ```
-```
-Non-Swift code blocks and single code lines should be wrapped in:
+You can create Swift code blocks by using triple backticks followed by the word swift <code>```swift</code> before the code block, and triple backticks after.
 
-```
-``` enter code here ```
-```
 
-Wrap text in ** to make it appear bold, use this when stating file names.
+You can create non-Swift code blocks by using triple backticks <code>```</code> before and after the code block.
+
+File names and variable names should be wrapped in single backticks <code>`</code>
 
 ### Tables
 Tables should be structured as follows:
 ```
-| Table Header 1 |	Table Header 2 | Tablee Header 3 |
+| Table Header 1 | Table Header 2  | Table Header 3  |
 | -------------- | --------------- | --------------- |
 | Row 1          | Row 1           | Row 1           |
 | Row 2          | Row 2           | Row 2           |
@@ -65,14 +60,14 @@ In order to add new content to the side bar, navigate to **content** > **docs** 
 
 ```
 - title: Guide
-  id: guide-name
+  id: guide
   items:
     - title: Title 1
-      link: /docs/guide-name/title-2-name
+      link: /docs/guide-name/title-1
     - title: Title 2
-      link: /docs/guide-name/title-3-name
+      link: /docs/guide-name/title-2
 ```
 
 >Yaml is whitespace sensitive, so ensure your indentation is correct.
 
-The content will appear on the side bar where it is located in the **docs-list.yaml** file.
+The content will appear on the side bar where it is located in the `docs-list.yaml` file.

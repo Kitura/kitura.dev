@@ -2,4 +2,8 @@
 title: Welcome to Kitura!
 ---
 
-Kitura is a web framework built with simplicity and speed in mind. Kitura is written entirely in Swift and leverages many of the benefits provided by the Swift language. Kitura is free and open source!
+Kitura is a server-side Swift web framework built with simplicity and speed in mind. Kitura is free and open source.
+
+---
+
+Kitura is an enterprise-grade server-side Swift web framework, that makes it possible to build web sites, REST APIs, and full-stack Swift applications.
