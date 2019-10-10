@@ -19,7 +19,7 @@ In this guide we are going to create two Kitura routes:
 
 - A POST route, where we store a book in our session.
 
-We are using [the Book model from the routing guide](../routing/what-is-routing#bookmodel) in our routes, however you could use any codable object.
+We are using [the Book model from the routing guide](/docs/routing/what-is-routing#bookmodel) in our routes, however you could use any codable object.
 
 To use Kitura-Session from a server, we need to [add Kitura-Session to our dependencies](https://github.com/IBM-Swift/Kitura-Session#add-dependencies).
 

@@ -13,7 +13,7 @@ In this guide we are going to create a simple iOS application that uses a Kitura
 
 ##Setting up your server
 
-If you don't have a server, follow our [Create a Server](../getting-started/create-server-cli) guide.
+>If you don't have a server, follow our [Create a Server](../getting-started/create-server-cli) guide.
 
 Kitura and KituraKit send and receive instances of Swift types directly. These types (aka models) can be shared between the client and server.
 
@@ -149,7 +149,7 @@ Finally, click on the Button and drag it into the ViewController class after the
 
 ###Adding functionality
 
-Firstly, open the info.plist file in your default text editor and add this anywhere in the first dictionary declaration:
+Firstly, open the `info.plist` file in your default text editor and add this anywhere in the first dictionary declaration:
 ```
 <key>NSAppTransportSecurity</key>
 <dict>

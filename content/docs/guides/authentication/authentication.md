@@ -29,7 +29,7 @@ Kitura supports basic authentication via the [Kitura-CredentialsHTTP](https://gi
 
 A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can use a JWT to implement a Single Sign On system, whereby a user logs in once and each subsequent request will include the JWT. This allows the user to access routes, services, and resources that are permitted with that token, without having to authenticate each time.
 
-Kitura supports JWTs via the [Swift-JWT](Swift-JWT) library.
+Kitura supports JWTs via the [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) library.
 
 ##OAuth 2.0 Authentication
 
@@ -40,7 +40,7 @@ Kitura currently supports OAuth 2.0 with the following services:
 - Facebook with [Kitura-CredentialsFacebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook)
 - Github with [Kitura-CredentialsGithub](https://github.com/IBM-Swift/Kitura-CredentialsGitHub)
 - Google with [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)
-- Twitter with [Kitura-CredentialsTwitter](Kitura-CredentialsTwitter) (Third party implemented.)
+- Twitter with [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter) (Third party implemented.)
 
 ---
 

@@ -164,7 +164,7 @@ func protectedGetHandler(user: MyBasicAuth, respondWith: (Book?, RequestError?) 
 }
 ```
 
-> This route is returning the [Book model from the routing guide](../routing/what-is-routing#bookmodel), however you could use any Codable type.
+> This route is returning the [Book model from the routing guide](/docs/routing/what-is-routing#bookmodel), however you could use any Codable type.
 
 We have registered `MyBasicAuth` on our handler by adding it to the signature.
 

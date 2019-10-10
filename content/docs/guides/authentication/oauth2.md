@@ -66,7 +66,7 @@ In this guide we are going to create three Kitura routes:
 
 In this step we will create the framework for our protected and log out routes.
 
->If you don't have a server, follow our [Create a server](https://www.kitura.io/docs/getting-started/create-server.html) guide.
+>If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
 Firstly, open your `Application.swift` file in your default text editor (or Xcode if you prefer):
 ```

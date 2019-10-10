@@ -5,7 +5,7 @@ title: Enabling SwiftNIO
 
 # Enabling SwiftNIO
 
-[SwiftNIO](https://github.com/apple/swift-nio) is a cross-platform, asynchronous, event-driven networking framework for building network servers and clients in Swift. Since Kitura 2.5 you have the option of running your Kitura application using SwiftNIO instead of the [Kitura-net](https://github.com/IBM-Swift/Kitura-net) and [BlueSocket](https://github.com/IBM-Swift/BlueSocket) libraries which Kitura has traditionally been based upon. This support is enabled through the [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO) package.
+[SwiftNIO](https://github.com/apple/swift-nio)  is a cross-platform, asynchronous, event-driven networking framework for building network servers and clients in Swift. Since Kitura 2.5 you have the option of running your Kitura application using SwiftNIO instead of the [Kitura-net](https://github.com/IBM-Swift/Kitura-net) and [BlueSocket](https://github.com/IBM-Swift/BlueSocket) libraries which Kitura has traditionally been based upon. This support is enabled through the [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO) package.
 
 Kitura-NIO has been designed to be API-compatible with the current Kitura-net API, though the underlying implementation uses SwiftNIO.
 
@@ -37,7 +37,7 @@ Please note that though Kitura-NIO has its own GitHub repository, the package na
 
 ## Using Kitura WebSocket NIO
 
-[Kitura WebSocket NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) and [Kitura WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) have seperate GitHub repositories, but an identical API. The underlying code, however is different in how it functions, so it is often helpful to include this snippet of code in your `Package.swift` file so that the correct package is used:
+[Kitura WebSocket NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) and [Kitura WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) have separate GitHub repositories, but an identical API. The underlying code, however is different in how it functions, so it is often helpful to include this snippet of code in your `Package.swift` file so that the correct package is used:
 ```swift
 // Use alternate implementation of Kitura-WebSocket while building in NIO mode
 if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {

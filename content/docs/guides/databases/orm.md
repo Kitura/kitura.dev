@@ -73,13 +73,13 @@ extension App {
 
 We have defined three routes on the "/orm" endpoint. One to handle POST requests, one to handle GET requests with an identifier and one to handle GET requests without an identifier.
 
-The routes in this guide are using the [Book model from the routing guide](../routing/what-is-routing#bookmodel), however you could use any Codable type.
+The routes in this guide are using the [Book model from the routing guide](/docs/routing/what-is-routing#bookmodel), however you could use any Codable type.
 
 ---
 
 ##Step 2: Add the ORM to the project's dependencies
 
-> You can use any of the other database plugins supported by [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery), however, the rest of this guide is written to work with the [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies) plugin.
+> You can use any of the other database plugins supported by [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery), however, the rest of this guide is written to work with the [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) plugin.
 
 To use the ORM, we need to [add Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM#update-your-packageswift-file) and add [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies) to your dependencies.
 

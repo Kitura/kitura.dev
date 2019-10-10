@@ -56,7 +56,7 @@ if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {
 )
 ```
 
->[This code snippet](../configuring/enabling-nio.html#NIO_WebSocket) allows either [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) or [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) packages to be used.
+>[This code snippet](/docs/configuring/swiftnio#using-kitura-websocket-nio) allows either [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) or [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) packages to be used.
 
 Add the following to your `ChatService.swift` file:
 
