@@ -37,9 +37,10 @@
     margin-bottom: 1.5rem;
 }
 
-.welcome-content > p {
+.welcome-content > div > p {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 22px;
+    margin-bottom: 1rem;
 }
 
 /* Marketing/Why Kitura section */
