@@ -11,9 +11,9 @@ const DocsWindow = () => {
       </section>
       <article className={styles.usingDocs}>
         <h3>Using these docs</h3>
-        <p>The Guides section takes you through building a Kitura server. Following the guides from start to finish will provide you with the skills you need to create your own Kitura server!</p>
-        <p>The guides are also written in a way to allow you to enter at any point with your own application and follow through. So just choose a section on the left and dive in!</p>
-        <p>No prior knowledge of Server-Side Swift is required to follow these guides.</p>
+        <p>The guides takes you through building a Kitura server. Following the guides from start to finish will provide you with the skills you need to create your own Kitura server!</p>
+        <p>Structured in a way to allow you to enter at any point, just choose a section on the left and dive in!</p>
+        <p>No prior knowledge of server-side Swift is required to follow these guides.</p>
       </article>
       <article className={styles.tutorialSection}>
         <h3>Kitura <span className={styles.blueText}>Tutorials</span></h3>
