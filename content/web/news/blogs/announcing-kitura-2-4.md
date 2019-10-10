@@ -14,27 +14,27 @@ Kitura 2.0 introduced Codable routing, a powerful way to quickly build REST APIs
 
 Now in Kitura 2.4 you can write a new kind of middleware and associate it with your Codable routes. We’re providing support for type-safe Sessions and Authentication for you, but you can use type-safe middlewares for anything you want.
 
---- 
+---
 
 ##Swagger support
 
-Swagger, also known as OpenAPI, is the most popular way to document RESTful web services. The Swagger ecosystem provides a broad range of tools and services for developers across the API lifecycle.
+[Swagger](https://swagger.io/), also known as OpenAPI, is the most popular way to document RESTful web services. The Swagger ecosystem provides a broad range of tools and services for developers across the API lifecycle.
 
-For a long time, the Kitura server generator enabled developers to generate a Kitura application from a provided Swagger document.
+For a long time, the [Kitura server generator](https://github.com/IBM-Swift/generator-swiftserver) enabled developers to generate a Kitura application from a provided Swagger document.
 
-Now, Kitura has native support for generating a Swagger document from the currently running application, and a new Kitura-OpenAPI package makes adding a Swagger endpoint and SwaggerUI to your application one line of code.
+Now, Kitura has native support for generating a Swagger document from the currently running application, and a new [Kitura-OpenAPI package](https://github.com/IBM-Swift/Kitura-OpenAPI) makes adding a Swagger endpoint and SwaggerUI to your application one line of code.
 
 ---
 
 ##Kitura on SwiftNIO
 
-SwiftNIO is a new framework for writing high-performance network applications in Swift. Kitura 2.4 brings experimental support for running Kitura on SwiftNIO, including support for both Linux and macOS. We invite the community to explore this new technology and give us feedback.
+[SwiftNIO](https://github.com/apple/swift-nio/) is a new framework for writing high-performance network applications in Swift. Kitura 2.4 brings experimental support for running Kitura on SwiftNIO, including support for both Linux and macOS. We invite the community to explore this new technology and give us feedback.
 
 ---
 
 ##Type-safe templating
 
-Web applications are an important use-case for Kitura, and in Kitura 2.4 we’ve enhanced our templating APIs so they support easy rendering of Codable structures. Many thanks go to Steven van Impe from the Kitura community who contributed valuable ideas and code to this new feature.
+Web applications are an important use-case for Kitura, and in Kitura 2.4 we’ve enhanced our templating APIs so they support easy rendering of `Codable` structures. Many thanks go to Steven van Impe from the Kitura community who contributed valuable ideas and code to this new feature.
 
 ---
 
@@ -42,24 +42,26 @@ Web applications are an important use-case for Kitura, and in Kitura 2.4 we’ve
 
 Kitura 2.4 also comes with a slew of other minor improvements and fixes, including:
 
-###Easily decode query parameters in raw routes (#1215)
+###Easily decode query parameters in raw routes ([#1215](https://github.com/IBM-Swift/Kitura/pull/1215))
 
-A new request.getQueryParameters() function allows Kitura users to easily decode incoming query parameters to a Codable QueryParams structure.
+A new `request.getQueryParameters()` function allows Kitura users to easily decode incoming query parameters to a `Codable` `QueryParams` structure.
 
-###Decode comma-separated query parameters (#1238)
+###Decode comma-separated query parameters ([#1238](https://github.com/IBM-Swift/Kitura/pull/1238))
 
-A new request.queryParametersMultiValues property for decoding comma-separated query parameters into an array of strings automatically.
+A new `request.queryParametersMultiValues` property for decoding comma-separated query parameters into an array of strings automatically.
 
-###Extra Codable routing API (#1253)
+###Extra Codable routing API ([#1253](https://github.com/IBM-Swift/Kitura/pull/1253))
 
-Previously it was not possible to return a single Codable object from a Codable GET route with query parameters. We’ve added this extra API so it’s now possible, as this pattern was observed in some existing REST APIs.
+Previously it was not possible to return a single `Codable` object from a Codable GET route with query parameters. We’ve added this extra API so it’s now possible, as this pattern was observed in some existing REST APIs.
 
-###userInfo in RouterResponse (#1259)
+###`userInfo` in `RouterResponse` ([#1259](https://github.com/IBM-Swift/Kitura/pull/1259))
 
-For a long time we’ve provided a public dictionary in RouterRequest to allow Kitura users to stash arbitrary user data. Now we also provide this on RouterResponse, to provide API symmetry and help those users who write extensions on RouterResponse.
+For a long time we’ve provided a public dictionary in `RouterRequest` to allow Kitura users to stash arbitrary user data. Now we also provide this on `RouterResponse`, to provide API symmetry and help those users who write extensions on `RouterResponse`.
 
-###asRaw property on ParsedBody (#1258)
+###`asRaw` property on `ParsedBody` ([#1258](https://github.com/IBM-Swift/Kitura/pull/1258))
 
 Now you can decode body data as a `Data?` easily via a new `asRaw` property. This provides nice symmetry with the existing `asJSON` and `asURLEncoded` properties.
 
+##What’s Next
 
+The Kitura team has lots of ideas about where to go next, including more integration of SwiftNIO, enhancements to our Swagger support, and much more. [Join our Slack](https://slack.kitura.io/) to talk server-side Swift with the community and help shape the future of Kitura!

@@ -74,4 +74,4 @@ This creates a pool of connections for us to use to make requests to our databas
 
 >If you are on Linux, you must provide your username and password in the options for `PostgreSQLConnection.createPool()`.
 
-Now you can return to the [Swift-Kuery](./kuery#step-2-install-a-database-plugin) guide.
+Now you can return to the [Swift-Kuery](/docs/databases/kuery#step-2-install-a-database-plugin) guide.

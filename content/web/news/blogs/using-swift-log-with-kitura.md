@@ -6,11 +6,11 @@ author: David Jones
 path: /blogs/using-swift-log-with-kitura
 ---
 
-swift-log is a new logging API package for Swift, developed by the Swift Server Working Group. It aims to provide a consistent and standardised logging solution across the server-side Swift ecosystem.
+[swift-log](https://github.com/apple/swift-log) is a new logging API package for Swift, developed by the [Swift Server Working Group](https://swift.org/server/). It aims to provide a consistent and standardised logging solution across the server-side Swift ecosystem.
 
-With the release of Kitura’s LoggerAPI 1.9, you can now easily direct your log messages to a swift-log logging backend.
+With the release of Kitura’s [LoggerAPI 1.9](https://github.com/IBM-Swift/LoggerAPI/releases/tag/1.9.0), you can now easily direct your log messages to a swift-log logging backend.
 
-In addition, the upcoming Kitura 2.8 release will allow you to configure Kitura to log via swift-log with a single line of code:
+In addition, the upcoming Kitura 2.8 release will allow you to [configure Kitura to log via swift-log](https://github.com/IBM-Swift/Kitura/pull/1460) with a single line of code:
 
 ```swift
 Kitura.logTo(mySwiftLogger)
@@ -33,22 +33,21 @@ To direct your existing LoggerAPI log statements to swift-log, you need only set
 ```swift
 import Logging
 import LoggerAPI
- 
+
 var mySwiftLogger = Logger(label: "my-swift-logger")
 mySwiftLogger.logLevel = .info
- 
+
 Log.swiftLogger = mySwiftLogger
 ```
 
-Note that there are some minor differences in the hierarchy of logging levels defined by LoggerAPI and swift-log. See the LoggerAPI documentation Log.isLogging() for details of how log levels are mapped.
+Note that there are some minor differences in the hierarchy of logging levels defined by LoggerAPI and swift-log. See the [LoggerAPI documentation](https://ibm-swift.github.io/LoggerAPI/index.html) Log.isLogging() for details of how log levels are mapped.
 
 ##How does swift-log compare to LoggerAPI?
 
 Both LoggerAPI and swift-log provide a means to decouple log message production from the logging implementation (backend). In both cases, the producer (your own code, or one of your dependencies) calls a logging API function indicating the logging level and the message content. And in both cases, the application author decides what level of log messages should be logged, and where the log messages should be sent.
 
-There are some differences in the architecture, however: LoggerAPI provides a global Log type that can be invoked from anywhere in your code, and from any thread. Swift-log provides a local Logger with instance functions for logging, and this must be passed around or stored as a property. LoggerAPI effectively allows you to store an instance globally, and internally uses locks to provide thread-safe access to these global loggers.
+There are some differences in the architecture, however: LoggerAPI provides a global `Log` type that can be invoked from anywhere in your code, and from any thread. Swift-log provides a local `Logger` with instance functions for logging, and this must be passed around or stored as a property. LoggerAPI effectively allows you to store an instance globally, and internally uses locks to provide thread-safe access to these global loggers.
 
-There are pro’s and con’s to each approach, which are nicely summarised in the thread for the swift-log pitch on the Swift Forums.
+There are pro’s and con’s to each approach, which are nicely summarised in the [thread for the swift-log pitch on the Swift Forums](https://forums.swift.org/t/logging/16027/3).
 
 If you wish to use swift-log throughout your application, you can configure Kitura to log to it, but then use your own swift-log Logger instances to perform logging. Because the logging backend configuration is global, all log messages will be emitted to the same destination.
-

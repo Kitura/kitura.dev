@@ -73,4 +73,4 @@ static let pool = SQLiteConnection.createPool(filename: String(path), poolOption
 
 This creates a pool of connections for us to use to make requests to our database.
 
-Now you can return to the [Swift-Kuery](./kuery#step-2-install-a-database-plugin) guide.
+Now you can return to the [Swift-Kuery](/docs/databases/kuery/#step-2-install-a-database-plugin) guide.

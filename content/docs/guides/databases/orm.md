@@ -73,7 +73,7 @@ extension App {
 
 We have defined three routes on the "/orm" endpoint. One to handle POST requests, one to handle GET requests with an identifier and one to handle GET requests without an identifier.
 
-The routes in this guide are using the [Book model from the routing guide](/docs/routing/what-is-routing#bookmodel), however you could use any Codable type.
+The routes in this guide are using the [Book model from the routing guide](/docs/routing/what-is-routing#codable-model), however you could use any Codable type.
 
 ---
 

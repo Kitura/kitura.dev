@@ -115,7 +115,7 @@ func getHandler(completion: ([String]?, RequestError?) -> Void) {
 router.get("/", handler: getHandler)
 ```
 
-###Codable model <a name="bookmodel"></a>
+###Codable model
 
 Any type that conforms to `Codable` can be used as a parameter in Codable routing, including custom structs and classes. As we are simulating a bookstore in our guides, we are going to need to define a book. The book is a model so the first thing we need to do is create our Models folder:
 

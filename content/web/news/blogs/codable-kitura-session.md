@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/codable-kitura-session
 ---
 
-Web application servers are generally “stateless” and handle HTTP requests independently. However, it’s common for a developer to want to link requests from the same user together in a session. A simple way to achieve this is by using a cookie to identify the user and associating data to that cookie. Kitura-Session allows you to implement this flow and, as of version 3.3, you can now directly store and retrieve Codable objects. This blog will describe Kitura-Session’s new capabilities and provide an example of using sessions with a Kitura server.
+Web application servers are generally “stateless” and handle HTTP requests independently. However, it’s common for a developer to want to link requests from the same user together in a session. A simple way to achieve this is by using a cookie to identify the user and associating data to that cookie. [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) allows you to implement this flow and, as of version 3.3, you can now directly store and retrieve Codable objects. This blog will describe Kitura-Session’s new capabilities and provide an example of using sessions with a Kitura server.
 
 ##Codable Kitura-Session
 
@@ -92,4 +92,3 @@ router.get("/session") { request, response, next in
 ```
 
 Even with a simple model, this has vastly reduced the amount of code required, added compile time safety and made our code easier to read!
-

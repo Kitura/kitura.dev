@@ -62,7 +62,7 @@ extension App {
 <a href="/docs/databases/kuery1" target="blank"> See the above code as a raw route.</a>
 
 
->The routes in this guide are using the [Book model from the routing guide](/docs/routing/what-is-routing#bookmodel), however you could use any Codable type.
+>The routes in this guide are using the [Book model from the routing guide](/docs/routing/what-is-routing#codable-model), however you could use any Codable type.
 
 ---
 
@@ -74,9 +74,9 @@ The API to use each plugin is the same but the installation steps differ slightl
 
 The algorithms are as follows:
 
-- [PostgreSQL](./kuery-postgresql)
-- [MySQL](./kuery-mysql)
-- [SQLite](./kuery-sqlite)
+- [PostgreSQL](/docs/databases/kuery-postgresql)
+- [MySQL](/docs/databases/kuery-mysql)
+- [SQLite](/docs/databases/kuery-sqlite)
 
 ---
 

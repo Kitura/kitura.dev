@@ -8,7 +8,7 @@ path: /blogs/type-safe-authentication-using-oauth-tokens
 
 ##Introduction
 
-In the 2.4 release of Kitura, we introduced a facility called Type-Safe Middleware, and with it two conforming implementations: Sessions and Credentials.
+In the 2.4 release of Kitura, we introduced a facility called [Type-Safe Middleware], and with it two conforming implementations: Sessions and Credentials.
 
 If you need to authenticate users of your API, you can use Credentials to specify a middleware when registering your Codable route handler. The handler is invoked only after successful authentication, and an instance of that middleware provides convenient and type-safe access to the user’s profile.
 
@@ -16,7 +16,7 @@ With the release of Type-Safe Credentials, we provided a type-safe implementatio
 
 In addition, a new  TypeSafeMultiCredentials  protocol allows a single route handler to accept multiple forms of authentication.
 
---- 
+---
 
 ##Authentication using OAuth Tokens
 
@@ -51,9 +51,9 @@ import CredentialsGoogle
 To authenticate an incoming request that provides a Google OAuth token, you can use the pre-defined  GoogleTokenProfile  type as a middleware when registering a Codable route handler:
 
 ```swift
-router.get("/protected") { (user: GoogleTokenProfile, 
+router.get("/protected") { (user: GoogleTokenProfile,
         respondWith: (GoogleTokenProfile?, RequestError?) -> Void) in
- 
+
     respondWith(user, nil)
 }
 ```
@@ -62,7 +62,7 @@ Alternatively, you can customize this type by defining a conformance to the  Typ
 
 ```swift
 import CredentialsGoogle
- 
+
 struct MyGoogleUser: TypeSafeGoogleToken {
     let id: String
     let name: String
@@ -84,7 +84,7 @@ let package = Package(name: "example", dependencies: [
     .package(url: "https://github.com/IBM-Swift/Kitura-CredentialsFacebook.git", from: "2.2.0"),
   ],
   targets: [
-    .target(name: "example", 
+    .target(name: "example",
             dependencies: [ "Kitura", ..., "CredentialsFacebook" ]),
 ```
 
@@ -97,9 +97,9 @@ import CredentialsFacebook
 // issued to your application.
 FacebookTokenProfile.appID = "<your app id>"
 ...
-router.get("/protected") { (user: FacebookTokenProfile, 
+router.get("/protected") { (user: FacebookTokenProfile,
          respondWith: (FacebookTokenProfile?, RequestError?) -> Void) in
- 
+
     respondWith(user, nil)
 }
 ```
@@ -108,12 +108,12 @@ Again, you can create a custom type by defining a conformance to the  TypeSafeFa
 
 ```swift
 import CredentialsFacebook
- 
+
 struct MyFacebookUser: TypeSafeFacebookToken {
     let id: String
     let name: String
     let email: String?
- 
+
     static var appID: String? = "<your app id>"
 }
 ```
@@ -154,20 +154,20 @@ To use this facility, define a type that conforms to the protocol. This requires
 
 ```swift
 import Credentials
- 
+
 struct MyMultiAuthedUser: TypeSafeMultiCredentials {
     let id: String                   // Protocol requirement
     let provider: String             // Protocol requirement
     let name: String                 // Custom property
     let email: String?               // Custom, optional property
- 
-    static var authenticationMethods: [TypeSafeCredentials.Type] 
+
+    static var authenticationMethods: [TypeSafeCredentials.Type]
             = [MyBasicAuth.self, MyFacebookUser.self, MyGoogleUser.self]
- 
+
     init(successfulAuth: TypeSafeCredentials) {
         self.id = successfulAuth.id
         self.provider = successfulAuth.provider
- 
+
         // Initialize additional properties based on authentication type.
         switch successfulAuth {
         case let googleToken as MyGoogleUser:
@@ -189,9 +189,9 @@ struct MyMultiAuthedUser: TypeSafeMultiCredentials {
 This type can then be used in your Codable route handler, in the same way as before:
 
 ```swift
-app.router.get("/multiAuthProfile") { (userProfile: MyMultiAuthedUser, 
+app.router.get("/multiAuthProfile") { (userProfile: MyMultiAuthedUser,
          respondWith: (MyMultiAuthedUser?, RequestError?) -> Void) in
- 
+
     print("Authenticated \(userProfile.id) using \(userProfile.provider)")
     respondWith(userProfile, nil)
 }
@@ -216,18 +216,18 @@ Now we can define a set of default credentials – in this case, HTTP Basic – 
 
 ```swift
 import KituraKit
- 
+
 // Create a KituraKit client
 guard let client = KituraKit(baseURL: "http://localhost:8080") else {
     fatalError("Unable to create client")
 }
 // Assign default credentials to this client
 client.defaultCredentials = HTTPBasic(username: "John", password: "12345")
- 
+
 // Make a request using the default credentials
-client.get("/multiAuthProfile") { (returnedItem: AuthedUser?, 
+client.get("/multiAuthProfile") { (returnedItem: AuthedUser?,
         error: Error?) -> Void in
- 
+
     guard let returnedItem = returnedItem else {
         print("Failed to retrieve user profile with default credentials: \(error)")
         return
@@ -246,11 +246,11 @@ You can override the  defaultCredentials  for an individual request by specifyin
 
 ```swift
 let googleToken = "abc123"  // Your Google access token
- 
+
 // Make a request using specific credentials
 client.get("/multiAuthProfile", credentials: GoogleToken(token: googleToken)) {
         (returnedItem: AuthedUser?, error: Error?) -> Void in
- 
+
     guard let returnedItem = returnedItem else {
         print("Failed to retrieve user profile with Google token: \(error)")
         return
@@ -269,9 +269,9 @@ Finally, if you have set the default credentials but then wish to make a request
 
 ```swift
 // Make a request without providing credentials
-client.get("/multiAuthProfile", credentials: NilCredentials()) { 
+client.get("/multiAuthProfile", credentials: NilCredentials()) {
         (returnedItem: AuthedUser?, error: Error?) -> Void in
- 
+
     guard let error = error else {
         print("Unexpected success without credentials: \(returnedItem)")
         return

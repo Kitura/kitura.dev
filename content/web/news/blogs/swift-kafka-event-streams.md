@@ -1,12 +1,12 @@
 ---
 title: "Introducing SwiftKafka: Accessing Event Streams in Swift"
 blurb: We have just released SwiftKafka, a new Swift package for producing and consuming from an Apache Kafka distributed streaming platform
-date: "2019-08-12"
+date: "2019-08-13"
 author: Andrew Lees
 path: /blogs/swift-kafka-event-streams
 ---
 
-We have just released SwiftKafka, a new Swift package for producing and consuming from an Apache Kafka distributed streaming platform. This blog post explains why you would use Apache Kafka, how you can use the Swift Kafka API and provides an example of producing and consuming messages.
+We have just released [SwiftKafka](https://github.com/IBM-Swift/SwiftKafka), a new Swift package for producing and consuming from an Apache Kafka distributed streaming platform. This blog post explains why you would use Apache Kafka, how you can use the Swift Kafka API and provides an example of producing and consuming messages.
 
 ##What is Apache Kafka?
 
@@ -18,21 +18,21 @@ Apache Kafka is a distributed event streaming platform capable of handling trill
 
 Instead of sending messages directly from a producer to a consumer, Kafka stores streams of records in categories called topics. Producers add messages to a topic and consumers read messages from a topic. Producing and consuming from a stream is very cheap and works with Kafka’s built in distributed architecture. The result is a messaging system that is fast, fault tolerant and can handle high volumes of data.
 
-If you would like to learn more about Kafka, check out the Apache Kafka website.
+If you would like to learn more about Kafka, check out the [Apache Kafka website](https://kafka.apache.org/intro.html).
 
---- 
+---
 
 ##Swift Kafka
 
-The new SwiftKafka library is built on top of the librdkafka C library. This provides high performance messaging with an easy to use Swift API. Swift Kafka provides three classes that you will need to connect your application to event streams:
+The new [SwiftKafka](https://github.com/IBM-Swift/SwiftKafka) library is built on top of the [librdkafka](https://github.com/edenhill/librdkafka) C library. This provides high performance messaging with an easy to use Swift API. Swift Kafka provides three classes that you will need to connect your application to event streams:
 
 ###KafkaProducer
 
-The KafkaProducer class produces messages to a Kafka server.
+The `KafkaProducer` class produces messages to a Kafka server.
 
-Once you have initialized a KafkaProducer, you can call connect(brokers:) to connect to one or more Kafka servers.
+Once you have initialized a KafkaProducer, you can call `connect(brokers:)` to connect to one or more Kafka servers.
 
-The producer can then call send() with a KafkaProducerRecord, which contains the following fields:
+The producer can then call `send()` with a `KafkaProducerRecord`, which contains the following fields:
 
 - Topic: The topic where the producer sends the record. If this topic doesn’t exist, the producer will try to create it.
 - Value: The body of the message that will be sent with the record.
@@ -43,17 +43,17 @@ The message is sent to the connected brokers and the Kafka server stores the mes
 
 ###KafkaConsumer
 
-The KafkaConsumer class consumes messages from a Kafka server.
+The `KafkaConsumer` class consumes messages from a Kafka server.
 
-Once you have initialized a KafkaConsumer, you can call connect(brokers:) to connect to one or more Kafka servers.
+Once you have initialized a `KafkaConsumer`, you can call `connect(brokers:)` to connect to one or more Kafka servers.
 
-You can then subscribe to topics using subscribe(). This will distribute the topic partitions evenly between consumers with the same group id. If you do not set a group id, a random UUID will be used.
+You can then subscribe to topics using `subscribe()`. This will distribute the topic partitions evenly between consumers with the same group id. If you do not set a group id, a random UUID will be used.
 
-Alternatively, you can use assign() to manually set the partition and offset where the consumer will consume from.
+Alternatively, you can use `assign()` to manually set the partition and offset where the consumer will consume from.
 
-Both subscribe() and assign() are asynchronous and will return immediately, however they may take up to sessionTimeoutMs (default 10 seconds) * 2 before the consumer connects and is assigned partitions.
+Both `subscribe()` and `assign()` are asynchronous and will return immediately, however they may take up to sessionTimeoutMs (default 10 seconds) * 2 before the consumer connects and is assigned partitions.
 
-To consume messages from Kafka you call poll(timeout:). This will poll Kafka, blocking for timeout seconds. When the function completes, you are returned an array of KafkaConsumerRecord, with the following fields:
+To consume messages from Kafka you call poll `(timeout:)`. This will poll Kafka, blocking for timeout seconds. When the function completes, you are returned an array of `KafkaConsumerRecord`, with the following fields:
 
 - Value: The message value, if it can be UTF8 decoded to a String.
 - ValueData: The message value as raw data.
@@ -63,11 +63,11 @@ To consume messages from Kafka you call poll(timeout:). This will poll Kafka, bl
 - Topic: The topic that the message was consumed from.
 - Partition: The partition that the message was consumed from.
 
-When you have finished consuming, you can call close() to close the connection and unassign the consumer. The Kafka server then rebalances the unassigned partitions between other consumers in the group. If you don’t call close(), the consumer will be closed when the class is deallocated.
+When you have finished consuming, you can call `close()` to close the connection and unassign the consumer. The Kafka server then rebalances the unassigned partitions between other consumers in the group. If you don’t call `close()`, the consumer will be closed when the class is deallocated.
 
 ###KafkaConfig
 
-The KafkaConfig class contains your settings for a Kafka consumer or Kafka producer. You pass an instance of this class to the Kafka client initializer to set its configuration.
+The `KafkaConfig` class contains your settings for a Kafka consumer or Kafka producer. You pass an instance of this class to the Kafka client initializer to set its configuration.
 
 You initialize the class with default values, which you can change using the helper functions. For example, if you want to enable all logging, you would set the debug variable:
 
@@ -84,9 +84,9 @@ To demonstrate Swift Kafka, we are going to create a producer that reads user in
 
 ###Setting up a Kafka Server (Mac)
 
-For macOS, we will use Homebrew to install and run the server:
+For macOS, we will use [Homebrew](https://brew.sh) to install and run the server:
 
-1. Install librdkafka (required to build SwiftKafka)
+1. Install `librdkafka` (required to build SwiftKafka)
 
 ```
 $ brew install librdkafka
@@ -117,7 +117,7 @@ These commands will install and run Zookeeper and Kafka as background services. 
 
 ###Setting up a Kafka Server (Linux)
 
-On Linux, please follow the Kafka quick start instructions and install librdkafka.
+On Linux, please follow the [Kafka quick start instructions](https://kafka.apache.org/quickstart) and [install librdkafka](https://github.com/edenhill/librdkafka#installing-prebuilt-packages).
 
 ---
 
@@ -135,7 +135,7 @@ $ swift package init --type executable
 
 2. Add Swift Kafka
 
-Open your Package.swift file:
+Open your `Package.swift` file:
 
 ```
 $ open Package.swift
@@ -147,7 +147,7 @@ Add Swift Kafka to your dependencies:
 .package(url: "https://github.com/IBM-Swift/SwiftKafka.git", from: "0.0.0")
 ```
 
-Then add SwiftKafka to your target dependencies.
+Then add `SwiftKafka` to your target dependencies.
 
 ```
 .target(
@@ -155,7 +155,7 @@ Then add SwiftKafka to your target dependencies.
             dependencies: ["SwiftKafka"]),
 ```
 
-3. Add the KafkaProducer code
+3. Add the `KafkaProducer` code
 
 ```
 open Sources/kafkaProducer/main.swift
@@ -165,7 +165,7 @@ Replace the code in this file with:
 
 ```swift
 import SwiftKafka
- 
+
 let config = KafkaConfig()
 config.brokerAddressFamily = .v4
 if let producer = try? KafkaProducer(config: config) {
@@ -213,7 +213,7 @@ $ swift package init --type executable
 
 2. Add Swift Kafka
 
-Open your Package.swift file:
+Open your `Package.swift` file:
 
 ```
 $ open Package.swift
@@ -225,7 +225,7 @@ Add Swift Kafka to your dependencies:
 .package(url: "https://github.com/IBM-Swift/SwiftKafka.git", from: "0.0.0")
 ```
 
-Then add SwiftKafka to your target dependencies.
+Then add `SwiftKafka` to your target dependencies.
 
 ```
 .target(
@@ -233,7 +233,7 @@ Then add SwiftKafka to your target dependencies.
             dependencies: ["SwiftKafka"]),
 ```
 
-3. Add the KafkaConsumer code
+3. Add the `KafkaConsumer` code
 
 ```
 open Sources/kafkaConsumer/main.swift
@@ -243,13 +243,13 @@ Replace the code in this file with:
 
 ```swift
 import SwiftKafka
- 
+
 let config = KafkaConfig()
 config.autoOffsetReset = .beginning
 config.brokerAddressFamily = .v4
 config.groupId = "exampleGroup"
 do {
-    let consumer = try KafkaConsumer(config: config) 
+    let consumer = try KafkaConsumer(config: config)
     let connection = consumer.connect(brokers: "localhost:9092")
     print("Connected to \(connection) brokers")
     print("Waiting for messages from Kafka:")
@@ -276,3 +276,12 @@ $ swift run
 
 Once the consumer connects to Kafka it should consume all the messages you sent from the producer and print them to the terminal.
 
+##Next steps
+
+Congratulations! You have just set up an Apache Kafka event stream platform and connected a producer and consumer in Swift.
+
+If you would like learn more about SwiftKafka, [check it out on GitHub](https://github.com/IBM-Swift/SwiftKafka).
+
+If you would like to learn more about using the SwiftKafka API, [visit our API reference](https://ibm-swift.github.io/SwiftKafka/index.html).
+
+Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.118803593.186671014.1570626561-1743126121.1570022962&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328)!

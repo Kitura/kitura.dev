@@ -6,7 +6,7 @@ author: Matt Kilner
 path: /blogs/announcing-swiftkuery-3-0
 ---
 
-We have recently released version 3.0 of Swift-Kuery along with version 2.0 of Swift-Kuery-PostgreSQL, SwiftKueryMySQL and Swift-Kuery-SQLite. You can find a summary of the major changes below, for more detail on the changes please refer to the Swift-Kuery migration guide.
+We have recently released version 3.0 of [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) along with version 2.0 of [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL), [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL) and [Swift-Kuery-SQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite). You can find a summary of the major changes below, for more detail on the changes please refer to the [Swift-Kuery migration guide](https://github.com/IBM-Swift/Swift-Kuery/blob/master/MigrationGuide.md).
 
 ##API changes
 
@@ -97,10 +97,10 @@ func grades(_ callback: @escaping (String) -> Void) -> Void {
             return callback("Error connecting: \(error)")
         }
         // Build and execute your query here.
- 
+
         // First build query
         let query = Select(grades.course, grades.grade, from: grades)
- 
+
         // Execute query
         connection.execute(query: query) { result in
             guard let resultSet = result.asResultSet else {
@@ -122,7 +122,7 @@ func grades(_ callback: @escaping (String) -> Void) -> Void {
                     retString.append("\(title.padding(toLength: 35, withPad: " ", startingAt: 0))")
                 }
                 retString.append("\n")
- 
+
                 resultSet.forEach() { row, error in
                     guard let row = row else {
                         // A null row means we have run out of results unless we encountered an error
@@ -155,11 +155,10 @@ How to build your first computer   99
 How to work at a rock quarry       71
 ```
 
-The full example can be found in the Swift-Kuery-PostgreSQL GitHub repository within the Readme.md file.
+The full example can be found in the [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) GitHub repository within the Readme.md file.
 
 ---
 
 ##Future
 
 Now that Swift-Kuery is entirely asynchronous we are ready for the future of Swift. The new APIs should transition seamlessly to async/await, and it should also be possible to take advantage of the new database drivers being discussed in the Swift Server Working Group.
-

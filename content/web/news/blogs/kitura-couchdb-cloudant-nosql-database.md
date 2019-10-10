@@ -6,22 +6,22 @@ author: Andrew Lees
 path: /blogs/kitura-couchdb-cloudant-nosql-database
 ---
 
-Kitura CouchDB is a pure Swift client, that allows applications to interact with a CouchDB or Cloudant NoSQL database. We have just released Kitura-CouchDB 3.0, featuring a new Codable API, which removes the JSON boilerplate and works directly with your Swift objects. This blog will describe the new API and demonstrate its benefits, using an example.
+[Kitura CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB) is a pure Swift client, that allows applications to interact with a CouchDB or Cloudant NoSQL database. We have just released Kitura-CouchDB 3.0, featuring a new Codable API, which removes the JSON boilerplate and works directly with your Swift objects. This blog will describe the new API and demonstrate its benefits, using an example.
 
 ##Codable Kitura CouchDB
 
-Previously, in Kitura CouchDB 2.0, you would interact with the database using SwiftyJSON. This involved a lot of boilerplate code to convert your Swift object to a SwiftyJSON object and vice versa. The introduction of Codable, simplifies the conversion from Swift to JSON and Kitura CouchDB 3.0 utilizes this new functionality in its new API. To demonstrate how this improves usability, we will apply these changes to our CouchDBSample.
+Previously, in Kitura CouchDB 2.0, you would interact with the database using [SwiftyJSON](https://github.com/IBM-Swift/SwiftyJSON). This involved a lot of boilerplate code to convert your Swift object to a SwiftyJSON object and vice versa. The introduction of Codable, simplifies the conversion from Swift to JSON and Kitura CouchDB 3.0 utilizes this new functionality in its new API. To demonstrate how this improves usability, we will apply these changes to our [CouchDBSample](https://github.com/IBM-Swift/Kitura-CouchDB/blob/master/Sources/CouchDBSample/main.swift).
 
-The following examples compare the code required for executing CRUD (create, retrieve, update, delete) operations on a Swift object using Kitura-CouchDB versions 2.0 and 3.0. It assumes you have installed CouchDB and imported Kitura-CouchDB as a dependency in your Swift project.
+The following examples compare the code required for executing CRUD (create, retrieve, update, delete) operations on a Swift object using Kitura-CouchDB versions 2.0 and 3.0. It assumes you have [installed CouchDB](https://docs.couchdb.org/en/master/install/mac.html) and imported Kitura-CouchDB as a dependency in your Swift project.
 
 ###CouchDB Document
 
-CouchDB is a NoSQL database for storing documents. A document is any structure that can be represented as JSON and contains _id and _rev fields.
+CouchDB is a NoSQL database for storing documents. A document is any structure that can be represented as JSON and contains `_id` and `_rev` fields.
 
-- The _id field is the unique identifier for the document. If it is not set, a random UUID will be assigned for the document.
-- The _rev field is the revision of the document. It is returned when you make requests and is used to prevent conflicts from multiple users updating the same document.
+- The `_id` field is the unique identifier for the document. If it is not set, a random UUID will be assigned for the document.
+- The `_rev` field is the revision of the document. It is returned when you make requests and is used to prevent conflicts from multiple users updating the same document.
 
-Kitura CouchDB 3.0 introduces a new Document protocol that encapsulates the requirements of a CouchDB document:
+Kitura CouchDB 3.0 introduces a new `Document` protocol that encapsulates the requirements of a CouchDB document:
 
 ```swift
 public protocol Document: Codable {
@@ -40,11 +40,11 @@ struct MyDocument: Document {
 }
 ```
 
-We have made this struct conform to Document so it can be used with the new API.
+We have made this struct conform to `Document` so it can be used with the new API.
 
 ###Connect to the database with CouchDBClient
 
-The CouchDBClient represents a connection to a CouchDB server. It is initialized from a ConnectionProperties struct:
+The `CouchDBClient` represents a connection to a CouchDB server. It is initialized from a `ConnectionProperties` struct:
 
 ```swift
 let properties = ConnectionProperties(
@@ -67,7 +67,7 @@ couchDBClient.dbExists("SampleDB") { (exists, error) in
         // Use database
     }
 }
- 
+
 // Kitura CouchDB 3.0
 couchDBClient.retrieveDB("SampleDB") { (database, error) in
     if let database = database {
@@ -76,7 +76,7 @@ couchDBClient.retrieveDB("SampleDB") { (database, error) in
 }
 ```
 
-In Kitura CouchDB 3.0, dbExists has been replaced with retrieveDB. This will check the database exists and, if it does, initialize a database instance for you in a single function.
+In Kitura CouchDB 3.0, `dbExists` has been replaced with `retrieveDB`. This will check the database exists and, if it does, initialize a database instance for you in a single function.
 
 ###Database CRUD operations
 
@@ -103,9 +103,9 @@ database.create(json, callback: { (id: String?, rev: String?, response: JSON?, e
     if let id = id {
         print("Created document with id \(id)")
         // Retrieve document here
-    } 
+    }
 }
- 
+
 // Kitura CouchDB 3.0
 database.create(myDocument) { (response, error) in
     if let response = response {
@@ -130,9 +130,9 @@ database.retrieve("Kitura") { (document: JSON?, error: NSError?) in
         let retrievedDoc = MyDocument(_id: id, _rev: rev, value: value)
         print("Document value: \(retrievedDoc.value)")
         // Update document here
-    } 
+    }
 }
- 
+
 // Kitura CouchDB 3.0
 database.retrieve("Kitura") { (document: MyDocument?, error: CouchDBError?) in
     if var retrievedDoc = document {
@@ -156,7 +156,7 @@ database.update(retrievedDoc._id, rev: retrievedDoc._rev, document: newJson) { (
         // Delete document here
     }
 }
- 
+
 // Kitura CouchDB 3.0
 retrievedDoc.value = "New Value"
 database.update(retrievedDoc._id, rev: retrievedDoc._rev, document: retrievedDoc) { (response, error) in
@@ -199,3 +199,12 @@ Let’s quickly sum up what we have achieved with the above code examples. We ha
 
 Even using the most basic model we have saved ourselves twelve lines of code. As documents get more complicated, Kitura-CouchDB 3.0 removes even more boilerplate code, thereby simplifying the code and adding compile time safety.
 
+---
+
+## Next steps
+
+If you would like to run this example, or learn more about Kitura-CouchDB, [check it out on GitHub](https://github.com/IBM-Swift/Kitura-CouchDB).
+
+If you would like to learn about more features of Kitura-CouchDB such as bulk requests, design documents and attachments, [visit our API reference](https://ibm-swift.github.io/Kitura-CouchDB/index.html).
+
+Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.150897590.186671014.1570626561-1743126121.1570022962&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328)!

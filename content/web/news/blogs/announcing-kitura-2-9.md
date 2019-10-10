@@ -42,4 +42,4 @@ Although there are a number of API changes in this release, much of the previous
 
 KituraKit is a client-side library designed to mirror Kitura's Codable Routing API. KituraKit uses SwiftyRequest under the covers, and the 1.0 release provides some improvements such as better error reporting for cases where the server's response does not match the expected structure (a decoding error).
 
-A [new KituraKit guide](TODO: link) has been added to the kitura.io website demonstrating how KituraKit can be used to talk to a Kitura service.
+A [new KituraKit guide](/docs/client/iOSClient) has been added to the kitura.io website demonstrating how KituraKit can be used to talk to a Kitura service.
