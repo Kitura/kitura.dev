@@ -10,7 +10,7 @@ Web application servers are generally “stateless” and handle HTTP requests i
 
 ##Codable Kitura-Session
 
-Previously, if you wanted to save something in a Raw routing session, you would store it as an Any. This is not type safe since you could try and save objects the would fail to be serialized as JSON. Furthermore, when you retrieve the item you have to cast it to the type you expect. With the 3.3 release of Kitura-Session, you can store and retrieve Codable objects adding type safety and removing the need for explicit casting. To demonstrate how this improves usability, we will apply these changes to the sessions example from Kitura-Sample:
+Previously, if you wanted to save something in a Raw routing session, you would store it as an Any. This is not type safe since you could try and save objects the would fail to be serialized as JSON. Furthermore, when you retrieve the item you have to cast it to the type you expect. With the 3.3 release of Kitura-Session, you can store and retrieve Codable objects adding type safety and removing the need for explicit casting. To demonstrate how this improves usability, we will apply these changes to the sessions example from `Kitura-Sample:
 
 ###An online Bookstore
 

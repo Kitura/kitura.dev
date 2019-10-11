@@ -3,4 +3,4 @@ title: Flexible
 order: 2
 ---
 
-Kitura has a wide range of officially supported packages which enable you to customise your application to suit development needs.
+Kitura gives you complete control and flexibility. A rich package ecosystem provides everything you'll need for your next app. 

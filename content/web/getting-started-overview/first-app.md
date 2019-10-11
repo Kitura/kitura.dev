@@ -4,6 +4,6 @@ order: 2
 
 ## Create your first Kitura app  
 
-Already setup your environment? Try our Hello World tutorial, which walks you through creating a greeting application using a basic route.
+Ready to go? Try the Hello World tutorial.
 
 [Try the Tutorial](/docs/getting-started/hello-world)

@@ -19,11 +19,11 @@ function indexPage({
       <SlantingGraphic type={"main"} />
       <section className={styles.ctaSection}>
         <div className={styles.landingContent} dangerouslySetInnerHTML={{ __html: landing.nodes[0].html }}></div>
-        <Button 
-          size="large" 
+        <Button
+          size="large"
           text="Get Started"
           link="/getting-started"
-          externalLink={false} 
+          externalLink={false}
         />
       </section>
       <ScrollIndicator />
@@ -39,7 +39,6 @@ function indexPage({
       {/* Why Kitura section */}
       <article className={styles.marketingSection}>
         <h3 className={styles.marketingTitle}>Why Kitura?</h3>
-        <h4 className={styles.marketingSubtitle}>Kitura is...</h4>
         <section className={styles.marketingCardSection}>
         {welcome.nodes.map((node) => (
           <article className={styles.marketingCard}>
@@ -80,8 +79,7 @@ function indexPage({
     {/* Code Example Section Styling */}
     <SlantingGraphic type={"right"} />
     <section className={styles.codeExampleSection}>
-      <h2 className={styles.codeExampleTitle}>Simplicity in your apps:</h2>
-      <p className={styles.codeExampleHelperText}>Click below to see short code examples for various features provided by <br></br> Kitura and its packages.</p>
+      <h2 className={styles.codeExampleTitle}>Simplicity in your apps</h2>
       <CodeSection />
     </section>
   </Layout>
@@ -166,5 +164,5 @@ export const pageQuery = graphql`
         }
       }
     }
-  }    
+  }
 `

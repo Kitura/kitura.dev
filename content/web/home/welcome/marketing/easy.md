@@ -3,4 +3,4 @@ title: Easy
 order: 3
 ---
 
-Kitura has been designed to be as easy as possible for you to be able to create your own backend for your applications.
+Kitura bridges the gap between front-end and back-end development. Get started with just a few lines of code.
