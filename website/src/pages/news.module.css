@@ -54,11 +54,11 @@
 
 .card:nth-child(4) {
   border-left: 1px solid #70707030;
+  padding: 5% 0 5% 5%;
 }
 
 .blue-text {
   color: #0096F4;
-  padding: 5% 0 5% 5%;
 }
 
 /* Mobile Styling */
