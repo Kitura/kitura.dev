@@ -40,10 +40,16 @@
 .card:nth-child(1) {
   border-right: 1px solid #70707030;
   border-bottom: 1px solid #70707030;
+  padding: 5% 5% 5% 0;
 }
 
 .card:nth-child(2) {
   border-bottom: 1px solid #70707030;
+  padding: 5% 0 5% 5%;
+}
+
+.card:nth-child(3) {
+  padding: 5% 5% 5% 0;
 }
 
 .card:nth-child(4) {
@@ -52,6 +58,7 @@
 
 .blue-text {
   color: #0096F4;
+  padding: 5% 0 5% 5%;
 }
 
 /* Mobile Styling */
