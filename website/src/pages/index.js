@@ -76,12 +76,12 @@ function indexPage({
         ))}
       </aside>
     </section>
-    {/* Code Example Section Styling */}
+    {/* Code Example Section Styling
     <SlantingGraphic type={"right"} />
     <section className={styles.codeExampleSection}>
       <h2 className={styles.codeExampleTitle}>Simplicity in your apps</h2>
       <CodeSection />
-    </section>
+    </section> */}
   </Layout>
   )
 }

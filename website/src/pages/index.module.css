@@ -162,7 +162,7 @@
     font-size: 10px;
 }
 
-/* Code Example Styling */
+/* Code Example Styling
 
 .code-example-section {
     height: calc(100vh - 100px);
@@ -181,7 +181,7 @@
     margin-right: 50px;
     margin-top: -50px;
     line-height: 20px;
-}
+} */
 
 /* Mobile Styling */
 @media only screen and (max-width: 600px) {
@@ -234,7 +234,7 @@
         display: none;
     }
 
-    .code-example-section {
+    /* .code-example-section {
         display: none;
-    }
+    } */
 }
