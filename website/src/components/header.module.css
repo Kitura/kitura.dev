@@ -60,6 +60,20 @@
     color: #0096F4;
 }
 
+
+/* Social Nav */
+
+.social-nav {
+    display: flex;
+    margin-right: 50px;
+    opacity: 0.75;
+}
+
+.social-icon {
+    width: 25px;
+    padding: 0.5rem;
+}
+
 @media only screen and (max-width: 600px) {
     .header {
         display: none;

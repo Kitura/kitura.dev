@@ -6,6 +6,8 @@ import styles from "./header.module.css";
 import Search from "./search";
 
 import kituraLogo from "../../../content/images/Kitura.svg";
+import slackIcon from "../../../content/images/header_slack_icon.svg";
+import githubIcon from "../../../content/images/header_github_icon.svg";
 
 const Header = () => {
   return (
@@ -17,17 +19,19 @@ const Header = () => {
           </Link>
       </div>
       <nav className={styles.headerNav}>
-          <a className={styles.navLink} href="https://github.com/IBM-Swift/Kitura" target="_blank" rel="noopener noreferrer">GitHub</a>
 
           <Link className={styles.navLink} to="/learn">Learn</Link>
 
           <a className={styles.navLink} href="/docs/api/packages">API</a>
 
-          <Link className={styles.navLink} to="/news">News</Link>
+          <Link className={styles.navLink} to="/news">Blogs</Link>
 
-          {/* <Link className={styles.navLink} to="/community">Community</Link> */}
       </nav>
       <Search />
+      <nav className={styles.socialNav}>
+        <a target="_blank" href="https://github.com/IBM-Swift/Kitura"><img className={styles.socialIcon} src={ githubIcon }></img></a>
+        <a target="_blank" href="http://slack.kitura.io"><img className={styles.socialIcon} src={ slackIcon }></img></a>
+      </nav>
     </header>
   )
 }
