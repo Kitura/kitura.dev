@@ -49,7 +49,7 @@ function indexPage({
         </section>
       </article>
       <aside className={styles.sidebarSection}>
-        <h6 className={styles.sidebarTitle}>Latest News</h6>
+        <h6 className={styles.sidebarTitle}>Latests Blogs</h6>
         {blogs.nodes.map((node) => (
           <article>
             <Link style={{textDecoration: "none"}} to={node.frontmatter.path}>

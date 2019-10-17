@@ -115,7 +115,7 @@
     background-color: #FAFAFA;
     padding: 0 20px;
     width: 412.5px;
-    height: 750px;
+    height: 800px;
     margin-top: 3rem;
 }
 
@@ -139,11 +139,13 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    line-height: 1.1rem;
 }
 
 .useful-links > p > a {
     text-decoration: none;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
+    margin-top: 1rem;
     color: #0096F4;
 }
 
