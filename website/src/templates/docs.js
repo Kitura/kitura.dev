@@ -11,26 +11,15 @@ export default function Template({
     location
 }) {
     const { docs, docsList } = data;
-    if (data.docs.html.includes('id="kitura-api-documentation"')) {
-         return (
-             <Layout>
-               <section style={{display: "flex"}}>
-                 <div id="docs-window" className="docs-window" dangerouslySetInnerHTML={{__html: docs.html}}></div>
-                 <SidebarExtender />
-               </section>
-             </Layout>
-           )
-     } else {
-         return (
-             <Layout>
-               <section style={{display: "flex"}}>
-                 <Sidebar activeList={location.state} data={docsList} />
-                 <div id="docs-window" className="docs-window" dangerouslySetInnerHTML={{__html: docs.html}}></div>
-                 <SidebarExtender />
-               </section>
-             </Layout>
-           )
-     }
+    return (
+      <Layout>
+        <section style={{display: "flex"}}>
+          <Sidebar activeList={location.state} data={docsList} />
+          <div id="docs-window" className="docs-window" dangerouslySetInnerHTML={{__html: docs.html}}></div>
+          <SidebarExtender />
+        </section>
+      </Layout>
+    )
 }
 
 export const docsQuery = graphql`
