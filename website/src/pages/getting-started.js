@@ -9,6 +9,9 @@ function GetStartedPage({
     return (
         <Layout>
             <section className={styles.pageSection}>
+                <div className={styles.main}>
+                    <h1>Getting started with Kitura</h1>
+                </div>
             {data.allMarkdownRemark.nodes.map((node, index) => (
                 <>
                     <div className={styles.main} dangerouslySetInnerHTML={{ __html: node.html }}></div>
