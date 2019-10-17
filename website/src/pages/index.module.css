@@ -140,12 +140,12 @@
     flex-direction: column;
     width: 50%;
     line-height: 1.1rem;
+    margin-left: 1rem;
 }
 
 .useful-links > p > a {
     text-decoration: none;
-    margin-bottom: 0.6rem;
-    margin-top: 1rem;
+    margin: 1rem 0 0.6rem -0.5rem;
     color: #0096F4;
 }
 
