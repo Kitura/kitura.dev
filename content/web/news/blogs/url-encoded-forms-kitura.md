@@ -6,11 +6,11 @@ author: Andrew Lees
 path: /blogs/url-encoded-forms-kitura
 ---
 
-In Kitura 2.3 , we added support for receiving POST requests, which use the application/x-www-form-urlencoded content type. This blog describes the new APIs to handle these URL encoded forms for both Raw and Codable routes. We then provide a step by step example of a Kitura server receiving an HTML form and mapping the request to a Codable Swift object.
+In Kitura 2.3 , we added support for receiving POST requests, which use the `application/x-www-form-urlencoded` content type. This blog describes the new APIs to handle these URL encoded forms for both Raw and Codable routes. We then provide a step by step example of a Kitura server receiving an HTML form and mapping the request to a Codable Swift object.
 
 ##URL Encoded POST Forms
 
-Typically, webpages use HTML forms to send POST requests. The sender marks the request as URL encoded using the content-type header application/x-www-form-urlencoded. This indicates that the request body is a query string consisting of “key=value” pairs, separated by the “&” symbol. As a result, Kitura can use its query decoder to map the body of a URL encoded form to a Swift object. For our demonstrations, we will use the following HTML form POST request:
+Typically, webpages use HTML forms to send POST requests. The sender marks the request as URL encoded using the content-type header `application/x-www-form-urlencoded`. This indicates that the request body is a query string consisting of “key=value” pairs, separated by the “&” symbol. As a result, Kitura can use its query decoder to map the body of a URL encoded form to a Swift object. For our demonstrations, we will use the following HTML form POST request:
 
 ```
 POST / HTTP/1.1
@@ -25,7 +25,7 @@ name=David&age=42
 
 ##Receiving URL Encoded Forms in Kitura Routes
 
-With the release of Kitura 2.3, your Kitura application can now receive HTML form data in a convenient and type-safe way. As an example, we will map the POST request above to a Swift struct called User.
+With the release of Kitura 2.3, your Kitura application can now receive HTML form data in a convenient and type-safe way. As an example, we will map the POST request above to a Swift struct called `User`.
 
 ```swift
 struct User: Codable {
@@ -38,7 +38,7 @@ Previously, this would require the following boilerplate code:
 
 ```swift
 router.post("/form", middleware: BodyParser())
-  
+
 router.post("/form") { request, response, next in
     guard let body = request.body?.asURLEncoded,
         let ageString = body["id"],
@@ -54,7 +54,7 @@ router.post("/form") { request, response, next in
 }
 ```
 
-But in Kitura 2.3 you can use request.read(as: <Codable.protocol>) to decode URL encoded forms into a Codable type. This means that, while using Raw routing, we can vastly simplify the code above to:
+But in Kitura 2.3 you can use `request.read(as: <Codable.protocol>)` to decode URL encoded forms into a Codable type. This means that, while using Raw routing, we can vastly simplify the code above to:
 
 ```swift
 router.post("/form") { request, response, next in
@@ -84,7 +84,7 @@ func formHandler(user: User, respondWith: (User?, RequestError?) -> Void) {
 
 A webpage can also send an HTML form using a HTTP GET request. In this case, the form data is sent as query parameters on the end of the url. You can then map the received query parameters to a Swift object:
 
-For Raw routes you can use QueryDecoder to decode the query parameters into your Codable Swift object.
+For Raw routes you can use `QueryDecoder` to decode the query parameters into your Codable Swift object.
 
 ```swift
 router.get("/form") { request, response, next in
@@ -98,7 +98,7 @@ router.get("/form") { request, response, next in
 }
 ```
 
-For Codable routes, you just need to define your Swift object as conforming to QueryParams:
+For Codable routes, you just need to define your Swift object as conforming to `QueryParams`:
 
 ```swift
 struct User: Codable, QueryParams {
@@ -114,15 +114,15 @@ func getFormHandler(user: User, respondWith: ([User]?, RequestError?) -> Void) {
 }
 ```
 
-Currently Codable routes with QueryParams cannot return a single codable object so we are returning an array. This feature has been added to the master branch and will be in the next Kitura release.
+Currently Codable routes with `QueryParams` cannot return a single codable object so we are returning an array. This feature has been added to the master branch and will be in the next Kitura release.
 
---- 
+---
 
 ##Example: Kitura Server receiving URL Encoded Forms in Routes
 
 To demonstrate these new capabilities, we will create a simple Kitura web server. We will serve a static webpage, which will send GET and POST HTML forms. This server will then have Raw and Codable routes, which will receive these forms and return the corresponding Swift struct.
 
-1. In the terminal, using the Kitura command-line interface, generate a basic Kitura server:
+1. In the terminal, using the [Kitura command-line interface](/docs/getting-started/create-server-cli), generate a basic Kitura server:
 
 ```
 mkdir ~/URLEncodedForms
@@ -146,35 +146,35 @@ open -a Xcode.app formwebpage.html
 <html>
 <body>
 <h2>URL Encoded Forms</h2>
- 
+
 <h4>Post to Raw route</h4>
 <form action="raw" method="post" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age" required="required"><br>
     <input type="submit" value="Submit">
 </form>
- 
+
 <h4>Post to Codable route</h4>
 <form action="codable" method="post" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age" required="required"><br>
     <input type="submit" value="Submit">
 </form>
- 
+
 <h4>Get to Raw route</h4>
 <form action="raw" method="get" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age" required="required"><br>
     <input type="submit" value="Submit">
 </form>
- 
+
 <h4>Get to Codable route</h4>
 <form action="codable" method="get" enctype="application/x-www-form-urlencoded" target="redirect">
     Name: <input type="text" name="name" required="required"><br>
     Age: <input type="number" name="age" required="required"><br>
     <input type="submit" value="Submit">
 </form>
- 
+
 <iframe name="redirect" style="display:none;"></iframe>
 </body>
 </html>
@@ -197,7 +197,7 @@ struct User: Codable, QueryParams {
 }
 ```
 
-7. Inside the postInit function, add the static file server middleware:
+7. Inside the `postInit` function, add the static file server middleware:
 ```swift
 router.get("/", middleware: StaticFileServer())
 ```
@@ -237,7 +237,7 @@ router.post("/codable", handler: postFormHandler)
 router.get("/codable", handler: getFormHandler)
 ```
 
-11. After the postInit function, add your postFormHandler function:
+11. After the `postInit` function, add your postFormHandler function:
 
 ```swift
 func postFormHandler(user: User, respondWith: (User?, RequestError?) -> Void) {
@@ -261,4 +261,6 @@ func getFormHandler(user: User, respondWith: ([User]?, RequestError?) -> Void) {
 
 Go to http://localhost:8080/formwebpage.html. You will see a very basic HTML page with four forms. When you submit the forms, they will send the data to the routes we just created. If you open your Xcode project, you should see the user’s name and age being printed to the console.
 
-Congratulations! You have just set up a simple website which submits URL encoded forms to a Kitura server. Within a real application you would probably use Swift-Kuery-ORM to save the users in a database and a template engine to produce a dynamic webpage based on the user.
+Congratulations! You have just set up a simple website which submits URL encoded forms to a Kitura server. Within a real application you would probably use [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) to save the users in a database and a template engine to produce a dynamic webpage based on the user.
+
+Any questions or comments? Please join the vibrant Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.210593109.1386731664.1571398389-799380006.1571398389)!

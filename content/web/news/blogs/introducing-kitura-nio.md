@@ -3,7 +3,7 @@ title: Introducing Kitura-NIO
 blurb: Kitura-NIO has been designed to be API-compatible with current Kitura-net API, though the underlying implementation uses SwiftNIO
 date: "2018-05-31"
 author: Pushkar Kulkarni
-path: /blogs/filtering-swift-kuery-orm
+path: /blogs/introducing-kitura-nio
 ---
 
 In February 2018, at the try! Swift Tokyo conference, [Apple announced SwiftNIO](https://www.youtube.com/watch?v=QJ3WG9kRLMo) — a new cross-platform, asynchronous, event-driven networking framework for building servers and clients in Swift. [SwiftNIO](https://github.com/apple/swift-nio) has the potential to provide all the low-level socket-handling and HTTP protocol support in Kitura, and hence could be a replacement for the current Kitura-net and BlueSocket libraries which underpin Kitura today. The Kitura team have been working on [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO), a Kitura interface to SwiftNIO and we think now is a good time to release it for wider experimentation, testing and feedback.

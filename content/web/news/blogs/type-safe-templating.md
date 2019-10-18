@@ -73,9 +73,9 @@ The 'forKey' parameter is a new addition to the rendering methods, this allows y
 
 ##Next Steps
 
-Because the only requirement is that the struct you want to render is Codable, type-safe templating integrates easily with our Swift-Kuery-ORM. When you call Model.findAll() to retrieve data from your database you can pass the results straight through to your rendering code with type-safety from end to end.
+Because the only requirement is that the struct you want to render is Codable, type-safe templating integrates easily with our [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM). When you call Model.findAll() to retrieve data from your database you can pass the results straight through to your rendering code with type-safety from end to end.
 
---- 
+---
 
 ##Credits
 

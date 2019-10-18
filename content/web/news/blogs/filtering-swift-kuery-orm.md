@@ -8,13 +8,13 @@ path: /blogs/filtering-swift-kuery-orm
 
 ##Introduction
 
-In Kitura 2.4 we have made enhancements to Codable Query Parameters to support extra filtering. This includes the ability to filter using operators such as greater than, inclusive ranges and pagination through Codable Routing. We then took a further step and incorporated these capabilities into Swift-Kuery-ORM in order to filter results from database queries.
+In Kitura 2.4 we have made enhancements to Codable Query Parameters to support extra filtering. This includes the ability to filter using operators such as greater than, inclusive ranges and pagination through Codable Routing. We then took a further step and incorporated these capabilities into [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) in order to filter results from database queries.
 
 ---
 
 ##Setting Up Swift-Kuery-ORM
 
-In your Kitura application, follow the README to set up Swift-Kuery-ORM using PostgreSQL, MySQL or SQLite.
+In your Kitura application, follow the [README](https://github.com/IBM-Swift/Swift-Kuery-ORM/blob/master/README.md) to set up Swift-Kuery-ORM using PostgreSQL, MySQL or SQLite.
 
 1. Create a Student type that implements Model:
 ```swift
@@ -40,7 +40,7 @@ let students = [Student(name: "Mark", age: 26, grade: 78.5),
                 Student(name: "David", age: 20, grade: 65.3),
                 Student(name: "Alex", age: 23, grade: 82.7),
                 Student(name: "Mark", age: 24, grade: 94.6)]
-                 
+
 for student in students {
   student.save { student, error in
     if let error = error {
@@ -57,7 +57,7 @@ Student.findAll { students, error in
   if let error = error {
     print("Error:", error)    
   }
-   
+
   if let students = students {
     students.forEach { print($0) }
 ```
@@ -97,7 +97,7 @@ struct Query: QueryParams {
   let name: String
   let age: GreaterThan<Int>;
   let grade: InclusiveRange<Double>;
-} 
+}
 ```
 
 2. Create an instance of Query:
@@ -112,7 +112,7 @@ Student.findAll(matching: query) { students, error in
   if let error = error {
     print("Error:", error)    
   }
-   
+
   if let students = students {
     students.forEach { print($0) }
   }
@@ -158,7 +158,7 @@ Student.findAll(matching: myQuery) { students, error in
   if let error = error {
     print("Error:", error)    
   }
-   
+
   if let students = students {
     students.forEach { print($0) }
   }
@@ -191,29 +191,29 @@ The URL would look like:
 
 Swift-Kuery-ORM really shines when used with Kitura, in particular because the ORM API has been aligned with Kitura’s Codable Routing APIs, allowing the completion handlers from the Codable Routes to be passed directly into the ORM calls. This means that no additional code needs to be written.
 
-1. Create a handler that retrieves the students and register it with the Router for GET requests on /students:
+1. Create a handler that retrieves the students and register it with the Router for GET requests on `/students`:
 
 ```swift
 func getStudents(completion: @escaping([Student]?, RequestError?) -> Void) -> Void {
     Student.findAll(completion)
 }
- 
+
 router.get("/students", handler: getStudents)
 ```
 
-This has implemented the following URI: GET: /students.
+This has implemented the following `URI: GET: /students`.
 
-2. Create a handler that saves the students, and register it with the Router for POST requests on /students:
+2. Create a handler that saves the students, and register it with the Router for POST requests on `/students`:
 
 ```swift
 func saveStudents(student: Student, completion: @escaping (Student?, RequestError?) -> Void) -> Void {
     student.save(completion)
 }
-  
+
 router.post("/students", handler: saveStudents)
 ```
 
-This has implemented the following URI: POST: /students.
+This has implemented the following `URI: POST: /students`.
 
 3. Now let’s add filtering to the GET route by updating the getStudents handler to also accept your type that implements QueryParams as an additional parameter:
 Note: This is using the Query struct from earlier:
@@ -236,7 +236,7 @@ Note: that the type Query is set to optional. This means that the following URI 
 GET:  /users
 ```
 
-If you want to include support for optional (non-required) query parameters, you just need to mark them as optional in your declared Swift type, eg: InclusiveRange?
+If you want to include support for optional (non-required) query parameters, you just need to mark them as optional in your declared Swift type, eg: `InclusiveRange?`
 
 We have increased the capabilities of Swift-Kuery-ORM and carefully aligned it with Kitura to make persistence as easy as possible whilst maintaining type safety.
 
@@ -254,7 +254,7 @@ The next features we are looking to integrate in Swift-Kuery-ORM, we believe wil
 struct School: Model {
   let name: String
 }
- 
+
 struct Student: Model {
   let name: String
   let age: Int
@@ -266,4 +266,3 @@ struct Student: Model {
 - Support for NoSQL Databases such as Redis, MongoDB and CouchDB.
 
 - Control over data types and sizes
-
