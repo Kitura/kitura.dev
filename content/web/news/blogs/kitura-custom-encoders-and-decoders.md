@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/kitura-custom-encoders-and-decoders
 ---
 
-Codable routing allows you to quickly build REST APIs that work directly with concrete Swift types. Kitura achieves this by using the Codable protocol to encode and decode the body of HTTP requests. In Kitura 2.5, we have added the ability to customize the JSON encoders and decoders used by your router. Furthermore, you can add your own custom encoders and decoders. This allows your routes to handle other data serializations if you want, such as YAML, XML and MessagePack.
+Codable routing allows you to quickly build REST APIs that work directly with concrete Swift types. Kitura achieves this by using the [Codable](https://developer.apple.com/documentation/swift/codable) protocol to encode and decode the body of HTTP requests. In Kitura 2.5, we have added the ability to customize the [JSON](https://www.json.org/) encoders and decoders used by your router. Furthermore, you can add your own custom encoders and decoders. This allows your routes to handle other data serializations if you want, such as [YAML](http://yaml.org/), [XML](https://www.w3.org/standards/xml/core) and [MessagePack](https://msgpack.org/).
 
 ##BodyEncoder and BodyDecoder
 
@@ -34,7 +34,7 @@ Kitura extends JSONEncoder/JSONDecoder as well as QueryEncoder/QueryDecoder to c
 
 ##MediaType
 
-The media type (formerly known as MIME type) is a two-part identifier that is separated by a forwards slash (e.g. “text/plain”). We have added a MediaType struct to Kitura that represents media type. This is used for selecting an encoder or decoder based on the media type identified in the Accepts or Content-Type HTTP headers. You can initialize a MediaType in three ways:
+The media type (formerly known as MIME type) is a two-part identifier that is separated by a forwards slash (e.g. “text/plain”). We have added a `MediaType` struct to Kitura that represents media type. This is used for selecting an encoder or decoder based on the media type identified in the Accepts or Content-Type HTTP headers. You can initialize a MediaType in three ways:
 
 - From a raw media type string
 ```swift
@@ -53,27 +53,27 @@ let json = MediaType.json
 
 ##Custom Encoders and Decoders on the Router
 
-From Kitura 2.5, the Router class has two extra properties: dictionaries called encoders and decoders.
+From Kitura 2.5, the Router class has two extra properties: dictionaries called `encoders` and `decoders`.
 
-The encoders dictionary maps MediaType keys to closures for generating a BodyEncoder. On initialization, the dictionary includes a JSONEncoder() generator for “application/json”.
+The encoders dictionary maps MediaType keys to closures for generating a `BodyEncoder`. On initialization, the dictionary includes a `JSONEncoder()` generator for “application/json”.
 
 ```swift
 public var encoders: [MediaType: () -> BodyEncoder] = [.json: { return JSONEncoder() }]
 ```
 
-You can send a Codable object from a route either by calling send(_ obj: T) from a RouterResponse or by using a Codable route. When this happens the Router will select the correct encoder based on the Accepts header of the Request. If the request doesn’t have an Accepts header or it doesn’t include any MediaTypes from your dictionary, the router’s defaultResponseMediaType will determine the encoder.
+You can send a Codable object from a route either by calling `send(_ obj: T)` from a `RouterResponse` or by using a Codable route. When this happens the Router will select the correct encoder based on the Accepts header of the Request. If the request doesn’t have an [Accepts](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept) header or it doesn’t include any `MediaTypes` from your dictionary, the router’s `defaultResponseMediaType` will determine the encoder.
 
 ```swift
 public var defaultResponseMediaType: MediaType = .json
 ```
 
-The decoders dictionary maps MediaType keys to closures for generating a BodyDecoder. On initialization, the dictionary includes a JSONDecoder() generator for “application/json” and a QueryDecoder() generator for “application/x-www-form-urlencoded”.
+The `decoders` dictionary maps `MediaType` keys to closures for generating a `BodyDecoder`. On initialization, the dictionary includes a `JSONDecoder()` generator for “application/json” and a QueryDecoder() generator for “application/x-www-form-urlencoded”.
 
 ```swift
 public var decoders: [MediaType: () -> BodyDecoder] = [.json: {return JSONDecoder()}, .urlEncoded: {return QueryDecoder()}]
 ```
 
-You can read a Codable object in a route either by calling read(as type: T.Type) from a RouterRequest or by using a Codable route. When this happens the Router will select the correct decoder based on the Content-Type header of the request.
+You can read a Codable object in a route either by calling `read(as type: T.Type)` from a `RouterRequest` or by using a Codable route. When this happens the Router will select the correct decoder based on the [Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type) header of the request.
 
 You can add custom encoders and decoders to your router by adding BodyEncoders/BodyDecoders to these dictionary with the MediaType you would like them to encode/decode. You can also replace the existing JSONEncoder and JSONDecoder generators to customize how your Kitura router handles JSON.
 
@@ -83,11 +83,11 @@ You can add custom encoders and decoders to your router by adding BodyEncoders/B
 
 The following data serialization formats already have existing Swift packages which implement them using Codable:
 
-- YAML
-- XML
-- BSON
-- Property Lists
-- MessagePack
+- [YAML](https://github.com/jpsim/Yams)
+- [XML](https://github.com/ShawnMoore/XMLParsing)
+- [BSON](https://github.com/OpenKitten/BSON)
+- [Property Lists](https://useyourloaf.com/blog/using-swift-codable-with-property-lists/)
+- [MessagePack](https://github.com/Flight-School/MessagePack)
 
 To use one of these custom encoders and decoders:
 
@@ -96,13 +96,13 @@ To use one of these custom encoders and decoders:
 3. Extend their Encoder/Decoder Class to conform to BodyEncoder/Decoder.
 4. Add the encoder/decoder and its MediaType to your encoder and decoder dictionary
 
---- 
+---
 
 ##Example: Customizing the JSON encoder
 
 JSON is the most common data serialization technique and Kitura uses it by default for its Codable routes. The JSONEncoder class includes options to customize its encoding strategy. In this example we will show you how to set your Kitura router to send pretty printed JSON from a Codable route.
 
-1. In the terminal, using the Kitura command-line interface, generate a basic Kitura server:
+1. In the terminal, using the [Kitura command-line interface](/docs/getting-started/create-server-cli), generate a basic Kitura server:
 
 ```
 mkdir ~/customCoders
@@ -113,9 +113,9 @@ open customCoders.xcodeproj/
 
 2. Open Sources > Application > Application.swift
 
-3. Add a Hello struct after the App class:
+3. Add a `Hello` struct after the App class:
 
-```swift 
+```swift
 struct Hello: Codable {
     let hello: String
     let from: String
@@ -137,7 +137,7 @@ router.get("/hello") { (respondWith: (Hello?, RequestError?) -> Void) in
 
 You will see the hello message printed as standard JSON.
 
-7. After initializeMetrics(router: router) create your custom JSONEncoder() generator:
+7. After `initializeMetrics(router: router)` create your custom JSONEncoder() generator:
 
 ```swift
 let jsonEncoderGenerator: () -> BodyEncoder = {
@@ -156,3 +156,7 @@ router.encoders[.json] = jsonEncoderGenerator
 9. Restart your project and go to http://localhost:8080/hello
 
 The hello message will now be pretty printed JSON.
+
+Congratulations! You have just created a custom JSON encoder generator and assigned it to a Kitura Server.
+
+Any questions or comments? Please join the vibrant Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.15514933.2052919715.1571393501-1533615335.1571393501)!

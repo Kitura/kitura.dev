@@ -6,11 +6,11 @@ author: Sangeeth Sivakumar
 path: /blogs/server-side-swift-using-gcd
 ---
 
-In enterprise businesses, microservices are designed according to best architectural practice and implemented to deliver the business solution in the form of services. These services are often consumed by HTTP REST API calls. In this blog, I will explain how to approach asynchronous programming on server-side Swift using Grand Central Dispatch (GCD) and OperationQueue.
+In enterprise businesses, microservices are designed according to best architectural practice and implemented to deliver the business solution in the form of services. These services are often consumed by HTTP REST API calls. In this blog, I will explain how to approach asynchronous programming on server-side Swift using [Grand Central Dispatch (GCD) and OperationQueue](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html).
 
-In general, the backend microservices execute heavy CPU intensive or I/O processes such as DB CRUD operations, component level communication, processing of media files etc. In iOS side Swift programming, it’s general practice to make use of closures and call back methods to make asynchronous calls. Server-side Swift programming allows developers to use the same closure and call back methods without any limitations for asynchronous tasks. However, when compared to iOS programming, the server-side API code can require significantly more asynchronous calls in a single module block. This leads to multiple call back closures and nested async code. An alternate native solution is to make use of GCD and OperationQueue methods. There are some open source Swift libraries, such as PromiseKit to handle complex functions, which use GCD and OperationQueue concepts under the hood, but this article is going to show you a native way of coding this yourself.
+In general, the backend microservices execute heavy CPU intensive or I/O processes such as DB CRUD operations, component level communication, processing of media files etc. In iOS side Swift programming, it’s general practice to make use of closures and call back methods to make asynchronous calls. Server-side Swift programming allows developers to use the same closure and call back methods without any limitations for asynchronous tasks. However, when compared to iOS programming, the server-side API code can require significantly more asynchronous calls in a single module block. This leads to multiple call back closures and nested async code. An alternate native solution is to make use of GCD and OperationQueue methods. There are some open source Swift libraries, such as [PromiseKit](https://github.com/mxcl/PromiseKit) to handle complex functions, which use GCD and OperationQueue concepts under the hood, but this article is going to show you a native way of coding this yourself.
 
-I explain the solution and its benefits with a simple example below using Kitura.
+I explain the solution and its benefits with a simple example below using [Kitura](https://github.com/IBM-Swift/Kitura).
 
 ---
 
@@ -27,11 +27,11 @@ func p1(_ onCompletion: @escaping (_ output:String)-> Void) {
     sleep(3)
     onCompletion("p1")
 }
-   
+
 func p2(_ onCompletion: @escaping (_ output:String)-> Void) {
     sleep(4)
     onCompletion("p2")
-} 
+}
 ...
 ```
 
@@ -41,10 +41,10 @@ func p2(_ onCompletion: @escaping (_ output:String)-> Void) {
 
 In our example, we construct a HTTP GET API, say /dataIntensiveJob, that requires all of the above processes from P1 – P5. These processes can be dependent or independent and the module can be programmed with nested asynchronous closures or using GCD. This means we have four types of implementation:
 
-1. “/dataIntensiveJobAsync/independent”
-2. “/dataIntensiveJobGCD/independent”
-3. “/dataIntensiveJobAsync/dependent”
-4. “/dataIntensiveJobGCD/dependent”
+* “/dataIntensiveJobAsync/independent”
+* “/dataIntensiveJobGCD/independent”
+* “/dataIntensiveJobAsync/dependent”
+* “/dataIntensiveJobGCD/dependent”
 
 ##1. Independent Task with Traditional Nested Async Closure Blocks
 
@@ -77,12 +77,12 @@ API Execution Total Response Time: 16025 ms
 
 The alternative approach for executing the independent tasks is to use OperationQueue. Here an instance of OperationQueue is created. Operation queues are concurrent by default. We can also sequence and serialize the queue with optional attributes. Independent tasks are added as operations to the queue in a block of code.
 
-At the end of the module self.operationQueue.waitUntilAllOperationsAreFinished() is called – to ensure that the next line of the completion callback method is invoked only when all the submitted operations have been executed. We can create multiple operation queues if required. Below is the equivalent code using OperationQueue methods:
+At the end of the module `self.operationQueue.waitUntilAllOperationsAreFinished()` is called – to ensure that the next line of the completion callback method is invoked only when all the submitted operations have been executed. We can create multiple operation queues if required. Below is the equivalent code using OperationQueue methods:
 
 ```swift
 let operationQueue = OperationQueue()
 var output = [String]()
-   
+
   func executeIndependentHeavyProcesses(_ onCompletion: @escaping (_ outputMessage:[String])-> Void) {
     self.operationQueue.addOperation{
       self.p1({ (output) in
@@ -96,7 +96,7 @@ var output = [String]()
     }
     // Other processes
     ...
-         
+
     self.operationQueue.waitUntilAllOperationsAreFinished()
     onCompletion(self.output)
   }
@@ -112,7 +112,7 @@ Here the execution order depends on the submission time of each task to the queu
 
 ```
 Execution Order:  P5 -> P3 -> P1 -> P2 -> P4
-API Execution Total Response Time:  6025 ms 
+API Execution Total Response Time:  6025 ms
 ```
 
 ##3. Dependent Task with Nested Async Closure Blocks
@@ -137,7 +137,7 @@ This approach is identical to the first (Independent task with nested Async Clos
 
 ```
 Execution Order:  P1 -> P2 -> P3 -> P4
-API Execution Total Response Time: 15029 ms 
+API Execution Total Response Time: 15029 ms
 ```
 
 ##4. Dependent Task with GCD and OperationQueue
@@ -146,7 +146,7 @@ The alternate solution is to use GCD for complex use cases, in addition to the O
 
 ###a. When the module contains few dependent tasks that can be grouped
 
-Here, we can group all the dependent tasks and run them in nested blocks. In our example, P1 and P2 make one group and P3 and P4 make another group. Since the dependency is between subtasks within a group and the groups are independent of each other, we submit the group block to the Operation Queue. Now, to obtain the completion status of each block, we create a GCD DispatchGroup object called ‘dispatchGroup’. Every subtask will have a group entry and exit code. The dispatchGroup.wait() method is called at the end of the module which blocks further execution, but not on the main queue.
+Here, we can group all the dependent tasks and run them in nested blocks. In our example, P1 and P2 make one group and P3 and P4 make another group. Since the dependency is between subtasks within a group and the groups are independent of each other, we submit the group block to the Operation Queue. Now, to obtain the completion status of each block, we create a GCD DispatchGroup object called ‘dispatchGroup’. Every subtask will have a group entry and exit code. The `dispatchGroup.wait()` method is called at the end of the module which blocks further execution, but not on the main queue.
 
 Here, OperationQueue acts more like a simple background GCD Queue. So, as an alternative, we can also use a simple GCD concurrent Queue and submit the group.
 
@@ -158,12 +158,12 @@ Below is the code snippet that uses the grouping of subtask and GCD Dispatch Gro
 
 ```swift
 let dispatchGroup = DispatchGroup()
- 
+
 func executeDependentHeavyProcesses(_ onCompletion: @escaping (_ outputMessage:[String])-> Void) {
- 
+
     self.operationQueue.addOperation {
       self.dispatchGroup.enter()
- 
+
       self.p1({ (output) in
         self.output.append(output)
         self.p2({ (output) in
@@ -171,17 +171,17 @@ func executeDependentHeavyProcesses(_ onCompletion: @escaping (_ outputMessage:[
           self.dispatchGroup.leave()
         }) })
     }
-     
+
     self.operationQueue.addOperation {
       self.dispatchGroup.enter()
- 
+
       self.p3({ (output) in
         self.output.append(output)
         self.p4({ (output) in
           self.output.append(output)
           self.dispatchGroup.leave()
         }) }) }
-     
+
     self.dispatchGroup.wait()
     onCompletion(self.output)
   }
@@ -215,6 +215,8 @@ While ease of coding is a concern from the development and scalability perspecti
 
 It is a well-known fact that concurrency will give better turnaround times and performance, but it is interesting to see the results below as they show how drastically performance is affected when we fail to follow the right approach. This reiterates the importance of incorporating concurrent programming in a Swift based microservice API implementation.
 
+![Blog Pic 1](../../../images/bloggcd1.png)
+
 The result clearly shows the need to focus on the right implementation approach based on the use case. For instance, if we take the ‘iteration’ use case, we see a visible difference in the response time with just three loops. One may argue that we do not need to make the client wait until the operation is complete, as there are solutions like returning a 202 ‘Accepted’ HTTP status code. However, the processing and task turnaround time would still be badly impacted. When we talk about a real-time use case like user management in a production environment, we could experience a potential and significant difference in the processing time.
 
 ---
@@ -225,6 +227,6 @@ In a development environment, constraints such as time to deliver, can make deve
 
 The need to use GCD and OperationQueue is highly dependent on the requirement use case. The same approach cannot be applied everywhere as it makes the code inconsistent and almost cumbersome. While designing the code structure, developers should give thought to factors like scalability, ability to modularize the code blocks, scope of requirement changes, number of lines of code etc.
 
-I have done the sample coding and the project source code is uploaded to my GIT repository for reference. Feel free to add comments or reach out to me for any discussions.
+I have done the sample coding and the project source code is uploaded to my [GIT](https://github.com/sangy05/ServerSideSwift-GCD) repository for reference. Feel free to add comments or reach out to me for any discussions.
 
-Happy Coding!!!
+Happy Coding!

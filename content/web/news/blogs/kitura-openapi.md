@@ -34,10 +34,20 @@ public init() throws {
 .package(url: "https://github.com/IBM-Swift/Kitura-OpenAPI.git", from: "1.0.0"),
 ```
 
-- Then update your dependencies by running swift package update.
+- Then update your dependencies by running `swift package update`.
 
-Now go ahead, recompile and restart the application and you should be able to view the OpenAPI document by visiting the openapi page: http://localhost:8080/openapi
+Now go ahead, recompile and restart the application and you should be able to view the SwaggerUI page: http://localhost:8080/openapi/ui as this will present an API Explorer that is populated from the OpenAPI document, so it shows the routes you have configured in the currently running application.
 
-That is good, however it gets much better if you visit the SwaggerUI page: http://localhost:8080/openapi/ui as this will present an API Explorer that is populated from the OpenAPI document, so it shows the routes you have configured in the currently running application.
+![Blog pic 1](../../../images/blogopenapi1.png)
 
-One click on a route will expand it so you can see what arguments it takes, what results it can return and a status code, but better still, you can click the “Try it out!” button to exercise that API immediately.
+One click on a route will expand it so you can see what arguments it takes, what results it can return and a status code, but better still, you can click the “Try it out!” button to exercise that API immediately:
+
+![Blog pic 2](../../../images/blogopenapi2.png)
+
+Now add a new route to your code (in this example I’m adding the patch route at the end):
+
+![Blog pic 3](../../../images/blogopenapi3.png)
+
+You add a new API or add business logic? All you need do is recompile, run the application, visit SwaggerUI, and test your API immediately.
+
+So there you have it. A rapid development lifecycle that allows a quick deploy/test cycle for your APIs.
