@@ -1,13 +1,14 @@
 ---
-title: Kitura Workshops
+title: Tutorials
 links: ["API Docs", "Community Projects", "Blogs"]
 ---
 
-[Workshop 1](#)
+[ToDo List Backend](#)
 Some text describing this workshop
 
-[Workshop 2](#)
+[Websocket Workshop](#)
 Some text describing this workshop
 
-[Workshop 3](#)
+<!-- Separate section -->
+[Link to Ray](#)
 Some text describing this workshop
