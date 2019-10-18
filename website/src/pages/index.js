@@ -2,7 +2,6 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
-import CodeSection from "../components/CodeSection";
 import ScrollIndicator from "../components/scroll-indicator";
 import Button from "../components/button";
 import styles from './index.module.css';
@@ -49,7 +48,7 @@ function indexPage({
         </section>
       </article>
       <aside className={styles.sidebarSection}>
-        <h6 className={styles.sidebarTitle}>Latests Blogs</h6>
+        <h6 className={styles.sidebarTitle}>Latest Blog Posts</h6>
         {blogs.nodes.map((node) => (
           <article>
             <Link style={{textDecoration: "none"}} to={node.frontmatter.path}>
