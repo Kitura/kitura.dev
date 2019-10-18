@@ -7,128 +7,136 @@ title: Kitura Packages
 
  ## Contents
 
- - [Core](#core)
- - [Cloud](#cloud)
- - [Database](#database)
+ - [Kitura](#kitura)
+ - [HTTP Client](#http-client)
  - [Sessions](#sessions)
- - [Credentials](#credentials)
- - [Templating](#templating)
- - [Backend Drivers](#backend-drivers)
- - [Logging](#logging)
- - [Middleware](#middleware)
- - [Sample Apps](#sample-apps)
- - [Infrastructure](#infrastructure)
- - [Misc](#misc)
+ - [Authentication](#authentication)
+ - [Web Templating](#web-templating)
+ - [SQL Databases](#sql-databases)
+ - [Non-SQL Databases](#non-sql-databases)
+ - [Cloud Integration](#cloud-integration)
+ - [Middlewares](#middlewares)
+ - [Cryptography](#cryptography)
+ - [Email](#email)
 
- ### Core
+ ## Kitura
 
- | Package      | Description | API Documentation |
- | ----------- | ----------- | ------- |
- | [Kitura](https://github.com/IBM-Swift/Kitura)      | Core Kitura package.       | [API](https://ibm-swift.github.io/Kitura/) |
- | [KituraKit](https://github.com/IBM-Swift/KituraKit) | Client side library for using Codable routes with Kitura. | [API](https://ibm-swift.github.io/KituraKit/) |
- | [Kitura-Websocket](https://github.com/IBM-Swift/Kitura-Websocket) | Provides socket support to Kitura based servers. | [API](https://ibm-swift.github.io/Kitura-WebSocket/) |
-
- ### Cloud
+ Core packages used by most Kitura applications.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Health](https://github.com/IBM-Swift/Health)      | Allow Swift apps to report health status.       | [API](https://ibm-swift.github.io/Health/) |
- | [CloudEnvironment](https://github.com/IBM-Swift/CloudEnvironment) | Convenience package for accessing variables mapped to JSON for Cloud environments. | [API](https://ibm-swift.github.io/CloudEnvironment/) |
- | [SwiftMetrics](https://github.com/IBM-Swift/SwiftMetrics) | Instruments the Swift runtime for performance monitoring, via API or a visual dashboard. | No API available |
- | [Kitura-OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI) | Allows the addition of OpenAPI (Swagger) support to your Kitura application. | [API](https://ibm-swift.github.io/Kitura-OpenAPI/) |
- | [Swift-cfenv](https://github.com/IBM-Swift/Swift-cfenv) | Allows parsing of Cloud Foundry configuration variables, like port number, IP and URL. | No API available |
- | [CircuitBreaker](https://github.com/IBM-Swift/CircuitBreaker) | A design pattern to improve response time, stability and prevent constant failure requests. | [API](https://ibm-swift.github.io/CircuitBreaker/) |
- | [SwiftyRequest](https://github.com/IBM-Swift/SwiftyRequest) | HTTP networking library for Swift. | [API](https://ibm-swift.github.io/SwiftyRequest/) |
+ | [Kitura](https://github.com/IBM-Swift/Kitura)      | The Kitura framework, including HTTP server, routing, requests, and responses.       | [API](https://ibm-swift.github.io/Kitura/) |
+ | [Kitura-Websocket](https://github.com/IBM-Swift/Kitura-Websocket) | Bi-directional communications over the WebSocket protocol. | [API](https://ibm-swift.github.io/Kitura-WebSocket/) |
+ | [Kitura-OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI) | Automatically generate a Swagger/OpenAPI document from your Kitura application. | [API](https://ibm-swift.github.io/Kitura-OpenAPI/) |
 
- ### Database
 
- | Package      | Description | API Documentation |
- | ----------- | ----------- | ------- |
- | [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM)   | An ORM for Swift, built on Codable.        | [API](https://ibm-swift.github.io/Swift-Kuery-ORM/) |
- | [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) | SQL database abstraction layer. | [API](https://ibm-swift.github.io/Swift-Kuery/) |
- | [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL) | MySQL plugin for Swift-Kuery framework. | [API](https://ibm-swift.github.io/SwiftKueryMySQL/) |
- | [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) | PostgreSQL plugin for Swift-Kuery framework. | [API](https://ibm-swift.github.io/Swift-Kuery-PostgreSQL/) |
- | [Swift-Kuery-SQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite) | SQLite plugin for Swift-Kuery framework. | [API](https://ibm-swift.github.io/Swift-Kuery-SQLite/) |
 
- ### Sessions
+ ## HTTP Client
+
+ Packages for communicating with remote HTTP servers, or with Kitura from iOS.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session)      | Framework for managing user sessions on a Kitura server.    | [API](https://ibm-swift.github.io/Kitura-Session/) |
- | [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) | Kitura-Session store using Redis as the backing store. | [API](https://ibm-swift.github.io/Kitura-Session-Redis/) |
+ | [SwiftyRequest](https://github.com/IBM-Swift/SwiftyRequest) | HTTP client, with support for JSON, Codable, and built-in circuit breaking. | [API](https://ibm-swift.github.io/SwiftyRequest/) |
+ | [KituraKit](https://github.com/IBM-Swift/KituraKit) | iOS library for communicating with a Kitura server. | [API](https://ibm-swift.github.io/KituraKit/) |
 
- ### Credentials
 
- | Package      | Description | API Documentation |
- | ----------- | ----------- | ------- |
- | [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials)  | Validate user credentials on a Kitura server. | [API](https://ibm-swift.github.io/Kitura-Credentials/) |
- | [Kitura-CredentialsFacebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook)  | Plugin for the Credentials framework that authenticates using Facebook. | [API](https://ibm-swift.github.io/Kitura-CredentialsFacebook/) |
- | [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)  | Plugin for the Credentials framework that authenticates using Google web login and a Google OAuth token. | [API](https://ibm-swift.github.io/Kitura-CredentialsGoogle/) |
- | [Kitura-CredentialsGitHub](https://github.com/IBM-Swift/Kitura-CredentialsGitHub)  | Plugin for the Credentials framework that authenticates using GitHub. | [API](https://ibm-swift.github.io/Kitura-CredentialsGitHub/) |
- | [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP)  | Plugin for the Credentials framework that authenticates using HTTP Basic and Digest. | [API](https://ibm-swift.github.io/Kitura-CredentialsHTTP/) |
- | [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT)  | Plugin for the Credentials framework that authenticates using JSON Web Tokens. | [API](https://ibm-swift.github.io/Kitura-CredentialsJWT/) |
- | [Kitura-CredentialsDropbox](https://github.com/crspybits/CredentialsDropbox)  | Plugin for the Credentials framework that authenticates using a Dropbox OAuth2 token. | No API available |
- | [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter)  | Plugin for the Credentials framework that authenticates using the Twitter OAuth web login. | No API available |
+ ## Sessions
 
- ### Templating
+ Persist user state between requests.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-TemplateEngine](https://github.com/IBM-Swift/Kitura-TemplateEngine)      | The Kitura template engine abstraction layer. | [API](https://ibm-swift.github.io/Kitura-TemplateEngine/) |
- | [KituraKit-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) | Template engine for Kitura that uses Stencil based templates. | [API](https://ibm-swift.github.io/Kitura-StencilTemplateEngine/) |
- | [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown) | Template engine for Kitura that uses Markdown based templates. | [API](https://ibm-swift.github.io/Kitura-Markdown/) |
- | [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) | Template engine for Kitura that uses Mustache based templates. | [API](https://ibm-swift.github.io/Kitura-MustacheTemplateEngine/) |
+ | [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session)      | Manage user state between requests, in memory.  | [API](https://ibm-swift.github.io/Kitura-Session/) |
+ | [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis) | Manage user state between requests, using a Redis data store. | [API](https://ibm-swift.github.io/Kitura-Session-Redis/) |
 
- ### Backend Drivers
+ ## Authentication
+
+ Authenticate requests to Kitura.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB)      | Allows Kitura to interact with CouchDB databases.  | [API](https://ibm-swift.github.io/Kitura-CouchDB/) |
- | [Kitura-Redis](https://github.com/IBM-Swift/Kitura-Redis) | Library for interacting with a Redis database. | [API](https://ibm-swift.github.io/Kitura-redis/) |
+ | [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials)  | Main credentials framework. Use this together with a suitable plugin. | [API](https://ibm-swift.github.io/Kitura-Credentials/) |
+ | [Kitura-CredentialsFacebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook)  | Plugin for Kitura-Credentials which uses Facebook OAuth2. | [API](https://ibm-swift.github.io/Kitura-CredentialsFacebook/) |
+ | [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)  | Plugin for Kitura-Credentials which uses Google OAuth2. | [API](https://ibm-swift.github.io/Kitura-CredentialsGoogle/) |
+ | [Kitura-CredentialsGitHub](https://github.com/IBM-Swift/Kitura-CredentialsGitHub)  | Plugin for Kitura-Credentials which uses GitHub OAuth2. | [API](https://ibm-swift.github.io/Kitura-CredentialsGitHub/) |
+ | [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP)  | Plugin for Kitura-Credentials which uses HTTP Basic or Digest authentication. | [API](https://ibm-swift.github.io/Kitura-CredentialsHTTP/) |
+ | [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT)  | Plugin for Kitura-Credentials which uses JSON Web Tokens. | [API](https://ibm-swift.github.io/Kitura-CredentialsJWT/) |
+ | [Kitura-CredentialsDropbox](https://github.com/crspybits/CredentialsDropbox)  | Plugin for Kitura-Credentials which uses Dropbox OAuth2. | No API available |
+ | [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter)  | Plugin for Kitura-Credentials which uses Twitter OAuth2. | No API available |
+ | [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) | Swift implementation of JSON Web Tokens (JWT). | [API](https://ibm-swift.github.io/Swift-JWT/) |
 
- ### Logging
+
+ ## Web Templating
+
+ Create websites in Kitura.
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Kitura-TemplateEngine](https://github.com/IBM-Swift/Kitura-TemplateEngine)      | Main templating framework. Use this together with a suitable plugin. | [API](https://ibm-swift.github.io/Kitura-TemplateEngine/) |
+ | [KituraKit-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) | Plugin for Kitura-TemplateEngine which uses Stencil templating. | [API](https://ibm-swift.github.io/Kitura-StencilTemplateEngine/) |
+ | [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown) | Plugin for Kitura-TemplateEngine which uses Markdown templating. | [API](https://ibm-swift.github.io/Kitura-Markdown/) |
+ | [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine) | Plugin for Kitura-TemplateEngine which uses Mustache templating. | [API](https://ibm-swift.github.io/Kitura-MustacheTemplateEngine/) |
+ | [swift-html-entities](https://github.com/IBM-Swift/swift-html-entities) | HTML5 character encoder/decoder. | [API](https://ibm-swift.github.io/swift-html-entities/) |
+
+ ## SQL Databases
+
+ Connect your Kitura app to a relational database.
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM)   | Kitura's Object Relational Mapper (ORM). | [API](https://ibm-swift.github.io/Swift-Kuery-ORM/) |
+ | [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) | SQL database abstraction. Use this together with a database plugin if you do not wish to use an ORM. | [API](https://ibm-swift.github.io/Swift-Kuery/) |
+ | [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL) | Plugin for Swift-Kuery which uses MySQL. | [API](https://ibm-swift.github.io/SwiftKueryMySQL/) |
+ | [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) | Plugin for Swift-Kuery which uses PostgreSQL. | [API](https://ibm-swift.github.io/Swift-Kuery-PostgreSQL/) |
+ | [Swift-Kuery-SQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite) |Plugin for Swift-Kuery which uses SQLite. | [API](https://ibm-swift.github.io/Swift-Kuery-SQLite/) |
+
+ ## Non-SQL Databases
+
+ Connect your Kitura app to a No-SQL database.
+
+ | Package      | Description | API Documentation |
+ | ----------- | ----------- | ------- |
+ | [Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB)      | SDK for connecting to Apache CouchDB and Cloudant.  | [API](https://ibm-swift.github.io/Kitura-CouchDB/) |
+ | [Kitura-Redis](https://github.com/IBM-Swift/Kitura-Redis) | SDK for connecting to Redis key/value datastore. | [API](https://ibm-swift.github.io/Kitura-redis/) |
+
+ ## Cloud Integration
+
+ Libraries for integrating with cloud.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
  | [LoggerAPI](https://github.com/IBM-Swift/LoggerAPI)      | Logger protocol for differing kinds of loggers.  | [API](https://ibm-swift.github.io/LoggerAPI/) |
  | [HeliumLogger](https://github.com/IBM-Swift/HeliumLogger) | A lightweight Swift logging framework. | [API](https://ibm-swift.github.io/HeliumLogger/) |
+ | [Health](https://github.com/IBM-Swift/Health)      | Add liveness and readiness endpoints to your application. | [API](https://ibm-swift.github.io/Health/) |
+ | [CloudEnvironment](https://github.com/IBM-Swift/CloudEnvironment) | ad configuration for services on IBM Cloud. | [API](https://ibm-swift.github.io/CloudEnvironment/) |
+ | [Swift-cfenv](https://github.com/IBM-Swift/Swift-cfenv) | Parse Cloud Foundry variables into your application. | No API available |
+ | [Configuration](https://github.com/IBM-Swift/Configuration) | Read application configuration from command-line options, environment variables, and disk. | [API](https://ibm-swift.github.io/Configuration/) |
 
- ### Middleware
+ ## Middlewares
 
- | Package      | Description | API Documentation |
- | ----------- | ----------- | ------- |
- | [Kitura-Cache](https://github.com/IBM-Swift/Kitura-Cache)      | In-memory, thread safe cache that allows object storage against a unique Hashable key.  | [API](https://ibm-swift.github.io/Kitura-Cache/) |
- | [Kitura-Compression](https://github.com/IBM-Swift/Kitura-Compression) | Kitura compression middleware. | [API](https://ibm-swift.github.io/Kitura-Compression/) |
- | [Kitura-CORS](https://github.com/IBM-Swift/Kitura-CORS) | Kitura CORS middleware. | [API](https://ibm-swift.github.io/Kitura-CORS/) |
-
- ### Sample Apps
+ Pluggable functionality which can be added to Kitura routes.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-Sample](https://github.com/IBM-Swift/Kitura-Sample)      | Sample application demonstrating Kitura and IBM Swift features.  | No API available |
- | [iOSSampleKituraKit](https://github.com/IBM-Swift/iOSSampleKituraKit) | Sample application demonstrating Kitura and the KituraKit client library. | No API available |
- | [Kubernetes-Kitura-Sample](https://github.com/IBM-Swift/Kubernetes-Kitura-Sample) | Demonstration application using Kubernetes. | No API available |
+ | [Kitura-Cache](https://github.com/IBM-Swift/Kitura-Cache)      | In-memory cache based on NSCache. | [API](https://ibm-swift.github.io/Kitura-Cache/) |
+ | [Kitura-Compression](https://github.com/IBM-Swift/Kitura-Compression) | Compress your response body data using "deflate" or "gzip". | [API](https://ibm-swift.github.io/Kitura-Compression/) |
+ | [Kitura-CORS](https://github.com/IBM-Swift/Kitura-CORS) | Support for Cross Origin Resource Sharing. | [API](https://ibm-swift.github.io/Kitura-CORS/) |
 
- ### Infrastructure
+ ## Cryptography
+
+ Libraries for many popular cryptography algorithms.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-Net](https://github.com/IBM-Swift/Kitura-Net)      | Logic for sending and receiving HTTP requests.  | [API](https://ibm-swift.github.io/Kitura-net/) |
- | [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO) | Logic for sending and receiving HTTP requests using Apple's SwiftNIO framework. | [API](https://ibm-swift.github.io/Kitura-NIO/) |
- | [Kitura Contracts](https://github.com/IBM-Swift/KituraContracts) | Type definitions shared by client and server. | [API](https://ibm-swift.github.io/KituraContracts/) |
- | [BlueSocket](https://github.com/IBM-Swift/BlueSocket)      | Socket framework for Swift.  | No API available |
- | [BlueSSLService](https://github.com/IBM-Swift/BlueSSLService) | SSL/TLS add-in framework for BlueSocket. | No API available |
  | [BlueCryptor](https://github.com/IBM-Swift/BlueCryptor) | Cross-platform cryptography library. | No API available |
- | [BlueSignals](https://github.com/IBM-Swift/BlueSignals) | Generic cross-platform signal handler. | No API available |
  | [BlueRSA](https://github.com/IBM-Swift/BlueCryptor) | Cross-platform RSA wrapper library. | No API available |
+ | [BlueECC](https://github.com/IBM-Swift/BlueECC) | Demonstration application using Kubernetes. | [API](https://ibm-swift.github.io/BlueECC/index.html) |
 
- ### Misc
+ ## Email
+
+ Send email from your Kitura application.
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
  | [Swift-SMTP](https://github.com/IBM-Swift/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://ibm-swift.github.io/Swift-SMTP/) |
- | [swift-html-entities](https://github.com/IBM-Swift/swift-html-entities) | Pure Swift HTML encode and decode utility tool. | [API](https://ibm-swift.github.io/swift-html-entities/) |
- | [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) | An implementation of JSON Web Tokens in Swift. | [API](https://ibm-swift.github.io/Swift-JWT/) |
- | [TypeDecoder](https://github.com/IBM-Swift/TypeDecoder) | Allows inspection of native and complex types. | [API](https://ibm-swift.github.io/TypeDecoder/) |
- | [Configuration](https://github.com/IBM-Swift/Configuration) | Manages application configurations. | [API](https://ibm-swift.github.io/Configuration/) |
- | [FileKit](https://github.com/IBM-Swift/FileKit) | Utility for resolving common paths. | [API](https://ibm-swift.github.io/FileKit/) |
