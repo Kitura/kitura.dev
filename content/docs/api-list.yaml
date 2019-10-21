@@ -1,11 +1,12 @@
-- title: Core Kitura
-- title: Cloud
-- title: Databases
-- title: Sessions
-- title: Credentials
-- title: Templating
-- title: Logging
-- title: Backend Drivers
-- title: Middleware
-- title: Infrastructure
-- title: Misc
+- title: API
+  - title: Kitura
+  - title: HTTP Client
+  - title: Sessions
+  - title: Authentication
+  - title: Web Templating
+  - title: SQL Databases
+  - title: Non-SQL Databases
+  - title: Cloud Integration
+  - title: Middlewares
+  - title: Cryptography
+  - title: Email
