@@ -10,13 +10,13 @@ const MobileNav = () => {
     <nav className={styles.mobileNav}> 
       <Link className={styles.navLink} to="/">Home</Link>
 
-      <a className={styles.navLink} href="https://github.com/IBM-Swift/Kitura" target="_blank" rel="noopener noreferrer">GitHub</a>
-
       <Link className={styles.navLink} to="/learn">Learn</Link> 
 
-      <Link className={styles.navLink} to="/api">API</Link>
+      <Link className={styles.navLink} to="/news">Blog</Link>
 
-      <Link className={styles.navLink} to="/news">News</Link>
+      <a className={styles.navLink} href="https://github.com/IBM-Swift/Kitura" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+      <a className={styles.navLink} to="http://slack.kitura.io">Slack</a>
 
       {/* <Link className={styles.navLink} to="/community">Community</Link> */}
     </nav>
