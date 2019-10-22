@@ -1,0 +1,38 @@
+.page-title {
+  font-size: 2.2rem;
+  width: 80%;
+  margin: 4rem auto 3rem auto;
+}
+
+.blog-card {
+  width: 80%;
+  margin: 2rem auto 1rem auto;
+  border-bottom: 1px black solid;
+  padding-bottom: 2rem;
+}
+
+.blog-card:last-child {
+  border-bottom: none;
+}
+
+.blog-card > a {
+  text-decoration: none;
+}
+
+.blog-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.blog-author {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0096F4;
+  margin-bottom: 0.5rem;
+}
+
+.blog-date {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,28 @@
+.mobile-nav {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-nav {
+    display: block;
+    height: 75px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 1px -2.5px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .nav-link {
+    padding: 0.5em 1em;
+    margin: 0 1em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 14px;
+  }
+}
+

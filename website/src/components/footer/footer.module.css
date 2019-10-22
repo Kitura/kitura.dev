@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  background-color: #0096F4;
+}
+
+.footer-link {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+.separator {
+  height: 30%;
+  width: 2px;
+  background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    display: none;
+  }
+}

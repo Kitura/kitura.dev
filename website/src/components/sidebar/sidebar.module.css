@@ -1,0 +1,70 @@
+.sidebar {
+    width: 300px;
+    background-color: #faf8f8;
+    height: Calc(100vh - 75px);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem 0;
+    box-sizing: border-box;
+    position: fixed;
+    overflow-y: scroll;
+    z-index: 2;
+}
+
+.guides-heading, .ref-heading {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.hr {
+   margin: 2rem 0; 
+   border: 0.5px solid #70707080;
+}
+
+.ref-section {
+    margin-top: 5rem;
+}
+
+.sidebar-section {
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+}
+
+.sidebar-parent-item {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.nested-sidebar-section {
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+}
+
+.nested-sidebar-item {
+    padding: 0.5rem 0;
+}
+
+.sidebar-link {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        width: 50vw;
+        position: fixed;
+        overflow-y: auto;
+        z-index: 1;
+    }
+
+    .docs-section {
+        font-size: 1rem;
+    }
+    
+    .sidebar-link {
+        font-size: 0.8rem;
+    }
+}
