@@ -4,7 +4,7 @@ import styles from "./mobile-header.module.css";
 
 import Search from "./search";
 
-import kituraLogo from "../../../content/images/Kitura.svg";
+import kituraLogo from "../images/Kitura.svg";
 
 const MobileHeader = () => {
   return (
