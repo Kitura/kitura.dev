@@ -11,7 +11,7 @@
 .guides-heading, .ref-heading {
     margin-left: 2rem;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 500;
 }
 
@@ -31,7 +31,8 @@
 
 .sidebar-parent-item {
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .nested-sidebar-section {
@@ -46,7 +47,7 @@
 .sidebar-link {
     text-decoration: none;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 600px) {
