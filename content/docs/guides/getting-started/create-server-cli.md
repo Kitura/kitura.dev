@@ -31,20 +31,18 @@ kitura --version
 ```
 If the installation was successful we would see information about the version.
 
-### Install via npm (macOS or Linux)
+### Install via curl (macOS or Linux)
 
->For this installation method you need to have npm installed.  If you do not have npm installed you can follow the [npm installation steps](https://www.npmjs.com/get-npm).
+You can install (either on Mac or Linux) with:
 
-Open a Terminal and run the `npm install` command:
 ```
-npm install -g kitura-cli
+curl -fsSL https://github.com/IBM-Swift/kitura-cli/releases/latest/download/install.sh | sudo bash
 ```
 
 Verify that Kitura CLI is installed by running:
 ```
 kitura --version
 ```
-
 If the installation was successful we would see information about the version.
 
 ---

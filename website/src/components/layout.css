@@ -19,6 +19,11 @@ time, mark, audio, video {
 	vertical-align: baseline;
 	color: #535353;
 }
+
+
+code, pre {
+	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {

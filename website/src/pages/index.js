@@ -68,8 +68,7 @@ function indexPage({
             <h6 className={styles.sidebarTitle}>{node.frontmatter.title}</h6>
             <p className={styles.socialText}>{node.frontmatter.description}</p>
             <section className={styles.socialButtonSection}>
-              <Button size="medium" text="Chat to us" externalLink="http://slack.kitura.io/" />
-              <p>{node.frontmatter.uxCopy}</p>
+              <Button size="medium" text={node.frontmatter.button} externalLink="http://slack.kitura.io/" />
             </section>
           </article>
         ))}
@@ -159,7 +158,6 @@ export const pageQuery = graphql`
           title
           description
           button
-          uxCopy
         }
       }
     }

@@ -24,7 +24,7 @@ const Header = () => {
 
           {/* <a className={styles.navLink} href="/api">API</a> */}
 
-          <Link className={styles.navLink} to="/news">Blogs</Link>
+          <Link className={styles.navLink} to="/news">Blog</Link>
 
       </nav>
       <Search />

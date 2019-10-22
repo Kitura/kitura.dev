@@ -9,6 +9,5 @@ Some text describing this workshop
 [Websocket Workshop](#)
 Some text describing this workshop
 
-<!-- Separate section -->
-[Link to Ray](#)
+[Stencil Templating](https://www.raywenderlich.com/1032630-kitura-stencil-tutorial-how-to-make-websites-with-swift)
 Some text describing this workshop
