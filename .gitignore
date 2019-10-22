@@ -7,5 +7,4 @@ node_modules
 public/
 
 # Lock files
-yarn.lock
 package-lock.json

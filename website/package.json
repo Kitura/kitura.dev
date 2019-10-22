@@ -23,7 +23,7 @@
     "react-helmet": "^5.2.1"
   },
   "scripts": {
-    "test": "echo 'TODO: add tests'",
+    "test": "gatsby build --prefix-paths && echo 'TODO: add tests'",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
   }
 }

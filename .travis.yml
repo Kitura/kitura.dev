@@ -1,14 +1,15 @@
 language: node_js
 before_script:
   - npm install -g gatsby-cli gh-pages
+  - cd ${TRAVIS_BUILD_DIR}/website/ && yarn install
 node_js:
   - "10"
 script:
-  - cd ${TRAVIS_BUILD_DIR}/website/ && npm test
+  - npm test
 deploy:
   provider: script
   # Note: change "website" to the directory where your gatsby-site lives, if necessary
-  script: cd ${TRAVIS_BUILD_DIR}/website/ && yarn install && yarn run deploy
+  script: yarn run deploy
   skip_cleanup: true
   on:
     branch: master
