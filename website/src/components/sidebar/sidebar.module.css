@@ -1,11 +1,13 @@
 .sidebar {
     width: 300px;
     background-color: #faf8f8;
-    min-height: Calc(100vh - 75px);
-    margin-top: 4px;
+    height: Calc(100vh - 75px);
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
     padding: 2rem 0;
     box-sizing: border-box;
+    position: fixed;
+    overflow-y: scroll;
+    z-index: 2;
 }
 
 .guides-heading, .ref-heading {
@@ -53,7 +55,6 @@
 @media only screen and (max-width: 600px) {
     .sidebar {
         width: 50vw;
-        margin-top: 75px;
         position: fixed;
         overflow-y: auto;
         z-index: 1;

@@ -3,6 +3,8 @@
   width: 70vw;
   box-sizing: border-box;
   margin-bottom: 2rem;
+  min-height: calc(100vh - 150px);
+  margin-left: 300px;
 
   h1 {
     font-size: 2.1rem;

@@ -4,10 +4,10 @@ links: ["API Docs", "Community Projects", "Blogs"]
 ---
 
 [ToDo List Backend](#)
-Some text describing this workshop
+Build a Kitura app, with OpenAPI & a database
 
-[Websocket Workshop](#)
-Some text describing this workshop
+[WebSocket Workshop](#)
+Create a WebSocket app, with iOS & macOS clients
 
 [Stencil Templating](https://www.raywenderlich.com/1032630-kitura-stencil-tutorial-how-to-make-websites-with-swift)
-Some text describing this workshop
+Make a website with Kitura 

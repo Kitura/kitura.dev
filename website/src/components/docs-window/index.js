@@ -7,13 +7,20 @@ const DocsWindow = () => {
       <section className={styles.learnWelcome}>
         <h2 className={styles.subHeading}>WELCOME TO</h2>
         <h1 className={styles.mainHeading}>KITURA <span className={styles.blueText}>DOCS</span></h1>
-        <p className={styles.headingText}>These are the official guides and tutorials for the Kitura framework.</p>
+        <p className={styles.headingText}>These are the official docs and tutorials for the Kitura framework.</p>
       </section>
       <article className={styles.usingDocs}>
         <h3>Using these docs</h3>
-        <p>The guides takes you through building a Kitura server. Following the guides from start to finish will provide you with the skills you need to create your own Kitura server!</p>
-        <p>Structured in a way to allow you to enter at any point, just choose a section on the left and dive in!</p>
-        <p>No prior knowledge of server-side Swift is required to follow these guides.</p>
+        
+        <h4>Guides</h4>
+        <p>The guides take you through building a Kitura server, explaining all the main features of the framework. Following the guides from start to finish will provide you with the skills you need to create your own Kitura server!</p>
+        
+        <h4>Tutorials</h4>
+        <p>Build a complete app using a step-by-step tutorial. Each tutorial showcases different features of Kitura including databases, OpenAPI and deployment to Docker/Kubernetes.</p>
+
+        <h4>Reference</h4>
+        <p>Comprehensive API reference for Kitura packages.</p>
+        <p></p>
       </article>
       <article className={styles.tutorialSection}>
         <h3>Kitura <span className={styles.blueText}>Tutorials</span></h3>

@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
       </Helmet>
       <Header />
       <MobileHeader />
-      <main>
+      <main style={{marginTop: "75px"}}>
         {children}
       </main>
       <MobileNav />
