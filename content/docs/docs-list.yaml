@@ -122,6 +122,6 @@
     - title: Middlewares
       link: /docs/api/middlewares
     - title: Cryptography
-      links: /docs/api/cryptography
+      link: /docs/api/cryptography
     - title: Email
       link: /docs/api/email
