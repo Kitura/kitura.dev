@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/non-sql-databases"
-title: What is Authentication?
+title: Non-SQL Packages
 ---
 
 ## Non-SQL Databases

@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/web-templating"
-title: What is Authentication?
+title: Web Templating Packages
 ---
 
 ## Web Templating

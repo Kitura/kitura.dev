@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/cloud-integration"
-title: What is Authentication?
+title: Cloud Integration Packages
 ---
 
 ## Cloud Integration

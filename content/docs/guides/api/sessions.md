@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/sessions"
-title: What is Authentication?
+title: Session Packages
 ---
 
 ## Sessions

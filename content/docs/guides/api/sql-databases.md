@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/sql-databases"
-title: What is Authentication?
+title: SQL Packages
 ---
 
  ## SQL Databases
