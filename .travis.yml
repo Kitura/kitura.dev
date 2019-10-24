@@ -11,5 +11,6 @@ deploy:
   # Note: change "website" to the directory where your gatsby-site lives, if necessary
   script: yarn run deploy
   skip_cleanup: true
+  keep_history: true
   on:
     branch: master
