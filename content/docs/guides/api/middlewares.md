@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/middlewares"
-title: What is Authentication?
+title: Middleware Packages
 ---
 
  ## Middlewares

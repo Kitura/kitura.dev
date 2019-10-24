@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/authentication"
-title: What is Authentication?
+title: Authentication Packages
 ---
 
 ## Authentication

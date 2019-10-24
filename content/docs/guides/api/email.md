@@ -1,6 +1,6 @@
 ---
 path: "/docs/api/email"
-title: What is Authentication?
+title: Email Packages
 ---
 
  ## Email
