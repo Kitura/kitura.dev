@@ -239,7 +239,9 @@
     .welcome-content {
         text-align: center;
         width: 80vw;
+        margin: 0 auto;
         margin-bottom: 3rem;
+        margin-top: 3rem;
     }
 
     .welcome-content > h2 {
@@ -256,6 +258,7 @@
     }
 
     .marketing-section {
+        margin: 0 auto;
         margin-bottom: 75px;
     }
 
@@ -270,12 +273,26 @@
     } 
 
     .marketing-card {
+        margin-right: 0;
         margin-bottom: 3rem;
     }
 
     .sidebar-section {
         display: none;
     }
+
+    .marketing-card:nth-child(1) {
+        box-shadow: 0 5px 10px rgba(242,19,70, 0.15);
+    }
+
+    .marketing-card:nth-child(2) {
+        box-shadow: 0 5px 10px rgba(0,150,244, 0.15);
+    }
+
+    .marketing-card:nth-child(3) {
+        box-shadow: 0 5px 10px rgba(0,198,137, 0.15);
+    }
+    
 
     /* .code-example-section {
         display: none;

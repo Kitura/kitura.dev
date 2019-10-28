@@ -23,7 +23,7 @@
 .card {
   width: 30%;
   padding: 5%;
-  height: 40%;
+  min-height: fit-content;
   line-height: 24px;
   font-size: 1rem;
 }
@@ -67,8 +67,13 @@
     padding-top: 75px;
     margin-bottom: 75px;
   }
+
   .news-section {
-    width: 100%;
+    width: 90%;
+  }
+
+  .card-grid {
+    justify-content: start;
   }
 }
 
