@@ -89,6 +89,14 @@
     display: block;
     padding: 2rem 2.5vw 2rem 2.5vw;
   }
+
+  .using-docs > h3 {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .tutorial-section > h3 {
+    margin: 2rem 0 1rem 0;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -98,5 +106,36 @@
     margin: 0 auto;
     padding: 2rem 2.5vw 2rem 2.5vw;
     margin-bottom: 75px;
+  }
+
+  .using-docs {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .using-docs > h3 {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .tutorial-section > h3 {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .tutorial-section {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .tutorial.tutorial {
+    border: 0;
+    width: 100%;
+    border-bottom: 1px solid #70707020;
+    padding-left: 0;
+    padding-bottom: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .tutorial:nth-child(4) {
+    border: 0;
   }
 }

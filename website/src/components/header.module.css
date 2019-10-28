@@ -10,6 +10,7 @@
     top: 0;
     grid-row-start: 1;
     grid-row-end: 2;
+    max-width: 100vw;
 }
 
 /* Logo Section Styling*/

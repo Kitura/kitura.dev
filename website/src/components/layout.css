@@ -63,7 +63,7 @@ input:focus {
 .content {
 	margin-top: 75px;
 	grid-row-start: 2;
-  	grid-row-end: 3;
+	grid-row-end: 3;
 }
 
 /* Tablet/Small Screen styling */
