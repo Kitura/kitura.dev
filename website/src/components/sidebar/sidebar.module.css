@@ -58,6 +58,7 @@
         position: fixed;
         overflow-y: auto;
         z-index: 1;
+        height: calc(100vh - 150px);
     }
 
     .docs-section {
