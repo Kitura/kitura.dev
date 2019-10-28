@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .mobile-nav {
     display: block;
     height: 75px;
@@ -19,7 +19,7 @@
   
   .nav-link {
     padding: 0.5em 1em;
-    margin: 0 1em;
+    margin: 0 0.2em;
     box-sizing: border-box;
     text-decoration: none;
     font-size: 14px;

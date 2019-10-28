@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .large-button {
     height: 50px;
     width: 200px;

@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 5% 1fr 15% 1fr 5%;
   grid-template-rows: 25% 70%;
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
   margin-left: 300px;
 }
 
@@ -84,7 +84,14 @@
   margin-bottom: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 750px) and (max-width: 1360px) {
+  .learn-container {
+    display: block;
+    padding: 2rem 2.5vw 2rem 2.5vw;
+  }
+}
+
+@media only screen and (max-width: 750px) {
   .learn-container {
     width: 90vw;
     display: block;

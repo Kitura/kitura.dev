@@ -1,7 +1,6 @@
 /* Search Section Styling */
 .dropdown {
-  width: 25%;
-  margin-right: 50px;
+  width: 25vw;
   position: relative;
   z-index: 99;
 }
@@ -64,7 +63,7 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .dropdown {
     width: 50%;
     margin-right: 25px;
