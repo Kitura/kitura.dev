@@ -55,7 +55,21 @@
   clip-path: polygon(0 40%, 100% 95%, 100% 100%, 0 100%);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 750px) and (max-width: 1360px) {
+  .main-parent-container {
+    height: 200px;
+  }
+
+  .left-parent-container {
+    height: 120px;
+  }
+
+  .right-parent-container {
+    height: 120px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
   .main-parent-container {
     height: 180px;
   }

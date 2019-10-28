@@ -61,8 +61,19 @@
   color: #0096F4;
 }
 
+@media only screen and (min-width: 750px) and (max-width: 1360px) {
+  .news-container {
+    flex-direction: column;
+    padding-top: 75px;
+    margin-bottom: 75px;
+  }
+  .news-section {
+    width: 100%;
+  }
+}
+
 /* Mobile Styling */
-@media only screen and (max-width: 600px) { 
+@media only screen and (max-width: 750px) { 
   .news-container {
     flex-direction: column;
     padding-top: 75px;

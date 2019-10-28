@@ -18,7 +18,7 @@ import "./layout.css"
 
 const Layout = ({ children }) => {
   return (
-    <> 
+    <div className="container"> 
       <Helmet>
         <meta charset="UTF-8"></meta>
         <title>Kitura - An Enterprise-Grade Server-Side Swift Web Framework</title>
@@ -32,12 +32,12 @@ const Layout = ({ children }) => {
       </Helmet>
       <Header />
       <MobileHeader />
-      <main style={{marginTop: "75px"}}>
+      <main className="content">
         {children}
       </main>
       <MobileNav />
       <Footer />
-    </>
+    </div>
   )
 }
 

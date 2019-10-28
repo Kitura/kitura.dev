@@ -8,6 +8,8 @@
     z-index: 10;
     background-color: white;
     top: 0;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 /* Logo Section Styling*/
@@ -16,7 +18,6 @@
     color: inherit;
     display: flex;
     align-items: center;
-    width: 60%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none; 
@@ -26,7 +27,7 @@
 }
 
 .logo-section {
-    width: 20%; 
+    width: 15vw;
     margin-left: 50px;
 }
 
@@ -42,7 +43,7 @@
 /* Header Nav Styling */
 
 .header-nav {
-    width: 55%;
+    width: 50vw;
 }
 
 .nav-link {
@@ -69,8 +70,10 @@
 /* Social Nav */
 
 .social-nav {
+    width: 10vw;
     display: flex;
-    margin-right: 50px;
+    justify-content: flex-end;
+    margin: 0 50px;
     opacity: 0.75;
 }
 
@@ -79,7 +82,35 @@
     padding: 0.5rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 750px) and (max-width: 800px) {
+    .logo-section {
+        width: 30vw;
+    }
+
+    .header-nav {
+        width: 30vw;
+    }
+
+    .social-nav {
+        width: 10vw;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 50px 0 25px;
+        opacity: 0.75;
+    }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1360px) {
+    .logo-section {
+        width: 25vw;
+    }
+
+    .header-nav {
+        width: 35vw;
+    }
+}
+
+@media only screen and (max-width: 750px) {
     .header {
         display: none;
     }

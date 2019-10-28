@@ -19,7 +19,7 @@
 
 /* Welcome Section Styling */
 .welcome-section {
-    height: calc(100vh);
+    height: calc(100vh -75px);
     display: grid;
 }
 
@@ -186,8 +186,46 @@
     line-height: 20px;
 } */
 
+/* Tablet/Small Screen styling */
+@media only screen and (min-width: 750px) and (max-width: 1360px) {
+    .sidebar-section {
+        display: none;
+    }
+
+    .marketing-card-section {
+        margin-bottom: 2rem;
+    }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 800px) {
+    .marketing-card-section {
+        flex-direction: column;
+        align-items: center;
+    } 
+
+    .welcome-content {
+        text-align: center;
+        width: 80vw;
+        margin-bottom: 3rem;
+    }
+
+    .welcome-section {
+        display: block;
+        height: auto;
+    }
+
+    .marketing-title {
+        text-align: center;
+    }
+
+    .marketing-card {
+        margin-bottom: 3rem;
+    }
+}
+
+
 /* Mobile Styling */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
     .landing-content {
         font-size: 2rem;
         margin: 3rem 0;
@@ -213,6 +251,7 @@
     }
 
     .marketing-title {
+        text-align: center;
         font-size: 1.4rem;
     }
 
@@ -229,6 +268,10 @@
         flex-direction: column;
         align-items: center;
     } 
+
+    .marketing-card {
+        margin-bottom: 3rem;
+    }
 
     .sidebar-section {
         display: none;
