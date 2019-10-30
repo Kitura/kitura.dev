@@ -16,8 +16,8 @@ const News = ({
         <section className={styles.newsSection}>
           <h2 className={styles.newsTitle}>Kitura <span className={styles.blueText}>Blogs</span></h2>
           <div className={styles.cardGrid}>
-            {blogs.nodes.map(blog => (
-              <article className={styles.card}>
+            {blogs.nodes.map((blog, index) => (
+              <article key={`news-blog-post-${index}`} className={styles.card}>
                 <Link to={blog.frontmatter.path}> 
                   <h3>{blog.frontmatter.title}</h3>
                   <p>{blog.frontmatter.blurb}</p>
@@ -35,8 +35,8 @@ const News = ({
         <section className={styles.newsSection}>
           <h2 className={styles.newsTitle}>Kitura <span className={styles.blueText}>Media</span></h2>
           <div className={styles.cardGrid}>
-            {media.nodes.map(singleMedia => (
-              <article className={styles.card}>
+            {media.nodes.map((singleMedia, index )=> (
+              <article key={`news-media-post-${index}`} className={styles.card}>
                 <a href={singleMedia.frontmatter.path}>
                   <h3>{singleMedia.frontmatter.title}</h3>
                   <p>{singleMedia.frontmatter.blurb}</p>

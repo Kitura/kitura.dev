@@ -7,7 +7,6 @@ import Layout from "../components/layout"
 import "../templates/blogs.scss"
 
 const privacy = ({data}) => {
-  console.log(data)
   return (
     <Layout>
       <h1 style={{fontSize: "2.1rem", margin: "2rem 5vw 1rem 5vw"}}>{data.allMarkdownRemark.nodes[0].frontmatter.title}</h1>

@@ -39,8 +39,8 @@ function indexPage({
       <article className={styles.marketingSection}>
         <h3 className={styles.marketingTitle}>Why Kitura?</h3>
         <section className={styles.marketingCardSection}>
-        {welcome.nodes.map((node) => (
-          <article className={styles.marketingCard}>
+        {welcome.nodes.map((node, index) => (
+          <article key={`marketing-card-${index}`} className={styles.marketingCard}>
             <h5>{node.frontmatter.title}</h5>
             <div className={styles.marketingText} dangerouslySetInnerHTML={{ __html: node.html }}></div>
           </article>
@@ -49,22 +49,22 @@ function indexPage({
       </article>
       <aside className={styles.sidebarSection}>
         <h6 className={styles.sidebarTitle}>Latest Blog Posts</h6>
-        {blogs.nodes.map((node) => (
-          <article>
+        {blogs.nodes.map((node, index) => (
+          <article key={`blog-post-${index}`}>
             <Link style={{textDecoration: "none"}} to={node.frontmatter.path}>
               <h4 className={styles.latestNewsTitle}>{node.frontmatter.title}</h4>
               <p className={styles.latestNewsText}>{node.frontmatter.blurb}</p>
             </Link>
           </article>
         ))}
-        {links.nodes.map((node) => (
-          <article>
+        {links.nodes.map((node, index) => (
+          <article key={`tutorial-post-${index}`}>
             <h6 className={styles.sidebarTitle}>{node.frontmatter.title}</h6>
             <div className={styles.usefulLinks} dangerouslySetInnerHTML={{__html: node.html}}></div>
           </article>
         ))}
-        {social.nodes.map((node) => (
-          <article>
+        {social.nodes.map((node, index) => (
+          <article key={`social-link-${index}`}>
             <h6 className={styles.sidebarTitle}>{node.frontmatter.title}</h6>
             <p className={styles.socialText}>{node.frontmatter.description}</p>
             <section className={styles.socialButtonSection}>

@@ -72,7 +72,6 @@ class Search extends Component {
   render() {
     const { searchResults, searchQuery } = this.state
     const queryResults = searchResults
-    console.log(searchResults)
     if (this.state.isOpen) {
       return (
         <div className={styles.dropdown}>

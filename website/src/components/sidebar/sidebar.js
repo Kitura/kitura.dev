@@ -37,7 +37,7 @@ function Sidebar(props) {
         var tempValue;
         if (node.items === undefined) {
             tempValue = (
-                <article className={styles.sidebarSection}>
+                <article key={`sidebar-title-${index}`} className={styles.sidebarSection}>
                     <h2 className={styles.activeLink}>{node.title}</h2>
                 </article>
             )
@@ -45,7 +45,7 @@ function Sidebar(props) {
             const activeLinkStyles = {
                 color: '#0096F4'
             }
-            if (node.title == "API") {
+            if (node.title === "API") {
                 tempValue = (
                     <div className={styles.refSection}>
                     <hr className={styles.hr}></hr>
@@ -53,8 +53,8 @@ function Sidebar(props) {
                     <article className={styles.sidebarSection}>
                         <Collapsible open={isActive[index]} trigger={<h2 className={styles.sidebarParentItem} onClick={() => clickHandler(index)}>{node.title}</h2>}>
                         <section className={styles.nestedSidebarSection}>
-                            {node.items.map((item) => (
-                                <p className={styles.nestedSidebarItem}><Link activeStyle={activeLinkStyles} state={isActive} className={styles.sidebarLink} to={item.link}>{item.title}</Link></p>
+                            {node.items.map((item, index) => (
+                                <p key={`sidebar-api-${index}`} className={styles.nestedSidebarItem}><Link activeStyle={activeLinkStyles} state={isActive} className={styles.sidebarLink} to={item.link}>{item.title}</Link></p>
                             ))}
                         </section>
                         </Collapsible>
@@ -66,8 +66,8 @@ function Sidebar(props) {
                     <article className={styles.sidebarSection}>
                         <Collapsible open={isActive[index]} trigger={<h2 className={styles.sidebarParentItem} onClick={() => clickHandler(index)}>{node.title}</h2>}>
                         <section className={styles.nestedSidebarSection}>
-                            {node.items.map((item) => (
-                                <p className={styles.nestedSidebarItem}><Link activeStyle={activeLinkStyles} state={isActive} className={styles.sidebarLink} to={item.link}>{item.title}</Link></p>
+                            {node.items.map((item, index) => (
+                                <p key={`sidebar-guides-${index}`} className={styles.nestedSidebarItem}><Link activeStyle={activeLinkStyles} state={isActive} className={styles.sidebarLink} to={item.link}>{item.title}</Link></p>
                             ))}
                         </section>
                         </Collapsible>

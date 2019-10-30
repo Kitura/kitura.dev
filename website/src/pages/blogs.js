@@ -12,7 +12,7 @@ const blogs = ({
 
   const blogList = blogs.nodes.map((blog, index) => {
     return (
-      <article className={styles.blogCard}>
+      <article key={`blog-blogs-post-${index}`} className={styles.blogCard}>
         <Link to={blog.frontmatter.path}>
           <h2 className={styles.blogTitle}>{blog.frontmatter.title}</h2>
           <h3 className={styles.blogAuthor}>{blog.frontmatter.author}</h3>

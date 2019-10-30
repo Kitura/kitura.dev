@@ -29,8 +29,8 @@ const Header = () => {
       </nav>
       <Search />
       <nav className={styles.socialNav}>
-        <a target="_blank" href="https://github.com/IBM-Swift/Kitura"><img className={styles.socialIcon} src={ githubIcon }></img></a>
-        <a target="_blank" href="http://slack.kitura.io"><img className={styles.socialIcon} src={ slackIcon }></img></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/IBM-Swift/Kitura"><img className={styles.socialIcon} src={ githubIcon } alt="GitHub Logo"></img></a>
+        <a target="_blank" rel="noopener noreferrer" href="http://slack.kitura.io"><img className={styles.socialIcon} src={ slackIcon } alt="Slack Logo"></img></a>
       </nav>
     </header>
   )
