@@ -375,7 +375,7 @@ struct MyDelegate: UserProfileDelegate {
 Then we need to declare our instance of CredentialsJWT with our newly defined options, as well as setting the `subject` claim to `id`:
 
 ```swift
-let jwtCredentials = CredentialsJWT<MyClaims>(verifier: App.jwtVerifier, options: [CredentialsJWTOptions.subject: "id", CredentialsJWTOptions.userProfileDelegate: MyDelegate.self])
+let jwtCredentials = CredentialsJWT<MyClaims>(verifier: App.jwtVerifier, options: [CredentialsJWTOptions.subject: "id", CredentialsJWTOptions.userProfileDelegate: MyDelegate()])
 ```
 
 Finally we create our middleware and register our plugin to it, the same as we have done earlier:
