@@ -32,5 +32,6 @@ module.exports = {
     },
     `gatsby-transformer-yaml`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
   ]
 }
