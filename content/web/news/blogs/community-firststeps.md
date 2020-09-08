@@ -40,7 +40,7 @@ we don't have a formal roadmap yet, here's a few things on the top of my mind:
 If you’re interested in helping to shape the future direction of Kitura, please
 reach out! No role is too small or too big! Please follow-up on the
 [forums](https://forums.swift.org/c/related-projects/kitura/31) or
-[Slack](http://swift-at-ibm-slack.mybluemix.net/).
+[Slack](https://swift-at-ibm.slack.com/archives/C29BLC4KB).
 
 
 Thanks!
