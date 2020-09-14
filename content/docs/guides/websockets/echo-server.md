@@ -30,7 +30,7 @@ touch main.swift
 
 ## Step 2: Setting up the Server
 
-Add the following content to your `Package.swift` file, replacing "x.x.x" with the latest releases of [Kitura](https://github.com/IBM-Swift/Kitura/releases), [HeliumLogger](https://github.com/IBM-Swift/HeliumLogger/releases), [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket/releases) and [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO/releases):
+Add the following content to your `Package.swift` file, replacing "x.x.x" with the latest releases of [Kitura](https://github.com/IBM-Swift/Kitura/releases), [HeliumLogger](https://github.com/IBM-Swift/HeliumLogger/releases), [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket/releases) and [Kitura-WebSocket-NIO](https://github.com/Kitura/Kitura-WebSocket-NIO/releases):
 ```swift
 import PackageDescription
 
@@ -48,7 +48,7 @@ let package = Package(
 
 // Use alternate implementation of Kitura-WebSocket while building in NIO mode
 if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {
-    dependencies.append(.package(url:  "https://github.com/IBM-Swift/Kitura-WebSocket-NIO.git", from: "x.x.x"))
+    dependencies.append(.package(url:  "https://github.com/Kitura/Kitura-WebSocket-NIO.git", from: "x.x.x"))
 } else {
     dependencies.append(.package(url: "https://github.com/IBM-Swift/Kitura-WebSocket.git", from: "x.x.x"))
 }
@@ -56,7 +56,7 @@ if ProcessInfo.processInfo.environment["KITURA_NIO"] != nil {
 )
 ```
 
->[This code snippet](/docs/configuring/swiftnio#using-kitura-websocket-nio) allows either [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) or [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) packages to be used.
+>[This code snippet](/docs/configuring/swiftnio#using-kitura-websocket-nio) allows either [Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) or [Kitura-WebSocket-NIO](https://github.com/Kitura/Kitura-WebSocket-NIO) packages to be used.
 
 Add the following to your `ChatService.swift` file:
 

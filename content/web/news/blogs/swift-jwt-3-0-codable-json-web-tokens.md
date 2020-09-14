@@ -162,6 +162,6 @@ The name from the JWT will be returned to you. If you change the JWT token or ge
 
 Congratulations! You have just created a JWT single sign on system using a Kitura Server.
 
-If you would like to see a completed example that also uses JWTs for information transfer, Please check out the JWT Example in our [Kitura sample](https://github.com/IBM-Swift/Kitura-Sample) app.
+If you would like to see a completed example that also uses JWTs for information transfer, Please check out the JWT Example in our [Kitura sample](https://github.com/Kitura/Kitura-Sample) app.
 
 Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.159686845.186671014.1570626561-1743126121.1570022962)!

@@ -6,13 +6,13 @@ title: JSON Web Token Authentication
 #JSON Web Token Authentication
 A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can find out more about JWTs at [JWT.IO](https://jwt.io/).
 
-[Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) is our implementation of JSON Web Token using Swift. It allows you to create, sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.  [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT) is a JWT plugin to use with the existing Kitura-Credentials package that offers both Codable and Raw routing methods for easily authenticating JWTs. This guide will demonstrate how to use Swift-JWT and Kitura-CredentialsJWT to implement Single Sign On (SSO) authentication for your Kitura routes. This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.
+[Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) is our implementation of JSON Web Token using Swift. It allows you to create, sign and verify JWTs on iOS, macOS and Linux using a range of algorithms.  [Kitura-CredentialsJWT](https://github.com/Kitura/Kitura-CredentialsJWT) is a JWT plugin to use with the existing Kitura-Credentials package that offers both Codable and Raw routing methods for easily authenticating JWTs. This guide will demonstrate how to use Swift-JWT and Kitura-CredentialsJWT to implement Single Sign On (SSO) authentication for your Kitura routes. This will allow a user to sign in once and then to access resources from other routes without having to repeat the authentication process.
 
 ---
 
 ##Step 1: Create the JWT routes
 
-To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT#add-dependencies) to our dependencies.
+To use JWTs from a server, we need to add [Kitura-CredentialsJWT](https://github.com/Kitura/Kitura-CredentialsJWT#add-dependencies) to our dependencies.
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 

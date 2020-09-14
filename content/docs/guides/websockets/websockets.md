@@ -17,7 +17,7 @@ WebSockets send data using a frame-based messaging system that helps reduce the 
 
 ## Kitura WebSockets
 
-[Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) and [Kitura-WebSocket-NIO](https://github.com/IBM-Swift/Kitura-WebSocket-NIO) are two packages that enable WebSocket support for Kitura. They support version thirteen of the WebSocket protocol and are compatible with a variety of WebSocket clients, including: Built in WebSocket support for browsers (Chrome, FireFox and Safari) and the NPM WebSocket package. Both packages also support the WS and WSS (SSL/TLS secured WS) protocols.
+[Kitura-WebSocket](https://github.com/IBM-Swift/Kitura-WebSocket) and [Kitura-WebSocket-NIO](https://github.com/Kitura/Kitura-WebSocket-NIO) are two packages that enable WebSocket support for Kitura. They support version thirteen of the WebSocket protocol and are compatible with a variety of WebSocket clients, including: Built in WebSocket support for browsers (Chrome, FireFox and Safari) and the NPM WebSocket package. Both packages also support the WS and WSS (SSL/TLS secured WS) protocols.
 
 ---
 

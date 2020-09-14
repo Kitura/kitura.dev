@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/kitura-swift-server-example
 ---
 
-We have rewritten the [Kitura Sample](https://github.com/IBM-Swift/Kitura-Sample) demo application to better showcase the capabilities of Kitura. This update adds interactive webpages so you can try out the features live. You can also easily view the code for each feature by clicking on the embedded links.
+We have rewritten the [Kitura Sample](https://github.com/Kitura/Kitura-Sample) demo application to better showcase the capabilities of Kitura. This update adds interactive webpages so you can try out the features live. You can also easily view the code for each feature by clicking on the embedded links.
 
 Furthermore, we have added new demos for popular features such as databases, sessions and authentication. Altogether, these changes produce an example app which is a great resource for learning to develop using [Kitura](https://www.kitura.io/).
 
@@ -23,7 +23,7 @@ Our sample server shows off the following features available in Kitura:
 - Persisting objects to a session store using [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session)
 - Rendering HTML web pages from [Markdown](https://github.com/IBM-Swift/Kitura-Markdown) and [Stencil templates](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine)
 - HTTP Basic authentication with [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials)
-- OAuth2 authentication with [AppID](https://github.com/ibm-cloud-security/appid-serversdk-swift), [Facebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook) and [Google](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)
+- OAuth2 authentication with [AppID](https://github.com/ibm-cloud-security/appid-serversdk-swift), [Facebook](https://github.com/Kitura/Kitura-CredentialsFacebook) and [Google](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)
 
 ---
 
@@ -35,7 +35,7 @@ To start the Swift server example locally, follow the steps below:
 
 2. Clone the Kitura Sample project:
 ```
-git clone https://github.com/IBM-Swift/Kitura-Sample.git
+git clone https://github.com/Kitura/Kitura-Sample.git
 ```
 
 3. Move into the Kitura-Sample directory:
