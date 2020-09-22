@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/swift-jwt-3-0-codable-json-web-tokens
 ---
 
-We have just released version 3.0 of [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT), our library for creating, signing, and verifying JSON Web Tokens. This release adds Codable conformance to the JWTs for easy encoding and decoding. As a result, you can now use JWTs with Kitura’s Codable Routing feature. Furthermore, this release adds support for signing and verifying JWTs using the HMAC hash function. This blog post will explain the new APIs by demonstrating JWT authentication in Codable routes.
+We have just released version 3.0 of [Swift-JWT](https://github.com/Kitura/Swift-JWT), our library for creating, signing, and verifying JSON Web Tokens. This release adds Codable conformance to the JWTs for easy encoding and decoding. As a result, you can now use JWTs with Kitura’s Codable Routing feature. Furthermore, this release adds support for signing and verifying JWTs using the HMAC hash function. This blog post will explain the new APIs by demonstrating JWT authentication in Codable routes.
 
 ##What is a JSON Web Token?
 
@@ -22,7 +22,7 @@ Let’s start by adding Swift-JWT to the dependencies of a Kitura Server. If you
 
 ```swift
 // dependencies
-.package(url: "https://github.com/IBM-Swift/Swift-JWT.git", from: "3.1.0")
+.package(url: "https://github.com/Kitura/Swift-JWT.git", from: "3.1.0")
 // targets
 .target(name: "Application", dependencies: ["SwiftJWT"]),
 ```
@@ -162,6 +162,6 @@ The name from the JWT will be returned to you. If you change the JWT token or ge
 
 Congratulations! You have just created a JWT single sign on system using a Kitura Server.
 
-If you would like to see a completed example that also uses JWTs for information transfer, Please check out the JWT Example in our [Kitura sample](https://github.com/IBM-Swift/Kitura-Sample) app.
+If you would like to see a completed example that also uses JWTs for information transfer, Please check out the JWT Example in our [Kitura sample](https://github.com/Kitura/Kitura-Sample) app.
 
 Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.159686845.186671014.1570626561-1743126121.1570022962)!

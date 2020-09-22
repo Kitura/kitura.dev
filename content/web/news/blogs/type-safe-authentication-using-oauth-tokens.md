@@ -28,14 +28,14 @@ Let’s take a look at how we can handle authentication using OAuth tokens from 
 
 ###Google OAuth Token
 
-[Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle) makes it simple to create a type-safe middleware that authenticates an incoming request against [Google’s OAuth2 userinfo API](https://developers.google.com/identity/protocols/googlescopes#oauth2v2).
+[Kitura-CredentialsGoogle](https://github.com/Kitura/Kitura-CredentialsGoogle) makes it simple to create a type-safe middleware that authenticates an incoming request against [Google’s OAuth2 userinfo API](https://developers.google.com/identity/protocols/googlescopes#oauth2v2).
 
 Start by declaring a dependency on  `Kitura-CredentialsGoogle`  in your  `Package.swift`:
 
 ```swift
 let package = Package(name: "example", dependencies: [
     ...
-    .package(url: "https://github.com/IBM-Swift/Kitura-CredentialsGoogle.git", from: "2.2.0"),
+    .package(url: "https://github.com/Kitura/Kitura-CredentialsGoogle.git", from: "2.2.0"),
   ],
   targets: [
     .target(name: "example",
@@ -74,14 +74,14 @@ The `MyGoogleUser`  type can then be substituted for the  `GoogleTokenProfile`  
 
 ###Facebook OAuth Token
 
-[Kitura-CredentialsFacebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook) defines the equivalent types for authenticating against [Facebook’s Graph API](https://developers.facebook.com/docs/graph-api/).
+[Kitura-CredentialsFacebook](https://github.com/Kitura/Kitura-CredentialsFacebook) defines the equivalent types for authenticating against [Facebook’s Graph API](https://developers.facebook.com/docs/graph-api/).
 
 Start by declaring a dependency on  `Kitura-CredentialsFacebook`  in your  `Package.swift`:
 
 ```swift
 let package = Package(name: "example", dependencies: [
     ...
-    .package(url: "https://github.com/IBM-Swift/Kitura-CredentialsFacebook.git", from: "2.2.0"),
+    .package(url: "https://github.com/Kitura/Kitura-CredentialsFacebook.git", from: "2.2.0"),
   ],
   targets: [
     .target(name: "example",
@@ -294,6 +294,6 @@ Response without credentials: 401 : Unauthorized
 
 Now that we can identify a user and some basic profile information, we may wish to associate a more rich and domain-specific user profile with them, and have access to this profile within our handlers too.
 
-In a future post, we’ll look at how we can use [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) to easily store and retrieve user profiles in Codable routes.
+In a future post, we’ll look at how we can use [Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM) to easily store and retrieve user profiles in Codable routes.
 
 Join the [Kitura community on Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.78945687.2052919715.1571393501-1533615335.1571393501) to discuss your thoughts or questions on this topic or Kitura in general.

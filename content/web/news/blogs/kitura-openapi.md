@@ -31,7 +31,7 @@ public init() throws {
 - Add Kitura-OpenAPI.git as a dependency in your Package.swift:
 
 ```swift
-.package(url: "https://github.com/IBM-Swift/Kitura-OpenAPI.git", from: "1.0.0"),
+.package(url: "https://github.com/Kitura/Kitura-OpenAPI.git", from: "1.0.0"),
 ```
 
 - Then update your dependencies by running `swift package update`.

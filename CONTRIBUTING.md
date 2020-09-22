@@ -6,7 +6,7 @@ Content on this site is licensed under the Apache Licence, Version 2.0.
 
 ### Create development environment
 1. Clone the kitura.io repo onto your machine:
-	`git clone https://github.com/IBM-Swift/kitura.io`
+	`git clone https://github.com/Kitura/kitura.io`
 2. Create a new branch for your development:
 	`git checkout -b <branch>`
 3. Once changes have been made, open a PR against master and link to the corresponding issue, if applicable.

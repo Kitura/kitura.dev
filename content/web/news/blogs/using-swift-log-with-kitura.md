@@ -8,9 +8,9 @@ path: /blogs/using-swift-log-with-kitura
 
 [swift-log](https://github.com/apple/swift-log) is a new logging API package for Swift, developed by the [Swift Server Working Group](https://swift.org/server/). It aims to provide a consistent and standardised logging solution across the server-side Swift ecosystem.
 
-With the release of Kitura’s [LoggerAPI 1.9](https://github.com/IBM-Swift/LoggerAPI/releases/tag/1.9.0), you can now easily direct your log messages to a swift-log logging backend.
+With the release of Kitura’s [LoggerAPI 1.9](https://github.com/Kitura/LoggerAPI/releases/tag/1.9.0), you can now easily direct your log messages to a swift-log logging backend.
 
-In addition, the upcoming Kitura 2.8 release will allow you to [configure Kitura to log via swift-log](https://github.com/IBM-Swift/Kitura/pull/1460) with a single line of code:
+In addition, the upcoming Kitura 2.8 release will allow you to [configure Kitura to log via swift-log](https://github.com/Kitura/Kitura/pull/1460) with a single line of code:
 
 ```swift
 Kitura.logTo(mySwiftLogger)

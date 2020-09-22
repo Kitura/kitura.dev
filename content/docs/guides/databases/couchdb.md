@@ -7,7 +7,7 @@ title: Kitura CouchDB
 
 [CouchDB](https://couchdb.apache.org) is a NoSQL (or non-relational) database which takes a document-oriented approach to data storage.
 
-[Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB) is a pure Swift client which allows Kitura applications to interact with a CouchDB or [Cloudant](https://www.ibm.com/uk-en/cloud/cloudant) database.
+[Kitura-CouchDB](https://github.com/Kitura/Kitura-CouchDB) is a pure Swift client which allows Kitura applications to interact with a CouchDB or [Cloudant](https://www.ibm.com/uk-en/cloud/cloudant) database.
 
 In this guide we’ll demonstrate how to create a CouchDB database, define a CouchDB document, save the document to the database and finally retrieve the document from the database.
 
@@ -27,7 +27,7 @@ Before we can use CouchDB within our server we first need to:
 
 ##Step 2: Add CouchDB to your project
 
-To use CouchDB from a server, we need to [add Kitura-CouchDB to our dependencies](https://github.com/IBM-Swift/Kitura-CouchDB#add-dependencies).
+To use CouchDB from a server, we need to [add Kitura-CouchDB to our dependencies](https://github.com/Kitura/Kitura-CouchDB#add-dependencies).
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 

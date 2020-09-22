@@ -8,13 +8,13 @@ path: /blogs/filtering-swift-kuery-orm
 
 ##Introduction
 
-In Kitura 2.4 we have made enhancements to Codable Query Parameters to support extra filtering. This includes the ability to filter using operators such as greater than, inclusive ranges and pagination through Codable Routing. We then took a further step and incorporated these capabilities into [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) in order to filter results from database queries.
+In Kitura 2.4 we have made enhancements to Codable Query Parameters to support extra filtering. This includes the ability to filter using operators such as greater than, inclusive ranges and pagination through Codable Routing. We then took a further step and incorporated these capabilities into [Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM) in order to filter results from database queries.
 
 ---
 
 ##Setting Up Swift-Kuery-ORM
 
-In your Kitura application, follow the [README](https://github.com/IBM-Swift/Swift-Kuery-ORM/blob/master/README.md) to set up Swift-Kuery-ORM using PostgreSQL, MySQL or SQLite.
+In your Kitura application, follow the [README](https://github.com/Kitura/Swift-Kuery-ORM/blob/master/README.md) to set up Swift-Kuery-ORM using PostgreSQL, MySQL or SQLite.
 
 1. Create a Student type that implements Model:
 ```swift

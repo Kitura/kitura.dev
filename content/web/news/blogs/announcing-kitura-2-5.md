@@ -12,7 +12,7 @@ Kitura 2.5 has recently been released – the latest update to the popular and p
 
 Kitura 2.4 introduced support for OpenAPI (also known as Swagger), the most popular way to document REST APIs. When you use Codable routing in Kitura you can automatically generate an OpenAPI definition of your running application, with no code changes or annotations needed.
 
-In Kitura 2.5 we have expanded our support of the OpenAPI specification, and now also support routes which specify query parameters. In addition, a new release of [Kitura-OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI/) now includes the latest version of SwaggerUI, plus some bugfixes.
+In Kitura 2.5 we have expanded our support of the OpenAPI specification, and now also support routes which specify query parameters. In addition, a new release of [Kitura-OpenAPI](https://github.com/Kitura/Kitura-OpenAPI/) now includes the latest version of SwaggerUI, plus some bugfixes.
 
 ---
 
@@ -30,7 +30,7 @@ We encourage all users to try building and running their applications with Swift
 
 ##SwiftNIO support in Kitura-WebSocket
 
-If you are using Websockets in Kitura, you may be interested to know that we also now have an experimental port of Kitura-WebSocket which runs on SwiftNIO. You can find it at [this branch](https://github.com/IBM-Swift/Kitura-WebSocket/tree/websocket-nio) and we would welcome all users to try it out. Join our Slack and let us know how you get on!
+If you are using Websockets in Kitura, you may be interested to know that we also now have an experimental port of Kitura-WebSocket which runs on SwiftNIO. You can find it at [this branch](https://github.com/Kitura/Kitura-WebSocket/tree/websocket-nio) and we would welcome all users to try it out. Join our Slack and let us know how you get on!
 
 ---
 

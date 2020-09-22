@@ -55,7 +55,7 @@ Now we're ready to connect to our database from our Kitura server.
 
 ## Step 3: Create a connection to a PostgreSQL database
 
-Add [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery#update-your-packageswift-file) and [SwiftKueryPostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies) to the dependencies in the `Package.swift` file.
+Add [Swift-Kuery](https://github.com/Kitura/Swift-Kuery#update-your-packageswift-file) and [SwiftKueryPostgreSQL](https://github.com/Kitura/Swift-Kuery-PostgreSQL#add-dependencies) to the dependencies in the `Package.swift` file.
 
 Inside the file which defines the routes, `KueryRoutes.swift`, import SwiftKuery and SwiftKueryPostgreSQL:
 ```swift

@@ -5,13 +5,13 @@ title: Kitura Markdown
 
 #Kitura Markdown
 
-In this guide, we will show you how to serve a web page generated from [Markdown templates](http://stencil.fuller.li/en/latest/) (.md files) using [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown).
+In this guide, we will show you how to serve a web page generated from [Markdown templates](http://stencil.fuller.li/en/latest/) (.md files) using [Kitura-Markdown](https://github.com/Kitura/Kitura-Markdown).
 
 ---
 
 ##Step 1: Add KituraMarkdown to Project
 
-To use Markdown from a server, we first need to [add Kitura-Markdown to our dependencies](https://github.com/IBM-Swift/Kitura-Markdown#add-dependencies).
+To use Markdown from a server, we first need to [add Kitura-Markdown to our dependencies](https://github.com/Kitura/Kitura-Markdown#add-dependencies).
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 

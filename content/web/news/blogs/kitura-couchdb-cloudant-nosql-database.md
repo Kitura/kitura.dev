@@ -6,11 +6,11 @@ author: Andrew Lees
 path: /blogs/kitura-couchdb-cloudant-nosql-database
 ---
 
-[Kitura CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB) is a pure Swift client, that allows applications to interact with a CouchDB or Cloudant NoSQL database. We have just released Kitura-CouchDB 3.0, featuring a new Codable API, which removes the JSON boilerplate and works directly with your Swift objects. This blog will describe the new API and demonstrate its benefits, using an example.
+[Kitura CouchDB](https://github.com/Kitura/Kitura-CouchDB) is a pure Swift client, that allows applications to interact with a CouchDB or Cloudant NoSQL database. We have just released Kitura-CouchDB 3.0, featuring a new Codable API, which removes the JSON boilerplate and works directly with your Swift objects. This blog will describe the new API and demonstrate its benefits, using an example.
 
 ##Codable Kitura CouchDB
 
-Previously, in Kitura CouchDB 2.0, you would interact with the database using [SwiftyJSON](https://github.com/IBM-Swift/SwiftyJSON). This involved a lot of boilerplate code to convert your Swift object to a SwiftyJSON object and vice versa. The introduction of Codable, simplifies the conversion from Swift to JSON and Kitura CouchDB 3.0 utilizes this new functionality in its new API. To demonstrate how this improves usability, we will apply these changes to our [CouchDBSample](https://github.com/IBM-Swift/Kitura-CouchDB/blob/master/Sources/CouchDBSample/main.swift).
+Previously, in Kitura CouchDB 2.0, you would interact with the database using [SwiftyJSON](https://github.com/Kitura/SwiftyJSON). This involved a lot of boilerplate code to convert your Swift object to a SwiftyJSON object and vice versa. The introduction of Codable, simplifies the conversion from Swift to JSON and Kitura CouchDB 3.0 utilizes this new functionality in its new API. To demonstrate how this improves usability, we will apply these changes to our [CouchDBSample](https://github.com/Kitura/Kitura-CouchDB/blob/master/Sources/CouchDBSample/main.swift).
 
 The following examples compare the code required for executing CRUD (create, retrieve, update, delete) operations on a Swift object using Kitura-CouchDB versions 2.0 and 3.0. It assumes you have [installed CouchDB](https://docs.couchdb.org/en/master/install/mac.html) and imported Kitura-CouchDB as a dependency in your Swift project.
 
@@ -203,7 +203,7 @@ Even using the most basic model we have saved ourselves twelve lines of code. As
 
 ## Next steps
 
-If you would like to run this example, or learn more about Kitura-CouchDB, [check it out on GitHub](https://github.com/IBM-Swift/Kitura-CouchDB).
+If you would like to run this example, or learn more about Kitura-CouchDB, [check it out on GitHub](https://github.com/Kitura/Kitura-CouchDB).
 
 If you would like to learn about more features of Kitura-CouchDB such as bulk requests, design documents and attachments, [visit our API reference](https://ibm-swift.github.io/Kitura-CouchDB/index.html).
 

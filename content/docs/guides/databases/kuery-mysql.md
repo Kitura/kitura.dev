@@ -78,7 +78,7 @@ Now we're ready to connect to our database from our Kitura server.
 
 ## Step 3: Create a connection to a MySQL database
 
-Add [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery#update-your-packageswift-file) and [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL#add-dependencies) to the dependencies in the `Package.swift` file.
+Add [Swift-Kuery](https://github.com/Kitura/Swift-Kuery#update-your-packageswift-file) and [SwiftKueryMySQL](https://github.com/Kitura/SwiftKueryMySQL#add-dependencies) to the dependencies in the `Package.swift` file.
 
 Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKueryMySQL packages:
 ```swift

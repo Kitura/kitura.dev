@@ -72,9 +72,9 @@ You could reuse this template file to generate every page on your website, but t
 
 Here is a list of Template Engines Kitura works with:
 
-- [Stencil](https://github.com/stencilproject/Stencil) using the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine) plugin.
+- [Stencil](https://github.com/stencilproject/Stencil) using the [Kitura-StencilTemplateEngine](https://github.com/Kitura/Kitura-StencilTemplateEngine) plugin.
 
-- [Markdown](https://daringfireball.net/projects/markdown/) using the [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown) plugin.
+- [Markdown](https://daringfireball.net/projects/markdown/) using the [Kitura-Markdown](https://github.com/Kitura/Kitura-Markdown) plugin.
 
 ##Next steps
 

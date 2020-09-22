@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/blueecc-elliptic-curve-cryptography
 ---
 
-We have just released [BlueECC](https://github.com/IBM-Swift/BlueECC), a new Swift package for cross-platform elliptic curve cryptography. This enables you to encrypt, decrypt, sign and verify data using elliptic curve asymmetric keys. This blog post will explain what elliptic curves are, why you would use them over RSA and provides examples of the BlueECC API.
+We have just released [BlueECC](https://github.com/Kitura/BlueECC), a new Swift package for cross-platform elliptic curve cryptography. This enables you to encrypt, decrypt, sign and verify data using elliptic curve asymmetric keys. This blog post will explain what elliptic curves are, why you would use them over RSA and provides examples of the BlueECC API.
 
 ##What is Elliptic Curve Cryptography?
 
@@ -118,7 +118,7 @@ The encrypted data has been decrypted back to the original plaintext.
 
 Congratulations! You have just learned how to use elliptic curve cryptography to sign, verify, encrypt and decrypt data in Swift.
 
-If you would like to run this example, or learn more about BlueECC, [check it out on GitHub](https://github.com/IBM-Swift/BlueECC).
+If you would like to run this example, or learn more about BlueECC, [check it out on GitHub](https://github.com/Kitura/BlueECC).
 
 If you would like to learn more about using the BlueECC API, [visit our API reference](https://ibm-swift.github.io/BlueECC/index.html).
 

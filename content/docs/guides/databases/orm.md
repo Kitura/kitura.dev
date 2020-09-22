@@ -5,7 +5,7 @@ title: Swift Kuery ORM
 
 #Swift Kuery ORM
 
-[Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) is an ORM (Object Relational Mapping) library for Swift built on top of [Swift Kuery](https://github.com/IBM-Swift/Swift-Kuery), using it allows you to simplify the persistence of model objects with your server.
+[Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM) is an ORM (Object Relational Mapping) library for Swift built on top of [Swift Kuery](https://github.com/Kitura/Swift-Kuery), using it allows you to simplify the persistence of model objects with your server.
 
 In this guide we will show you how to save and retrieve a `Codable` Swift model from a database (in this case PostgreSQL) using the ORM.
 
@@ -79,9 +79,9 @@ The routes in this guide are using the [Book model from the routing guide](/docs
 
 ##Step 2: Add the ORM to the project's dependencies
 
-> You can use any of the other database plugins supported by [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery), however, the rest of this guide is written to work with the [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) plugin.
+> You can use any of the other database plugins supported by [Swift-Kuery](https://github.com/Kitura/Swift-Kuery), however, the rest of this guide is written to work with the [Swift-Kuery-PostgreSQL](https://github.com/Kitura/Swift-Kuery-PostgreSQL) plugin.
 
-To use the ORM, we need to [add Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM#update-your-packageswift-file) and add [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL#add-dependencies) to your dependencies.
+To use the ORM, we need to [add Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM#update-your-packageswift-file) and add [Swift-Kuery-PostgreSQL](https://github.com/Kitura/Swift-Kuery-PostgreSQL#add-dependencies) to your dependencies.
 
 Next, we import the ORM library and our chosen plugin to the project:
 

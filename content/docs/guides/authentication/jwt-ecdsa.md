@@ -11,7 +11,7 @@ You can process JWTs using Elliptic Curve Digital Signature Algorithm (ECDSA). T
 
 ##Step 1: Create your elliptic curve keys
 
-Elliptic curve keys can be generated through [Apple](https://developer.apple.com/account/ios/authkey), [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations#Generating_EC_Keys_and_Parameters) or using [BlueECC](https://github.com/IBM-Swift/BlueECC#elliptic-curve-private-key).
+Elliptic curve keys can be generated through [Apple](https://developer.apple.com/account/ios/authkey), [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations#Generating_EC_Keys_and_Parameters) or using [BlueECC](https://github.com/Kitura/BlueECC#elliptic-curve-private-key).
 
 For simplicity you can use the following pre-generated keys.
 
@@ -46,7 +46,7 @@ Inside the `App` extension, create an ECDSA `JWTSigner` by providing the private
 static let jwtSigner = JWTSigner.es256(privateKey: Data(privateKey.utf8))
 ```
 
-> ECDSA algorithms such as `es256` use [BlueECC](https://github.com/IBM-Swift/BlueECC), which is only available on macOS 10.13 or newer. When using them you will need to us `@available` to handle cases where the operating system version is not high enough.
+> ECDSA algorithms such as `es256` use [BlueECC](https://github.com/Kitura/BlueECC), which is only available on macOS 10.13 or newer. When using them you will need to us `@available` to handle cases where the operating system version is not high enough.
 
 ---
 

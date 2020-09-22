@@ -9,5 +9,5 @@ title: HTTP Client Packages
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [SwiftyRequest](https://github.com/IBM-Swift/SwiftyRequest) | HTTP client, with support for JSON, Codable, and built-in circuit breaking. | [API](https://ibm-swift.github.io/SwiftyRequest/) |
- | [KituraKit](https://github.com/IBM-Swift/KituraKit) | iOS library for communicating with a Kitura server. | [API](https://ibm-swift.github.io/KituraKit/) |
+ | [SwiftyRequest](https://github.com/Kitura/SwiftyRequest) | HTTP client, with support for JSON, Codable, and built-in circuit breaking. | [API](https://ibm-swift.github.io/SwiftyRequest/) |
+ | [KituraKit](https://github.com/Kitura/KituraKit) | iOS library for communicating with a Kitura server. | [API](https://ibm-swift.github.io/KituraKit/) |

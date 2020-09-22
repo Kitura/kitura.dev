@@ -76,7 +76,7 @@ import PackageDescription
 let package = Package(
     name: "MyKituraApp",
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Kitura", from: "y.y.y")
+        .package(url: "https://github.com/Kitura/Kitura", from: "y.y.y")
     ],
     targets: [
         .target(name: "MyKituraApp", dependencies: [ .target(name: "Application"), "Kitura"]),
@@ -87,7 +87,7 @@ let package = Package(
 )
 ```
 
-Substitute "y.y.y" with the latest Kitura [release](https://github.com/IBM-Swift/Kitura/releases) and "x.x" with the minimum version of Swift required to build the package (e.g. 4.0, 4.2, 5.0).
+Substitute "y.y.y" with the latest Kitura [release](https://github.com/Kitura/Kitura/releases) and "x.x" with the minimum version of Swift required to build the package (e.g. 4.0, 4.2, 5.0).
 
 ---
 

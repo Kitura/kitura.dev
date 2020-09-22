@@ -6,7 +6,7 @@ author: David Jones
 path: /blogs/jwt-authentication-using-kiturakit
 ---
 
-With the release of [KituraKit 0.0.24](https://github.com/IBM-Swift/KituraKit/releases/tag/0.0.24), it is now possible to make type-safe requests to a Kitura server using a JWT for authentication. In addition, we’d like to introduce [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT), which provides a convenient way to add JWT authentication to Codable routes.
+With the release of [KituraKit 0.0.24](https://github.com/Kitura/KituraKit/releases/tag/0.0.24), it is now possible to make type-safe requests to a Kitura server using a JWT for authentication. In addition, we’d like to introduce [Kitura-CredentialsJWT](https://github.com/Kitura/Kitura-CredentialsJWT), which provides a convenient way to add JWT authentication to Codable routes.
 
 In a previous blog post [Swift JWT 3.0: Codable JSON web tokens](/blogs/swift-jwt-3-0-codable-json-web-tokens), we outlined the code for implementing JWT authentication in Kitura for Codable routes. In this post, we’ll show how KituraKit makes it easy to perform type-safe requests to APIs requiring JWT authentication, and how Kitura-CredentialsJWT reduces the boilerplate required on the server side.
 
@@ -38,7 +38,7 @@ Under the covers, KituraKit will send your token in an `Authorization: Bearer <t
 
 In a previous blog post [Type-Safe Authentication using OAuth tokens](/blogs/type-safe-authentication-using-oauth-tokens), we introduced the TypeSafeCredentials protocol as part of Kitura-Credentials, and with it a number of initial implementations: `TypeSafeGoogleToken`, `TypeSafeFacebookToken` and `TypeSafeHTTPBasic`.
 
-We’ve released 0.0.1 of [Kitura-CredentialsJWT](https://github.com/IBM-Swift/Kitura-CredentialsJWT), which extends the `JWT` type to conform to TypeSafeMiddleware. This means that you can include it in your Codable route handler as follows:
+We’ve released 0.0.1 of [Kitura-CredentialsJWT](https://github.com/Kitura/Kitura-CredentialsJWT), which extends the `JWT` type to conform to TypeSafeMiddleware. This means that you can include it in your Codable route handler as follows:
 
 ```swift
 import SwiftJWT
@@ -107,4 +107,4 @@ struct MyMultiAuthedUser: TypeSafeMultiCredentials {
 
 The `MyMultiAuthedUser` type can then be used in place of `JWT` in your handler. (Note: the implementation of MyGoogleUser and MyBasicAuth is omitted here for brevity but more details can be found in the Multiple authentication methods section of [Type-Safe Authentication using OAuth tokens](/blogs/type-safe-authentication-using-oauth-tokens).
 
-For more details, you can check out the code at the [IBM-Swift/Kitura-CredentialsJWT project](https://github.com/IBM-Swift/Kitura-CredentialsJWT) on GitHub, and the API documentation on [Kitura.io](http://kitura.io), and you are welcome to discuss the project by [joining our Slack community](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&cm_sp=dw-bluemix-_-swift-_-devcenter&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328&_ga=2.114805639.186671014.1570626561-1743126121.1570022962). As always, feedback and contributions are welcomed!
+For more details, you can check out the code at the [IBM-Swift/Kitura-CredentialsJWT project](https://github.com/Kitura/Kitura-CredentialsJWT) on GitHub, and the API documentation on [Kitura.io](http://kitura.io), and you are welcome to discuss the project by [joining our Slack community](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&cm_sp=dw-bluemix-_-swift-_-devcenter&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328&_ga=2.114805639.186671014.1570626561-1743126121.1570022962). As always, feedback and contributions are welcomed!

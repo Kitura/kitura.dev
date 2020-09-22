@@ -5,7 +5,7 @@ title: Add Swift Kuery to your app
 
 # Swift Kuery
 
-[Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) is a pluggable SQL database driver/SDK abstraction layer. Its main idea is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API. This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.
+[Swift-Kuery](https://github.com/Kitura/Swift-Kuery) is a pluggable SQL database driver/SDK abstraction layer. Its main idea is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API. This guide will demonstrate how to connect to a SQL database using one of the Swift-Kuery plugins and how to use this connection to send SQL queries to your database.
 
 ---
 

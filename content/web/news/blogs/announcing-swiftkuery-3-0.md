@@ -6,7 +6,7 @@ author: Matt Kilner
 path: /blogs/announcing-swiftkuery-3-0
 ---
 
-We have recently released version 3.0 of [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) along with version 2.0 of [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL), [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL) and [Swift-Kuery-SQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite). You can find a summary of the major changes below, for more detail on the changes please refer to the [Swift-Kuery migration guide](https://github.com/IBM-Swift/Swift-Kuery/blob/master/MigrationGuide.md).
+We have recently released version 3.0 of [Swift-Kuery](https://github.com/Kitura/Swift-Kuery) along with version 2.0 of [Swift-Kuery-PostgreSQL](https://github.com/Kitura/Swift-Kuery-PostgreSQL), [SwiftKueryMySQL](https://github.com/Kitura/SwiftKueryMySQL) and [Swift-Kuery-SQLite](https://github.com/Kitura/Swift-Kuery-SQLite). You can find a summary of the major changes below, for more detail on the changes please refer to the [Swift-Kuery migration guide](https://github.com/Kitura/Swift-Kuery/blob/master/MigrationGuide.md).
 
 ##API changes
 
@@ -155,7 +155,7 @@ How to build your first computer   99
 How to work at a rock quarry       71
 ```
 
-The full example can be found in the [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) GitHub repository within the Readme.md file.
+The full example can be found in the [Swift-Kuery-PostgreSQL](https://github.com/Kitura/Swift-Kuery-PostgreSQL) GitHub repository within the Readme.md file.
 
 ---
 

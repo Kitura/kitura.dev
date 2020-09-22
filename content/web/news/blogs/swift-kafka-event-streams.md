@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/swift-kafka-event-streams
 ---
 
-We have just released [SwiftKafka](https://github.com/IBM-Swift/SwiftKafka), a new Swift package for producing and consuming from an Apache Kafka distributed streaming platform. This blog post explains why you would use Apache Kafka, how you can use the Swift Kafka API and provides an example of producing and consuming messages.
+We have just released [SwiftKafka](https://github.com/Kitura/SwiftKafka), a new Swift package for producing and consuming from an Apache Kafka distributed streaming platform. This blog post explains why you would use Apache Kafka, how you can use the Swift Kafka API and provides an example of producing and consuming messages.
 
 ##What is Apache Kafka?
 
@@ -24,7 +24,7 @@ If you would like to learn more about Kafka, check out the [Apache Kafka website
 
 ##Swift Kafka
 
-The new [SwiftKafka](https://github.com/IBM-Swift/SwiftKafka) library is built on top of the [librdkafka](https://github.com/edenhill/librdkafka) C library. This provides high performance messaging with an easy to use Swift API. Swift Kafka provides three classes that you will need to connect your application to event streams:
+The new [SwiftKafka](https://github.com/Kitura/SwiftKafka) library is built on top of the [librdkafka](https://github.com/edenhill/librdkafka) C library. This provides high performance messaging with an easy to use Swift API. Swift Kafka provides three classes that you will need to connect your application to event streams:
 
 ###KafkaProducer
 
@@ -144,7 +144,7 @@ $ open Package.swift
 Add Swift Kafka to your dependencies:
 
 ```
-.package(url: "https://github.com/IBM-Swift/SwiftKafka.git", from: "0.0.0")
+.package(url: "https://github.com/Kitura/SwiftKafka.git", from: "0.0.0")
 ```
 
 Then add `SwiftKafka` to your target dependencies.
@@ -222,7 +222,7 @@ $ open Package.swift
 Add Swift Kafka to your dependencies:
 
 ```
-.package(url: "https://github.com/IBM-Swift/SwiftKafka.git", from: "0.0.0")
+.package(url: "https://github.com/Kitura/SwiftKafka.git", from: "0.0.0")
 ```
 
 Then add `SwiftKafka` to your target dependencies.
@@ -280,7 +280,7 @@ Once the consumer connects to Kafka it should consume all the messages you sent 
 
 Congratulations! You have just set up an Apache Kafka event stream platform and connected a producer and consumer in Swift.
 
-If you would like learn more about SwiftKafka, [check it out on GitHub](https://github.com/IBM-Swift/SwiftKafka).
+If you would like learn more about SwiftKafka, [check it out on GitHub](https://github.com/Kitura/SwiftKafka).
 
 If you would like to learn more about using the SwiftKafka API, [visit our API reference](https://ibm-swift.github.io/SwiftKafka/index.html).
 

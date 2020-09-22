@@ -9,5 +9,5 @@ title: Non-SQL Packages
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB)      | SDK for connecting to Apache CouchDB and Cloudant.  | [API](https://ibm-swift.github.io/Kitura-CouchDB/) |
- | [Kitura-Redis](https://github.com/IBM-Swift/Kitura-Redis) | SDK for connecting to Redis key/value datastore. | [API](https://ibm-swift.github.io/Kitura-redis/) |
+ | [Kitura-CouchDB](https://github.com/Kitura/Kitura-CouchDB)      | SDK for connecting to Apache CouchDB and Cloudant.  | [API](https://ibm-swift.github.io/Kitura-CouchDB/) |
+ | [Kitura-Redis](https://github.com/Kitura/Kitura-Redis) | SDK for connecting to Redis key/value datastore. | [API](https://ibm-swift.github.io/Kitura-redis/) |

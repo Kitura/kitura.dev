@@ -19,21 +19,21 @@ SQL databases are table based databases, that is you create tables within your d
 
 ###Swift-Kuery
 
-[Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery) is a pluggable SQL database abstraction layer; this is how Kitura provides support for users wishing to use SQL databases, whether directly or via the ORM (see the section below). The intent of the Kuery library is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API for users. This allows easy switching between different databases.
+[Swift-Kuery](https://github.com/Kitura/Swift-Kuery) is a pluggable SQL database abstraction layer; this is how Kitura provides support for users wishing to use SQL databases, whether directly or via the ORM (see the section below). The intent of the Kuery library is to unify the APIs to the various relational databases, providing a Swifty yet SQL-like API for users. This allows easy switching between different databases.
 
 Kitura has support for the following SQL databases:
 
-- [PostgreSQL](https://www.postgresql.org) using the [Swift-Kuery-PostgreSQL](https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL) plugin.
-- [MySQL](https://www.mysql.com) using the [SwiftKueryMySQL](https://github.com/IBM-Swift/SwiftKueryMySQL) plugin.
-- [SQLite](https://www.sqlite.org) using the [Swift-Kuery-SQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite) plugin.
+- [PostgreSQL](https://www.postgresql.org) using the [Swift-Kuery-PostgreSQL](https://github.com/Kitura/Swift-Kuery-PostgreSQL) plugin.
+- [MySQL](https://www.mysql.com) using the [SwiftKueryMySQL](https://github.com/Kitura/SwiftKueryMySQL) plugin.
+- [SQLite](https://www.sqlite.org) using the [Swift-Kuery-SQLite](https://github.com/Kitura/Swift-Kuery-SQLite) plugin.
 
 ###Swift-Kuery-ORM
 
-[Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) is an Object Relational Mapping library (ORM) built for Swift. The ORM provides APIs which simplify the persistence of model objects, by allowing you to interact with the database directly from your Swift types (structs and classes).
+[Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM) is an Object Relational Mapping library (ORM) built for Swift. The ORM provides APIs which simplify the persistence of model objects, by allowing you to interact with the database directly from your Swift types (structs and classes).
 
 The ORM doesn’t require you to directly specify how the data should be represented in the database. You define your Swift type as a class or a struct, extend it to conform to the `Model` protocol (which requires no additional code) and the ORM automatically generates a table schema for you. You can then save, fetch, update and delete directly by calling functions on your Swift type.
 
-The ORM is built on top of [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery), this means that it can be used with any database that is supported by Kuery. If the functionality of the ORM is insufficient, you can use Kuery directly for more complex SQL queries.
+The ORM is built on top of [Swift-Kuery](https://github.com/Kitura/Swift-Kuery), this means that it can be used with any database that is supported by Kuery. If the functionality of the ORM is insufficient, you can use Kuery directly for more complex SQL queries.
 
 ---
 
@@ -43,7 +43,7 @@ NoSQL databases are document based, key-value pairs, graph databases or wide-col
 
 Kitura has support for the following NoSQL databases:
 
-- [CouchDB](https://couchdb.apache.org) and [IBM Cloudant](https://www.ibm.com/uk-en/cloud/cloudant) use the same API so the [Kitura-CouchDB](https://github.com/IBM-Swift/Kitura-CouchDB) plugin works with either database.
+- [CouchDB](https://couchdb.apache.org) and [IBM Cloudant](https://www.ibm.com/uk-en/cloud/cloudant) use the same API so the [Kitura-CouchDB](https://github.com/Kitura/Kitura-CouchDB) plugin works with either database.
 - [MongoDB](https://www.mongodb.com) using the third party [MongoKitten](https://github.com/OpenKitten/MongoKitten) repository.
 
 ---

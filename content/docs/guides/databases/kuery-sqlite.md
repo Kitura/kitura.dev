@@ -56,7 +56,7 @@ Now we're ready to connect to our database from our Kitura server.
 
 ## Step 3: Create a connection to an SQLite database
 
-Add [Swift-Kuery](https://github.com/IBM-Swift/Swift-Kuery#update-your-packageswift-file) and [SwiftKuerySQLite](https://github.com/IBM-Swift/Swift-Kuery-SQLite/#add-dependencies) to the dependencies in the `Package.swift` file.
+Add [Swift-Kuery](https://github.com/Kitura/Swift-Kuery#update-your-packageswift-file) and [SwiftKuerySQLite](https://github.com/Kitura/Swift-Kuery-SQLite/#add-dependencies) to the dependencies in the `Package.swift` file.
 
 Inside the file which defines the routes, `KueryRoutes.swift`, import the SwiftKuery and SwiftKuerySQLite packages:
 ```swift

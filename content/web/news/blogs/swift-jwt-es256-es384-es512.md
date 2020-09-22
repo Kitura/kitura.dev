@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/swift-jwt-es256-es384-es512
 ---
 
-We have just released version 3.3 of [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT). This utilizes our new [BlueECC](https://github.com/IBM-Swift/BlueECC) repository to support signing and verifying of JWTs using ES256, ES384 and ES512 algorithms. In this blog, we will explain what these algorithms are and demonstrate how to use them in Swift-JWT.
+We have just released version 3.3 of [Swift-JWT](https://github.com/Kitura/Swift-JWT). This utilizes our new [BlueECC](https://github.com/Kitura/BlueECC) repository to support signing and verifying of JWTs using ES256, ES384 and ES512 algorithms. In this blog, we will explain what these algorithms are and demonstrate how to use them in Swift-JWT.
 
 ##Elliptic Curve Digital Signature Algorithm (ECDSA)
 
@@ -36,7 +36,7 @@ If you would like to know more about elliptic curve cryptography, check out our 
 
 ##Elliptic curve key pair
 
-ECDSA uses asymmetric elliptic curve keys. These can be generated through [Apple](https://idmsa.apple.com/IDMSWebAuth/signin?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2Faccount%2Fresources%2F&rv=1), [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations#Generating_EC_Keys_and_Parameters) or using [BlueECC](https://github.com/IBM-Swift/BlueECC#elliptic-curve-private-key). For a p-256 curve, these keys should look something like this:
+ECDSA uses asymmetric elliptic curve keys. These can be generated through [Apple](https://idmsa.apple.com/IDMSWebAuth/signin?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2Faccount%2Fresources%2F&rv=1), [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations#Generating_EC_Keys_and_Parameters) or using [BlueECC](https://github.com/Kitura/BlueECC#elliptic-curve-private-key). For a p-256 curve, these keys should look something like this:
 
 ```swift
 let privateKey = """
@@ -99,7 +99,7 @@ You can inspect this JWT String using the [jwt.io](http://jwt.io) debugger. Sele
 ## Next Steps
 Congratulations, you have just used an Elliptic Curve Digital Signature Algorithm with a JWT! Your ES256 signature will be 86 characters versus 171 characters for RS256, in addition to being faster and more secure.
 
-If you would like include Swift-JWT in your project, [check it out on GitHub](https://github.com/IBM-Swift/Swift-JWT).
+If you would like include Swift-JWT in your project, [check it out on GitHub](https://github.com/Kitura/Swift-JWT).
 
 If you would like to learn more about the Swift-JWT API, [visit our API reference](https://ibm-swift.github.io/Swift-JWT/index.html).
 
