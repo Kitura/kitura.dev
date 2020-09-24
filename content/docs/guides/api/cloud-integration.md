@@ -11,7 +11,7 @@ title: Cloud Integration Packages
  | ----------- | ----------- | ------- |
  | [LoggerAPI](https://github.com/Kitura/LoggerAPI)      | Logger protocol for differing kinds of loggers.  | [API](https://ibm-swift.github.io/LoggerAPI/) |
  | [HeliumLogger](https://github.com/Kitura/HeliumLogger) | A lightweight Swift logging framework. | [API](https://ibm-swift.github.io/HeliumLogger/) |
- | [Health](https://github.com/Kitura/Helalth)      | Add liveness and readiness endpoints to your application. | [API](https://ibm-swift.github.io/Health/) |
+ | [Health](https://github.com/Kitura/Health)      | Add liveness and readiness endpoints to your application. | [API](https://ibm-swift.github.io/Health/) |
  | [CloudEnvironment](https://github.com/Kitura/CloudEnvironment) | ad configuration for services on IBM Cloud. | [API](https://ibm-swift.github.io/CloudEnvironment/) |
  | [Swift-cfenv](https://github.com/Kitura/Swift-cfenv) | Parse Cloud Foundry variables into your application. | No API available |
  | [Configuration](https://github.com/Kitura/Configuration) | Read application configuration from command-line options, environment variables, and disk. | [API](https://ibm-swift.github.io/Configuration/) |
