@@ -23,8 +23,8 @@ Kitura supports multiple template engines:
 To use type-safe templating all you need to do is add Kitura (at 2.4 or later) and one of the above template engines to your Package.swift, like so:
 
 ```
-.package(url: "http://github.com/IBM-Swift/Kitura", from: "2.4.0"),
-.package(url: "http://github.com/IBM-Swift/Kitura-StencilTemplateEngine", from: "1.0.0")
+.package(url: "http://github.com/Kitura/Kitura", from: "2.4.0"),
+.package(url: "http://github.com/Kitura/Kitura-StencilTemplateEngine", from: "1.0.0")
 ```
 
 ##How do I use it?
