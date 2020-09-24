@@ -282,6 +282,6 @@ Congratulations! You have just set up an Apache Kafka event stream platform and 
 
 If you would like learn more about SwiftKafka, [check it out on GitHub](https://github.com/Kitura/SwiftKafka).
 
-If you would like to learn more about using the SwiftKafka API, [visit our API reference](https://ibm-swift.github.io/SwiftKafka/index.html).
+If you would like to learn more about using the SwiftKafka API, [visit our API reference](https://kitura.github.io/SwiftKafka/index.html).
 
 Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.118803593.186671014.1570626561-1743126121.1570022962&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328)!

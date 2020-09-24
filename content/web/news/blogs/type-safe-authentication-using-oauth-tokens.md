@@ -14,7 +14,7 @@ If you need to authenticate users of your API, you can use Credentials to specif
 
 With the release of Type-Safe Credentials, we provided a type-safe implementation of HTTP Basic authentication. We’re now pleased to introduce two additional forms of authentication: Google and Facebook OAuth tokens.
 
-In addition, a new  [`TypeSafeMultiCredentials`](https://ibm-swift.github.io/Kitura-Credentials/Protocols/TypeSafeMultiCredentials.html)  protocol allows a single route handler to accept multiple forms of authentication.
+In addition, a new  [`TypeSafeMultiCredentials`](https://kitura.github.io/Kitura-Credentials/Protocols/TypeSafeMultiCredentials.html)  protocol allows a single route handler to accept multiple forms of authentication.
 
 ---
 
@@ -48,7 +48,7 @@ and import the dependency within your application:
 import CredentialsGoogle
 ```
 
-To authenticate an incoming request that provides a Google OAuth token, you can use the pre-defined  [GoogleTokenProfile](https://ibm-swift.github.io/Kitura-CredentialsGoogle/Structs/GoogleTokenProfile.html)  type as a middleware when registering a Codable route handler:
+To authenticate an incoming request that provides a Google OAuth token, you can use the pre-defined  [GoogleTokenProfile](https://kitura.github.io/Kitura-CredentialsGoogle/Structs/GoogleTokenProfile.html)  type as a middleware when registering a Codable route handler:
 
 ```swift
 router.get("/protected") { (user: GoogleTokenProfile,
@@ -58,7 +58,7 @@ router.get("/protected") { (user: GoogleTokenProfile,
 }
 ```
 
-Alternatively, you can customize this type by defining a conformance to the  [TypeSafeGoogleToken](https://ibm-swift.github.io/Kitura-CredentialsGoogle/Protocols/TypeSafeGoogleToken.html)  protocol:
+Alternatively, you can customize this type by defining a conformance to the  [TypeSafeGoogleToken](https://kitura.github.io/Kitura-CredentialsGoogle/Protocols/TypeSafeGoogleToken.html)  protocol:
 
 ```swift
 import CredentialsGoogle
@@ -88,7 +88,7 @@ let package = Package(name: "example", dependencies: [
             dependencies: [ "Kitura", ..., "CredentialsFacebook" ]),
 ```
 
-To authenticate an incoming request that provides a Facebook OAuth token, you can use the pre-defined [FacebookTokenProfile](https://ibm-swift.github.io/Kitura-CredentialsFacebook/Structs/FacebookTokenProfile.html) type as a middleware:
+To authenticate an incoming request that provides a Facebook OAuth token, you can use the pre-defined [FacebookTokenProfile](https://kitura.github.io/Kitura-CredentialsFacebook/Structs/FacebookTokenProfile.html) type as a middleware:
 
 ```swift
 import CredentialsFacebook
@@ -104,7 +104,7 @@ router.get("/protected") { (user: FacebookTokenProfile,
 }
 ```
 
-Again, you can create a custom type by defining a conformance to the [TypeSafeFacebookToken](https://ibm-swift.github.io/Kitura-CredentialsFacebook/Protocols/TypeSafeFacebookToken.html) protocol:
+Again, you can create a custom type by defining a conformance to the [TypeSafeFacebookToken](https://kitura.github.io/Kitura-CredentialsFacebook/Protocols/TypeSafeFacebookToken.html) protocol:
 
 ```swift
 import CredentialsFacebook
@@ -126,7 +126,7 @@ The Google userinfo API provides a fixed profile of information where the subjec
 
 In contrast, the Facebook Graph API requires you to specify which fields of a subject’s profile you wish to access. The token determines what subset of these fields have been granted to you by the subject.
 
-In order to determine which fields should be requested from Facebook, the  [TypeSafeFacebook](https://ibm-swift.github.io/Kitura-CredentialsFacebook/Protocols/TypeSafeFacebook.html)  protocol specifies a list of  `validFieldNames`  that can be requested from the API. The properties declared by your type are filtered against this list, and the resulting set requested from Facebook. The Facebook response is used to initialize those properties when a user is authenticated.
+In order to determine which fields should be requested from Facebook, the  [TypeSafeFacebook](https://kitura.github.io/Kitura-CredentialsFacebook/Protocols/TypeSafeFacebook.html)  protocol specifies a list of  `validFieldNames`  that can be requested from the API. The properties declared by your type are filtered against this list, and the resulting set requested from Facebook. The Facebook response is used to initialize those properties when a user is authenticated.
 
 > This requires all other properties of your type to be `optional`.
 
@@ -150,7 +150,7 @@ Note that there is a behavioral difference between profiles that are defined as 
 
 The above examples show how to require a specific type of authentication to access a resource. However, it is common to accept multiple forms of authentication – such as tokens from multiple authentication providers.
 
-The  [TypeSafeMultiCredentials](https://ibm-swift.github.io/Kitura-Credentials/Protocols/TypeSafeMultiCredentials.html)  protocol provides a way to define a `TypeSafeMiddleware` that permits authentication against a list of methods – an array of  [TypeSafeCredentials](https://ibm-swift.github.io/Kitura-Credentials/Protocols/TypeSafeCredentials.html)  types, such as the ones we defined above.
+The  [TypeSafeMultiCredentials](https://kitura.github.io/Kitura-Credentials/Protocols/TypeSafeMultiCredentials.html)  protocol provides a way to define a `TypeSafeMiddleware` that permits authentication against a list of methods – an array of  [TypeSafeCredentials](https://kitura.github.io/Kitura-Credentials/Protocols/TypeSafeCredentials.html)  types, such as the ones we defined above.
 
 To use this facility, define a type that conforms to the protocol. This requires that you define an  `authenticationMethods`  property that lists the permitted authentication methods, and an initializer that takes a  `TypeSafeCredentials`  parameter. For example:
 

@@ -9,4 +9,4 @@ title: Email Packages
 
  | Package      | Description | API Documentation |
  | ----------- | ----------- | ------- |
- | [Swift-SMTP](https://github.com/Kitura/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://ibm-swift.github.io/Swift-SMTP/) |
+ | [Swift-SMTP](https://github.com/Kitura/Swift-SMTP)      | A Swift SMTP mail client.  | [API](https://kitura.github.io/Swift-SMTP/) |

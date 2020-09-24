@@ -79,7 +79,7 @@ With BlueECC you sign the plaintext as follows:
 let signature = try "hello world".sign(with: ecPrivKey)
 ```
 
-This will take your message and use the private key to create an [ECSignature](https://ibm-swift.github.io/BlueECC/Structs/ECSignature.html). This struct can then be verified with the corresponding public key:
+This will take your message and use the private key to create an [ECSignature](https://kitura.github.io/BlueECC/Structs/ECSignature.html). This struct can then be verified with the corresponding public key:
 
 ```swift
 let verified = signature.verify(plaintext: "hello world", using: ecPubKey)
@@ -120,6 +120,6 @@ Congratulations! You have just learned how to use elliptic curve cryptography to
 
 If you would like to run this example, or learn more about BlueECC, [check it out on GitHub](https://github.com/Kitura/BlueECC).
 
-If you would like to learn more about using the BlueECC API, [visit our API reference](https://ibm-swift.github.io/BlueECC/index.html).
+If you would like to learn more about using the BlueECC API, [visit our API reference](https://kitura.github.io/BlueECC/index.html).
 
 Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.122522507.186671014.1570626561-1743126121.1570022962&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328)!

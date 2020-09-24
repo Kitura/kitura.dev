@@ -101,6 +101,6 @@ Congratulations, you have just used an Elliptic Curve Digital Signature Algorith
 
 If you would like include Swift-JWT in your project, [check it out on GitHub](https://github.com/Kitura/Swift-JWT).
 
-If you would like to learn more about the Swift-JWT API, [visit our API reference](https://ibm-swift.github.io/Swift-JWT/index.html).
+If you would like to learn more about the Swift-JWT API, [visit our API reference](https://kitura.github.io/Swift-JWT/index.html).
 
 Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.58648362.186671014.1570626561-1743126121.1570022962&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328)!

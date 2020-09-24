@@ -40,7 +40,7 @@ mySwiftLogger.logLevel = .info
 Log.swiftLogger = mySwiftLogger
 ```
 
-Note that there are some minor differences in the hierarchy of logging levels defined by LoggerAPI and swift-log. See the [LoggerAPI documentation](https://ibm-swift.github.io/LoggerAPI/index.html) Log.isLogging() for details of how log levels are mapped.
+Note that there are some minor differences in the hierarchy of logging levels defined by LoggerAPI and swift-log. See the [LoggerAPI documentation](https://kitura.github.io/LoggerAPI/index.html) Log.isLogging() for details of how log levels are mapped.
 
 ##How does swift-log compare to LoggerAPI?
 

@@ -28,13 +28,13 @@ let options = ServerOptions(requestSizeLimit: 1024, connectionLimit: 10)
 Kitura.addHTTPServer(onPort: port, with: router, options: options)
 ```
 
-See the [`ServerOptions`](http://ibm-swift.github.io/Kitura-net/Structs/ServerOptions.html) documentation for more information.
+See the [`ServerOptions`](https://kitura.github.io/Kitura-net/Structs/ServerOptions.html) documentation for more information.
 
 ## SwiftyRequest 3.0
 
 SwiftyRequest provides a high-level HTTP client for making requests from your Swift application. This release represents a major re-working of the library to use swift-nio, via the async-http-client project currently under development by the Swift Server Working Group.
 
-An advantage of adopting swift-nio is that SwiftyRequest can now support client certificates (2-way SSL). To learn more about this feature, check out the [SwiftyRequest README](https://github.com/Kitura/SwiftyRequest/) and the documentation for [`ClientCertificate`](https://ibm-swift.github.io/SwiftyRequest/Structs/ClientCertificate.html).
+An advantage of adopting swift-nio is that SwiftyRequest can now support client certificates (2-way SSL). To learn more about this feature, check out the [SwiftyRequest README](https://github.com/Kitura/SwiftyRequest/) and the documentation for [`ClientCertificate`](https://kitura.github.io/SwiftyRequest/Structs/ClientCertificate.html).
 
 Although there are a number of API changes in this release, much of the previous SwiftyRequest API has been preserved, to reduce the work required to migrate.
 
