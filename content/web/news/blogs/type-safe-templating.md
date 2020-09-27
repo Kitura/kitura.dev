@@ -23,8 +23,8 @@ Kitura supports multiple template engines:
 To use type-safe templating all you need to do is add Kitura (at 2.4 or later) and one of the above template engines to your Package.swift, like so:
 
 ```
-.package(url: "http://github.com/IBM-Swift/Kitura", from: "2.4.0"),
-.package(url: "http://github.com/IBM-Swift/Kitura-StencilTemplateEngine", from: "1.0.0")
+.package(url: "http://github.com/Kitura/Kitura", from: "2.4.0"),
+.package(url: "http://github.com/Kitura/Kitura-StencilTemplateEngine", from: "1.0.0")
 ```
 
 ##How do I use it?
@@ -73,7 +73,7 @@ The 'forKey' parameter is a new addition to the rendering methods, this allows y
 
 ##Next Steps
 
-Because the only requirement is that the struct you want to render is Codable, type-safe templating integrates easily with our [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM). When you call Model.findAll() to retrieve data from your database you can pass the results straight through to your rendering code with type-safety from end to end.
+Because the only requirement is that the struct you want to render is Codable, type-safe templating integrates easily with our [Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM). When you call Model.findAll() to retrieve data from your database you can pass the results straight through to your rendering code with type-safety from end to end.
 
 ---
 

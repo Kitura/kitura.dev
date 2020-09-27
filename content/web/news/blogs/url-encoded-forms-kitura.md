@@ -261,6 +261,6 @@ func getFormHandler(user: User, respondWith: ([User]?, RequestError?) -> Void) {
 
 Go to http://localhost:8080/formwebpage.html. You will see a very basic HTML page with four forms. When you submit the forms, they will send the data to the routes we just created. If you open your Xcode project, you should see the user’s name and age being printed to the console.
 
-Congratulations! You have just set up a simple website which submits URL encoded forms to a Kitura server. Within a real application you would probably use [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) to save the users in a database and a template engine to produce a dynamic webpage based on the user.
+Congratulations! You have just set up a simple website which submits URL encoded forms to a Kitura server. Within a real application you would probably use [Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM) to save the users in a database and a template engine to produce a dynamic webpage based on the user.
 
 Any questions or comments? Please join the vibrant Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.210593109.1386731664.1571398389-799380006.1571398389)!

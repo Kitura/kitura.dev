@@ -11,11 +11,11 @@ A client is a computer hardware device or software that is capable of obtaining 
 
 ##KituraKit
 
-[KituraKit](https://github.com/IBM-Swift/KituraKit) is a client side framework for sending HTTP requests to a Kitura server. By using the Swift Codable protocol, you can send and receive models directly from client to server.  KituraKit can be used for iOS applications and can be installed through CocoaPods.
+[KituraKit](https://github.com/Kitura/KituraKit) is a client side framework for sending HTTP requests to a Kitura server. By using the Swift Codable protocol, you can send and receive models directly from client to server.  KituraKit can be used for iOS applications and can be installed through CocoaPods.
 
 ##SwiftyRequest
 
-[SwiftyRequest](https://github.com/IBM-Swift/SwiftyRequest) is an HTTP client built for Swift.
+[SwiftyRequest](https://github.com/Kitura/SwiftyRequest) is an HTTP client built for Swift.
 
 ---
 ##Next Steps:

@@ -5,7 +5,7 @@ title: HeliumLogger
 
 #HeliumLogger
 
-[Helium Logger](https://github.com/IBM-Swift/HeliumLogger) is a lightweight Swift logging framework which supports logging to standard output.
+[Helium Logger](https://github.com/Kitura/HeliumLogger) is a lightweight Swift logging framework which supports logging to standard output.
 
 In this guide we are going to show you how to add Helium Logger to a Kitura server, log messages using the logger and set the level of logging that should be displayed.
 
@@ -17,7 +17,7 @@ In this guide we are going to show you how to add Helium Logger to a Kitura serv
 
 If you created your server using the CLI or the macOS app, your project will have HeliumLogger by default. In this case, we can skip to step 3.
 
-Otherwise, we need to [add HeliumLogger to our dependencies](https://github.com/IBM-Swift/HeliumLogger#add-dependencies).
+Otherwise, we need to [add HeliumLogger to our dependencies](https://github.com/Kitura/HeliumLogger#add-dependencies).
 
 We then need to import `LoggerAPI` and `HeliumLogger` inside our project.
 

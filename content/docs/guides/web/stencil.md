@@ -5,13 +5,13 @@ title: Kitura Stencil
 
 #Kitura Stencil
 
-To implement [Stencil](https://github.com/stencilproject/Stencil) templating with a Kitura server, we use [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine). This package makes it easy to to create an HTML page with integrated Swift variables.
+To implement [Stencil](https://github.com/stencilproject/Stencil) templating with a Kitura server, we use [Kitura-StencilTemplateEngine](https://github.com/Kitura/Kitura-StencilTemplateEngine). This package makes it easy to to create an HTML page with integrated Swift variables.
 
 ---
 
 ##Step 1: Create your Stencil routes
 
-To use Stencil from a server, we first need to [add Kitura-StencilTemplateEngine to our dependencies](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine#add-dependencies).
+To use Stencil from a server, we first need to [add Kitura-StencilTemplateEngine to our dependencies](https://github.com/Kitura/Kitura-StencilTemplateEngine#add-dependencies).
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 

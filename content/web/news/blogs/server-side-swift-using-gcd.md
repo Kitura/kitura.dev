@@ -10,7 +10,7 @@ In enterprise businesses, microservices are designed according to best architect
 
 In general, the backend microservices execute heavy CPU intensive or I/O processes such as DB CRUD operations, component level communication, processing of media files etc. In iOS side Swift programming, it’s general practice to make use of closures and call back methods to make asynchronous calls. Server-side Swift programming allows developers to use the same closure and call back methods without any limitations for asynchronous tasks. However, when compared to iOS programming, the server-side API code can require significantly more asynchronous calls in a single module block. This leads to multiple call back closures and nested async code. An alternate native solution is to make use of GCD and OperationQueue methods. There are some open source Swift libraries, such as [PromiseKit](https://github.com/mxcl/PromiseKit) to handle complex functions, which use GCD and OperationQueue concepts under the hood, but this article is going to show you a native way of coding this yourself.
 
-I explain the solution and its benefits with a simple example below using [Kitura](https://github.com/IBM-Swift/Kitura).
+I explain the solution and its benefits with a simple example below using [Kitura](https://github.com/Kitura/Kitura).
 
 ---
 

@@ -7,13 +7,13 @@ title: HTTP Basic Authentication with Codable routes
 
 Authentication is the process of confirming a user’s identity, usually via a username and password. Authentication ensures that the user is allowed access to the secured system.
 
-In this guide, we use [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP) to add HTTP basic authentication to Codable routes.
+In this guide, we use [Kitura-CredentialsHTTP](https://github.com/Kitura/Kitura-CredentialsHTTP) to add HTTP basic authentication to Codable routes.
 
 ---
 
 ##Step 1: Define the authentication middleware
 
-To add basic authentication to our server, we need to [add Kitura-CredentialsHTTP to our dependencies](https://github.com/IBM-Swift/Kitura-CredentialsHTTP#add-dependencies).
+To add basic authentication to our server, we need to [add Kitura-CredentialsHTTP to our dependencies](https://github.com/Kitura/Kitura-CredentialsHTTP#add-dependencies).
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 

@@ -9,7 +9,7 @@ We welcome all improvements to this website.  Please see our [Contributing guide
 If you want to preview this website locally, follow these steps:
 
 1. Clone the `kitura.io` project onto your machine:
-`git clone https://github.com/IBM-Swift/kitura.io.git`
+`git clone https://github.com/Kitura/kitura.io.git`
 2. Enter the website directory:
 `cd kitura.io/website`
 3. Run the `npm install` command:

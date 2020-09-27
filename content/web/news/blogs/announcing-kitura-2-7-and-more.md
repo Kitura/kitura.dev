@@ -10,7 +10,7 @@ We’re delighted to announce the release of Kitura 2.7, alongside a range of ot
 
 ##Kitura 2.7
 
-Kitura 2.7 is fully compatible with Swift 5, and comes with a range of improvements, bug fixes and performance work. You can find full information in the [GitHub release notes](https://github.com/IBM-Swift/Kitura/releases/tag/2.7.0).
+Kitura 2.7 is fully compatible with Swift 5, and comes with a range of improvements, bug fixes and performance work. You can find full information in the [GitHub release notes](https://github.com/Kitura/Kitura/releases/tag/2.7.0).
 
 One user-facing feature is support for UNIX domain sockets, both client and server. This gives Kitura the ability to listen on a UNIX domain socket instead of an INET (TCP) socket and was requested in our [Slack channel](http://swift-at-ibm-slack.mybluemix.net).
 

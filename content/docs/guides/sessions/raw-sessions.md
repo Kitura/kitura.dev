@@ -7,7 +7,7 @@ title: Raw Routing Session
 
 HTTP is a stateless connection protocol, that is the server can't distinguish one request from another. Sessions and cookies provide HTTP with state, they allow the server to know who is making a specific request and respond accordingly.
 
-This guide demonstrates how to use the [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) package to manage user sessions in Kitura with Raw routing. If you are using Codable routing, follow the guide for [Kitura Session with type-safe sessions](./codable-session).
+This guide demonstrates how to use the [Kitura-Session](https://github.com/Kitura/Kitura-Session) package to manage user sessions in Kitura with Raw routing. If you are using Codable routing, follow the guide for [Kitura Session with type-safe sessions](./codable-session).
 
 ---
 
@@ -21,7 +21,7 @@ In this guide we are going to create two Kitura routes:
 
 We are using [the Book model from the routing guide](/docs/routing/what-is-routing#codable-model) in our routes, however you could use any codable object.
 
-To use Kitura-Session from a server, we need to [add Kitura-Session to our dependencies](https://github.com/IBM-Swift/Kitura-Session#add-dependencies).
+To use Kitura-Session from a server, we need to [add Kitura-Session to our dependencies](https://github.com/Kitura/Kitura-Session#add-dependencies).
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
@@ -83,7 +83,7 @@ When we create our session we can configure it with the following parameters:
 
 - `store`: A session backing store that implements the `Store` protocol. This determines where session data is persisted. In this example we do not set this, meaning the data is persisted on the server.
 
-> For live applications, you should use a persistent store, such as a database, or [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis).
+> For live applications, you should use a persistent store, such as a database, or [Kitura-Session-Redis](https://github.com/Kitura/Kitura-Session-Redis).
 
 To set up our session, we create a `Session` middleware with our desired parameters.
 

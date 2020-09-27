@@ -36,7 +36,7 @@ Using the image we've just built, we can compile the application code with the f
 docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release
 ```
 
-The Docker run command takes the `'-v'` option which maps the current working directory on the host to the `'/swift-project'` directory on the Docker container. The `-w` option sets working directory inside the container. We then tell Docker to create a container using the `myapp-build` tag name from the image we created earlier. Finally we invoke the utility script that is located in the container at `/swift-utils/tools-utils.sh` to build in release mode. The `tools-utils.sh` file can be viewed [here](https://github.com/IBM-Swift/swift-ubuntu-docker/blob/master/utils/tools-utils.sh).
+The Docker run command takes the `'-v'` option which maps the current working directory on the host to the `'/swift-project'` directory on the Docker container. The `-w` option sets working directory inside the container. We then tell Docker to create a container using the `myapp-build` tag name from the image we created earlier. Finally we invoke the utility script that is located in the container at `/swift-utils/tools-utils.sh` to build in release mode. The `tools-utils.sh` file can be viewed [here](https://github.com/Kitura/swift-ubuntu-docker/blob/master/utils/tools-utils.sh).
 
 ---
 

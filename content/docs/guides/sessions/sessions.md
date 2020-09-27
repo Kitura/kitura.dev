@@ -5,7 +5,7 @@ title: What are Sessions?
 
 #What are Sessions?
 
-A session is server-side storage of information that will be persisted through a user's interaction with the application. When you first visit the server, you are provided with a cookie with a unique session id. The user presents this cookie with future requests so that the server can identify that the requests have come from the same user. Information associated with that session id can then be used to respond to the request. For example, you could persist the user's name, whether they are logged in, and their shopping basket inside a session. Kitura implements sessions using the [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) library.
+A session is server-side storage of information that will be persisted through a user's interaction with the application. When you first visit the server, you are provided with a cookie with a unique session id. The user presents this cookie with future requests so that the server can identify that the requests have come from the same user. Information associated with that session id can then be used to respond to the request. For example, you could persist the user's name, whether they are logged in, and their shopping basket inside a session. Kitura implements sessions using the [Kitura-Session](https://github.com/Kitura/Kitura-Session) library.
 
 A session, unlike a database, is intended to be temporary. If it is not updated or if the session is ended, such as a user logging out, then it is cleared.
 

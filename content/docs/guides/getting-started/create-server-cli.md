@@ -36,7 +36,7 @@ If the installation was successful we would see information about the version.
 You can install (either on Mac or Linux) with:
 
 ```
-curl -fsSL https://github.com/IBM-Swift/kitura-cli/releases/latest/download/install.sh | sudo bash
+curl -fsSL https://github.com/Kitura/kitura-cli/releases/latest/download/install.sh | sudo bash
 ```
 
 Verify that Kitura CLI is installed by running:

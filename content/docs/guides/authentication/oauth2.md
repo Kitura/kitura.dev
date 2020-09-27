@@ -21,7 +21,7 @@ title: Add Oauth2 to your app
 
 If you would like a more in-depth explanation of OAuth 2.0, you can read [this guide](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) by DigitalOcean.
 
-Kitura supports OAuth 2.0 authentication using plugins for the [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials) authentication framework. In this guide, we show you how to use the [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle) and the [Kitura-CredentialsFacebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook) plugins. Because we are authenticating using a third party, the user does not need to create a new account for our service and we don't need to handle their username and password.
+Kitura supports OAuth 2.0 authentication using plugins for the [Kitura-Credentials](https://github.com/Kitura/Kitura-Credentials) authentication framework. In this guide, we show you how to use the [Kitura-CredentialsGoogle](https://github.com/Kitura/Kitura-CredentialsGoogle) and the [Kitura-CredentialsFacebook](https://github.com/Kitura/Kitura-CredentialsFacebook) plugins. Because we are authenticating using a third party, the user does not need to create a new account for our service and we don't need to handle their username and password.
 
 >This guide describes how to implement the OAuth 2.0 flow for a client accessing the server via a web browser.  
 For a mobile application, the user must authenticate themselves on the device, send the access token to the server and have the token authenticated using a Credentials token plugin. We will not cover the mobile application flow in this guide.
@@ -106,7 +106,7 @@ func initializeOAuth2Routes(app: App) {
 
 ## Step 3: Import dependencies
 
-Add [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials), [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle) and [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) to the dependencies in the `Package.swift` file.
+Add [Kitura-Credentials](https://github.com/Kitura/Kitura-Credentials), [Kitura-CredentialsGoogle](https://github.com/Kitura/Kitura-CredentialsGoogle) and [Kitura-Session](https://github.com/Kitura/Kitura-Session) to the dependencies in the `Package.swift` file.
 
 Inside the file which defines the routes, `OAuth2Routes.swift`, import Credentials, CredentialsGoogle and KituraSession:
 ```swift

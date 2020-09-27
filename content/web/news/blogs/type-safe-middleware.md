@@ -51,7 +51,7 @@ Kitura will invoke your static `MyMiddleware.handle()` function, and if an insta
 
 ##Type-safe Sessions
 
-We have added an implementation of type-safe sessions in [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session). This defines a `TypeSafeSession` protocol, which is also `Codable`. You can create a type that conforms to `TypeSafeSession` and contains exactly the data needed by your application. This type is then used as a type-safe middleware in your Codable routes. To demonstrate the benefits, let’s compare traditional and type-safe sessions for retrieving some books from a shopping cart:
+We have added an implementation of type-safe sessions in [Kitura-Session](https://github.com/Kitura/Kitura-Session). This defines a `TypeSafeSession` protocol, which is also `Codable`. You can create a type that conforms to `TypeSafeSession` and contains exactly the data needed by your application. This type is then used as a type-safe middleware in your Codable routes. To demonstrate the benefits, let’s compare traditional and type-safe sessions for retrieving some books from a shopping cart:
 
 ```swift
 struct Book: Codable {
@@ -138,7 +138,7 @@ By using type-safe sessions, we have ensured that:
 
 ##HTTP Basic Authentication
 
-We have also added an implemention of type-safe HTTP Basic authentication in [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP). HTTP Basic authentication transmits credentials in an “Authorization” header as base64 encoded user ID/password pairs. Kitura also allows you to send the username and password in the URL as follows:
+We have also added an implemention of type-safe HTTP Basic authentication in [Kitura-CredentialsHTTP](https://github.com/Kitura/Kitura-CredentialsHTTP). HTTP Basic authentication transmits credentials in an “Authorization” header as base64 encoded user ID/password pairs. Kitura also allows you to send the username and password in the URL as follows:
 
 ```
 https://username:password@www.example.com/
@@ -219,7 +219,7 @@ router.get("/profile") { (userProfile: MyBasicAuth, respondWith: (MyBasicAuth?, 
 
 The route will now only be invoked if authentication has been successful. The handler is passed a `MyBasicAuth` instance with the id field initialized appropriately, as well as any additional user-defined fields, instead of a generic `[String: Any]` dictionary.
 
-A further benefit of this approach can be seen when combining HTTP basic authentication with [Swift-Kuery-ORM](https://github.com/IBM-Swift/Swift-Kuery-ORM) for user persistence. Because `MyBasicAuth` is Codable, we can also make it conform to `Model`. Then you can initialize your user type by using `id` as a primary key to retrieve the instance from the database:
+A further benefit of this approach can be seen when combining HTTP basic authentication with [Swift-Kuery-ORM](https://github.com/Kitura/Swift-Kuery-ORM) for user persistence. Because `MyBasicAuth` is Codable, we can also make it conform to `Model`. Then you can initialize your user type by using `id` as a primary key to retrieve the instance from the database:
 
 ```swift
 public struct MyBasicAuth: TypeSafeHTTPBasic, Model {

@@ -22,14 +22,14 @@ Since the password is not encrypted, this authentication scheme must be used wit
 
 This is the simplest authentication scheme, however it requires the user to authenticate their credentials with every request and no additional information about the user may be provided during authentication.
 
-Kitura supports basic authentication via the [Kitura-CredentialsHTTP](https://github.com/IBM-Swift/Kitura-CredentialsHTTP) library.
+Kitura supports basic authentication via the [Kitura-CredentialsHTTP](https://github.com/Kitura/Kitura-CredentialsHTTP) library.
 
 
 ##JSON Web Tokens
 
 A JSON Web Token (JWT) defines a compact and self-contained way for securely transmitting information between parties as a JSON object. You can use a JWT to implement a Single Sign On system, whereby a user logs in once and each subsequent request will include the JWT. This allows the user to access routes, services, and resources that are permitted with that token, without having to authenticate each time.
 
-Kitura supports JWTs via the [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT) library.
+Kitura supports JWTs via the [Swift-JWT](https://github.com/Kitura/Swift-JWT) library.
 
 ##OAuth 2.0 Authentication
 
@@ -37,9 +37,9 @@ OAuth 2.0 is an authorization framework that enables you to authenticate a user 
 
 Kitura currently supports OAuth 2.0 with the following services:
 
-- Facebook with [Kitura-CredentialsFacebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook)
-- Github with [Kitura-CredentialsGithub](https://github.com/IBM-Swift/Kitura-CredentialsGitHub)
-- Google with [Kitura-CredentialsGoogle](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)
+- Facebook with [Kitura-CredentialsFacebook](https://github.com/Kitura/Kitura-CredentialsFacebook)
+- Github with [Kitura-CredentialsGithub](https://github.com/Kitura/Kitura-CredentialsGitHub)
+- Google with [Kitura-CredentialsGoogle](https://github.com/Kitura/Kitura-CredentialsGoogle)
 - Twitter with [Kitura-CredentialsTwitter](https://github.com/jacobvanorder/Kitura-CredentialsTwitter) (Third party implemented.)
 
 ---

@@ -125,4 +125,4 @@ Inside the success case is where the logic for your application would go for a s
 
 ##Conclusion
 
-The Swift-JWT library will be adding new signing algorithms and use cases as time goes on, and we have added some Claims specific to certain specifications such as MicroProfile. We will also be adding a demo of Swift-JWT to [Kitura-Sample](https://github.com/IBM-Swift/Kitura-Sample), with an example of a simple login and logged-in-user only route and handling on unauthorised access attempts.
+The Swift-JWT library will be adding new signing algorithms and use cases as time goes on, and we have added some Claims specific to certain specifications such as MicroProfile. We will also be adding a demo of Swift-JWT to [Kitura-Sample](https://github.com/Kitura/Kitura-Sample), with an example of a simple login and logged-in-user only route and handling on unauthorised access attempts.

@@ -18,17 +18,17 @@ Kitura 2.6 includes several functional enhancements, plus improvements to the pe
 
 Kitura 2.6 contains the following enhancements:
 
-- Consistent handling of parameters for Codable routes [#1310](https://github.com/IBM-Swift/Kitura/pull/1310)
-- Initialize TypesafeMiddleware first [#1350](https://github.com/IBM-Swift/Kitura/pull/1350)
-- Allow Kitura welcome page to be disabled [#1344](https://github.com/IBM-Swift/Kitura/pull/1344)
-- Performance improvement when sending Strings [#1369](https://github.com/IBM-Swift/Kitura/pull/1369)
-- Conditional GET using etags [#1333](https://github.com/IBM-Swift/Kitura/pull/1333)
+- Consistent handling of parameters for Codable routes [#1310](https://github.com/Kitura/Kitura/pull/1310)
+- Initialize TypesafeMiddleware first [#1350](https://github.com/Kitura/Kitura/pull/1350)
+- Allow Kitura welcome page to be disabled [#1344](https://github.com/Kitura/Kitura/pull/1344)
+- Performance improvement when sending Strings [#1369](https://github.com/Kitura/Kitura/pull/1369)
+- Conditional GET using etags [#1333](https://github.com/Kitura/Kitura/pull/1333)
 
 Thank you to everyone in the community who contributed to this release.
 
 ###KituraNIO
 
-A couple of obvious bottlenecks have been resolved – PR [#112](https://github.com/IBM-Swift/Kitura-NIO/pull/112) and PR [#113](https://github.com/IBM-Swift/Kitura-NIO/pull/113). These led to performance improvements of up to 30% on some benchmarks. A few more obvious bottlenecks do still exist and their solutions are in progress (e.g PR [#117](https://github.com/IBM-Swift/Kitura-NIO/pull/117)). KituraNIO now performs better than KituraNet on the `plaintext` benchmark. Longstanding stress tests were also run to make sure Kitura-NIO is stable over time. We feel that Kitura-NIO is ready for real-world usage and encourage users to try it out.
+A couple of obvious bottlenecks have been resolved – PR [#112](https://github.com/Kitura/Kitura-NIO/pull/112) and PR [#113](https://github.com/Kitura/Kitura-NIO/pull/113). These led to performance improvements of up to 30% on some benchmarks. A few more obvious bottlenecks do still exist and their solutions are in progress (e.g PR [#117](https://github.com/Kitura/Kitura-NIO/pull/117)). KituraNIO now performs better than KituraNet on the `plaintext` benchmark. Longstanding stress tests were also run to make sure Kitura-NIO is stable over time. We feel that Kitura-NIO is ready for real-world usage and encourage users to try it out.
 
 ---
 
@@ -64,7 +64,7 @@ Now that Swift-Kuery is entirely asynchronous we are ready for the future of Swi
 
 ##Swift-JWT 3.0
 
-We have just released version 3.0 of [Swift-JWT](https://github.com/IBM-Swift/Swift-JWT), our library for creating, signing, and verifying JSON Web Tokens. This release adds Codable conformance to the JWTs for easy encoding and decoding. As a result, you can now use JWTs with Kitura’s Codable Routing feature. Furthermore, this release adds support for signing and verifying JWTs using the HMAC hash function.
+We have just released version 3.0 of [Swift-JWT](https://github.com/Kitura/Swift-JWT), our library for creating, signing, and verifying JSON Web Tokens. This release adds Codable conformance to the JWTs for easy encoding and decoding. As a result, you can now use JWTs with Kitura’s Codable Routing feature. Furthermore, this release adds support for signing and verifying JWTs using the HMAC hash function.
 
 [Click here](/blogs/swift-jwt-3-0-codable-json-web-tokens) for full information and how to migrate to the new version.
 
@@ -72,6 +72,6 @@ We have just released version 3.0 of [Swift-JWT](https://github.com/IBM-Swift/Sw
 
 ##Kitura-Session 3.3
 
-Web application servers are generally “stateless” and handle HTTP requests independently. However, it’s common for a developer to want to link requests from the same user together in a session. A simple way to achieve this is by using a cookie to identify the user and associating data to that cookie. [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) allows you to implement this flow and, as of version 3.3, you can now directly store and retrieve Codable objects in users’ sessions.
+Web application servers are generally “stateless” and handle HTTP requests independently. However, it’s common for a developer to want to link requests from the same user together in a session. A simple way to achieve this is by using a cookie to identify the user and associating data to that cookie. [Kitura-Session](https://github.com/Kitura/Kitura-Session) allows you to implement this flow and, as of version 3.3, you can now directly store and retrieve Codable objects in users’ sessions.
 
 [Click here](/blogs/codable-kitura-session) for full information on this new feature.

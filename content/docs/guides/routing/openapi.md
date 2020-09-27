@@ -5,7 +5,7 @@ title: Add OpenAPI to your app
 
 # Kitura OpenAPI
 
-[Kitura-OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI) is a library which makes it easy to add [OpenAPI](https://www.openapis.org), also known as Swagger, support to your Codable routing-based Kitura application.
+[Kitura-OpenAPI](https://github.com/Kitura/Kitura-OpenAPI) is a library which makes it easy to add [OpenAPI](https://www.openapis.org), also known as Swagger, support to your Codable routing-based Kitura application.
 
 In this guide we show you how to host both an automatically generated OpenAPI definition of your application on the endpoint `"/openapi"`, and the Swagger UI tool on the endpoint `"/openapi/ui"`. We also demonstrate how simple this makes testing your routes!
 
@@ -19,7 +19,7 @@ In this guide we show you how to host both an automatically generated OpenAPI de
 
 ## Step 1: Add Kitura OpenAPI to your project
 
-First we need to [add OpenAPI to our dependencies](https://github.com/IBM-Swift/Kitura-OpenAPI#getting-started).
+First we need to [add OpenAPI to our dependencies](https://github.com/Kitura/Kitura-OpenAPI#getting-started).
 
 Next, we need to import KituraOpenAPI into our project.
 

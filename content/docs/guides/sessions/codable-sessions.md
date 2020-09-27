@@ -7,7 +7,7 @@ title: Codable Routing Session
 
 HTTP is a stateless connection protocol, that is the server can't distinguish one request from another. Sessions and cookies provide HTTP with state, they allow the server to know who is making a specific request and respond accordingly.
 
-This guide uses [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session) with Codable routing leveraging type-safe sessions. If you want to use sessions with raw routing, check out the [Kitura Session with raw routing guide](./raw-session).
+This guide uses [Kitura-Session](https://github.com/Kitura/Kitura-Session) with Codable routing leveraging type-safe sessions. If you want to use sessions with raw routing, check out the [Kitura Session with raw routing guide](./raw-session).
 
 ---
 
@@ -21,7 +21,7 @@ In this guide we are going to create two Kitura routes:
 
 We are using [the Book model from the routing guide](/docs/routing/what-is-routing#codable-model) in our routes, however you could use any codable object.
 
-To use Kitura-Session from a server, we need to [add Kitura-Session to our dependencies](https://github.com/IBM-Swift/Kitura-Session#add-dependencies).
+To use Kitura-Session from a server, we need to [add Kitura-Session to our dependencies](https://github.com/Kitura/Kitura-Session#add-dependencies).
 
 > If you don't have a server, follow our [Create a server](../getting-started/create-server-cli) guide.
 
@@ -128,7 +128,7 @@ The minimum requirements for a type-safe session are:
 
 With our class, we have created a session that will store an array of books, via a cookie called "MySession" and using "Top Secret" as the password to encrypt that cookie. Since we didn't specify a store a default in memory store is used.
 
-> For an example of a persistent store for sessions see [Kitura-Session-Redis](https://github.com/IBM-Swift/Kitura-Session-Redis)
+> For an example of a persistent store for sessions see [Kitura-Session-Redis](https://github.com/Kitura/Kitura-Session-Redis)
 
 ---
 
@@ -202,7 +202,7 @@ extension App {
 
 ##Step 5: Test our Session
 
-An easy way to test our our session is using [Kitura OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI). You can follow our [Kitura OpenAPI Guide](../routing/kitura-openapi) to learn how to set up OpenAPI and use the interface for testing.
+An easy way to test our our session is using [Kitura OpenAPI](https://github.com/Kitura/Kitura-OpenAPI). You can follow our [Kitura OpenAPI Guide](../routing/kitura-openapi) to learn how to set up OpenAPI and use the interface for testing.
 
 Alternatively, we can test our routes by sending a request using curl, with cookies enabled.
 

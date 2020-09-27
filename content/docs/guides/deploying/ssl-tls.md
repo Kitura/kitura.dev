@@ -77,7 +77,7 @@ Open your `Application.swift` file:
 open Sources/Application/Application.swift
 ```
 
-We are going to use [FileKit](https://github.com/IBM-Swift/FileKit) to access our certificate file, so we need to [add FileKit to our dependencies](https://github.com/IBM-Swift/FileKit#add-dependencies).
+We are going to use [FileKit](https://github.com/Kitura/FileKit) to access our certificate file, so we need to [add FileKit to our dependencies](https://github.com/Kitura/FileKit#add-dependencies).
 
 We also need to add `FileKit` to our import statements:
 

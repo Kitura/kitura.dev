@@ -8,7 +8,7 @@ const footer = () => {
     <footer className={styles.footer}>
       <Link to="/privacy" className={styles.footerLink}>Privacy</Link>
       <div className={styles.separator}></div>
-      <a href="https://github.com/IBM-Swift/Kitura/blob/master/LICENSE.txt" className={styles.footerLink}>License</a>      
+      <a href="https://github.com/Kitura/Kitura/blob/master/LICENSE.txt" className={styles.footerLink}>License</a>      
     </footer>
   )
 }

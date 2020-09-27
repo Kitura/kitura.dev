@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/blueecc-elliptic-curve-cryptography
 ---
 
-We have just released [BlueECC](https://github.com/IBM-Swift/BlueECC), a new Swift package for cross-platform elliptic curve cryptography. This enables you to encrypt, decrypt, sign and verify data using elliptic curve asymmetric keys. This blog post will explain what elliptic curves are, why you would use them over RSA and provides examples of the BlueECC API.
+We have just released [BlueECC](https://github.com/Kitura/BlueECC), a new Swift package for cross-platform elliptic curve cryptography. This enables you to encrypt, decrypt, sign and verify data using elliptic curve asymmetric keys. This blog post will explain what elliptic curves are, why you would use them over RSA and provides examples of the BlueECC API.
 
 ##What is Elliptic Curve Cryptography?
 
@@ -79,7 +79,7 @@ With BlueECC you sign the plaintext as follows:
 let signature = try "hello world".sign(with: ecPrivKey)
 ```
 
-This will take your message and use the private key to create an [ECSignature](https://ibm-swift.github.io/BlueECC/Structs/ECSignature.html). This struct can then be verified with the corresponding public key:
+This will take your message and use the private key to create an [ECSignature](https://kitura.github.io/BlueECC/Structs/ECSignature.html). This struct can then be verified with the corresponding public key:
 
 ```swift
 let verified = signature.verify(plaintext: "hello world", using: ecPubKey)
@@ -118,8 +118,8 @@ The encrypted data has been decrypted back to the original plaintext.
 
 Congratulations! You have just learned how to use elliptic curve cryptography to sign, verify, encrypt and decrypt data in Swift.
 
-If you would like to run this example, or learn more about BlueECC, [check it out on GitHub](https://github.com/IBM-Swift/BlueECC).
+If you would like to run this example, or learn more about BlueECC, [check it out on GitHub](https://github.com/Kitura/BlueECC).
 
-If you would like to learn more about using the BlueECC API, [visit our API reference](https://ibm-swift.github.io/BlueECC/index.html).
+If you would like to learn more about using the BlueECC API, [visit our API reference](https://kitura.github.io/BlueECC/index.html).
 
 Any questions or comments? Please join the Kitura community on [Slack](http://swift-at-ibm-slack.mybluemix.net/?cm_sp=dw-bluemix-_-swift-_-devcenter&_ga=2.122522507.186671014.1570626561-1743126121.1570022962&cm_mc_uid=83263075142115698398229&cm_mc_sid_50200000=53695431570707266328)!

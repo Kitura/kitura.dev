@@ -20,9 +20,9 @@ Now in Kitura 2.4 you can write a new kind of middleware and associate it with y
 
 [Swagger](https://swagger.io/), also known as OpenAPI, is the most popular way to document RESTful web services. The Swagger ecosystem provides a broad range of tools and services for developers across the API lifecycle.
 
-For a long time, the [Kitura server generator](https://github.com/IBM-Swift/generator-swiftserver) enabled developers to generate a Kitura application from a provided Swagger document.
+For a long time, the [Kitura server generator](https://github.com/Kitura/generator-swiftserver) enabled developers to generate a Kitura application from a provided Swagger document.
 
-Now, Kitura has native support for generating a Swagger document from the currently running application, and a new [Kitura-OpenAPI package](https://github.com/IBM-Swift/Kitura-OpenAPI) makes adding a Swagger endpoint and SwaggerUI to your application one line of code.
+Now, Kitura has native support for generating a Swagger document from the currently running application, and a new [Kitura-OpenAPI package](https://github.com/Kitura/Kitura-OpenAPI) makes adding a Swagger endpoint and SwaggerUI to your application one line of code.
 
 ---
 
@@ -42,23 +42,23 @@ Web applications are an important use-case for Kitura, and in Kitura 2.4 we’ve
 
 Kitura 2.4 also comes with a slew of other minor improvements and fixes, including:
 
-###Easily decode query parameters in raw routes ([#1215](https://github.com/IBM-Swift/Kitura/pull/1215))
+###Easily decode query parameters in raw routes ([#1215](https://github.com/Kitura/Kitura/pull/1215))
 
 A new `request.getQueryParameters()` function allows Kitura users to easily decode incoming query parameters to a `Codable` `QueryParams` structure.
 
-###Decode comma-separated query parameters ([#1238](https://github.com/IBM-Swift/Kitura/pull/1238))
+###Decode comma-separated query parameters ([#1238](https://github.com/Kitura/Kitura/pull/1238))
 
 A new `request.queryParametersMultiValues` property for decoding comma-separated query parameters into an array of strings automatically.
 
-###Extra Codable routing API ([#1253](https://github.com/IBM-Swift/Kitura/pull/1253))
+###Extra Codable routing API ([#1253](https://github.com/Kitura/Kitura/pull/1253))
 
 Previously it was not possible to return a single `Codable` object from a Codable GET route with query parameters. We’ve added this extra API so it’s now possible, as this pattern was observed in some existing REST APIs.
 
-###`userInfo` in `RouterResponse` ([#1259](https://github.com/IBM-Swift/Kitura/pull/1259))
+###`userInfo` in `RouterResponse` ([#1259](https://github.com/Kitura/Kitura/pull/1259))
 
 For a long time we’ve provided a public dictionary in `RouterRequest` to allow Kitura users to stash arbitrary user data. Now we also provide this on `RouterResponse`, to provide API symmetry and help those users who write extensions on `RouterResponse`.
 
-###`asRaw` property on `ParsedBody` ([#1258](https://github.com/IBM-Swift/Kitura/pull/1258))
+###`asRaw` property on `ParsedBody` ([#1258](https://github.com/Kitura/Kitura/pull/1258))
 
 Now you can decode body data as a `Data?` easily via a new `asRaw` property. This provides nice symmetry with the existing `asJSON` and `asURLEncoded` properties.
 

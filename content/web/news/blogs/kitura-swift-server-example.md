@@ -6,7 +6,7 @@ author: Andrew Lees
 path: /blogs/kitura-swift-server-example
 ---
 
-We have rewritten the [Kitura Sample](https://github.com/IBM-Swift/Kitura-Sample) demo application to better showcase the capabilities of Kitura. This update adds interactive webpages so you can try out the features live. You can also easily view the code for each feature by clicking on the embedded links.
+We have rewritten the [Kitura Sample](https://github.com/Kitura/Kitura-Sample) demo application to better showcase the capabilities of Kitura. This update adds interactive webpages so you can try out the features live. You can also easily view the code for each feature by clicking on the embedded links.
 
 Furthermore, we have added new demos for popular features such as databases, sessions and authentication. Altogether, these changes produce an example app which is a great resource for learning to develop using [Kitura](https://www.kitura.io/).
 
@@ -20,10 +20,10 @@ Our sample server shows off the following features available in Kitura:
 
 - Hello World example with Raw routing
 - Building REST APIs with Codable routing
-- Persisting objects to a session store using [Kitura-Session](https://github.com/IBM-Swift/Kitura-Session)
-- Rendering HTML web pages from [Markdown](https://github.com/IBM-Swift/Kitura-Markdown) and [Stencil templates](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine)
-- HTTP Basic authentication with [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials)
-- OAuth2 authentication with [AppID](https://github.com/ibm-cloud-security/appid-serversdk-swift), [Facebook](https://github.com/IBM-Swift/Kitura-CredentialsFacebook) and [Google](https://github.com/IBM-Swift/Kitura-CredentialsGoogle)
+- Persisting objects to a session store using [Kitura-Session](https://github.com/Kitura/Kitura-Session)
+- Rendering HTML web pages from [Markdown](https://github.com/Kitura/Kitura-Markdown) and [Stencil templates](https://github.com/Kitura/Kitura-StencilTemplateEngine)
+- HTTP Basic authentication with [Kitura-Credentials](https://github.com/Kitura/Kitura-Credentials)
+- OAuth2 authentication with [AppID](https://github.com/ibm-cloud-security/appid-serversdk-swift), [Facebook](https://github.com/Kitura/Kitura-CredentialsFacebook) and [Google](https://github.com/Kitura/Kitura-CredentialsGoogle)
 
 ---
 
@@ -35,7 +35,7 @@ To start the Swift server example locally, follow the steps below:
 
 2. Clone the Kitura Sample project:
 ```
-git clone https://github.com/IBM-Swift/Kitura-Sample.git
+git clone https://github.com/Kitura/Kitura-Sample.git
 ```
 
 3. Move into the Kitura-Sample directory:
@@ -60,7 +60,7 @@ You should see the Kitura-Sample website being run by the server.
 
 ##Interacting with the app
 
-You can access all the Kitura-Sample demos via the menu on the left hand side. The inner page will provide you with a demonstration description, any further set-up required, and the method of interacting with the server. We then encourage you to view the relevant code on Github or within your local Kitura-Sample project. This sample also includes example tests for the routes and has used [Kitura-OpenAPI](https://github.com/IBM-Swift/Kitura-OpenAPI) to auto-generate an OpenAPI (AKA Swagger) file as well as an OpenAPI user interface.
+You can access all the Kitura-Sample demos via the menu on the left hand side. The inner page will provide you with a demonstration description, any further set-up required, and the method of interacting with the server. We then encourage you to view the relevant code on Github or within your local Kitura-Sample project. This sample also includes example tests for the routes and has used [Kitura-OpenAPI](https://github.com/Kitura/Kitura-OpenAPI) to auto-generate an OpenAPI (AKA Swagger) file as well as an OpenAPI user interface.
 
 ![Blog pic 3](../../../images/blogsample3.png)
 
