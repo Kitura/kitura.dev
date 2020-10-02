@@ -5,6 +5,3 @@ node_modules
 # Gatsby create files
 .cache/
 public/
-
-# Lock files
-package-lock.json
