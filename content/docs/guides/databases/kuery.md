@@ -13,7 +13,7 @@ title: Add Swift Kuery to your app
 
 We are going to create a new file in our project for the Kuery routes.  The routes defined in this guide are examples of Codable routes. The equivalent definitions for raw routes can be found using the links below each code segment.
 
->If you don't have a server, follow our [Create a server](https://www.kitura.io/docs/getting-started/create-server-cli.html) guide.
+>If you don't have a server, follow our [Create a server](https://www.kitura.dev/docs/getting-started/create-server-cli.html) guide.
 
 Open your `Application.swift` file:
 ```

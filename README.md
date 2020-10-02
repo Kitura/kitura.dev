@@ -1,5 +1,5 @@
 # kitura.io
-This is the GitHub repository for [http://www.kitura.io](http://www.kitura.io), which is hosted as a GitHub pages website.
+This is the GitHub repository for [http://www.kitura.dev](http://www.kitura.dev), which is hosted as a GitHub pages website.
 
 ## Contributing
 We welcome all improvements to this website.  Please see our [Contributing guidelines](CONTRIBUTING.md).

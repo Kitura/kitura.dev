@@ -1,4 +1,4 @@
-# Contributing to www.kitura.io
+# Contributing to www.kitura.dev
 
 Content on this site is licensed under the Apache Licence, Version 2.0.
 
