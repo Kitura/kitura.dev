@@ -54,7 +54,7 @@ We intend to continue to improve Kitura performance in future.
 
 ##New splash screen
 
-In Kitura 2.5 the default splash screen matches the look and feel of www.kitura.io
+In Kitura 2.5 the default splash screen matches the look and feel of www.kitura.dev
 
 ---
 

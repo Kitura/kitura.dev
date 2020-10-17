@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
         <meta name="keywords" content="kitura, microservice, server-side swift, swiftlang" />
         <meta property="og:title" content="Kitura - An Enterprise-Grade Server-Side Swift Web Framework" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.kitura.io/" />
+        <meta property="og:url" content="https://www.kitura.dev/" />
         <script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
         <script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
       </Helmet>

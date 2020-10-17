@@ -7,7 +7,7 @@ title: What is routing?
 
 Routing is the way in which requests (the combination of a URL and a HTTP method) are routed to the code that handles them.
 
-When you navigated to [www.kitura.io](https://www.kitura.io) in your browser you were requesting the HTML file that is located there. The server hosting the files will respond with the requested file, if it exists, and you will see the file rendered in your browser. This means that under the covers there’s a server hosting the files for the kitura.io website. In this server there is a route defined that states if we receive a GET request on "/" then respond with the home page.
+When you navigated to [www.kitura.dev](https://www.kitura.dev) in your browser you were requesting the HTML file that is located there. The server hosting the files will respond with the requested file, if it exists, and you will see the file rendered in your browser. This means that under the covers there’s a server hosting the files for the kitura.io website. In this server there is a route defined that states if we receive a GET request on "/" then respond with the home page.
 
 Here we mentioned a GET request being made on "/" but what does that mean? In the next section we will look at GET, which is an HTTP Method, in more detail.
 

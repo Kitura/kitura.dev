@@ -8,7 +8,7 @@ path: /blogs/kitura-swift-server-example
 
 We have rewritten the [Kitura Sample](https://github.com/Kitura/Kitura-Sample) demo application to better showcase the capabilities of Kitura. This update adds interactive webpages so you can try out the features live. You can also easily view the code for each feature by clicking on the embedded links.
 
-Furthermore, we have added new demos for popular features such as databases, sessions and authentication. Altogether, these changes produce an example app which is a great resource for learning to develop using [Kitura](https://www.kitura.io/).
+Furthermore, we have added new demos for popular features such as databases, sessions and authentication. Altogether, these changes produce an example app which is a great resource for learning to develop using [Kitura](https://www.kitura.dev/).
 
 ![Blog pic 1](../../../images/blogsample1.png)
 
