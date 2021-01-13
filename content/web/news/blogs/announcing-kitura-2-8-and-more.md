@@ -60,8 +60,8 @@ Read more in: [Introducing SwiftKafka: Accessing Event Streams in Swift](/blogs/
 
 ###Documentation
 
-The “Learn” section of [kitura.io](http://kitura.io) has been updated with:
+The “Learn” section of [kitura.dev](http://kitura.dev) has been updated with:
 
-- Improved walkthrough of building your project using Docker([kitura.io#388](https://github.com/Kitura/kitura.io/pull/388))
-- Improved guides for deploying to Kubernetes or CloudFoundry ([kitura.io#386](https://github.com/Kitura/kitura.io/pull/386), [kitura.io#392](https://github.com/Kitura/kitura.io/pull/392))
-- New guide for building your Kitura project with Swift-NIO ([kitura.io#400](https://github.com/Kitura/kitura.io/pull/400))
+- Improved walkthrough of building your project using Docker([kitura.dev#388](https://github.com/Kitura/kitura.dev/pull/388))
+- Improved guides for deploying to Kubernetes or CloudFoundry ([kitura.dev#386](https://github.com/Kitura/kitura.dev/pull/386), [kitura.dev#392](https://github.com/Kitura/kitura.dev/pull/392))
+- New guide for building your Kitura project with Swift-NIO ([kitura.dev#400](https://github.com/Kitura/kitura.dev/pull/400))
