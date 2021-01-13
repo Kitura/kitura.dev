@@ -1,4 +1,4 @@
-# kitura.io
+# kitura.dev
 This is the GitHub repository for [http://www.kitura.dev](http://www.kitura.dev), which is hosted as a GitHub pages website.
 
 ## Contributing
@@ -8,10 +8,10 @@ We welcome all improvements to this website.  Please see our [Contributing guide
 ## Local setup
 If you want to preview this website locally, follow these steps:
 
-1. Clone the `kitura.io` project onto your machine:
-`git clone https://github.com/Kitura/kitura.io.git`
+1. Clone the `kitura.dev` project onto your machine:
+`git clone https://github.com/Kitura/kitura.dev.git`
 2. Enter the website directory:
-`cd kitura.io/website`
+`cd kitura.dev/website`
 3. Run the `npm install` command:
 `npm install`
 4. Run the `npm install -g gatsby-cli` comand:

@@ -64,4 +64,4 @@ Now you can decode body data as a `Data?` easily via a new `asRaw` property. Thi
 
 ##What’s Next
 
-The Kitura team has lots of ideas about where to go next, including more integration of SwiftNIO, enhancements to our Swagger support, and much more. [Join our Slack](https://slack.kitura.io/) to talk server-side Swift with the community and help shape the future of Kitura!
+The Kitura team has lots of ideas about where to go next, including more integration of SwiftNIO, enhancements to our Swagger support, and much more. [Join our Slack](https://slack.kitura.dev/) to talk server-side Swift with the community and help shape the future of Kitura!

@@ -68,7 +68,7 @@ function indexPage({
             <h6 className={styles.sidebarTitle}>{node.frontmatter.title}</h6>
             <p className={styles.socialText}>{node.frontmatter.description}</p>
             <section className={styles.socialButtonSection}>
-              <Button size="medium" text={node.frontmatter.button} externalLink="http://slack.kitura.io/" />
+              <Button size="medium" text={node.frontmatter.button} externalLink="http://slack.kitura.dev/" />
             </section>
           </article>
         ))}

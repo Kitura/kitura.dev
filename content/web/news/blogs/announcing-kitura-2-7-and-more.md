@@ -54,6 +54,6 @@ Previously this functionality was only available through the `openssl` command-l
 
 We continue to improve the Kitura documentation.
 
-The “Learn” section of kitura.io has been completely written, and now features much more detailed information on Kitura, including information on logging, routing, databases, sessions, authentication, building web applications, and deploying to the cloud.
+The “Learn” section of kitura.dev has been completely written, and now features much more detailed information on Kitura, including information on logging, routing, databases, sessions, authentication, building web applications, and deploying to the cloud.
 
 The “Learn” section uses the example of building a book store application. You can either follow the documentation from the beginning to build a complete application, or dip into the section that particularly interests you.
