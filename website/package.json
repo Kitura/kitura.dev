@@ -15,7 +15,7 @@
     "gatsby-transformer-remark": "^2.6.11",
     "gatsby-transformer-yaml": "^2.2.4",
     "js-search": "^2.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
     "react-collapsible": "^2.6.0",
