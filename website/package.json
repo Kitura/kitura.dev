@@ -12,7 +12,7 @@
     "gatsby-remark-images": "^3.1.25",
     "gatsby-remark-prismjs": "^3.3.13",
     "gatsby-source-filesystem": "^2.1.9",
-    "gatsby-transformer-remark": "^2.6.11",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-yaml": "^2.2.4",
     "js-search": "^2.0.0",
     "node-sass": "^4.12.0",
